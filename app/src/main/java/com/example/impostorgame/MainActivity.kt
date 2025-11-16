@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         val recyclerViewPlayers = findViewById<RecyclerView>(R.id.playersRecyclerView)
         val cardViewModoJuego = findViewById<CardView>(R.id.cardViewModoJuego)
         val layoutModoJuego = findViewById<LinearLayout>(R.id.layoutModoJuego)
+        val linearLayoutModoDeJuego = findViewById<CardView>(R.id.lLModoDeJuego)
 
         // Definimos cómo se muestran pero solo permite Horizontal o vertical, sacamos la implementacion de google
         //recyclerViewPlayers.layoutManager = LinearLayoutManager(this, LinearLayoutManager.INVALID_OFFSET, false)
@@ -41,26 +42,30 @@ class MainActivity : AppCompatActivity() {
         }
 
         recyclerViewPlayers.layoutManager = layoutManager
-        recyclerViewPlayers.adapter = PlayerAdapter(players) { index ->
-            editarJugadores(index)
-        }
+        recyclerViewPlayers.adapter = PlayerAdapter(players)
 
-        cardViewModoJuego.setOnClickListener { editarJugadores(0) }
+        cardViewModoJuego.setOnClickListener {
+            editarJugadores()
+        }
+//
+//        layoutModoJuego.setOnClickListener {
+//            editarJugadores()
+//        }
+
+//        linearLayoutModoDeJuego.setOnClickListener {
+//            editarJugadores()
+//        }
 
     }
 
-    fun editarJugadores(index: Int?){
+    fun editarJugadores(){
 
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("Editar jugadores")
+        AlertDialog.Builder(this)
+            .setTitle("Título de la alerta")
+            .setMessage("Este es el mensaje que quieres mostrar.")
+            .setPositiveButton("OK", null)
+            .show()
 
-        val editText = EditText(this)
-        editText.hint = "Escribe un nuevo nombre"
-
-        builder.setView(editText)
-
-        builder.setNegativeButton("Cancelar", null)
-        builder.show()
     }
 
 }

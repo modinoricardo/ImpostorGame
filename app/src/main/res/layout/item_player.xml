@@ -7,9 +7,7 @@
     android:layout_marginHorizontal="16dp"
     android:orientation="vertical"
     android:padding="10dp"
-    android:background="#EEEEEE"
-    android:clickable="true"
-    android:focusable="true">
+    android:background="#EEEEEE">
 
     <TextView
         android:id="@+id/playerName"
