@@ -14,6 +14,8 @@ import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
 import android.view.MotionEvent
+import androidx.appcompat.app.AppCompatDelegate
+
 
 class MainActivity : AppCompatActivity() {
     @SuppressLint("ClickableViewAccessibility")
@@ -31,6 +33,9 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        //Desactivamos el modo noche
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         recyclerViewPlayers = findViewById<RecyclerView>(R.id.playersRecyclerView)
         cardViewModoJuego = findViewById<CardView>(R.id.cardViewModoJuego)
@@ -56,7 +61,7 @@ class MainActivity : AppCompatActivity() {
 
         cardViewModoJuego.setOnTouchListener { v, event ->
                     clickEditarJugadores(event)
-            true
+            true // Consumimos el evento para que no siga a los hijos
         }
 
 
@@ -68,35 +73,34 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    private var originalColor: Int = 0
+    private var originalColorsSaved = false
+
     fun clickEditarJugadores(event: MotionEvent){
         //mensajeAlerta("Alerta", "Esta opcion aun no esta implementada en la app")
 
         when(event.action){
-            MotionEvent.ACTION_DOWN ->{
 
-                cardViewModoJuego.setCardBackgroundColor(
-                    getColor(R.color.button_pressed)
-                )
+            MotionEvent.ACTION_DOWN -> {
 
-                recyclerViewPlayers.setBackgroundColor(
-                    getColor(R.color.button_pressed)
-                )
+                if (!originalColorsSaved) {
+                    originalColor = cardViewModoJuego.cardBackgroundColor.defaultColor
+                    originalColorsSaved = true
+                }
 
+                val pressedColor = getColor(R.color.button_pressed)
+                cardViewModoJuego.setCardBackgroundColor(pressedColor)
+                recyclerViewPlayers.setBackgroundColor(pressedColor)
             }
+
             MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
 
-                cardViewModoJuego.setCardBackgroundColor(
-                    getColor(android.R.color.white)
-                )
-
-                recyclerViewPlayers.setBackgroundColor(
-                    getColor(android.R.color.white)
-                )
+                cardViewModoJuego.setCardBackgroundColor(originalColor)
+                recyclerViewPlayers.setBackgroundColor(originalColor)
 
                 editarJugadores()
             }
         }
-
     }
 
     fun editarJugadores() {
