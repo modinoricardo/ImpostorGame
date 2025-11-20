@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class PlayerAdapter(
-    private val players: List<String>
+    private var players: List<String>
 //    ,private val onItemClick: () -> Unit
     ) : RecyclerView.Adapter<PlayerAdapter.PlayerViewHolder>() {
 
@@ -31,6 +31,11 @@ class PlayerAdapter(
     }
 
     override fun getItemCount(): Int = players.size
+
+    fun updatePlayers(newList: List<String>) {
+        players = newList
+        notifyDataSetChanged()
+    }
 
 
 }

@@ -1,71 +1,115 @@
 package com.example.impostorgame
 
+import android.annotation.SuppressLint
 import android.os.Bundle
-import android.widget.EditText
-import android.widget.LinearLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
+import android.view.MotionEvent
 
 class MainActivity : AppCompatActivity() {
+    @SuppressLint("ClickableViewAccessibility")
+
+    private lateinit var recyclerViewPlayers: RecyclerView
+    private lateinit var cardViewModoJuego: CardView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        val players = mutableListOf("Ricardo", "Lucia", "Pedro", "Ana", "Mario", "Luis", "Ste")
-        val recyclerViewPlayers = findViewById<RecyclerView>(R.id.playersRecyclerView)
-        val cardViewModoJuego = findViewById<CardView>(R.id.cardViewModoJuego)
-        val layoutModoJuego = findViewById<LinearLayout>(R.id.layoutModoJuego)
-        val linearLayoutModoDeJuego = findViewById<CardView>(R.id.lLModoDeJuego)
+        recyclerViewPlayers = findViewById<RecyclerView>(R.id.playersRecyclerView)
+        cardViewModoJuego = findViewById<CardView>(R.id.cardViewModoJuego)
 
-        // Definimos cómo se muestran pero solo permite Horizontal o vertical, sacamos la implementacion de google
-        //recyclerViewPlayers.layoutManager = LinearLayoutManager(this, LinearLayoutManager.INVALID_OFFSET, false)
+        // ViewModel
+        val viewModel = ViewModelProvider(this).get(PlayerViewModel::class.java)
 
-        //Solucionamos problema anterior y se muestran de forma correcta en el apartado Modo de Juego
+        // RecyclerView con Flexbox
         val layoutManager = FlexboxLayoutManager(this).apply {
-            flexDirection = FlexDirection.ROW       // Coloca ítems en fila
-            flexWrap = FlexWrap.WRAP                // Salta a la siguiente fila cuando no quepan
+            flexDirection = FlexDirection.ROW
+            flexWrap = FlexWrap.WRAP
         }
-
         recyclerViewPlayers.layoutManager = layoutManager
-        recyclerViewPlayers.adapter = PlayerAdapter(players)
 
-        cardViewModoJuego.setOnClickListener {
-            editarJugadores()
+        // Adapter vacío (se llenará con LiveData)
+        val adapter = PlayerAdapter(emptyList())
+        recyclerViewPlayers.adapter = adapter
+
+        // Observamos los jugadores del ViewModel
+        viewModel.players.observe(this) { lista ->
+            adapter.updatePlayers(lista)
         }
-//
-//        layoutModoJuego.setOnClickListener {
-//            editarJugadores()
-//        }
 
-//        linearLayoutModoDeJuego.setOnClickListener {
-//            editarJugadores()
-//        }
+        cardViewModoJuego.setOnTouchListener { v, event ->
+                    clickEditarJugadores(event)
+            true
+        }
+
+
+        recyclerViewPlayers.setOnTouchListener { _, event ->
+                clickEditarJugadores(event)
+            true // Consumimos el evento para que no siga a los hijos
+        }
+
 
     }
 
-    fun editarJugadores(){
+    fun clickEditarJugadores(event: MotionEvent){
+        //mensajeAlerta("Alerta", "Esta opcion aun no esta implementada en la app")
 
+        when(event.action){
+            MotionEvent.ACTION_DOWN ->{
+
+                cardViewModoJuego.setCardBackgroundColor(
+                    getColor(R.color.button_pressed)
+                )
+
+                recyclerViewPlayers.setBackgroundColor(
+                    getColor(R.color.button_pressed)
+                )
+
+            }
+            MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
+
+                cardViewModoJuego.setCardBackgroundColor(
+                    getColor(android.R.color.white)
+                )
+
+                recyclerViewPlayers.setBackgroundColor(
+                    getColor(android.R.color.white)
+                )
+
+                editarJugadores()
+            }
+        }
+
+    }
+
+    fun editarJugadores() {
+
+
+
+    }
+
+    fun mensajeAlerta(titulo: String, mensaje: String){
         AlertDialog.Builder(this)
-            .setTitle("Título de la alerta")
-            .setMessage("Este es el mensaje que quieres mostrar.")
+            .setTitle(titulo)
+            .setMessage(mensaje)
             .setPositiveButton("OK", null)
             .show()
-
     }
-
 }
