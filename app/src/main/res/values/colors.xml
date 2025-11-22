@@ -3,5 +3,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="button_pressed">#EEEEEE</color>
-    <color name="gris_oscuro">#999999</color>
+    <color name="tituloYFlecha">#999999</color>
+    <color name="titulo">#000000</color>
+    <color name="subTitulo">#2B2B2B</color>
+    <color name="twoSubTitulo">#949494</color>
+    <color name="modal_background">#80000000</color>
 </resources>

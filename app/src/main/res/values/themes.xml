@@ -6,4 +6,19 @@
     </style>
 
     <style name="Theme.ImpostorGame" parent="Base.Theme.ImpostorGame" />
+
+    <style name="Theme.Impostor.ModalActivity" parent="Theme.Material3.Light.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowAnimationStyle">@style/ModalAnimation</item>
+    </style>
+
+    <style name="Theme.Impostor.NormalModal" parent="Theme.Material3.Light.NoActionBar">
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:windowAnimationStyle">@style/ModalAnimation</item>
+    </style>
+
+
 </resources>

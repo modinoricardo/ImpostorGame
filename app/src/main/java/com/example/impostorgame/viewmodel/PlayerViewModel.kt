@@ -8,7 +8,17 @@ class PlayerViewModel : ViewModel() {
 
     // Lista interna modificable
     private val _players = MutableLiveData<List<String>>(
-        listOf("Ricardo", "Lucia", "Pedro", "Ana", "Mario", "Luis", "Ste")
+        listOf("Ricardo", "Lucia", "Pedro", "Ana", "Mario", "Luis", "Ste",
+            "Ricardo", "Lucia", "Pedro", "Ana", "Mario", "Luis", "Ste",
+            "Ricardo", "Lucia", "Pedro", "Ana", "Mario", "Luis", "Ste",
+            "Ricardo", "Lucia", "Pedro", "Ana", "Mario", "Luis", "Ste",
+            "Ricardo", "Lucia", "Pedro", "Ana", "Mario", "Luis", "Ste",
+            "Ricardo", "Lucia", "Pedro", "Ana", "Mario", "Luis", "Ste",
+            "Ricardo", "Lucia", "Pedro", "Ana", "Mario", "Luis", "Ste",
+            "Ricardo", "Lucia", "Pedro", "Ana", "Mario", "Luis", "Ste",
+            "Ricardo", "Lucia", "Pedro", "Ana", "Mario", "Luis", "Ste",
+            "Ricardo", "Lucia", "Pedro", "Ana", "Mario", "Luis", "Ste"
+            )
     )
 
     // LiveData pública que la vista observa

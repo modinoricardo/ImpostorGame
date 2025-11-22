@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 
 class PlayerAdapter(
     private var players: List<String>
-//    ,private val onItemClick: () -> Unit
     ) : RecyclerView.Adapter<PlayerAdapter.PlayerViewHolder>() {
 
     class PlayerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -23,10 +22,6 @@ class PlayerAdapter(
 
     override fun onBindViewHolder(holder: PlayerViewHolder, position: Int) {
         holder.playerName.text = players[position]
-
-//        holder.itemView.setOnClickListener {
-//            onItemClick()      // llamamos a la función que nos pase la Activity
-//        }
 
     }
 

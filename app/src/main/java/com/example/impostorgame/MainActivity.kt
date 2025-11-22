@@ -1,6 +1,8 @@
 package com.example.impostorgame
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.content.res.ColorStateList
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
@@ -14,6 +16,7 @@ import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
 import android.view.MotionEvent
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatDelegate
 
 
@@ -105,8 +108,16 @@ class MainActivity : AppCompatActivity() {
 
     fun editarJugadores() {
 
+        val intent = Intent(this, EditPlayersActivity::class.java)
+        startActivity(intent)
+        overridePendingTransition(R.anim.slide_in_bottom, R.anim.no_animation)
 
 
+    }
+
+    fun closeEditarJugadores(){
+        finish()
+        overridePendingTransition(0, R.anim.slide_out_bottom)
     }
 
     fun mensajeAlerta(titulo: String, mensaje: String){

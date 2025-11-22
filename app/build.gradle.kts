@@ -45,6 +45,7 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
 
     implementation("com.google.android.flexbox:flexbox:3.0.0")
+    implementation("androidx.fragment:fragment-ktx:1.8.+" )
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
