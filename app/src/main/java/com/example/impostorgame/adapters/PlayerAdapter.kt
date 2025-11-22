@@ -14,9 +14,18 @@ class PlayerAdapter(
         val playerName: TextView = itemView.findViewById(R.id.playerName)
     }
 
+    var useEditLayout: Int = 0
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlayerViewHolder {
+
+        val layout = when (useEditLayout) {
+            0 -> R.layout.item_player          // layout actual
+            1 -> R.layout.item_player_edit     // segundo layout
+            else -> R.layout.item_player
+        }
+
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_player, parent, false)
+            .inflate(layout, parent, false)
+
         return PlayerViewHolder(view)
     }
 

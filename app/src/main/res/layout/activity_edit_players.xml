@@ -1,89 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mainModalRoot"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#80000000">
+    android:layout_height="match_parent">
 
     <!-- TARJETA BLANCA INFERIOR (TU CONTENIDO) -->
     <androidx.cardview.widget.CardView
         android:id="@+id/modalCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
         android:layout_marginStart="0dp"
+        android:layout_marginTop="150dp"
         android:layout_marginEnd="0dp"
         android:layout_marginBottom="0dp"
-        android:layout_marginTop="150dp"
-        android:layout_gravity="bottom"
-        android:padding="20dp"
         android:elevation="12dp"
+        android:padding="20dp"
         android:radius="20dp">
 
-    <!-- TU LAYOUT ORIGINAL -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <!-- Título -->
-        <TextView
-            android:id="@+id/txtTitle"
+        <!-- TU LAYOUT ORIGINAL -->
+        <LinearLayout
+            android:id="@+id/esteLinear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Editar jugadores"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:layout_marginBottom="10dp"
-            android:textColor="@color/titulo"/>
+            android:orientation="vertical">
 
-        <!-- Subtítulo -->
-        <TextView
-            android:id="@+id/txtSubtitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Minimo de 3 jugadores"
-            android:textSize="14sp"
-            android:gravity="center"
-            android:layout_marginBottom="2dp"
-            android:textColor="@color/subTitulo"/>
+            <!-- Título -->
+            <TextView
+                android:id="@+id/txtTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:text="Editar jugadores"
+                android:textColor="@color/titulo"
+                android:textSize="25sp"
+                android:textStyle="bold" />
 
-        <!-- Segundo Subtítulo -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Toca un nombre para editar"
-            android:textSize="12sp"
-            android:gravity="center"
-            android:textColor="@color/twoSubTitulo"/>
+            <!-- Subtítulo -->
+            <TextView
+                android:id="@+id/txtSubtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:gravity="center"
+                android:text="Minimo de 3 jugadores"
+                android:textColor="@color/subTitulo"
+                android:textSize="14sp" />
 
-        <!-- Lista de jugadores -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewPlayersDialog"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_marginBottom="16dp" />
+            <!-- Segundo Subtítulo -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Toca un nombre para editar"
+                android:textColor="@color/twoSubTitulo"
+                android:textSize="12sp" />
 
-        <!-- Campo para añadir jugador -->
-        <EditText
-            android:id="@+id/editTextNewPlayer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Agregar nombre del nuevo jugador"
-            android:layout_marginBottom="12dp" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp" />
 
-        <!-- Botón confirmar -->
-        <Button
-            android:id="@+id/btnConfirm"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Confirmar" />
+            <!-- Lista de jugadores -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewPlayersDialog"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_marginBottom="16dp"
+                android:background="@color/fondo_listas" />
 
-        <Space
-            android:layout_height="60dp"
-            android:layout_width="wrap_content"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/edittext_rounded"
+                android:gravity="center_vertical">
 
-    </LinearLayout>
+                <!-- Campo para añadir jugador -->
+                <EditText
+                    android:id="@+id/editTextNewPlayer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:hint="Agregar nombre del nuevo jugador"
+                    android:paddingStart="12dp"/>
 
-</androidx.cardview.widget.CardView>
+                <ImageView
+                    android:id="@+id/imageViewAniadirJugador"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="12dp"
+                    android:src="@drawable/ic_mas" />
 
-    </FrameLayout>
+            </LinearLayout>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="10dp" />
+
+            <!-- Botón confirmar -->
+            <Button
+                android:id="@+id/btnConfirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Confirmar" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="60dp" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</FrameLayout>

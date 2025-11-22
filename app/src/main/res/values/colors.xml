@@ -8,4 +8,5 @@
     <color name="subTitulo">#2B2B2B</color>
     <color name="twoSubTitulo">#949494</color>
     <color name="modal_background">#80000000</color>
+    <color name="fondo_listas">#D4D4D4</color>
 </resources>
