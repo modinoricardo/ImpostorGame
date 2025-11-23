@@ -89,6 +89,11 @@ class MainActivity : AppCompatActivity() {
         overlay.visibility = View.GONE
     }
 
+    fun onBottomSheetClosed() {
+        overlay.visibility = View.GONE
+    }
+
+
     private var originalColor: Int = 0
     private var originalColorsSaved = false
     fun clickEditarJugadores(event: MotionEvent){
@@ -119,13 +124,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun editarJugadores() {
-
         overlay.visibility = View.VISIBLE
-
-        val intent = Intent(this, EditPlayersActivity::class.java)
-        startActivity(intent)
-        overridePendingTransition(R.anim.slide_in_bottom, R.anim.no_animation)
-
+        EditPlayersBottomSheet().show(supportFragmentManager, "EditPlayers")
     }
 
     fun mensajeAlerta(titulo: String, mensaje: String){

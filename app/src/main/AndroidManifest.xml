@@ -12,11 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ImpostorGame">
         <activity
-            android:name=".EditPlayersActivity"
-            android:theme="@style/Theme.Impostor.ModalActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize"/>
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
