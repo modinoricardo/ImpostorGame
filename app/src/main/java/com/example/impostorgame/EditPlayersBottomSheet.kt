@@ -6,10 +6,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.DecelerateInterpolator
+import android.widget.EditText
+import android.widget.ImageView
+import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContentProviderCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class EditPlayersBottomSheet : BottomSheetDialogFragment() {
+
+    private lateinit var adapter: PlayerAdapterEdit
+
+    private lateinit var editTextNewPlayer: EditText
+    private lateinit var imageViewAniadirJugador: ImageView
 
     override fun onDismiss(dialog: DialogInterface) {
         super.onDismiss(dialog)
@@ -18,17 +31,12 @@ class EditPlayersBottomSheet : BottomSheetDialogFragment() {
         (activity as? MainActivity)?.onBottomSheetClosed()
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // El tema ya no es relevante para la animación, pero puedes dejarlo si quieres
-        // setStyle(STYLE_NORMAL, R.style.Theme_EditPlayersBottomSheet)
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.dialog_edit_players, container, false)
     }
@@ -42,8 +50,7 @@ class EditPlayersBottomSheet : BottomSheetDialogFragment() {
 
         // Fondo redondeado como antes
         bottomSheet.background = ContextCompat.getDrawable(
-            requireContext(),
-            R.drawable.bottomsheet_rounded
+            requireContext(), R.drawable.bottomsheet_rounded
         )
 
         // ANIMACIÓN DE ENTRADA EXAGERADA PARA VER SI FUNCIONA
@@ -59,12 +66,85 @@ class EditPlayersBottomSheet : BottomSheetDialogFragment() {
             bottomSheet.translationY = h.toFloat()      // fuera de pantalla
             bottomSheet.alpha = 0f
 
-            bottomSheet.animate()
-                .translationY(0f)                      // sube hasta su posición
+            bottomSheet.animate().translationY(0f)                      // sube hasta su posición
                 .alpha(1f)                             // fade in
                 .setDuration(1500L)                    // 1.5 segundos para que se note
-                .setInterpolator(DecelerateInterpolator(2f))
-                .start()
+                .setInterpolator(DecelerateInterpolator(2f)).start()
         }
+
+        val behavior = BottomSheetBehavior.from(bottomSheet)
+
+        behavior.isDraggable = false   // BLOQUEAR el swipe para cerrar
+        behavior.isHideable = false    // No permitir que se oculte
+
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val viewModel = ViewModelProvider(requireActivity()).get(PlayerViewModel::class.java)
+        editTextNewPlayer = view.findViewById(R.id.editTextNewPlayer)
+        imageViewAniadirJugador = view.findViewById<ImageView>(R.id.imageViewAniadirJugador)
+        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewPlayersDialog)
+
+        adapter = PlayerAdapterEdit(
+            players = viewModel.players.value ?: mutableMapOf(),
+            onDeleteClick = { name -> viewModel.removePlayer(name) },
+            onEditClick = { oldName, newName ->
+                viewModel.editPlayer(oldName, newName)
+            }
+        )
+
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        // Observar cambios en el ViewModel
+        viewModel.players.observe(viewLifecycleOwner) { nuevoMapa ->
+            adapter.updatePlayers(nuevoMapa)
+        }
+
+        imageViewAniadirJugador.setOnClickListener {
+
+            val nameNewPlayer = editTextNewPlayer.text.toString()
+
+            if (nameNewPlayer.lowercase() in listOf("ste", "staicy")) {
+
+                mensajeAlerta(
+                    "Demasiado amor",
+                    "Este nombre desprende niveles extraordinarios de cariño y ternura. Podría sobrecargar el sistema."
+                )
+
+                aniadirJugador(nameNewPlayer.trim(), viewModel)
+
+            } else if (!nameNewPlayer.isBlank()) {
+                aniadirJugador(nameNewPlayer.trim(), viewModel)
+            } else {
+                if (nameNewPlayer.isEmpty()) {
+                    mensajeAlerta(
+                        "Nombre vacío",
+                        "Antes de añadir un jugador, necesitas escribir al menos un nombre."
+                    )
+                } else {
+                    mensajeAlerta(
+                        "¿Espacios otra vez?",
+                        "No vale añadir jugadores invisibles. Escribe un nombre real."
+                    )
+                }
+            }
+
+        }
+
+    }
+
+    fun mensajeAlerta(titulo: String, mensaje: String) {
+        AlertDialog.Builder(requireContext())
+            .setTitle(titulo)
+            .setMessage(mensaje)
+            .setPositiveButton("OK", null)
+            .show()
+    }
+
+    private fun aniadirJugador(newPlayer: String, viewModel: PlayerViewModel) {
+        viewModel.addPlayer(newPlayer)
+    }
+
 }

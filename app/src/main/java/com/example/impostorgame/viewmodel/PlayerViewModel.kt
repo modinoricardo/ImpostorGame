@@ -6,35 +6,42 @@ import androidx.lifecycle.ViewModel
 
 class PlayerViewModel : ViewModel() {
 
-    // Lista interna modificable
+    // Lista interna modificable (inicializada vacía)
     private val _players = MutableLiveData<MutableMap<String, Boolean>>(mutableMapOf())
 
-    // LiveData pública que la vista observa
+    // LiveData pública
     val players: LiveData<MutableMap<String, Boolean>> = _players
 
     // Añadir jugador
     fun addPlayer(name: String) {
-        val mapaActual = _players.value?: mutableMapOf()
-        mapaActual[name] = false
-        _players.value = mapaActual
+        val mapa = _players.value ?: mutableMapOf()
+
+        mapa[name] = false
+        _players.value = mapa
     }
 
     // Editar jugador
     fun editPlayer(oldName: String, newName: String) {
-        val mapa = _players.value?: mutableMapOf()
+        val mapa = _players.value ?: mutableMapOf()
 
-        if(mapa.containsKey(oldName)){
-//            val value = mapa[oldName] ?: false
-            mapa.remove(oldName)
-            mapa[newName] = false
-            _players.value = mapa
+        // Construir un nuevo mapa manteniendo el orden
+        val nuevoMapa = linkedMapOf<String, Boolean>()
+
+        for ((key, value) in mapa) {
+            if (key == oldName) {
+                nuevoMapa[newName] = value
+            } else {
+                nuevoMapa[key] = value
+            }
         }
 
+        _players.value = nuevoMapa
     }
+
 
     // Eliminar jugador
     fun removePlayer(name: String) {
-        val mapa = _players.value?: mutableMapOf()
+        val mapa = _players.value ?: mutableMapOf()
         mapa.remove(name)
         _players.value = mapa
     }

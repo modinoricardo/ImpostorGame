@@ -1,45 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:orientation="horizontal"
-android:gravity="center_vertical"
-android:paddingHorizontal="16dp"
-android:paddingVertical="10dp">
-
-<!-- CONTENEDOR IZQUIERDO (CON FONDO) -->
-<LinearLayout
-    android:layout_width="0dp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_weight="1"
     android:orientation="horizontal"
-    android:padding="10dp"
     android:gravity="center_vertical"
-    android:background="#EEEEEE">
+    android:paddingHorizontal="16dp"
+    android:paddingVertical="10dp">
 
+    <!-- BLOQUE BLANCO COMPLETO -->
+    <LinearLayout
+        android:id="@+id/editContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:background="@drawable/edit_container_white"
+        android:padding="12dp"
+        android:gravity="center_vertical">
+
+        <!-- Icono ✏ -->
+        <ImageView
+            android:id="@+id/iconEdit"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_pencil"
+            android:tint="@android:color/black"/>
+
+        <Space
+            android:layout_width="12dp"
+            android:layout_height="wrap_content"/>
+
+        <!-- EditText SIN FONDO, integrado en el bloque blanco -->
+        <EditText
+            android:id="@+id/playerName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:hint="Editar nombre"
+            android:inputType="textPersonName"/>
+    </LinearLayout>
+
+    <!-- Ícono de borrar 🗑 -->
     <ImageView
+        android:id="@+id/iconDelete"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:src="@drawable/ic_pencil" />
-
-    <Space
-        android:layout_width="10dp"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:id="@+id/playerName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Jugador"
-        android:textSize="20sp"
-        android:textStyle="bold"/>
-</LinearLayout>
-
-<!-- PAPELERA (SIN FONDO) -->
-<ImageView
-    android:id="@+id/imgDelete"
-    android:layout_width="24dp"
-    android:layout_height="24dp"
-    android:layout_marginStart="12dp"
-    android:src="@drawable/ic_papelera"/>
+        android:layout_marginStart="16dp"
+        android:tint="@android:color/black"
+        android:src="@drawable/ic_papelera"/>
 </LinearLayout>
