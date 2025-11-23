@@ -7,19 +7,21 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class PlayerAdapter(
-    private var players: List<String>
+    private var players: MutableMap<String, Boolean>
     ) : RecyclerView.Adapter<PlayerAdapter.PlayerViewHolder>() {
+
+        private var keys = players.keys.toList()
 
     class PlayerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val playerName: TextView = itemView.findViewById(R.id.playerName)
     }
 
+
     var useEditLayout: Int = 0
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlayerViewHolder {
-
         val layout = when (useEditLayout) {
-            0 -> R.layout.item_player          // layout actual
-            1 -> R.layout.item_player_edit     // segundo layout
+            0 -> R.layout.item_player
+            1 -> R.layout.item_player_edit
             else -> R.layout.item_player
         }
 
@@ -30,14 +32,17 @@ class PlayerAdapter(
     }
 
     override fun onBindViewHolder(holder: PlayerViewHolder, position: Int) {
-        holder.playerName.text = players[position]
+        val key = keys[position]                // nombre del jugador
+        val value = players[key] ?: false       // boolean del mapa
 
+        holder.playerName.text = key
     }
 
-    override fun getItemCount(): Int = players.size
+    override fun getItemCount(): Int = keys.size
 
-    fun updatePlayers(newList: List<String>) {
-        players = newList
+    fun updatePlayers(newMap: MutableMap<String, Boolean>) {
+        players = newMap
+        keys = newMap.keys.toList()
         notifyDataSetChanged()
     }
 

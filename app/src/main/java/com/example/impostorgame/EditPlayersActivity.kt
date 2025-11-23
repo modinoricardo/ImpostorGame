@@ -40,7 +40,7 @@ class EditPlayersActivity : AppCompatActivity() {
 
         // Creamos el adapter de la lista, inicialmente vacío.
         // El contenido real vendrá del LiveData dentro del ViewModel.
-        val adapter = PlayerAdapter(emptyList())
+        val adapter = PlayerAdapter(mutableMapOf())
 
         // Asignamos el adapter al RecyclerView para que pueda mostrar datos.
         recyclerView.adapter = adapter
@@ -62,17 +62,18 @@ class EditPlayersActivity : AppCompatActivity() {
         adapter.notifyDataSetChanged()
 
         btnConfirm.setOnClickListener { finish() }
-        imageViewAniadirJugador.setOnClickListener { aniadirJugador() }
+        imageViewAniadirJugador.setOnClickListener { aniadirJugador(viewModel) }
 
     }
 
-    private fun aniadirJugador() {
+    private fun aniadirJugador(viewModel: PlayerViewModel) {
 
         val newPlayer = editTextNewPlayer.text.toString()
 
         if (!newPlayer.isBlank()) {
 
-            
+            viewModel.addPlayer(newPlayer)
+            editTextNewPlayer.text.clear()
 
         } else {
 
