@@ -6,43 +6,35 @@ import androidx.lifecycle.ViewModel
 
 class PlayerViewModel : ViewModel() {
 
-    // Lista interna modificable (inicializada vacía)
-    private val _players = MutableLiveData<MutableMap<String, Boolean>>(mutableMapOf())
+    private val _players = MutableLiveData<List<String>>(emptyList())
+    val players: LiveData<List<String>> = _players
 
-    // LiveData pública
-    val players: LiveData<MutableMap<String, Boolean>> = _players
-
-    // Añadir jugador
+    // Añadir jugador (al final de la lista)
     fun addPlayer(name: String) {
-        val mapa = _players.value ?: mutableMapOf()
-
-        mapa[name] = false
-        _players.value = mapa
+        val current = _players.value ?: emptyList()
+        _players.value = current + name
     }
 
-    // Editar jugador
-    fun editPlayer(oldName: String, newName: String) {
-        val mapa = _players.value ?: mutableMapOf()
-
-        // Construir un nuevo mapa manteniendo el orden
-        val nuevoMapa = linkedMapOf<String, Boolean>()
-
-        for ((key, value) in mapa) {
-            if (key == oldName) {
-                nuevoMapa[newName] = value
-            } else {
-                nuevoMapa[key] = value
-            }
+    // Eliminar jugador por posición
+    fun removeAt(index: Int) {
+        val current = _players.value?.toMutableList() ?: return
+        if (index in current.indices) {
+            current.removeAt(index)
+            _players.value = current
         }
-
-        _players.value = nuevoMapa
     }
 
+    // Renombrar un jugador concreto, por su posición
+    fun renameAt(index: Int, newName: String) {
+        val current = _players.value?.toMutableList() ?: return
+        if (index in current.indices) {
+            current[index] = newName
+            _players.value = current
+        }
+    }
 
-    // Eliminar jugador
-    fun removePlayer(name: String) {
-        val mapa = _players.value ?: mutableMapOf()
-        mapa.remove(name)
-        _players.value = mapa
+    // Sobrescribir la lista entera (opcional)
+    fun updatePlayers(newList: List<String>) {
+        _players.value = newList
     }
 }

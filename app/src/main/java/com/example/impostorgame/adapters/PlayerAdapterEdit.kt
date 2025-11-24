@@ -2,29 +2,25 @@ package com.example.impostorgame
 
 import android.os.Handler
 import android.os.Looper
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import android.text.TextWatcher
-import android.text.Editable
 
 class PlayerAdapterEdit(
-    private var players: MutableMap<String, Boolean>,
-    private val onDeleteClick: (String) -> Unit,
-    private val onEditClick: (oldName: String, newName: String) -> Unit
+    private var players: List<String>,
+    private val onDeleteClick: (Int) -> Unit,
+    private val onEditClick: (position: Int, newName: String) -> Unit
 ) : RecyclerView.Adapter<PlayerAdapterEdit.PlayerViewHolder>() {
-
-    private var keys = players.keys.toList()
 
     class PlayerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val playerName: EditText = itemView.findViewById(R.id.playerName)
         val iconDelete: ImageView = itemView.findViewById(R.id.iconDelete)
         val iconEdit: ImageView = itemView.findViewById(R.id.iconEdit)
-
-        // Guardamos el último watcher para poder eliminarlo
         var currentWatcher: TextWatcher? = null
     }
 
@@ -35,64 +31,55 @@ class PlayerAdapterEdit(
     }
 
     override fun onBindViewHolder(holder: PlayerViewHolder, position: Int) {
-        val oldName = keys[position]
 
-        val currentText = holder.playerName.text.toString()
+        val originalName = players[position]
 
-        if (currentText != oldName) {
-            val cursorPos = holder.playerName.selectionStart
-            holder.playerName.setText(oldName)
-
-            // restaurar posición segura del cursor
-            val nuevaPos = minOf(cursorPos, oldName.length)
-            holder.playerName.setSelection(nuevaPos)
-        }
-
-
-        // ------ ELIMINAR WATCHER ANTERIOR ------
+        // Quitar watcher viejo antes de poner texto nuevo
         holder.currentWatcher?.let {
             holder.playerName.removeTextChangedListener(it)
         }
 
-        // ------ CREAR NUEVO WATCHER ------
+        // Asegurar que el EditText muestra el texto correcto sin mover el cursor
+        if (holder.playerName.text.toString() != originalName) {
+            holder.playerName.setText(originalName)
+            holder.playerName.setSelection(originalName.length)
+        }
+
+        // Nuevo text watcher
         val watcher = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
                 val nuevo = s.toString().trim()
-                if (nuevo.isNotEmpty() && nuevo != oldName) {
-                    onEditClick(oldName, nuevo)
+                if (nuevo.isNotEmpty() && nuevo != originalName) {
+                    onEditClick(holder.adapterPosition, nuevo)
                 }
             }
-
-            override fun afterTextChanged(s: Editable?) {}
         }
 
         holder.playerName.addTextChangedListener(watcher)
         holder.currentWatcher = watcher
 
-        // ---- BORRAR ----
+        // Borrar jugador por posición
         holder.iconDelete.setOnClickListener {
-            onDeleteClick(oldName)
+            onDeleteClick(holder.adapterPosition)
         }
 
-        // ---- EDITAR CON ICONO ----
+        // Icono editar explícito
         holder.iconEdit.setOnClickListener {
             val nuevo = holder.playerName.text.toString().trim()
-            if (nuevo.isNotEmpty() && nuevo != oldName) {
-                onEditClick(oldName, nuevo)
+            if (nuevo.isNotEmpty() && nuevo != originalName) {
+                onEditClick(holder.adapterPosition, nuevo)
             }
         }
     }
 
-    override fun getItemCount(): Int = keys.size
+    override fun getItemCount(): Int = players.size
 
-    fun updatePlayers(newPlayers: MutableMap<String, Boolean>) {
-        players = newPlayers
-        keys = newPlayers.keys.toList()
+    fun updatePlayers(newList: List<String>) {
+        players = newList
 
-        // Ejecutar la actualización en la cola del hilo principal
-        // y evitar el crash "Cannot call this while RecyclerView is computing a layout"
+        // Evita crash si RecyclerView está haciendo layout
         if (Looper.myLooper() == Looper.getMainLooper()) {
             Handler(Looper.getMainLooper()).post {
                 notifyDataSetChanged()
@@ -101,5 +88,4 @@ class PlayerAdapterEdit(
             notifyDataSetChanged()
         }
     }
-
 }

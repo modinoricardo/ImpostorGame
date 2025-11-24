@@ -7,10 +7,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class PlayerAdapterMain(
-    private var players: MutableMap<String, Boolean>
+    private var players: List<String>
 ) : RecyclerView.Adapter<PlayerAdapterMain.PlayerViewHolder>() {
-
-    private var keys = players.keys.toList()
 
     class PlayerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val playerName: TextView = itemView.findViewById(R.id.playerName)
@@ -23,15 +21,13 @@ class PlayerAdapterMain(
     }
 
     override fun onBindViewHolder(holder: PlayerViewHolder, position: Int) {
-        val key = keys[position]
-        holder.playerName.text = key
+        holder.playerName.text = players[position]
     }
 
-    override fun getItemCount(): Int = keys.size
+    override fun getItemCount(): Int = players.size
 
-    fun updatePlayers(newPlayers: MutableMap<String, Boolean>) {
-        players = newPlayers
-        keys = newPlayers.keys.toList()
+    fun updatePlayers(newList: List<String>) {
+        players = newList
         notifyDataSetChanged()
     }
 }

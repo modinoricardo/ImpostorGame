@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity() {
         playersRecyclerView.layoutManager = layoutManager
 
         // Adapter vacío (se llenará con LiveData)
-        val adapter = PlayerAdapterMain(viewModel.players.value ?: mutableMapOf())
+        val adapter = PlayerAdapterMain(viewModel.players.value ?: emptyList())
         playersRecyclerView.adapter = adapter
 
         viewModel.players.observe(this) {
