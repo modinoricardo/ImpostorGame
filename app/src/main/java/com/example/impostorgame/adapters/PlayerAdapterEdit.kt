@@ -10,6 +10,8 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import android.content.Context
+import android.view.inputmethod.InputMethodManager
 
 class PlayerAdapterEdit(
     private var players: List<String>,
@@ -22,6 +24,12 @@ class PlayerAdapterEdit(
         val iconDelete: ImageView = itemView.findViewById(R.id.iconDelete)
         val iconEdit: ImageView = itemView.findViewById(R.id.iconEdit)
         var currentWatcher: TextWatcher? = null
+
+        init {
+            iconEdit.expandTouchArea(16)
+            iconDelete.expandTouchArea(20)
+        }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlayerViewHolder {
@@ -67,19 +75,36 @@ class PlayerAdapterEdit(
 
         // Icono editar explícito
         holder.iconEdit.setOnClickListener {
-            val nuevo = holder.playerName.text.toString().trim()
-            if (nuevo.isNotEmpty() && nuevo != originalName) {
-                onEditClick(holder.adapterPosition, nuevo)
-            }
+            // 1) Poner el foco en el EditText
+            holder.playerName.requestFocus()
+
+            // 2) Colocar el cursor al final del texto
+            holder.playerName.setSelection(holder.playerName.text.length)
+
+            // 3) Mostrar el teclado
+            val imm = holder.itemView.context
+                .getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.showSoftInput(holder.playerName, InputMethodManager.SHOW_IMPLICIT)
+
+            // Si prefieres seleccionar_todo el texto en lugar de ir al final:
+            // holder.playerName.selectAll()
         }
+
     }
 
     override fun getItemCount(): Int = players.size
 
     fun updatePlayers(newList: List<String>) {
+        // Comprobar si solo ha cambiado el texto o también el tamaño de la lista
+        val sizeChanged = newList.size != players.size
+
+        // Actualizamos el modelo interno
         players = newList
 
-        // Evita crash si RecyclerView está haciendo layout
+        // Si el tamaño NO ha cambiado, es un rename: no hace falta redibujar la lista
+        if (!sizeChanged) return
+
+        // Si el tamaño sí ha cambiado (add/remove), entonces sí refrescamos
         if (Looper.myLooper() == Looper.getMainLooper()) {
             Handler(Looper.getMainLooper()).post {
                 notifyDataSetChanged()
@@ -88,4 +113,5 @@ class PlayerAdapterEdit(
             notifyDataSetChanged()
         }
     }
+
 }
