@@ -6,8 +6,21 @@ import androidx.lifecycle.ViewModel
 
 class PlayerViewModel : ViewModel() {
 
+//    private val _players = MutableLiveData<List<String>>(
+//        listOf("Jugador 1", "Jugador 2", "Jugador 3")
+//    )
+
     private val _players = MutableLiveData<List<String>>(
-        listOf("Jugador 1", "Jugador 2", "Jugador 3")
+        listOf("Jugador", "Jugador", "Jugador",
+            "Jugador", "Jugador", "Jugador","Jugador", "Jugador", "Jugador",
+            "Jugador", "Jugador", "Jugador","Jugador", "Jugador", "Jugador",
+            "Jugador", "Jugador", "Jugador","Jugador", "Jugador", "Jugador",
+            "Jugador", "Jugador", "Jugador","Jugador", "Jugador", "Jugador",
+            "Jugador", "Jugador", "Jugador","Jugador", "Jugador", "Jugador",
+            "Jugador", "Jugador", "Jugador","Jugador", "Jugador", "Jugador",
+            "Jugador", "Jugador", "Jugador","Jugador", "Jugador", "Jugador",
+            "Jugador", "Jugador", "Jugador","Jugador", "Jugador", "Jugador",
+            "Jugador", "Jugador", "Jugador","Jugador", "Jugador", "Jugador")
     )
     val players: LiveData<List<String>> = _players
 

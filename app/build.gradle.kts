@@ -46,6 +46,7 @@ dependencies {
 
     implementation("com.google.android.flexbox:flexbox:3.0.0")
     implementation("androidx.fragment:fragment-ktx:1.8.+" )
+    implementation(libs.androidx.material3)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

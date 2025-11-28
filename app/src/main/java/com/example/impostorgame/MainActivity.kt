@@ -20,10 +20,10 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatDelegate
+import android.widget.Button
 
 
 class MainActivity : AppCompatActivity(), SelectCategoriesBottomSheet.Listener {
-    @SuppressLint("ClickableViewAccessibility")
 
     private lateinit var cardViewModoJuego: CardView
     private lateinit var main: FrameLayout
@@ -39,6 +39,8 @@ class MainActivity : AppCompatActivity(), SelectCategoriesBottomSheet.Listener {
     private var originalCategoriasColorsSaved = false
 
 
+    @SuppressLint("ClickableViewAccessibility")
+    @Override
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -56,8 +58,14 @@ class MainActivity : AppCompatActivity(), SelectCategoriesBottomSheet.Listener {
         overlay = findViewById(R.id.darkOverlay)
         textResumenCategorias = findViewById(R.id.textResumenCategorias)
         categoriesRecyclerView = findViewById(R.id.categoriesRecyclerView)
+        val btnStartGame: Button = findViewById(R.id.btnStartGame)
 
-        // Insets (usa main que ya tenemos referenciado)
+        // Desactivamos el scroll propio de la lista de jugadores:
+        playersRecyclerView.isNestedScrollingEnabled = false
+        // Si quieres que Categorías actúe igual también en scroll:
+        // categoriesRecyclerView.isNestedScrollingEnabled = false
+
+        // Ajuste de insets del sistema (barra de estado, navegación, etc.)
         ViewCompat.setOnApplyWindowInsetsListener(main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -68,7 +76,7 @@ class MainActivity : AppCompatActivity(), SelectCategoriesBottomSheet.Listener {
         val playerViewModel = ViewModelProvider(this).get(PlayerViewModel::class.java)
         categoryViewModel = ViewModelProvider(this).get(CategoryViewModel::class.java)
 
-        // RecyclerView de jugadores (Flexbox)
+        // RecyclerView de jugadores (Flexbox para que se distribuyan como "chips")
         val playersLayoutManager = FlexboxLayoutManager(this).apply {
             flexDirection = FlexDirection.ROW
             flexWrap = FlexWrap.WRAP
@@ -82,58 +90,24 @@ class MainActivity : AppCompatActivity(), SelectCategoriesBottomSheet.Listener {
             playerAdapter.updatePlayers(lista)
         }
 
-        // Pulsar en el CardView de jugadores o en la lista → abrir bottom sheet de edición
-        cardViewModoJuego.setOnTouchListener { _, event ->
-            clickEditarJugadores(event)
-            true
-        }
-
-        playersRecyclerView.setOnTouchListener { _, event ->
-            clickEditarJugadores(event)
-            true
-        }
-
-        // Click en CardView de categorías → abrir bottom sheet de selección de categorías
-        cardViewCategorias.setOnTouchListener { _, event ->
-            clickCategorias(event)
-            true
-        }
-
-        categoriesRecyclerView.setOnTouchListener { _, event ->
-            clickCategorias(event)
-            true
-        }
-
-
-        // RecyclerView de categorías (dentro del CardView, altura fija)
+        // RecyclerView de categorías (dentro del CardView, en Flexbox)
         val categoriesLayoutManager = FlexboxLayoutManager(this).apply {
             flexDirection = FlexDirection.ROW
             flexWrap = FlexWrap.WRAP
         }
         categoriesRecyclerView.layoutManager = categoriesLayoutManager
 
-        // IMPORTANTE: inicializar vacío; el observer lo llenará
         categoryAdapterMain = CategoryAdapterMain(emptyList())
         categoriesRecyclerView.adapter = categoryAdapterMain
 
         // Observar categorías y actualizar lista + resumen
         categoryViewModel.categories.observe(this) { list ->
-            // 1) calcular las seleccionadas
             val seleccionadasList = list.filter { it.isSelected }
 
-            // 2) decidir qué mostrar en el main
-            val categoriasParaMostrar = if (seleccionadasList.isNotEmpty()) {
-                // si hay seleccionadas → solo esas
-                seleccionadasList
-            } else {
-                // si no hay ninguna seleccionada → todas
-                list
-            }
+            val categoriasParaMostrar = seleccionadasList.ifEmpty { list }
 
-            // 3) actualizar el RecyclerView del main
             categoryAdapterMain.updateCategories(categoriasParaMostrar)
 
-            // 4) actualizar el texto de resumen
             val total = list.size
             val seleccionadas = seleccionadasList.size
             textResumenCategorias.text = if (seleccionadas == 0) {
@@ -142,84 +116,103 @@ class MainActivity : AppCompatActivity(), SelectCategoriesBottomSheet.Listener {
                 "Categorías seleccionadas: $seleccionadas de $total"
             }
         }
+
+        // ====== CARDVIEW JUGADORES ======
+
+        // CLICK en el CardView de jugadores → abrir bottom sheet de edición
+        cardViewModoJuego.setOnClickListener {
+            EditPlayersBottomSheet().show(supportFragmentManager, "EditPlayers")
+        }
+
+        // CLICK en la zona del RecyclerView → comportarse igual que el CardView
+        playersRecyclerView.setOnClickListener {
+            cardViewModoJuego.performClick()
+        }
+
+        // MISMO OnTouchListener para CardView + RecyclerView (efecto visual unificado)
+        val touchListenerModoJuego = View.OnTouchListener { _, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    if (!originalColorsSaved) {
+                        originalColor = cardViewModoJuego.cardBackgroundColor.defaultColor
+                        originalColorsSaved = true
+                    }
+                    val pressedColor = getColor(R.color.button_pressed)
+                    cardViewModoJuego.setCardBackgroundColor(pressedColor)
+                }
+
+                MotionEvent.ACTION_UP,
+                MotionEvent.ACTION_CANCEL -> {
+                    cardViewModoJuego.setCardBackgroundColor(originalColor)
+                }
+            }
+            // devolvemos false para que el sistema siga procesando el evento
+            // (así el click sigue funcionando y el ScrollView puede hacer scroll)
+            false
+        }
+
+        // Aplicamos el mismo listener tanto al CardView como al RecyclerView
+        cardViewModoJuego.setOnTouchListener(touchListenerModoJuego)
+        playersRecyclerView.setOnTouchListener(touchListenerModoJuego)
+
+
+        // ====== CARDVIEW CATEGORÍAS ======
+
+        // CLICK en el CardView de categorías → abrir bottom sheet de selección
+        cardViewCategorias.setOnClickListener {
+            SelectCategoriesBottomSheet().show(
+                supportFragmentManager,
+                SelectCategoriesBottomSheet.TAG
+            )
+        }
+
+        // CLICK en la zona del RecyclerView → comportarse igual que el CardView
+        categoriesRecyclerView.setOnClickListener {
+            cardViewCategorias.performClick()
+        }
+
+        // MISMO OnTouchListener para CardView + RecyclerView de categorías
+        val touchListenerCategorias = View.OnTouchListener { _, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    if (!originalCategoriasColorsSaved) {
+                        originalCategoriasColor = cardViewCategorias.cardBackgroundColor.defaultColor
+                        originalCategoriasColorsSaved = true
+                    }
+                    val pressedColor = getColor(R.color.button_pressed)
+                    cardViewCategorias.setCardBackgroundColor(pressedColor)
+                }
+                MotionEvent.ACTION_UP,
+                MotionEvent.ACTION_CANCEL -> {
+                    cardViewCategorias.setCardBackgroundColor(originalCategoriasColor)
+                }
+            }
+            false
+        }
+
+        // Aplicamos el mismo listener al CardView y al RecyclerView
+        cardViewCategorias.setOnTouchListener(touchListenerCategorias)
+        categoriesRecyclerView.setOnTouchListener(touchListenerCategorias)
+
+
+        // Botón fijo abajo (de momento placeholder)
+        btnStartGame.setOnClickListener {
+            // Aquí pondrás la lógica de empezar la partida
+        }
     }
 
 
     //Detecta cuando vuelve a primer plano
     override fun onResume() {
         super.onResume()
-        overlay.visibility = View.GONE
     }
 
     fun onBottomSheetClosed() {
-        overlay.visibility = View.GONE
-    }
 
+    }
 
     private var originalColor: Int = 0
     private var originalColorsSaved = false
-    fun clickEditarJugadores(event: MotionEvent) {
-        //mensajeAlerta("Alerta", "Esta opcion aun no esta implementada en la app")
-
-        when (event.action) {
-
-            MotionEvent.ACTION_DOWN -> {
-
-                if (!originalColorsSaved) {
-                    originalColor = cardViewModoJuego.cardBackgroundColor.defaultColor
-                    originalColorsSaved = true
-                }
-
-                val pressedColor = getColor(R.color.button_pressed)
-                cardViewModoJuego.setCardBackgroundColor(pressedColor)
-                playersRecyclerView.setBackgroundColor(pressedColor)
-            }
-
-            MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
-
-                cardViewModoJuego.setCardBackgroundColor(originalColor)
-                playersRecyclerView.setBackgroundColor(originalColor)
-
-                editarJugadores()
-            }
-        }
-    }
-
-
-
-    fun clickCategorias(event: MotionEvent) {
-        when (event.action) {
-            MotionEvent.ACTION_DOWN -> {
-                if (!originalCategoriasColorsSaved) {
-                    originalCategoriasColor = cardViewCategorias.cardBackgroundColor.defaultColor
-                    originalCategoriasColorsSaved = true
-                }
-
-                val pressedColor = getColor(R.color.button_pressed)
-                cardViewCategorias.setCardBackgroundColor(pressedColor)
-                // NO toques el fondo del RecyclerView aquí
-                // categoriesRecyclerView.setBackgroundColor(pressedColor)
-            }
-
-            MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
-                cardViewCategorias.setCardBackgroundColor(originalCategoriasColor)
-                // Y aquí, si quieres, lo dejas transparente
-                // categoriesRecyclerView.setBackgroundColor(Color.TRANSPARENT)
-
-                SelectCategoriesBottomSheet().show(
-                    supportFragmentManager,
-                    SelectCategoriesBottomSheet.TAG
-                )
-            }
-        }
-    }
-
-
-
-    fun editarJugadores() {
-        overlay.visibility = View.VISIBLE
-        EditPlayersBottomSheet().show(supportFragmentManager, "EditPlayers")
-    }
 
     fun mensajeAlerta(titulo: String, mensaje: String) {
         AlertDialog.Builder(this)
