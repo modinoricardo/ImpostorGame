@@ -48,54 +48,54 @@
                 android:focusable="true"
                 android:radius="8dp">
 
-                <LinearLayout
-                    android:id="@+id/layoutModoJuego"
+                <!-- Usamos SOLO un RelativeLayout como root interno -->
+                <RelativeLayout
+                    android:id="@+id/relativeLayoutJugadores"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:padding="16dp">
 
+                    <!-- Título arriba, ocupando todo el ancho menos la flecha -->
                     <TextView
+                        android:id="@+id/textTituloJugadores"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="12dp"
+                        android:layout_toStartOf="@id/imageViewArrow"
+                        android:layout_alignParentStart="true"
                         android:text="Editar Jugadores"
                         android:textColor="@color/tituloYFlecha"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
-                    <RelativeLayout
-                        android:id="@+id/relativeLayout"
+                    <!-- Flecha a la derecha, centrada verticalmente en TODO el CardView -->
+                    <ImageView
+                        android:id="@+id/imageViewArrow"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/chevron_right_24"
+                        app:tint="@color/tituloYFlecha" />
+
+                    <!-- Lista de jugadores, debajo del título y a la izquierda de la flecha -->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/playersRecyclerView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="16dp">
+                        android:layout_below="@id/textTituloJugadores"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_toStartOf="@id/imageViewArrow"
+                        android:layout_toLeftOf="@id/imageViewArrow"
+                        android:nestedScrollingEnabled="false"
+                        android:overScrollMode="never"
+                        android:padding="0dp" />
 
-                        <ImageView
-                            android:id="@+id/imageViewArrow"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/chevron_right_24"
-                            app:tint="@color/tituloYFlecha" />
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/playersRecyclerView"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentStart="true"
-                            android:layout_alignParentLeft="true"
-                            android:overScrollMode="never"
-                            android:nestedScrollingEnabled="false"
-                            android:layout_toStartOf="@id/imageViewArrow"
-                            android:layout_toLeftOf="@id/imageViewArrow"
-                            android:padding="0dp" />
-
-                    </RelativeLayout>
-
-                </LinearLayout>
+                </RelativeLayout>
             </androidx.cardview.widget.CardView>
+
 
             <!-- CardView de Editar Categorías / Palabras -->
             <androidx.cardview.widget.CardView
@@ -108,55 +108,64 @@
                 android:focusable="true"
                 android:radius="8dp">
 
-                <LinearLayout
+                <!-- RelativeLayout raíz interno -->
+                <RelativeLayout
+                    android:id="@+id/relativeLayoutCategorias"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:padding="16dp">
 
+                    <!-- Flecha a la derecha, centrada verticalmente en TODO el CardView -->
+                    <ImageView
+                        android:id="@+id/imageViewArrowCategorias"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/chevron_right_24"
+                        app:tint="@color/tituloYFlecha" />
+
+                    <!-- Título arriba, ocupando todo el ancho menos la flecha -->
                     <TextView
+                        android:id="@+id/textTituloCategorias"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="4dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_toStartOf="@id/imageViewArrowCategorias"
                         android:text="Categorías y palabras"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
+                    <!-- Resumen debajo del título, también hasta la flecha -->
                     <TextView
                         android:id="@+id/textResumenCategorias"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_below="@id/textTituloCategorias"
+                        android:layout_alignParentStart="true"
+                        android:layout_toStartOf="@id/imageViewArrowCategorias"
                         android:text="3 categorías disponibles"
                         android:textSize="14sp" />
 
-                    <RelativeLayout
-                        android:id="@+id/relativeLayoutCategorias"
+                    <!-- Lista de categorías, debajo del resumen y a la izquierda de la flecha -->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/categoriesRecyclerView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="16dp">
+                        android:layout_below="@id/textResumenCategorias"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_toStartOf="@id/imageViewArrowCategorias"
+                        android:layout_toLeftOf="@id/imageViewArrowCategorias"
+                        android:nestedScrollingEnabled="false"
+                        android:overScrollMode="never"
+                        android:paddingTop="8dp" />
 
-                        <ImageView
-                            android:id="@+id/imageViewArrowCategorias"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/chevron_right_24"
-                            app:tint="@color/tituloYFlecha" />
-
-                        <!-- lista de categorías dentro del card, altura fija -->
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/categoriesRecyclerView"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:overScrollMode="never"
-                            android:nestedScrollingEnabled="false"
-                            android:paddingTop="8dp" />
-                    </RelativeLayout>
-
-                </LinearLayout>
+                </RelativeLayout>
             </androidx.cardview.widget.CardView>
+
 
         </LinearLayout>
     </ScrollView>

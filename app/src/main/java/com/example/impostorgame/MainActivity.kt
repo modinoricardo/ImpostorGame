@@ -54,7 +54,6 @@ class MainActivity : AppCompatActivity(), SelectCategoriesBottomSheet.Listener {
         playersRecyclerView = findViewById(R.id.playersRecyclerView)
         cardViewModoJuego = findViewById(R.id.cardViewModoJuego)
         cardViewCategorias = findViewById(R.id.cardViewCategorias)
-        relativeLayout = findViewById(R.id.relativeLayout)
         overlay = findViewById(R.id.darkOverlay)
         textResumenCategorias = findViewById(R.id.textResumenCategorias)
         categoriesRecyclerView = findViewById(R.id.categoriesRecyclerView)
