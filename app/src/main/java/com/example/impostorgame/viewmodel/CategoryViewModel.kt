@@ -39,16 +39,29 @@ class CategoryViewModel : ViewModel() {
                 )
 
 
-            ), Category(
+            ),
+            Category(
                 id = 4L,
                 title = "Superheroes",
-                iconEmoji = "a",
+                iconEmoji = "",
                 items = listOf(
-                    WordItem("Superman", "Esperanza")
-                )
-            )
+                    WordItem("Spider-Man", "Vecino"),
+                    WordItem("Superman", "Esperanza"),
+                    WordItem("Wolverine", "Regeneración"),
+                    WordItem("MoonKnight", "Lunas")
+
+
+                ),
+            ),
+            Category(
+                id = 5L,
+                title = "Comidas",
+                iconEmoji = "b",
+                items = listOf(WordItem("Lentejas", "abuela"))
+            ),
         )
     }
+
 
     // --- NUEVO: gestionar selección desde el ViewModel ---
 

@@ -13,4 +13,6 @@ data class Category(
     val items: List<WordItem>        // lista de (nombre, pista)
 )
 
+data class
+
 
