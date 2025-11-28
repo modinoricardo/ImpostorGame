@@ -51,7 +51,7 @@ class EditPlayersBottomSheet : BottomSheetDialogFragment() {
             com.google.android.material.R.id.design_bottom_sheet
         ) ?: return
 
-        // Fondo redondeado como antes
+        // Fondo redondeado
         bottomSheet.background = ContextCompat.getDrawable(
             requireContext(), R.drawable.bottomsheet_rounded
         )
@@ -98,7 +98,14 @@ class EditPlayersBottomSheet : BottomSheetDialogFragment() {
         adapter = PlayerAdapterEdit(
             currentPlayers,
             onDeleteClick = { index ->
-                viewModel.removeAt(index)
+                if (viewModel.getPlayerCount() <= 3) {
+                    mensajeAlerta(
+                        "No se puede borrar",
+                        "Para poder jugar hacen falta al menos 3 jugadores. En lugar de borrar, puedes editar uno de los que ya tienes."
+                    )
+                } else {
+                    viewModel.removeAt(index)
+                }
             },
             onEditClick = { index, newName ->
                 viewModel.renameAt(index, newName)

@@ -1,23 +1,17 @@
 package com.example.impostorgame
 
 data class WordItem(
-    val name: String,    // palabra que ven todos los no impostores
+    val name: String,    // palabra que ven los civiles
     val hint: String     // pista para el impostor
 )
 
 data class Category(
-    val id: Long,                // identificador único
-    val title: String,           // "Animales", "Famosos", etc.
-    val items: List<WordItem>    // lista de pares (nombre, pista)
+    val id: Long,                    // identificador único
+    val title: String,               // "Animales", "Famosos", etc.
+    val iconEmoji: String,           // "🏠", "🦁", "🍕" ...
+    var isSelected: Boolean = false, // solo para la UI (seleccionada en la lista)
+    val items: List<WordItem>        // lista de (nombre, pista)
 )
 
-val animalesCategory = Category(
-    id = 1L,
-    title = "Animales",
-    items = listOf(
-        WordItem("perro", "doméstico"),
-        WordItem("gato", "felino"),
-        WordItem("tiburón", "vive en el mar"),
-    )
-)
+
 

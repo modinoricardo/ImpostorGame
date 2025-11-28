@@ -22,7 +22,7 @@ import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatDelegate
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), SelectCategoriesBottomSheet.Listener {
     @SuppressLint("ClickableViewAccessibility")
 
     private lateinit var cardViewModoJuego: CardView
@@ -30,62 +30,120 @@ class MainActivity : AppCompatActivity() {
     private lateinit var relativeLayout: RelativeLayout
     private lateinit var playersRecyclerView: RecyclerView
     private lateinit var overlay: View
+    private lateinit var cardViewCategorias: CardView
+    private lateinit var textResumenCategorias: android.widget.TextView
+    private lateinit var categoryViewModel: CategoryViewModel
+    private lateinit var categoriesRecyclerView: RecyclerView
+    private lateinit var categoryAdapterMain: CategoryAdapterMain
+    private var originalCategoriasColor: Int = 0
+    private var originalCategoriasColorsSaved = false
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        // Desactivamos el modo noche
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+
+        // Declaración de vistas
+        main = findViewById(R.id.main)
+        playersRecyclerView = findViewById(R.id.playersRecyclerView)
+        cardViewModoJuego = findViewById(R.id.cardViewModoJuego)
+        cardViewCategorias = findViewById(R.id.cardViewCategorias)
+        relativeLayout = findViewById(R.id.relativeLayout)
+        overlay = findViewById(R.id.darkOverlay)
+        textResumenCategorias = findViewById(R.id.textResumenCategorias)
+        categoriesRecyclerView = findViewById(R.id.categoriesRecyclerView)
+
+        // Insets (usa main que ya tenemos referenciado)
+        ViewCompat.setOnApplyWindowInsetsListener(main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        //Desactivamos el modo noche
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        // ViewModels
+        val playerViewModel = ViewModelProvider(this).get(PlayerViewModel::class.java)
+        categoryViewModel = ViewModelProvider(this).get(CategoryViewModel::class.java)
 
-        //Declaracion de todos los elementos del xml
-        playersRecyclerView = findViewById<RecyclerView>(R.id.playersRecyclerView)
-        cardViewModoJuego = findViewById<CardView>(R.id.cardViewModoJuego)
-        main = findViewById<FrameLayout>(R.id.main)
-        relativeLayout = findViewById<RelativeLayout>(R.id.relativeLayout)
-        overlay = findViewById<View>(R.id.darkOverlay)
-
-        // ViewModel
-        val viewModel = ViewModelProvider(this).get(PlayerViewModel::class.java)
-
-        // RecyclerView con Flexbox
-        val layoutManager = FlexboxLayoutManager(this).apply {
+        // RecyclerView de jugadores (Flexbox)
+        val playersLayoutManager = FlexboxLayoutManager(this).apply {
             flexDirection = FlexDirection.ROW
             flexWrap = FlexWrap.WRAP
         }
-        playersRecyclerView.layoutManager = layoutManager
+        playersRecyclerView.layoutManager = playersLayoutManager
 
-        // Adapter vacío (se llenará con LiveData)
-        val adapter = PlayerAdapterMain(viewModel.players.value ?: emptyList())
-        playersRecyclerView.adapter = adapter
+        val playerAdapter = PlayerAdapterMain(playerViewModel.players.value ?: emptyList())
+        playersRecyclerView.adapter = playerAdapter
 
-        viewModel.players.observe(this) {
-            adapter.updatePlayers(it)
+        playerViewModel.players.observe(this) { lista ->
+            playerAdapter.updatePlayers(lista)
         }
 
-        // Observamos los jugadores del ViewModel
-        viewModel.players.observe(this) { lista ->
-            adapter.updatePlayers(lista)
-        }
-
-        cardViewModoJuego.setOnTouchListener { v, event ->
-                    clickEditarJugadores(event)
-            true // Consumimos el evento para que no siga a los hijos
+        // Pulsar en el CardView de jugadores o en la lista → abrir bottom sheet de edición
+        cardViewModoJuego.setOnTouchListener { _, event ->
+            clickEditarJugadores(event)
+            true
         }
 
         playersRecyclerView.setOnTouchListener { _, event ->
-                clickEditarJugadores(event)
-            true // Consumimos el evento para que no siga a los hijos
+            clickEditarJugadores(event)
+            true
         }
 
+        // Click en CardView de categorías → abrir bottom sheet de selección de categorías
+        cardViewCategorias.setOnTouchListener { _, event ->
+            clickCategorias(event)
+            true
+        }
+
+        categoriesRecyclerView.setOnTouchListener { _, event ->
+            clickCategorias(event)
+            true
+        }
+
+
+        // RecyclerView de categorías (dentro del CardView, altura fija)
+        val categoriesLayoutManager = FlexboxLayoutManager(this).apply {
+            flexDirection = FlexDirection.ROW
+            flexWrap = FlexWrap.WRAP
+        }
+        categoriesRecyclerView.layoutManager = categoriesLayoutManager
+
+        // IMPORTANTE: inicializar vacío; el observer lo llenará
+        categoryAdapterMain = CategoryAdapterMain(emptyList())
+        categoriesRecyclerView.adapter = categoryAdapterMain
+
+        // Observar categorías y actualizar lista + resumen
+        categoryViewModel.categories.observe(this) { list ->
+            // 1) calcular las seleccionadas
+            val seleccionadasList = list.filter { it.isSelected }
+
+            // 2) decidir qué mostrar en el main
+            val categoriasParaMostrar = if (seleccionadasList.isNotEmpty()) {
+                // si hay seleccionadas → solo esas
+                seleccionadasList
+            } else {
+                // si no hay ninguna seleccionada → todas
+                list
+            }
+
+            // 3) actualizar el RecyclerView del main
+            categoryAdapterMain.updateCategories(categoriasParaMostrar)
+
+            // 4) actualizar el texto de resumen
+            val total = list.size
+            val seleccionadas = seleccionadasList.size
+            textResumenCategorias.text = if (seleccionadas == 0) {
+                "Categorías disponibles: $total"
+            } else {
+                "Categorías seleccionadas: $seleccionadas de $total"
+            }
+        }
     }
+
 
     //Detecta cuando vuelve a primer plano
     override fun onResume() {
@@ -100,10 +158,10 @@ class MainActivity : AppCompatActivity() {
 
     private var originalColor: Int = 0
     private var originalColorsSaved = false
-    fun clickEditarJugadores(event: MotionEvent){
+    fun clickEditarJugadores(event: MotionEvent) {
         //mensajeAlerta("Alerta", "Esta opcion aun no esta implementada en la app")
 
-        when(event.action){
+        when (event.action) {
 
             MotionEvent.ACTION_DOWN -> {
 
@@ -127,16 +185,59 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
+
+    fun clickCategorias(event: MotionEvent) {
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+                if (!originalCategoriasColorsSaved) {
+                    originalCategoriasColor = cardViewCategorias.cardBackgroundColor.defaultColor
+                    originalCategoriasColorsSaved = true
+                }
+
+                val pressedColor = getColor(R.color.button_pressed)
+                cardViewCategorias.setCardBackgroundColor(pressedColor)
+                // NO toques el fondo del RecyclerView aquí
+                // categoriesRecyclerView.setBackgroundColor(pressedColor)
+            }
+
+            MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
+                cardViewCategorias.setCardBackgroundColor(originalCategoriasColor)
+                // Y aquí, si quieres, lo dejas transparente
+                // categoriesRecyclerView.setBackgroundColor(Color.TRANSPARENT)
+
+                SelectCategoriesBottomSheet().show(
+                    supportFragmentManager,
+                    SelectCategoriesBottomSheet.TAG
+                )
+            }
+        }
+    }
+
+
+
     fun editarJugadores() {
         overlay.visibility = View.VISIBLE
         EditPlayersBottomSheet().show(supportFragmentManager, "EditPlayers")
     }
 
-    fun mensajeAlerta(titulo: String, mensaje: String){
+    fun mensajeAlerta(titulo: String, mensaje: String) {
         AlertDialog.Builder(this)
             .setTitle(titulo)
             .setMessage(mensaje)
             .setPositiveButton("OK", null)
             .show()
     }
+
+    override fun onCategoriesConfirmed(selected: List<Category>) {
+        val total = categoryViewModel.categories.value?.size ?: 0
+        val seleccionadas = selected.size
+
+        textResumenCategorias.text = if (seleccionadas == 0) {
+            "Categorías disponibles: $total"
+        } else {
+            "Categorías seleccionadas: $seleccionadas de $total"
+        }
+    }
+
 }

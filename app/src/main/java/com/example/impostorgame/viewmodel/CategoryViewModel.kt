@@ -14,6 +14,7 @@ class CategoryViewModel : ViewModel() {
             Category(
                 id = 1L,
                 title = "Animales",
+                iconEmoji = "🦁",
                 items = listOf(
                     WordItem("perro", "doméstico"),
                     WordItem("gato", "felino")
@@ -22,6 +23,7 @@ class CategoryViewModel : ViewModel() {
             Category(
                 id = 2L,
                 title = "Objetos cotidianos",
+                iconEmoji = "🏠",
                 items = listOf(
                     WordItem("taza", "sirve para beber"),
                     WordItem("móvil", "lo llevas siempre encima")
@@ -30,6 +32,7 @@ class CategoryViewModel : ViewModel() {
             Category(
                 id = 3L,
                 title = "Personajes famosos",
+                iconEmoji = "👤",
                 items = listOf(
                     WordItem("Shakira", "cantante colombiana"),
                     WordItem("Messi", "futbolista argentino")
@@ -38,37 +41,22 @@ class CategoryViewModel : ViewModel() {
         )
     }
 
-    fun addCategory(title: String) {
-        val current = _categories.value ?: emptyList()
-        val newId = (current.maxOfOrNull { it.id } ?: 0L) + 1
-        _categories.value = current + Category(
-            id = newId,
-            title = title,
-            items = emptyList()
-        )
+    // --- NUEVO: gestionar selección desde el ViewModel ---
+
+    fun toggleSelection(categoryId: Long) {
+        val current = _categories.value ?: return
+        _categories.value = current.map { c ->
+            if (c.id == categoryId) c.copy(isSelected = !c.isSelected) else c
+        }
     }
 
-    fun addWordToCategory(categoryId: Long, name: String, hint: String) {
-        val current = _categories.value?.toMutableList() ?: return
-        val index = current.indexOfFirst { it.id == categoryId }
-        if (index == -1) return
-
-        val cat = current[index]
-        val updatedItems = cat.items + WordItem(name, hint)
-        current[index] = cat.copy(items = updatedItems)
-        _categories.value = current
+    fun getSelectedCategories(): List<Category> {
+        return _categories.value?.filter { it.isSelected } ?: emptyList()
     }
 
-    fun removeWordFromCategory(categoryId: Long, wordIndex: Int) {
-        val current = _categories.value?.toMutableList() ?: return
-        val index = current.indexOfFirst { it.id == categoryId }
-        if (index == -1) return
-
-        val cat = current[index]
-        if (wordIndex !in cat.items.indices) return
-
-        val updatedItems = cat.items.toMutableList().apply { removeAt(wordIndex) }
-        current[index] = cat.copy(items = updatedItems)
-        _categories.value = current
+    fun clearSelection() {
+        val current = _categories.value ?: return
+        _categories.value = current.map { it.copy(isSelected = false) }
     }
 }
+
