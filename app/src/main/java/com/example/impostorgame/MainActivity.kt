@@ -123,13 +123,8 @@ class MainActivity : AppCompatActivity(), SelectCategoriesBottomSheet.Listener {
             EditPlayersBottomSheet().show(supportFragmentManager, "EditPlayers")
         }
 
-        // CLICK en la zona del RecyclerView → comportarse igual que el CardView
-        playersRecyclerView.setOnClickListener {
-            cardViewModoJuego.performClick()
-        }
-
-        // MISMO OnTouchListener para CardView + RecyclerView (efecto visual unificado)
-        val touchListenerModoJuego = View.OnTouchListener { _, event ->
+        // Animación de pulsado CUANDO PULSAS EL CARDVIEW (zona fuera del RecyclerView)
+        cardViewModoJuego.setOnTouchListener { _, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
                     if (!originalColorsSaved) {
@@ -139,20 +134,42 @@ class MainActivity : AppCompatActivity(), SelectCategoriesBottomSheet.Listener {
                     val pressedColor = getColor(R.color.button_pressed)
                     cardViewModoJuego.setCardBackgroundColor(pressedColor)
                 }
-
                 MotionEvent.ACTION_UP,
                 MotionEvent.ACTION_CANCEL -> {
                     cardViewModoJuego.setCardBackgroundColor(originalColor)
                 }
             }
-            // devolvemos false para que el sistema siga procesando el evento
-            // (así el click sigue funcionando y el ScrollView puede hacer scroll)
             false
         }
 
-        // Aplicamos el mismo listener tanto al CardView como al RecyclerView
-        cardViewModoJuego.setOnTouchListener(touchListenerModoJuego)
-        playersRecyclerView.setOnTouchListener(touchListenerModoJuego)
+        // Animación + disparar click CUANDO PULSAS DENTRO DEL RECYCLERVIEW
+        playersRecyclerView.setOnTouchListener { _, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    // mismo efecto visual
+                    if (!originalColorsSaved) {
+                        originalColor = cardViewModoJuego.cardBackgroundColor.defaultColor
+                        originalColorsSaved = true
+                    }
+                    val pressedColor = getColor(R.color.button_pressed)
+                    cardViewModoJuego.setCardBackgroundColor(pressedColor)
+                }
+
+                MotionEvent.ACTION_UP -> {
+                    // quitamos el color y lanzamos el click del card
+                    cardViewModoJuego.setCardBackgroundColor(originalColor)
+                    cardViewModoJuego.performClick()
+                }
+
+                MotionEvent.ACTION_CANCEL -> {
+                    // solo restaurar color si el gesto se cancela (scroll, etc.)
+                    cardViewModoJuego.setCardBackgroundColor(originalColor)
+                }
+            }
+            // false → dejamos que el sistema siga procesando (scroll, etc.)
+            false
+        }
+
 
 
         // ====== CARDVIEW CATEGORÍAS ======
@@ -165,13 +182,8 @@ class MainActivity : AppCompatActivity(), SelectCategoriesBottomSheet.Listener {
             )
         }
 
-        // CLICK en la zona del RecyclerView → comportarse igual que el CardView
-        categoriesRecyclerView.setOnClickListener {
-            cardViewCategorias.performClick()
-        }
-
-        // MISMO OnTouchListener para CardView + RecyclerView de categorías
-        val touchListenerCategorias = View.OnTouchListener { _, event ->
+        // Animación de pulsado al tocar fuera del RecyclerView
+        cardViewCategorias.setOnTouchListener { _, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
                     if (!originalCategoriasColorsSaved) {
@@ -189,9 +201,30 @@ class MainActivity : AppCompatActivity(), SelectCategoriesBottomSheet.Listener {
             false
         }
 
-        // Aplicamos el mismo listener al CardView y al RecyclerView
-        cardViewCategorias.setOnTouchListener(touchListenerCategorias)
-        categoriesRecyclerView.setOnTouchListener(touchListenerCategorias)
+        // Animación + click al tocar dentro del RecyclerView
+        categoriesRecyclerView.setOnTouchListener { _, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    if (!originalCategoriasColorsSaved) {
+                        originalCategoriasColor = cardViewCategorias.cardBackgroundColor.defaultColor
+                        originalCategoriasColorsSaved = true
+                    }
+                    val pressedColor = getColor(R.color.button_pressed)
+                    cardViewCategorias.setCardBackgroundColor(pressedColor)
+                }
+
+                MotionEvent.ACTION_UP -> {
+                    cardViewCategorias.setCardBackgroundColor(originalCategoriasColor)
+                    cardViewCategorias.performClick()
+                }
+
+                MotionEvent.ACTION_CANCEL -> {
+                    cardViewCategorias.setCardBackgroundColor(originalCategoriasColor)
+                }
+            }
+            false
+        }
+
 
 
         // Botón fijo abajo (de momento placeholder)
