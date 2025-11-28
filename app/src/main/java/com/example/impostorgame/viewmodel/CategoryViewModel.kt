@@ -37,6 +37,15 @@ class CategoryViewModel : ViewModel() {
                     WordItem("Shakira", "cantante colombiana"),
                     WordItem("Messi", "futbolista argentino")
                 )
+
+
+            ), Category(
+                id = 4L,
+                title = "Superheroes",
+                iconEmoji = "a",
+                items = listOf(
+                    WordItem("Superman", "Esperanza")
+                )
             )
         )
     }
@@ -59,4 +68,3 @@ class CategoryViewModel : ViewModel() {
         _categories.value = current.map { it.copy(isSelected = false) }
     }
 }
-
