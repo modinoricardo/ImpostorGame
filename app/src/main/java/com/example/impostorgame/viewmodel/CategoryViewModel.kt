@@ -25,8 +25,13 @@ class CategoryViewModel : ViewModel() {
                 title = "Objetos cotidianos",
                 iconEmoji = "🏠",
                 items = listOf(
-                    WordItem("taza", "sirve para beber"),
-                    WordItem("móvil", "lo llevas siempre encima")
+                    WordItem("taza", "beber"),
+                    WordItem("móvil", "bolsillo"),
+                    WordItem("llaves", "puerta"),
+                    WordItem("mochila", "espalda"),
+                    WordItem("sofá", "salón"),
+                    WordItem("lámpara", "luz"),
+                    WordItem("reloj", "hora")
                 )
             ),
             Category(
@@ -34,17 +39,30 @@ class CategoryViewModel : ViewModel() {
                 title = "Personajes famosos",
                 iconEmoji = "👤",
                 items = listOf(
-                    WordItem("Shakira", "cantante colombiana"),
-                    WordItem("Messi", "futbolista argentino")
+                    WordItem("Shakira", "colombiana"),
+                    WordItem("Messi", "argentino")
                 )
 
 
             ), Category(
                 id = 4L,
                 title = "Superheroes",
-                iconEmoji = "a",
+                iconEmoji = "\uD83E\uDDB8\u200D♂\uFE0F",
                 items = listOf(
                     WordItem("Superman", "Esperanza")
+                )
+            ),
+            Category(
+                id = 5L,
+                title = "Comida",
+                iconEmoji = "🍕",
+                items = listOf(
+                    WordItem("lasaña", "horno"),
+                    WordItem("croqueta", "crujiente"),
+                    WordItem("gazpacho", "fría"),
+                    WordItem("manzana", "fruta"),
+                    WordItem("espaguetis", "italiano")
+
                 )
             )
         )

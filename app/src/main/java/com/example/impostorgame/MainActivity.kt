@@ -170,8 +170,6 @@ class MainActivity : AppCompatActivity(), SelectCategoriesBottomSheet.Listener {
             false
         }
 
-
-
         // ====== CARDVIEW CATEGORÍAS ======
 
         // CLICK en el CardView de categorías → abrir bottom sheet de selección
@@ -229,7 +227,9 @@ class MainActivity : AppCompatActivity(), SelectCategoriesBottomSheet.Listener {
 
         // Botón fijo abajo (de momento placeholder)
         btnStartGame.setOnClickListener {
-            // Aquí pondrás la lógica de empezar la partida
+            val intent = Intent(this, ImpostorRevealActivity::class.java)
+            // Lanzar la nueva Activity
+            startActivity(intent)
         }
     }
 
