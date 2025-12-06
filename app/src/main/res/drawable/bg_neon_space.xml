@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <gradient
+                android:type="linear"
+                android:angle="270"
+                android:startColor="#0B0F1A"
+                android:centerColor="#101A33"
+                android:endColor="#070A12"/>
+        </shape>
+    </item>
+
+    <!-- Glow diagonal -->
+    <item android:top="-120dp" android:left="-120dp">
+        <shape>
+            <gradient
+                android:type="linear"
+                android:angle="45"
+                android:startColor="#3300E5FF"
+                android:centerColor="#2200FF6A"
+                android:endColor="#00000000"/>
+        </shape>
+    </item>
+</layer-list>

@@ -1,43 +1,51 @@
-package com.example.impostorgame
+package com.example.impostorgame.activities
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
+import android.view.MotionEvent
+import android.view.View
+import android.widget.Button
+import android.widget.FrameLayout
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.cardview.widget.CardView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
+import com.example.impostorgame.Category
+import com.example.impostorgame.CategoryAdapterMain
+import com.example.impostorgame.CategoryViewModel
+import com.example.impostorgame.EditPlayersBottomSheet
+import com.example.impostorgame.activities.ImpostorRevealActivity
+import com.example.impostorgame.PlayerAdapterMain
+import com.example.impostorgame.PlayerViewModel
+import com.example.impostorgame.R
+import com.example.impostorgame.SelectCategoriesBottomSheet
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
-import android.view.MotionEvent
-import android.view.View
-import android.widget.FrameLayout
-import android.widget.RelativeLayout
-import androidx.appcompat.app.AppCompatDelegate
-import android.widget.Button
 
-
+@Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class MainActivity : AppCompatActivity(), SelectCategoriesBottomSheet.Listener {
 
     private lateinit var cardViewModoJuego: CardView
     private lateinit var main: FrameLayout
-    private lateinit var relativeLayout: RelativeLayout
     private lateinit var playersRecyclerView: RecyclerView
     private lateinit var overlay: View
     private lateinit var cardViewCategorias: CardView
-    private lateinit var textResumenCategorias: android.widget.TextView
+    private lateinit var textResumenCategorias: TextView
     private lateinit var categoryViewModel: CategoryViewModel
+    private lateinit var playerViewModel: PlayerViewModel
     private lateinit var categoriesRecyclerView: RecyclerView
     private lateinit var categoryAdapterMain: CategoryAdapterMain
     private var originalCategoriasColor: Int = 0
     private var originalCategoriasColorsSaved = false
-
+    private var allCategoriesSelected: Boolean = false
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -72,7 +80,7 @@ class MainActivity : AppCompatActivity(), SelectCategoriesBottomSheet.Listener {
         }
 
         // ViewModels
-        val playerViewModel = ViewModelProvider(this).get(PlayerViewModel::class.java)
+        playerViewModel = ViewModelProvider(this).get(PlayerViewModel::class.java)
         categoryViewModel = ViewModelProvider(this).get(CategoryViewModel::class.java)
 
         // RecyclerView de jugadores (Flexbox para que se distribuyan como "chips")
@@ -176,7 +184,7 @@ class MainActivity : AppCompatActivity(), SelectCategoriesBottomSheet.Listener {
         cardViewCategorias.setOnClickListener {
             SelectCategoriesBottomSheet().show(
                 supportFragmentManager,
-                SelectCategoriesBottomSheet.TAG
+                SelectCategoriesBottomSheet.Companion.TAG
             )
         }
 
@@ -227,7 +235,27 @@ class MainActivity : AppCompatActivity(), SelectCategoriesBottomSheet.Listener {
 
         // Botón fijo abajo (de momento placeholder)
         btnStartGame.setOnClickListener {
-            val intent = Intent(this, ImpostorRevealActivity::class.java)
+
+            //Hacemos una lista de jugadores para pasarsela a la segunda actividad
+            val listaJugadores = ArrayList(playerViewModel.players.value)
+
+            //Hacemos una lista de categorias para pasarsela a la segunda actividad
+            val listaCategorias = ArrayList(categoryViewModel.categories.value)
+            //Lista solo con las listas seleccionadas
+            var listaCategoriasSeleccionadas = ArrayList<Category>();
+            listaCategorias.forEach { item->
+                if(item.isSelected){
+                    listaCategoriasSeleccionadas.add(item)
+                }
+            }
+
+            val categoriasAEnviar = if (listaCategoriasSeleccionadas.isEmpty()) listaCategorias else listaCategoriasSeleccionadas
+
+            val intent = Intent(this, ImpostorRevealActivity::class.java).apply {
+                putStringArrayListExtra("PLAYERS", listaJugadores)
+            }
+            intent.putExtra("CATEGORIES", categoriasAEnviar)
+
             // Lanzar la nueva Activity
             startActivity(intent)
         }

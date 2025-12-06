@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_neon_space"
+    tools:context=".activities.PlayGameActivity">
+
+    <!-- Aurora overlay -->
+    <View
+        android:id="@+id/aurora"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="0.75"
+        android:background="@drawable/overlay_aurora"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Energy rings -->
+    <View
+        android:id="@+id/ring1"
+        android:layout_width="280dp"
+        android:layout_height="280dp"
+        android:background="@drawable/ring_neon"
+        android:alpha="0.65"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <View
+        android:id="@+id/ring2"
+        android:layout_width="360dp"
+        android:layout_height="360dp"
+        android:background="@drawable/ring_neon_soft"
+        android:alpha="0.45"
+        app:layout_constraintTop_toTopOf="@id/ring1"
+        app:layout_constraintBottom_toBottomOf="@id/ring1"
+        app:layout_constraintStart_toStartOf="@id/ring1"
+        app:layout_constraintEnd_toEndOf="@id/ring1"/>
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/txtTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:text="IMPOSTOR"
+        android:textAllCaps="true"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:shadowColor="#00E5FF"
+        android:shadowRadius="16"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/txtSubtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:text="Roles listos. Voces apagadas. Caos encendido."
+        android:textSize="14sp"
+        android:textColor="#CCFFFFFF"
+        android:shadowColor="#8000E5FF"
+        android:shadowRadius="10"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        app:layout_constraintTop_toBottomOf="@id/txtTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Card 1: Resumen -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardResumen"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginTop="20dp"
+        app:cardUseCompatPadding="true"
+        app:cardCornerRadius="22dp"
+        app:cardElevation="10dp"
+        app:layout_constraintTop_toBottomOf="@id/txtSubtitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/glass_card"
+            android:orientation="vertical"
+            android:padding="18dp">
+
+            <TextView
+                android:id="@+id/txtResumenTitulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RESUMEN"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:textColor="#E6FFFFFF"/>
+
+            <TextView
+                android:id="@+id/txtResumenLine1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="• Jugadores: 6"
+                android:textSize="16sp"
+                android:textColor="#F2FFFFFF"/>
+
+            <TextView
+                android:id="@+id/txtResumenLine2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="• Categoría: Aleatoria"
+                android:textSize="16sp"
+                android:textColor="#F2FFFFFF"/>
+
+            <TextView
+                android:id="@+id/txtResumenLine3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="• Impostor: 1"
+                android:textSize="16sp"
+                android:textColor="#F2FFFFFF"/>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Card 2: Estado / ronda -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardEstado"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginTop="14dp"
+        app:cardUseCompatPadding="true"
+        app:cardCornerRadius="22dp"
+        app:cardElevation="10dp"
+        app:layout_constraintTop_toBottomOf="@id/cardResumen"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/glass_card"
+            android:orientation="vertical"
+            android:padding="18dp">
+
+            <TextView
+                android:id="@+id/txtEstadoTitulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ESTADO"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:textColor="#E6FFFFFF"/>
+
+            <TextView
+                android:id="@+id/txtEstadoLine1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="• Ronda: 1"
+                android:textSize="16sp"
+                android:textColor="#F2FFFFFF"/>
+
+            <TextView
+                android:id="@+id/txtEstadoLine2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="• Turno: Jugador 1"
+                android:textSize="16sp"
+                android:textColor="#F2FFFFFF"/>
+
+            <TextView
+                android:id="@+id/txtHint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:text="Tip: silencio total durante la palabra."
+                android:textSize="12sp"
+                android:textColor="#B3FFFFFF"/>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Footer -->
+    <TextView
+        android:id="@+id/txtFooter"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="12sp"
+        android:textColor="#99FFFFFF"
+        app:layout_constraintBottom_toTopOf="@id/btnRow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Buttons row -->
+    <LinearLayout
+        android:id="@+id/btnRow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="22dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/btnRevelar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="REVELAR"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:background="@drawable/btn_neon"
+            android:elevation="12dp" />
+
+        <Space
+            android:layout_width="12dp"
+            android:layout_height="1dp"/>
+
+        <Button
+            android:id="@+id/btnNewGame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="NUEVA PARTIDA"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:background="@drawable/btn_neon"
+            android:elevation="12dp" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

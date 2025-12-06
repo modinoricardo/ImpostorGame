@@ -18,6 +18,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import android.graphics.Rect
 import android.view.TouchDelegate
+import com.example.impostorgame.activities.MainActivity
 
 class EditPlayersBottomSheet : BottomSheetDialogFragment() {
 

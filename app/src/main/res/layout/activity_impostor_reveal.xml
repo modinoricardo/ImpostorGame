@@ -8,18 +8,20 @@
     android:paddingRight="16dp">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewPrincipal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:onClick="expand"
         app:cardCornerRadius="20dp"
         app:cardElevation="10dp"
         app:contentPadding="20dp">
 
         <LinearLayout
+            android:id="@+id/layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:animateLayoutChanges="true">
 
             <TextView
                 android:id="@+id/turnPlayerName"
@@ -34,12 +36,14 @@
                 android:textColor="@color/black"/>
 
             <TextView
+                android:id="@+id/txtTwo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="¡No le digas esta palabra a nadie!" />
 
             <ImageView
+                android:id="@+id/imgDedo"
                 android:layout_marginTop="40dp"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
@@ -48,11 +52,12 @@
                 android:src="@drawable/ic_touch_app" />
 
             <TextView
+                android:id="@+id/presText"
                 android:layout_marginTop="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:text="MANTEN PRESIONADO PARA REVELAR"
+                android:text="MANTENER PULSADO PARA REVELAR PALABRA"
                 android:layout_gravity="center_horizontal"
                 android:textSize="15dp"/>
 
@@ -69,6 +74,7 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/nenxtPlayer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
@@ -79,6 +85,7 @@
         app:contentPadding="20dp">
 
         <TextView
+            android:id="@+id/textNextPlayer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="⏭ SIGUIENTE JUGADOR"
