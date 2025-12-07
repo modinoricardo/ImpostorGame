@@ -1,4 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="Impostor.Card">
+        <item name="cardUseCompatPadding">true</item>
+        <item name="cardCornerRadius">22dp</item>
+        <item name="cardElevation">12dp</item>
+        <item name="cardBackgroundColor">@android:color/transparent</item>
+    </style>
+
+    <style name="Impostor">
+        <item name="android:textColor">@color/imp_text_primary</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
 </resources>

@@ -21,7 +21,6 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.activity.OnBackPressedCallback
 import android.graphics.Color
-import android.opengl.Visibility
 import com.example.impostorgame.GameOptions
 import kotlin.random.Random
 
@@ -135,7 +134,7 @@ class ImpostorRevealActivity : AppCompatActivity() {
         playerInGame = 0
         ocultarPalabra()
         //hacemos un aleatorio del 25% para el modo loco
-        modoLocoActivo = random90()
+        modoLocoActivo = random25()
 
     }
 
@@ -180,7 +179,7 @@ class ImpostorRevealActivity : AppCompatActivity() {
 
     }
 
-    private fun cargarInformacion() {
+    private fun cargarInformacionNormal() {
         // Nombre del jugador del turno
         turnPlayerName.text = listaJugadores[playerInGame]
 
@@ -212,24 +211,26 @@ class ImpostorRevealActivity : AppCompatActivity() {
         cardViewPrincipal.setOnTouchListener { _, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
-                    if (opciones.modoLoco && modoLocoActivo) mostrarPalabraModoLoco() else mostrarPalabra()
+                    if (opciones.modoLoco && modoLocoActivo) {
+                        mostrarPalabraModoLoco()
+                    } else {
+                        mostrarPalabraNormal()
+                    }
                     nenxtPlayer.visibility = View.VISIBLE
                     true
                 }
-
                 MotionEvent.ACTION_UP,
                 MotionEvent.ACTION_CANCEL -> {
                     ocultarPalabra()
                     true
                 }
-
                 else -> false
             }
         }
-        nenxtPlayer.setOnClickListener {
-            btnNextPlayer()
-        }
+
+        nenxtPlayer.setOnClickListener { btnNextPlayer() }
     }
+
 
     private fun ocultarPalabra() {
         // Al soltar el dedo, nadie ve nada
@@ -241,24 +242,10 @@ class ImpostorRevealActivity : AppCompatActivity() {
         presText.visibility = View.VISIBLE
     }
 
-    private fun mostrarPalabraModoLoco() {
-        if (opciones.modoLoco && modoLocoActivo) cargarInformacionModoLoco() else cargarInformacion()
-
+    private fun mostrarPalabraNormal() {
+        cargarInformacionNormal()
         detailsPlayer.visibility = View.VISIBLE
 
-            hintPlayer.visibility = View.VISIBLE
-
-        imgDedo.visibility = View.GONE
-        txtTwo.visibility = View.GONE
-        presText.visibility = View.GONE
-    }
-    private fun mostrarPalabra() {
-        // Actualiza textos (impostor / civil)
-        if (opciones.modoLoco && modoLocoActivo) cargarInformacionModoLoco() else cargarInformacion()
-
-        detailsPlayer.visibility = View.VISIBLE
-
-        // Solo IMPOSITOR + pista activada ve la pista
         if (indiceImpostor == playerInGame && opciones.pista) {
             hintPlayer.visibility = View.VISIBLE
         } else {
@@ -270,6 +257,19 @@ class ImpostorRevealActivity : AppCompatActivity() {
         presText.visibility = View.GONE
     }
 
+    private fun mostrarPalabraModoLoco() {
+        cargarInformacionModoLoco()
+        detailsPlayer.visibility = View.VISIBLE
+
+        // Aquí decides la regla: ¿todos ven pista? ¿solo este jugador?
+        hintPlayer.visibility = if (opciones.pista) View.VISIBLE else View.GONE
+
+        imgDedo.visibility = View.GONE
+        txtTwo.visibility = View.GONE
+        presText.visibility = View.GONE
+    }
+
+
     private var isAnimating = false
 
     private fun btnNextPlayer() {
@@ -280,8 +280,10 @@ class ImpostorRevealActivity : AppCompatActivity() {
             val intent = Intent(this, PlayGameActivity::class.java).apply {
                 putStringArrayListExtra("LISTA_JUGADORES", ArrayList(listaJugadores))
                 putParcelableArrayListExtra("LISTA_CATEGORIAS", ArrayList(listaCategorias))
-                putExtra("PALABRA", palabra)
-                putExtra("IMPOSTOR", nameImpostorInGame)
+                putExtra("PALABRA",
+                    if(opciones.modoLoco && modoLocoActivo)"NO HABIA PALABRA" else palabra)
+                putExtra("IMPOSTOR",
+                    if(opciones.modoLoco && modoLocoActivo)"TODOS SOIS IMPOSTORES" else nameImpostorInGame)
             }
             startActivity(intent)
             finish()

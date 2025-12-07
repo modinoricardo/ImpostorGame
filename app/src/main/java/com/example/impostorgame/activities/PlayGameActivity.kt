@@ -1,8 +1,9 @@
 package com.example.impostorgame.activities
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
+import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -11,14 +12,30 @@ import androidx.core.view.updatePadding
 import com.example.impostorgame.R
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
-
+import androidx.cardview.widget.CardView
 
 class PlayGameActivity : AppCompatActivity() {
+
+    private lateinit var btnNewGame: Button
+    private lateinit var txtResumenTitulo: TextView
+    private lateinit var listaJugadores: List<String>;
+    private lateinit var palabraJugada: String
+    private lateinit var btnRevelar: Button
+    private lateinit var cardViewPalabra: CardView
+    private lateinit var txtPalabra: TextView
+    private lateinit var nombreImpostor: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_play_game)
+
+        //Todas las declaraciones
+        btnNewGame = findViewById(R.id.btnNewGame)
+        txtResumenTitulo = findViewById(R.id.txtImpostor)
+        btnRevelar = findViewById(R.id.btnRevelar)
+        cardViewPalabra = findViewById(R.id.cardViewPalabra)
+        txtPalabra = findViewById(R.id.txtPalabra)
 
         //Cuando el usuario de hacia atras en la barra de navegacion
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
@@ -58,8 +75,83 @@ class PlayGameActivity : AppCompatActivity() {
             v.updatePadding(bottom = basePaddingBottom + nav.bottom + dpToPx(22))
             insets
         }
+
+        //La logica comienza aqui
+
+        //Cargamos los eventos
+        loadEvents()
+
+        // Carga de jugadores desde el intent
+        listaJugadores = intent.getStringArrayListExtra("LISTA_JUGADORES")?.toList().orEmpty()
+
+        // Elegir un jugador aleatorio (si la lista no está vacía)
+        val jugadorHabla = listaJugadores.randomOrNull()
+
+        // Texto del resumen
+        txtResumenTitulo.text = if (jugadorHabla != null) {
+            "¡$jugadorHabla " +
+                    "hablas tú!"
+        } else {
+            "No hay jugadores disponibles"
+        }
+
+        // Carga palabra jugada desde el intent
+        palabraJugada = intent.getStringExtra("PALABRA") ?: ""
+        //Cargamos el nombre del impostor desde el intent
+        nombreImpostor = intent.getStringExtra("IMPOSTOR") ?: ""
+
+        //Ocultamos el segundo cardView hasta que revelamos
+        cardViewPalabra.visibility = View.GONE
+
+        //Mostramos el boton de revelar impostor
+        btnRevelar.visibility = View.VISIBLE
+    }
+
+    private fun loadEvents() {
+        btnNewGame.setOnClickListener {
+            pulsadoBotonNewGame()
+        }
+        btnRevelar.setOnClickListener {
+            pulsadoBotonRevelar()
+        }
+    }
+
+    private fun pulsadoBotonNewGame() {
+        AlertDialog.Builder(this@PlayGameActivity)
+            .setTitle("Salir")
+            .setMessage("¿Quieres salir de la partida?")
+            .setNegativeButton("Cancelar", null)
+            .setPositiveButton("Salir") { _, _ ->
+                // Volver atrás a la MainActivity que ya está debajo
+                finish()
+            }
+            .show()
+    }
+
+    private fun pulsadoBotonRevelar() {
+        AlertDialog.Builder(this@PlayGameActivity)
+            .setTitle("Revelar impostor")
+            .setMessage("¿Quieres revelar al impostor?")
+            .setNegativeButton("Cancelar", null)
+            .setPositiveButton("Revelar") { _, _ ->
+                cargarDatosRevelando()
+            }
+            .show()
+    }
+
+    private fun cargarDatosRevelando() {
+        cardViewPalabra.visibility = View.VISIBLE
+
+        txtResumenTitulo.text = "El impostor era: "+nombreImpostor
+        txtPalabra.text = "La palabra era: "+palabraJugada
+
+        btnRevelar.visibility = View.GONE
+
     }
 
     private fun dpToPx(dp: Int): Int =
         (dp * resources.displayMetrics.density).toInt()
 }
+
+
+

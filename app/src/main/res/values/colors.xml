@@ -9,4 +9,15 @@
     <color name="twoSubTitulo">#949494</color>
     <color name="modal_background">#80000000</color>
     <color name="fondo_listas">#D4D4D4</color>
+
+    <color name="imp_primary_purple">#8F8CFF</color>
+    <color name="imp_primary_dark">#141B2A</color>
+    <color name="imp_accent_cyan">#00E5FF</color>
+
+    <color name="imp_text_primary">#FFFFFFFF</color>
+    <color name="imp_text_secondary">#CCFFFFFF</color>
+    <color name="imp_text_hint">#99FFFFFF</color>
+
+    <color name="imp_glass_bg">#8021273A</color>
+    <color name="imp_glass_stroke">#B38F8CFF</color>
 </resources>
