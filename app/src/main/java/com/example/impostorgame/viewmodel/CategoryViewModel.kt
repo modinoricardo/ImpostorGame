@@ -16,8 +16,11 @@ class CategoryViewModel : ViewModel() {
                 title = "Animales",
                 iconEmoji = "🦁",
                 items = listOf(
-                    WordItem("perro", "doméstico"),
-                    WordItem("gato", "felino")
+                    WordItem("Perro", "Mascota"),
+                    WordItem("Gato", "Felino"),
+                    WordItem("Tiburón", "Océano"),
+                    WordItem("Águila", "Altura"),
+                    WordItem("Elefante", "Trompa")
                 )
             ),
             Category(
@@ -25,13 +28,13 @@ class CategoryViewModel : ViewModel() {
                 title = "Objetos cotidianos",
                 iconEmoji = "🏠",
                 items = listOf(
-                    WordItem("taza", "beber"),
-                    WordItem("móvil", "bolsillo"),
-                    WordItem("llaves", "puerta"),
-                    WordItem("mochila", "espalda"),
-                    WordItem("sofá", "salón"),
-                    WordItem("lámpara", "luz"),
-                    WordItem("reloj", "hora")
+                    WordItem("Taza", "Café"),
+                    WordItem("Móvil", "Pantalla"),
+                    WordItem("Llaves", "Cerradura"),
+                    WordItem("Mochila", "Libros"),
+                    WordItem("Sofá", "Siesta"),
+                    WordItem("Lámpara", "Bombilla"),
+                    WordItem("Reloj", "Minutos")
                 )
             ),
             Category(
@@ -39,17 +42,23 @@ class CategoryViewModel : ViewModel() {
                 title = "Personajes famosos",
                 iconEmoji = "👤",
                 items = listOf(
-                    WordItem("Shakira", "colombiana"),
-                    WordItem("Messi", "argentino")
+                    WordItem("Shakira", "Caderas"),
+                    WordItem("Messi", "Balón"),
+                    WordItem("Taylor Swift", "Conciertos"),
+                    WordItem("Leonardo DiCaprio", "Óscar"),
+                    WordItem("Rihanna", "Isla")
                 )
-
-
-            ), Category(
+            ),
+            Category(
                 id = 4L,
-                title = "Superheroes",
+                title = "Superhéroes",
                 iconEmoji = "\uD83E\uDDB8\u200D♂\uFE0F",
                 items = listOf(
-                    WordItem("Superman", "Esperanza")
+                    WordItem("Superman", "Capa"),
+                    WordItem("Batman", "Murciélago"),
+                    WordItem("Spiderman", "Telarañas"),
+                    WordItem("Iron Man", "Tecnología"),
+                    WordItem("Wonder Woman", "Lazo")
                 )
             ),
             Category(
@@ -57,12 +66,13 @@ class CategoryViewModel : ViewModel() {
                 title = "Comida",
                 iconEmoji = "🍕",
                 items = listOf(
-                    WordItem("lasaña", "horno"),
-                    WordItem("croqueta", "crujiente"),
-                    WordItem("gazpacho", "fría"),
-                    WordItem("manzana", "fruta"),
-                    WordItem("espaguetis", "italiano")
-
+                    WordItem("Lasaña", "Capas"),
+                    WordItem("Croqueta", "Rellena"),
+                    WordItem("Gazpacho", "Tomate"),
+                    WordItem("Manzana", "Roja"),
+                    WordItem("Espaguetis", "Tenedor"),
+                    WordItem("Hamburguesa", "Carne"),
+                    WordItem("Tortilla", "Huevos")
                 )
             )
         )

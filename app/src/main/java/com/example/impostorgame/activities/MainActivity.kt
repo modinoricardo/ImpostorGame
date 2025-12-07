@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.TextView
@@ -15,12 +16,14 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.cardview.widget.CardView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.impostorgame.Category
 import com.example.impostorgame.CategoryAdapterMain
 import com.example.impostorgame.CategoryViewModel
 import com.example.impostorgame.EditPlayersBottomSheet
+import com.example.impostorgame.GameOptions
 import com.example.impostorgame.activities.ImpostorRevealActivity
 import com.example.impostorgame.PlayerAdapterMain
 import com.example.impostorgame.PlayerViewModel
@@ -29,6 +32,7 @@ import com.example.impostorgame.SelectCategoriesBottomSheet
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
+import com.google.android.material.switchmaterial.SwitchMaterial
 
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class MainActivity : AppCompatActivity(), SelectCategoriesBottomSheet.Listener {
@@ -43,9 +47,13 @@ class MainActivity : AppCompatActivity(), SelectCategoriesBottomSheet.Listener {
     private lateinit var playerViewModel: PlayerViewModel
     private lateinit var categoriesRecyclerView: RecyclerView
     private lateinit var categoryAdapterMain: CategoryAdapterMain
+    private lateinit var switchModoLoco: SwitchMaterial
+    private lateinit var switchPista: SwitchMaterial
+    private lateinit var btnStartGame: Button
     private var originalCategoriasColor: Int = 0
     private var originalCategoriasColorsSaved = false
     private var allCategoriesSelected: Boolean = false
+    private lateinit var opciones: GameOptions
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -54,7 +62,6 @@ class MainActivity : AppCompatActivity(), SelectCategoriesBottomSheet.Listener {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
-        // Desactivamos el modo noche
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         // Declaración de vistas
@@ -65,17 +72,32 @@ class MainActivity : AppCompatActivity(), SelectCategoriesBottomSheet.Listener {
         overlay = findViewById(R.id.darkOverlay)
         textResumenCategorias = findViewById(R.id.textResumenCategorias)
         categoriesRecyclerView = findViewById(R.id.categoriesRecyclerView)
-        val btnStartGame: Button = findViewById(R.id.btnStartGame)
+        btnStartGame = findViewById(R.id.btnStartGame)
+        switchModoLoco = findViewById(R.id.switchModoLoco)
+        switchPista = findViewById(R.id.switchPista)
 
-        // Desactivamos el scroll propio de la lista de jugadores:
         playersRecyclerView.isNestedScrollingEnabled = false
-        // Si quieres que Categorías actúe igual también en scroll:
         // categoriesRecyclerView.isNestedScrollingEnabled = false
 
-        // Ajuste de insets del sistema (barra de estado, navegación, etc.)
+        // Insets arriba: status bar + notch. Laterales: por si hay recortes.
         ViewCompat.setOnApplyWindowInsetsListener(main) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            val top = insets.getInsets(
+                WindowInsetsCompat.Type.statusBars() or WindowInsetsCompat.Type.displayCutout()
+            ).top
+
+            v.updatePadding(top = top) // sin left/right
+            insets
+        }
+
+
+        // Insets abajo: solo navigation bar. Mantén tu margen base.
+        val baseBottomMargin =
+            (btnStartGame.layoutParams as ViewGroup.MarginLayoutParams).bottomMargin
+
+        ViewCompat.setOnApplyWindowInsetsListener(btnStartGame) { v, insets ->
+            val nav = insets.getInsets(WindowInsetsCompat.Type.navigationBars())
+            (v.layoutParams as ViewGroup.MarginLayoutParams).bottomMargin = baseBottomMargin + nav.bottom
+            v.requestLayout()
             insets
         }
 
@@ -83,7 +105,7 @@ class MainActivity : AppCompatActivity(), SelectCategoriesBottomSheet.Listener {
         playerViewModel = ViewModelProvider(this).get(PlayerViewModel::class.java)
         categoryViewModel = ViewModelProvider(this).get(CategoryViewModel::class.java)
 
-        // RecyclerView de jugadores (Flexbox para que se distribuyan como "chips")
+        // RecyclerView de jugadores (Flexbox)
         val playersLayoutManager = FlexboxLayoutManager(this).apply {
             flexDirection = FlexDirection.ROW
             flexWrap = FlexWrap.WRAP
@@ -97,7 +119,7 @@ class MainActivity : AppCompatActivity(), SelectCategoriesBottomSheet.Listener {
             playerAdapter.updatePlayers(lista)
         }
 
-        // RecyclerView de categorías (dentro del CardView, en Flexbox)
+        // RecyclerView de categorías (Flexbox)
         val categoriesLayoutManager = FlexboxLayoutManager(this).apply {
             flexDirection = FlexDirection.ROW
             flexWrap = FlexWrap.WRAP
@@ -107,10 +129,18 @@ class MainActivity : AppCompatActivity(), SelectCategoriesBottomSheet.Listener {
         categoryAdapterMain = CategoryAdapterMain(emptyList())
         categoriesRecyclerView.adapter = categoryAdapterMain
 
+        lanzarEventos()
+
+        //Hacemos un objeto para todas las opciones extras
+        opciones = GameOptions(pista = true, modoLoco = false)
+
+    }
+
+    fun lanzarEventos(){
+
         // Observar categorías y actualizar lista + resumen
         categoryViewModel.categories.observe(this) { list ->
             val seleccionadasList = list.filter { it.isSelected }
-
             val categoriasParaMostrar = seleccionadasList.ifEmpty { list }
 
             categoryAdapterMain.updateCategories(categoriasParaMostrar)
@@ -125,13 +155,10 @@ class MainActivity : AppCompatActivity(), SelectCategoriesBottomSheet.Listener {
         }
 
         // ====== CARDVIEW JUGADORES ======
-
-        // CLICK en el CardView de jugadores → abrir bottom sheet de edición
         cardViewModoJuego.setOnClickListener {
             EditPlayersBottomSheet().show(supportFragmentManager, "EditPlayers")
         }
 
-        // Animación de pulsado CUANDO PULSAS EL CARDVIEW (zona fuera del RecyclerView)
         cardViewModoJuego.setOnTouchListener { _, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
@@ -142,19 +169,16 @@ class MainActivity : AppCompatActivity(), SelectCategoriesBottomSheet.Listener {
                     val pressedColor = getColor(R.color.button_pressed)
                     cardViewModoJuego.setCardBackgroundColor(pressedColor)
                 }
-                MotionEvent.ACTION_UP,
-                MotionEvent.ACTION_CANCEL -> {
+                MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
                     cardViewModoJuego.setCardBackgroundColor(originalColor)
                 }
             }
             false
         }
 
-        // Animación + disparar click CUANDO PULSAS DENTRO DEL RECYCLERVIEW
         playersRecyclerView.setOnTouchListener { _, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
-                    // mismo efecto visual
                     if (!originalColorsSaved) {
                         originalColor = cardViewModoJuego.cardBackgroundColor.defaultColor
                         originalColorsSaved = true
@@ -162,25 +186,18 @@ class MainActivity : AppCompatActivity(), SelectCategoriesBottomSheet.Listener {
                     val pressedColor = getColor(R.color.button_pressed)
                     cardViewModoJuego.setCardBackgroundColor(pressedColor)
                 }
-
                 MotionEvent.ACTION_UP -> {
-                    // quitamos el color y lanzamos el click del card
                     cardViewModoJuego.setCardBackgroundColor(originalColor)
                     cardViewModoJuego.performClick()
                 }
-
                 MotionEvent.ACTION_CANCEL -> {
-                    // solo restaurar color si el gesto se cancela (scroll, etc.)
                     cardViewModoJuego.setCardBackgroundColor(originalColor)
                 }
             }
-            // false → dejamos que el sistema siga procesando (scroll, etc.)
             false
         }
 
         // ====== CARDVIEW CATEGORÍAS ======
-
-        // CLICK en el CardView de categorías → abrir bottom sheet de selección
         cardViewCategorias.setOnClickListener {
             SelectCategoriesBottomSheet().show(
                 supportFragmentManager,
@@ -188,7 +205,6 @@ class MainActivity : AppCompatActivity(), SelectCategoriesBottomSheet.Listener {
             )
         }
 
-        // Animación de pulsado al tocar fuera del RecyclerView
         cardViewCategorias.setOnTouchListener { _, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
@@ -199,15 +215,13 @@ class MainActivity : AppCompatActivity(), SelectCategoriesBottomSheet.Listener {
                     val pressedColor = getColor(R.color.button_pressed)
                     cardViewCategorias.setCardBackgroundColor(pressedColor)
                 }
-                MotionEvent.ACTION_UP,
-                MotionEvent.ACTION_CANCEL -> {
+                MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
                     cardViewCategorias.setCardBackgroundColor(originalCategoriasColor)
                 }
             }
             false
         }
 
-        // Animación + click al tocar dentro del RecyclerView
         categoriesRecyclerView.setOnTouchListener { _, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
@@ -218,12 +232,10 @@ class MainActivity : AppCompatActivity(), SelectCategoriesBottomSheet.Listener {
                     val pressedColor = getColor(R.color.button_pressed)
                     cardViewCategorias.setCardBackgroundColor(pressedColor)
                 }
-
                 MotionEvent.ACTION_UP -> {
                     cardViewCategorias.setCardBackgroundColor(originalCategoriasColor)
                     cardViewCategorias.performClick()
                 }
-
                 MotionEvent.ACTION_CANCEL -> {
                     cardViewCategorias.setCardBackgroundColor(originalCategoriasColor)
                 }
@@ -231,36 +243,48 @@ class MainActivity : AppCompatActivity(), SelectCategoriesBottomSheet.Listener {
             false
         }
 
-
-
-        // Botón fijo abajo (de momento placeholder)
+        // Botón fijo abajo
         btnStartGame.setOnClickListener {
+            val listaJugadores = ArrayList(playerViewModel.players.value ?: emptyList())
 
-            //Hacemos una lista de jugadores para pasarsela a la segunda actividad
-            val listaJugadores = ArrayList(playerViewModel.players.value)
-
-            //Hacemos una lista de categorias para pasarsela a la segunda actividad
-            val listaCategorias = ArrayList(categoryViewModel.categories.value)
-            //Lista solo con las listas seleccionadas
-            var listaCategoriasSeleccionadas = ArrayList<Category>();
-            listaCategorias.forEach { item->
-                if(item.isSelected){
-                    listaCategoriasSeleccionadas.add(item)
-                }
+            val listaCategorias = ArrayList(categoryViewModel.categories.value ?: emptyList())
+            val listaCategoriasSeleccionadas = ArrayList<Category>().apply {
+                listaCategorias.forEach { if (it.isSelected) add(it) }
             }
 
-            val categoriasAEnviar = if (listaCategoriasSeleccionadas.isEmpty()) listaCategorias else listaCategoriasSeleccionadas
+            val categoriasAEnviar =
+                if (listaCategoriasSeleccionadas.isEmpty()) listaCategorias else listaCategoriasSeleccionadas
 
             val intent = Intent(this, ImpostorRevealActivity::class.java).apply {
                 putStringArrayListExtra("PLAYERS", listaJugadores)
+                putParcelableArrayListExtra("CATEGORIES", categoriasAEnviar)
+                putExtra("OPCIONES", opciones)
             }
-            intent.putExtra("CATEGORIES", categoriasAEnviar)
 
-            // Lanzar la nueva Activity
             startActivity(intent)
         }
-    }
 
+        switchModoLoco.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                // Ahora el modo loco está en true
+                opciones = opciones.copy(modoLoco = true)
+            } else {
+                // Ahora el modo loco está en false
+                opciones = opciones.copy(modoLoco = false)
+            }
+        }
+
+        switchPista.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                // Ahora el modo loco está en true
+                opciones = opciones.copy(pista = true)
+            } else {
+                // Ahora el modo loco está en false
+                opciones = opciones.copy(pista = false)
+            }
+        }
+
+    }
 
     //Detecta cuando vuelve a primer plano
     override fun onResume() {
