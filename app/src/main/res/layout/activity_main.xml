@@ -5,7 +5,33 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_neon_space"
     tools:context=".activities.MainActivity">
+
+    <!-- Aurora overlay -->
+    <View
+        android:id="@+id/aurora"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.75"
+        android:background="@drawable/overlay_aurora" />
+
+    <!-- Energy rings -->
+    <View
+        android:id="@+id/ring1"
+        android:layout_width="280dp"
+        android:layout_height="280dp"
+        android:alpha="0.65"
+        android:background="@drawable/ring_neon"
+        android:layout_gravity="center" />
+
+    <View
+        android:id="@+id/ring2"
+        android:layout_width="360dp"
+        android:layout_height="360dp"
+        android:alpha="0.45"
+        android:background="@drawable/ring_neon_soft"
+        android:layout_gravity="center" />
 
     <!-- CONTENIDO PRINCIPAL SCROLLEABLE -->
     <ScrollView
@@ -19,7 +45,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingBottom="96dp">
-            <!-- paddingBottom para que el botón fijo no tape el último card -->
 
             <Space
                 android:layout_width="match_parent"
@@ -33,9 +58,13 @@
                 android:layout_marginBottom="24dp"
                 android:gravity="center"
                 android:text="Atrapa al \n impostor"
-                android:textColor="#333"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                android:textColor="@android:color/white"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                android:shadowColor="#00E5FF"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="14" />
 
             <!-- CardView de Editar Jugadores -->
             <androidx.cardview.widget.CardView
@@ -45,16 +74,18 @@
                 android:layout_margin="15dp"
                 android:clickable="true"
                 android:focusable="true"
-                app:cardCornerRadius="20dp"
+                app:cardCornerRadius="22dp"
                 app:cardElevation="6dp"
                 app:cardPreventCornerOverlap="false"
-                app:cardUseCompatPadding="false">
+                app:cardUseCompatPadding="true"
+                app:cardBackgroundColor="@android:color/transparent">
 
                 <RelativeLayout
                     android:id="@+id/relativeLayoutJugadores"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="16dp">
+                    android:padding="16dp"
+                    android:background="@drawable/bg_card_main">
 
                     <TextView
                         android:id="@+id/textTituloJugadores"
@@ -64,7 +95,7 @@
                         android:layout_marginBottom="12dp"
                         android:layout_toStartOf="@id/imageViewArrow"
                         android:text="Editar Jugadores"
-                        android:textColor="@color/tituloYFlecha"
+                        android:textColor="@android:color/white"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -75,7 +106,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:src="@drawable/chevron_right_24"
-                        app:tint="@color/tituloYFlecha" />
+                        app:tint="@android:color/white" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/playersRecyclerView"
@@ -97,16 +128,18 @@
                 android:layout_margin="15dp"
                 android:clickable="true"
                 android:focusable="true"
-                app:cardCornerRadius="20dp"
+                app:cardCornerRadius="22dp"
                 app:cardElevation="6dp"
                 app:cardPreventCornerOverlap="false"
-                app:cardUseCompatPadding="false">
+                app:cardUseCompatPadding="true"
+                app:cardBackgroundColor="@android:color/transparent">
 
                 <RelativeLayout
                     android:id="@+id/relativeLayoutCategorias"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="16dp">
+                    android:padding="16dp"
+                    android:background="@drawable/bg_card_main">
 
                     <ImageView
                         android:id="@+id/imageViewArrowCategorias"
@@ -115,7 +148,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:src="@drawable/chevron_right_24"
-                        app:tint="@color/tituloYFlecha" />
+                        app:tint="@android:color/white" />
 
                     <TextView
                         android:id="@+id/textTituloCategorias"
@@ -125,7 +158,8 @@
                         android:layout_toStartOf="@id/imageViewArrowCategorias"
                         android:text="Categorías y palabras"
                         android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:textColor="@android:color/white" />
 
                     <TextView
                         android:id="@+id/textResumenCategorias"
@@ -134,7 +168,8 @@
                         android:layout_below="@id/textTituloCategorias"
                         android:layout_toStartOf="@id/imageViewArrowCategorias"
                         android:text="3 categorías disponibles"
-                        android:textSize="14sp" />
+                        android:textSize="14sp"
+                        android:textColor="#CCFFFFFF" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/categoriesRecyclerView"
@@ -156,15 +191,17 @@
                 android:layout_margin="15dp"
                 android:clickable="true"
                 android:focusable="true"
-                app:cardCornerRadius="20dp"
+                app:cardCornerRadius="22dp"
                 app:cardElevation="6dp"
                 app:cardPreventCornerOverlap="false"
-                app:cardUseCompatPadding="false">
+                app:cardUseCompatPadding="true"
+                app:cardBackgroundColor="@android:color/transparent">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="16dp">
+                    android:padding="16dp"
+                    android:background="@drawable/bg_card_main">
 
                     <TextView
                         android:id="@+id/txtOpcionTitulo"
@@ -172,7 +209,8 @@
                         android:layout_height="wrap_content"
                         android:text="Pista del impostor"
                         android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:textColor="@android:color/white" />
 
                     <com.google.android.material.switchmaterial.SwitchMaterial
                         android:id="@+id/switchPista"
@@ -190,7 +228,8 @@
                         android:layout_marginTop="6dp"
                         android:layout_toStartOf="@id/switchModoLoco"
                         android:text="Activa una pista para ayudar al impostor a disimular"
-                        android:textSize="13sp" />
+                        android:textSize="13sp"
+                        android:textColor="#CCFFFFFF" />
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
@@ -202,15 +241,17 @@
                 android:layout_margin="15dp"
                 android:clickable="true"
                 android:focusable="true"
-                app:cardCornerRadius="20dp"
+                app:cardCornerRadius="22dp"
                 app:cardElevation="6dp"
                 app:cardPreventCornerOverlap="false"
-                app:cardUseCompatPadding="false">
+                app:cardUseCompatPadding="true"
+                app:cardBackgroundColor="@android:color/transparent">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="16dp">
+                    android:padding="16dp"
+                    android:background="@drawable/bg_card_main">
 
                     <TextView
                         android:id="@+id/txtOpcionTitulo"
@@ -218,7 +259,8 @@
                         android:layout_height="wrap_content"
                         android:text="Todos impostores"
                         android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:textColor="@android:color/white" />
 
                     <com.google.android.material.switchmaterial.SwitchMaterial
                         android:id="@+id/switchModoLoco"
@@ -232,9 +274,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
+                        android:layout_below="@+id/txtOpcionTitulo"
                         android:text="Activa un modo en el cual todos pueden ser impostores"
                         android:textSize="13sp"
-                        android:layout_below="@+id/txtOpcionTitulo"/>
+                        android:textColor="#CCFFFFFF" />
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
@@ -245,10 +288,16 @@
     <Button
         android:id="@+id/btnStartGame"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_gravity="bottom"
         android:layout_margin="16dp"
-        android:text="EMPEZAR PARTIDA" />
+        android:background="@drawable/btn_neon"
+        android:backgroundTint="@null"
+        app:backgroundTint="@null"
+        android:text="EMPEZAR PARTIDA"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
 
     <!-- OVERLAY OSCURO POR ENCIMA DE TODO -->
     <View

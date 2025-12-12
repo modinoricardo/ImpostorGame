@@ -20,4 +20,7 @@
 
     <color name="imp_glass_bg">#8021273A</color>
     <color name="imp_glass_stroke">#B38F8CFF</color>
+
+    <color name="colorImpostor">#FF0000</color>
+    <color name="colorPalabra">#FFFB00</color>
 </resources>

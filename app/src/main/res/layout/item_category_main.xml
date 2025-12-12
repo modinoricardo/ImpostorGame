@@ -6,7 +6,7 @@
     android:paddingHorizontal="12dp"
     android:paddingVertical="8dp"
     android:layout_margin="4dp"
-    android:background="@android:color/darker_gray"
-    android:textColor="@android:color/black"
+    android:background="@drawable/bg_card_main"
+    android:textColor="@android:color/white"
     android:text="🦁 Animales"
     android:textSize="14sp" />

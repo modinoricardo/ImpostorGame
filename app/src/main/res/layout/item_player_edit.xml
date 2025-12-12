@@ -7,14 +7,14 @@
     android:paddingHorizontal="16dp"
     android:paddingVertical="10dp">
 
-    <!-- BLOQUE BLANCO COMPLETO -->
+    <!-- Contenedor de edición tipo glass -->
     <LinearLayout
         android:id="@+id/editContainer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="horizontal"
-        android:background="@drawable/edit_container_white"
+        android:background="@drawable/bg_card_main"
         android:padding="12dp"
         android:gravity="center_vertical">
 
@@ -24,13 +24,13 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:src="@drawable/ic_pencil"
-            android:tint="@android:color/black"/>
+            android:tint="@android:color/white" />
 
         <Space
             android:layout_width="12dp"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
 
-        <!-- EditText SIN FONDO, integrado en el bloque blanco -->
+        <!-- EditText integrado -->
         <EditText
             android:id="@+id/playerName"
             android:layout_width="0dp"
@@ -38,9 +38,10 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:textSize="18sp"
-            android:textColor="@android:color/black"
+            android:textColor="@android:color/white"
+            android:textColorHint="#80FFFFFF"
             android:hint="Editar nombre"
-            android:inputType="textPersonName"/>
+            android:inputType="textPersonName" />
     </LinearLayout>
 
     <!-- Ícono de borrar 🗑 -->
@@ -49,6 +50,6 @@
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_marginStart="16dp"
-        android:tint="@android:color/black"
-        android:src="@drawable/ic_papelera"/>
+        android:tint="@android:color/white"
+        android:src="@drawable/ic_papelera" />
 </LinearLayout>

@@ -55,11 +55,20 @@ class SelectCategoriesBottomSheet : BottomSheetDialogFragment() {
             (activity as? Listener)?.onCategoriesConfirmed(selected)
             dismiss()
         }
+
     }
 
     override fun onStart() {
         super.onStart()
-        // tu código para bloquear el swipe, si lo tenías
+
+        // Aquí SÍ podemos acceder al bottom sheet real
+        val bottomSheet = dialog?.findViewById<View>(
+            com.google.android.material.R.id.design_bottom_sheet
+        ) ?: return
+
+        val behavior = BottomSheetBehavior.from(bottomSheet)
+        behavior.isDraggable = false   // no se puede arrastrar para cerrar
+        behavior.isHideable = false    // no se oculta deslizando
     }
 
     companion object {

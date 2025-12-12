@@ -13,6 +13,12 @@ import com.example.impostorgame.R
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.cardview.widget.CardView
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.style.ForegroundColorSpan
+import androidx.core.content.ContextCompat
+import android.graphics.Typeface
+import android.text.style.StyleSpan
 
 class PlayGameActivity : AppCompatActivity() {
 
@@ -142,11 +148,60 @@ class PlayGameActivity : AppCompatActivity() {
     private fun cargarDatosRevelando() {
         cardViewPalabra.visibility = View.VISIBLE
 
-        txtResumenTitulo.text = "El impostor era: "+nombreImpostor
-        txtPalabra.text = "La palabra era: "+palabraJugada
+        val colorImpostor = ContextCompat.getColor(this, R.color.colorImpostor)
+        val colorPalabra  = ContextCompat.getColor(this, R.color.colorPalabra)
+
+        // ---------- TEXTO IMPOSITOR ----------
+        val textoImpostor = "El impostor era: $nombreImpostor"
+        val spannableImpostor = SpannableString(textoImpostor)
+
+        val startImp = textoImpostor.indexOf(nombreImpostor)
+        val endImp = startImp + nombreImpostor.length
+
+        // Color
+        spannableImpostor.setSpan(
+            ForegroundColorSpan(colorImpostor),
+            startImp,
+            endImp,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+
+        // Negrita
+        spannableImpostor.setSpan(
+            StyleSpan(Typeface.BOLD),
+            startImp,
+            endImp,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+
+        txtResumenTitulo.text = spannableImpostor
+
+        // ---------- TEXTO PALABRA ----------
+        val textoPalabra = "La palabra era: $palabraJugada"
+        val spannablePalabra = SpannableString(textoPalabra)
+
+        val startPal = textoPalabra.indexOf(palabraJugada)
+        val endPal = startPal + palabraJugada.length
+
+        // Color
+        spannablePalabra.setSpan(
+            ForegroundColorSpan(colorPalabra),
+            startPal,
+            endPal,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+
+        // Negrita
+        spannablePalabra.setSpan(
+            StyleSpan(Typeface.BOLD),
+            startPal,
+            endPal,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+
+        txtPalabra.text = spannablePalabra
 
         btnRevelar.visibility = View.GONE
-
     }
 
     private fun dpToPx(dp: Int): Int =

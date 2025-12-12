@@ -74,6 +74,19 @@ class CategoryViewModel : ViewModel() {
                     WordItem("Hamburguesa", "Carne"),
                     WordItem("Tortilla", "Huevos")
                 )
+            ),            Category(
+                id = 6L,
+                title = "Colores",
+                iconEmoji = "\uD83E\uDE85",
+                items = listOf(
+                    WordItem("Rojo", "Sangre"),
+                    WordItem("Verde", "Esperanza"),
+                    WordItem("Naranja", "Mandarina"),
+                    WordItem("Azul", "Cielo"),
+                    WordItem("Blanco","Nieve"),
+                    WordItem("Negro", "Carbon"),
+                    WordItem("Gris","Ceniza")
+                    )
             )
         )
     }

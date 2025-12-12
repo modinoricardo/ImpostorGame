@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/imp_glass_bg" />
+
+    <!-- Fondo glass: azul oscuro semitransparente -->
+    <solid android:color="#8011222F" />
+
+    <!-- Bordes redondeados -->
     <corners android:radius="22dp" />
+
+    <!-- Borde/glow morado suave -->
     <stroke
         android:width="1dp"
-        android:color="@color/imp_glass_stroke" />
+        android:color="#337C4DFF" />
 </shape>

@@ -21,8 +21,11 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.activity.OnBackPressedCallback
 import android.graphics.Color
+import androidx.lifecycle.lifecycleScope
 import com.example.impostorgame.GameOptions
+import kotlinx.coroutines.delay
 import kotlin.random.Random
+import kotlinx.coroutines.launch
 
 
 @Suppress("DEPRECATION")
@@ -47,6 +50,8 @@ class ImpostorRevealActivity : AppCompatActivity() {
     private lateinit var nameImpostorInGame: String;
     private lateinit var opciones: GameOptions
     private var modoLocoActivo: Boolean = false
+
+    private var pistaActivaModoLoco: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -133,23 +138,17 @@ class ImpostorRevealActivity : AppCompatActivity() {
 
         playerInGame = 0
         ocultarPalabra()
-        //hacemos un aleatorio del 25% para el modo loco
-        modoLocoActivo = random25()
+        //hacemos un aleatorio del X% para el modo loco
+        modoLocoActivo = random(45)
+
+        if (opciones.modoLoco && modoLocoActivo) cargarInformacionModoLoco() else cargarInformacionNormal()
 
     }
 
-    fun random25(): Boolean {
-        // 0,1,2,3 todos con la misma probabilidad
-        // solo cuando sea 0 devolvemos true → 1 de 4 = 25 %
-        return Random.nextInt(4) == 0
+    fun random(num: Int): Boolean {
+        return Random.nextInt(100) < num
     }
 
-    fun random90(): Boolean {
-        // Genera un entero entre 0 y 9 (10 valores posibles)
-        // 0..8  -> true  (9 de 10 = 90 %)
-        // 9     -> false (1 de 10 = 10 %)
-        return Random.nextInt(10) < 9
-    }
 
     private fun cargarInformacionModoLoco() {
         // Nombre del jugador del turno
@@ -157,25 +156,28 @@ class ImpostorRevealActivity : AppCompatActivity() {
 
         // Es el impostor
         detailsPlayer.text = "ERES EL \nIMPOSTOR"
-        detailsPlayer.setTextColor(Color.RED)
+        detailsPlayer.setTextColor(getColor(R.color.colorImpostor))
 
         // Preparamos el texto de la pista (sin mostrarla aún)
         if (opciones.pista) {
 
-            val categoriaInGame = listaCategorias.random()
-            if (categoriaInGame.items.isEmpty()) {
-                finish()
-                return
-            }
-            val wordItemInGame = categoriaInGame.items.random()
-            palabra = wordItemInGame.name
-            pista = wordItemInGame.hint
+            if(!pistaActivaModoLoco){
 
-            hintPlayer.text = pista
+                val categoriaInGame = listaCategorias.random()
+                val wordItemInGame = categoriaInGame.items.random()
+                palabra = wordItemInGame.name
+                pista = wordItemInGame.hint
+
+            }
+
+            hintPlayer.text = "Pista: $pista"
+
         } else {
             hintPlayer.text = ""
         }
         hintPlayer.visibility = View.GONE
+
+        pistaActivaModoLoco = true
 
     }
 
@@ -186,11 +188,11 @@ class ImpostorRevealActivity : AppCompatActivity() {
         if (indiceImpostor == playerInGame) {
             // Es el impostor
             detailsPlayer.text = "ERES EL \nIMPOSTOR"
-            detailsPlayer.setTextColor(Color.RED)
+            detailsPlayer.setTextColor(getColor(R.color.colorImpostor))
 
             // Preparamos el texto de la pista (sin mostrarla aún)
             if (opciones.pista) {
-                hintPlayer.text = pista
+                hintPlayer.text = "Pista: $pista"
             } else {
                 hintPlayer.text = ""
             }
@@ -219,11 +221,13 @@ class ImpostorRevealActivity : AppCompatActivity() {
                     nenxtPlayer.visibility = View.VISIBLE
                     true
                 }
+
                 MotionEvent.ACTION_UP,
                 MotionEvent.ACTION_CANCEL -> {
                     ocultarPalabra()
                     true
                 }
+
                 else -> false
             }
         }
@@ -244,7 +248,10 @@ class ImpostorRevealActivity : AppCompatActivity() {
 
     private fun mostrarPalabraNormal() {
         cargarInformacionNormal()
-        detailsPlayer.visibility = View.VISIBLE
+
+        imgDedo.visibility = View.GONE
+        txtTwo.visibility = View.GONE
+        presText.visibility = View.GONE
 
         if (indiceImpostor == playerInGame && opciones.pista) {
             hintPlayer.visibility = View.VISIBLE
@@ -252,38 +259,43 @@ class ImpostorRevealActivity : AppCompatActivity() {
             hintPlayer.visibility = View.GONE
         }
 
+        detailsPlayer.visibility = View.VISIBLE
+    }
+
+    //Pulsamos encima del cardView
+    private fun mostrarPalabraModoLoco() {
+        cargarInformacionModoLoco()
+
         imgDedo.visibility = View.GONE
         txtTwo.visibility = View.GONE
         presText.visibility = View.GONE
-    }
 
-    private fun mostrarPalabraModoLoco() {
-        cargarInformacionModoLoco()
         detailsPlayer.visibility = View.VISIBLE
 
         // Aquí decides la regla: ¿todos ven pista? ¿solo este jugador?
         hintPlayer.visibility = if (opciones.pista) View.VISIBLE else View.GONE
-
-        imgDedo.visibility = View.GONE
-        txtTwo.visibility = View.GONE
-        presText.visibility = View.GONE
     }
 
 
     private var isAnimating = false
 
     private fun btnNextPlayer() {
+        pistaActivaModoLoco = false
         val lastIndex = listaJugadores.lastIndex
 
-        // Si es el último, no animar. Ir directo.
+        // Si ya estamos en el último y le damos a siguiente, vamos a la partida
         if (playerInGame == lastIndex) {
             val intent = Intent(this, PlayGameActivity::class.java).apply {
                 putStringArrayListExtra("LISTA_JUGADORES", ArrayList(listaJugadores))
                 putParcelableArrayListExtra("LISTA_CATEGORIAS", ArrayList(listaCategorias))
-                putExtra("PALABRA",
-                    if(opciones.modoLoco && modoLocoActivo)"NO HABIA PALABRA" else palabra)
-                putExtra("IMPOSTOR",
-                    if(opciones.modoLoco && modoLocoActivo)"TODOS SOIS IMPOSTORES" else nameImpostorInGame)
+                putExtra(
+                    "PALABRA",
+                    if (opciones.modoLoco && modoLocoActivo) "NO HABIA PALABRA" else palabra
+                )
+                putExtra(
+                    "IMPOSTOR",
+                    if (opciones.modoLoco && modoLocoActivo) "TODOS SOIS IMPOSTORES" else nameImpostorInGame
+                )
             }
             startActivity(intent)
             finish()
@@ -294,14 +306,25 @@ class ImpostorRevealActivity : AppCompatActivity() {
         isAnimating = true
         nenxtPlayer.isEnabled = false
 
+        // Avanzar al siguiente jugador que vamos a mostrar
+        playerInGame++
+
         slideOutIn(cardViewPrincipal, outExtra = 120f) {
+            // 1) Resetea la UI
             nenxtPlayer.visibility = View.INVISIBLE
             ocultarPalabra()
 
-            playerInGame++
+            // 2) Carga la info DEL NUEVO jugador (playerInGame ya está incrementado)
+            if (opciones.modoLoco && modoLocoActivo) {
+                cargarInformacionModoLoco()
+            } else {
+                cargarInformacionNormal()
+            }
 
+            // 3) Actualiza el texto del botón según lo que venga después
+            val esProximoElUltimo = (playerInGame == lastIndex)
             textNextPlayer.text =
-                if (playerInGame == lastIndex) "¡EMPEZAR PARTIDA!" else "⏭ SIGUIENTE JUGADOR"
+                if (esProximoElUltimo) "¡EMPEZAR PARTIDA!" else "⏭ SIGUIENTE JUGADOR"
         }
 
         cardViewPrincipal.postDelayed({

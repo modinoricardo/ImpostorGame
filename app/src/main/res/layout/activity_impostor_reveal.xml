@@ -1,27 +1,72 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
+    android:background="@drawable/bg_neon_space"
     android:paddingLeft="16dp"
     android:paddingRight="16dp">
 
+    <!-- Aurora overlay -->
+    <View
+        android:id="@+id/aurora"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="0.75"
+        android:background="@drawable/overlay_aurora"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Energy rings -->
+    <View
+        android:id="@+id/ring1"
+        android:layout_width="280dp"
+        android:layout_height="280dp"
+        android:alpha="0.65"
+        android:background="@drawable/ring_neon"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <View
+        android:id="@+id/ring2"
+        android:layout_width="360dp"
+        android:layout_height="360dp"
+        android:alpha="0.45"
+        android:background="@drawable/ring_neon_soft"
+        app:layout_constraintTop_toTopOf="@id/ring1"
+        app:layout_constraintBottom_toBottomOf="@id/ring1"
+        app:layout_constraintStart_toStartOf="@id/ring1"
+        app:layout_constraintEnd_toEndOf="@id/ring1"/>
+
+    <!-- Card principal centrado dentro del círculo -->
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewPrincipal"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="10dp"
-        app:contentPadding="20dp">
+        app:cardCornerRadius="22dp"
+        app:cardElevation="6dp"
+        app:cardUseCompatPadding="true"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:layout_constraintTop_toTopOf="@id/ring1"
+        app:layout_constraintBottom_toBottomOf="@id/ring1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.5">
 
         <LinearLayout
             android:id="@+id/layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:animateLayoutChanges="true">
+            android:animateLayoutChanges="true"
+            android:background="@drawable/bg_card_main"
+            android:padding="20dp">
 
             <TextView
                 android:id="@+id/turnPlayerName"
@@ -31,78 +76,102 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
                 android:text="@string/app_name"
-                android:textSize="32sp"
+                android:textSize="28sp"
                 android:textStyle="bold"
-                android:textColor="@color/black"/>
+                android:textColor="@android:color/white"
+                android:shadowColor="#8000E5FF"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="10"/>
 
             <TextView
                 android:id="@+id/txtTwo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="¡No le digas esta palabra a nadie!" />
+                android:text="¡No le digas esta palabra a nadie!"
+                android:textSize="14sp"
+                android:textColor="#CCFFFFFF" />
 
             <ImageView
                 android:id="@+id/imgDedo"
-                android:layout_marginTop="40dp"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginTop="40dp"
                 android:rotation="-20"
                 android:src="@drawable/ic_touch_app" />
 
             <TextView
                 android:id="@+id/presText"
-                android:layout_marginTop="20dp"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:text="MANTENER PULSADO PARA REVELAR PALABRA"
                 android:layout_gravity="center_horizontal"
-                android:textSize="15dp"
-                android:layout_marginBottom="20dp"/>
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="MANTENER PULSADO PARA REVELAR PALABRA"
+                android:textSize="14sp"
+                android:textColor="#CCFFFFFF"
+                android:gravity="center_horizontal" />
 
-            <!--Texto oculto que muestra el -->
+
+            <!-- Texto oculto que muestra el rol -->
             <TextView
                 android:id="@+id/detailsPlayer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="20dp"
                 android:text="¿Impostor o no?"
-                android:textSize="40sp"
-                android:visibility="gone"
-                android:layout_marginBottom="20dp"/>
+                android:gravity="center"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:visibility="gone" />
+
             <TextView
                 android:id="@+id/hintPlayer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:textSize="40sp"
-                android:visibility="gone"
+                android:layout_marginTop="25dp"
                 android:layout_marginBottom="20dp"
-                android:layout_marginTop="20dp"/>
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:visibility="gone" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
+    <!-- Card siguiente jugador, debajo del círculo -->
     <androidx.cardview.widget.CardView
         android:id="@+id/nenxtPlayer"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:visibility="invisible"
-        app:cardBackgroundColor="#2E2E2E"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="10dp"
-        app:contentPadding="20dp">
+        app:cardCornerRadius="22dp"
+        app:cardElevation="0dp"
+        app:cardUseCompatPadding="true"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:layout_constraintTop_toBottomOf="@id/cardViewPrincipal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <TextView
             android:id="@+id/textNextPlayer"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/btn_neon"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:gravity="center"
             android:text="⏭ SIGUIENTE JUGADOR"
-            android:textColor="@color/white"
+            android:textColor="@android:color/white"
             android:textStyle="bold" />
     </androidx.cardview.widget.CardView>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/rootBottomSheet"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/bottomsheet_rounded"
     android:orientation="vertical"
-    android:padding="20dp">
+    android:padding="20dp"
+    android:background="@drawable/bg_card_main">
 
     <TextView
         android:id="@+id/txtTitle"
@@ -14,9 +15,13 @@
         android:layout_marginBottom="10dp"
         android:gravity="center"
         android:text="Editar jugadores"
-        android:textColor="@color/titulo"
-        android:textSize="25sp"
-        android:textStyle="bold" />
+        android:textColor="@android:color/white"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:shadowColor="#00E5FF"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="12" />
 
     <TextView
         android:id="@+id/txtSubtitle"
@@ -25,7 +30,7 @@
         android:layout_marginBottom="2dp"
         android:gravity="center"
         android:text="Minimo de 3 jugadores"
-        android:textColor="@color/subTitulo"
+        android:textColor="#CCFFFFFF"
         android:textSize="14sp" />
 
     <TextView
@@ -33,7 +38,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Toca un nombre para editar"
-        android:textColor="@color/twoSubTitulo"
+        android:textColor="#99FFFFFF"
         android:textSize="12sp" />
 
     <Space
@@ -45,31 +50,35 @@
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:layout_marginBottom="16dp"
-        android:background="@color/fondo_listas" />
+        android:background="@android:color/transparent" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/edittext_rounded"
-        android:gravity="center_vertical">
+        android:background="@drawable/bg_card_main"
+        android:gravity="center_vertical"
+        android:paddingVertical="6dp">
 
         <EditText
             android:id="@+id/editTextNewPlayer"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:hint="Agregar nombre del nuevo jugador"
-            android:paddingStart="12dp" />
+            android:paddingStart="12dp"
+            android:textColor="@android:color/white"
+            android:textColorHint="#80FFFFFF" />
 
         <ImageView
             android:id="@+id/imageViewAniadirJugador"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="12dp"
-            android:src="@drawable/ic_mas" />
+            android:src="@drawable/ic_mas"
+            android:tint="@android:color/white" />
 
     </LinearLayout>
 
@@ -80,8 +89,14 @@
     <Button
         android:id="@+id/btnConfirm"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Confirmar" />
+        android:layout_height="48dp"
+        android:text="Confirmar"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:background="@drawable/btn_neon"
+        android:backgroundTint="@null"
+        app:backgroundTint="@null" />
 
     <Space
         android:layout_width="wrap_content"
