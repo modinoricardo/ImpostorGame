@@ -21,15 +21,19 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.activity.OnBackPressedCallback
 import android.graphics.Color
+import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.impostorgame.GameOptions
 import kotlinx.coroutines.delay
 import kotlin.random.Random
 import kotlinx.coroutines.launch
+import com.example.impostorgame.CategoryViewModel
+import com.example.impostorgame.WordItem
 
 
 @Suppress("DEPRECATION")
 class ImpostorRevealActivity : AppCompatActivity() {
+    private val categoryViewModel: CategoryViewModel by viewModels()
     //Lista donde guardamos los jugadores
     private lateinit var listaJugadores: List<String>;
     private lateinit var listaCategorias: List<Category>;
@@ -50,8 +54,9 @@ class ImpostorRevealActivity : AppCompatActivity() {
     private lateinit var nameImpostorInGame: String;
     private lateinit var opciones: GameOptions
     private var modoLocoActivo: Boolean = false
-
     private var pistaActivaModoLoco: Boolean = false
+    private lateinit var categoriaInGame: Category
+    private lateinit var wordItemInGame: WordItem
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -122,19 +127,38 @@ class ImpostorRevealActivity : AppCompatActivity() {
 
         layout.layoutTransition.enableTransitionType(LayoutTransition.CHANGING)
 
+        // después de leer listaCategorias y comprobar que no está vacía
+        categoryViewModel.setCategories(listaCategorias)
+
+        //cargamos los eventos
         onEventos()
 
+        //Cargamos datos del juego
+        datosJuego()
+    }
+
+    private fun datosJuego() {
         indiceImpostor = listaJugadores.indices.random()
         nameImpostorInGame = listaJugadores[indiceImpostor]
 
-        val categoriaInGame = listaCategorias.random()
-        if (categoriaInGame.items.isEmpty()) {
-            finish()
-            return
+        //cargamos la categoria a jugar
+        categoriaInGame = listaCategorias.random()
+        if (categoryViewModel.itemsVacio(categoriaInGame.id)) {
+            categoryViewModel.restoreItems(categoriaInGame.id)
+            categoriaInGame = categoryViewModel.categories.value!!.first { it.id == categoriaInGame.id }
         }
-        val wordItemInGame = categoriaInGame.items.random()
+
+
+        if (categoryViewModel.itemsVacio(categoriaInGame.id)) {
+            categoryViewModel.restoreItems(categoriaInGame.id)
+            categoriaInGame = categoryViewModel.categories.value!!
+                .first { it.id == categoriaInGame.id }
+        }
+
+        wordItemInGame = categoriaInGame.items.random()
+
         palabra = wordItemInGame.name
-        pista = wordItemInGame.hint
+        pista = wordItemInGame.hints.random()
 
         playerInGame = 0
         ocultarPalabra()
@@ -142,7 +166,6 @@ class ImpostorRevealActivity : AppCompatActivity() {
         modoLocoActivo = random(45)
 
         if (opciones.modoLoco && modoLocoActivo) cargarInformacionModoLoco() else cargarInformacionNormal()
-
     }
 
     fun random(num: Int): Boolean {
@@ -166,7 +189,7 @@ class ImpostorRevealActivity : AppCompatActivity() {
                 val categoriaInGame = listaCategorias.random()
                 val wordItemInGame = categoriaInGame.items.random()
                 palabra = wordItemInGame.name
-                pista = wordItemInGame.hint
+                pista = wordItemInGame.hints.random()
 
             }
 
@@ -298,7 +321,11 @@ class ImpostorRevealActivity : AppCompatActivity() {
                 )
             }
             startActivity(intent)
-            finish()
+
+            val updatedCategories = ArrayList(categoryViewModel.categories.value ?: emptyList())
+
+            finishWithUpdatedCategories()
+
             return
         }
 
@@ -325,6 +352,12 @@ class ImpostorRevealActivity : AppCompatActivity() {
             val esProximoElUltimo = (playerInGame == lastIndex)
             textNextPlayer.text =
                 if (esProximoElUltimo) "¡EMPEZAR PARTIDA!" else "⏭ SIGUIENTE JUGADOR"
+
+            categoryViewModel.deleteWordItem(categoriaInGame.id, wordItemInGame)
+            if(esProximoElUltimo)categoryViewModel.logItems(categoriaInGame.id)
+
+
+
         }
 
         cardViewPrincipal.postDelayed({
@@ -360,5 +393,14 @@ class ImpostorRevealActivity : AppCompatActivity() {
             .start()
     }
 
+    private fun finishWithUpdatedCategories() {
+        setResult(RESULT_OK, Intent().apply {
+            putParcelableArrayListExtra(
+                "UPDATED_CATEGORIES",
+                ArrayList(categoryViewModel.categories.value ?: emptyList())
+            )
+        })
+        finish()
+    }
 
 }

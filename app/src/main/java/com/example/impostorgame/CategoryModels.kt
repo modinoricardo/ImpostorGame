@@ -6,8 +6,8 @@ import kotlinx.serialization.Serializable
 
 @Parcelize
 data class WordItem(
-    val name: String,    // palabra que ven los civiles
-    val hint: String     // pista para el impostor
+    val name: String,
+    val hints: List<String> = emptyList()
 ) : Parcelable
 
 @Serializable

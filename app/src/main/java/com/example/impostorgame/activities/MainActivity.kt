@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -136,6 +137,19 @@ class MainActivity : AppCompatActivity(), SelectCategoriesBottomSheet.Listener {
 
     }
 
+    private val startGameLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == RESULT_OK) {
+                val updated = result.data
+                    ?.getParcelableArrayListExtra<Category>("UPDATED_CATEGORIES")
+                    ?.toList()
+                if (updated != null) {
+                    categoryViewModel.setCategories(updated)
+                }
+            }
+        }
+
+
     fun lanzarEventos(){
 
         // Observar categorías y actualizar lista + resumen
@@ -252,8 +266,7 @@ class MainActivity : AppCompatActivity(), SelectCategoriesBottomSheet.Listener {
                 listaCategorias.forEach { if (it.isSelected) add(it) }
             }
 
-            val categoriasAEnviar =
-                if (listaCategoriasSeleccionadas.isEmpty()) listaCategorias else listaCategoriasSeleccionadas
+            val categoriasAEnviar = if (listaCategoriasSeleccionadas.isEmpty()) listaCategorias else listaCategoriasSeleccionadas
 
             val intent = Intent(this, ImpostorRevealActivity::class.java).apply {
                 putStringArrayListExtra("PLAYERS", listaJugadores)
@@ -261,7 +274,7 @@ class MainActivity : AppCompatActivity(), SelectCategoriesBottomSheet.Listener {
                 putExtra("OPCIONES", opciones)
             }
 
-            startActivity(intent)
+            startGameLauncher.launch(intent)
         }
 
         switchModoLoco.setOnCheckedChangeListener { _, isChecked ->
