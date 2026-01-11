@@ -13,7 +13,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
-import com.example.impostorgame.Category
+import com.example.impostorgame.modelos.Category
 import com.example.impostorgame.R
 import android.view.ViewGroup
 import androidx.core.view.ViewCompat
@@ -22,20 +22,19 @@ import androidx.core.view.updatePadding
 import androidx.activity.OnBackPressedCallback
 import android.graphics.Color
 import androidx.activity.viewModels
-import androidx.lifecycle.lifecycleScope
-import com.example.impostorgame.GameOptions
-import kotlinx.coroutines.delay
+import com.example.impostorgame.modelos.GameOptions
 import kotlin.random.Random
-import kotlinx.coroutines.launch
 import com.example.impostorgame.CategoryViewModel
-import com.example.impostorgame.WordItem
+import com.example.impostorgame.modelos.Jugador
+import com.example.impostorgame.modelos.WordItem
+import com.example.impostorgame.PlayerViewModel
 
 
 @Suppress("DEPRECATION")
 class ImpostorRevealActivity : AppCompatActivity() {
     private val categoryViewModel: CategoryViewModel by viewModels()
+
     //Lista donde guardamos los jugadores
-    private lateinit var listaJugadores: List<String>;
     private lateinit var listaCategorias: List<Category>;
     private lateinit var detailsPlayer: TextView;
     private lateinit var textNextPlayer: TextView;
@@ -57,6 +56,26 @@ class ImpostorRevealActivity : AppCompatActivity() {
     private var pistaActivaModoLoco: Boolean = false
     private lateinit var categoriaInGame: Category
     private lateinit var wordItemInGame: WordItem
+    private lateinit var listaJugadores: List<Jugador>
+    private val playerViewModel: PlayerViewModel by viewModels()
+    private lateinit var imgWord: ImageView
+    private var imageResTurno: Int = 0
+    private val impostorImageRes = R.drawable.impostor
+    private lateinit var imagenPorJugador: IntArray
+
+    private val wordImages = listOf(
+        R.drawable.civil1,
+        R.drawable.civil2,
+        R.drawable.civil3,
+        R.drawable.civil4,
+        R.drawable.civil5,
+        R.drawable.civil6,
+        R.drawable.civil7,
+        R.drawable.civil8,
+        R.drawable.civil9,
+        R.drawable.civil10
+    )
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -88,6 +107,7 @@ class ImpostorRevealActivity : AppCompatActivity() {
         turnPlayerName = findViewById(R.id.turnPlayerName)
         textNextPlayer = findViewById(R.id.textNextPlayer)
         hintPlayer = findViewById(R.id.hintPlayer)
+        imgWord = findViewById(R.id.imgWord)
 
         // Insets arriba: status bar + notch. Laterales por recortes/gestos.
         ViewCompat.setOnApplyWindowInsetsListener(layout) { v, insets ->
@@ -115,7 +135,9 @@ class ImpostorRevealActivity : AppCompatActivity() {
         }
 
         // Intent data
-        listaJugadores = intent.getStringArrayListExtra("PLAYERS")?.toList() ?: emptyList()
+        listaJugadores =
+            intent.getParcelableArrayListExtra<Jugador>("PLAYERS")?.toList() ?: emptyList()
+
         listaCategorias =
             intent.getParcelableArrayListExtra<Category>("CATEGORIES")?.toList() ?: emptyList()
         opciones = intent.getParcelableExtra("OPCIONES") ?: GameOptions()
@@ -137,15 +159,34 @@ class ImpostorRevealActivity : AppCompatActivity() {
         datosJuego()
     }
 
+    private fun isActiveCategory(category: Category): Boolean {
+        return listaCategorias.any { it.id == category.id && it.isSelected }
+    }
+
     private fun datosJuego() {
-        indiceImpostor = listaJugadores.indices.random()
-        nameImpostorInGame = listaJugadores[indiceImpostor]
+        indiceImpostor = playerViewModel.pickImpostorIndex(listaJugadores)
+
+        imagenPorJugador = IntArray(listaJugadores.size)
+
+        val pool = wordImages.shuffled().toMutableList()
+        for (i in listaJugadores.indices) {
+            imagenPorJugador[i] =
+                if (i == indiceImpostor) impostorImageRes
+                else (pool.removeFirstOrNull() ?: wordImages.random())
+        }
+
+        nameImpostorInGame = listaJugadores[indiceImpostor].nombre
+
 
         //cargamos la categoria a jugar
-        categoriaInGame = listaCategorias.random()
+        do{
+            categoriaInGame = listaCategorias.random()
+        }while (listaCategorias.any { it.isSelected } && !isActiveCategory(categoriaInGame))
+
         if (categoryViewModel.itemsVacio(categoriaInGame.id)) {
             categoryViewModel.restoreItems(categoriaInGame.id)
-            categoriaInGame = categoryViewModel.categories.value!!.first { it.id == categoriaInGame.id }
+            categoriaInGame =
+                categoryViewModel.categories.value!!.first { it.id == categoriaInGame.id }
         }
 
 
@@ -160,10 +201,12 @@ class ImpostorRevealActivity : AppCompatActivity() {
         palabra = wordItemInGame.name
         pista = wordItemInGame.hints.random()
 
+        imageResTurno = wordImages.random()
+
         playerInGame = 0
         ocultarPalabra()
         //hacemos un aleatorio del X% para el modo loco
-        modoLocoActivo = random(45)
+        modoLocoActivo = random(10)
 
         if (opciones.modoLoco && modoLocoActivo) cargarInformacionModoLoco() else cargarInformacionNormal()
     }
@@ -173,63 +216,85 @@ class ImpostorRevealActivity : AppCompatActivity() {
     }
 
 
+    // Carga la informacion para el modo loco:
+// - Siempre muestra "ERES EL IMPOSTOR"
+// - Prepara (una vez por turno) una palabra/pista aleatoria si la opcion de pista esta activa
+// - Asigna la imagen del turno (en modo loco: siempre la del impostor)
     private fun cargarInformacionModoLoco() {
-        // Nombre del jugador del turno
-        turnPlayerName.text = listaJugadores[playerInGame]
 
-        // Es el impostor
+        // Nombre del jugador del turno (Jugador -> nombre)
+        turnPlayerName.text = listaJugadores[playerInGame].nombre
+
+        // Imagen del turno: en modo loco siempre impostor
+        imageResTurno = impostorImageRes
+
+        // En modo loco: siempre impostor
         detailsPlayer.text = "ERES EL \nIMPOSTOR"
         detailsPlayer.setTextColor(getColor(R.color.colorImpostor))
 
-        // Preparamos el texto de la pista (sin mostrarla aún)
+        // Preparamos el texto de la pista (sin mostrarla aun)
         if (opciones.pista) {
 
-            if(!pistaActivaModoLoco){
+            // Solo generamos nueva palabra/pista la primera vez de este turno
+            if (!pistaActivaModoLoco) {
 
-                val categoriaInGame = listaCategorias.random()
-                val wordItemInGame = categoriaInGame.items.random()
-                palabra = wordItemInGame.name
-                pista = wordItemInGame.hints.random()
+                val categoriaRandom = listaCategorias.randomOrNull()
 
+                // Evita crash si no hay categorias o si vienen sin items
+                val wordItemRandom = categoriaRandom?.items?.randomOrNull()
+                if (wordItemRandom != null) {
+                    palabra = wordItemRandom.name
+                    pista = wordItemRandom.hints.randomOrNull() ?: ""
+                } else {
+                    palabra = ""
+                    pista = ""
+                }
             }
 
-            hintPlayer.text = "Pista: $pista"
-
+            hintPlayer.text = if (pista.isNotEmpty()) "Pista: $pista" else ""
         } else {
             hintPlayer.text = ""
         }
+
+        // Se oculta por defecto; se hace visible cuando tu UI lo decida
         hintPlayer.visibility = View.GONE
 
+        // Marcamos que ya hemos generado la pista de este turno
         pistaActivaModoLoco = true
-
     }
 
+
+    // Carga la informacion del turno en modo normal:
+    // - Muestra el nombre del jugador actual
+    // - Si es el impostor, muestra el texto de impostor y prepara la pista
+    // - Si es civil, muestra la palabra y oculta cualquier pista
     private fun cargarInformacionNormal() {
-        // Nombre del jugador del turno
-        turnPlayerName.text = listaJugadores[playerInGame]
+
+        // Nombre del jugador del turno (Jugador -> nombre)
+        turnPlayerName.text = listaJugadores[playerInGame].nombre
+
+        // Imagen del turno: impostor fija / civil aleatoria
+        imageResTurno = imagenPorJugador[playerInGame]
 
         if (indiceImpostor == playerInGame) {
-            // Es el impostor
+            // Impostor
             detailsPlayer.text = "ERES EL \nIMPOSTOR"
             detailsPlayer.setTextColor(getColor(R.color.colorImpostor))
 
-            // Preparamos el texto de la pista (sin mostrarla aún)
-            if (opciones.pista) {
-                hintPlayer.text = "Pista: $pista"
-            } else {
-                hintPlayer.text = ""
-            }
+            // Preparar pista (sin mostrarla aun)
+            hintPlayer.text = if (opciones.pista) "Pista: $pista" else ""
             hintPlayer.visibility = View.GONE
         } else {
-            // Es civil
+            // Civil
             detailsPlayer.text = palabra
             detailsPlayer.setTextColor(Color.BLACK)
 
-            // Los civiles nunca ven pista, ni texto residual
+            // Civil nunca ve pista
             hintPlayer.text = ""
             hintPlayer.visibility = View.GONE
         }
     }
+
 
     @SuppressLint("ClickableViewAccessibility")
     private fun onEventos() {
@@ -263,6 +328,7 @@ class ImpostorRevealActivity : AppCompatActivity() {
         // Al soltar el dedo, nadie ve nada
         detailsPlayer.visibility = View.GONE
         hintPlayer.visibility = View.GONE
+        imgWord.visibility = View.GONE
 
         imgDedo.visibility = View.VISIBLE
         txtTwo.visibility = View.VISIBLE
@@ -283,6 +349,10 @@ class ImpostorRevealActivity : AppCompatActivity() {
         }
 
         detailsPlayer.visibility = View.VISIBLE
+
+        imgWord.setImageResource(imageResTurno)
+        imgWord.visibility = View.VISIBLE
+
     }
 
     //Pulsamos encima del cardView
@@ -295,6 +365,9 @@ class ImpostorRevealActivity : AppCompatActivity() {
 
         detailsPlayer.visibility = View.VISIBLE
 
+        imgWord.setImageResource(imageResTurno)
+        imgWord.visibility = View.VISIBLE
+
         // Aquí decides la regla: ¿todos ven pista? ¿solo este jugador?
         hintPlayer.visibility = if (opciones.pista) View.VISIBLE else View.GONE
     }
@@ -302,14 +375,21 @@ class ImpostorRevealActivity : AppCompatActivity() {
 
     private var isAnimating = false
 
+    // Pasa al siguiente jugador:
+    // - Si ya es el ultimo jugador, lanza PlayGameActivity y devuelve a MainActivity las categorias actualizadas
+    // - Si no, avanza el turno, anima la tarjeta y borra el WordItem usado para no repetirlo
     private fun btnNextPlayer() {
         pistaActivaModoLoco = false
         val lastIndex = listaJugadores.lastIndex
 
-        // Si ya estamos en el último y le damos a siguiente, vamos a la partida
+        // Si estamos en el ultimo jugador y se pulsa "siguiente", terminamos la fase de revelado
         if (playerInGame == lastIndex) {
+
+            // Importante: si listaJugadores ahora es List<Jugador>, esto debe ser putParcelableArrayListExtra
+            // putParcelableArrayListExtra("LISTA_JUGADORES", ArrayList(listaJugadores))
+
             val intent = Intent(this, PlayGameActivity::class.java).apply {
-                putStringArrayListExtra("LISTA_JUGADORES", ArrayList(listaJugadores))
+                putParcelableArrayListExtra("LISTA_JUGADORES", ArrayList(listaJugadores))
                 putParcelableArrayListExtra("LISTA_CATEGORIAS", ArrayList(listaCategorias))
                 putExtra(
                     "PALABRA",
@@ -322,44 +402,44 @@ class ImpostorRevealActivity : AppCompatActivity() {
             }
             startActivity(intent)
 
-            val updatedCategories = ArrayList(categoryViewModel.categories.value ?: emptyList())
 
+            // Devolvemos a MainActivity el estado actualizado de categorias (items borrados, etc.)
             finishWithUpdatedCategories()
-
             return
         }
 
+        // Evita doble click / doble animacion
         if (isAnimating) return
         isAnimating = true
         nenxtPlayer.isEnabled = false
 
-        // Avanzar al siguiente jugador que vamos a mostrar
+        // Avanzamos al siguiente jugador a mostrar
         playerInGame++
 
         slideOutIn(cardViewPrincipal, outExtra = 120f) {
-            // 1) Resetea la UI
+            // 1) Resetea la UI del reveal
             nenxtPlayer.visibility = View.INVISIBLE
             ocultarPalabra()
 
-            // 2) Carga la info DEL NUEVO jugador (playerInGame ya está incrementado)
+            // 2) Carga la info del nuevo turno (playerInGame ya esta actualizado)
             if (opciones.modoLoco && modoLocoActivo) {
                 cargarInformacionModoLoco()
             } else {
                 cargarInformacionNormal()
             }
 
-            // 3) Actualiza el texto del botón según lo que venga después
+            // 3) Ajusta el texto del boton segun si el proximo es el ultimo
             val esProximoElUltimo = (playerInGame == lastIndex)
-            textNextPlayer.text =
-                if (esProximoElUltimo) "¡EMPEZAR PARTIDA!" else "⏭ SIGUIENTE JUGADOR"
+            textNextPlayer.text = if (esProximoElUltimo) "¡EMPEZAR PARTIDA!" else "⏭ SIGUIENTE JUGADOR"
 
+            // 4) Marca como "usada" la palabra para que no vuelva a salir en esta sesion
             categoryViewModel.deleteWordItem(categoriaInGame.id, wordItemInGame)
-            if(esProximoElUltimo)categoryViewModel.logItems(categoriaInGame.id)
 
-
-
+            // Debug opcional: imprime items solo si ya viene el ultimo
+            if (esProximoElUltimo) categoryViewModel.logItems(categoriaInGame.id)
         }
 
+        // Rehabilita el boton al acabar la animacion
         cardViewPrincipal.postDelayed({
             nenxtPlayer.isEnabled = true
             isAnimating = false

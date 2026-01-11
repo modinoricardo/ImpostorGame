@@ -5,9 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.impostorgame.modelos.Jugador
 
 class PlayerAdapterMain(
-    private var players: List<String>
+    private var players: List<Jugador>
 ) : RecyclerView.Adapter<PlayerAdapterMain.PlayerViewHolder>() {
 
     class PlayerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -21,13 +22,13 @@ class PlayerAdapterMain(
     }
 
     override fun onBindViewHolder(holder: PlayerViewHolder, position: Int) {
-        holder.playerName.text = players[position]
+        holder.playerName.text = players[position].nombre
     }
 
     override fun getItemCount(): Int = players.size
 
-    fun updatePlayers(newList: List<String>) {
-        players = newList
+    fun updatePlayers(newPlayers: List<Jugador>) {
+        players = newPlayers
         notifyDataSetChanged()
     }
 }

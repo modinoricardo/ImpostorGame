@@ -97,7 +97,7 @@ class EditPlayersBottomSheet : BottomSheetDialogFragment() {
         val currentPlayers = viewModel.players.value ?: emptyList()
 
         adapter = PlayerAdapterEdit(
-            currentPlayers,
+            currentPlayers, // List<Jugador>
             onDeleteClick = { index ->
                 if (viewModel.getPlayerCount() <= 3) {
                     mensajeAlerta(
@@ -109,9 +109,10 @@ class EditPlayersBottomSheet : BottomSheetDialogFragment() {
                 }
             },
             onEditClick = { index, newName ->
-                viewModel.renameAt(index, newName)
+                viewModel.renameAt(index, newName) // mantiene vecesImpostor
             }
         )
+
 
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
@@ -132,25 +133,33 @@ class EditPlayersBottomSheet : BottomSheetDialogFragment() {
                 )
                 aniadirJugador(nameNewPlayer.trim(), viewModel)
 
-            } else if (!nameNewPlayer.isBlank()) {
+            } else if (nameNewPlayer.lowercase() in listOf("frankestein")) {
+                mensajeAlerta(
+                    "PISTA ENCONTRADA",
+                    "TE L♥ HEYE TK UOTPOWWO.\n" +
+                            "♥V WVX L♥ ULZVLG O, ULAE ♥VHKYKLTPL.\n" +
+                            "UOAO BE♥PAOA, ÑLML YET♥VBKA♥L.\n" +
+                            "OUOJOÑO TE ♥KACL.\n" +
+                            "TE ÑO YOWEA VPKW.\n" +
+                            "ÑO AL♥UVL♥PO♥.\n" +
+                            "LTYKLTÑLWO."
+                )
+            } else if(!nameNewPlayer.isBlank()) {
                 aniadirJugador(nameNewPlayer.trim(), viewModel)
-
-            } else {
-                if (nameNewPlayer.isEmpty()) {
-                    mensajeAlerta(
-                        "Nombre vacío",
-                        "Antes de añadir un jugador, necesitas escribir al menos un nombre."
-                    )
-                } else {
-                    mensajeAlerta(
-                        "¿Espacios otra vez?",
-                        "No vale añadir jugadores invisibles. Escribe un nombre real."
-                    )
-                }
+            }else{
+                mensajeAlerta(
+                    "Error al añadir jugador",
+                    "No se pudo añadir el jugador. Escribe un nombre válido y vuelve a intentarlo."
+                )
+                return@setOnClickListener
             }
         }
 
-        btnConfirm.setOnClickListener { dismiss() }
+        btnConfirm.setOnClickListener {
+            val nameNewPlayer = editTextNewPlayer.text.toString()
+            if(!nameNewPlayer.isEmpty() || !nameNewPlayer.isBlank()) aniadirJugador(nameNewPlayer.trim(), viewModel)
+            dismiss()
+        }
 
     }
 

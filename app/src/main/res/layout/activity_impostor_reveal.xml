@@ -129,6 +129,16 @@
                 android:textColor="@android:color/white"
                 android:visibility="gone" />
 
+            <ImageView
+                android:id="@+id/imgWord"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                android:background="@drawable/rounded_image_bg"
+                android:clipToOutline="true"
+                android:visibility="gone" />
+
             <TextView
                 android:id="@+id/hintPlayer"
                 android:layout_width="wrap_content"
@@ -136,7 +146,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="25dp"
                 android:layout_marginBottom="20dp"
-                android:textSize="20sp"
+                android:textSize="25sp"
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:visibility="gone" />

@@ -1,4 +1,4 @@
-package com.example.impostorgame
+package com.example.impostorgame.modelos
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

@@ -1,4 +1,4 @@
-package com.example.impostorgame
+package com.example.impostorgame.extensions
 
 import android.graphics.Rect
 import android.view.TouchDelegate

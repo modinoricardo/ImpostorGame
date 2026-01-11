@@ -4,6 +4,8 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.impostorgame.modelos.Category
+import com.example.impostorgame.modelos.WordItem
 
 class CategoryViewModel : ViewModel() {
 
@@ -184,6 +186,33 @@ class CategoryViewModel : ViewModel() {
                     WordItem("Plateado", listOf("metal", "brillo", "gris")),
                     WordItem("Dorado", listOf("oro", "lujo", "brillo"))
                 )
+            ), Category(
+                id = 7L,
+                title = "Random",
+                iconEmoji = "\uD83D\uDE40",
+                items = listOf(
+                    WordItem(
+                        "Jugador más cercano (distancia física)",
+                        listOf("Mira a tu alrededor", "Sin moverte del sitio")
+                    ),
+                    WordItem(
+                        "Tu comida favorita",
+                        listOf("La pedirías ahora mismo", "La eliges sin pensarlo", "Te hace feliz comerla")
+                    ),
+                    WordItem(
+                        "Última película que viste",
+                        listOf("Recuerda una escena final")
+                    ),
+                    WordItem(
+                        "Jugador más mayor (edad más alta)",
+                        listOf("El que nació antes", "Suele decir “en mis tiempos…”", "Probablemente el más experimentado")
+                    ),
+                    WordItem(
+                        "Jugador más alto (mayor estatura)",
+                        listOf("El que llega más alto con la mano", "El que sobresale en fotos")
+                    )
+
+                    )
             )
         )
     }

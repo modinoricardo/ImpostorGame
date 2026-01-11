@@ -20,12 +20,11 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
-import com.example.impostorgame.Category
+import com.example.impostorgame.modelos.Category
 import com.example.impostorgame.CategoryAdapterMain
 import com.example.impostorgame.CategoryViewModel
 import com.example.impostorgame.EditPlayersBottomSheet
-import com.example.impostorgame.GameOptions
-import com.example.impostorgame.activities.ImpostorRevealActivity
+import com.example.impostorgame.modelos.GameOptions
 import com.example.impostorgame.PlayerAdapterMain
 import com.example.impostorgame.PlayerViewModel
 import com.example.impostorgame.R
@@ -34,6 +33,7 @@ import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.material.switchmaterial.SwitchMaterial
+import com.example.impostorgame.OptionMain
 
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class MainActivity : AppCompatActivity(), SelectCategoriesBottomSheet.Listener {
@@ -50,6 +50,7 @@ class MainActivity : AppCompatActivity(), SelectCategoriesBottomSheet.Listener {
     private lateinit var categoryAdapterMain: CategoryAdapterMain
     private lateinit var switchModoLoco: SwitchMaterial
     private lateinit var switchPista: SwitchMaterial
+    private lateinit var switchTiempo: SwitchMaterial
     private lateinit var btnStartGame: Button
     private var originalCategoriasColor: Int = 0
     private var originalCategoriasColorsSaved = false
@@ -76,6 +77,7 @@ class MainActivity : AppCompatActivity(), SelectCategoriesBottomSheet.Listener {
         btnStartGame = findViewById(R.id.btnStartGame)
         switchModoLoco = findViewById(R.id.switchModoLoco)
         switchPista = findViewById(R.id.switchPista)
+        switchTiempo = findViewById(R.id.switchTiempo)
 
         playersRecyclerView.isNestedScrollingEnabled = false
         // categoriesRecyclerView.isNestedScrollingEnabled = false
@@ -150,6 +152,7 @@ class MainActivity : AppCompatActivity(), SelectCategoriesBottomSheet.Listener {
         }
 
 
+    @SuppressLint("ClickableViewAccessibility")
     fun lanzarEventos(){
 
         // Observar categorías y actualizar lista + resumen
@@ -260,17 +263,16 @@ class MainActivity : AppCompatActivity(), SelectCategoriesBottomSheet.Listener {
         // Botón fijo abajo
         btnStartGame.setOnClickListener {
             val listaJugadores = ArrayList(playerViewModel.players.value ?: emptyList())
-
             val listaCategorias = ArrayList(categoryViewModel.categories.value ?: emptyList())
-            val listaCategoriasSeleccionadas = ArrayList<Category>().apply {
-                listaCategorias.forEach { if (it.isSelected) add(it) }
-            }
-
-            val categoriasAEnviar = if (listaCategoriasSeleccionadas.isEmpty()) listaCategorias else listaCategoriasSeleccionadas
+//            val listaCategoriasSeleccionadas = ArrayList<Category>().apply {
+//                listaCategorias.forEach { if (it.isSelected) add(it) }
+//            }
+//
+//            val categoriasAEnviar = if (listaCategoriasSeleccionadas.isEmpty()) listaCategorias else listaCategoriasSeleccionadas
 
             val intent = Intent(this, ImpostorRevealActivity::class.java).apply {
-                putStringArrayListExtra("PLAYERS", listaJugadores)
-                putParcelableArrayListExtra("CATEGORIES", categoriasAEnviar)
+                putParcelableArrayListExtra("PLAYERS", ArrayList(listaJugadores))
+                putParcelableArrayListExtra("CATEGORIES", ArrayList(listaCategorias))
                 putExtra("OPCIONES", opciones)
             }
 
@@ -295,6 +297,10 @@ class MainActivity : AppCompatActivity(), SelectCategoriesBottomSheet.Listener {
                 // Ahora el modo loco está en false
                 opciones = opciones.copy(pista = false)
             }
+        }
+
+        switchTiempo.setOnCheckedChangeListener { _, isChecked ->
+            OptionMain.tiempoLimitado = isChecked
         }
 
     }

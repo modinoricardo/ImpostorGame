@@ -183,7 +183,7 @@
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- CardView de Activar pista -->
+            <!-- CardView de pista -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewPistaImpostor"
                 android:layout_width="match_parent"
@@ -276,6 +276,56 @@
                         android:layout_marginTop="6dp"
                         android:layout_below="@+id/txtOpcionTitulo"
                         android:text="Activa un modo en el cual todos pueden ser impostores"
+                        android:textSize="13sp"
+                        android:textColor="#CCFFFFFF" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- CardView de limite de tiempo -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewLimiteTiempo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardCornerRadius="22dp"
+                app:cardElevation="6dp"
+                app:cardPreventCornerOverlap="false"
+                app:cardUseCompatPadding="true"
+                app:cardBackgroundColor="@android:color/transparent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:background="@drawable/bg_card_main">
+
+                    <TextView
+                        android:id="@+id/txtOpcionTitulo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tiempo limitado"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/white" />
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/switchTiempo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:checked="false" />
+
+                    <TextView
+                        android:id="@+id/txtOpcionDesc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txtOpcionTitulo"
+                        android:layout_marginTop="6dp"
+                        android:layout_toStartOf="@id/switchModoLoco"
+                        android:text="Activa un sonido que...."
                         android:textSize="13sp"
                         android:textColor="#CCFFFFFF" />
                 </RelativeLayout>

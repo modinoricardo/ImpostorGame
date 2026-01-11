@@ -19,17 +19,26 @@ import android.text.style.ForegroundColorSpan
 import androidx.core.content.ContextCompat
 import android.graphics.Typeface
 import android.text.style.StyleSpan
+import androidx.activity.viewModels
+import com.example.impostorgame.PlayerViewModel
+import com.example.impostorgame.modelos.Jugador
+import android.media.MediaPlayer
+import com.example.impostorgame.OptionMain
+import kotlin.random.Random
 
 class PlayGameActivity : AppCompatActivity() {
-
     private lateinit var btnNewGame: Button
     private lateinit var txtResumenTitulo: TextView
-    private lateinit var listaJugadores: List<String>;
+    private lateinit var listaJugadores: List<Jugador>
     private lateinit var palabraJugada: String
     private lateinit var btnRevelar: Button
     private lateinit var cardViewPalabra: CardView
     private lateinit var txtPalabra: TextView
     private lateinit var nombreImpostor: String
+    private val playerViewModel: PlayerViewModel by viewModels()
+    private var impostorContado = false
+    private var mediaPlayer: MediaPlayer? = null
+    private val startSoundDelayMs = Random.nextLong(60_000L, 65_001L)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -88,18 +97,19 @@ class PlayGameActivity : AppCompatActivity() {
         loadEvents()
 
         // Carga de jugadores desde el intent
-        listaJugadores = intent.getStringArrayListExtra("LISTA_JUGADORES")?.toList().orEmpty()
+        listaJugadores =
+            intent.getParcelableArrayListExtra<Jugador>("LISTA_JUGADORES")?.toList().orEmpty()
 
         // Elegir un jugador aleatorio (si la lista no está vacía)
         val jugadorHabla = listaJugadores.randomOrNull()
 
         // Texto del resumen
         txtResumenTitulo.text = if (jugadorHabla != null) {
-            "¡$jugadorHabla " +
-                    "hablas tú!"
+            "¡${jugadorHabla.nombre} hablas tu!"
         } else {
             "No hay jugadores disponibles"
         }
+
 
         // Carga palabra jugada desde el intent
         palabraJugada = intent.getStringExtra("PALABRA") ?: ""
@@ -111,6 +121,9 @@ class PlayGameActivity : AppCompatActivity() {
 
         //Mostramos el boton de revelar impostor
         btnRevelar.visibility = View.VISIBLE
+
+        // Lanza la canción después de entrar a la Activity
+        if(OptionMain.tiempoLimitado) window.decorView.postDelayed(startSoundRunnable, startSoundDelayMs)
     }
 
     private fun loadEvents() {
@@ -120,6 +133,48 @@ class PlayGameActivity : AppCompatActivity() {
         btnRevelar.setOnClickListener {
             pulsadoBotonRevelar()
         }
+    }
+
+
+    private val startSoundRunnable = Runnable {
+        startBell()
+
+        mensajeAlerta(
+            "Jugador eliminado",
+            "Quien fue el ultimo en poner la mano sobre la mesa"
+        )
+
+        // Si quieres que se pare cuando se muestre la alerta, llama a stopBell()
+        // Aquí NO sé cuándo termina tu mensajeAlerta, así que lo típico es pararlo en el callback del diálogo.
+    }
+
+    //iniciar campanas
+    private fun startBell() {
+        stopBell()
+
+        val mp = MediaPlayer.create(this, R.raw.campana)
+        if (mp == null) {
+            android.util.Log.e("PlayGameActivity", "No se pudo crear MediaPlayer con R.raw.campana")
+            return
+        }
+
+        mediaPlayer = mp.apply {
+            isLooping = true
+            setOnErrorListener { _, what, extra ->
+                android.util.Log.e("PlayGameActivity", "MediaPlayer error what=$what extra=$extra")
+                stopBell()
+                true
+            }
+            start()
+        }
+    }
+
+
+    //parar campanas
+    private fun stopBell() {
+        mediaPlayer?.stop()
+        mediaPlayer?.release()
+        mediaPlayer = null
     }
 
     private fun pulsadoBotonNewGame() {
@@ -146,6 +201,13 @@ class PlayGameActivity : AppCompatActivity() {
     }
 
     private fun cargarDatosRevelando() {
+
+        // Incrementa solo una vez (por si el usuario entra/sale o se llama dos veces)
+        if (!impostorContado) {
+            playerViewModel.incrementImpostorByName(nombreImpostor)
+            impostorContado = true
+        }
+
         cardViewPalabra.visibility = View.VISIBLE
 
         val colorImpostor = ContextCompat.getColor(this, R.color.colorImpostor)
@@ -204,8 +266,26 @@ class PlayGameActivity : AppCompatActivity() {
         btnRevelar.visibility = View.GONE
     }
 
-    private fun dpToPx(dp: Int): Int =
-        (dp * resources.displayMetrics.density).toInt()
+    private fun dpToPx(dp: Int): Int = (dp * resources.displayMetrics.density).toInt()
+
+    private fun mensajeAlerta(titulo: String, msg: String) {
+        AlertDialog.Builder(this)
+            .setTitle(titulo)
+            .setMessage(msg)
+            .setPositiveButton("OK") { _, _ ->
+                stopBell()
+            }
+            .setOnDismissListener {
+                stopBell()
+            }
+            .show()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        stopBell()
+    }
+
 }
 
 
