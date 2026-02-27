@@ -29,6 +29,8 @@ import com.example.impostorgame.PlayerAdapterMain
 import com.example.impostorgame.PlayerViewModel
 import com.example.impostorgame.R
 import com.example.impostorgame.SelectCategoriesBottomSheet
+import com.example.impostorgame.AcercaDeBottomSheet
+import com.example.impostorgame.MenuBottomSheet
 import com.example.impostorgame.SelectGameModeBottomSheet
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
@@ -56,6 +58,7 @@ class MainActivity : AppCompatActivity(),
     private lateinit var switchModoLoco: SwitchMaterial
     private lateinit var switchPista: SwitchMaterial
     private lateinit var btnStartGame: Button
+    private lateinit var btnMenu: TextView
 
     // Selectores de impostores
     private lateinit var btnMasImpostores: TextView
@@ -92,6 +95,7 @@ class MainActivity : AppCompatActivity(),
         textResumenCategorias = findViewById(R.id.textResumenCategorias)
         categoriesRecyclerView = findViewById(R.id.categoriesRecyclerView)
         btnStartGame = findViewById(R.id.btnStartGame)
+        btnMenu = findViewById(R.id.btnMenu)
         switchModoLoco = findViewById(R.id.switchModoLoco)
         switchPista = findViewById(R.id.switchPista)
 
@@ -310,6 +314,11 @@ class MainActivity : AppCompatActivity(),
         cardViewSeleccionModo.setOnClickListener {
             SelectGameModeBottomSheet.newInstance(opciones)
                 .show(supportFragmentManager, SelectGameModeBottomSheet.TAG)
+        }
+
+        // ── Menú ──
+        btnMenu.setOnClickListener {
+            MenuBottomSheet().show(supportFragmentManager, MenuBottomSheet.TAG)
         }
 
         // ── Switches ──
