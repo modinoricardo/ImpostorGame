@@ -30,8 +30,10 @@ import com.example.impostorgame.PlayerViewModel
 import com.example.impostorgame.R
 import com.example.impostorgame.SelectCategoriesBottomSheet
 import com.example.impostorgame.AcercaDeBottomSheet
+import com.example.impostorgame.EstiloBottomSheet
 import com.example.impostorgame.MenuBottomSheet
 import com.example.impostorgame.SelectGameModeBottomSheet
+import com.example.impostorgame.ThemeManager
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
@@ -78,6 +80,7 @@ class MainActivity : AppCompatActivity(),
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
+        ThemeManager.aplicarTema(this)  // ← aplicar ANTES de setContentView
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
@@ -158,18 +161,16 @@ class MainActivity : AppCompatActivity(),
         actualizarResumenSenoresBlancos()
         actualizarBotonEmpezar()
 
+        aplicarDrawablesTema()
         lanzarEventos()
     }
 
-    // ── Calcula cuántos civiles quedan dado el nº de jugadores, impostores y señores blancos ──
     private fun numJugadores() = playerViewModel.players.value?.size ?: 3
 
     private fun civiles(impostores: Int = opciones.numImpostores, blancos: Int = opciones.numSenoresBlancos): Int {
         return numJugadores() - impostores - (if (opciones.modoMisterioso) blancos else 0)
     }
 
-    // La condición es: impostores < civiles  Y  impostores + blancos < civiles
-    // Valida si la configuración actual permite iniciar partida
     private fun esConfiguracionValida(impostores: Int = opciones.numImpostores, blancos: Int = opciones.numSenoresBlancos): Boolean {
         val total = numJugadores()
         val noCiviles = impostores + (if (opciones.modoMisterioso) blancos else 0)
@@ -179,7 +180,6 @@ class MainActivity : AppCompatActivity(),
 
     private fun actualizarBotonEmpezar() {
         val valido = esConfiguracionValida()
-        // No desactivamos isEnabled para que el click muestre la alerta explicativa
         btnStartGame.alpha = if (valido) 1f else 0.4f
     }
 
@@ -249,8 +249,10 @@ class MainActivity : AppCompatActivity(),
         // ── Selector impostores ──
         btnMasImpostores.setOnClickListener {
             val nuevo = opciones.numImpostores + 1
-            if (nuevo <= numJugadores() - 1) {
+            val max = maxImpostoresPermitidos()
+            if (nuevo <= max) {
                 opciones = opciones.copy(numImpostores = nuevo)
+                ajustarOpcionesALimites()
                 actualizarResumenImpostores()
                 actualizarResumenSenoresBlancos()
                 actualizarBotonEmpezar()
@@ -260,6 +262,7 @@ class MainActivity : AppCompatActivity(),
             val nuevo = opciones.numImpostores - 1
             if (nuevo >= 0) {
                 opciones = opciones.copy(numImpostores = nuevo)
+                ajustarOpcionesALimites()
                 actualizarResumenImpostores()
                 actualizarResumenSenoresBlancos()
                 actualizarBotonEmpezar()
@@ -269,8 +272,10 @@ class MainActivity : AppCompatActivity(),
         // ── Selector señores blancos ──
         btnMasSenoresBlancos.setOnClickListener {
             val nuevo = opciones.numSenoresBlancos + 1
-            if (nuevo <= numJugadores() - 1) {
+            val max = maxBlancosPermitidos()
+            if (nuevo <= max) {
                 opciones = opciones.copy(numSenoresBlancos = nuevo)
+                ajustarOpcionesALimites()
                 actualizarResumenSenoresBlancos()
                 actualizarBotonEmpezar()
             }
@@ -279,6 +284,7 @@ class MainActivity : AppCompatActivity(),
             val nuevo = opciones.numSenoresBlancos - 1
             if (nuevo >= 0) {
                 opciones = opciones.copy(numSenoresBlancos = nuevo)
+                ajustarOpcionesALimites()
                 actualizarResumenSenoresBlancos()
                 actualizarBotonEmpezar()
             }
@@ -352,20 +358,16 @@ class MainActivity : AppCompatActivity(),
         }
     }
 
-    // Callback del BottomSheet de modo de juego
     override fun onGameModeConfirmed(nuevasOpciones: GameOptions) {
         opciones = nuevasOpciones
         txtModoJuegoSeleccionado.text = if (opciones.modoMisterioso) "🌑 Misterioso" else "🕵️ Clásico"
 
-        // Mostrar/ocultar el CardView de señores blancos según el modo
         cardViewNumSenoresBlancos.visibility = if (opciones.modoMisterioso) View.VISIBLE else View.GONE
 
-        // Si se desactivó el modo misterioso, resetear señores blancos a 0
         if (!opciones.modoMisterioso) {
             opciones = opciones.copy(numSenoresBlancos = 0)
         }
 
-        // Revalidar el nº de impostores por si el cambio de modo lo invalida
         if (!esConfiguracionValida(opciones.numImpostores, opciones.numSenoresBlancos)) {
             opciones = opciones.copy(numImpostores = 1, numSenoresBlancos = 0)
         }
@@ -390,5 +392,32 @@ class MainActivity : AppCompatActivity(),
         val seleccionadas = selected.size
         textResumenCategorias.text = if (seleccionadas == 0) "Categorías disponibles: $total"
         else "Categorías seleccionadas: $seleccionadas de $total"
+    }
+
+    private fun maxNoCiviles(): Int = numJugadores() / 2
+
+    private fun maxImpostoresPermitidos(): Int {
+        val max = maxNoCiviles()
+        val blancos = if (opciones.modoMisterioso) opciones.numSenoresBlancos else 0
+        return (max - blancos).coerceAtLeast(0)
+    }
+
+    private fun maxBlancosPermitidos(): Int {
+        if (!opciones.modoMisterioso) return 0
+        val max = maxNoCiviles()
+        val imp = opciones.numImpostores
+        return (max - imp).coerceAtLeast(0)
+    }
+
+    private fun ajustarOpcionesALimites() {
+        val impMax = maxImpostoresPermitidos()
+        val blancosMax = maxBlancosPermitidos()
+        val imp = opciones.numImpostores.coerceIn(0, impMax)
+        val blancos = opciones.numSenoresBlancos.coerceIn(0, blancosMax)
+        opciones = opciones.copy(numImpostores = imp, numSenoresBlancos = blancos)
+    }
+
+    private fun aplicarDrawablesTema() {
+        ThemeManager.aplicarDrawables(this)
     }
 }

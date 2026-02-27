@@ -9,6 +9,8 @@ import android.view.animation.DecelerateInterpolator
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
@@ -16,27 +18,18 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import android.graphics.Rect
-import android.view.TouchDelegate
 import com.example.impostorgame.activities.MainActivity
 
 class EditPlayersBottomSheet : BottomSheetDialogFragment() {
 
     private lateinit var adapter: PlayerAdapterEdit
-
     private lateinit var editTextNewPlayer: EditText
     private lateinit var imageViewAniadirJugador: ImageView
     private lateinit var btnConfirm: Button
 
     override fun onDismiss(dialog: DialogInterface) {
         super.onDismiss(dialog)
-
-        // Avisar a la Activity
         (activity as? MainActivity)?.onBottomSheetClosed()
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
     }
 
     override fun onCreateView(
@@ -52,39 +45,37 @@ class EditPlayersBottomSheet : BottomSheetDialogFragment() {
             com.google.android.material.R.id.design_bottom_sheet
         ) ?: return
 
-        // Fondo redondeado
         bottomSheet.background = ContextCompat.getDrawable(
             requireContext(), R.drawable.bottomsheet_rounded
         )
 
-        // ANIMACIÓN DE ENTRADA EXAGERADA PARA VER SI FUNCIONA
         bottomSheet.post {
-            // Altura de referencia: si no tiene, usamos la altura de pantalla
-            val h = if (bottomSheet.height > 0) {
-                bottomSheet.height
-            } else {
-                bottomSheet.resources.displayMetrics.heightPixels
-            }
-
-            // Empezamos MUY abajo y transparente
-            bottomSheet.translationY = h.toFloat()      // fuera de pantalla
+            val h = if (bottomSheet.height > 0) bottomSheet.height
+            else bottomSheet.resources.displayMetrics.heightPixels
+            bottomSheet.translationY = h.toFloat()
             bottomSheet.alpha = 0f
-
-            bottomSheet.animate().translationY(0f)                      // sube hasta su posición
-                .alpha(1f)                             // fade in
-                .setDuration(1500L)                    // 1.5 segundos para que se note
+            bottomSheet.animate()
+                .translationY(0f).alpha(1f)
+                .setDuration(1500L)
                 .setInterpolator(DecelerateInterpolator(2f)).start()
         }
 
         val behavior = BottomSheetBehavior.from(bottomSheet)
-
-        behavior.isDraggable = false   // BLOQUEAR el swipe para cerrar
-        behavior.isHideable = false    // No permitir que se oculte
-
+        behavior.isDraggable = false
+        behavior.isHideable = false
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // ── Aplicar tema ──
+        val bgCard  = ThemeManager.getBgCard(requireContext())
+        val btnNeon = ThemeManager.getBtnNeon(requireContext())
+        val accent  = ThemeManager.getAccentColor(requireContext())
+        view.findViewById<View>(R.id.rootBottomSheet)?.setBackgroundResource(bgCard)
+        view.findViewById<LinearLayout>(R.id.inputRow)?.setBackgroundResource(bgCard)
+        view.findViewById<TextView>(R.id.txtTitle)?.setShadowLayer(12f, 0f, 0f, accent)
+        view.findViewById<Button>(R.id.btnConfirm)?.setBackgroundResource(btnNeon)
 
         val viewModel = ViewModelProvider(requireActivity()).get(PlayerViewModel::class.java)
 
@@ -93,11 +84,10 @@ class EditPlayersBottomSheet : BottomSheetDialogFragment() {
         imageViewAniadirJugador = view.findViewById(R.id.imageViewAniadirJugador)
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewPlayersDialog)
 
-        // Tomar lista actual del ViewModel
         val currentPlayers = viewModel.players.value ?: emptyList()
 
         adapter = PlayerAdapterEdit(
-            currentPlayers, // List<Jugador>
+            currentPlayers,
             onDeleteClick = { index ->
                 if (viewModel.getPlayerCount() <= 3) {
                     mensajeAlerta(
@@ -109,71 +99,52 @@ class EditPlayersBottomSheet : BottomSheetDialogFragment() {
                 }
             },
             onEditClick = { index, newName ->
-                viewModel.renameAt(index, newName) // mantiene vecesImpostor
+                viewModel.renameAt(index, newName)
             }
         )
-
 
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        // Observar cambios en LiveData
         viewModel.players.observe(viewLifecycleOwner) { nuevaLista ->
             adapter.updatePlayers(nuevaLista)
         }
 
-        // Añadir jugador
         imageViewAniadirJugador.setOnClickListener {
             val nameNewPlayer = editTextNewPlayer.text.toString()
-
             if (nameNewPlayer.lowercase() in listOf("ste", "staicy")) {
-                mensajeAlerta(
-                    "Demasiado amor",
-                    "Este nombre desprende niveles extraordinarios de cariño y ternura. Podría sobrecargar el sistema."
-                )
+                mensajeAlerta("Demasiado amor", "Este nombre desprende niveles extraordinarios de cariño y ternura. Podría sobrecargar el sistema.")
                 aniadirJugador(nameNewPlayer.trim(), viewModel)
-
             } else if (nameNewPlayer.lowercase() in listOf("frankestein")) {
-                mensajeAlerta(
-                    "PISTA ENCONTRADA",
+                mensajeAlerta("PISTA ENCONTRADA",
                     "TE L♥ HEYE TK UOTPOWWO.\n" +
                             "♥V WVX L♥ ULZVLG O, ULAE ♥VHKYKLTPL.\n" +
                             "UOAO BE♥PAOA, ÑLML YET♥VBKA♥L.\n" +
                             "OUOJOÑO TE ♥KACL.\n" +
                             "TE ÑO YOWEA VPKW.\n" +
                             "ÑO AL♥UVL♥PO♥.\n" +
-                            "LTYKLTÑLWO."
-                )
-            } else if(!nameNewPlayer.isBlank()) {
+                            "LTYKLTÑLWO.")
+            } else if (!nameNewPlayer.isBlank()) {
                 aniadirJugador(nameNewPlayer.trim(), viewModel)
-            }else{
-                mensajeAlerta(
-                    "Error al añadir jugador",
-                    "No se pudo añadir el jugador. Escribe un nombre válido y vuelve a intentarlo."
-                )
+            } else {
+                mensajeAlerta("Error al añadir jugador", "No se pudo añadir el jugador. Escribe un nombre válido y vuelve a intentarlo.")
                 return@setOnClickListener
             }
         }
 
         btnConfirm.setOnClickListener {
             val nameNewPlayer = editTextNewPlayer.text.toString()
-            if(!nameNewPlayer.isEmpty() || !nameNewPlayer.isBlank()) aniadirJugador(nameNewPlayer.trim(), viewModel)
+            if (!nameNewPlayer.isEmpty() || !nameNewPlayer.isBlank()) aniadirJugador(nameNewPlayer.trim(), viewModel)
             dismiss()
         }
-
     }
 
     fun mensajeAlerta(titulo: String, mensaje: String) {
-        AlertDialog.Builder(requireContext())
-            .setTitle(titulo)
-            .setMessage(mensaje)
-            .setPositiveButton("OK", null)
-            .show()
+        AlertDialog.Builder(requireContext()).setTitle(titulo).setMessage(mensaje).setPositiveButton("OK", null).show()
     }
 
     private fun aniadirJugador(newPlayer: String, viewModel: PlayerViewModel) {
         viewModel.addPlayer(newPlayer)
         editTextNewPlayer.text.clear()
     }
-
 }

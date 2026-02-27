@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="280dp"
+    android:height="280dp"
+    android:viewportWidth="280"
+    android:viewportHeight="280">
+
+    <!-- Círculo exterior tenue verde -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#1A2ECC71"
+        android:strokeWidth="2"
+        android:pathData="M140,10 A130,130 0 1,1 139.99,10 Z"/>
+
+    <!-- Círculo interior tenue -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#0F2ECC71"
+        android:strokeWidth="1"
+        android:pathData="M140,30 A110,110 0 1,1 139.99,30 Z"/>
+
+    <!-- S en rojo Honda CC0000 -->
+    <path
+        android:fillColor="#CC0000"
+        android:pathData="
+        M 108,80
+        C 108,80 92,80 88,96
+        C 84,112 92,122 108,128
+        L 152,144
+        C 168,150 180,158 178,176
+        C 176,194 162,202 144,202
+        C 126,202 104,196 100,178
+        L 84,182
+        C 90,206 112,218 144,218
+        C 176,218 196,202 198,176
+        C 200,150 184,138 164,130
+        L 120,114
+        C 108,110 100,104 102,92
+        C 104,80 116,76 132,76
+        C 148,76 164,82 168,96
+        L 184,90
+        C 178,70 160,62 132,62
+        C 116,62 108,80 108,80 Z"/>
+
+</vector>

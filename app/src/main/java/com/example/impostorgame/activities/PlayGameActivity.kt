@@ -21,6 +21,7 @@ import android.graphics.Typeface
 import android.text.style.StyleSpan
 import androidx.activity.viewModels
 import com.example.impostorgame.PlayerViewModel
+import com.example.impostorgame.ThemeManager
 import com.example.impostorgame.modelos.Jugador
 import android.media.MediaPlayer
 import com.example.impostorgame.OptionMain
@@ -41,28 +42,25 @@ class PlayGameActivity : AppCompatActivity() {
     private val startSoundDelayMs = Random.nextLong(60_000L, 65_001L)
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        ThemeManager.aplicarTema(this)
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_play_game)
+        ThemeManager.aplicarDrawables(this)
 
-        //Todas las declaraciones
         btnNewGame = findViewById(R.id.btnNewGame)
         txtResumenTitulo = findViewById(R.id.txtImpostor)
         btnRevelar = findViewById(R.id.btnRevelar)
         cardViewPalabra = findViewById(R.id.cardViewPalabra)
         txtPalabra = findViewById(R.id.txtPalabra)
 
-        //Cuando el usuario de hacia atras en la barra de navegacion
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 AlertDialog.Builder(this@PlayGameActivity)
                     .setTitle("Salir")
                     .setMessage("¿Quieres salir de la partida?")
                     .setNegativeButton("Cancelar", null)
-                    .setPositiveButton("Salir") { _, _ ->
-                        // Volver atrás a la MainActivity que ya está debajo
-                        finish()
-                    }
+                    .setPositiveButton("Salir") { _, _ -> finish() }
                     .show()
             }
         })
@@ -70,197 +68,98 @@ class PlayGameActivity : AppCompatActivity() {
         val root = findViewById<View>(R.id.main)
         val btnRow = findViewById<View>(R.id.btnRow)
 
-        // Arriba (status bar + notch) y laterales
         ViewCompat.setOnApplyWindowInsetsListener(root) { v, insets ->
-            val topInsets = insets.getInsets(
-                WindowInsetsCompat.Type.statusBars() or WindowInsetsCompat.Type.displayCutout()
-            )
-            val sideInsets = insets.getInsets(
-                WindowInsetsCompat.Type.systemGestures() or WindowInsetsCompat.Type.displayCutout()
-            )
+            val topInsets = insets.getInsets(WindowInsetsCompat.Type.statusBars() or WindowInsetsCompat.Type.displayCutout())
+            val sideInsets = insets.getInsets(WindowInsetsCompat.Type.systemGestures() or WindowInsetsCompat.Type.displayCutout())
             v.updatePadding(left = sideInsets.left, top = topInsets.top, right = sideInsets.right)
             insets
         }
 
-        // Abajo (navigation bar) sumado al padding que ya tengas
         val basePaddingBottom = btnRow.paddingBottom
-
         ViewCompat.setOnApplyWindowInsetsListener(btnRow) { v, insets ->
             val nav = insets.getInsets(WindowInsetsCompat.Type.navigationBars())
             v.updatePadding(bottom = basePaddingBottom + nav.bottom + dpToPx(22))
             insets
         }
 
-        //La logica comienza aqui
-
-        //Cargamos los eventos
         loadEvents()
 
-        // Carga de jugadores desde el intent
-        listaJugadores =
-            intent.getParcelableArrayListExtra<Jugador>("LISTA_JUGADORES")?.toList().orEmpty()
-
-        // Elegir un jugador aleatorio (si la lista no está vacía)
+        listaJugadores = intent.getParcelableArrayListExtra<Jugador>("LISTA_JUGADORES")?.toList().orEmpty()
         val jugadorHabla = listaJugadores.randomOrNull()
+        txtResumenTitulo.text = if (jugadorHabla != null) "¡${jugadorHabla.nombre} hablas tu!" else "No hay jugadores disponibles"
 
-        // Texto del resumen
-        txtResumenTitulo.text = if (jugadorHabla != null) {
-            "¡${jugadorHabla.nombre} hablas tu!"
-        } else {
-            "No hay jugadores disponibles"
-        }
-
-
-        // Carga palabra jugada desde el intent
         palabraJugada = intent.getStringExtra("PALABRA") ?: ""
-        //Cargamos el nombre del impostor desde el intent
         nombreImpostor = intent.getStringExtra("IMPOSTOR") ?: ""
 
-        //Ocultamos el segundo cardView hasta que revelamos
         cardViewPalabra.visibility = View.GONE
-
-        //Mostramos el boton de revelar impostor
         btnRevelar.visibility = View.VISIBLE
 
-        // Lanza la canción después de entrar a la Activity
-        if(OptionMain.tiempoLimitado) window.decorView.postDelayed(startSoundRunnable, startSoundDelayMs)
+        if (OptionMain.tiempoLimitado) window.decorView.postDelayed(startSoundRunnable, startSoundDelayMs)
     }
 
     private fun loadEvents() {
-        btnNewGame.setOnClickListener {
-            pulsadoBotonNewGame()
-        }
-        btnRevelar.setOnClickListener {
-            pulsadoBotonRevelar()
-        }
+        btnNewGame.setOnClickListener { pulsadoBotonNewGame() }
+        btnRevelar.setOnClickListener { pulsadoBotonRevelar() }
     }
-
 
     private val startSoundRunnable = Runnable {
         startBell()
-
-        mensajeAlerta(
-            "Jugador eliminado",
-            "Quien fue el ultimo en poner la mano sobre la mesa"
-        )
-
-        // Si quieres que se pare cuando se muestre la alerta, llama a stopBell()
-        // Aquí NO sé cuándo termina tu mensajeAlerta, así que lo típico es pararlo en el callback del diálogo.
+        mensajeAlerta("Jugador eliminado", "Quien fue el ultimo en poner la mano sobre la mesa")
     }
 
-    //iniciar campanas
     private fun startBell() {
         stopBell()
-
         val mp = MediaPlayer.create(this, R.raw.campana)
-        if (mp == null) {
-            android.util.Log.e("PlayGameActivity", "No se pudo crear MediaPlayer con R.raw.campana")
-            return
-        }
-
+        if (mp == null) { android.util.Log.e("PlayGameActivity", "No se pudo crear MediaPlayer"); return }
         mediaPlayer = mp.apply {
             isLooping = true
-            setOnErrorListener { _, what, extra ->
-                android.util.Log.e("PlayGameActivity", "MediaPlayer error what=$what extra=$extra")
-                stopBell()
-                true
-            }
+            setOnErrorListener { _, what, extra -> android.util.Log.e("PlayGameActivity", "Error what=$what extra=$extra"); stopBell(); true }
             start()
         }
     }
 
-
-    //parar campanas
-    private fun stopBell() {
-        mediaPlayer?.stop()
-        mediaPlayer?.release()
-        mediaPlayer = null
-    }
+    private fun stopBell() { mediaPlayer?.stop(); mediaPlayer?.release(); mediaPlayer = null }
 
     private fun pulsadoBotonNewGame() {
         AlertDialog.Builder(this@PlayGameActivity)
-            .setTitle("Salir")
-            .setMessage("¿Quieres salir de la partida?")
+            .setTitle("Salir").setMessage("¿Quieres salir de la partida?")
             .setNegativeButton("Cancelar", null)
-            .setPositiveButton("Salir") { _, _ ->
-                // Volver atrás a la MainActivity que ya está debajo
-                finish()
-            }
+            .setPositiveButton("Salir") { _, _ -> finish() }
             .show()
     }
 
     private fun pulsadoBotonRevelar() {
         AlertDialog.Builder(this@PlayGameActivity)
-            .setTitle("Revelar impostor")
-            .setMessage("¿Quieres revelar al impostor?")
+            .setTitle("Revelar impostor").setMessage("¿Quieres revelar al impostor?")
             .setNegativeButton("Cancelar", null)
-            .setPositiveButton("Revelar") { _, _ ->
-                cargarDatosRevelando()
-            }
+            .setPositiveButton("Revelar") { _, _ -> cargarDatosRevelando() }
             .show()
     }
 
     private fun cargarDatosRevelando() {
-
-        // Incrementa solo una vez (por si el usuario entra/sale o se llama dos veces)
-        if (!impostorContado) {
-            playerViewModel.incrementImpostorByName(nombreImpostor)
-            impostorContado = true
-        }
+        if (!impostorContado) { playerViewModel.incrementImpostorByName(nombreImpostor); impostorContado = true }
 
         cardViewPalabra.visibility = View.VISIBLE
+        // Reaplicar tema al card recién visible
+        ThemeManager.aplicarDrawables(this)
 
         val colorImpostor = ContextCompat.getColor(this, R.color.colorImpostor)
         val colorPalabra  = ContextCompat.getColor(this, R.color.colorPalabra)
 
-        // ---------- TEXTO IMPOSITOR ----------
         val textoImpostor = "El impostor era: $nombreImpostor"
         val spannableImpostor = SpannableString(textoImpostor)
-
         val startImp = textoImpostor.indexOf(nombreImpostor)
         val endImp = startImp + nombreImpostor.length
-
-        // Color
-        spannableImpostor.setSpan(
-            ForegroundColorSpan(colorImpostor),
-            startImp,
-            endImp,
-            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-        )
-
-        // Negrita
-        spannableImpostor.setSpan(
-            StyleSpan(Typeface.BOLD),
-            startImp,
-            endImp,
-            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-        )
-
+        spannableImpostor.setSpan(ForegroundColorSpan(colorImpostor), startImp, endImp, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannableImpostor.setSpan(StyleSpan(Typeface.BOLD), startImp, endImp, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         txtResumenTitulo.text = spannableImpostor
 
-        // ---------- TEXTO PALABRA ----------
         val textoPalabra = "La palabra era: $palabraJugada"
         val spannablePalabra = SpannableString(textoPalabra)
-
         val startPal = textoPalabra.indexOf(palabraJugada)
         val endPal = startPal + palabraJugada.length
-
-        // Color
-        spannablePalabra.setSpan(
-            ForegroundColorSpan(colorPalabra),
-            startPal,
-            endPal,
-            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-        )
-
-        // Negrita
-        spannablePalabra.setSpan(
-            StyleSpan(Typeface.BOLD),
-            startPal,
-            endPal,
-            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-        )
-
+        spannablePalabra.setSpan(ForegroundColorSpan(colorPalabra), startPal, endPal, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannablePalabra.setSpan(StyleSpan(Typeface.BOLD), startPal, endPal, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         txtPalabra.text = spannablePalabra
 
         btnRevelar.visibility = View.GONE
@@ -269,24 +168,11 @@ class PlayGameActivity : AppCompatActivity() {
     private fun dpToPx(dp: Int): Int = (dp * resources.displayMetrics.density).toInt()
 
     private fun mensajeAlerta(titulo: String, msg: String) {
-        AlertDialog.Builder(this)
-            .setTitle(titulo)
-            .setMessage(msg)
-            .setPositiveButton("OK") { _, _ ->
-                stopBell()
-            }
-            .setOnDismissListener {
-                stopBell()
-            }
+        AlertDialog.Builder(this).setTitle(titulo).setMessage(msg)
+            .setPositiveButton("OK") { _, _ -> stopBell() }
+            .setOnDismissListener { stopBell() }
             .show()
     }
 
-    override fun onStop() {
-        super.onStop()
-        stopBell()
-    }
-
+    override fun onStop() { super.onStop(); stopBell() }
 }
-
-
-

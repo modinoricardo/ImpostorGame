@@ -1,5 +1,6 @@
 package com.example.impostorgame
 
+import android.graphics.Color
 import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.View
@@ -27,18 +28,14 @@ class CategoryAdapterSelect(
 
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
         val item = categories[position]
-
         holder.textEmoji.text = item.iconEmoji
         holder.textTitle.text = item.title
-
         applySelectedStyle(holder, item.isSelected)
 
         holder.cardCategory.setOnClickListener {
             val adapterPos = holder.adapterPosition
             if (adapterPos == RecyclerView.NO_POSITION) return@setOnClickListener
-
-            val clicked = categories[adapterPos]
-            onCategoryClicked(clicked)   // ViewModel.toggleSelection(...)
+            onCategoryClicked(categories[adapterPos])
         }
     }
 
@@ -50,13 +47,26 @@ class CategoryAdapterSelect(
     }
 
     private fun applySelectedStyle(holder: CategoryViewHolder, selected: Boolean) {
-        if (selected) {
-            holder.cardCategory.setBackgroundResource(R.drawable.bg_category_selected)
-            holder.textTitle.setTypeface(null, Typeface.BOLD)
+        val esCarmesi = ThemeManager.esCarmesi(holder.itemView.context)
+
+        if (esCarmesi) {
+            if (selected) {
+                holder.cardCategory.setBackgroundResource(R.drawable.bg_category_selected_carmesi)
+                holder.textTitle.setTypeface(null, Typeface.BOLD)
+                holder.textTitle.setTextColor(Color.WHITE)
+            } else {
+                holder.cardCategory.setBackgroundResource(R.drawable.bg_category_normal_carmesi)
+                holder.textTitle.setTypeface(null, Typeface.NORMAL)
+                holder.textTitle.setTextColor(Color.parseColor("#CCFFFFFF"))
+            }
         } else {
-            holder.cardCategory.setBackgroundResource(R.drawable.bg_category_normal)
-            holder.textTitle.setTypeface(null, Typeface.NORMAL)
+            if (selected) {
+                holder.cardCategory.setBackgroundResource(R.drawable.bg_category_selected)
+                holder.textTitle.setTypeface(null, Typeface.BOLD)
+            } else {
+                holder.cardCategory.setBackgroundResource(R.drawable.bg_category_normal)
+                holder.textTitle.setTypeface(null, Typeface.NORMAL)
+            }
         }
     }
 }
-

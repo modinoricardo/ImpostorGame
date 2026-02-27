@@ -1,9 +1,20 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Base application theme. -->
+    <!-- Base application theme -->
     <style name="Base.Theme.ImpostorGame" parent="Theme.Material3.DayNight.NoActionBar" />
 
-    <style name="Theme.ImpostorGame" parent="Base.Theme.ImpostorGame" />
+    <!-- Tema Clásico -->
+    <style name="Theme.ImpostorGame" parent="Base.Theme.ImpostorGame">
+        <item name="colorPrimary">#00E5FF</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+    </style>
+
+    <!-- Tema Carmesí -->
+    <style name="Theme.ImpostorGame_Carmesi" parent="Base.Theme.ImpostorGame">
+        <item name="colorPrimary">#FF1744</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
+    </style>
 
     <!-- Theme para el BottomSheet -->
     <style name="Theme.EditPlayersBottomSheet" parent="ThemeOverlay.Material3.BottomSheetDialog">

@@ -83,7 +83,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
-                android:text="El impostor sabe que lo es. Los civiles conocen la palabra y deben descubrirle."
+                android:justificationMode="inter_word"
+                android:text="Existe un impostor. Los civiles conocen la palabra y deben descubrir al impostor."
                 android:textColor="#CCFFFFFF"
                 android:textSize="13sp" />
 
@@ -141,8 +142,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:justificationMode="inter_word"
                 android:layout_marginTop="6dp"
-                android:text="Nadie sabe si es el impostor. El impostor recibe una pista. El Señor Blanco no sabe ninguna palabra."
+                android:text="El impostor no sabe que es el impostor. Él recibe una pista relacionada con la palabra de los civiles. Existe un &quot;Señor Blanco&quot; que no recibe ninguna palabra y tiene que hacerse pasar por un civil."
                 android:textColor="#CCFFFFFF"
                 android:textSize="13sp" />
 

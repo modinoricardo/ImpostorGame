@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,9 +23,7 @@ class SelectCategoriesBottomSheet : BottomSheetDialogFragment() {
     private lateinit var adapter: CategoryAdapterSelect
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.bottomsheet_select_categories, container, false)
     }
@@ -32,23 +31,28 @@ class SelectCategoriesBottomSheet : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // ── Aplicar tema ──
+        val bgCard  = ThemeManager.getBgCard(requireContext())
+        val btnNeon = ThemeManager.getBtnNeon(requireContext())
+        val accent  = ThemeManager.getAccentColor(requireContext())
+        view.findViewById<View>(R.id.rootCategories)?.setBackgroundResource(bgCard)
+        view.findViewById<TextView>(R.id.textTitle)?.setShadowLayer(10f, 0f, 0f, accent)
+        view.findViewById<Button>(R.id.btnConfirmCategories)?.setBackgroundResource(btnNeon)
+
         val recycler = view.findViewById<RecyclerView>(R.id.recyclerCategories)
         val btnConfirm = view.findViewById<Button>(R.id.btnConfirmCategories)
 
         categoryViewModel = ViewModelProvider(requireActivity()).get(CategoryViewModel::class.java)
 
         adapter = CategoryAdapterSelect(emptyList()) { category ->
-            // Al pulsar una categoría, pedimos al ViewModel que cambie su selección
             categoryViewModel.toggleSelection(category.id)
         }
 
         recycler.layoutManager = LinearLayoutManager(view.context)
         recycler.adapter = adapter
 
-        // Observar las categorías del ViewModel
         categoryViewModel.categories.observe(viewLifecycleOwner) { list ->
             adapter.updateCategories(list)
-            //btnConfirm.isEnabled = list.any { it.isSelected }
         }
 
         btnConfirm.setOnClickListener {
@@ -56,24 +60,19 @@ class SelectCategoriesBottomSheet : BottomSheetDialogFragment() {
             (activity as? Listener)?.onCategoriesConfirmed(selected)
             dismiss()
         }
-
     }
 
     override fun onStart() {
         super.onStart()
-
-        // Aquí SÍ podemos acceder al bottom sheet real
         val bottomSheet = dialog?.findViewById<View>(
             com.google.android.material.R.id.design_bottom_sheet
         ) ?: return
-
         val behavior = BottomSheetBehavior.from(bottomSheet)
-        behavior.isDraggable = false   // no se puede arrastrar para cerrar
-        behavior.isHideable = false    // no se oculta deslizando
+        behavior.isDraggable = false
+        behavior.isHideable = false
     }
 
     companion object {
         const val TAG = "SelectCategories"
     }
 }
-

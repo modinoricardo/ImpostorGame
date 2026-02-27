@@ -23,6 +23,7 @@ class PlayerAdapterMain(
 
     override fun onBindViewHolder(holder: PlayerViewHolder, position: Int) {
         holder.playerName.text = players[position].nombre
+        holder.itemView.setBackgroundResource(ThemeManager.getBgChip(holder.itemView.context))
     }
 
     override fun getItemCount(): Int = players.size

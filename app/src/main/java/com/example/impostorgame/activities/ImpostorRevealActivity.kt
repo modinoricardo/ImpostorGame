@@ -28,6 +28,7 @@ import com.example.impostorgame.modelos.TipoJugador
 import com.example.impostorgame.modelos.WordItem
 import kotlin.random.Random
 import com.example.impostorgame.CategoryViewModel
+import com.example.impostorgame.ThemeManager
 import com.example.impostorgame.PlayerViewModel
 
 @Suppress("DEPRECATION")
@@ -73,8 +74,10 @@ class ImpostorRevealActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        ThemeManager.aplicarTema(this)
         enableEdgeToEdge()
         setContentView(R.layout.activity_impostor_reveal)
+        ThemeManager.aplicarDrawables(this)
 
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
@@ -88,7 +91,7 @@ class ImpostorRevealActivity : AppCompatActivity() {
         })
 
         detailsPlayer = findViewById(R.id.detailsPlayer)
-        layout = findViewById(R.id.layout)
+        layout = findViewById(R.id.layoutCard)
         cardViewPrincipal = findViewById(R.id.cardViewPrincipal)
         imgDedo = findViewById(R.id.imgDedo)
         txtTwo = findViewById(R.id.txtTwo)

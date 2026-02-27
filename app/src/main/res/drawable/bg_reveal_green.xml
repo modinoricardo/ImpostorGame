@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Fondo verde oscuro base -->
+    <item>
+        <shape>
+            <gradient
+                android:type="radial"
+                android:gradientRadius="200%p"
+                android:startColor="#0D2B1F"
+                android:centerColor="#0A2318"
+                android:endColor="#071A12"/>
+        </shape>
+    </item>
+
+    <!-- Glow verde suave esquina superior -->
+    <item android:top="-80dp" android:right="-80dp">
+        <shape>
+            <gradient
+                android:type="radial"
+                android:gradientRadius="120%p"
+                android:startColor="#2200C853"
+                android:endColor="#00000000"/>
+        </shape>
+    </item>
+
+</layer-list>

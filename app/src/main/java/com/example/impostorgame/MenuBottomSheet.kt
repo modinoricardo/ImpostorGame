@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.DecelerateInterpolator
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -25,21 +27,15 @@ class MenuBottomSheet : BottomSheetDialogFragment() {
         val bottomSheet = dialog?.findViewById<View>(
             com.google.android.material.R.id.design_bottom_sheet
         ) ?: return
-
         bottomSheet.background = ContextCompat.getDrawable(requireContext(), R.drawable.bottomsheet_rounded)
-
         bottomSheet.post {
             val h = if (bottomSheet.height > 0) bottomSheet.height
             else bottomSheet.resources.displayMetrics.heightPixels
             bottomSheet.translationY = h.toFloat()
             bottomSheet.alpha = 0f
-            bottomSheet.animate()
-                .translationY(0f).alpha(1f)
-                .setDuration(400L)
-                .setInterpolator(DecelerateInterpolator(2f))
-                .start()
+            bottomSheet.animate().translationY(0f).alpha(1f)
+                .setDuration(400L).setInterpolator(DecelerateInterpolator(2f)).start()
         }
-
         val behavior = BottomSheetBehavior.from(bottomSheet)
         behavior.isDraggable = true
         behavior.isHideable = true
@@ -48,11 +44,21 @@ class MenuBottomSheet : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<CardView>(R.id.cardMenuEstilo).setOnClickListener {
-            dismiss()
-            // TODO: abrir pantalla de Estilo cuando esté lista
+        // ── Aplicar tema ──
+        val bgCard  = ThemeManager.getBgCard(requireContext())
+        val accent  = ThemeManager.getAccentColor(requireContext())
+        view.findViewById<View>(R.id.rootBottomSheet)?.setBackgroundResource(bgCard)
+        // Título "Menú"
+        view.findViewById<TextView>(R.id.txtMenuTitle)?.setShadowLayer(12f, 0f, 0f, accent)
+        // Cards internas
+        listOf(R.id.cardMenuEstilo, R.id.cardMenuAcercaDe).forEach { cardId ->
+            view.findViewById<CardView>(cardId)?.getChildAt(0)?.setBackgroundResource(bgCard)
         }
 
+        view.findViewById<CardView>(R.id.cardMenuEstilo).setOnClickListener {
+            dismiss()
+            EstiloBottomSheet().show(parentFragmentManager, EstiloBottomSheet.TAG)
+        }
         view.findViewById<CardView>(R.id.cardMenuAcercaDe).setOnClickListener {
             dismiss()
             AcercaDeBottomSheet().show(parentFragmentManager, AcercaDeBottomSheet.TAG)

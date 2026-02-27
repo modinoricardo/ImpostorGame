@@ -2,30 +2,31 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_neon_space"
     android:paddingLeft="16dp"
     android:paddingRight="16dp">
 
-    <!-- Aurora overlay -->
-    <View
-        android:id="@+id/aurora"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:alpha="0.75"
-        android:background="@drawable/overlay_aurora"
+    <!-- S central (sustituye a los rings) -->
+    <ImageView
+        android:id="@+id/imgLetraS"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:alpha="0.18"
+        android:src="@drawable/ic_letra_s"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Energy rings -->
+    <!-- Glow verde suave detrás de la card -->
     <View
         android:id="@+id/ring1"
-        android:layout_width="280dp"
-        android:layout_height="280dp"
-        android:alpha="0.65"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:alpha="0.25"
         android:background="@drawable/ring_neon"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -34,16 +35,16 @@
 
     <View
         android:id="@+id/ring2"
-        android:layout_width="360dp"
-        android:layout_height="360dp"
-        android:alpha="0.45"
+        android:layout_width="380dp"
+        android:layout_height="380dp"
+        android:alpha="0.12"
         android:background="@drawable/ring_neon_soft"
         app:layout_constraintTop_toTopOf="@id/ring1"
         app:layout_constraintBottom_toBottomOf="@id/ring1"
         app:layout_constraintStart_toStartOf="@id/ring1"
         app:layout_constraintEnd_toEndOf="@id/ring1"/>
 
-    <!-- Card principal centrado dentro del círculo -->
+    <!-- Card principal centrada -->
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewPrincipal"
         android:layout_width="0dp"
@@ -60,7 +61,7 @@
         app:layout_constraintVertical_bias="0.5">
 
         <LinearLayout
-            android:id="@+id/layout"
+            android:id="@+id/layoutCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -114,8 +115,6 @@
                 android:textColor="#CCFFFFFF"
                 android:gravity="center_horizontal" />
 
-
-            <!-- Texto oculto que muestra el rol -->
             <TextView
                 android:id="@+id/detailsPlayer"
                 android:layout_width="wrap_content"
@@ -156,7 +155,7 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <!-- Card siguiente jugador, debajo del círculo -->
+    <!-- Botón siguiente jugador -->
     <androidx.cardview.widget.CardView
         android:id="@+id/nenxtPlayer"
         android:layout_width="0dp"

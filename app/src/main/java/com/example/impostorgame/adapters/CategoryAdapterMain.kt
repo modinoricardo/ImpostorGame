@@ -23,8 +23,8 @@ class CategoryAdapterMain(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val category = categories[position]
-        // Emoji + título en una sola línea
         holder.textName.text = "${category.iconEmoji} ${category.title}"
+        holder.itemView.setBackgroundResource(ThemeManager.getBgChip(holder.itemView.context))
     }
 
     override fun getItemCount(): Int = categories.size
