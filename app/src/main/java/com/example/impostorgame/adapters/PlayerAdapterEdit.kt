@@ -45,11 +45,12 @@ class PlayerAdapterEdit(
         val originalName = players[position].nombre
 
         // Aplicar background según tema
-        if (ThemeManager.esCarmesi(holder.itemView.context)) {
-            holder.editContainer.setBackgroundResource(R.drawable.bg_player_edit_carmesi)
-        } else {
-            holder.editContainer.setBackgroundResource(R.drawable.bg_card_main)
+        val bgEdit = when {
+            ThemeManager.esCarmesi(holder.itemView.context) -> R.drawable.bg_player_edit_carmesi
+            ThemeManager.esJmc(holder.itemView.context)     -> R.drawable.bg_player_edit_jmc
+            else                                             -> R.drawable.bg_card_main
         }
+        holder.editContainer.setBackgroundResource(bgEdit)
 
         holder.currentWatcher?.let { holder.playerName.removeTextChangedListener(it) }
 

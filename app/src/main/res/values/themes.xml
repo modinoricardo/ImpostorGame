@@ -16,6 +16,13 @@
         <item name="android:fontFamily">sans-serif-condensed</item>
     </style>
 
+    <!-- Tema JMC -->
+    <style name="Theme.ImpostorGame_Jmc" parent="Base.Theme.ImpostorGame">
+        <item name="colorPrimary">#00C853</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
     <!-- Theme para el BottomSheet -->
     <style name="Theme.EditPlayersBottomSheet" parent="ThemeOverlay.Material3.BottomSheetDialog">
         <item name="android:windowEnterAnimation">@anim/bottomsheet_material_in</item>

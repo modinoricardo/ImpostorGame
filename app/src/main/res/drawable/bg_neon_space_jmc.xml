@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <solid android:color="#0A0A0A"/>
+        </shape>
+    </item>
+    <!-- Glow verde muy sutil en esquina -->
+    <item android:top="-100dp" android:left="-100dp">
+        <shape>
+            <gradient
+                android:type="radial"
+                android:gradientRadius="80%p"
+                android:startColor="#1100C853"
+                android:endColor="#00000000"/>
+        </shape>
+    </item>
+</layer-list>

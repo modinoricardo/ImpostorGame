@@ -43,7 +43,6 @@ class EstiloBottomSheet : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // ── Aplicar tema al propio BottomSheet ──
         val bgCard = ThemeManager.getBgCard(requireContext())
         val accent = ThemeManager.getAccentColor(requireContext())
         view.findViewById<View>(R.id.rootEstilo)?.setBackgroundResource(bgCard)
@@ -51,25 +50,32 @@ class EstiloBottomSheet : BottomSheetDialogFragment() {
 
         val cardClasico = view.findViewById<CardView>(R.id.cardTemaClasico)
         val cardCarmesi = view.findViewById<CardView>(R.id.cardTemaCarmesi)
+        val cardJmc     = view.findViewById<CardView>(R.id.cardTemaJmc)
         val checkClasico = view.findViewById<TextView>(R.id.checkTemaClasico)
         val checkCarmesi = view.findViewById<TextView>(R.id.checkTemaCarmesi)
+        val checkJmc     = view.findViewById<TextView>(R.id.checkTemaJmc)
 
         val temaActual = ThemeManager.getTema(requireContext())
         checkClasico.visibility = if (temaActual == ThemeManager.TEMA_CLASICO) View.VISIBLE else View.GONE
         checkCarmesi.visibility = if (temaActual == ThemeManager.TEMA_CARMESI) View.VISIBLE else View.GONE
+        checkJmc.visibility     = if (temaActual == ThemeManager.TEMA_JMC)     View.VISIBLE else View.GONE
 
         cardClasico.setOnClickListener {
             if (ThemeManager.getTema(requireContext()) != ThemeManager.TEMA_CLASICO) {
                 ThemeManager.setTema(requireContext(), ThemeManager.TEMA_CLASICO)
-                dismiss()
-                activity?.recreate()
+                dismiss(); activity?.recreate()
             }
         }
         cardCarmesi.setOnClickListener {
             if (ThemeManager.getTema(requireContext()) != ThemeManager.TEMA_CARMESI) {
                 ThemeManager.setTema(requireContext(), ThemeManager.TEMA_CARMESI)
-                dismiss()
-                activity?.recreate()
+                dismiss(); activity?.recreate()
+            }
+        }
+        cardJmc.setOnClickListener {
+            if (ThemeManager.getTema(requireContext()) != ThemeManager.TEMA_JMC) {
+                ThemeManager.setTema(requireContext(), ThemeManager.TEMA_JMC)
+                dismiss(); activity?.recreate()
             }
         }
     }

@@ -14,6 +14,7 @@ object ThemeManager {
 
     const val TEMA_CLASICO = "clasico"
     const val TEMA_CARMESI = "carmesi"
+    const val TEMA_JMC = "jmc"
 
     fun getTema(context: Context): String {
         return context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
@@ -28,21 +29,55 @@ object ThemeManager {
     fun aplicarTema(activity: Activity) {
         val themeRes = when (getTema(activity)) {
             TEMA_CARMESI -> R.style.Theme_ImpostorGame_Carmesi
+            TEMA_JMC     -> R.style.Theme_ImpostorGame_Jmc
             else -> R.style.Theme_ImpostorGame
         }
         activity.setTheme(themeRes)
     }
 
     fun esCarmesi(context: Context) = getTema(context) == TEMA_CARMESI
+    fun esJmc(context: Context) = getTema(context) == TEMA_JMC
 
-    fun getBgMain(context: Context)     = if (esCarmesi(context)) R.drawable.bg_neon_space_red  else R.drawable.bg_neon_space
-    fun getBtnNext(context: Context)    = if (esCarmesi(context)) R.drawable.btn_neon_red        else R.drawable.btn_neon
-    fun getBgCard(context: Context)     = if (esCarmesi(context)) R.drawable.bg_card_main_red   else R.drawable.bg_card_main
-    fun getBgChip(context: Context)     = if (esCarmesi(context)) R.drawable.bg_chip_carmesi      else R.drawable.bg_card_main
-    fun getBtnNeon(context: Context)    = if (esCarmesi(context)) R.drawable.btn_neon_red        else R.drawable.btn_neon
-    fun getRingNeon(context: Context)   = if (esCarmesi(context)) R.drawable.ring_neon_red       else R.drawable.ring_neon
-    fun getRingSoft(context: Context)   = if (esCarmesi(context)) R.drawable.ring_neon_red_soft  else R.drawable.ring_neon_soft
-    fun getAccentColor(context: Context) = if (esCarmesi(context)) 0xFFFF1744.toInt() else 0xFF00E5FF.toInt()
+    fun getBgMain(context: Context) = when (getTema(context)) {
+        TEMA_CARMESI -> R.drawable.bg_neon_space_red
+        TEMA_JMC     -> R.drawable.bg_neon_space_jmc
+        else         -> R.drawable.bg_neon_space
+    }
+    fun getBtnNext(context: Context) = when (getTema(context)) {
+        TEMA_CARMESI -> R.drawable.btn_neon_red
+        TEMA_JMC     -> R.drawable.btn_neon_jmc
+        else         -> R.drawable.btn_neon
+    }
+    fun getBgCard(context: Context) = when (getTema(context)) {
+        TEMA_CARMESI -> R.drawable.bg_card_main_red
+        TEMA_JMC     -> R.drawable.bg_card_main_jmc
+        else         -> R.drawable.bg_card_main
+    }
+    fun getBgChip(context: Context) = when (getTema(context)) {
+        TEMA_CARMESI -> R.drawable.bg_chip_carmesi
+        TEMA_JMC     -> R.drawable.bg_chip_jmc
+        else         -> R.drawable.bg_card_main
+    }
+    fun getBtnNeon(context: Context) = when (getTema(context)) {
+        TEMA_CARMESI -> R.drawable.btn_neon_red
+        TEMA_JMC     -> R.drawable.btn_neon_jmc
+        else         -> R.drawable.btn_neon
+    }
+    fun getRingNeon(context: Context) = when (getTema(context)) {
+        TEMA_CARMESI -> R.drawable.ring_neon_red
+        TEMA_JMC     -> R.drawable.ring_neon_jmc
+        else         -> R.drawable.ring_neon
+    }
+    fun getRingSoft(context: Context) = when (getTema(context)) {
+        TEMA_CARMESI -> R.drawable.ring_neon_red_soft
+        TEMA_JMC     -> R.drawable.ring_neon_jmc_soft
+        else         -> R.drawable.ring_neon_soft
+    }
+    fun getAccentColor(context: Context) = when (getTema(context)) {
+        TEMA_CARMESI -> 0xFFFF1744.toInt()
+        TEMA_JMC     -> 0xFF00C853.toInt()
+        else         -> 0xFF00E5FF.toInt()
+    }
 
     // Aplica el tema a todas las vistas comunes de una Activity
     fun aplicarDrawables(activity: Activity) {

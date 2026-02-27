@@ -47,25 +47,38 @@ class CategoryAdapterSelect(
     }
 
     private fun applySelectedStyle(holder: CategoryViewHolder, selected: Boolean) {
-        val esCarmesi = ThemeManager.esCarmesi(holder.itemView.context)
-
-        if (esCarmesi) {
-            if (selected) {
-                holder.cardCategory.setBackgroundResource(R.drawable.bg_category_selected_carmesi)
-                holder.textTitle.setTypeface(null, Typeface.BOLD)
-                holder.textTitle.setTextColor(Color.WHITE)
-            } else {
-                holder.cardCategory.setBackgroundResource(R.drawable.bg_category_normal_carmesi)
-                holder.textTitle.setTypeface(null, Typeface.NORMAL)
-                holder.textTitle.setTextColor(Color.parseColor("#CCFFFFFF"))
+        val ctx = holder.itemView.context
+        when {
+            ThemeManager.esCarmesi(ctx) -> {
+                if (selected) {
+                    holder.cardCategory.setBackgroundResource(R.drawable.bg_category_selected_carmesi)
+                    holder.textTitle.setTypeface(null, Typeface.BOLD)
+                    holder.textTitle.setTextColor(Color.WHITE)
+                } else {
+                    holder.cardCategory.setBackgroundResource(R.drawable.bg_category_normal_carmesi)
+                    holder.textTitle.setTypeface(null, Typeface.NORMAL)
+                    holder.textTitle.setTextColor(Color.parseColor("#CCFFFFFF"))
+                }
             }
-        } else {
-            if (selected) {
-                holder.cardCategory.setBackgroundResource(R.drawable.bg_category_selected)
-                holder.textTitle.setTypeface(null, Typeface.BOLD)
-            } else {
-                holder.cardCategory.setBackgroundResource(R.drawable.bg_category_normal)
-                holder.textTitle.setTypeface(null, Typeface.NORMAL)
+            ThemeManager.esJmc(ctx) -> {
+                if (selected) {
+                    holder.cardCategory.setBackgroundResource(R.drawable.bg_category_selected_jmc)
+                    holder.textTitle.setTypeface(null, Typeface.BOLD)
+                    holder.textTitle.setTextColor(Color.WHITE)
+                } else {
+                    holder.cardCategory.setBackgroundResource(R.drawable.bg_category_normal_jmc)
+                    holder.textTitle.setTypeface(null, Typeface.NORMAL)
+                    holder.textTitle.setTextColor(Color.parseColor("#CCFFFFFF"))
+                }
+            }
+            else -> {
+                if (selected) {
+                    holder.cardCategory.setBackgroundResource(R.drawable.bg_category_selected)
+                    holder.textTitle.setTypeface(null, Typeface.BOLD)
+                } else {
+                    holder.cardCategory.setBackgroundResource(R.drawable.bg_category_normal)
+                    holder.textTitle.setTypeface(null, Typeface.NORMAL)
+                }
             }
         }
     }
