@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.impostorgame.modelos.Jugador
+import com.example.impostorgame.modelos.TipoJugador
 import kotlin.random.Random
 
 class PlayerViewModel : ViewModel() {
@@ -17,18 +18,14 @@ class PlayerViewModel : ViewModel() {
     )
     val players: LiveData<List<Jugador>> = _players
 
-    // Añadir jugador (al final de la lista)
     fun addPlayer(name: String) {
         val current = _players.value ?: emptyList()
         _players.value = current + Jugador(nombre = name, vecesImpostor = 0)
     }
 
-    // Eliminar jugador por posición
     fun removeAt(index: Int): Boolean {
         val current = _players.value?.toMutableList() ?: return false
-
         if (current.size <= 3) return false
-
         if (index in current.indices) {
             current.removeAt(index)
             _players.value = current
@@ -37,7 +34,6 @@ class PlayerViewModel : ViewModel() {
         return false
     }
 
-    // Renombrar un jugador concreto, por su posición (mantiene vecesImpostor)
     fun renameAt(index: Int, newName: String) {
         val current = _players.value?.toMutableList() ?: return
         if (index in current.indices) {
@@ -47,16 +43,12 @@ class PlayerViewModel : ViewModel() {
         }
     }
 
-    // Sobrescribir la lista entera
     fun updatePlayers(newList: List<Jugador>) {
         _players.value = newList
     }
 
-    fun getPlayerCount(): Int {
-        return _players.value?.size ?: 0
-    }
+    fun getPlayerCount(): Int = _players.value?.size ?: 0
 
-    // Extra: sumar 1 cuando salga impostor (por nombre)
     fun incrementImpostorByName(name: String) {
         val current = _players.value ?: return
         _players.value = current.map {
@@ -64,17 +56,37 @@ class PlayerViewModel : ViewModel() {
         }
     }
 
-    fun pickImpostorIndex(players: List<Jugador>): Int {
-        val weights = players.map { 1.0 / (1 + it.vecesImpostor) }
-        val total = weights.sum()
-        val r = Random.nextDouble() * total
-        var acc = 0.0
-        for (i in players.indices) {
-            acc += weights[i]
-            if (r <= acc) return i
+    // Elige UN impostor (compatibilidad hacia atrás)
+    fun pickImpostorIndex(players: List<Jugador>): Int =
+        pickImpostorIndices(players, 1).firstOrNull() ?: 0
+
+    // Elige N impostores ponderados por vecesImpostor, solo entre jugadores NORMAL
+    fun pickImpostorIndices(players: List<Jugador>, numImpostores: Int): Set<Int> {
+        val elegibles = players.indices.filter { players[it].tipo == TipoJugador.NORMAL }
+        if (elegibles.isEmpty()) return emptySet()
+
+        val resultado = mutableSetOf<Int>()
+        val disponibles = elegibles.toMutableList()
+        val n = numImpostores.coerceAtMost(disponibles.size)
+
+        repeat(n) {
+            val weights = disponibles.map { 1.0 / (1 + players[it].vecesImpostor) }
+            val total = weights.sum()
+            val r = Random.nextDouble() * total
+            var acc = 0.0
+            for (i in disponibles.indices) {
+                acc += weights[i]
+                if (r <= acc) {
+                    resultado.add(disponibles[i])
+                    disponibles.removeAt(i)
+                    return@repeat
+                }
+            }
+            // fallback
+            resultado.add(disponibles.last())
+            disponibles.removeAt(disponibles.lastIndex)
         }
-        return players.lastIndex
+
+        return resultado
     }
-
 }
-
