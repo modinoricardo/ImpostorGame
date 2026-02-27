@@ -90,7 +90,7 @@ class CategoryViewModel : ViewModel() {
                     WordItem("Taylor Swift", listOf("Conciertos")),
                     WordItem("Leonardo DiCaprio", listOf("Óscar")),
                     WordItem("Hitler", listOf("El que llega más alto con la mano"))
-                    )
+                )
             ),
             Category(
                 id = 4L,
@@ -121,7 +121,7 @@ class CategoryViewModel : ViewModel() {
             ),
             Category(
                 id = 5L,
-                title = "Comida",
+                title = "Comidas",
                 iconEmoji = "🍕",
                 items = listOf(
                     WordItem("Lasaña", listOf("capas", "pasta", "horno")),
@@ -194,59 +194,115 @@ class CategoryViewModel : ViewModel() {
                 items = listOf(
                     WordItem(
                         "Jugador más cercano (distancia física)",
-                        listOf("Está en tu 'burbuja'", "No tienes que proyectar la voz", "Con un gesto basta")
+                        listOf(
+                            "Está en tu 'burbuja'",
+                            "No tienes que proyectar la voz",
+                            "Con un gesto basta"
+                        )
                     ),
                     WordItem(
                         "Jugador más mayor (edad más alta)",
-                        listOf("Tiene referencias que no todos pillan", "Ha visto cosas repetirse", "Se nota en cómo lo cuenta")
+                        listOf(
+                            "Tiene referencias que no todos pillan",
+                            "Ha visto cosas repetirse",
+                            "Se nota en cómo lo cuenta"
+                        )
                     ),
                     WordItem(
                         "Jugador más alto (mayor estatura)",
-                        listOf("Cambia la perspectiva del grupo", "En fotos, tu ojo va ahí", "No pasa desapercibido de pie")
+                        listOf(
+                            "Cambia la perspectiva del grupo",
+                            "En fotos, tu ojo va ahí",
+                            "No pasa desapercibido de pie"
+                        )
                     ),
                     WordItem(
                         "Jugador más joven (edad más baja)",
-                        listOf("Tiene 'primera vez' en muchas cosas", "Le sobra energía a ciertas horas", "Ciertas frases le suenan normales")
+                        listOf(
+                            "Tiene 'primera vez' en muchas cosas",
+                            "Le sobra energía a ciertas horas",
+                            "Ciertas frases le suenan normales"
+                        )
                     ),
                     WordItem(
                         "Jugador con el pelo más largo",
-                        listOf("Tiene 'rutina' sin decirlo", "A veces estorba y a veces ayuda", "En movimiento se nota más")
+                        listOf(
+                            "Tiene 'rutina' sin decirlo",
+                            "A veces estorba y a veces ayuda",
+                            "En movimiento se nota más"
+                        )
                     ),
                     WordItem(
                         "Jugador con la voz más grave",
-                        listOf("Su tono llena el espacio", "Da sensación de 'radio'", "Con poco volumen, llega igual")
+                        listOf(
+                            "Su tono llena el espacio",
+                            "Da sensación de 'radio'",
+                            "Con poco volumen, llega igual"
+                        )
                     ),
                     WordItem(
                         "Jugador con la voz más aguda",
-                        listOf("Destaca sin querer", "Cambia mucho según el momento", "En emoción se delata")
+                        listOf(
+                            "Destaca sin querer",
+                            "Cambia mucho según el momento",
+                            "En emoción se delata"
+                        )
                     ),
                     WordItem(
                         "Jugador más puntual",
-                        listOf("Para él/ella, 'a tiempo' no existe", "Prefiere esperar que llegar justo", "Le incomoda improvisar horarios")
+                        listOf(
+                            "Para él/ella, 'a tiempo' no existe",
+                            "Prefiere esperar que llegar justo",
+                            "Le incomoda improvisar horarios"
+                        )
                     ),
                     WordItem(
                         "Jugador más despistado",
-                        listOf("Va en automático a ratos", "Se le escapan detalles obvios", "Vive en su propio hilo")
+                        listOf(
+                            "Va en automático a ratos",
+                            "Se le escapan detalles obvios",
+                            "Vive en su propio hilo"
+                        )
                     ),
                     WordItem(
                         "Jugador más ordenado",
-                        listOf("Se nota en lo pequeño", "Le molesta el desorden ajeno", "Tiene su manera de hacerlo todo")
+                        listOf(
+                            "Se nota en lo pequeño",
+                            "Le molesta el desorden ajeno",
+                            "Tiene su manera de hacerlo todo"
+                        )
                     ),
                     WordItem(
                         "Jugador más dormilón",
-                        listOf("Se apaga fácil", "El descanso le llama", "Siempre podría ser 'un ratito más'")
+                        listOf(
+                            "Se apaga fácil",
+                            "El descanso le llama",
+                            "Siempre podría ser 'un ratito más'"
+                        )
                     ),
                     WordItem(
                         "Jugador más deportista",
-                        listOf("Su cuerpo habla por él/ella", "Tiene hábitos que se notan", "El movimiento es su idioma")
+                        listOf(
+                            "Su cuerpo habla por él/ella",
+                            "Tiene hábitos que se notan",
+                            "El movimiento es su idioma"
+                        )
                     ),
                     WordItem(
                         "Jugador más competitivo",
-                        listOf("Se le encienden los ojos", "No se lo toma 'solo por jugar'", "Necesita saber quién gana")
+                        listOf(
+                            "Se le encienden los ojos",
+                            "No se lo toma 'solo por jugar'",
+                            "Necesita saber quién gana"
+                        )
                     ),
                     WordItem(
                         "Jugador más tranquilo",
-                        listOf("Baja la temperatura del ambiente", "No reacciona rápido", "Su presencia calma")
+                        listOf(
+                            "Baja la temperatura del ambiente",
+                            "No reacciona rápido",
+                            "Su presencia calma"
+                        )
                     ),
                     WordItem(
                         "Jugador más impaciente",
@@ -254,27 +310,51 @@ class CategoryViewModel : ViewModel() {
                     ),
                     WordItem(
                         "Jugador que más usa el móvil",
-                        listOf("Siempre está en dos sitios a la vez", "Tiene reflejos de pantalla", "Nunca está del todo presente")
+                        listOf(
+                            "Siempre está en dos sitios a la vez",
+                            "Tiene reflejos de pantalla",
+                            "Nunca está del todo presente"
+                        )
                     ),
                     WordItem(
                         "Jugador más bromista",
-                        listOf("Encuentra huecos para rematar", "Tiene respuestas listas", "Le sale sin pensarlo")
+                        listOf(
+                            "Encuentra huecos para rematar",
+                            "Tiene respuestas listas",
+                            "Le sale sin pensarlo"
+                        )
                     ),
                     WordItem(
                         "Jugador más serio",
-                        listOf("No regala reacciones", "Su cara no lo cuenta todo", "Va a lo funcional")
+                        listOf(
+                            "No regala reacciones",
+                            "Su cara no lo cuenta todo",
+                            "Va a lo funcional"
+                        )
                     ),
                     WordItem(
                         "Jugador más miedoso",
-                        listOf("Su cerebro imagina finales", "Prefiere lo predecible", "Evita lo raro")
+                        listOf(
+                            "Su cerebro imagina finales",
+                            "Prefiere lo predecible",
+                            "Evita lo raro"
+                        )
                     ),
                     WordItem(
                         "Jugador más fan de la música",
-                        listOf("Se le nota en el ritmo", "Tiene una banda sonora interna", "Reconoce cosas sin esfuerzo")
+                        listOf(
+                            "Se le nota en el ritmo",
+                            "Tiene una banda sonora interna",
+                            "Reconoce cosas sin esfuerzo"
+                        )
                     ),
                     WordItem(
                         "Jugador con mejor memoria",
-                        listOf("Guarda detalles como si nada", "Conecta cosas antiguas", "Se acuerda cuando tú no")
+                        listOf(
+                            "Guarda detalles como si nada",
+                            "Conecta cosas antiguas",
+                            "Se acuerda cuando tú no"
+                        )
                     ),
                     WordItem(
                         "Jugador más hablador",
@@ -282,18 +362,71 @@ class CategoryViewModel : ViewModel() {
                     ),
                     WordItem(
                         "Jugador más callado",
-                        listOf("Habla cuando merece la pena", "Observa más de lo que parece", "Responde con lo justo")
+                        listOf(
+                            "Habla cuando merece la pena",
+                            "Observa más de lo que parece",
+                            "Responde con lo justo"
+                        )
                     ),
                     WordItem(
                         "Jugador más fashion (mejor vestido)",
-                        listOf("Hay intención en lo que lleva", "Parece 'montado' sin esfuerzo", "Su imagen habla primero")
+                        listOf(
+                            "Hay intención en lo que lleva",
+                            "Parece 'montado' sin esfuerzo",
+                            "Su imagen habla primero"
+                        )
                     ),
                     WordItem(
                         "¿De los presentes quién es más probable que llegue tarde?",
-                        listOf("Siempre se le cruza algo", "Su reloj va diferente", "Aparece cuando ya está en marcha")
+                        listOf(
+                            "Siempre se le cruza algo",
+                            "Su reloj va diferente",
+                            "Aparece cuando ya está en marcha"
+                        )
+                    ),
+                    WordItem(
+                        "Impostor", listOf("Mentiroso", "¿Quien es el mas falso?")
                     )
                 )
 
+            ), Category(
+                id = 8L,
+                title = "Deportes",
+                iconEmoji = "\uD83C\uDFBE",
+                items = listOf(
+                    WordItem(
+                        "Waterpolo",
+                        listOf("agua", "pelota", "bañador")
+                    ),
+                    WordItem(
+                        "Cricket",
+                        listOf("beisbol", "bate", "pelota")
+                    ),
+                    WordItem(
+                        "Golf",
+                        listOf("hoyo", "cesped", "palos", "banderines")
+                    ),
+                    WordItem(
+                        "Baloncesto",
+                        listOf("alto", "aro", "balon")
+                    ),
+                    WordItem(
+                        "Futbol",
+                        listOf("escuadra", "palco", "estadio", "banderin", "balon")
+                    ),
+                    WordItem(
+                        "Tenis",
+                        listOf("reves")
+                    ),
+                    WordItem(
+                        "Formula 1",
+                        listOf("Rueda", "Fernando", "bandera roja", "bandera a cuadros")
+                    ),
+                    WordItem(
+                        "Moto GP",
+                        listOf("A 2", " A 4", "Casco", "Extremo")
+                    )
+                )
             )
         )
     }
@@ -339,7 +472,7 @@ class CategoryViewModel : ViewModel() {
 
     //Imprimimos por consola los items de una categoria
     fun logItems(categoryId: Long) {
-        Log.d("Catego","------------------------------------------------------")
+        Log.d("Catego", "------------------------------------------------------")
         val category = _categories.value?.firstOrNull { it.id == categoryId } ?: return
 
         Log.d("CategoryVM", "Category ${category.id} - ${category.title}:")
