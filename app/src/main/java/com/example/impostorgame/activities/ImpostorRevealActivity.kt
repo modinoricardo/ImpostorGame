@@ -79,6 +79,10 @@ class ImpostorRevealActivity : AppCompatActivity() {
         setContentView(R.layout.activity_impostor_reveal)
         ThemeManager.aplicarDrawables(this)
 
+        // Mostrar la S solo en carmesí
+        val imgLetraS = findViewById<ImageView>(R.id.imgLetraS)
+        imgLetraS?.visibility = if (ThemeManager.esCarmesi(this)) View.VISIBLE else View.GONE
+
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 AlertDialog.Builder(this@ImpostorRevealActivity)
@@ -223,7 +227,7 @@ class ImpostorRevealActivity : AppCompatActivity() {
 
         when {
             esSenorBlanco -> {
-                detailsPlayer.text = "SEÑOR BLANCO"
+                detailsPlayer.text = "SEÑOR BLANCO\nNo tienes palabra"
                 detailsPlayer.setTextColor(getColor(R.color.colorImpostor))
                 hintPlayer.text = ""
                 hintPlayer.visibility = View.GONE
@@ -315,11 +319,14 @@ class ImpostorRevealActivity : AppCompatActivity() {
             else
                 nombresImpostores.joinToString(", ")
 
+            val senoresBlancos = indicesSenoresBlancos.map { listaJugadores[it].nombre }.joinToString(", ")
+
             val intent = Intent(this, PlayGameActivity::class.java).apply {
                 putParcelableArrayListExtra("LISTA_JUGADORES", ArrayList(listaJugadores))
                 putParcelableArrayListExtra("LISTA_CATEGORIAS", ArrayList(listaCategorias))
                 putExtra("PALABRA", if (opciones.modoLoco && modoLocoActivo) "NO HABIA PALABRA" else palabra)
                 putExtra("IMPOSTOR", impostorNombres)
+                putExtra("SENORES_BLANCOS", senoresBlancos)
                 putExtra("MODO_MISTERIOSO", opciones.modoMisterioso)
             }
             startActivity(intent)

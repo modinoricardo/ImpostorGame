@@ -366,6 +366,22 @@ class MainActivity : AppCompatActivity(),
 
         if (!opciones.modoMisterioso) {
             opciones = opciones.copy(numSenoresBlancos = 0)
+        } else {
+            // En modo misterioso: ocultar y desactivar pista y modo loco
+            opciones = opciones.copy(pista = false, modoLoco = false)
+            switchPista.isChecked = false
+            switchModoLoco.isChecked = false
+        }
+
+        // Ocultar/mostrar cards según modo
+        val cardPista = findViewById<androidx.cardview.widget.CardView>(R.id.cardViewPistaImpostor)
+        val cardLoco  = findViewById<androidx.cardview.widget.CardView>(R.id.cardViewModoLoco)
+        if (opciones.modoMisterioso) {
+            cardPista.visibility = View.GONE
+            cardLoco.visibility  = View.GONE
+        } else {
+            cardPista.visibility = View.VISIBLE
+            cardLoco.visibility  = View.VISIBLE
         }
 
         if (!esConfiguracionValida(opciones.numImpostores, opciones.numSenoresBlancos)) {

@@ -9,13 +9,14 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp">
 
-    <!-- S central (sustituye a los rings) -->
+    <!-- S central: solo visible en carmesí (se controla por código) -->
     <ImageView
         android:id="@+id/imgLetraS"
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:alpha="0.18"
         android:src="@drawable/ic_letra_s"
+        android:visibility="gone"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

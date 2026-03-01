@@ -31,8 +31,9 @@ class AcercaDeBottomSheet : BottomSheetDialogFragment() {
         bottomSheet.background = ContextCompat.getDrawable(requireContext(), R.drawable.bottomsheet_rounded)
         val behavior = BottomSheetBehavior.from(bottomSheet)
         behavior.state = BottomSheetBehavior.STATE_EXPANDED
-        behavior.isDraggable = true
-        behavior.isHideable = true
+        behavior.isDraggable = false
+        behavior.isHideable = false
+        behavior.peekHeight = bottomSheet.resources.displayMetrics.heightPixels
         bottomSheet.post {
             val h = if (bottomSheet.height > 0) bottomSheet.height
             else bottomSheet.resources.displayMetrics.heightPixels
@@ -61,6 +62,8 @@ class AcercaDeBottomSheet : BottomSheetDialogFragment() {
         listOf(R.id.layoutInstagram, R.id.layoutEmail, R.id.layoutGithub).forEach { id ->
             view.findViewById<LinearLayout>(id)?.setBackgroundResource(bgCard)
         }
+
+        view.findViewById<View>(R.id.btnBack)?.setOnClickListener { dismiss() }
 
         view.findViewById<LinearLayout>(R.id.layoutInstagram).setOnClickListener {
             abrirUrl("https://www.instagram.com/elrichi27")

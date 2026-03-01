@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 
     <LinearLayout
         android:id="@+id/rootAcercaDe"
@@ -12,33 +12,52 @@
         android:padding="24dp"
         android:background="@drawable/bg_card_main">
 
-        <View
-            android:layout_width="40dp"
-            android:layout_height="4dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="20dp"
-            android:background="#44FFFFFF" />
-
-        <TextView
-            android:id="@+id/txtTituloAcercaDe"
+        <!-- Header con flecha -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Acerca de"
-            android:textColor="@android:color/white"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:shadowColor="#00E5FF"
-            android:shadowDx="0"
-            android:shadowDy="0"
-            android:shadowRadius="12" />
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="16dp">
 
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/ic_arrow_back"
+                android:tint="@android:color/white"
+                android:padding="4dp"
+                android:clickable="true"
+                android:focusable="true" />
+
+            <TextView
+                android:id="@+id/txtTituloAcercaDe"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Acerca de"
+                android:textColor="@android:color/white"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:shadowColor="#00E5FF"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="12" />
+
+            <!-- Espaciador para centrar el título -->
+            <View
+                android:layout_width="36dp"
+                android:layout_height="36dp" />
+
+        </LinearLayout>
+
+        <!-- Avatar -->
         <TextView
             android:id="@+id/txtAvatar"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
             android:layout_marginBottom="8dp"
             android:text="R"
             android:textSize="36sp"
@@ -73,17 +92,47 @@
             android:background="#22FFFFFF"
             android:layout_marginBottom="20dp" />
 
+        <!-- Párrafos con espacio entre ellos -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Este juego nació sin ánimo de lucro y con una sola intención: que la gente se ría, se sorprenda y pase un buen rato juntos, como yo mismo he tenido el placer de disfrutar.
+            android:text="Este juego nació sin ánimo de lucro y con una sola intención: que la gente se ría, se sorprenda y pase un buen rato juntos, como yo mismo he tenido el placer de disfrutar."
+            android:textColor="#DDFFFFFF"
+            android:textSize="14sp"
+            android:lineSpacingMultiplier="1.5"
+            android:layout_marginBottom="16dp" />
 
-Úsalo, compártelo y disfrútalo sin límites — lo único que te pido es que lo juegues en buena compañía.
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Úsalo, compártelo y disfrútalo sin límites — lo único que te pido es que lo juegues en buena compañía."
+            android:textColor="#DDFFFFFF"
+            android:textSize="14sp"
+            android:lineSpacingMultiplier="1.5"
+            android:layout_marginBottom="16dp" />
 
-No es un juego para ganar. Es un juego para conectar.
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No es un juego para ganar. Es un juego para conectar."
+            android:textColor="#DDFFFFFF"
+            android:textSize="14sp"
+            android:lineSpacingMultiplier="1.5"
+            android:layout_marginBottom="16dp" />
 
-Agradecimiento especial a la persona que me impulsa y me inspira a crear proyectos como este, y que siempre me apoya en cada paso: Ste.H. Sin ti, nada de esto tendría el mismo sentido.
-Un abrazo a todos los que lo juegan."
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Agradecimiento especial a la persona que me impulsa y me inspira a crear proyectos como este, y que siempre me apoya en cada paso: Ste.H. Sin ti, nada de esto tendría el mismo sentido."
+            android:textColor="#DDFFFFFF"
+            android:textSize="14sp"
+            android:lineSpacingMultiplier="1.5"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Un abrazo a todos los que lo juegan."
             android:textColor="#DDFFFFFF"
             android:textSize="14sp"
             android:lineSpacingMultiplier="1.5"
@@ -115,7 +164,6 @@ Un abrazo a todos los que lo juegan."
             android:focusable="true"
             android:padding="12dp"
             android:background="@drawable/bg_card_main">
-
             <TextView android:layout_width="32dp" android:layout_height="32dp" android:text="📸" android:textSize="18sp" android:gravity="center" />
             <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Instagram" android:textColor="#AAFFFFFF" android:textSize="12sp" />
@@ -135,7 +183,6 @@ Un abrazo a todos los que lo juegan."
             android:focusable="true"
             android:padding="12dp"
             android:background="@drawable/bg_card_main">
-
             <TextView android:layout_width="32dp" android:layout_height="32dp" android:text="✉️" android:textSize="18sp" android:gravity="center" />
             <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Email" android:textColor="#AAFFFFFF" android:textSize="12sp" />
@@ -155,7 +202,6 @@ Un abrazo a todos los que lo juegan."
             android:focusable="true"
             android:padding="12dp"
             android:background="@drawable/bg_card_main">
-
             <TextView android:layout_width="32dp" android:layout_height="32dp" android:text="💻" android:textSize="18sp" android:gravity="center" />
             <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="GitHub" android:textColor="#AAFFFFFF" android:textSize="12sp" />

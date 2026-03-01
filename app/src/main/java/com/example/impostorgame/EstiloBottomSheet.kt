@@ -36,12 +36,16 @@ class EstiloBottomSheet : BottomSheetDialogFragment() {
                 .setDuration(400L).setInterpolator(DecelerateInterpolator(2f)).start()
         }
         val behavior = BottomSheetBehavior.from(bottomSheet)
-        behavior.isDraggable = true
-        behavior.isHideable = true
+        behavior.state = BottomSheetBehavior.STATE_EXPANDED
+        behavior.isDraggable = false
+        behavior.isHideable = false
+        behavior.peekHeight = bottomSheet.resources.displayMetrics.heightPixels
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        view.findViewById<View>(R.id.btnBackEstilo)?.setOnClickListener { dismiss() }
 
         val bgCard = ThemeManager.getBgCard(requireContext())
         val accent = ThemeManager.getAccentColor(requireContext())
