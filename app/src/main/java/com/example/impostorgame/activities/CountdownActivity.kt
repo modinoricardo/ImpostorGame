@@ -1,16 +1,14 @@
 package com.example.impostorgame.activities
 
 import android.content.Intent
-import android.media.MediaPlayer
 import android.media.ToneGenerator
 import android.media.AudioManager
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.view.animation.AnimationUtils
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.impostorgame.R
-import com.example.impostorgame.ThemeManager
+import com.example.impostorgame.managers.ThemeManager
 import com.example.impostorgame.modelos.Category
 import com.example.impostorgame.modelos.GameOptions
 import com.example.impostorgame.modelos.Jugador

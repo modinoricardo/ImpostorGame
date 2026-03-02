@@ -1,4 +1,4 @@
-package com.example.impostorgame
+package com.example.impostorgame.managers
 
 import android.content.Context
 

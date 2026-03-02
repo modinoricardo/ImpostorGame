@@ -1,4 +1,4 @@
-package com.example.impostorgame
+package com.example.impostorgame.bottomsheets
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +8,8 @@ import android.view.animation.DecelerateInterpolator
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
+import com.example.impostorgame.R
+import com.example.impostorgame.managers.ThemeManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 

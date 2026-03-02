@@ -6,12 +6,9 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
-import android.hardware.camera2.CameraCharacteristics
-import android.hardware.camera2.CameraManager
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
-import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -35,7 +32,7 @@ import android.view.ViewGroup
 import com.example.impostorgame.CategoryViewModel
 import com.example.impostorgame.PlayerViewModel
 import com.example.impostorgame.R
-import com.example.impostorgame.ThemeManager
+import com.example.impostorgame.managers.ThemeManager
 import com.example.impostorgame.modelos.Category
 import com.example.impostorgame.modelos.GameOptions
 import com.example.impostorgame.modelos.Jugador

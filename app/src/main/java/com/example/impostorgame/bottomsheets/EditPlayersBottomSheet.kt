@@ -1,4 +1,4 @@
-package com.example.impostorgame
+package com.example.impostorgame.bottomsheets
 
 import android.content.DialogInterface
 import android.os.Bundle
@@ -16,9 +16,13 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.impostorgame.PlayerAdapterEdit
+import com.example.impostorgame.PlayerViewModel
+import com.example.impostorgame.R
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.example.impostorgame.activities.MainActivity
+import com.example.impostorgame.managers.ThemeManager
 
 class EditPlayersBottomSheet : BottomSheetDialogFragment() {
 

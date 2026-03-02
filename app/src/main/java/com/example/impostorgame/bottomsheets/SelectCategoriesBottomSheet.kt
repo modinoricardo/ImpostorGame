@@ -1,4 +1,4 @@
-package com.example.impostorgame
+package com.example.impostorgame.bottomsheets
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,6 +9,10 @@ import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.impostorgame.CategoryAdapterSelect
+import com.example.impostorgame.CategoryViewModel
+import com.example.impostorgame.R
+import com.example.impostorgame.managers.ThemeManager
 import com.example.impostorgame.modelos.Category
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment

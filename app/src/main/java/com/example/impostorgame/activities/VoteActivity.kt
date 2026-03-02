@@ -13,13 +13,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.updatePadding
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.impostorgame.R
-import com.example.impostorgame.ThemeManager
+import com.example.impostorgame.managers.ThemeManager
 import com.example.impostorgame.modelos.Jugador
 import com.example.impostorgame.modelos.TipoJugador
 

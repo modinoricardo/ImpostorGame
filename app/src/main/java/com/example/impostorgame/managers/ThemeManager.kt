@@ -1,11 +1,13 @@
-package com.example.impostorgame
+package com.example.impostorgame.managers
 
 import android.app.Activity
 import android.content.Context
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import com.example.impostorgame.R
 
 object ThemeManager {
 
@@ -122,7 +124,7 @@ object ThemeManager {
     }
 
     private fun applyToAllButtons(root: View, btnRes: Int) {
-        if (root is android.view.ViewGroup) {
+        if (root is ViewGroup) {
             for (i in 0 until root.childCount) applyToAllButtons(root.getChildAt(i), btnRes)
         } else if (root is Button) {
             root.setBackgroundResource(btnRes)
@@ -138,7 +140,7 @@ object ThemeManager {
             val child = root.getChildAt(0)
             child?.setBackgroundResource(bgCard)
         }
-        if (root is android.view.ViewGroup) {
+        if (root is ViewGroup) {
             for (i in 0 until root.childCount) applyToAllCards(root.getChildAt(i), bgCard)
         }
     }

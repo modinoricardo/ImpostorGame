@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import android.content.Context
 import android.view.inputmethod.InputMethodManager
 import com.example.impostorgame.extensions.expandTouchArea
+import com.example.impostorgame.managers.ThemeManager
 import com.example.impostorgame.modelos.Jugador
 
 class PlayerAdapterEdit(

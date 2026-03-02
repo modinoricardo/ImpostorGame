@@ -26,13 +26,10 @@ import android.graphics.Typeface
 import android.text.style.StyleSpan
 import androidx.activity.viewModels
 import com.example.impostorgame.PlayerViewModel
-import com.example.impostorgame.ThemeManager
+import com.example.impostorgame.managers.ThemeManager
 import com.example.impostorgame.modelos.Jugador
 import android.media.MediaPlayer
-import android.view.animation.AnimationUtils
-import com.example.impostorgame.OptionMain
 import com.example.impostorgame.modelos.TipoJugador
-import kotlin.random.Random
 
 class PlayGameActivity : AppCompatActivity() {
 

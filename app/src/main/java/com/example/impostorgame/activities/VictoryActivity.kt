@@ -10,7 +10,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.impostorgame.R
-import com.example.impostorgame.ThemeManager
+import com.example.impostorgame.managers.ThemeManager
 import com.example.impostorgame.modelos.Jugador
 import com.example.impostorgame.views.VictoryParticleView
 
