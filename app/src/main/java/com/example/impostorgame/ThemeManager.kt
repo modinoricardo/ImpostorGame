@@ -108,7 +108,11 @@ object ThemeManager {
             ?.setShadowLayer(16f, 0f, 0f, accent)
         activity.findViewById<TextView>(R.id.txtSubtitle)
             ?.setShadowLayer(10f, 0f, 0f, accent and 0x80FFFFFF.toInt())
-        activity.findViewById<TextView>(R.id.txtSubSubTitle)
+        activity.findViewById<TextView>(R.id.titleTextView)
+            ?.setShadowLayer(14f, 0f, 0f, accent)
+        activity.findViewById<TextView>(R.id.txtTitle)
+            ?.setShadowLayer(16f, 0f, 0f, accent)
+        activity.findViewById<TextView>(R.id.txtSubtitle)
             ?.setShadowLayer(10f, 0f, 0f, accent and 0x80FFFFFF.toInt())
     }
 

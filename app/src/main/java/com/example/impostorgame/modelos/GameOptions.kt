@@ -9,5 +9,8 @@ data class GameOptions(
     val modoLoco: Boolean = false,
     val modoMisterioso: Boolean = false,
     val numImpostores: Int = 1,
-    val numSenoresBlancos: Int = 0
+    val numSenoresBlancos: Int = 0,
+    val tiempoLimitado: Boolean = false,
+    val minutos: Int = 3,
+    val camaraActiva: Boolean = false
 ) : Parcelable

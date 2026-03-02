@@ -12,7 +12,6 @@
     <View android:id="@+id/ring1" android:layout_width="280dp" android:layout_height="280dp" android:alpha="0.65" android:background="@drawable/ring_neon" android:layout_gravity="center" />
     <View android:id="@+id/ring2" android:layout_width="360dp" android:layout_height="360dp" android:alpha="0.45" android:background="@drawable/ring_neon_soft" android:layout_gravity="center" />
 
-    <!-- Botón menú esquina superior derecha -->
     <TextView
         android:id="@+id/btnMenu"
         android:layout_width="44dp"
@@ -45,185 +44,32 @@
             </androidx.cardview.widget.CardView>
 
             <!-- CardView Número de Impostores -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardViewNumImpostores"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                app:cardCornerRadius="22dp"
-                app:cardElevation="6dp"
-                app:cardPreventCornerOverlap="false"
-                app:cardUseCompatPadding="true"
-                app:cardBackgroundColor="@android:color/transparent">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp"
-                    android:background="@drawable/bg_card_main">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical">
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Número de impostores"
-                                android:textSize="18sp"
-                                android:textStyle="bold"
-                                android:textColor="@android:color/white" />
-
-                            <TextView
-                                android:id="@+id/txtResumenImpostores"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="4dp"
-                                android:text="1 impostor · 2 civiles"
-                                android:textSize="13sp"
-                                android:textColor="#CCFFFFFF" />
-
+            <androidx.cardview.widget.CardView android:id="@+id/cardViewNumImpostores" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="15dp" app:cardCornerRadius="22dp" app:cardElevation="6dp" app:cardPreventCornerOverlap="false" app:cardUseCompatPadding="true" app:cardBackgroundColor="@android:color/transparent">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp" android:background="@drawable/bg_card_main">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Número de impostores" android:textSize="18sp" android:textStyle="bold" android:textColor="@android:color/white" />
+                            <TextView android:id="@+id/txtResumenImpostores" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="1 impostor · 2 civiles" android:textSize="13sp" android:textColor="#CCFFFFFF" />
                         </LinearLayout>
-
-                        <TextView
-                            android:id="@+id/btnMenosImpostores"
-                            android:layout_width="36dp"
-                            android:layout_height="36dp"
-                            android:text="−"
-                            android:textSize="22sp"
-                            android:textColor="@android:color/white"
-                            android:gravity="center"
-                            android:background="@drawable/btn_neon"
-                            android:textStyle="bold"
-                            android:clickable="true"
-                            android:focusable="true" />
-
-                        <TextView
-                            android:id="@+id/txtNumImpostores"
-                            android:layout_width="40dp"
-                            android:layout_height="wrap_content"
-                            android:text="1"
-                            android:textSize="20sp"
-                            android:textColor="@android:color/white"
-                            android:textStyle="bold"
-                            android:gravity="center" />
-
-                        <TextView
-                            android:id="@+id/btnMasImpostores"
-                            android:layout_width="36dp"
-                            android:layout_height="36dp"
-                            android:text="+"
-                            android:textSize="22sp"
-                            android:textColor="@android:color/white"
-                            android:gravity="center"
-                            android:background="@drawable/btn_neon"
-                            android:textStyle="bold"
-                            android:clickable="true"
-                            android:focusable="true" />
-
+                        <TextView android:id="@+id/btnMenosImpostores" android:layout_width="36dp" android:layout_height="36dp" android:text="−" android:textSize="22sp" android:textColor="@android:color/white" android:gravity="center" android:background="@drawable/btn_neon" android:textStyle="bold" android:clickable="true" android:focusable="true" />
+                        <TextView android:id="@+id/txtNumImpostores" android:layout_width="40dp" android:layout_height="wrap_content" android:text="1" android:textSize="20sp" android:textColor="@android:color/white" android:textStyle="bold" android:gravity="center" />
+                        <TextView android:id="@+id/btnMasImpostores" android:layout_width="36dp" android:layout_height="36dp" android:text="+" android:textSize="22sp" android:textColor="@android:color/white" android:gravity="center" android:background="@drawable/btn_neon" android:textStyle="bold" android:clickable="true" android:focusable="true" />
                     </LinearLayout>
-
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- CardView Número de Señores Blancos (solo visible en modo Misterioso) -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardViewNumSenoresBlancos"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:visibility="gone"
-                app:cardCornerRadius="22dp"
-                app:cardElevation="6dp"
-                app:cardPreventCornerOverlap="false"
-                app:cardUseCompatPadding="true"
-                app:cardBackgroundColor="@android:color/transparent">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp"
-                    android:background="@drawable/bg_card_main">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical">
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Señores blancos"
-                                android:textSize="18sp"
-                                android:textStyle="bold"
-                                android:textColor="@android:color/white" />
-
-                            <TextView
-                                android:id="@+id/txtResumenSenoresBlancos"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="4dp"
-                                android:text="1 señor blanco"
-                                android:textSize="13sp"
-                                android:textColor="#CCFFFFFF" />
-
+            <!-- CardView Señores Blancos -->
+            <androidx.cardview.widget.CardView android:id="@+id/cardViewNumSenoresBlancos" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="15dp" android:visibility="gone" app:cardCornerRadius="22dp" app:cardElevation="6dp" app:cardPreventCornerOverlap="false" app:cardUseCompatPadding="true" app:cardBackgroundColor="@android:color/transparent">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp" android:background="@drawable/bg_card_main">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Señores blancos" android:textSize="18sp" android:textStyle="bold" android:textColor="@android:color/white" />
+                            <TextView android:id="@+id/txtResumenSenoresBlancos" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="1 señor blanco" android:textSize="13sp" android:textColor="#CCFFFFFF" />
                         </LinearLayout>
-
-                        <TextView
-                            android:id="@+id/btnMenosSenoresBlancos"
-                            android:layout_width="36dp"
-                            android:layout_height="36dp"
-                            android:text="−"
-                            android:textSize="22sp"
-                            android:textColor="@android:color/white"
-                            android:gravity="center"
-                            android:background="@drawable/btn_neon"
-                            android:textStyle="bold"
-                            android:clickable="true"
-                            android:focusable="true" />
-
-                        <TextView
-                            android:id="@+id/txtNumSenoresBlancos"
-                            android:layout_width="40dp"
-                            android:layout_height="wrap_content"
-                            android:text="1"
-                            android:textSize="20sp"
-                            android:textColor="@android:color/white"
-                            android:textStyle="bold"
-                            android:gravity="center" />
-
-                        <TextView
-                            android:id="@+id/btnMasSenoresBlancos"
-                            android:layout_width="36dp"
-                            android:layout_height="36dp"
-                            android:text="+"
-                            android:textSize="22sp"
-                            android:textColor="@android:color/white"
-                            android:gravity="center"
-                            android:background="@drawable/btn_neon"
-                            android:textStyle="bold"
-                            android:clickable="true"
-                            android:focusable="true" />
-
+                        <TextView android:id="@+id/btnMenosSenoresBlancos" android:layout_width="36dp" android:layout_height="36dp" android:text="−" android:textSize="22sp" android:textColor="@android:color/white" android:gravity="center" android:background="@drawable/btn_neon" android:textStyle="bold" android:clickable="true" android:focusable="true" />
+                        <TextView android:id="@+id/txtNumSenoresBlancos" android:layout_width="40dp" android:layout_height="wrap_content" android:text="1" android:textSize="20sp" android:textColor="@android:color/white" android:textStyle="bold" android:gravity="center" />
+                        <TextView android:id="@+id/btnMasSenoresBlancos" android:layout_width="36dp" android:layout_height="36dp" android:text="+" android:textSize="22sp" android:textColor="@android:color/white" android:gravity="center" android:background="@drawable/btn_neon" android:textStyle="bold" android:clickable="true" android:focusable="true" />
                     </LinearLayout>
-
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -237,7 +83,7 @@
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- CardView Modo de Juego (abre BottomSheet) -->
+            <!-- CardView Modo de Juego -->
             <androidx.cardview.widget.CardView android:id="@+id/cardViewSeleccionModo" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="15dp" android:clickable="true" android:focusable="true" app:cardCornerRadius="22dp" app:cardElevation="6dp" app:cardPreventCornerOverlap="false" app:cardUseCompatPadding="true" app:cardBackgroundColor="@android:color/transparent">
                 <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="16dp" android:background="@drawable/bg_card_main">
                     <ImageView android:id="@+id/imageViewArrowModo" android:layout_width="24dp" android:layout_height="24dp" android:layout_alignParentEnd="true" android:layout_centerVertical="true" android:src="@drawable/chevron_right_24" app:tint="@android:color/white" />
@@ -255,12 +101,41 @@
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- CardView Todos impostores (Modo Loco) -->
+            <!-- CardView Todos impostores -->
             <androidx.cardview.widget.CardView android:id="@+id/cardViewModoLoco" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="15dp" app:cardCornerRadius="22dp" app:cardElevation="6dp" app:cardPreventCornerOverlap="false" app:cardUseCompatPadding="true" app:cardBackgroundColor="@android:color/transparent">
                 <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="16dp" android:background="@drawable/bg_card_main">
                     <TextView android:id="@+id/txtModoLocoTitulo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Todos impostores" android:textSize="18sp" android:textStyle="bold" android:textColor="@android:color/white" />
                     <com.google.android.material.switchmaterial.SwitchMaterial android:id="@+id/switchModoLoco" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" android:layout_centerVertical="true" android:checked="false" />
                     <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6dp" android:layout_below="@id/txtModoLocoTitulo" android:text="Activa un modo en el cual todos pueden ser impostores" android:textSize="13sp" android:textColor="#CCFFFFFF" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- CardView Tiempo Limitado -->
+            <androidx.cardview.widget.CardView android:id="@+id/cardViewTiempoLimitado" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="15dp" app:cardCornerRadius="22dp" app:cardElevation="6dp" app:cardPreventCornerOverlap="false" app:cardUseCompatPadding="true" app:cardBackgroundColor="@android:color/transparent">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp" android:background="@drawable/bg_card_main">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="⏱ Tiempo limitado" android:textSize="18sp" android:textStyle="bold" android:textColor="@android:color/white" />
+                            <TextView android:id="@+id/txtResumenTiempo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Los impostores ganan si acaba el tiempo" android:textSize="13sp" android:textColor="#CCFFFFFF" />
+                        </LinearLayout>
+                        <com.google.android.material.switchmaterial.SwitchMaterial android:id="@+id/switchTiempoLimitado" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="false" />
+                    </LinearLayout>
+                    <!-- Selector de minutos, visible solo si switch activo -->
+                    <LinearLayout android:id="@+id/layoutSelectorMinutos" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginTop="12dp" android:visibility="gone">
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Duración" android:textSize="15sp" android:textColor="@android:color/white" />
+                        <TextView android:id="@+id/btnMenosMinutos" android:layout_width="36dp" android:layout_height="36dp" android:text="−" android:textSize="22sp" android:textColor="@android:color/white" android:gravity="center" android:background="@drawable/btn_neon" android:textStyle="bold" android:clickable="true" android:focusable="true" />
+                        <TextView android:id="@+id/txtNumMinutos" android:layout_width="60dp" android:layout_height="wrap_content" android:text="3 min" android:textSize="16sp" android:textColor="@android:color/white" android:textStyle="bold" android:gravity="center" />
+                        <TextView android:id="@+id/btnMasMinutos" android:layout_width="36dp" android:layout_height="36dp" android:text="+" android:textSize="22sp" android:textColor="@android:color/white" android:gravity="center" android:background="@drawable/btn_neon" android:textStyle="bold" android:clickable="true" android:focusable="true" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- CardView Cámara -->
+            <androidx.cardview.widget.CardView android:id="@+id/cardViewCamara" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="15dp" app:cardCornerRadius="22dp" app:cardElevation="6dp" app:cardPreventCornerOverlap="false" app:cardUseCompatPadding="true" app:cardBackgroundColor="@android:color/transparent">
+                <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="16dp" android:background="@drawable/bg_card_main">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="📸 Selfie automático" android:textSize="18sp" android:textStyle="bold" android:textColor="@android:color/white" android:id="@+id/txtCamaraTitulo"/>
+                    <com.google.android.material.switchmaterial.SwitchMaterial android:id="@+id/switchCamara" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" android:layout_centerVertical="true" android:checked="false" />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_below="@id/txtCamaraTitulo" android:layout_marginTop="6dp" android:layout_toStartOf="@id/switchCamara" android:text="Hace un selfie al revelar la palabra, se usa como avatar" android:textSize="13sp" android:textColor="#CCFFFFFF" />
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 

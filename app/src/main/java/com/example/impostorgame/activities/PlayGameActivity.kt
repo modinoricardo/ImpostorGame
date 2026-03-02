@@ -1,6 +1,11 @@
 package com.example.impostorgame.activities
 
+import android.content.Intent
+import android.graphics.Color
+import android.media.ToneGenerator
+import android.media.AudioManager
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -24,12 +29,17 @@ import com.example.impostorgame.PlayerViewModel
 import com.example.impostorgame.ThemeManager
 import com.example.impostorgame.modelos.Jugador
 import android.media.MediaPlayer
+import android.view.animation.AnimationUtils
 import com.example.impostorgame.OptionMain
+import com.example.impostorgame.modelos.TipoJugador
 import kotlin.random.Random
 
 class PlayGameActivity : AppCompatActivity() {
+
     private lateinit var btnNewGame: Button
+    private lateinit var btnVotar: Button
     private lateinit var txtHabla: TextView
+    private lateinit var txtTimer: TextView
     private lateinit var listaJugadores: List<Jugador>
     private lateinit var palabraJugada: String
     private lateinit var btnRevelar: Button
@@ -42,10 +52,13 @@ class PlayGameActivity : AppCompatActivity() {
     private lateinit var nombreImpostor: String
     private lateinit var nombresSenoresBlancos: String
     private var modoMisterioso: Boolean = false
+    private var tiempoLimitado: Boolean = false
+    private var minutos: Int = 3
     private val playerViewModel: PlayerViewModel by viewModels()
     private var impostorContado = false
     private var mediaPlayer: MediaPlayer? = null
-    private val startSoundDelayMs = Random.nextLong(60_000L, 65_001L)
+    private var countDownTimer: CountDownTimer? = null
+    private lateinit var cardsContainer: android.widget.LinearLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         ThemeManager.aplicarTema(this)
@@ -54,15 +67,18 @@ class PlayGameActivity : AppCompatActivity() {
         setContentView(R.layout.activity_play_game)
         ThemeManager.aplicarDrawables(this)
 
-        btnNewGame        = findViewById(R.id.btnNewGame)
-        txtHabla          = findViewById(R.id.txtImpostor)
-        btnRevelar        = findViewById(R.id.btnRevelar)
-        cardViewPalabra   = findViewById(R.id.cardViewPalabra)
-        cardResumen       = findViewById(R.id.cardResumen)
-        cardSenorBlanco   = findViewById(R.id.cardSenorBlanco)
-        txtPalabra        = findViewById(R.id.txtPalabra)
-        txtImpostorNombre = findViewById(R.id.txtImpostorNombre)
+        btnNewGame           = findViewById(R.id.btnNewGame)
+        btnVotar             = findViewById(R.id.btnVotar)
+        txtHabla             = findViewById(R.id.txtImpostor)
+        txtTimer             = findViewById(R.id.txtTimer)
+        btnRevelar           = findViewById(R.id.btnRevelar)
+        cardViewPalabra      = findViewById(R.id.cardViewPalabra)
+        cardResumen          = findViewById(R.id.cardResumen)
+        cardSenorBlanco      = findViewById(R.id.cardSenorBlanco)
+        txtPalabra           = findViewById(R.id.txtPalabra)
+        txtImpostorNombre    = findViewById(R.id.txtImpostorNombre)
         txtSenorBlancoNombre = findViewById(R.id.txtSenorBlancoNombre)
+        cardsContainer = findViewById(R.id.cardsContainer)
 
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
@@ -87,51 +103,142 @@ class PlayGameActivity : AppCompatActivity() {
             v.updatePadding(bottom = basePaddingBottom + nav.bottom + dpToPx(22)); insets
         }
 
-        loadEvents()
-
-        listaJugadores = intent.getParcelableArrayListExtra<Jugador>("LISTA_JUGADORES")?.toList().orEmpty()
-        val jugadorHabla = listaJugadores.randomOrNull()
-        txtHabla.text = if (jugadorHabla != null) "¡${jugadorHabla.nombre} hablas tú!" else "No hay jugadores disponibles"
-
+        listaJugadores       = intent.getParcelableArrayListExtra<Jugador>("LISTA_JUGADORES")?.toList().orEmpty()
         palabraJugada        = intent.getStringExtra("PALABRA") ?: ""
         nombreImpostor       = intent.getStringExtra("IMPOSTOR") ?: ""
         nombresSenoresBlancos = intent.getStringExtra("SENORES_BLANCOS") ?: ""
         modoMisterioso       = intent.getBooleanExtra("MODO_MISTERIOSO", false)
+        tiempoLimitado       = intent.getBooleanExtra("TIEMPO_LIMITADO", false)
+        minutos              = intent.getIntExtra("MINUTOS", 3)
+
+        val jugadorHabla = listaJugadores.randomOrNull()
+        txtHabla.text = if (jugadorHabla != null) "¡${jugadorHabla.nombre} hablas tú!" else "No hay jugadores disponibles"
 
         cardViewPalabra.visibility  = View.GONE
         cardResumen.visibility      = View.GONE
         cardSenorBlanco.visibility  = View.GONE
         btnRevelar.visibility       = View.VISIBLE
 
-        if (OptionMain.tiempoLimitado) window.decorView.postDelayed(startSoundRunnable, startSoundDelayMs)
-    }
+        // Timer
+        if (tiempoLimitado) {
+            txtTimer.visibility = View.VISIBLE
+            startTimer(minutos * 60 * 1000L)
+        } else {
+            txtTimer.visibility = View.GONE
+        }
 
-    private fun loadEvents() {
+        btnVotar.setOnClickListener { abrirVotos() }
         btnNewGame.setOnClickListener { pulsadoBotonNewGame() }
         btnRevelar.setOnClickListener { pulsadoBotonRevelar() }
-    }
-
-    private val startSoundRunnable = Runnable {
-        startBell()
-        mensajeAlerta("Jugador eliminado", "Quien fue el ultimo en poner la mano sobre la mesa")
-    }
-
-    private fun startBell() {
-        stopBell()
-        val mp = MediaPlayer.create(this, R.raw.campana) ?: return
-        mediaPlayer = mp.apply {
-            isLooping = true
-            setOnErrorListener { _, what, extra -> android.util.Log.e("PlayGameActivity", "Error what=$what extra=$extra"); stopBell(); true }
-            start()
+        // Si viene de victoria, revelar directamente sin preguntar
+        if (intent.getBooleanExtra("VICTORIA_INMEDIATA", false)) {
+            txtHabla.visibility = View.GONE
+            btnVotar.visibility = View.GONE
+            btnRevelar.visibility = View.GONE
+            btnNewGame.text = "NUEVA PARTIDA"
+            cargarDatosRevelando()
         }
     }
 
-    private fun stopBell() { mediaPlayer?.stop(); mediaPlayer?.release(); mediaPlayer = null }
+    private fun startTimer(millis: Long) {
+        countDownTimer?.cancel()
+        countDownTimer = object : CountDownTimer(millis, 1000L) {
+            override fun onTick(remaining: Long) {
+                val m = remaining / 60000
+                val s = (remaining % 60000) / 1000
+                txtTimer.text = "⏱ %d:%02d".format(m, s)
+                // Parpadea en rojo cuando quedan menos de 30 seg
+                if (remaining < 30_000) {
+                    txtTimer.setTextColor(if ((remaining / 1000) % 2 == 0L) Color.RED else Color.WHITE)
+                }
+            }
+            override fun onFinish() {
+                txtTimer.text = "⏱ 0:00"
+                tiempoAgotado()
+            }
+        }.start()
+    }
+
+    private fun tiempoAgotado() {
+        try { ToneGenerator(AudioManager.STREAM_MUSIC, 100).startTone(ToneGenerator.TONE_PROP_NACK, 1000) } catch (_: Exception) {}
+        val intent = Intent(this, VictoryActivity::class.java).apply {
+            putExtra("GANADOR", "CIVILES")
+            putExtra("MOTIVO", "¡Todos los impostores han sido eliminados!")
+            putExtra("IR_A_REVEAL", true)
+            putParcelableArrayListExtra("LISTA_JUGADORES", ArrayList(listaJugadores))
+            putParcelableArrayListExtra("LISTA_CATEGORIAS", ArrayList(listaJugadores)) // pasa tus categorias
+            putExtra("PALABRA", palabraJugada)
+            putExtra("IMPOSTOR", nombreImpostor)
+            putExtra("SENORES_BLANCOS", nombresSenoresBlancos)
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        }
+        startActivity(intent)
+        finish()
+    }
+
+    private fun abrirVotos() {
+        val intent = Intent(this, VoteActivity::class.java).apply {
+            putParcelableArrayListExtra("JUGADORES", ArrayList(listaJugadores))
+            putExtra("PALABRA", palabraJugada)
+        }
+        startActivityForResult(intent, REQUEST_VOTE)
+    }
+
+    @Suppress("DEPRECATION")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_VOTE && resultCode == RESULT_OK) {
+            val actualizados = data?.getParcelableArrayListExtra<Jugador>("JUGADORES_ACTUALIZADOS")
+            if (actualizados != null) {
+                listaJugadores = actualizados.toList()
+
+                val noCiviles = listaJugadores.count {
+                    it.tipo == TipoJugador.IMPOSTOR || it.tipo == TipoJugador.SENOR_BLANCO
+                }
+                val civiles = listaJugadores.count { it.tipo == TipoJugador.NORMAL }
+
+                when {
+                    noCiviles == 0 -> {
+                        // No quedan impostores — civiles ganan
+                        startActivity(Intent(this, VictoryActivity::class.java).apply {
+                            putExtra("GANADOR", "CIVILES")
+                            putExtra("MOTIVO", "¡Todos los impostores han sido eliminados!")
+                            putExtra("IR_A_REVEAL", true)
+                            putParcelableArrayListExtra("LISTA_JUGADORES", ArrayList(listaJugadores))
+                            putExtra("PALABRA", palabraJugada)
+                            putExtra("IMPOSTOR", nombreImpostor)
+                            putExtra("SENORES_BLANCOS", nombresSenoresBlancos)
+                            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        })
+                    }
+                    noCiviles >= civiles -> {
+                        // Impostores igualan o superan a civiles — impostores ganan
+                        startActivity(Intent(this, VictoryActivity::class.java).apply {
+                            putExtra("GANADOR", "IMPOSTORES")
+                            putExtra("MOTIVO", "Los civiles estan en minoria.")
+                            putExtra("IR_A_REVEAL", true)
+                            putParcelableArrayListExtra("LISTA_JUGADORES", ArrayList(listaJugadores))
+                            putExtra("PALABRA", palabraJugada)
+                            putExtra("IMPOSTOR", nombreImpostor)
+                            putExtra("SENORES_BLANCOS", nombresSenoresBlancos)
+                            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        })
+                    }
+                    // Si no, la partida continúa normalmente
+                }
+            }
+        }
+    }
+    companion object {
+        const val REQUEST_VOTE = 2001
+    }
 
     private fun pulsadoBotonNewGame() {
         AlertDialog.Builder(this).setTitle("Salir").setMessage("¿Quieres salir de la partida?")
             .setNegativeButton("Cancelar", null)
-            .setPositiveButton("Salir") { _, _ -> finish() }.show()
+            .setPositiveButton("Salir") { _, _ -> startActivity(Intent(this, MainActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            }) }.show()
     }
 
     private fun pulsadoBotonRevelar() {
@@ -141,38 +248,39 @@ class PlayGameActivity : AppCompatActivity() {
     }
 
     private fun cargarDatosRevelando() {
+        txtHabla.visibility = View.GONE
+        cardsContainer.visibility = View.VISIBLE
+        countDownTimer?.cancel()
         if (!impostorContado) { playerViewModel.incrementImpostorByName(nombreImpostor); impostorContado = true }
 
         val colorImpostor = ContextCompat.getColor(this, R.color.colorImpostor)
         val colorPalabra  = ContextCompat.getColor(this, R.color.colorPalabra)
 
-        // ── Card Impostor ──
         if (nombreImpostor.isNotBlank()) {
             cardResumen.visibility = View.VISIBLE
-            val spannable = SpannableString(nombreImpostor)
-            spannable.setSpan(ForegroundColorSpan(colorImpostor), 0, nombreImpostor.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-            spannable.setSpan(StyleSpan(Typeface.BOLD), 0, nombreImpostor.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-            txtImpostorNombre.text = spannable
+            val s = SpannableString(nombreImpostor)
+            s.setSpan(ForegroundColorSpan(colorImpostor), 0, nombreImpostor.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+            s.setSpan(StyleSpan(Typeface.BOLD), 0, nombreImpostor.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+            txtImpostorNombre.text = s
         }
 
-        // ── Card Señor Blanco ──
         if (nombresSenoresBlancos.isNotBlank()) {
             cardSenorBlanco.visibility = View.VISIBLE
-            val spannable = SpannableString(nombresSenoresBlancos)
-            spannable.setSpan(ForegroundColorSpan(colorImpostor), 0, nombresSenoresBlancos.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-            spannable.setSpan(StyleSpan(Typeface.BOLD), 0, nombresSenoresBlancos.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-            txtSenorBlancoNombre.text = spannable
+            val s = SpannableString(nombresSenoresBlancos)
+            s.setSpan(ForegroundColorSpan(colorImpostor), 0, nombresSenoresBlancos.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+            s.setSpan(StyleSpan(Typeface.BOLD), 0, nombresSenoresBlancos.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+            txtSenorBlancoNombre.text = s
         }
 
-        // ── Card Palabra ──
         cardViewPalabra.visibility = View.VISIBLE
-        val spannablePalabra = SpannableString(palabraJugada)
-        spannablePalabra.setSpan(ForegroundColorSpan(colorPalabra), 0, palabraJugada.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        spannablePalabra.setSpan(StyleSpan(Typeface.BOLD), 0, palabraJugada.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        txtPalabra.text = spannablePalabra
+        val sp = SpannableString(palabraJugada)
+        sp.setSpan(ForegroundColorSpan(colorPalabra), 0, palabraJugada.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        sp.setSpan(StyleSpan(Typeface.BOLD), 0, palabraJugada.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        txtPalabra.text = sp
 
         ThemeManager.aplicarDrawables(this)
         btnRevelar.visibility = View.GONE
+        btnVotar.visibility   = View.GONE
     }
 
     private fun dpToPx(dp: Int): Int = (dp * resources.displayMetrics.density).toInt()
@@ -183,5 +291,8 @@ class PlayGameActivity : AppCompatActivity() {
             .setOnDismissListener { stopBell() }.show()
     }
 
+    private fun stopBell() { mediaPlayer?.stop(); mediaPlayer?.release(); mediaPlayer = null }
+
     override fun onStop() { super.onStop(); stopBell() }
+    override fun onDestroy() { super.onDestroy(); countDownTimer?.cancel() }
 }

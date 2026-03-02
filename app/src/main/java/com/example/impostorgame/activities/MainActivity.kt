@@ -34,6 +34,7 @@ import com.example.impostorgame.EstiloBottomSheet
 import com.example.impostorgame.MenuBottomSheet
 import com.example.impostorgame.SelectGameModeBottomSheet
 import com.example.impostorgame.ThemeManager
+import com.example.impostorgame.activities.SelfieManager
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
@@ -59,6 +60,12 @@ class MainActivity : AppCompatActivity(),
     private lateinit var categoryAdapterMain: CategoryAdapterMain
     private lateinit var switchModoLoco: SwitchMaterial
     private lateinit var switchPista: SwitchMaterial
+    private lateinit var switchTiempoLimitado: SwitchMaterial
+    private lateinit var switchCamara: SwitchMaterial
+    private lateinit var btnMasMinutos: TextView
+    private lateinit var btnMenosMinutos: TextView
+    private lateinit var txtNumMinutos: TextView
+    private lateinit var layoutSelectorMinutos: android.widget.LinearLayout
     private lateinit var btnStartGame: Button
     private lateinit var btnMenu: TextView
 
@@ -101,6 +108,13 @@ class MainActivity : AppCompatActivity(),
         btnMenu = findViewById(R.id.btnMenu)
         switchModoLoco = findViewById(R.id.switchModoLoco)
         switchPista = findViewById(R.id.switchPista)
+
+        switchTiempoLimitado = findViewById(R.id.switchTiempoLimitado)
+        switchCamara        = findViewById(R.id.switchCamara)
+        btnMasMinutos       = findViewById(R.id.btnMasMinutos)
+        btnMenosMinutos     = findViewById(R.id.btnMenosMinutos)
+        txtNumMinutos       = findViewById(R.id.txtNumMinutos)
+        layoutSelectorMinutos = findViewById(R.id.layoutSelectorMinutos)
 
         btnMasImpostores = findViewById(R.id.btnMasImpostores)
         btnMenosImpostores = findViewById(R.id.btnMenosImpostores)
@@ -161,6 +175,7 @@ class MainActivity : AppCompatActivity(),
         actualizarResumenSenoresBlancos()
         actualizarBotonEmpezar()
 
+        SelfieManager.init(cacheDir)
         aplicarDrawablesTema()
         lanzarEventos()
     }
@@ -329,6 +344,27 @@ class MainActivity : AppCompatActivity(),
 
         // ── Switches ──
         switchModoLoco.setOnCheckedChangeListener { _, isChecked -> opciones = opciones.copy(modoLoco = isChecked) }
+
+        switchTiempoLimitado.setOnCheckedChangeListener { _, isChecked ->
+            opciones = opciones.copy(tiempoLimitado = isChecked)
+            layoutSelectorMinutos.visibility = if (isChecked) View.VISIBLE else View.GONE
+        }
+
+        switchCamara.setOnCheckedChangeListener { _, isChecked ->
+            opciones = opciones.copy(camaraActiva = isChecked)
+        }
+
+        btnMasMinutos.setOnClickListener {
+            val nuevo = (opciones.minutos + 1).coerceAtMost(10)
+            opciones = opciones.copy(minutos = nuevo)
+            txtNumMinutos.text = "$nuevo min"
+        }
+
+        btnMenosMinutos.setOnClickListener {
+            val nuevo = (opciones.minutos - 1).coerceAtLeast(1)
+            opciones = opciones.copy(minutos = nuevo)
+            txtNumMinutos.text = "$nuevo min"
+        }
         switchPista.setOnCheckedChangeListener { _, isChecked -> opciones = opciones.copy(pista = isChecked) }
 
         // ── Botón empezar ──
@@ -349,7 +385,7 @@ class MainActivity : AppCompatActivity(),
                 mensajeAlerta("Configuración inválida", mensaje)
                 return@setOnClickListener
             }
-            val intent = Intent(this, ImpostorRevealActivity::class.java).apply {
+            val intent = Intent(this, CountdownActivity::class.java).apply {
                 putParcelableArrayListExtra("PLAYERS", ArrayList(playerViewModel.players.value ?: emptyList()))
                 putParcelableArrayListExtra("CATEGORIES", ArrayList(categoryViewModel.categories.value ?: emptyList()))
                 putExtra("OPCIONES", opciones)

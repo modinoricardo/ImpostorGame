@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/countdownRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0000000">
+
+    <TextView
+        android:id="@+id/txtCountdown"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="3"
+        android:textSize="200sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:shadowColor="#00E5FF"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="60"
+        android:includeFontPadding="false"
+        android:adjustViewBounds="true" />
+
+</FrameLayout>

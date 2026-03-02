@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.DecelerateInterpolator
 import android.widget.LinearLayout
+import com.google.android.material.switchmaterial.SwitchMaterial
+import com.example.impostorgame.SoundManager
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
@@ -53,6 +55,12 @@ class MenuBottomSheet : BottomSheetDialogFragment() {
         // Cards internas
         listOf(R.id.cardMenuEstilo, R.id.cardMenuAcercaDe).forEach { cardId ->
             view.findViewById<CardView>(cardId)?.getChildAt(0)?.setBackgroundResource(bgCard)
+        }
+
+        val switchSonido = view.findViewById<SwitchMaterial>(R.id.switchSonidoMenu)
+        switchSonido?.isChecked = SoundManager.isSoundEnabled(requireContext())
+        switchSonido?.setOnCheckedChangeListener { _, checked ->
+            SoundManager.setSoundEnabled(requireContext(), checked)
         }
 
         view.findViewById<CardView>(R.id.cardMenuEstilo).setOnClickListener {

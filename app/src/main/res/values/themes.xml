@@ -3,29 +3,34 @@
     <!-- Base application theme -->
     <style name="Base.Theme.ImpostorGame" parent="Theme.Material3.DayNight.NoActionBar" />
 
-    <!-- Tema Clásico -->
     <style name="Theme.ImpostorGame" parent="Base.Theme.ImpostorGame">
         <item name="colorPrimary">#00E5FF</item>
         <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/black</item>
     </style>
 
-    <!-- Tema Carmesí -->
     <style name="Theme.ImpostorGame_Carmesi" parent="Base.Theme.ImpostorGame">
         <item name="colorPrimary">#FF1744</item>
         <item name="colorOnPrimary">#FFFFFF</item>
         <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/black</item>
     </style>
 
-    <!-- Tema JMC -->
     <style name="Theme.ImpostorGame_Jmc" parent="Base.Theme.ImpostorGame">
         <item name="colorPrimary">#00C853</item>
         <item name="colorOnPrimary">#FFFFFF</item>
         <item name="android:fontFamily">sans-serif</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/black</item>
     </style>
 
     <!-- Theme para el BottomSheet -->
     <style name="Theme.EditPlayersBottomSheet" parent="ThemeOverlay.Material3.BottomSheetDialog">
         <item name="android:windowEnterAnimation">@anim/bottomsheet_material_in</item>
     </style>
+
+
 
 </resources>

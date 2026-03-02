@@ -8,181 +8,171 @@
     android:background="@drawable/bg_neon_space"
     tools:context=".activities.PlayGameActivity">
 
-    <View android:id="@+id/aurora" android:layout_width="0dp" android:layout_height="0dp" android:alpha="0.75" android:background="@drawable/overlay_aurora" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
+    <View android:id="@+id/aurora" android:layout_width="0dp" android:layout_height="0dp"
+        android:alpha="0.75" android:background="@drawable/overlay_aurora"
+        app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"/>
 
-    <View android:id="@+id/ring1" android:layout_width="320dp" android:layout_height="320dp" android:alpha="0.65" android:background="@drawable/ring_neon" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
-    <View android:id="@+id/ring2" android:layout_width="420dp" android:layout_height="420dp" android:alpha="0.45" android:background="@drawable/ring_neon_soft" app:layout_constraintBottom_toBottomOf="@id/ring1" app:layout_constraintEnd_toEndOf="@id/ring1" app:layout_constraintStart_toStartOf="@id/ring1" app:layout_constraintTop_toTopOf="@id/ring1" />
+    <View android:id="@+id/ring1" android:layout_width="320dp" android:layout_height="320dp"
+        android:alpha="0.65" android:background="@drawable/ring_neon"
+        app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"/>
+    <View android:id="@+id/ring2" android:layout_width="420dp" android:layout_height="420dp"
+        android:alpha="0.45" android:background="@drawable/ring_neon_soft"
+        app:layout_constraintBottom_toBottomOf="@id/ring1" app:layout_constraintEnd_toEndOf="@id/ring1"
+        app:layout_constraintStart_toStartOf="@id/ring1" app:layout_constraintTop_toTopOf="@id/ring1"/>
 
-    <TextView android:id="@+id/txtTitle" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="20dp" android:layout_marginTop="28dp" android:layout_marginEnd="20dp" android:shadowColor="#00E5FF" android:shadowDx="0" android:shadowDy="0" android:shadowRadius="16" android:text="IMPOSTOR" android:textAllCaps="true" android:textColor="@android:color/white" android:textSize="40sp" android:textStyle="bold" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
+    <!-- Título arriba -->
+    <TextView android:id="@+id/txtTitle"
+        android:layout_width="0dp" android:layout_height="wrap_content"
+        android:layout_marginStart="20dp" android:layout_marginTop="28dp" android:layout_marginEnd="20dp"
+        android:shadowColor="#00E5FF" android:shadowDx="0" android:shadowDy="0" android:shadowRadius="16"
+        android:text="IMPOSTOR" android:textAllCaps="true" android:textColor="@android:color/white"
+        android:textSize="40sp" android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
-    <TextView android:id="@+id/txtSubtitle" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="24dp" android:layout_marginTop="6dp" android:layout_marginEnd="24dp" android:shadowColor="#8000E5FF" android:shadowDx="0" android:shadowDy="0" android:shadowRadius="10" android:text="Roles listos. Voces apagadas. Caos encendido." android:textColor="#CCFFFFFF" android:textSize="14sp" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/txtTitle" />
+    <TextView android:id="@+id/txtSubtitle"
+        android:layout_width="0dp" android:layout_height="wrap_content"
+        android:layout_marginStart="24dp" android:layout_marginTop="6dp" android:layout_marginEnd="24dp"
+        android:shadowColor="#8000E5FF" android:shadowDx="0" android:shadowDy="0" android:shadowRadius="10"
+        android:text="Roles listos. Voces apagadas. Caos encendido."
+        android:textColor="#CCFFFFFF" android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtTitle"/>
 
-    <TextView android:id="@+id/txtSubSubTitle" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="24dp" android:layout_marginTop="10dp" android:layout_marginEnd="24dp" android:shadowColor="#8000E5FF" android:shadowDx="0" android:shadowDy="0" android:shadowRadius="10" android:text="¡La partida ha empezado!\nEs hora de descubrir quién está de nuestro lado" android:textColor="#CCFFFFFF" android:textSize="20dp" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/txtSubtitle" />
+    <!-- Timer: anclado al ring1, visible encima del centro -->
+    <TextView android:id="@+id/txtTimer"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="⏱ 3:00"
+        android:textSize="56sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:shadowColor="#00E5FF"
+        android:shadowDx="0" android:shadowDy="0" android:shadowRadius="20"
+        android:gravity="center"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@id/ring1"
+        app:layout_constraintStart_toStartOf="@id/ring1"
+        app:layout_constraintBottom_toTopOf="@id/txtImpostor"
+        app:layout_constraintTop_toTopOf="@id/ring1"/>
 
-    <!-- Contenedor centrado en el anillo -->
-    <LinearLayout
-        android:id="@+id/cardsContainer"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginEnd="18dp"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
+    <!-- txtImpostor: SIEMPRE centrado dentro del ring1 -->
+    <TextView android:id="@+id/txtImpostor"
+        android:layout_width="0dp" android:layout_height="wrap_content"
+        android:layout_marginStart="24dp" android:layout_marginEnd="24dp"
+        android:gravity="center"
+        android:textColor="#FFFFFFFF"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:shadowColor="#00E5FF"
+        android:shadowDx="0" android:shadowDy="0" android:shadowRadius="14"
+        app:layout_constraintEnd_toEndOf="@id/ring1"
+        app:layout_constraintStart_toStartOf="@id/ring1"
+        app:layout_constraintTop_toTopOf="@id/ring1"
+        app:layout_constraintBottom_toBottomOf="@id/ring1"
+        app:layout_constraintVertical_bias="0.4"/>
+
+    <!-- Cards container: también centrado en ring1, solo visible tras revelar -->
+    <LinearLayout android:id="@+id/cardsContainer"
+        android:visibility="gone"
+        android:background="@android:color/transparent"
+        android:layout_width="0dp" android:layout_height="wrap_content"
+        android:layout_marginStart="18dp" android:layout_marginEnd="18dp"
+        android:gravity="center_horizontal" android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="@id/ring1"
         app:layout_constraintEnd_toEndOf="@id/ring1"
         app:layout_constraintStart_toStartOf="@id/ring1"
         app:layout_constraintTop_toTopOf="@id/ring1"
         app:layout_constraintVertical_bias="0.5">
 
-        <!-- Texto jugador habla -->
-        <TextView
-            android:id="@+id/txtImpostor"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:gravity="center"
-            android:text="JUGADOR 1"
-            android:textColor="#FFFFFFFF"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <!-- Card Impostor (visible tras revelar si hay impostores) -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardResumen"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <androidx.cardview.widget.CardView android:id="@+id/cardResumen"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
             android:visibility="gone"
             app:cardBackgroundColor="@android:color/transparent"
-            app:cardCornerRadius="22dp"
-            app:cardElevation="12dp"
-            app:cardUseCompatPadding="true">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_card_main"
-                android:orientation="vertical"
-                android:paddingStart="20dp"
-                android:paddingTop="14dp"
-                android:paddingEnd="20dp"
-                android:paddingBottom="14dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="IMPOSTOR"
-                    android:textColor="#FF1744"
-                    android:textSize="11sp"
-                    android:textStyle="bold"
-                    android:letterSpacing="0.1"
-                    android:layout_marginBottom="4dp" />
-
-                <TextView
-                    android:id="@+id/txtImpostorNombre"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#FFFFFFFF"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+            app:cardCornerRadius="22dp" app:cardElevation="0.1dp" app:cardUseCompatPadding="true">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:background="@drawable/bg_card_main" android:orientation="vertical"
+                android:paddingStart="20dp" android:paddingTop="14dp"
+                android:paddingEnd="20dp" android:paddingBottom="14dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="IMPOSTOR" android:textColor="#FF1744" android:textSize="11sp"
+                    android:textStyle="bold" android:letterSpacing="0.1" android:layout_marginBottom="4dp"/>
+                <TextView android:id="@+id/txtImpostorNombre"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:textColor="#FFFFFFFF" android:textSize="18sp" android:textStyle="bold"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- Card Señor Blanco (visible tras revelar si hay señores blancos) -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardSenorBlanco"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:visibility="gone"
+        <androidx.cardview.widget.CardView android:id="@+id/cardSenorBlanco"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" android:visibility="gone"
             app:cardBackgroundColor="@android:color/transparent"
-            app:cardCornerRadius="22dp"
-            app:cardElevation="12dp"
-            app:cardUseCompatPadding="true">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_card_main"
-                android:orientation="vertical"
-                android:paddingStart="20dp"
-                android:paddingTop="14dp"
-                android:paddingEnd="20dp"
-                android:paddingBottom="14dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="SEÑOR BLANCO"
-                    android:textColor="#FF1744"
-                    android:textSize="11sp"
-                    android:textStyle="bold"
-                    android:letterSpacing="0.1"
-                    android:layout_marginBottom="4dp" />
-
-                <TextView
-                    android:id="@+id/txtSenorBlancoNombre"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#FFFFFFFF"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+            app:cardCornerRadius="22dp" app:cardElevation="0.1dp" app:cardUseCompatPadding="true">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:background="@drawable/bg_card_main" android:orientation="vertical"
+                android:paddingStart="20dp" android:paddingTop="14dp"
+                android:paddingEnd="20dp" android:paddingBottom="14dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="SEÑOR BLANCO" android:textColor="#FF1744" android:textSize="11sp"
+                    android:textStyle="bold" android:letterSpacing="0.1" android:layout_marginBottom="4dp"/>
+                <TextView android:id="@+id/txtSenorBlancoNombre"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:textColor="#FFFFFFFF" android:textSize="18sp" android:textStyle="bold"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- Card Palabra -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardViewPalabra"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:visibility="gone"
+        <androidx.cardview.widget.CardView android:id="@+id/cardViewPalabra"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" android:visibility="gone"
             app:cardBackgroundColor="@android:color/transparent"
-            app:cardCornerRadius="22dp"
-            app:cardElevation="12dp"
-            app:cardUseCompatPadding="true">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_card_main"
-                android:orientation="vertical"
-                android:paddingStart="20dp"
-                android:paddingTop="14dp"
-                android:paddingEnd="20dp"
-                android:paddingBottom="14dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="LA PALABRA ERA"
-                    android:textColor="#AAFFFFFF"
-                    android:textSize="11sp"
-                    android:textStyle="bold"
-                    android:letterSpacing="0.1"
-                    android:layout_marginBottom="4dp" />
-
-                <TextView
-                    android:id="@+id/txtPalabra"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#E6FFFFFF"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+            app:cardCornerRadius="22dp" app:cardElevation="0.1dp" app:cardUseCompatPadding="true">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:background="@drawable/bg_card_main" android:orientation="vertical"
+                android:paddingStart="20dp" android:paddingTop="14dp"
+                android:paddingEnd="20dp" android:paddingBottom="14dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="LA PALABRA ERA" android:textColor="#AAFFFFFF" android:textSize="11sp"
+                    android:textStyle="bold" android:letterSpacing="0.1" android:layout_marginBottom="4dp"/>
+                <TextView android:id="@+id/txtPalabra"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:textColor="#E6FFFFFF" android:textSize="18sp" android:textStyle="bold"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
     </LinearLayout>
 
-    <TextView android:id="@+id/txtFooter" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="22dp" android:layout_marginEnd="22dp" android:layout_marginBottom="10dp" android:textColor="#99FFFFFF" android:textSize="12sp" app:layout_constraintBottom_toTopOf="@id/btnRow" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" />
+    <TextView android:id="@+id/txtFooter"
+        android:layout_width="0dp" android:layout_height="wrap_content"
+        android:layout_marginStart="22dp" android:layout_marginEnd="22dp" android:layout_marginBottom="10dp"
+        android:textColor="#99FFFFFF" android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/btnRow"
+        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"/>
 
-    <LinearLayout android:id="@+id/btnRow" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="18dp" android:layout_marginEnd="18dp" android:layout_marginBottom="22dp" android:gravity="center" android:orientation="vertical" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent">
+    <LinearLayout android:id="@+id/btnRow"
+        android:layout_width="0dp" android:layout_height="wrap_content"
+        android:layout_marginStart="18dp" android:layout_marginEnd="18dp" android:layout_marginBottom="22dp"
+        android:gravity="center" android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent">
 
-        <Button android:id="@+id/btnRevelar" android:layout_width="match_parent" android:layout_height="48dp" android:background="@drawable/btn_neon" android:backgroundTint="@null" app:backgroundTint="@null" android:text="REVELAR IMPOSTOR Y PALABRA" android:textAllCaps="true" android:textColor="@android:color/white" android:textStyle="bold" />
-
-        <Space android:layout_width="match_parent" android:layout_height="12dp" />
-
-        <Button android:id="@+id/btnNewGame" android:layout_width="match_parent" android:layout_height="48dp" android:background="@drawable/btn_neon" android:backgroundTint="@null" app:backgroundTint="@null" android:text="NUEVA PARTIDA" android:textAllCaps="true" android:textColor="@android:color/white" android:textStyle="bold" />
-
+        <Button android:id="@+id/btnVotar"
+            android:layout_width="match_parent" android:layout_height="48dp"
+            android:background="@drawable/btn_neon" android:backgroundTint="@null" app:backgroundTint="@null"
+            android:text="🗳 VOTAR" android:textAllCaps="true"
+            android:textColor="@android:color/white" android:textStyle="bold"/>
+        <Space android:layout_width="match_parent" android:layout_height="12dp"/>
+        <Button android:id="@+id/btnRevelar"
+            android:layout_width="match_parent" android:layout_height="48dp"
+            android:background="@drawable/btn_neon" android:backgroundTint="@null" app:backgroundTint="@null"
+            android:text="REVELAR IMPOSTOR Y PALABRA" android:textAllCaps="true"
+            android:textColor="@android:color/white" android:textStyle="bold"/>
+        <Space android:layout_width="match_parent" android:layout_height="12dp"/>
+        <Button android:id="@+id/btnNewGame"
+            android:layout_width="match_parent" android:layout_height="48dp"
+            android:background="@drawable/btn_neon" android:backgroundTint="@null" app:backgroundTint="@null"
+            android:text="NUEVA PARTIDA" android:textAllCaps="true"
+            android:textColor="@android:color/white" android:textStyle="bold"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

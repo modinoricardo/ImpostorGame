@@ -1,39 +1,54 @@
 package com.example.impostorgame.activities
 
+import android.Manifest
 import android.animation.LayoutTransition
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.graphics.BitmapFactory
+import android.hardware.camera2.CameraCharacteristics
+import android.hardware.camera2.CameraManager
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.camera.core.CameraSelector
+import androidx.camera.core.ImageCapture
+import androidx.camera.core.ImageCaptureException
+import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.cardview.widget.CardView
-import com.example.impostorgame.modelos.Category
-import com.example.impostorgame.R
-import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
-import androidx.activity.OnBackPressedCallback
 import android.graphics.Color
-import androidx.activity.viewModels
+import android.view.ViewGroup
+import com.example.impostorgame.CategoryViewModel
+import com.example.impostorgame.PlayerViewModel
+import com.example.impostorgame.R
+import com.example.impostorgame.ThemeManager
+import com.example.impostorgame.modelos.Category
 import com.example.impostorgame.modelos.GameOptions
 import com.example.impostorgame.modelos.Jugador
 import com.example.impostorgame.modelos.TipoJugador
 import com.example.impostorgame.modelos.WordItem
+import java.io.File
 import kotlin.random.Random
-import com.example.impostorgame.CategoryViewModel
-import com.example.impostorgame.ThemeManager
-import com.example.impostorgame.PlayerViewModel
 
 @Suppress("DEPRECATION")
 class ImpostorRevealActivity : AppCompatActivity() {
+
     private val categoryViewModel: CategoryViewModel by viewModels()
+    private val playerViewModel: PlayerViewModel by viewModels()
 
     private lateinit var listaCategorias: List<Category>
     private lateinit var detailsPlayer: TextView
@@ -46,10 +61,14 @@ class ImpostorRevealActivity : AppCompatActivity() {
     private lateinit var presText: TextView
     private lateinit var turnPlayerName: TextView
     private lateinit var hintPlayer: TextView
+    private lateinit var imgWord: ImageView
+
     private var playerInGame: Int = 0
     private lateinit var indicesImpostores: Set<Int>
+    private lateinit var indicesSenoresBlancos: Set<Int>
     private lateinit var palabra: String
     private lateinit var pista: String
+    private lateinit var pistaMisteriosa: String
     private lateinit var nombresImpostores: List<String>
     private lateinit var opciones: GameOptions
     private var modoLocoActivo: Boolean = false
@@ -57,13 +76,16 @@ class ImpostorRevealActivity : AppCompatActivity() {
     private lateinit var categoriaInGame: Category
     private lateinit var wordItemInGame: WordItem
     private lateinit var listaJugadores: List<Jugador>
-    private val playerViewModel: PlayerViewModel by viewModels()
-    private lateinit var imgWord: ImageView
     private var imageResTurno: Int = 0
     private val impostorImageRes = R.drawable.impostor
     private lateinit var imagenPorJugador: IntArray
-    private lateinit var indicesSenoresBlancos: Set<Int>
-    private lateinit var pistaMisteriosa: String
+    private var isAnimating = false
+    private val selfiesTomados = mutableSetOf<Int>() // índices ya fotografiados
+
+    // CameraX
+    private var cameraProvider: ProcessCameraProvider? = null
+    private var imageCapture: ImageCapture? = null
+    private var pendingSelfieForPlayer: Int = -1
 
     private val wordImages = listOf(
         R.drawable.civil1, R.drawable.civil2, R.drawable.civil3,
@@ -72,6 +94,12 @@ class ImpostorRevealActivity : AppCompatActivity() {
         R.drawable.civil10
     )
 
+    private val requestCameraPermission = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { granted ->
+        if (granted) iniciarCameraX()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ThemeManager.aplicarTema(this)
@@ -79,7 +107,6 @@ class ImpostorRevealActivity : AppCompatActivity() {
         setContentView(R.layout.activity_impostor_reveal)
         ThemeManager.aplicarDrawables(this)
 
-        // Mostrar la S solo en carmesí
         val imgLetraS = findViewById<ImageView>(R.id.imgLetraS)
         imgLetraS?.visibility = if (ThemeManager.esCarmesi(this)) View.VISIBLE else View.GONE
 
@@ -95,21 +122,21 @@ class ImpostorRevealActivity : AppCompatActivity() {
         })
 
         detailsPlayer = findViewById(R.id.detailsPlayer)
-        layout = findViewById(R.id.layoutCard)
+        layout        = findViewById(R.id.layoutCard)
         cardViewPrincipal = findViewById(R.id.cardViewPrincipal)
-        imgDedo = findViewById(R.id.imgDedo)
-        txtTwo = findViewById(R.id.txtTwo)
-        nenxtPlayer = findViewById(R.id.nenxtPlayer)
-        presText = findViewById(R.id.presText)
+        imgDedo       = findViewById(R.id.imgDedo)
+        txtTwo        = findViewById(R.id.txtTwo)
+        nenxtPlayer   = findViewById(R.id.nenxtPlayer)
+        presText      = findViewById(R.id.presText)
         turnPlayerName = findViewById(R.id.turnPlayerName)
         textNextPlayer = findViewById(R.id.textNextPlayer)
-        hintPlayer = findViewById(R.id.hintPlayer)
-        imgWord = findViewById(R.id.imgWord)
+        hintPlayer    = findViewById(R.id.hintPlayer)
+        imgWord       = findViewById(R.id.imgWord)
 
         ViewCompat.setOnApplyWindowInsetsListener(layout) { v, insets ->
-            val topInsets = insets.getInsets(WindowInsetsCompat.Type.statusBars() or WindowInsetsCompat.Type.displayCutout())
-            val sideInsets = insets.getInsets(WindowInsetsCompat.Type.systemGestures() or WindowInsetsCompat.Type.displayCutout())
-            v.updatePadding(left = sideInsets.left, top = topInsets.top, right = sideInsets.right)
+            val top  = insets.getInsets(WindowInsetsCompat.Type.statusBars() or WindowInsetsCompat.Type.displayCutout())
+            val side = insets.getInsets(WindowInsetsCompat.Type.systemGestures() or WindowInsetsCompat.Type.displayCutout())
+            v.updatePadding(left = side.left, top = top.top, right = side.right)
             insets
         }
 
@@ -130,36 +157,86 @@ class ImpostorRevealActivity : AppCompatActivity() {
         layout.layoutTransition.enableTransitionType(LayoutTransition.CHANGING)
         categoryViewModel.setCategories(listaCategorias)
 
+        // Iniciar cámara si está activa la opción
+        if (opciones.camaraActiva) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+                == PackageManager.PERMISSION_GRANTED) {
+                iniciarCameraX()
+            } else {
+                requestCameraPermission.launch(Manifest.permission.CAMERA)
+            }
+        }
+
+        SelfieManager.init(cacheDir)
+        SelfieManager.clear()
+        selfiesTomados.clear()
         onEventos()
         datosJuego()
+    }
+
+    // ── CameraX: preparar captura sin preview ──
+    private fun iniciarCameraX() {
+        val future = ProcessCameraProvider.getInstance(this)
+        future.addListener({
+            try {
+                cameraProvider = future.get()
+                imageCapture = ImageCapture.Builder()
+                    .setCaptureMode(ImageCapture.CAPTURE_MODE_MINIMIZE_LATENCY)
+                    .build()
+                val selector = CameraSelector.DEFAULT_FRONT_CAMERA
+                cameraProvider?.unbindAll()
+                cameraProvider?.bindToLifecycle(this, selector, imageCapture!!)
+            } catch (_: Exception) {}
+        }, ContextCompat.getMainExecutor(this))
+    }
+
+    // ── Tomar selfie para el jugador actual ──
+    private fun tomarSelfie(playerIndex: Int) {
+        val ic = imageCapture ?: return
+        val outFile = File(cacheDir, "selfie_tmp_$playerIndex.jpg")
+        val options = ImageCapture.OutputFileOptions.Builder(outFile).build()
+        ic.takePicture(options, ContextCompat.getMainExecutor(this),
+            object : ImageCapture.OnImageSavedCallback {
+                override fun onImageSaved(output: ImageCapture.OutputFileResults) {
+                    val bmp = BitmapFactory.decodeFile(outFile.absolutePath)
+                    if (bmp != null) {
+                        SelfieManager.saveBitmap(listaJugadores[playerIndex].nombre, bmp)
+                        // Actualizar imagen en el card si sigue siendo el mismo jugador
+                        if (playerIndex == playerInGame) {
+                            imgWord.setImageBitmap(bmp)
+                        }
+                    }
+                }
+                override fun onError(e: ImageCaptureException) {}
+            })
     }
 
     private fun isActiveCategory(category: Category): Boolean =
         listaCategorias.any { it.id == category.id && it.isSelected }
 
     private fun datosJuego() {
-        // 1. Asignar señores blancos (solo en modo misterioso)
         listaJugadores = asignarRoles(listaJugadores, opciones)
 
-        // 2. Elegir índices de impostores (solo entre NORMAL)
         indicesImpostores = playerViewModel.pickImpostorIndices(listaJugadores, opciones.numImpostores)
         indicesSenoresBlancos = listaJugadores.indices
             .filter { listaJugadores[it].tipo == TipoJugador.SENOR_BLANCO }.toSet()
 
         nombresImpostores = indicesImpostores.map { listaJugadores[it].nombre }
 
-        // 3. Asignar imágenes
+        // Asignar imagen DIFERENTE por jugador
         imagenPorJugador = IntArray(listaJugadores.size)
         val pool = wordImages.shuffled().toMutableList()
         for (i in listaJugadores.indices) {
             imagenPorJugador[i] = when {
                 i in indicesImpostores -> impostorImageRes
                 listaJugadores[i].tipo == TipoJugador.SENOR_BLANCO -> impostorImageRes
-                else -> pool.removeFirstOrNull() ?: wordImages.random()
+                else -> {
+                    if (pool.isEmpty()) pool.addAll(wordImages.shuffled())
+                    pool.removeFirst()
+                }
             }
         }
 
-        // 4. Elegir categoría y palabra
         do {
             categoriaInGame = listaCategorias.random()
         } while (listaCategorias.any { it.isSelected } && !isActiveCategory(categoriaInGame))
@@ -169,17 +246,64 @@ class ImpostorRevealActivity : AppCompatActivity() {
             categoriaInGame = categoryViewModel.categories.value!!.first { it.id == categoriaInGame.id }
         }
 
-        wordItemInGame = categoriaInGame.items.random()
-        palabra = wordItemInGame.name
-        pista = wordItemInGame.hints.random()
-        pistaMisteriosa = pista
-
-        imageResTurno = wordImages.random()
-        playerInGame = 0
+        wordItemInGame   = categoriaInGame.items.random()
+        palabra          = wordItemInGame.name
+        pista            = wordItemInGame.hints.random()
+        pistaMisteriosa  = pista
+        imageResTurno    = wordImages.random()
+        playerInGame     = 0
         ocultarPalabra()
-        modoLocoActivo = random(10)
+        modoLocoActivo   = random(10)
 
-        if (opciones.modoLoco && modoLocoActivo) cargarInformacionModoLoco() else cargarInformacionNormal()
+        if (opciones.modoLoco && modoLocoActivo) cargarInformacionModoLoco()
+        else cargarInformacionNormal()
+
+        // Comprobar si ya desde el inicio los no civiles superan a los civiles
+        verificarVictoriaInmediata()
+    }
+
+    // ── Verificar si impostores+blancos >= civiles → victoria inmediata ──
+    private fun verificarVictoriaInmediata() {
+        val totalJugadores = listaJugadores.size
+        val noCiviles = indicesImpostores.size + indicesSenoresBlancos.size
+        val civiles = totalJugadores - noCiviles
+        if (noCiviles >= civiles) {
+            // Mostrar victoria ANTES de que empiece la partida
+            mostrarVictoriaInmediata()
+        }
+    }
+
+    private fun mostrarVictoriaInmediata() {
+        AlertDialog.Builder(this)
+            .setTitle("⚠️ Desequilibrio de roles")
+            .setMessage("Los no civiles son iguales o más que los civiles.\n¡Los impostores ganan automáticamente!")
+            .setCancelable(false)
+            .setPositiveButton("Ver resultado") { _, _ ->
+                irAVictoria()
+            }
+            .show()
+    }
+
+    private fun irAVictoria() {
+        val impostorNombres = nombresImpostores.joinToString(", ")
+        val senoresBlancos  = indicesSenoresBlancos.map { listaJugadores[it].nombre }.joinToString(", ")
+
+        // Primero victoria, luego reveal
+        val intentVictory = Intent(this, VictoryActivity::class.java).apply {
+            putExtra("GANADOR", "IMPOSTORES")
+            putExtra("MOTIVO", "Los no civiles superaban a los civiles.")
+            putExtra("IR_A_REVEAL", true)
+            putParcelableArrayListExtra("LISTA_JUGADORES", ArrayList(listaJugadores))
+            putParcelableArrayListExtra("LISTA_CATEGORIAS", ArrayList(listaCategorias))
+            putExtra("PALABRA", palabra)
+            putExtra("IMPOSTOR", impostorNombres)
+            putExtra("SENORES_BLANCOS", senoresBlancos)
+            putExtra("MODO_MISTERIOSO", opciones.modoMisterioso)
+            putExtra("TIEMPO_LIMITADO", opciones.tiempoLimitado)
+            putExtra("MINUTOS", opciones.minutos)
+        }
+        startActivity(intentVictory)
+        finish()
     }
 
     private fun asignarRoles(jugadores: List<Jugador>, opts: GameOptions): List<Jugador> {
@@ -193,7 +317,6 @@ class ImpostorRevealActivity : AppCompatActivity() {
 
     fun random(num: Int): Boolean = Random.nextInt(100) < num
 
-    // ── Modo Loco ──
     private fun cargarInformacionModoLoco() {
         turnPlayerName.text = listaJugadores[playerInGame].nombre
         imageResTurno = impostorImageRes
@@ -203,41 +326,34 @@ class ImpostorRevealActivity : AppCompatActivity() {
         if (opciones.pista) {
             if (!pistaActivaModoLoco) {
                 val wordItemRandom = listaCategorias.randomOrNull()?.items?.randomOrNull()
-                if (wordItemRandom != null) {
-                    palabra = wordItemRandom.name
-                    pista = wordItemRandom.hints.randomOrNull() ?: ""
-                } else { palabra = ""; pista = "" }
+                if (wordItemRandom != null) { palabra = wordItemRandom.name; pista = wordItemRandom.hints.randomOrNull() ?: "" }
+                else { palabra = ""; pista = "" }
             }
             hintPlayer.text = if (pista.isNotEmpty()) "Pista: $pista" else ""
         } else {
             hintPlayer.text = ""
         }
-
         hintPlayer.visibility = View.GONE
         pistaActivaModoLoco = true
     }
 
-    // ── Modo Normal / Misterioso ──
     private fun cargarInformacionNormal() {
         turnPlayerName.text = listaJugadores[playerInGame].nombre
         imageResTurno = imagenPorJugador[playerInGame]
 
         val esSenorBlanco = listaJugadores[playerInGame].tipo == TipoJugador.SENOR_BLANCO
-        val esImpostor = playerInGame in indicesImpostores
+        val esImpostor    = playerInGame in indicesImpostores
 
         when {
             esSenorBlanco -> {
                 detailsPlayer.text = "SEÑOR BLANCO\nNo tienes palabra"
                 detailsPlayer.setTextColor(getColor(R.color.colorImpostor))
-                hintPlayer.text = ""
-                hintPlayer.visibility = View.GONE
+                hintPlayer.text = ""; hintPlayer.visibility = View.GONE
             }
             esImpostor && opciones.modoMisterioso -> {
-                // En modo misterioso el impostor ve la pista sin saber que es impostor
                 detailsPlayer.text = pistaMisteriosa
                 detailsPlayer.setTextColor(Color.WHITE)
-                hintPlayer.text = ""
-                hintPlayer.visibility = View.GONE
+                hintPlayer.text = ""; hintPlayer.visibility = View.GONE
             }
             esImpostor -> {
                 detailsPlayer.text = "ERES EL \nIMPOSTOR"
@@ -248,8 +364,7 @@ class ImpostorRevealActivity : AppCompatActivity() {
             else -> {
                 detailsPlayer.text = palabra
                 detailsPlayer.setTextColor(Color.WHITE)
-                hintPlayer.text = ""
-                hintPlayer.visibility = View.GONE
+                hintPlayer.text = ""; hintPlayer.visibility = View.GONE
             }
         }
     }
@@ -264,7 +379,9 @@ class ImpostorRevealActivity : AppCompatActivity() {
                     nenxtPlayer.visibility = View.VISIBLE
                     true
                 }
-                MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> { ocultarPalabra(); true }
+                MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
+                    ocultarPalabra(); true
+                }
                 else -> false
             }
         }
@@ -273,41 +390,82 @@ class ImpostorRevealActivity : AppCompatActivity() {
 
     private fun ocultarPalabra() {
         detailsPlayer.visibility = View.GONE
-        hintPlayer.visibility = View.GONE
-        imgWord.visibility = View.GONE
-        imgDedo.visibility = View.VISIBLE
-        txtTwo.visibility = View.VISIBLE
-        presText.visibility = View.VISIBLE
+        hintPlayer.visibility    = View.GONE
+        imgWord.visibility       = View.GONE
+        imgDedo.visibility       = View.VISIBLE
+        txtTwo.visibility        = View.VISIBLE
+        presText.visibility      = View.VISIBLE
     }
 
     private fun mostrarPalabraNormal() {
         cargarInformacionNormal()
-        imgDedo.visibility = View.GONE
-        txtTwo.visibility = View.GONE
+        imgDedo.visibility  = View.GONE
+        txtTwo.visibility   = View.GONE
         presText.visibility = View.GONE
 
-        val esImpostor = playerInGame in indicesImpostores
+        // Selfie: solo la primera vez que este jugador ve su palabra
+        if (opciones.camaraActiva && imageCapture != null && playerInGame !in selfiesTomados) {
+            selfiesTomados.add(playerInGame)
+            tomarSelfie(playerInGame)
+        }
+
+        val esImpostor    = playerInGame in indicesImpostores
         val esSenorBlanco = listaJugadores[playerInGame].tipo == TipoJugador.SENOR_BLANCO
+
         hintPlayer.visibility = if (esImpostor && !opciones.modoMisterioso && !esSenorBlanco && opciones.pista)
             View.VISIBLE else View.GONE
 
         detailsPlayer.visibility = View.VISIBLE
-        imgWord.setImageResource(imageResTurno)
-        imgWord.visibility = View.VISIBLE
+
+        // Imagen: selfie si existe → mostrarlo
+        // Si cámara activa y aún no hay selfie → no mostrar imagen (evitar flash de imagen por defecto)
+        val selfie = SelfieManager.getBitmap(listaJugadores[playerInGame].nombre)
+        when {
+            selfie != null -> {
+                imgWord.setImageBitmap(selfie)
+                imgWord.visibility = View.VISIBLE
+            }
+            opciones.camaraActiva -> {
+                // Cámara activa pero foto aún no llegó: ocultar hasta que la callback la ponga
+                imgWord.setImageResource(R.drawable.ic_touch_app)
+                imgWord.visibility = View.VISIBLE
+            }
+            else -> {
+                imgWord.setImageResource(imageResTurno)
+                imgWord.visibility = View.VISIBLE
+            }
+        }
     }
 
     private fun mostrarPalabraModoLoco() {
         cargarInformacionModoLoco()
-        imgDedo.visibility = View.GONE
-        txtTwo.visibility = View.GONE
+        imgDedo.visibility  = View.GONE
+        txtTwo.visibility   = View.GONE
         presText.visibility = View.GONE
         detailsPlayer.visibility = View.VISIBLE
-        imgWord.setImageResource(imageResTurno)
-        imgWord.visibility = View.VISIBLE
+
+        if (opciones.camaraActiva && imageCapture != null && playerInGame !in selfiesTomados) {
+            selfiesTomados.add(playerInGame)
+            tomarSelfie(playerInGame)
+        }
+
+        val selfie = SelfieManager.getBitmap(listaJugadores[playerInGame].nombre)
+        when {
+            selfie != null -> {
+                imgWord.setImageBitmap(selfie)
+                imgWord.visibility = View.VISIBLE
+            }
+            opciones.camaraActiva -> {
+                imgWord.visibility = View.INVISIBLE
+            }
+            else -> {
+                imgWord.setImageResource(imageResTurno)
+                imgWord.visibility = View.VISIBLE
+            }
+        }
+
         hintPlayer.visibility = if (opciones.pista) View.VISIBLE else View.GONE
     }
-
-    private var isAnimating = false
 
     private fun btnNextPlayer() {
         pistaActivaModoLoco = false
@@ -321,13 +479,24 @@ class ImpostorRevealActivity : AppCompatActivity() {
 
             val senoresBlancos = indicesSenoresBlancos.map { listaJugadores[it].nombre }.joinToString(", ")
 
+            // Pasar jugadores con TipoJugador correcto a PlayGameActivity
+            val jugadoresConRoles = listaJugadores.mapIndexed { i, j ->
+                when {
+                    i in indicesImpostores -> j.copy(tipo = TipoJugador.IMPOSTOR)
+                    j.tipo == TipoJugador.SENOR_BLANCO -> j
+                    else -> j.copy(tipo = TipoJugador.NORMAL)
+                }
+            }
+
             val intent = Intent(this, PlayGameActivity::class.java).apply {
-                putParcelableArrayListExtra("LISTA_JUGADORES", ArrayList(listaJugadores))
+                putParcelableArrayListExtra("LISTA_JUGADORES", ArrayList(jugadoresConRoles))
                 putParcelableArrayListExtra("LISTA_CATEGORIAS", ArrayList(listaCategorias))
                 putExtra("PALABRA", if (opciones.modoLoco && modoLocoActivo) "NO HABIA PALABRA" else palabra)
                 putExtra("IMPOSTOR", impostorNombres)
                 putExtra("SENORES_BLANCOS", senoresBlancos)
                 putExtra("MODO_MISTERIOSO", opciones.modoMisterioso)
+                putExtra("TIEMPO_LIMITADO", opciones.tiempoLimitado)
+                putExtra("MINUTOS", opciones.minutos)
             }
             startActivity(intent)
             finishWithUpdatedCategories()
@@ -342,7 +511,8 @@ class ImpostorRevealActivity : AppCompatActivity() {
         slideOutIn(cardViewPrincipal, outExtra = 120f) {
             nenxtPlayer.visibility = View.INVISIBLE
             ocultarPalabra()
-            if (opciones.modoLoco && modoLocoActivo) cargarInformacionModoLoco() else cargarInformacionNormal()
+            if (opciones.modoLoco && modoLocoActivo) cargarInformacionModoLoco()
+            else cargarInformacionNormal()
             val esProximoElUltimo = (playerInGame == lastIndex)
             textNextPlayer.text = if (esProximoElUltimo) "¡EMPEZAR PARTIDA!" else "⏭ SIGUIENTE JUGADOR"
             categoryViewModel.deleteWordItem(categoriaInGame.id, wordItemInGame)
@@ -366,8 +536,14 @@ class ImpostorRevealActivity : AppCompatActivity() {
 
     private fun finishWithUpdatedCategories() {
         setResult(RESULT_OK, Intent().apply {
-            putParcelableArrayListExtra("UPDATED_CATEGORIES", ArrayList(categoryViewModel.categories.value ?: emptyList()))
+            putParcelableArrayListExtra("UPDATED_CATEGORIES",
+                ArrayList(categoryViewModel.categories.value ?: emptyList()))
         })
         finish()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        cameraProvider?.unbindAll()
     }
 }
