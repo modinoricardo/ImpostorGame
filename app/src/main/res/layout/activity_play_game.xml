@@ -45,17 +45,18 @@
     <TextView android:id="@+id/txtTimer"
         android:layout_width="wrap_content" android:layout_height="wrap_content"
         android:text="⏱ 3:00"
-        android:textSize="56sp"
+        android:textSize="80sp"
         android:textStyle="bold"
         android:textColor="@android:color/white"
         android:shadowColor="#00E5FF"
         android:shadowDx="0" android:shadowDy="0" android:shadowRadius="20"
         android:gravity="center"
         android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="@id/ring1"
+        app:layout_constraintTop_toTopOf="@id/ring1"
+        app:layout_constraintBottom_toBottomOf="@id/ring1"
         app:layout_constraintStart_toStartOf="@id/ring1"
-        app:layout_constraintBottom_toTopOf="@id/txtImpostor"
-        app:layout_constraintTop_toTopOf="@id/ring1"/>
+        app:layout_constraintEnd_toEndOf="@id/ring1"
+        app:layout_constraintVertical_bias="0.5"/>
 
     <!-- txtImpostor: SIEMPRE centrado dentro del ring1 -->
     <TextView android:id="@+id/txtImpostor"
@@ -63,15 +64,15 @@
         android:layout_marginStart="24dp" android:layout_marginEnd="24dp"
         android:gravity="center"
         android:textColor="#FFFFFFFF"
-        android:textSize="28sp"
+        android:textSize="22sp"
         android:textStyle="bold"
         android:shadowColor="#00E5FF"
         android:shadowDx="0" android:shadowDy="0" android:shadowRadius="14"
         app:layout_constraintEnd_toEndOf="@id/ring1"
         app:layout_constraintStart_toStartOf="@id/ring1"
         app:layout_constraintTop_toTopOf="@id/ring1"
-        app:layout_constraintBottom_toBottomOf="@id/ring1"
-        app:layout_constraintVertical_bias="0.4"/>
+        app:layout_constraintBottom_toTopOf="@id/txtTimer"
+        app:layout_constraintVertical_bias="1.0"/>
 
     <!-- Cards container: también centrado en ring1, solo visible tras revelar -->
     <LinearLayout android:id="@+id/cardsContainer"

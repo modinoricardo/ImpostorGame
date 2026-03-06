@@ -5,7 +5,7 @@
     android:background="#0A0A0A">
 
     <!-- Fondo animado (partículas / rayos - se hace por código) -->
-    <com.example.impostorgame.views.VictoryParticleView
+    <com.ricardomodino.impostorgame.views.VictoryParticleView
         android:id="@+id/particleView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
