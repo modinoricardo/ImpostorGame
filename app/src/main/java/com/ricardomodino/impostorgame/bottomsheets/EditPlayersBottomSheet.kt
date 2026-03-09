@@ -11,7 +11,6 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,6 +21,7 @@ import com.ricardomodino.impostorgame.R
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.ricardomodino.impostorgame.activities.MainActivity
+import com.ricardomodino.impostorgame.managers.GameDialog
 import com.ricardomodino.impostorgame.managers.ThemeManager
 
 class EditPlayersBottomSheet : BottomSheetDialogFragment() {
@@ -95,6 +95,7 @@ class EditPlayersBottomSheet : BottomSheetDialogFragment() {
             onDeleteClick = { index ->
                 if (viewModel.getPlayerCount() <= 3) {
                     mensajeAlerta(
+                        "⛔",
                         "No se puede borrar",
                         "Para poder jugar hacen falta al menos 3 jugadores. En lugar de borrar, puedes editar uno de los que ya tienes."
                     )
@@ -117,10 +118,10 @@ class EditPlayersBottomSheet : BottomSheetDialogFragment() {
         imageViewAniadirJugador.setOnClickListener {
             val nameNewPlayer = editTextNewPlayer.text.toString()
             if (nameNewPlayer.lowercase() in listOf("ste", "staicy")) {
-                mensajeAlerta("Demasiado amor", "Este nombre desprende niveles extraordinarios de cariño y ternura. Podría sobrecargar el sistema.")
+                mensajeAlerta("❤️", "Demasiado amor", "Este nombre desprende niveles extraordinarios de cariño y ternura. Podría sobrecargar el sistema.")
                 aniadirJugador(nameNewPlayer.trim(), viewModel)
             } else if (nameNewPlayer.lowercase() in listOf("frankestein")) {
-                mensajeAlerta("PISTA ENCONTRADA",
+                mensajeAlerta("🔍", "PISTA ENCONTRADA",
                     "TE L♥ HEYE TK UOTPOWWO.\n" +
                             "♥V WVX L♥ ULZVLG O, ULAE ♥VHKYKLTPL.\n" +
                             "UOAO BE♥PAOA, ÑLML YET♥VBKA♥L.\n" +
@@ -131,7 +132,7 @@ class EditPlayersBottomSheet : BottomSheetDialogFragment() {
             } else if (!nameNewPlayer.isBlank()) {
                 aniadirJugador(nameNewPlayer.trim(), viewModel)
             } else {
-                mensajeAlerta("Error al añadir jugador", "No se pudo añadir el jugador. Escribe un nombre válido y vuelve a intentarlo.")
+                mensajeAlerta("⚠️", "Error al añadir jugador", "No se pudo añadir el jugador. Escribe un nombre válido y vuelve a intentarlo.")
                 return@setOnClickListener
             }
         }
@@ -143,8 +144,13 @@ class EditPlayersBottomSheet : BottomSheetDialogFragment() {
         }
     }
 
-    fun mensajeAlerta(titulo: String, mensaje: String) {
-        AlertDialog.Builder(requireContext()).setTitle(titulo).setMessage(mensaje).setPositiveButton("OK", null).show()
+    fun mensajeAlerta(icono: String, titulo: String, mensaje: String) {
+        GameDialog(requireContext())
+            .icon(icono)
+            .title(titulo)
+            .message(mensaje)
+            .positiveButton("OK")
+            .show()
     }
 
     private fun aniadirJugador(newPlayer: String, viewModel: PlayerViewModel) {

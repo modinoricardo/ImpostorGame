@@ -11,7 +11,6 @@ import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.cardview.widget.CardView
@@ -31,6 +30,7 @@ import com.ricardomodino.impostorgame.R
 import com.ricardomodino.impostorgame.bottomsheets.SelectCategoriesBottomSheet
 import com.ricardomodino.impostorgame.bottomsheets.MenuBottomSheet
 import com.ricardomodino.impostorgame.bottomsheets.SelectGameModeBottomSheet
+import com.ricardomodino.impostorgame.managers.GameDialog
 import com.ricardomodino.impostorgame.managers.ThemeManager
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
@@ -471,7 +471,12 @@ class MainActivity : AppCompatActivity(),
     private var originalColorsSaved = false
 
     fun mensajeAlerta(titulo: String, mensaje: String) {
-        AlertDialog.Builder(this).setTitle(titulo).setMessage(mensaje).setPositiveButton("OK", null).show()
+        GameDialog(this)
+            .icon("!")
+            .title(titulo)
+            .message(mensaje)
+            .positiveButton("OK")
+            .show()
     }
 
     override fun onCategoriesConfirmed(selected: List<Category>) {

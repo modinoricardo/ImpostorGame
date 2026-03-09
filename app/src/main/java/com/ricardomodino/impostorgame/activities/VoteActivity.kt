@@ -15,11 +15,11 @@ import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ricardomodino.impostorgame.R
+import com.ricardomodino.impostorgame.managers.GameDialog
 import com.ricardomodino.impostorgame.managers.ThemeManager
 import com.ricardomodino.impostorgame.modelos.Jugador
 import com.ricardomodino.impostorgame.modelos.TipoJugador
@@ -95,7 +95,6 @@ class VoteActivity : AppCompatActivity() {
         } catch (_: Exception) {}
     }
 
-    // ── Countdown fullscreen sobre el decorView ──
     private fun mostrarCountdownVoto() {
         val overlay = layoutInflater.inflate(R.layout.activity_countdown_fullscreen, null)
         val txt = overlay.findViewById<TextView>(R.id.txtCountdown)
@@ -133,12 +132,17 @@ class VoteActivity : AppCompatActivity() {
         when (votado.tipo) {
             TipoJugador.NORMAL -> mostrarMensajeCivil(votado)
             TipoJugador.IMPOSTOR, TipoJugador.SENOR_BLANCO -> {
-                val rol = if (votado.tipo == TipoJugador.IMPOSTOR) "el impostor" else "el señor blanco"
-                AlertDialog.Builder(this)
-                    .setTitle("⚠️ ¡Te han pillado!")
-                    .setMessage("${votado.nombre} era $rol.\n\n¡Pero intenta salvarte!")
-                    .setCancelable(false)
-                    .setPositiveButton("Intentar") { _, _ -> abrirPantallaAdivinar(votado) }
+                val femenino = esFemenino(votado.nombre)
+                val rol = when (votado.tipo) {
+                    TipoJugador.IMPOSTOR -> if (femenino) "la impostora" else "el impostor"
+                    else -> if (femenino) "la señora blanca" else "el señor blanco"
+                }
+                GameDialog(this)
+                    .icon("⚠️")
+                    .title("¡Te han pillado!")
+                    .message("${votado.nombre} era $rol.\n\n¡Pero intenta salvarte!")
+                    .cancelable(false)
+                    .positiveButton("Intentar") { abrirPantallaAdivinar(votado) }
                     .show()
             }
         }
@@ -148,13 +152,15 @@ class VoteActivity : AppCompatActivity() {
         val nuevaLista = ArrayList(jugadores.filter { it.nombre != votado.nombre })
         val noCiviles = nuevaLista.count { it.tipo == TipoJugador.IMPOSTOR || it.tipo == TipoJugador.SENOR_BLANCO }
         val civiles = nuevaLista.count { it.tipo == TipoJugador.NORMAL }
+        val art = if (esFemenino(votado.nombre)) "una" else "un"
 
         if (noCiviles >= civiles && noCiviles > 0) {
-            AlertDialog.Builder(this)
-                .setTitle("😢 ¡Error!")
-                .setMessage("${votado.nombre} era un pobre civil inocente.\n¡Hay demasiados impostores en la partida!")
-                .setCancelable(false)
-                .setPositiveButton("OK") { _, _ ->
+            GameDialog(this)
+                .icon("😢")
+                .title("¡Ups!")
+                .message("${votado.nombre} era $art pobre civil inocente.\n¡Hay demasiados impostores en la partida!")
+                .cancelable(false)
+                .positiveButton("OK") {
                     setResult(RESULT_OK, Intent().apply {
                         putParcelableArrayListExtra("JUGADORES_ACTUALIZADOS", nuevaLista)
                     })
@@ -162,14 +168,17 @@ class VoteActivity : AppCompatActivity() {
                 }
                 .show()
         } else {
-            AlertDialog.Builder(this)
-                .setTitle("😢 ¡Error!")
-                .setMessage("${votado.nombre} era un pobre civil inocente.\nLa partida continúa.")
-                .setCancelable(false)
-                .setPositiveButton("OK") { _, _ -> eliminarJugadorYVolver(votado) }
+            GameDialog(this)
+                .icon("😢")
+                .title("¡Ups!")
+                .message("${votado.nombre} era $art pobre civil inocente.\nLa partida continúa.")
+                .cancelable(false)
+                .positiveButton("OK") { eliminarJugadorYVolver(votado) }
                 .show()
         }
     }
+
+    private fun esFemenino(nombre: String): Boolean = nombre.trim().lowercase().endsWith("a")
 
     private fun abrirPantallaAdivinar(votado: Jugador) {
         val intent = Intent(this, GuessWordActivity::class.java).apply {
@@ -201,7 +210,6 @@ class VoteActivity : AppCompatActivity() {
 
     companion object { const val REQUEST_GUESS = 1001 }
 
-    // ── Adapter: imagen diferente por jugador ──
     inner class VoteAdapter(
         private val list: MutableList<Jugador>,
         private val onSelected: (Int) -> Unit
@@ -209,7 +217,6 @@ class VoteActivity : AppCompatActivity() {
 
         private var selected = -1
 
-        // Imágenes distintas por jugador (civil1..10 shuffled)
         private val civilImages = listOf(
             R.drawable.civil1, R.drawable.civil2, R.drawable.civil3,
             R.drawable.civil4, R.drawable.civil5, R.drawable.civil6,
@@ -233,12 +240,10 @@ class VoteActivity : AppCompatActivity() {
             val jugador = list[position]
             holder.name.text = jugador.nombre
 
-            // 1. Selfie si existe
             val selfie = SelfieManager.getBitmap(jugador.nombre)
             if (selfie != null) {
                 holder.img.setImageBitmap(selfie)
             } else {
-                // 2. Imagen distinta para cada jugador según su posición
                 val imgRes = if (position < civilImages.size) civilImages[position] else R.drawable.civil1
                 holder.img.setImageResource(imgRes)
             }

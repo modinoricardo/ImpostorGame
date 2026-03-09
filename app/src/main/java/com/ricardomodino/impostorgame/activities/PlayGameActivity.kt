@@ -16,7 +16,6 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import com.ricardomodino.impostorgame.R
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AlertDialog
 import androidx.cardview.widget.CardView
 import android.text.SpannableString
 import android.text.Spanned
@@ -26,6 +25,7 @@ import android.graphics.Typeface
 import android.text.style.StyleSpan
 import androidx.activity.viewModels
 import com.ricardomodino.impostorgame.PlayerViewModel
+import com.ricardomodino.impostorgame.managers.GameDialog
 import com.ricardomodino.impostorgame.managers.ThemeManager
 import com.ricardomodino.impostorgame.modelos.Jugador
 import android.media.MediaPlayer
@@ -79,10 +79,14 @@ class PlayGameActivity : AppCompatActivity() {
 
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                AlertDialog.Builder(this@PlayGameActivity)
-                    .setTitle("Salir").setMessage("¿Quieres salir de la partida?")
-                    .setNegativeButton("Cancelar", null)
-                    .setPositiveButton("Salir") { _, _ -> SelfieManager.clear(); finish() }.show()
+                GameDialog(this@PlayGameActivity)
+                    .icon("🚪")
+                    .title("Salir")
+                    .message("\u00BFQuieres salir de la partida?")
+                    .cancelable(true)
+                    .positiveButton("Salir") { SelfieManager.clear(); finish() }
+                    .negativeButton("Cancelar")
+                    .show()
             }
         })
 
@@ -236,20 +240,30 @@ class PlayGameActivity : AppCompatActivity() {
     }
 
     private fun pulsadoBotonNewGame() {
-        AlertDialog.Builder(this).setTitle("Salir").setMessage("¿Quieres salir de la partida?")
-            .setNegativeButton("Cancelar", null)
-            .setPositiveButton("Salir") { _, _ ->
+        GameDialog(this)
+            .icon("🚪")
+            .title("Salir")
+            .message("\u00BFQuieres salir de la partida?")
+            .cancelable(true)
+            .positiveButton("Salir") {
                 SelfieManager.clear()
                 startActivity(Intent(this, MainActivity::class.java).apply {
                     flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 })
-            }.show()
+            }
+            .negativeButton("Cancelar")
+            .show()
     }
 
     private fun pulsadoBotonRevelar() {
-        AlertDialog.Builder(this).setTitle("Revelar impostor").setMessage("¿Quieres revelar al impostor?")
-            .setNegativeButton("Cancelar", null)
-            .setPositiveButton("Revelar") { _, _ -> cargarDatosRevelando() }.show()
+        GameDialog(this)
+            .icon("🔍")
+            .title("Revelar impostor")
+            .message("\u00BFQuieres revelar al impostor?")
+            .cancelable(true)
+            .positiveButton("Revelar") { cargarDatosRevelando() }
+            .negativeButton("Cancelar")
+            .show()
     }
 
     private fun cargarDatosRevelando() {
@@ -292,9 +306,12 @@ class PlayGameActivity : AppCompatActivity() {
     private fun dpToPx(dp: Int): Int = (dp * resources.displayMetrics.density).toInt()
 
     private fun mensajeAlerta(titulo: String, msg: String) {
-        AlertDialog.Builder(this).setTitle(titulo).setMessage(msg)
-            .setPositiveButton("OK") { _, _ -> stopBell() }
-            .setOnDismissListener { stopBell() }.show()
+        GameDialog(this)
+            .icon("🚪")
+            .title(titulo)
+            .message(msg)
+            .positiveButton("OK") { stopBell() }
+            .show()
     }
 
     private fun stopBell() { mediaPlayer?.stop(); mediaPlayer?.release(); mediaPlayer = null }

@@ -5,9 +5,9 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.ricardomodino.impostorgame.R
+import com.ricardomodino.impostorgame.managers.GameDialog
 import com.ricardomodino.impostorgame.managers.ThemeManager
 import com.ricardomodino.impostorgame.modelos.Jugador
 import com.ricardomodino.impostorgame.modelos.TipoJugador
@@ -20,19 +20,29 @@ class GuessWordActivity : AppCompatActivity() {
         setContentView(R.layout.activity_guess_word)
         ThemeManager.aplicarDrawables(this)
 
-        val nombreVotado      = intent.getStringExtra("NOMBRE_VOTADO") ?: ""
-        val tipoVotado        = intent.getStringExtra("TIPO_VOTADO") ?: ""
-        val palabra           = intent.getStringExtra("PALABRA") ?: ""
-        val nombreImpostor    = intent.getStringExtra("IMPOSTOR") ?: ""
-        val senoresBlancos    = intent.getStringExtra("SENORES_BLANCOS") ?: ""
-        val jugadores         = intent.getParcelableArrayListExtra<Jugador>("JUGADORES") ?: arrayListOf()
+        val nombreVotado   = intent.getStringExtra("NOMBRE_VOTADO") ?: ""
+        val tipoVotado     = intent.getStringExtra("TIPO_VOTADO") ?: ""
+        val palabra        = intent.getStringExtra("PALABRA") ?: ""
+        val nombreImpostor = intent.getStringExtra("IMPOSTOR") ?: ""
+        val senoresBlancos = intent.getStringExtra("SENORES_BLANCOS") ?: ""
+        val jugadores      = intent.getParcelableArrayListExtra<Jugador>("JUGADORES") ?: arrayListOf()
 
         val txtSubtitle = findViewById<TextView>(R.id.txtGuessSubtitle)
         val editWord    = findViewById<EditText>(R.id.editGuessWord)
         val btnConfirm  = findViewById<Button>(R.id.btnConfirmarPalabra)
 
-        val rol = if (tipoVotado == "IMPOSTOR") "el impostor" else "el señor blanco"
-        txtSubtitle.text = "$nombreVotado es $rol.\nAdivinad la palabra para salvar al equipo."
+        // ── Género y texto del subtítulo ──
+        val femenino = esFemenino(nombreVotado)
+        val rol = if (tipoVotado == "IMPOSTOR") {
+            if (femenino) "la impostora" else "el impostor"
+        } else {
+            if (femenino) "la señora blanca" else "el señor blanco"
+        }
+        val otrosMalos = jugadores.count {
+            (it.tipo == TipoJugador.IMPOSTOR || it.tipo == TipoJugador.SENOR_BLANCO) && it.nombre != nombreVotado
+        }
+        val salvar = if (otrosMalos > 0) "salvar al grupo" else "salvarte"
+        txtSubtitle.text = "$nombreVotado es $rol.\nAdivina la palabra para $salvar."
 
         btnConfirm.setOnClickListener {
             val respuesta = editWord.text.toString().trim()
@@ -52,22 +62,25 @@ class GuessWordActivity : AppCompatActivity() {
                 })
             } else {
                 val nuevaLista = ArrayList(jugadores.filter { it.nombre != nombreVotado })
-                val noCiviles = nuevaLista.count {
-                    it.tipo == TipoJugador.IMPOSTOR || it.tipo == TipoJugador.SENOR_BLANCO
-                }
-                val civiles = nuevaLista.count { it.tipo == TipoJugador.NORMAL }
+                val noCiviles  = nuevaLista.count { it.tipo == TipoJugador.IMPOSTOR || it.tipo == TipoJugador.SENOR_BLANCO }
+                val civiles    = nuevaLista.count { it.tipo == TipoJugador.NORMAL }
+                val eliminado  = if (femenino) "eliminada" else "eliminado"
 
                 when {
                     noCiviles == 0 -> {
-                        // No quedan impostores — civiles ganan
-                        AlertDialog.Builder(this)
-                            .setTitle("❌ Palabra incorrecta")
-                            .setMessage("$nombreVotado ha sido eliminado.\n¡No quedan impostores!")
-                            .setCancelable(false)
-                            .setPositiveButton("Ver victoria") { _, _ ->
+                        val motivo = if (femenino)
+                            "¡$nombreVotado era la última impostora!"
+                        else
+                            "¡$nombreVotado era el último impostor!"
+                        GameDialog(this)
+                            .icon("❌")
+                            .title("Palabra incorrecta")
+                            .message("$nombreVotado ha sido $eliminado.\n¡No quedan impostores!")
+                            .cancelable(false)
+                            .positiveButton("Ver victoria") {
                                 startActivity(Intent(this, VictoryActivity::class.java).apply {
                                     putExtra("GANADOR", "CIVILES")
-                                    putExtra("MOTIVO", "¡$nombreVotado era el último impostor!")
+                                    putExtra("MOTIVO", motivo)
                                     putExtra("IR_A_REVEAL", true)
                                     putExtra("PALABRA", palabra)
                                     putExtra("IMPOSTOR", nombreImpostor)
@@ -78,12 +91,12 @@ class GuessWordActivity : AppCompatActivity() {
                             }.show()
                     }
                     noCiviles >= civiles -> {
-                        // Impostores igualan o superan civiles — impostores ganan
-                        AlertDialog.Builder(this)
-                            .setTitle("❌ Palabra incorrecta")
-                            .setMessage("$nombreVotado ha sido eliminado.\n¡Los impostores dominan!")
-                            .setCancelable(false)
-                            .setPositiveButton("Ver victoria") { _, _ ->
+                        GameDialog(this)
+                            .icon("❌")
+                            .title("Palabra incorrecta")
+                            .message("$nombreVotado ha sido $eliminado.\n¡Los impostores dominan!")
+                            .cancelable(false)
+                            .positiveButton("Ver victoria") {
                                 startActivity(Intent(this, VictoryActivity::class.java).apply {
                                     putExtra("GANADOR", "IMPOSTORES")
                                     putExtra("MOTIVO", "Los impostores superaron a los civiles.")
@@ -97,12 +110,12 @@ class GuessWordActivity : AppCompatActivity() {
                             }.show()
                     }
                     else -> {
-                        // La partida continúa
-                        AlertDialog.Builder(this)
-                            .setTitle("❌ Palabra incorrecta")
-                            .setMessage("La palabra no era esa.\n$nombreVotado ha sido eliminado.")
-                            .setCancelable(false)
-                            .setPositiveButton("OK") { _, _ ->
+                        GameDialog(this)
+                            .icon("❌")
+                            .title("Palabra incorrecta")
+                            .message("La palabra no era esa.\n$nombreVotado ha sido $eliminado.")
+                            .cancelable(false)
+                            .positiveButton("OK") {
                                 setResult(RESULT_OK, Intent().apply {
                                     putParcelableArrayListExtra("JUGADORES_ACTUALIZADOS", nuevaLista)
                                 })
@@ -113,4 +126,6 @@ class GuessWordActivity : AppCompatActivity() {
             }
         }
     }
+
+    private fun esFemenino(nombre: String): Boolean = nombre.trim().lowercase().endsWith("a")
 }

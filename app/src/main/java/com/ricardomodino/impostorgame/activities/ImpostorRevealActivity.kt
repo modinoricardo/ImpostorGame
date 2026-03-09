@@ -16,7 +16,6 @@ import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
@@ -32,6 +31,7 @@ import android.view.ViewGroup
 import com.ricardomodino.impostorgame.CategoryViewModel
 import com.ricardomodino.impostorgame.PlayerViewModel
 import com.ricardomodino.impostorgame.R
+import com.ricardomodino.impostorgame.managers.GameDialog
 import com.ricardomodino.impostorgame.managers.ThemeManager
 import com.ricardomodino.impostorgame.modelos.Category
 import com.ricardomodino.impostorgame.modelos.GameOptions
@@ -109,11 +109,13 @@ class ImpostorRevealActivity : AppCompatActivity() {
 
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                AlertDialog.Builder(this@ImpostorRevealActivity)
-                    .setTitle("Salir")
-                    .setMessage("¿Quieres salir de la partida?")
-                    .setNegativeButton("Cancelar", null)
-                    .setPositiveButton("Salir") { _, _ -> finish() }
+                GameDialog(this@ImpostorRevealActivity)
+                    .icon("🚪")
+                    .title("Salir")
+                    .message("\u00BFQuieres salir de la partida?")
+                    .cancelable(true)
+                    .positiveButton("Salir") { finish() }
+                    .negativeButton("Cancelar")
                     .show()
             }
         })
@@ -288,13 +290,12 @@ class ImpostorRevealActivity : AppCompatActivity() {
     }
 
     private fun mostrarVictoriaInmediata() {
-        AlertDialog.Builder(this)
-            .setTitle("⚠️ Desequilibrio de roles")
-            .setMessage("Los no civiles son iguales o más que los civiles.\n¡Los impostores ganan automáticamente!")
-            .setCancelable(false)
-            .setPositiveButton("Ver resultado") { _, _ ->
-                irAVictoria()
-            }
+        GameDialog(this)
+            .icon("⚠️")
+            .title("Desequilibrio de roles")
+            .message("Los no civiles son iguales o más que los civiles.\n¡Los impostores ganan automáticamente!")
+            .cancelable(false)
+            .positiveButton("Ver resultado") { irAVictoria() }
             .show()
     }
 
