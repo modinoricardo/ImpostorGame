@@ -54,7 +54,7 @@ class MenuBottomSheet : BottomSheetDialogFragment() {
         // Título "Menú"
         view.findViewById<TextView>(R.id.txtMenuTitle)?.setShadowLayer(12f, 0f, 0f, accent)
         // Cards internas
-        listOf(R.id.cardMenuEstilo, R.id.cardMenuAcercaDe).forEach { cardId ->
+        listOf(R.id.cardMenuEstilo, R.id.cardMenuSonido, R.id.cardMenuAcercaDe).forEach { cardId ->
             view.findViewById<CardView>(cardId)?.getChildAt(0)?.setBackgroundResource(bgCard)
         }
 

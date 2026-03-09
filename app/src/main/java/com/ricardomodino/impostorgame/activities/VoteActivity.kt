@@ -1,8 +1,12 @@
 package com.ricardomodino.impostorgame.activities
 
 import android.content.Intent
+import android.media.AudioFormat
 import android.media.AudioManager
-import android.media.ToneGenerator
+import android.media.AudioTrack
+import com.ricardomodino.impostorgame.managers.SoundManager
+import kotlin.math.PI
+import kotlin.math.sin
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -57,6 +61,40 @@ class VoteActivity : AppCompatActivity() {
         }
     }
 
+    private fun playCountdownTone(frequencyHz: Float, durationMs: Int = 140) {
+        if (!SoundManager.isSoundEnabled(this)) return
+        try {
+            val sampleRate = 44100
+            val numSamples = sampleRate * durationMs / 1000
+            val fadeLen    = (sampleRate * 0.015).toInt()
+            val samples    = ShortArray(numSamples)
+            for (i in 0 until numSamples) {
+                val env = when {
+                    i < fadeLen              -> i.toDouble() / fadeLen
+                    i > numSamples - fadeLen -> (numSamples - i).toDouble() / fadeLen
+                    else                     -> 1.0
+                }
+                samples[i] = (env * 0.7 * Short.MAX_VALUE *
+                        sin(2.0 * PI * frequencyHz * i / sampleRate)).toInt().toShort()
+            }
+            val minBuf = AudioTrack.getMinBufferSize(
+                sampleRate, AudioFormat.CHANNEL_OUT_MONO, AudioFormat.ENCODING_PCM_16BIT
+            )
+            val track = AudioTrack(
+                AudioManager.STREAM_MUSIC, sampleRate,
+                AudioFormat.CHANNEL_OUT_MONO, AudioFormat.ENCODING_PCM_16BIT,
+                maxOf(minBuf, numSamples * 2), AudioTrack.MODE_STATIC
+            )
+            track.write(samples, 0, numSamples)
+            track.setNotificationMarkerPosition(numSamples)
+            track.setPlaybackPositionUpdateListener(object : AudioTrack.OnPlaybackPositionUpdateListener {
+                override fun onMarkerReached(t: AudioTrack) { t.release() }
+                override fun onPeriodicNotification(t: AudioTrack) {}
+            })
+            track.play()
+        } catch (_: Exception) {}
+    }
+
     // ── Countdown fullscreen sobre el decorView ──
     private fun mostrarCountdownVoto() {
         val overlay = layoutInflater.inflate(R.layout.activity_countdown_fullscreen, null)
@@ -68,19 +106,18 @@ class VoteActivity : AppCompatActivity() {
         )
         decorView.addView(overlay)
 
-        val toneGen = ToneGenerator(AudioManager.STREAM_MUSIC, 100)
+        val toneFreqs = mapOf("3" to 392f, "2" to 494f, "1" to 659f)
         val numbers = listOf("3", "2", "1")
         var i = 0
 
         fun next() {
             if (i >= numbers.size) {
                 decorView.removeView(overlay)
-                try { toneGen.release() } catch (_: Exception) {}
                 procesarVoto()
                 return
             }
             txt.text = numbers[i]
-            try { toneGen.startTone(ToneGenerator.TONE_PROP_BEEP, 200) } catch (_: Exception) {}
+            playCountdownTone(toneFreqs[numbers[i]] ?: 440f)
             txt.scaleX = 0.2f; txt.scaleY = 0.2f; txt.alpha = 0f
             txt.animate().scaleX(1f).scaleY(1f).alpha(1f).setDuration(350L)
                 .withEndAction {

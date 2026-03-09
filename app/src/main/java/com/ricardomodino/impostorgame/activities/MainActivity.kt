@@ -36,6 +36,10 @@ import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.material.switchmaterial.SwitchMaterial
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class MainActivity : AppCompatActivity(),
@@ -56,7 +60,10 @@ class MainActivity : AppCompatActivity(),
     private lateinit var categoriesRecyclerView: RecyclerView
     private lateinit var categoryAdapterMain: CategoryAdapterMain
     private lateinit var switchModoLoco: SwitchMaterial
-    private lateinit var switchPista: SwitchMaterial
+    private lateinit var cardOpcionPistaCompleta: CardView
+    private lateinit var cardOpcionPrimeraLetra: CardView
+    private lateinit var checkPistaCompleta: TextView
+    private lateinit var checkPrimeraLetra: TextView
     private lateinit var switchTiempoLimitado: SwitchMaterial
     private lateinit var switchCamara: SwitchMaterial
     private lateinit var btnMasMinutos: TextView
@@ -84,8 +91,21 @@ class MainActivity : AppCompatActivity(),
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
-        ThemeManager.aplicarTema(this)  // ← aplicar ANTES de setContentView
+        val splashScreen = installSplashScreen()
+        ThemeManager.aplicarTema(this)
         super.onCreate(savedInstanceState)
+
+        if (!splashMostrado) {
+            splashMostrado = true
+            splashScreen.setKeepOnScreenCondition { true }
+            lifecycleScope.launch {
+                delay(3000)
+                splashScreen.setKeepOnScreenCondition { false }
+            }
+        } else {
+            splashScreen.setKeepOnScreenCondition { false }
+        }
+
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
@@ -104,7 +124,10 @@ class MainActivity : AppCompatActivity(),
         btnStartGame = findViewById(R.id.btnStartGame)
         btnMenu = findViewById(R.id.btnMenu)
         switchModoLoco = findViewById(R.id.switchModoLoco)
-        switchPista = findViewById(R.id.switchPista)
+        cardOpcionPistaCompleta = findViewById(R.id.cardOpcionPistaCompleta)
+        cardOpcionPrimeraLetra  = findViewById(R.id.cardOpcionPrimeraLetra)
+        checkPistaCompleta      = findViewById(R.id.checkPistaCompleta)
+        checkPrimeraLetra       = findViewById(R.id.checkPrimeraLetra)
 
         switchTiempoLimitado = findViewById(R.id.switchTiempoLimitado)
         switchCamara        = findViewById(R.id.switchCamara)
@@ -166,7 +189,7 @@ class MainActivity : AppCompatActivity(),
         categoryAdapterMain = CategoryAdapterMain(emptyList())
         categoriesRecyclerView.adapter = categoryAdapterMain
 
-        opciones = GameOptions(pista = true, modoLoco = false, modoMisterioso = false, numImpostores = 1, numSenoresBlancos = 0)
+        opciones = GameOptions(tipoPista = GameOptions.PISTA_COMPLETA, modoLoco = false, modoMisterioso = false, numImpostores = 1, numSenoresBlancos = 0)
         restaurarOpciones()
 
         actualizarResumenImpostores()
@@ -363,7 +386,14 @@ class MainActivity : AppCompatActivity(),
             opciones = opciones.copy(minutos = nuevo)
             txtNumMinutos.text = "$nuevo min"
         }
-        switchPista.setOnCheckedChangeListener { _, isChecked -> opciones = opciones.copy(pista = isChecked) }
+        cardOpcionPistaCompleta.setOnClickListener {
+            opciones = opciones.copy(tipoPista = GameOptions.PISTA_COMPLETA)
+            actualizarSeleccionPista()
+        }
+        cardOpcionPrimeraLetra.setOnClickListener {
+            opciones = opciones.copy(tipoPista = GameOptions.PRIMERA_LETRA)
+            actualizarSeleccionPista()
+        }
 
         // ── Botón empezar ──
         btnStartGame.setOnClickListener {
@@ -388,6 +418,7 @@ class MainActivity : AppCompatActivity(),
                 putParcelableArrayListExtra("CATEGORIES", ArrayList(categoryViewModel.categories.value ?: emptyList()))
                 putExtra("OPCIONES", opciones)
             }
+            SelfieManager.clear()
             guardarOpciones()
             startGameLauncher.launch(intent)
         }
@@ -402,9 +433,8 @@ class MainActivity : AppCompatActivity(),
         if (!opciones.modoMisterioso) {
             opciones = opciones.copy(numSenoresBlancos = 0)
         } else {
-            // En modo misterioso: ocultar y desactivar pista y modo loco
-            opciones = opciones.copy(pista = false, modoLoco = false)
-            switchPista.isChecked = false
+            // En modo misterioso: ocultar y desactivar modo loco
+            opciones = opciones.copy(modoLoco = false)
             switchModoLoco.isChecked = false
         }
 
@@ -430,6 +460,12 @@ class MainActivity : AppCompatActivity(),
 
     override fun onResume() { super.onResume() }
     fun onBottomSheetClosed() {}
+
+    private fun actualizarSeleccionPista() {
+        val pistaCompleta = opciones.tipoPista == GameOptions.PISTA_COMPLETA
+        checkPistaCompleta.visibility = if (pistaCompleta) View.VISIBLE else View.GONE
+        checkPrimeraLetra.visibility  = if (!pistaCompleta) View.VISIBLE else View.GONE
+    }
 
     private var originalColor: Int = 0
     private var originalColorsSaved = false
@@ -476,7 +512,7 @@ class MainActivity : AppCompatActivity(),
         val prefs = getSharedPreferences("opciones", MODE_PRIVATE)
         prefs.edit().apply {
             putBoolean("modoLoco", opciones.modoLoco)
-            putBoolean("pista", opciones.pista)
+            putString("tipoPista", opciones.tipoPista)
             putBoolean("tiempoLimitado", opciones.tiempoLimitado)
             putBoolean("camaraActiva", opciones.camaraActiva)
             putBoolean("modoMisterioso", opciones.modoMisterioso)
@@ -491,7 +527,7 @@ class MainActivity : AppCompatActivity(),
         val prefs = getSharedPreferences("opciones", MODE_PRIVATE)
         opciones = opciones.copy(
             modoLoco = prefs.getBoolean("modoLoco", false),
-            pista = prefs.getBoolean("pista", true),
+            tipoPista = prefs.getString("tipoPista", GameOptions.PISTA_COMPLETA) ?: GameOptions.PISTA_COMPLETA,
             tiempoLimitado = prefs.getBoolean("tiempoLimitado", false),
             camaraActiva = prefs.getBoolean("camaraActiva", false),
             modoMisterioso = prefs.getBoolean("modoMisterioso", false),
@@ -501,12 +537,16 @@ class MainActivity : AppCompatActivity(),
         )
         // Aplicar a los switches y controles
         switchModoLoco.isChecked = opciones.modoLoco
-        switchPista.isChecked = opciones.pista
+        actualizarSeleccionPista()
         switchTiempoLimitado.isChecked = opciones.tiempoLimitado
         switchCamara.isChecked = opciones.camaraActiva
         txtNumMinutos.text = "${opciones.minutos} min"
         layoutSelectorMinutos.visibility = if (opciones.tiempoLimitado) View.VISIBLE else View.GONE
         txtNumImpostores.text = opciones.numImpostores.toString()
         txtNumSenoresBlancos.text = opciones.numSenoresBlancos.toString()
+    }
+
+    companion object {
+        private var splashMostrado = false
     }
 }

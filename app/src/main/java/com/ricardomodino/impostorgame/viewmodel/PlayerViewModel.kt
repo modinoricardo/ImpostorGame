@@ -1,29 +1,54 @@
 package com.ricardomodino.impostorgame
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.ricardomodino.impostorgame.modelos.Jugador
 import com.ricardomodino.impostorgame.modelos.TipoJugador
 import kotlin.random.Random
 
-class PlayerViewModel : ViewModel() {
+class PlayerViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val _players = MutableLiveData<List<Jugador>>(
-        listOf(
-            Jugador("Jugador 1", 0),
-            Jugador("Jugador 2", 0),
-            Jugador("Jugador 3", 0)
-        )
-    )
+    private val prefs = application.getSharedPreferences("players", Application.MODE_PRIVATE)
+
+    private val _players = MutableLiveData<List<Jugador>>(loadPlayers())
     val players: LiveData<List<Jugador>> = _players
 
     // Índice del último jugador que empezó una partida (para no repetir)
     private var ultimoIndiceQueEmpezó: Int = -1
 
+    private fun loadPlayers(): List<Jugador> {
+        val count = prefs.getInt("player_count", 0)
+        if (count == 0) return listOf(
+            Jugador("Jugador 1", 0),
+            Jugador("Jugador 2", 0),
+            Jugador("Jugador 3", 0)
+        )
+        return (0 until count).map { i ->
+            Jugador(
+                nombre = prefs.getString("player_name_$i", "Jugador ${i + 1}") ?: "Jugador ${i + 1}",
+                vecesImpostor = prefs.getInt("player_impostor_$i", 0)
+            )
+        }
+    }
+
+    private fun savePlayers() {
+        val list = _players.value ?: return
+        prefs.edit().apply {
+            putInt("player_count", list.size)
+            list.forEachIndexed { i, jugador ->
+                putString("player_name_$i", jugador.nombre)
+                putInt("player_impostor_$i", jugador.vecesImpostor)
+            }
+            apply()
+        }
+    }
+
     fun addPlayer(name: String) {
         val current = _players.value ?: emptyList()
         _players.value = current + Jugador(nombre = name, vecesImpostor = 0)
+        savePlayers()
     }
 
     fun removeAt(index: Int): Boolean {
@@ -32,6 +57,7 @@ class PlayerViewModel : ViewModel() {
         if (index in current.indices) {
             current.removeAt(index)
             _players.value = current
+            savePlayers()
             return true
         }
         return false
@@ -43,11 +69,13 @@ class PlayerViewModel : ViewModel() {
             val old = current[index]
             current[index] = old.copy(nombre = newName)
             _players.value = current
+            savePlayers()
         }
     }
 
     fun updatePlayers(newList: List<Jugador>) {
         _players.value = newList
+        savePlayers()
     }
 
     fun getPlayerCount(): Int = _players.value?.size ?: 0
@@ -57,6 +85,7 @@ class PlayerViewModel : ViewModel() {
         _players.value = current.map {
             if (it.nombre == name) it.copy(vecesImpostor = it.vecesImpostor + 1) else it
         }
+        savePlayers()
     }
 
     // Elige un jugador que empiece la ronda, sin repetir el de la ronda anterior

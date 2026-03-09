@@ -333,22 +333,23 @@ class ImpostorRevealActivity : AppCompatActivity() {
 
     fun random(num: Int): Boolean = Random.nextInt(100) < num
 
+    private fun textoAyudaImpostor(): String = when (opciones.tipoPista) {
+        GameOptions.PRIMERA_LETRA -> "Primera letra: ${palabra.firstOrNull()?.uppercase() ?: ""}"
+        else -> if (pista.isNotEmpty()) "Pista: $pista" else ""
+    }
+
     private fun cargarInformacionModoLoco() {
         turnPlayerName.text = listaJugadores[playerInGame].nombre
         imageResTurno = impostorImageRes
         detailsPlayer.text = "ERES EL \nIMPOSTOR"
         detailsPlayer.setTextColor(getColor(R.color.colorImpostor))
 
-        if (opciones.pista) {
-            if (!pistaActivaModoLoco) {
-                val wordItemRandom = listaCategorias.randomOrNull()?.items?.randomOrNull()
-                if (wordItemRandom != null) { palabra = wordItemRandom.name; pista = wordItemRandom.hints.randomOrNull() ?: "" }
-                else { palabra = ""; pista = "" }
-            }
-            hintPlayer.text = if (pista.isNotEmpty()) "Pista: $pista" else ""
-        } else {
-            hintPlayer.text = ""
+        if (!pistaActivaModoLoco) {
+            val wordItemRandom = listaCategorias.randomOrNull()?.items?.randomOrNull()
+            if (wordItemRandom != null) { palabra = wordItemRandom.name; pista = wordItemRandom.hints.randomOrNull() ?: "" }
+            else { palabra = ""; pista = "" }
         }
+        hintPlayer.text = textoAyudaImpostor()
         hintPlayer.visibility = View.GONE
         pistaActivaModoLoco = true
     }
@@ -374,7 +375,7 @@ class ImpostorRevealActivity : AppCompatActivity() {
             esImpostor -> {
                 detailsPlayer.text = "ERES EL \nIMPOSTOR"
                 detailsPlayer.setTextColor(getColor(R.color.colorImpostor))
-                hintPlayer.text = if (opciones.pista) "Pista: $pista" else ""
+                hintPlayer.text = textoAyudaImpostor()
                 hintPlayer.visibility = View.GONE
             }
             else -> {
@@ -428,7 +429,7 @@ class ImpostorRevealActivity : AppCompatActivity() {
         val esImpostor    = playerInGame in indicesImpostores
         val esSenorBlanco = listaJugadores[playerInGame].tipo == TipoJugador.SENOR_BLANCO
 
-        hintPlayer.visibility = if (esImpostor && !opciones.modoMisterioso && !esSenorBlanco && opciones.pista)
+        hintPlayer.visibility = if (esImpostor && !opciones.modoMisterioso && !esSenorBlanco)
             View.VISIBLE else View.GONE
 
         detailsPlayer.visibility = View.VISIBLE
@@ -479,7 +480,7 @@ class ImpostorRevealActivity : AppCompatActivity() {
             }
         }
 
-        hintPlayer.visibility = if (opciones.pista) View.VISIBLE else View.GONE
+        hintPlayer.visibility = View.VISIBLE
     }
 
     private fun btnNextPlayer() {

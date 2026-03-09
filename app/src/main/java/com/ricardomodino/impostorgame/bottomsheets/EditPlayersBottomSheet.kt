@@ -60,7 +60,7 @@ class EditPlayersBottomSheet : BottomSheetDialogFragment() {
             bottomSheet.alpha = 0f
             bottomSheet.animate()
                 .translationY(0f).alpha(1f)
-                .setDuration(1500L)
+                .setDuration(550L)
                 .setInterpolator(DecelerateInterpolator(2f)).start()
         }
 

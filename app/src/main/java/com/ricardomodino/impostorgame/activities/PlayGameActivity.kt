@@ -82,7 +82,7 @@ class PlayGameActivity : AppCompatActivity() {
                 AlertDialog.Builder(this@PlayGameActivity)
                     .setTitle("Salir").setMessage("¿Quieres salir de la partida?")
                     .setNegativeButton("Cancelar", null)
-                    .setPositiveButton("Salir") { _, _ -> finish() }.show()
+                    .setPositiveButton("Salir") { _, _ -> SelfieManager.clear(); finish() }.show()
             }
         })
 
@@ -217,7 +217,7 @@ class PlayGameActivity : AppCompatActivity() {
                         // Impostores igualan o superan a civiles — impostores ganan
                         startActivity(Intent(this, VictoryActivity::class.java).apply {
                             putExtra("GANADOR", "IMPOSTORES")
-                            putExtra("MOTIVO", "Los civiles estan en minoria.")
+                            putExtra("MOTIVO", "Los civiles están en minoria.")
                             putExtra("IR_A_REVEAL", true)
                             putParcelableArrayListExtra("LISTA_JUGADORES", ArrayList(listaJugadores))
                             putExtra("PALABRA", palabraJugada)
@@ -238,9 +238,12 @@ class PlayGameActivity : AppCompatActivity() {
     private fun pulsadoBotonNewGame() {
         AlertDialog.Builder(this).setTitle("Salir").setMessage("¿Quieres salir de la partida?")
             .setNegativeButton("Cancelar", null)
-            .setPositiveButton("Salir") { _, _ -> startActivity(Intent(this, MainActivity::class.java).apply {
-                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            }) }.show()
+            .setPositiveButton("Salir") { _, _ ->
+                SelfieManager.clear()
+                startActivity(Intent(this, MainActivity::class.java).apply {
+                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                })
+            }.show()
     }
 
     private fun pulsadoBotonRevelar() {
@@ -253,6 +256,7 @@ class PlayGameActivity : AppCompatActivity() {
         txtHabla.visibility = View.GONE
         cardsContainer.visibility = View.VISIBLE
         countDownTimer?.cancel()
+        txtTimer.visibility = View.GONE
         if (!impostorContado) { playerViewModel.incrementImpostorByName(nombreImpostor); impostorContado = true }
 
         val colorImpostor = ContextCompat.getColor(this, R.color.colorImpostor)

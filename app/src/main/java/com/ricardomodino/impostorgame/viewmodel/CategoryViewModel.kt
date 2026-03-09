@@ -1,15 +1,28 @@
 package com.ricardomodino.impostorgame
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.ricardomodino.impostorgame.modelos.Category
 import com.ricardomodino.impostorgame.modelos.WordItem
 
-class CategoryViewModel : ViewModel() {
+class CategoryViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val _categories = MutableLiveData<List<Category>>(initialCategories())
+    private val prefs = application.getSharedPreferences("categories", Application.MODE_PRIVATE)
+
+    private val _categories = MutableLiveData<List<Category>>(initialCategoriesWithSavedSelections())
     val categories: LiveData<List<Category>> = _categories
+
+    private fun initialCategoriesWithSavedSelections(): List<Category> {
+        val selectedIds = prefs.getStringSet("selected_ids", emptySet()) ?: emptySet()
+        return initialCategories().map { it.copy(isSelected = it.id.toString() in selectedIds) }
+    }
+
+    private fun saveSelectedIds() {
+        val ids = _categories.value?.filter { it.isSelected }?.map { it.id.toString() }?.toSet() ?: emptySet()
+        prefs.edit().putStringSet("selected_ids", ids).apply()
+    }
 
     private fun initialCategories(): List<Category> {
         return listOf(
@@ -27,7 +40,7 @@ class CategoryViewModel : ViewModel() {
                     WordItem("Jirafa", listOf("Cuello largo", "Manchas", "África")),
                     WordItem("Panda", listOf("Bambú", "Blanco y negro", "China")),
                     WordItem("Canguro", listOf("Salta", "Marsupial", "Australia")),
-                    WordItem("Pingüino", listOf("Hielo", "No vuela", "Antártida")),
+                    WordItem("Pingüino", listOf("Hielo", "Antártida")),
                     WordItem("Camaleón", listOf("Cambia de color", "Lengua larga", "Reptil")),
                     WordItem("Búho", listOf("Noche", "Ojos grandes", "Ulula")),
                     WordItem("Zorro", listOf("Astuto", "Cola", "Bosque")),
@@ -287,7 +300,38 @@ class CategoryViewModel : ViewModel() {
                     WordItem("Cocido madrileño", listOf("Garbanzos", "Madrid", "Caldo")),
                     WordItem("Pulpo a la gallega", listOf("Pimentón", "Galicia", "Tentáculos")),
                     WordItem("Crêpe", listOf("Fino", "Relleno", "Francia")),
-                    WordItem("Waffles", listOf("Cuadrícula", "Mantequilla", "Sirope"))
+                    WordItem("Waffles", listOf("Cuadrícula", "Mantequilla", "Sirope")),
+                    WordItem("Tostada", listOf("Desayuno", "Pan", "Crujiente")),
+                    WordItem("Macarrones", listOf("Pasta", "Salsa", "Horno")),
+                    WordItem("Tarta de queso", listOf("Postre", "Cremosa", "Horno")),
+                    WordItem("Tacos", listOf("México", "Tortilla", "Relleno")),
+                    WordItem("Arepa", listOf("Maíz", "Rellena", "Venezuela")),
+                    WordItem("Hot dog", listOf("Pan", "Salchicha", "Mostaza")),
+                    WordItem("Empanadillas", listOf("Relleno", "Fritas", "Masa")),
+                    WordItem("Patatas fritas", listOf("Crujientes", "Aceite", "Sal")),
+                    WordItem("Hummus", listOf("Garbanzos", "Crema", "Untar")),
+                    WordItem("Tiramisú", listOf("Café", "Cacao", "Postre")),
+                    WordItem("Fajitas", listOf("Tortilla", "Pollo", "Verduras")),
+                    WordItem("Nuggets", listOf("Pollo", "Crujientes", "Fritos")),
+                    WordItem("Salmorejo", listOf("Tomate", "Pan", "Frío")),
+                    WordItem("Puré de patata", listOf("Suave", "Acompañamiento", "Crema")),
+                    WordItem("Calamares", listOf("Anillas", "Fritos", "Mar")),
+                    WordItem("Tortitas", listOf("Desayuno", "Dulce", "Sirope")),
+                    WordItem("Muffin", listOf("Dulce", "Horno", "Esponjoso")),
+                    WordItem("Batido", listOf("Frío", "Líquido", "Dulce")),
+                    WordItem("Canelones", listOf("Pasta", "Relleno", "Horno")),
+                    WordItem("Pisto", listOf("Verduras", "Sartén", "España")),
+                    WordItem("Merluza", listOf("Pescado", "Blanco", "Plancha")),
+                    WordItem("Tortellini", listOf("Pasta", "Rellenos", "Italia")),
+                    WordItem("Magdalena", listOf("Dulce", "Esponjosa", "Desayuno")),
+                    WordItem("Bizcocho", listOf("Horno", "Esponjoso", "Dulce")),
+                    WordItem("Alitas de pollo", listOf("Fritas", "Salsa", "Crujientes")),
+                    WordItem("Patatas bravas", listOf("Salsa", "Tapa", "España")),
+                    WordItem("Crema de verduras", listOf("Caliente", "Suave", "Cuchara")),
+                    WordItem("Tallarines", listOf("Pasta", "Largos", "Salsa")),
+                    WordItem("Melón", listOf("Fruta", "Dulce", "Verano")),
+                    WordItem("Torrijas", listOf("Pan", "Dulce", "Semana Santa"))
+
                 )
             ),
             Category(
@@ -420,6 +464,7 @@ class CategoryViewModel : ViewModel() {
         _categories.value = current.map { c ->
             if (c.id == categoryId) c.copy(isSelected = !c.isSelected) else c
         }
+        saveSelectedIds()
     }
 
     fun getSelectedCategories(): List<Category> =
@@ -434,5 +479,6 @@ class CategoryViewModel : ViewModel() {
 
     fun setCategories(list: List<Category>) {
         _categories.value = list
+        saveSelectedIds()
     }
 }

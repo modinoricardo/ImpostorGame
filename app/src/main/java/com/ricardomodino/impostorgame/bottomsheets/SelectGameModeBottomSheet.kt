@@ -31,13 +31,10 @@ class SelectGameModeBottomSheet : BottomSheetDialogFragment() {
         }
     }
 
-    private var modoMisteriosoSeleccionado = false
-
     private lateinit var cardClasico: CardView
     private lateinit var cardMisterioso: CardView
     private lateinit var iconCheckClasico: TextView
     private lateinit var iconCheckMisterioso: TextView
-    private lateinit var btnConfirm: Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -61,49 +58,39 @@ class SelectGameModeBottomSheet : BottomSheetDialogFragment() {
             bottomSheet.alpha = 0f
             bottomSheet.animate()
                 .translationY(0f).alpha(1f)
-                .setDuration(1500L)
+                .setDuration(550L)
                 .setInterpolator(DecelerateInterpolator(2f))
                 .start()
         }
 
         val behavior = BottomSheetBehavior.from(bottomSheet)
-        behavior.isDraggable = false
-        behavior.isHideable = false
+        behavior.isDraggable = true
+        behavior.isHideable = true
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val opcionesActuales = arguments?.getParcelable<GameOptions>(ARG_OPCIONES) ?: GameOptions()
-        modoMisteriosoSeleccionado = opcionesActuales.modoMisterioso
 
         cardClasico = view.findViewById(R.id.cardModoClasico)
         cardMisterioso = view.findViewById(R.id.cardModoMisterioso)
         iconCheckClasico = view.findViewById(R.id.iconCheckClasico)
         iconCheckMisterioso = view.findViewById(R.id.iconCheckMisterioso)
-        btnConfirm = view.findViewById(R.id.btnConfirmModo)
 
-        actualizarSeleccion()
+        iconCheckClasico.visibility = if (!opcionesActuales.modoMisterioso) View.VISIBLE else View.GONE
+        iconCheckMisterioso.visibility = if (opcionesActuales.modoMisterioso) View.VISIBLE else View.GONE
+
+        view.findViewById<Button>(R.id.btnConfirmModo)?.visibility = View.GONE
 
         cardClasico.setOnClickListener {
-            modoMisteriosoSeleccionado = false
-            actualizarSeleccion()
+            (activity as? Listener)?.onGameModeConfirmed(opcionesActuales.copy(modoMisterioso = false))
+            dismiss()
         }
 
         cardMisterioso.setOnClickListener {
-            modoMisteriosoSeleccionado = true
-            actualizarSeleccion()
-        }
-
-        btnConfirm.setOnClickListener {
-            val nuevasOpciones = opcionesActuales.copy(modoMisterioso = modoMisteriosoSeleccionado)
-            (activity as? Listener)?.onGameModeConfirmed(nuevasOpciones)
+            (activity as? Listener)?.onGameModeConfirmed(opcionesActuales.copy(modoMisterioso = true))
             dismiss()
         }
-    }
-
-    private fun actualizarSeleccion() {
-        iconCheckClasico.visibility = if (!modoMisteriosoSeleccionado) View.VISIBLE else View.GONE
-        iconCheckMisterioso.visibility = if (modoMisteriosoSeleccionado) View.VISIBLE else View.GONE
     }
 }

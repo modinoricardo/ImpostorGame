@@ -5,7 +5,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class GameOptions(
-    val pista: Boolean = false,
+    val tipoPista: String = PISTA_COMPLETA,
     val modoLoco: Boolean = false,
     val modoMisterioso: Boolean = false,
     val numImpostores: Int = 1,
@@ -13,4 +13,9 @@ data class GameOptions(
     val tiempoLimitado: Boolean = false,
     val minutos: Int = 3,
     val camaraActiva: Boolean = false
-) : Parcelable
+) : Parcelable {
+    companion object {
+        const val PISTA_COMPLETA = "PISTA_COMPLETA"
+        const val PRIMERA_LETRA  = "PRIMERA_LETRA"
+    }
+}

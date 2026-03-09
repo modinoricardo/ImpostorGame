@@ -92,13 +92,34 @@
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- CardView Pista del impostor -->
+            <!-- CardView Ayuda al impostor (dos opciones excluyentes) -->
             <androidx.cardview.widget.CardView android:id="@+id/cardViewPistaImpostor" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="15dp" app:cardCornerRadius="22dp" app:cardElevation="6dp" app:cardPreventCornerOverlap="false" app:cardUseCompatPadding="true" app:cardBackgroundColor="@android:color/transparent">
-                <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="16dp" android:background="@drawable/bg_card_main">
-                    <TextView android:id="@+id/txtOpcionPistaTitulo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Pista del impostor" android:textSize="18sp" android:textStyle="bold" android:textColor="@android:color/white" />
-                    <com.google.android.material.switchmaterial.SwitchMaterial android:id="@+id/switchPista" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" android:layout_centerVertical="true" android:checked="true" />
-                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_below="@id/txtOpcionPistaTitulo" android:layout_marginTop="6dp" android:layout_toStartOf="@id/switchPista" android:text="Activa una pista para ayudar al impostor a disimular" android:textSize="13sp" android:textColor="#CCFFFFFF" />
-                </RelativeLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp" android:background="@drawable/bg_card_main">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Ayuda al impostor" android:textSize="18sp" android:textStyle="bold" android:textColor="@android:color/white" />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:layout_marginBottom="12dp" android:text="El impostor siempre recibe algún tipo de ayuda" android:textSize="13sp" android:textColor="#CCFFFFFF" />
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                        <!-- Opción: Pista completa -->
+                        <androidx.cardview.widget.CardView android:id="@+id/cardOpcionPistaCompleta" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginEnd="6dp" android:clickable="true" android:focusable="true" app:cardCornerRadius="14dp" app:cardElevation="2dp" app:cardUseCompatPadding="false" app:cardBackgroundColor="@android:color/transparent">
+                            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp" android:background="@drawable/bg_card_main">
+                                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="💡 Pista" android:textSize="15sp" android:textStyle="bold" android:textColor="@android:color/white" />
+                                    <TextView android:id="@+id/checkPistaCompleta" android:layout_width="20dp" android:layout_height="20dp" android:text="✓" android:textSize="15sp" android:textColor="#00E5FF" android:textStyle="bold" android:gravity="center" android:visibility="visible" />
+                                </LinearLayout>
+                                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Recibe una pista aleatoria" android:textSize="11sp" android:textColor="#CCFFFFFF" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+                        <!-- Opción: Primera letra -->
+                        <androidx.cardview.widget.CardView android:id="@+id/cardOpcionPrimeraLetra" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="6dp" android:clickable="true" android:focusable="true" app:cardCornerRadius="14dp" app:cardElevation="2dp" app:cardUseCompatPadding="false" app:cardBackgroundColor="@android:color/transparent">
+                            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp" android:background="@drawable/bg_card_main">
+                                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="🔤 1ª letra" android:textSize="15sp" android:textStyle="bold" android:textColor="@android:color/white" />
+                                    <TextView android:id="@+id/checkPrimeraLetra" android:layout_width="20dp" android:layout_height="20dp" android:text="✓" android:textSize="15sp" android:textColor="#00E5FF" android:textStyle="bold" android:gravity="center" android:visibility="gone" />
+                                </LinearLayout>
+                                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Solo la primera letra de la palabra" android:textSize="11sp" android:textColor="#CCFFFFFF" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+                </LinearLayout>
             </androidx.cardview.widget.CardView>
 
             <!-- CardView Todos impostores -->

@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.DecelerateInterpolator
 import android.widget.Button
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -71,6 +73,22 @@ class SelectCategoriesBottomSheet : BottomSheetDialogFragment() {
         val bottomSheet = dialog?.findViewById<View>(
             com.google.android.material.R.id.design_bottom_sheet
         ) ?: return
+
+        bottomSheet.background = ContextCompat.getDrawable(
+            requireContext(), R.drawable.bottomsheet_rounded
+        )
+
+        bottomSheet.post {
+            val h = if (bottomSheet.height > 0) bottomSheet.height
+            else bottomSheet.resources.displayMetrics.heightPixels
+            bottomSheet.translationY = h.toFloat()
+            bottomSheet.alpha = 0f
+            bottomSheet.animate()
+                .translationY(0f).alpha(1f)
+                .setDuration(550L)
+                .setInterpolator(DecelerateInterpolator(2f)).start()
+        }
+
         val behavior = BottomSheetBehavior.from(bottomSheet)
         behavior.isDraggable = false
         behavior.isHideable = false

@@ -21,6 +21,8 @@ class VictoryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_victory)
 
+        SelfieManager.clear()
+
         val ganador   = intent.getStringExtra("GANADOR") ?: "IMPOSTORES"
         val motivo    = intent.getStringExtra("MOTIVO") ?: ""
         val irAReveal = intent.getBooleanExtra("IR_A_REVEAL", false)
