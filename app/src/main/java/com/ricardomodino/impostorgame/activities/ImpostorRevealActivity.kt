@@ -244,7 +244,7 @@ class ImpostorRevealActivity : AppCompatActivity() {
                 listaJugadores[i].tipo == TipoJugador.SENOR_BLANCO -> impostorImageRes
                 else -> {
                     if (pool.isEmpty()) pool.addAll(wordImages.shuffled())
-                    pool.removeFirst()
+                    pool.removeAt(0)
                 }
             }
         }

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orden de botones - ImpostorGame</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0d0d1a; font-family: 'Segoe UI', sans-serif; color: white; padding: 32px; }
+  h1 { text-align: center; font-size: 18px; color: #aaa; margin-bottom: 6px; }
+  .subtitle { text-align: center; color: #555; font-size: 13px; margin-bottom: 40px; }
+  .row { display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; }
+  .option { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+  .label { font-size: 15px; font-weight: bold; color: #e0e0ff; text-align: center; }
+  .desc { font-size: 12px; color: #666; text-align: center; max-width: 200px; line-height: 1.4; }
+
+  /* Phone shell */
+  .phone {
+    width: 220px; height: 420px;
+    background: linear-gradient(160deg, #0d0d1a 60%, #14082a);
+    border: 2px solid #222; border-radius: 28px;
+    position: relative; overflow: hidden;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 28px 20px;
+  }
+
+  /* Emoji icon */
+  .icon { font-size: 64px; margin-bottom: 18px; }
+
+  /* Title */
+  .d-title {
+    font-size: 20px; font-weight: 700; color: #fff;
+    text-align: center; margin-bottom: 12px;
+    text-shadow: 0 0 16px #00e5ff88;
+  }
+
+  /* Message */
+  .d-msg {
+    font-size: 13px; color: #c7c8d9; text-align: center;
+    line-height: 1.6; margin-bottom: 36px;
+  }
+
+  /* Buttons */
+  .btn-neon {
+    width: 100%; padding: 13px 0; border: none; border-radius: 30px;
+    background: linear-gradient(135deg, #5500cc, #aa00ff);
+    color: white; font-size: 14px; font-weight: 700;
+    box-shadow: 0 0 18px rgba(170,0,255,.5);
+    margin-bottom: 12px; cursor: pointer;
+  }
+  .btn-ghost {
+    width: 100%; padding: 11px 0; border: 1px solid #555; border-radius: 30px;
+    background: transparent; color: #bfc4ff; font-size: 13px; cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<h1>¿Qué orden de botones prefieres?</h1>
+<p class="subtitle">Ejemplo: diálogo de "Salir de la partida"</p>
+
+<div class="row">
+
+  <!-- Opción A: Acción principal arriba -->
+  <div class="option">
+    <div class="label">A — Acción principal arriba</div>
+    <div class="phone">
+      <div class="icon">🚪</div>
+      <div class="d-title">Salir</div>
+      <div class="d-msg">¿Quieres salir<br>de la partida?</div>
+      <button class="btn-neon">Salir</button>
+      <button class="btn-ghost">Cancelar</button>
+    </div>
+    <div class="desc">El botón de confirmar está arriba, más visible. El cancel queda abajo.</div>
+  </div>
+
+  <!-- Opción B: Cancelar arriba -->
+  <div class="option">
+    <div class="label">B — Cancelar arriba</div>
+    <div class="phone">
+      <div class="icon">🚪</div>
+      <div class="d-title">Salir</div>
+      <div class="d-msg">¿Quieres salir<br>de la partida?</div>
+      <button class="btn-ghost">Cancelar</button>
+      <button class="btn-neon" style="margin-top:12px; margin-bottom:0">Salir</button>
+    </div>
+    <div class="desc">El botón seguro (cancelar) está arriba. La acción destructiva queda abajo.</div>
+  </div>
+
+</div>
+
+</body>
+</html>
