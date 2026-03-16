@@ -36,10 +36,6 @@ import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.material.switchmaterial.SwitchMaterial
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class MainActivity : AppCompatActivity(),
@@ -91,21 +87,8 @@ class MainActivity : AppCompatActivity(),
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
-        val splashScreen = installSplashScreen()
         ThemeManager.aplicarTema(this)
         super.onCreate(savedInstanceState)
-
-        if (!splashMostrado) {
-            splashMostrado = true
-            splashScreen.setKeepOnScreenCondition { true }
-            lifecycleScope.launch {
-                delay(3000)
-                splashScreen.setKeepOnScreenCondition { false }
-            }
-        } else {
-            splashScreen.setKeepOnScreenCondition { false }
-        }
-
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
@@ -551,7 +534,4 @@ class MainActivity : AppCompatActivity(),
         txtNumSenoresBlancos.text = opciones.numSenoresBlancos.toString()
     }
 
-    companion object {
-        private var splashMostrado = false
-    }
 }

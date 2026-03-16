@@ -170,7 +170,6 @@ class PlayGameActivity : AppCompatActivity() {
             putExtra("MOTIVO", "¡Todos los impostores han sido eliminados!")
             putExtra("IR_A_REVEAL", true)
             putParcelableArrayListExtra("LISTA_JUGADORES", ArrayList(listaJugadores))
-            putParcelableArrayListExtra("LISTA_CATEGORIAS", ArrayList(listaJugadores)) // pasa tus categorias
             putExtra("PALABRA", palabraJugada)
             putExtra("IMPOSTOR", nombreImpostor)
             putExtra("SENORES_BLANCOS", nombresSenoresBlancos)
@@ -271,7 +270,12 @@ class PlayGameActivity : AppCompatActivity() {
         cardsContainer.visibility = View.VISIBLE
         countDownTimer?.cancel()
         txtTimer.visibility = View.GONE
-        if (!impostorContado) { playerViewModel.incrementImpostorByName(nombreImpostor); impostorContado = true }
+        if (!impostorContado) {
+            // nombreImpostor puede ser "Juan, Pedro" cuando hay varios impostores.
+            // Dividimos por coma para incrementar el contador de cada uno por separado.
+            nombreImpostor.split(",").forEach { playerViewModel.incrementImpostorByName(it.trim()) }
+            impostorContado = true
+        }
 
         val colorImpostor = ContextCompat.getColor(this, R.color.colorImpostor)
         val colorPalabra  = ContextCompat.getColor(this, R.color.colorPalabra)

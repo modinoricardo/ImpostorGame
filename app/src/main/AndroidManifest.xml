@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -21,12 +22,25 @@
         <activity android:name=".activities.VictoryActivity" android:exported="false" />
         <activity android:name=".activities.GuessWordActivity" android:exported="false" />
 
-        <activity android:name=".activities.MainActivity" android:exported="true">
+        <!--
+            SplashActivity es ahora el punto de entrada de la app.
+            noHistory=true evita que al pulsar Atrás desde MainActivity
+            el usuario regrese a la pantalla de intro.
+        -->
+        <activity
+            android:name=".activities.SplashActivity"
+            android:exported="true"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- MainActivity ya no es launcher; SplashActivity la inicia directamente -->
+        <activity
+            android:name=".activities.MainActivity"
+            android:exported="false" />
 
     </application>
 

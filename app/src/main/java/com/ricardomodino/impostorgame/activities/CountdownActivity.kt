@@ -5,8 +5,8 @@ import android.media.AudioFormat
 import android.media.AudioManager
 import android.media.AudioTrack
 import android.os.Bundle
-import android.os.CountDownTimer
 import android.widget.TextView
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.ricardomodino.impostorgame.R
 import com.ricardomodino.impostorgame.managers.SoundManager
@@ -20,7 +20,11 @@ import kotlin.math.sin
 class CountdownActivity : AppCompatActivity() {
 
     private lateinit var txtCountdown: TextView
-    private var timer: CountDownTimer? = null
+
+    // Flag para detener los callbacks de animación cuando el usuario pulsa atrás.
+    // Sin este flag, el withEndAction sigue ejecutándose aunque la Activity ya se esté cerrando,
+    // lo que lanzaba ImpostorRevealActivity desde una Activity destruida (Activity fantasma).
+    private var isCancelled = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         ThemeManager.aplicarTema(this)
@@ -29,6 +33,13 @@ class CountdownActivity : AppCompatActivity() {
 
         txtCountdown = findViewById(R.id.txtCountdown)
 
+        // Pulsar atrás durante la cuenta cancela la partida y vuelve al menú principal.
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                cancelarCuentaAtras()
+            }
+        })
+
         val players    = intent.getParcelableArrayListExtra<Jugador>("PLAYERS")
         val categories = intent.getParcelableArrayListExtra<Category>("CATEGORIES")
         val opciones   = intent.getParcelableExtra<GameOptions>("OPCIONES")
@@ -36,13 +47,19 @@ class CountdownActivity : AppCompatActivity() {
         startCountdown(players, categories, opciones)
     }
 
+    private fun cancelarCuentaAtras() {
+        isCancelled = true
+        txtCountdown.animate().cancel()
+        finish()
+    }
+
     private fun playCountdownTone(frequencyHz: Float, durationMs: Int = 140) {
         if (!SoundManager.isSoundEnabled(this)) return
         try {
-            val sampleRate  = 44100
-            val numSamples  = sampleRate * durationMs / 1000
-            val fadeLen     = (sampleRate * 0.015).toInt() // 15 ms fade in/out
-            val samples     = ShortArray(numSamples)
+            val sampleRate = 44100
+            val numSamples = sampleRate * durationMs / 1000
+            val fadeLen    = (sampleRate * 0.015).toInt() // 15 ms fade in/out
+            val samples    = ShortArray(numSamples)
 
             for (i in 0 until numSamples) {
                 val env = when {
@@ -77,13 +94,14 @@ class CountdownActivity : AppCompatActivity() {
         categories: ArrayList<Category>?,
         opciones: GameOptions?
     ) {
-        // Frecuencias ascendentes para dar sensación de cuenta atrás de videojuego
         val toneFreqs = mapOf("3" to 392f, "2" to 494f, "1" to 659f, "¡Ya!" to 880f)
-
-        val numbers = listOf("3", "2", "1", "¡Ya!")
-        var index = 0
+        val numbers   = listOf("3", "2", "1", "¡Ya!")
+        var index     = 0
 
         fun showNext() {
+            // Si el usuario pulsó atrás o la Activity ya está cerrándose, no continuar.
+            if (isCancelled || isFinishing || isDestroyed) return
+
             if (index >= numbers.size) {
                 val intent = Intent(this, ImpostorRevealActivity::class.java).apply {
                     putParcelableArrayListExtra("PLAYERS", players)
@@ -103,7 +121,6 @@ class CountdownActivity : AppCompatActivity() {
             val duration = if (text == "¡Ya!") 220 else 140
             playCountdownTone(freq, duration)
 
-            // Animación: scale up desde 0 + fade
             txtCountdown.scaleX = 0f
             txtCountdown.scaleY = 0f
             txtCountdown.alpha  = 0f
@@ -111,6 +128,7 @@ class CountdownActivity : AppCompatActivity() {
                 .scaleX(1f).scaleY(1f).alpha(1f)
                 .setDuration(300L)
                 .withEndAction {
+                    if (isCancelled) return@withEndAction
                     txtCountdown.animate()
                         .scaleX(1.3f).scaleY(1.3f).alpha(0f)
                         .setDuration(500L)
@@ -126,6 +144,9 @@ class CountdownActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        timer?.cancel()
+        // Marcamos cancelado y cancelamos cualquier animación pendiente para evitar
+        // que los withEndAction continúen ejecutándose tras destruir la Activity.
+        isCancelled = true
+        txtCountdown.animate().cancel()
     }
 }

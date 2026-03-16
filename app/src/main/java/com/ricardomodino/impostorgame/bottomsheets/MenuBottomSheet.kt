@@ -53,8 +53,8 @@ class MenuBottomSheet : BottomSheetDialogFragment() {
         view.findViewById<View>(R.id.rootBottomSheet)?.setBackgroundResource(bgCard)
         // Título "Menú"
         view.findViewById<TextView>(R.id.txtMenuTitle)?.setShadowLayer(12f, 0f, 0f, accent)
-        // Cards internas
-        listOf(R.id.cardMenuEstilo, R.id.cardMenuSonido, R.id.cardMenuAcercaDe).forEach { cardId ->
+        // Cards internas (incluida la nueva de sugerencias)
+        listOf(R.id.cardMenuEstilo, R.id.cardMenuSonido, R.id.cardMenuAcercaDe, R.id.cardMenuSugerencias).forEach { cardId ->
             view.findViewById<CardView>(cardId)?.getChildAt(0)?.setBackgroundResource(bgCard)
         }
 
@@ -71,6 +71,10 @@ class MenuBottomSheet : BottomSheetDialogFragment() {
         view.findViewById<CardView>(R.id.cardMenuAcercaDe).setOnClickListener {
             dismiss()
             AcercaDeBottomSheet().show(parentFragmentManager, AcercaDeBottomSheet.TAG)
+        }
+        view.findViewById<CardView>(R.id.cardMenuSugerencias).setOnClickListener {
+            dismiss()
+            SugerenciasBottomSheet().show(parentFragmentManager, SugerenciasBottomSheet.TAG)
         }
     }
 }

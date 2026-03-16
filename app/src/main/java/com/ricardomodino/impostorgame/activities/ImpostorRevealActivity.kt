@@ -6,6 +6,8 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
+import android.graphics.Matrix
+import androidx.exifinterface.media.ExifInterface
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
@@ -195,19 +197,42 @@ class ImpostorRevealActivity : AppCompatActivity() {
         ic.takePicture(options, ContextCompat.getMainExecutor(this),
             object : ImageCapture.OnImageSavedCallback {
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
-                    val bmp = BitmapFactory.decodeFile(outFile.absolutePath)
-                    if (bmp != null) {
-                        SelfieManager.saveBitmap(listaJugadores[playerIndex].nombre, bmp)
-                        if (playerIndex == playerInGame) {
-                            runOnUiThread {
-                                imgWord.setImageBitmap(bmp)
-                                imgWord.visibility = View.VISIBLE
-                            }
+                    val raw = BitmapFactory.decodeFile(outFile.absolutePath) ?: return
+                    val bmp = corregirOrientacion(raw, outFile)
+                    SelfieManager.saveBitmap(listaJugadores[playerIndex].nombre, bmp)
+                    if (playerIndex == playerInGame) {
+                        runOnUiThread {
+                            imgWord.setImageBitmap(bmp)
+                            imgWord.visibility = View.VISIBLE
                         }
                     }
                 }
                 override fun onError(e: ImageCaptureException) {}
             })
+    }
+
+    // ── Aplica la rotación indicada por los metadatos EXIF del archivo JPEG ──
+    // BitmapFactory.decodeFile() ignora el EXIF; esta función lo lee y corrige la imagen.
+    private fun corregirOrientacion(bmp: android.graphics.Bitmap, file: File): android.graphics.Bitmap {
+        val orientation = try {
+            ExifInterface(file.absolutePath)
+                .getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL)
+        } catch (_: Exception) { ExifInterface.ORIENTATION_NORMAL }
+
+        val matrix = Matrix()
+        when (orientation) {
+            ExifInterface.ORIENTATION_ROTATE_90  -> matrix.postRotate(90f)
+            ExifInterface.ORIENTATION_ROTATE_180 -> matrix.postRotate(180f)
+            ExifInterface.ORIENTATION_ROTATE_270 -> matrix.postRotate(270f)
+            ExifInterface.ORIENTATION_FLIP_HORIZONTAL -> matrix.postScale(-1f, 1f)
+            ExifInterface.ORIENTATION_FLIP_VERTICAL   -> { matrix.postRotate(180f); matrix.postScale(-1f, 1f) }
+            ExifInterface.ORIENTATION_TRANSPOSE       -> { matrix.postRotate(90f);  matrix.postScale(-1f, 1f) }
+            ExifInterface.ORIENTATION_TRANSVERSE      -> { matrix.postRotate(270f); matrix.postScale(-1f, 1f) }
+            else -> return bmp // ORIENTATION_NORMAL — sin transformación
+        }
+        return try {
+            android.graphics.Bitmap.createBitmap(bmp, 0, 0, bmp.width, bmp.height, matrix, true)
+        } catch (_: Exception) { bmp }
     }
 
     private fun isActiveCategory(category: Category): Boolean =

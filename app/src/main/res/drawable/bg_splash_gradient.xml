@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <!--
+        Degradado vertical oscuro: de casi negro → azul noche → casi negro.
+        Combina con imp_primary_dark (#141B2A) ya definido en el proyecto.
+    -->
+    <gradient
+        android:startColor="#080C14"
+        android:centerColor="#141B2A"
+        android:endColor="#080C14"
+        android:angle="270" />
+</shape>
