@@ -32,6 +32,7 @@ import com.ricardomodino.impostorgame.CategoryViewModel
 import com.ricardomodino.impostorgame.PlayerViewModel
 import com.ricardomodino.impostorgame.R
 import com.ricardomodino.impostorgame.managers.GameDialog
+import com.ricardomodino.impostorgame.managers.LocaleManager
 import com.ricardomodino.impostorgame.managers.ThemeManager
 import com.ricardomodino.impostorgame.modelos.Category
 import com.ricardomodino.impostorgame.modelos.GameOptions
@@ -96,6 +97,10 @@ class ImpostorRevealActivity : AppCompatActivity() {
         ActivityResultContracts.RequestPermission()
     ) { granted ->
         if (granted) iniciarCameraX()
+    }
+
+    override fun attachBaseContext(newBase: android.content.Context) {
+        super.attachBaseContext(LocaleManager.wrap(newBase))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

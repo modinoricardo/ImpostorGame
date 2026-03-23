@@ -31,6 +31,7 @@ import com.ricardomodino.impostorgame.bottomsheets.SelectCategoriesBottomSheet
 import com.ricardomodino.impostorgame.bottomsheets.MenuBottomSheet
 import com.ricardomodino.impostorgame.bottomsheets.SelectGameModeBottomSheet
 import com.ricardomodino.impostorgame.managers.GameDialog
+import com.ricardomodino.impostorgame.managers.LocaleManager
 import com.ricardomodino.impostorgame.managers.ThemeManager
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
@@ -84,6 +85,10 @@ class MainActivity : AppCompatActivity(),
     private var originalCategoriasColor: Int = 0
     private var originalCategoriasColorsSaved = false
     private lateinit var opciones: GameOptions
+
+    override fun attachBaseContext(newBase: android.content.Context) {
+        super.attachBaseContext(LocaleManager.wrap(newBase))
+    }
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -409,7 +414,11 @@ class MainActivity : AppCompatActivity(),
 
     override fun onGameModeConfirmed(nuevasOpciones: GameOptions) {
         opciones = nuevasOpciones
-        txtModoJuegoSeleccionado.text = if (opciones.modoMisterioso) "🌑 Misterioso" else "🕵️ Clásico"
+        txtModoJuegoSeleccionado.text = when {
+            opciones.modoMisterioso    -> "🌑 Misterioso"
+            opciones.modoDatosCuriosos -> "🧠 Datos Curiosos"
+            else                       -> "🕵️ Clásico"
+        }
 
         cardViewNumSenoresBlancos.visibility = if (opciones.modoMisterioso) View.VISIBLE else View.GONE
 

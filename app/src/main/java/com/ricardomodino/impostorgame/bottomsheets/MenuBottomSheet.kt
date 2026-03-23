@@ -1,5 +1,7 @@
 package com.ricardomodino.impostorgame.bottomsheets
 
+import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +13,7 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import com.ricardomodino.impostorgame.R
+import com.ricardomodino.impostorgame.managers.LocaleManager
 import com.ricardomodino.impostorgame.managers.ThemeManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -53,10 +56,14 @@ class MenuBottomSheet : BottomSheetDialogFragment() {
         view.findViewById<View>(R.id.rootBottomSheet)?.setBackgroundResource(bgCard)
         // Título "Menú"
         view.findViewById<TextView>(R.id.txtMenuTitle)?.setShadowLayer(12f, 0f, 0f, accent)
-        // Cards internas (incluida la nueva de sugerencias)
-        listOf(R.id.cardMenuEstilo, R.id.cardMenuSonido, R.id.cardMenuAcercaDe, R.id.cardMenuSugerencias).forEach { cardId ->
+        // Cards internas
+        listOf(R.id.cardMenuEstilo, R.id.cardMenuSonido, R.id.cardMenuAcercaDe, R.id.cardMenuSugerencias, R.id.cardMenuIdioma).forEach { cardId ->
             view.findViewById<CardView>(cardId)?.getChildAt(0)?.setBackgroundResource(bgCard)
         }
+
+        // Mostrar idioma actual
+        val idiomaActual = LocaleManager.getLanguage(requireContext())
+        view.findViewById<TextView>(R.id.txtIdiomaActual)?.text = LocaleManager.languageLabel(idiomaActual)
 
         val switchSonido = view.findViewById<SwitchMaterial>(R.id.switchSonidoMenu)
         switchSonido?.isChecked = SoundManager.isSoundEnabled(requireContext())
@@ -76,5 +83,38 @@ class MenuBottomSheet : BottomSheetDialogFragment() {
             dismiss()
             SugerenciasBottomSheet().show(parentFragmentManager, SugerenciasBottomSheet.TAG)
         }
+
+        view.findViewById<CardView>(R.id.cardMenuIdioma).setOnClickListener {
+            mostrarSelectorIdioma()
+        }
+    }
+
+    private fun mostrarSelectorIdioma() {
+        val idiomas = LocaleManager.LANGUAGES
+        val etiquetas = idiomas.map { LocaleManager.languageLabel(it) }.toTypedArray()
+        val actual = LocaleManager.getLanguage(requireContext())
+        val seleccionado = idiomas.indexOf(actual).coerceAtLeast(0)
+
+        AlertDialog.Builder(requireContext())
+            .setTitle(getString(R.string.menu_idioma))
+            .setSingleChoiceItems(etiquetas, seleccionado) { dialog, which ->
+                val nuevoIdioma = idiomas[which]
+                if (nuevoIdioma != actual) {
+                    LocaleManager.setLanguage(requireContext(), nuevoIdioma)
+                    dialog.dismiss()
+                    dismiss()
+                    // Reiniciar la actividad para aplicar el nuevo idioma
+                    requireActivity().let { act ->
+                        val intent = act.intent
+                        act.finish()
+                        act.startActivity(intent)
+                        act.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+                    }
+                } else {
+                    dialog.dismiss()
+                }
+            }
+            .setNegativeButton(getString(R.string.dialog_salir_no), null)
+            .show()
     }
 }

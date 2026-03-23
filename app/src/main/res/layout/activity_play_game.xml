@@ -27,7 +27,7 @@
         android:layout_width="0dp" android:layout_height="wrap_content"
         android:layout_marginStart="20dp" android:layout_marginTop="28dp" android:layout_marginEnd="20dp"
         android:shadowColor="#00E5FF" android:shadowDx="0" android:shadowDy="0" android:shadowRadius="16"
-        android:text="IMPOSTOR" android:textAllCaps="true" android:textColor="@android:color/white"
+        android:text="@string/play_title" android:textAllCaps="true" android:textColor="@android:color/white"
         android:textSize="40sp" android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
@@ -36,7 +36,7 @@
         android:layout_width="0dp" android:layout_height="wrap_content"
         android:layout_marginStart="24dp" android:layout_marginTop="6dp" android:layout_marginEnd="24dp"
         android:shadowColor="#8000E5FF" android:shadowDx="0" android:shadowDy="0" android:shadowRadius="10"
-        android:text="Roles listos. Voces apagadas. Caos encendido."
+        android:text="@string/play_subtitle"
         android:textColor="#CCFFFFFF" android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txtTitle"/>
@@ -160,19 +160,19 @@
         <Button android:id="@+id/btnVotar"
             android:layout_width="match_parent" android:layout_height="48dp"
             android:background="@drawable/btn_neon" android:backgroundTint="@null" app:backgroundTint="@null"
-            android:text="🗳 VOTAR" android:textAllCaps="true"
+            android:text="@string/play_btn_votar" android:textAllCaps="true"
             android:textColor="@android:color/white" android:textStyle="bold"/>
         <Space android:layout_width="match_parent" android:layout_height="12dp"/>
         <Button android:id="@+id/btnRevelar"
             android:layout_width="match_parent" android:layout_height="48dp"
             android:background="@drawable/btn_neon" android:backgroundTint="@null" app:backgroundTint="@null"
-            android:text="REVELAR IMPOSTOR Y PALABRA" android:textAllCaps="true"
+            android:text="@string/play_btn_revelar" android:textAllCaps="true"
             android:textColor="@android:color/white" android:textStyle="bold"/>
         <Space android:layout_width="match_parent" android:layout_height="12dp"/>
         <Button android:id="@+id/btnNewGame"
             android:layout_width="match_parent" android:layout_height="48dp"
             android:background="@drawable/btn_neon" android:backgroundTint="@null" app:backgroundTint="@null"
-            android:text="NUEVA PARTIDA" android:textAllCaps="true"
+            android:text="@string/play_btn_nueva_partida" android:textAllCaps="true"
             android:textColor="@android:color/white" android:textStyle="bold"/>
     </LinearLayout>
 

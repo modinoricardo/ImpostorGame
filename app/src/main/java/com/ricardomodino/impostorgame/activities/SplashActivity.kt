@@ -16,6 +16,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import com.ricardomodino.impostorgame.R
+import com.ricardomodino.impostorgame.managers.LocaleManager
 import com.ricardomodino.impostorgame.managers.ThemeManager
 
 /**
@@ -38,6 +39,10 @@ class SplashActivity : AppCompatActivity() {
 
     // Índice del impostor dentro de la fila de personajes (0-based)
     private val impostorIndex = 3
+
+    override fun attachBaseContext(newBase: android.content.Context) {
+        super.attachBaseContext(LocaleManager.wrap(newBase))
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         // Pantalla completa antes de inflar el layout para evitar parpadeos

@@ -1,3 +1,143 @@
 <resources>
     <string name="app_name">ImpostorGame</string>
+
+    <!-- Splash -->
+    <string name="splash_impostor">¡IMPOSTOR!</string>
+    <string name="splash_title">EL IMPOSTOR</string>
+
+    <!-- MainActivity -->
+    <string name="main_title">Atrapa al \n impostor</string>
+    <string name="main_edit_players">Editar Jugadores</string>
+    <string name="main_num_impostores">Número de impostores</string>
+    <string name="main_senores_blancos">Señores blancos</string>
+    <string name="main_categorias">Categorías y palabras</string>
+    <string name="main_modo_juego">Modo de juego</string>
+    <string name="main_modo_clasico">🕵️ Clásico</string>
+    <string name="main_modo_misterioso">🌑 Misterioso</string>
+    <string name="main_modo_datos_curiosos">🧠 Datos Curiosos</string>
+    <string name="main_ayuda_impostor">Ayuda al impostor</string>
+    <string name="main_ayuda_impostor_desc">El impostor siempre recibe algún tipo de ayuda</string>
+    <string name="main_pista">💡 Pista</string>
+    <string name="main_pista_desc">Recibe una pista aleatoria</string>
+    <string name="main_primera_letra">🔤 1ª letra</string>
+    <string name="main_primera_letra_desc">Solo la primera letra de la palabra</string>
+    <string name="main_todos_impostores">Todos impostores</string>
+    <string name="main_todos_impostores_desc">Activa un modo en el cual todos pueden ser impostores</string>
+    <string name="main_tiempo_limitado">⏱ Tiempo limitado</string>
+    <string name="main_tiempo_limitado_desc">Los impostores ganan si acaba el tiempo</string>
+    <string name="main_duracion">Duración</string>
+    <string name="main_selfie">📸 Selfie automático</string>
+    <string name="main_selfie_desc">Hace un selfie al revelar la palabra, se usa como avatar</string>
+    <string name="main_btn_start">EMPEZAR PARTIDA</string>
+
+    <!-- PlayGameActivity -->
+    <string name="play_title">IMPOSTOR</string>
+    <string name="play_subtitle">Roles listos. Voces apagadas. Caos encendido.</string>
+    <string name="play_btn_votar">🗳 VOTAR</string>
+    <string name="play_btn_revelar">REVELAR IMPOSTOR Y PALABRA</string>
+    <string name="play_btn_nueva_partida">NUEVA PARTIDA</string>
+
+    <!-- ImpostorRevealActivity -->
+    <string name="reveal_no_digas">¡No le digas esta palabra a nadie!</string>
+    <string name="reveal_toca">TOCA PARA REVELAR</string>
+    <string name="reveal_siguiente">⏭ SIGUIENTE JUGADOR</string>
+    <string name="reveal_empezar">¡EMPEZAR PARTIDA!</string>
+
+    <!-- DatosCuriososRevealActivity -->
+    <string name="datos_modo_label">🧠 DATOS CURIOSOS</string>
+    <string name="datos_eres_impostor">ERES EL IMPOSTOR</string>
+    <string name="datos_inventa_dato">Invéntate un dato curioso\ncuando sea tu turno</string>
+    <string name="datos_label_dato">DATO CURIOSO</string>
+    <string name="datos_toca_revelar">Toca para revelar</string>
+    <string name="datos_siguiente">⏭  SIGUIENTE JUGADOR</string>
+    <string name="datos_empezar">⏭  EMPEZAR PARTIDA</string>
+
+    <!-- VoteActivity -->
+    <string name="vote_title">¿A quién eliminas?</string>
+    <string name="vote_subtitle">Selecciona al jugador sospechoso</string>
+    <string name="vote_confirmar">CONFIRMAR VOTO</string>
+
+    <!-- GuessWordActivity -->
+    <string name="guess_title">💀 Último intento</string>
+    <string name="guess_subtitle">Adivina la palabra secreta para salvar al equipo</string>
+    <string name="guess_label">PALABRA SECRETA</string>
+    <string name="guess_hint">Escribe la palabra…</string>
+    <string name="guess_confirmar">CONFIRMAR</string>
+
+    <!-- VictoryActivity -->
+    <string name="victory_trophy">🏆</string>
+    <string name="victory_title">¡VICTORIA!</string>
+    <string name="victory_subtitle">Los impostores ganan</string>
+    <string name="victory_nueva_partida">NUEVA PARTIDA</string>
+
+    <!-- SelectGameModeBottomSheet -->
+    <string name="mode_titulo">Modo de juego</string>
+    <string name="mode_subtitulo">Selecciona cómo quieres jugar</string>
+    <string name="mode_clasico_titulo">🕵️ Clásico</string>
+    <string name="mode_clasico_desc">Existe un impostor. Los civiles conocen la palabra y deben descubrir al impostor.</string>
+    <string name="mode_misterioso_titulo">🌑 Misterioso</string>
+    <string name="mode_misterioso_desc">El impostor no sabe que es el impostor. Él recibe una pista relacionada con la palabra de los civiles. Existe un "Señor Blanco" que no recibe ninguna palabra y tiene que hacerse pasar por un civil.</string>
+    <string name="mode_datos_titulo">🧠 Datos Curiosos</string>
+    <string name="mode_datos_desc">Cada jugador recibe un dato curioso diferente. Los impostores no reciben nada y deben inventarse uno.</string>
+    <string name="mode_confirmar">Confirmar</string>
+
+    <!-- SelectCategoriesBottomSheet -->
+    <string name="cat_titulo">SELECCIONAR CATEGORÍAS</string>
+    <string name="cat_subtitulo">Elige una o más categorías para la partida.\nSi no seleccionas ninguna, se usarán todas las categorías.</string>
+    <string name="cat_confirmar">CONFIRMAR</string>
+
+    <!-- MenuBottomSheet -->
+    <string name="menu_titulo">Menú</string>
+    <string name="menu_estilo">Estilo</string>
+    <string name="menu_estilo_desc">Personaliza el aspecto de la app</string>
+    <string name="menu_sonido">Sonido</string>
+    <string name="menu_sonido_desc">Activa o desactiva los sonidos del juego</string>
+    <string name="menu_idioma">Idioma</string>
+    <string name="menu_idioma_desc">Cambia el idioma de la aplicación</string>
+    <string name="menu_acerca">Acerca de</string>
+    <string name="menu_acerca_desc">El creador y la historia del juego</string>
+    <string name="menu_sugerencias">Sugerir mejoras</string>
+    <string name="menu_sugerencias_desc">Comparte ideas para mejorar la app</string>
+
+    <!-- EstiloBottomSheet -->
+    <string name="estilo_titulo">Estilo</string>
+    <string name="estilo_subtitulo">Elige la apariencia de la app</string>
+    <string name="estilo_clasico_nombre">🌀 Clásico</string>
+    <string name="estilo_clasico_desc">Azul neón · Oscuro · Moderno</string>
+    <string name="estilo_carmesi_nombre">🩸 Carmesí</string>
+    <string name="estilo_carmesi_desc">Rojo carmesí · Tenso · Misterioso</string>
+    <string name="estilo_jmc_nombre">🖤 JMC</string>
+    <string name="estilo_jmc_desc">Negro puro · Verde · Minimalista</string>
+
+    <!-- SugerenciasBottomSheet -->
+    <string name="sug_titulo">Sugerir mejoras</string>
+    <string name="sug_desc">¿Tienes una idea o encuentras algo mejorable?\nCuéntanoslo, toda opinión ayuda.</string>
+    <string name="sug_email_hint">Tu correo (opcional)</string>
+    <string name="sug_texto_hint">Escribe aquí tu sugerencia o mejora para la app…</string>
+    <string name="sug_enviar">Enviar</string>
+
+    <!-- AcercaDeBottomSheet -->
+    <string name="acerca_titulo">Acerca de</string>
+    <string name="acerca_creador">Creador de Atrapa al Impostor</string>
+    <string name="acerca_descripcion">Este juego nació sin ánimo de lucro y con una sola intención: que la gente se ría, se sorprenda y pase un buen rato juntos, como yo mismo he tenido el placer de disfrutar.</string>
+    <string name="acerca_uso">Úsalo, compártelo y disfrútalo sin límites — lo único que te pido es que lo juegues en buena compañía.</string>
+    <string name="acerca_frase">No es un juego para ganar. Es un juego para conectar.</string>
+    <string name="acerca_agradecimiento">Agradecimiento especial a la persona que me impulsa y me inspira a crear proyectos como este, y que siempre me apoya en cada paso: Ste.H. Sin ti, nada de esto tendría el mismo sentido.</string>
+    <string name="acerca_abrazo">Un abrazo a todos los que lo juegan.</string>
+    <string name="acerca_contacto">Contacto</string>
+
+    <!-- Compartidos -->
+    <string name="jugador">Jugador</string>
+    <string name="editar_nombre_hint">Editar nombre</string>
+    <string name="editar_jugadores_titulo">Editar jugadores</string>
+    <string name="editar_jugadores_minimo">Mínimo de 3 jugadores</string>
+    <string name="editar_jugadores_toca">Toca un nombre para editar</string>
+    <string name="agregar_jugador_hint">Agregar nombre del nuevo jugador</string>
+    <string name="confirmar">Confirmar</string>
+
+    <!-- Diálogos genéricos -->
+    <string name="dialog_salir_titulo">Salir</string>
+    <string name="dialog_salir_msg">¿Quieres salir de la partida?</string>
+    <string name="dialog_salir_si">Salir</string>
+    <string name="dialog_salir_no">Cancelar</string>
 </resources>

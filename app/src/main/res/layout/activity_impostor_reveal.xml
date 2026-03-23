@@ -91,7 +91,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="¡No le digas esta palabra a nadie!"
+                android:text="@string/reveal_no_digas"
                 android:textSize="14sp"
                 android:textColor="#CCFFFFFF" />
 
@@ -111,7 +111,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
-                android:text="TOCA PARA REVELAR"
+                android:text="@string/reveal_toca"
                 android:textSize="14sp"
                 android:textColor="#CCFFFFFF"
                 android:gravity="center_horizontal" />
@@ -181,7 +181,7 @@
             android:paddingTop="12dp"
             android:paddingBottom="12dp"
             android:gravity="center"
-            android:text="⏭ SIGUIENTE JUGADOR"
+            android:text="@string/reveal_siguiente"
             android:textColor="@android:color/white"
             android:textStyle="bold" />
     </androidx.cardview.widget.CardView>

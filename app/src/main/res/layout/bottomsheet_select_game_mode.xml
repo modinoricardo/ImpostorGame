@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="6dp"
         android:gravity="center"
-        android:text="Modo de juego"
+        android:text="@string/mode_titulo"
         android:textColor="@android:color/white"
         android:textSize="22sp"
         android:textStyle="bold"
@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:gravity="center"
-        android:text="Selecciona cómo quieres jugar"
+        android:text="@string/mode_subtitulo"
         android:textColor="#CCFFFFFF"
         android:textSize="14sp" />
 
@@ -61,7 +61,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="🕵️ Clásico"
+                    android:text="@string/mode_clasico_titulo"
                     android:textColor="@android:color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -84,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
                 android:justificationMode="inter_word"
-                android:text="Existe un impostor. Los civiles conocen la palabra y deben descubrir al impostor."
+                android:text="@string/mode_clasico_desc"
                 android:textColor="#CCFFFFFF"
                 android:textSize="13sp" />
 
@@ -121,7 +121,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="🌑 Misterioso"
+                    android:text="@string/mode_misterioso_titulo"
                     android:textColor="@android:color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -144,7 +144,7 @@
                 android:layout_height="wrap_content"
                 android:justificationMode="inter_word"
                 android:layout_marginTop="6dp"
-                android:text="El impostor no sabe que es el impostor. Él recibe una pista relacionada con la palabra de los civiles. Existe un &quot;Señor Blanco&quot; que no recibe ninguna palabra y tiene que hacerse pasar por un civil."
+                android:text="@string/mode_misterioso_desc"
                 android:textColor="#CCFFFFFF"
                 android:textSize="13sp" />
 
@@ -181,7 +181,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="🧠 Datos Curiosos"
+                    android:text="@string/mode_datos_titulo"
                     android:textColor="@android:color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -204,7 +204,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
                 android:justificationMode="inter_word"
-                android:text="Cada jugador recibe un dato curioso diferente. Los impostores no reciben nada y deben inventarse uno."
+                android:text="@string/mode_datos_desc"
                 android:textColor="#CCFFFFFF"
                 android:textSize="13sp" />
 
@@ -217,7 +217,7 @@
         android:id="@+id/btnConfirmModo"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:text="Confirmar"
+        android:text="@string/mode_confirmar"
         android:textAllCaps="true"
         android:textColor="@android:color/white"
         android:textStyle="bold"

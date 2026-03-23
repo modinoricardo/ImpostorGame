@@ -10,6 +10,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.ricardomodino.impostorgame.R
 import com.ricardomodino.impostorgame.managers.SoundManager
+import com.ricardomodino.impostorgame.managers.LocaleManager
 import com.ricardomodino.impostorgame.managers.ThemeManager
 import com.ricardomodino.impostorgame.modelos.Category
 import com.ricardomodino.impostorgame.modelos.GameOptions
@@ -25,6 +26,10 @@ class CountdownActivity : AppCompatActivity() {
     // Sin este flag, el withEndAction sigue ejecutándose aunque la Activity ya se esté cerrando,
     // lo que lanzaba ImpostorRevealActivity desde una Activity destruida (Activity fantasma).
     private var isCancelled = false
+
+    override fun attachBaseContext(newBase: android.content.Context) {
+        super.attachBaseContext(LocaleManager.wrap(newBase))
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         ThemeManager.aplicarTema(this)

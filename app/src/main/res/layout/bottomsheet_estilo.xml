@@ -33,7 +33,7 @@
             android:layout_weight="1"
             android:layout_marginBottom="6dp"
             android:gravity="center"
-            android:text="Estilo"
+            android:text="@string/estilo_titulo"
             android:textColor="@android:color/white"
             android:textSize="22sp"
             android:textStyle="bold"
@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:gravity="center"
-        android:text="Elige la apariencia de la app"
+        android:text="@string/estilo_subtitulo"
         android:textColor="#CCFFFFFF"
         android:textSize="13sp" />
 
@@ -117,7 +117,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="🌀 Clásico"
+                        android:text="@string/estilo_clasico_nombre"
                         android:textColor="@android:color/white"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -125,7 +125,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Azul neón · Oscuro · Moderno"
+                        android:text="@string/estilo_clasico_desc"
                         android:textColor="#AAFFFFFF"
                         android:textSize="12sp"
                         android:layout_marginTop="2dp" />
@@ -209,7 +209,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="🩸 Carmesí"
+                        android:text="@string/estilo_carmesi_nombre"
                         android:textColor="@android:color/white"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -217,7 +217,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Rojo carmesí · Tenso · Misterioso"
+                        android:text="@string/estilo_carmesi_desc"
                         android:textColor="#AAFFFFFF"
                         android:textSize="12sp"
                         android:layout_marginTop="2dp" />
@@ -301,7 +301,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="🖤 JMC"
+                        android:text="@string/estilo_jmc_nombre"
                         android:textColor="@android:color/white"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -309,7 +309,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Negro puro · Verde · Minimalista"
+                        android:text="@string/estilo_jmc_desc"
                         android:textColor="#AAFFFFFF"
                         android:textSize="12sp"
                         android:layout_marginTop="2dp" />

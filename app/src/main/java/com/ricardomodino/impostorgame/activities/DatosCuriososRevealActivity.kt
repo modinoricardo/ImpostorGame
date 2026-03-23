@@ -23,6 +23,7 @@ import com.ricardomodino.impostorgame.PlayerViewModel
 import com.ricardomodino.impostorgame.R
 import com.ricardomodino.impostorgame.managers.GameDialog
 import com.ricardomodino.impostorgame.managers.SoundManager
+import com.ricardomodino.impostorgame.managers.LocaleManager
 import com.ricardomodino.impostorgame.managers.ThemeManager
 import com.ricardomodino.impostorgame.modelos.DatoCategoria
 import com.ricardomodino.impostorgame.modelos.DatoCurioso
@@ -67,6 +68,10 @@ class DatosCuriososRevealActivity : AppCompatActivity() {
         R.drawable.civil10
     )
     private lateinit var imagenPorJugador: IntArray
+
+    override fun attachBaseContext(newBase: android.content.Context) {
+        super.attachBaseContext(LocaleManager.wrap(newBase))
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         ThemeManager.aplicarTema(this)

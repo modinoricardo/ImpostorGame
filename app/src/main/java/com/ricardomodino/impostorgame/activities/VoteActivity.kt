@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ricardomodino.impostorgame.R
 import com.ricardomodino.impostorgame.managers.GameDialog
+import com.ricardomodino.impostorgame.managers.LocaleManager
 import com.ricardomodino.impostorgame.managers.ThemeManager
 import com.ricardomodino.impostorgame.modelos.Jugador
 import com.ricardomodino.impostorgame.modelos.TipoJugador
@@ -33,6 +34,10 @@ class VoteActivity : AppCompatActivity() {
     private lateinit var palabra: String
     private var modoDatosCuriosos: Boolean = false
     private lateinit var adapter: VoteAdapter
+
+    override fun attachBaseContext(newBase: android.content.Context) {
+        super.attachBaseContext(LocaleManager.wrap(newBase))
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         ThemeManager.aplicarTema(this)

@@ -26,6 +26,7 @@ import android.text.style.StyleSpan
 import androidx.activity.viewModels
 import com.ricardomodino.impostorgame.PlayerViewModel
 import com.ricardomodino.impostorgame.managers.GameDialog
+import com.ricardomodino.impostorgame.managers.LocaleManager
 import com.ricardomodino.impostorgame.managers.ThemeManager
 import com.ricardomodino.impostorgame.modelos.Jugador
 import android.media.MediaPlayer
@@ -57,6 +58,10 @@ class PlayGameActivity : AppCompatActivity() {
     private var mediaPlayer: MediaPlayer? = null
     private var countDownTimer: CountDownTimer? = null
     private lateinit var cardsContainer: android.widget.LinearLayout
+
+    override fun attachBaseContext(newBase: android.content.Context) {
+        super.attachBaseContext(LocaleManager.wrap(newBase))
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         ThemeManager.aplicarTema(this)

@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Acerca de"
+                android:text="@string/acerca_titulo"
                 android:textColor="@android:color/white"
                 android:textSize="22sp"
                 android:textStyle="bold"
@@ -81,7 +81,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Creador de Atrapa al Impostor"
+            android:text="@string/acerca_creador"
             android:textColor="#AAFFFFFF"
             android:textSize="13sp"
             android:layout_marginBottom="24dp" />
@@ -96,7 +96,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Este juego nació sin ánimo de lucro y con una sola intención: que la gente se ría, se sorprenda y pase un buen rato juntos, como yo mismo he tenido el placer de disfrutar."
+            android:text="@string/acerca_descripcion"
             android:textColor="#DDFFFFFF"
             android:textSize="14sp"
             android:lineSpacingMultiplier="1.5"
@@ -105,7 +105,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Úsalo, compártelo y disfrútalo sin límites — lo único que te pido es que lo juegues en buena compañía."
+            android:text="@string/acerca_uso"
             android:textColor="#DDFFFFFF"
             android:textSize="14sp"
             android:lineSpacingMultiplier="1.5"
@@ -114,7 +114,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="No es un juego para ganar. Es un juego para conectar."
+            android:text="@string/acerca_frase"
             android:textColor="#DDFFFFFF"
             android:textSize="14sp"
             android:lineSpacingMultiplier="1.5"
@@ -123,7 +123,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Agradecimiento especial a la persona que me impulsa y me inspira a crear proyectos como este, y que siempre me apoya en cada paso: Ste.H. Sin ti, nada de esto tendría el mismo sentido."
+            android:text="@string/acerca_agradecimiento"
             android:textColor="#DDFFFFFF"
             android:textSize="14sp"
             android:lineSpacingMultiplier="1.5"
@@ -132,7 +132,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Un abrazo a todos los que lo juegan."
+            android:text="@string/acerca_abrazo"
             android:textColor="#DDFFFFFF"
             android:textSize="14sp"
             android:lineSpacingMultiplier="1.5"
@@ -147,7 +147,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Contacto"
+            android:text="@string/acerca_contacto"
             android:textColor="@android:color/white"
             android:textSize="16sp"
             android:textStyle="bold"

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ImpostorGame</string>
+
+    <!-- Splash -->
+    <string name="splash_impostor">臥底！</string>
+    <string name="splash_title">找出臥底</string>
+
+    <!-- MainActivity -->
+    <string name="main_title">抓住 \n 臥底</string>
+    <string name="main_edit_players">編輯玩家</string>
+    <string name="main_num_impostores">臥底數量</string>
+    <string name="main_senores_blancos">白板</string>
+    <string name="main_categorias">分類和詞語</string>
+    <string name="main_modo_juego">遊戲模式</string>
+    <string name="main_modo_clasico">🕵️ 經典</string>
+    <string name="main_modo_misterioso">🌑 神秘</string>
+    <string name="main_modo_datos_curiosos">🧠 趣味知識</string>
+    <string name="main_ayuda_impostor">臥底幫助</string>
+    <string name="main_ayuda_impostor_desc">臥底總會得到某種幫助</string>
+    <string name="main_pista">💡 提示</string>
+    <string name="main_pista_desc">獲得隨機提示</string>
+    <string name="main_primera_letra">🔤 首字母</string>
+    <string name="main_primera_letra_desc">只顯示詞語的第一個字母</string>
+    <string name="main_todos_impostores">全員臥底</string>
+    <string name="main_todos_impostores_desc">開啟一個每個人都可能是臥底的模式</string>
+    <string name="main_tiempo_limitado">⏱ 限時模式</string>
+    <string name="main_tiempo_limitado_desc">時間結束時臥底獲勝</string>
+    <string name="main_duracion">時長</string>
+    <string name="main_selfie">📸 自動自拍</string>
+    <string name="main_selfie_desc">揭示詞語時拍攝自拍，用作頭像</string>
+    <string name="main_btn_start">開始遊戲</string>
+
+    <!-- PlayGameActivity -->
+    <string name="play_title">臥底</string>
+    <string name="play_subtitle">角色就緒。保持沉默。混亂開始。</string>
+    <string name="play_btn_votar">🗳 投票</string>
+    <string name="play_btn_revelar">揭示臥底和詞語</string>
+    <string name="play_btn_nueva_partida">新遊戲</string>
+
+    <!-- ImpostorRevealActivity -->
+    <string name="reveal_no_digas">不要把這個詞告訴任何人！</string>
+    <string name="reveal_toca">點擊揭示</string>
+    <string name="reveal_siguiente">⏭ 下一位玩家</string>
+    <string name="reveal_empezar">開始遊戲！</string>
+
+    <!-- DatosCuriososRevealActivity -->
+    <string name="datos_modo_label">🧠 趣味知識</string>
+    <string name="datos_eres_impostor">你是臥底</string>
+    <string name="datos_inventa_dato">輪到你時\n編造一個趣味知識</string>
+    <string name="datos_label_dato">趣味知識</string>
+    <string name="datos_toca_revelar">點擊揭示</string>
+    <string name="datos_siguiente">⏭  下一位玩家</string>
+    <string name="datos_empezar">⏭  開始遊戲</string>
+
+    <!-- VoteActivity -->
+    <string name="vote_title">淘汰誰？</string>
+    <string name="vote_subtitle">選擇可疑的玩家</string>
+    <string name="vote_confirmar">確認投票</string>
+
+    <!-- GuessWordActivity -->
+    <string name="guess_title">💀 最後機會</string>
+    <string name="guess_subtitle">猜出秘密詞語以拯救隊伍</string>
+    <string name="guess_label">秘密詞語</string>
+    <string name="guess_hint">輸入詞語…</string>
+    <string name="guess_confirmar">確認</string>
+
+    <!-- VictoryActivity -->
+    <string name="victory_trophy">🏆</string>
+    <string name="victory_title">勝利！</string>
+    <string name="victory_subtitle">臥底獲勝</string>
+    <string name="victory_nueva_partida">新遊戲</string>
+
+    <!-- SelectGameModeBottomSheet -->
+    <string name="mode_titulo">遊戲模式</string>
+    <string name="mode_subtitulo">選擇遊戲方式</string>
+    <string name="mode_clasico_titulo">🕵️ 經典</string>
+    <string name="mode_clasico_desc">有一個臥底。平民知道詞語並必須找出臥底。</string>
+    <string name="mode_misterioso_titulo">🌑 神秘</string>
+    <string name="mode_misterioso_desc">臥底不知道自己是臥底。他們會收到與平民詞語相關的提示。有一位「白板」不會收到任何詞語，必須假裝成平民。</string>
+    <string name="mode_datos_titulo">🧠 趣味知識</string>
+    <string name="mode_datos_desc">每位玩家收到不同的趣味知識。臥底什麼都沒收到，必須自己編造一個。</string>
+    <string name="mode_confirmar">確認</string>
+
+    <!-- SelectCategoriesBottomSheet -->
+    <string name="cat_titulo">選擇分類</string>
+    <string name="cat_subtitulo">為遊戲選擇一個或多個分類。\n如果不選擇任何分類，將使用所有分類。</string>
+    <string name="cat_confirmar">確認</string>
+
+    <!-- MenuBottomSheet -->
+    <string name="menu_titulo">選單</string>
+    <string name="menu_estilo">風格</string>
+    <string name="menu_estilo_desc">自訂應用外觀</string>
+    <string name="menu_sonido">聲音</string>
+    <string name="menu_sonido_desc">開啟或關閉遊戲聲音</string>
+    <string name="menu_idioma">語言</string>
+    <string name="menu_idioma_desc">更改應用語言</string>
+    <string name="menu_acerca">關於</string>
+    <string name="menu_acerca_desc">創作者和遊戲故事</string>
+    <string name="menu_sugerencias">建議改進</string>
+    <string name="menu_sugerencias_desc">分享改進應用的想法</string>
+
+    <!-- EstiloBottomSheet -->
+    <string name="estilo_titulo">風格</string>
+    <string name="estilo_subtitulo">選擇應用外觀</string>
+    <string name="estilo_clasico_nombre">🌀 經典</string>
+    <string name="estilo_clasico_desc">霓虹藍 · 暗黑 · 現代</string>
+    <string name="estilo_carmesi_nombre">🩸 深紅</string>
+    <string name="estilo_carmesi_desc">深紅色 · 緊張 · 神秘</string>
+    <string name="estilo_jmc_nombre">🖤 JMC</string>
+    <string name="estilo_jmc_desc">純黑 · 綠色 · 極簡</string>
+
+    <!-- SugerenciasBottomSheet -->
+    <string name="sug_titulo">建議改進</string>
+    <string name="sug_desc">有想法或發現可改進之處？\n告訴我們，每個意見都有幫助。</string>
+    <string name="sug_email_hint">您的信箱（可選）</string>
+    <string name="sug_texto_hint">在此寫下您的建議或改進意見…</string>
+    <string name="sug_enviar">傳送</string>
+
+    <!-- AcercaDeBottomSheet -->
+    <string name="acerca_titulo">關於</string>
+    <string name="acerca_creador">《抓住臥底》創作者</string>
+    <string name="acerca_descripcion">這款遊戲的誕生沒有商業目的，只有一個初衷：讓人們歡笑、驚喜，一起度過美好時光，正如我自己所享受的那樣。</string>
+    <string name="acerca_uso">隨意使用、分享和享受——我唯一的請求是與好夥伴一起遊戲。</string>
+    <string name="acerca_frase">這不是一個用來贏的遊戲。這是一個用來連結彼此的遊戲。</string>
+    <string name="acerca_agradecimiento">特別感謝那個激勵和啟發我創建這類專案的人，她始終支持我每一步：Ste.H。沒有你，這一切都不會有同樣的意義。</string>
+    <string name="acerca_abrazo">擁抱所有玩這款遊戲的人。</string>
+    <string name="acerca_contacto">聯絡方式</string>
+
+    <!-- Compartidos -->
+    <string name="jugador">玩家</string>
+    <string name="editar_nombre_hint">編輯名稱</string>
+    <string name="editar_jugadores_titulo">編輯玩家</string>
+    <string name="editar_jugadores_minimo">最少3位玩家</string>
+    <string name="editar_jugadores_toca">點擊名稱進行編輯</string>
+    <string name="agregar_jugador_hint">新增玩家姓名</string>
+    <string name="confirmar">確認</string>
+
+    <!-- Diálogos genéricos -->
+    <string name="dialog_salir_titulo">退出</string>
+    <string name="dialog_salir_msg">您要退出遊戲嗎？</string>
+    <string name="dialog_salir_si">退出</string>
+    <string name="dialog_salir_no">取消</string>
+</resources>

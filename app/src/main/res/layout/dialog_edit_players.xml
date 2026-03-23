@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:gravity="center"
-        android:text="Editar jugadores"
+        android:text="@string/editar_jugadores_titulo"
         android:textColor="@android:color/white"
         android:textSize="22sp"
         android:textStyle="bold"
@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="2dp"
         android:gravity="center"
-        android:text="Minimo de 3 jugadores"
+        android:text="@string/editar_jugadores_minimo"
         android:textColor="#CCFFFFFF"
         android:textSize="14sp" />
 
@@ -37,7 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Toca un nombre para editar"
+        android:text="@string/editar_jugadores_toca"
         android:textColor="#99FFFFFF"
         android:textSize="12sp" />
 
@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:hint="Agregar nombre del nuevo jugador"
+            android:hint="@string/agregar_jugador_hint"
             android:paddingStart="12dp"
             android:textColor="@android:color/white"
             android:textColorHint="#80FFFFFF" />
@@ -91,7 +91,7 @@
         android:id="@+id/btnConfirm"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:text="Confirmar"
+        android:text="@string/confirmar"
         android:textAllCaps="true"
         android:textColor="@android:color/white"
         android:textStyle="bold"
