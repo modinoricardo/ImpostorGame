@@ -168,18 +168,26 @@ class SugerenciasBottomSheet : BottomSheetDialogFragment() {
         val receiver = BuildConfig.GMAIL_RECEIVER
 
         val session = Session.getInstance(props, object : Authenticator() {
-            override fun getPasswordAuthentication() = PasswordAuthentication(sender, password)
+            override fun getPasswordAuthentication() = PasswordAuthentication(sender, password.replace(" ", ""))
         })
 
+        val appVersion = try {
+            val info = requireContext().packageManager.getPackageInfo(requireContext().packageName, 0)
+            "${info.versionName} (build ${info.longVersionCode})"
+        } catch (_: Exception) { "Desconocida" }
+
+        val fecha = java.text.SimpleDateFormat("dd/MM/yyyy HH:mm", java.util.Locale.getDefault())
+            .format(java.util.Date())
+
         val cuerpo = buildString {
-            appendLine("SUGERENCIA IMPOSTOR GAME")
-            appendLine("=".repeat(40))
-            appendLine("USUARIO   : ${emailUsuario.ifEmpty { "No proporcionado" }}")
-            appendLine("DISPOSITIVO: ${Build.MANUFACTURER} ${Build.MODEL} (Android ${Build.VERSION.RELEASE})")
-            appendLine()
             appendLine("--- MENSAJE USUARIO ---")
             appendLine(mensajeUsuario)
             appendLine()
+            appendLine("=".repeat(40))
+            appendLine("USUARIO    : ${emailUsuario.ifEmpty { "Anónimo" }}")
+            appendLine("DISPOSITIVO: ${Build.MANUFACTURER} ${Build.MODEL} (Android ${Build.VERSION.RELEASE})")
+            appendLine("APP        : ImpostorGame v$appVersion")
+            appendLine("FECHA      : $fecha")
             appendLine("=".repeat(40))
             appendLine("(Responde a este email para añadir esta tarea a Notion)")
         }
