@@ -189,7 +189,6 @@ class SugerenciasBottomSheet : BottomSheetDialogFragment() {
             appendLine("APP        : ImpostorGame v$appVersion")
             appendLine("FECHA      : $fecha")
             appendLine("=".repeat(40))
-            appendLine("(Responde a este email para añadir esta tarea a Notion)")
         }
 
         val titulo = mensajeUsuario.take(55).trimEnd()
