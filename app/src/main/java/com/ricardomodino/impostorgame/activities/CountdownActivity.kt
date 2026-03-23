@@ -43,8 +43,9 @@ class CountdownActivity : AppCompatActivity() {
         val players    = intent.getParcelableArrayListExtra<Jugador>("PLAYERS")
         val categories = intent.getParcelableArrayListExtra<Category>("CATEGORIES")
         val opciones   = intent.getParcelableExtra<GameOptions>("OPCIONES")
+        val esDatosCuriosos = opciones?.modoDatosCuriosos == true
 
-        startCountdown(players, categories, opciones)
+        startCountdown(players, categories, opciones, esDatosCuriosos)
     }
 
     private fun cancelarCuentaAtras() {
@@ -92,7 +93,8 @@ class CountdownActivity : AppCompatActivity() {
     private fun startCountdown(
         players: ArrayList<Jugador>?,
         categories: ArrayList<Category>?,
-        opciones: GameOptions?
+        opciones: GameOptions?,
+        esDatosCuriosos: Boolean = false
     ) {
         val toneFreqs = mapOf("3" to 392f, "2" to 494f, "1" to 659f, "¡Ya!" to 880f)
         val numbers   = listOf("3", "2", "1", "¡Ya!")
@@ -103,7 +105,9 @@ class CountdownActivity : AppCompatActivity() {
             if (isCancelled || isFinishing || isDestroyed) return
 
             if (index >= numbers.size) {
-                val intent = Intent(this, ImpostorRevealActivity::class.java).apply {
+                val destino = if (esDatosCuriosos) DatosCuriososRevealActivity::class.java
+                              else ImpostorRevealActivity::class.java
+                val intent = Intent(this, destino).apply {
                     putParcelableArrayListExtra("PLAYERS", players)
                     putParcelableArrayListExtra("CATEGORIES", categories)
                     putExtra("OPCIONES", opciones)

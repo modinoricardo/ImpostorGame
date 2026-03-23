@@ -2,14 +2,12 @@ package com.ricardomodino.impostorgame.activities
 
 import android.Manifest
 import android.animation.LayoutTransition
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
 import android.graphics.Matrix
 import androidx.exifinterface.media.ExifInterface
 import android.os.Bundle
-import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -79,6 +77,7 @@ class ImpostorRevealActivity : AppCompatActivity() {
     private val impostorImageRes = R.drawable.impostor
     private lateinit var imagenPorJugador: IntArray
     private var isAnimating = false
+    private var isRevealed = false
     private val selfiesTomados = mutableSetOf<Int>() // índices ya fotografiados
 
     // CameraX
@@ -412,32 +411,53 @@ class ImpostorRevealActivity : AppCompatActivity() {
         }
     }
 
-    @SuppressLint("ClickableViewAccessibility")
     private fun onEventos() {
-        cardViewPrincipal.setOnTouchListener { _, event ->
-            when (event.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    if (opciones.modoLoco && modoLocoActivo) mostrarPalabraModoLoco()
-                    else mostrarPalabraNormal()
-                    nenxtPlayer.visibility = View.VISIBLE
-                    true
-                }
-                MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
-                    ocultarPalabra(); true
-                }
-                else -> false
-            }
+        cardViewPrincipal.setOnClickListener {
+            if (!isRevealed) revelarPalabra()
         }
         nenxtPlayer.setOnClickListener { btnNextPlayer() }
     }
 
+    private fun revelarPalabra() {
+        isRevealed = true
+        val latch = intArrayOf(0)
+        val hintViews = listOf<View>(imgDedo, txtTwo, presText)
+
+        hintViews.forEach { v ->
+            v.animate().translationY(-200f).alpha(0f).setDuration(280L)
+                .withEndAction {
+                    v.visibility = View.GONE
+                    v.translationY = 0f
+                    latch[0]++
+                    if (latch[0] == hintViews.size) mostrarContenidoConAnimacion()
+                }.start()
+        }
+    }
+
+    private fun mostrarContenidoConAnimacion() {
+        if (opciones.modoLoco && modoLocoActivo) mostrarPalabraModoLoco()
+        else mostrarPalabraNormal()
+
+        listOf<View>(detailsPlayer, imgWord, hintPlayer)
+            .filter { it.visibility == View.VISIBLE }
+            .forEach { v ->
+                v.translationY = 160f; v.alpha = 0f
+                v.animate().translationY(0f).alpha(1f).setDuration(320L).start()
+            }
+
+        nenxtPlayer.visibility = View.VISIBLE
+        nenxtPlayer.alpha = 0f
+        nenxtPlayer.animate().alpha(1f).setDuration(250L).start()
+    }
+
     private fun ocultarPalabra() {
-        detailsPlayer.visibility = View.GONE
-        hintPlayer.visibility    = View.GONE
-        imgWord.visibility       = View.GONE
-        imgDedo.visibility       = View.VISIBLE
-        txtTwo.visibility        = View.VISIBLE
-        presText.visibility      = View.VISIBLE
+        isRevealed = false
+        detailsPlayer.visibility = View.GONE;   detailsPlayer.translationY = 0f; detailsPlayer.alpha = 1f
+        hintPlayer.visibility    = View.GONE;   hintPlayer.translationY = 0f;    hintPlayer.alpha = 1f
+        imgWord.visibility       = View.GONE;   imgWord.translationY = 0f;       imgWord.alpha = 1f
+        imgDedo.visibility       = View.VISIBLE; imgDedo.translationY = 0f;      imgDedo.alpha = 1f
+        txtTwo.visibility        = View.VISIBLE; txtTwo.translationY = 0f;       txtTwo.alpha = 1f
+        presText.visibility      = View.VISIBLE; presText.translationY = 0f;     presText.alpha = 1f
     }
 
     private fun mostrarPalabraNormal() {

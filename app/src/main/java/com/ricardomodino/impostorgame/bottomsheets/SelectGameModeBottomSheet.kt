@@ -33,8 +33,10 @@ class SelectGameModeBottomSheet : BottomSheetDialogFragment() {
 
     private lateinit var cardClasico: CardView
     private lateinit var cardMisterioso: CardView
+    private lateinit var cardDatosCuriosos: CardView
     private lateinit var iconCheckClasico: TextView
     private lateinit var iconCheckMisterioso: TextView
+    private lateinit var iconCheckDatosCuriosos: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -73,23 +75,37 @@ class SelectGameModeBottomSheet : BottomSheetDialogFragment() {
 
         val opcionesActuales = arguments?.getParcelable<GameOptions>(ARG_OPCIONES) ?: GameOptions()
 
-        cardClasico = view.findViewById(R.id.cardModoClasico)
-        cardMisterioso = view.findViewById(R.id.cardModoMisterioso)
-        iconCheckClasico = view.findViewById(R.id.iconCheckClasico)
-        iconCheckMisterioso = view.findViewById(R.id.iconCheckMisterioso)
+        cardClasico         = view.findViewById(R.id.cardModoClasico)
+        cardMisterioso      = view.findViewById(R.id.cardModoMisterioso)
+        cardDatosCuriosos   = view.findViewById(R.id.cardModoDatosCuriosos)
+        iconCheckClasico        = view.findViewById(R.id.iconCheckClasico)
+        iconCheckMisterioso     = view.findViewById(R.id.iconCheckMisterioso)
+        iconCheckDatosCuriosos  = view.findViewById(R.id.iconCheckDatosCuriosos)
 
-        iconCheckClasico.visibility = if (!opcionesActuales.modoMisterioso) View.VISIBLE else View.GONE
-        iconCheckMisterioso.visibility = if (opcionesActuales.modoMisterioso) View.VISIBLE else View.GONE
+        iconCheckClasico.visibility       = if (!opcionesActuales.modoMisterioso && !opcionesActuales.modoDatosCuriosos) View.VISIBLE else View.GONE
+        iconCheckMisterioso.visibility    = if (opcionesActuales.modoMisterioso) View.VISIBLE else View.GONE
+        iconCheckDatosCuriosos.visibility = if (opcionesActuales.modoDatosCuriosos) View.VISIBLE else View.GONE
 
         view.findViewById<Button>(R.id.btnConfirmModo)?.visibility = View.GONE
 
         cardClasico.setOnClickListener {
-            (activity as? Listener)?.onGameModeConfirmed(opcionesActuales.copy(modoMisterioso = false))
+            (activity as? Listener)?.onGameModeConfirmed(
+                opcionesActuales.copy(modoMisterioso = false, modoDatosCuriosos = false)
+            )
             dismiss()
         }
 
         cardMisterioso.setOnClickListener {
-            (activity as? Listener)?.onGameModeConfirmed(opcionesActuales.copy(modoMisterioso = true))
+            (activity as? Listener)?.onGameModeConfirmed(
+                opcionesActuales.copy(modoMisterioso = true, modoDatosCuriosos = false)
+            )
+            dismiss()
+        }
+
+        cardDatosCuriosos.setOnClickListener {
+            (activity as? Listener)?.onGameModeConfirmed(
+                opcionesActuales.copy(modoMisterioso = false, modoDatosCuriosos = true)
+            )
             dismiss()
         }
     }

@@ -8,6 +8,7 @@ data class GameOptions(
     val tipoPista: String = PISTA_COMPLETA,
     val modoLoco: Boolean = false,
     val modoMisterioso: Boolean = false,
+    val modoDatosCuriosos: Boolean = false,
     val numImpostores: Int = 1,
     val numSenoresBlancos: Int = 0,
     val tiempoLimitado: Boolean = false,

@@ -111,7 +111,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
-                android:text="MANTENER PULSADO PARA REVELAR PALABRA"
+                android:text="TOCA PARA REVELAR"
                 android:textSize="14sp"
                 android:textColor="#CCFFFFFF"
                 android:gravity="center_horizontal" />

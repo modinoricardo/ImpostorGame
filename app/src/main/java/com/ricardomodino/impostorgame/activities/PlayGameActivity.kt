@@ -49,6 +49,7 @@ class PlayGameActivity : AppCompatActivity() {
     private lateinit var nombreImpostor: String
     private lateinit var nombresSenoresBlancos: String
     private var modoMisterioso: Boolean = false
+    private var modoDatosCuriosos: Boolean = false
     private var tiempoLimitado: Boolean = false
     private var minutos: Int = 3
     private val playerViewModel: PlayerViewModel by viewModels()
@@ -108,8 +109,9 @@ class PlayGameActivity : AppCompatActivity() {
         palabraJugada        = intent.getStringExtra("PALABRA") ?: ""
         nombreImpostor       = intent.getStringExtra("IMPOSTOR") ?: ""
         nombresSenoresBlancos = intent.getStringExtra("SENORES_BLANCOS") ?: ""
-        modoMisterioso       = intent.getBooleanExtra("MODO_MISTERIOSO", false)
-        tiempoLimitado       = intent.getBooleanExtra("TIEMPO_LIMITADO", false)
+        modoMisterioso        = intent.getBooleanExtra("MODO_MISTERIOSO", false)
+        modoDatosCuriosos     = intent.getBooleanExtra("MODO_DATOS_CURIOSOS", false)
+        tiempoLimitado        = intent.getBooleanExtra("TIEMPO_LIMITADO", false)
         minutos              = intent.getIntExtra("MINUTOS", 3)
 
         val nombreEmpieza = intent.getStringExtra("JUGADOR_EMPIEZA") ?: ""
@@ -185,6 +187,7 @@ class PlayGameActivity : AppCompatActivity() {
             putExtra("PALABRA", palabraJugada)
             putExtra("IMPOSTOR", nombreImpostor)
             putExtra("SENORES_BLANCOS", nombresSenoresBlancos)
+            putExtra("MODO_DATOS_CURIOSOS", modoDatosCuriosos)
         }
         startActivityForResult(intent, REQUEST_VOTE)
     }

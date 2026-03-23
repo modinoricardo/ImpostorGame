@@ -31,6 +31,7 @@ class VoteActivity : AppCompatActivity() {
     private var selectedIndex: Int = -1
     private var jugadores: MutableList<Jugador> = mutableListOf()
     private lateinit var palabra: String
+    private var modoDatosCuriosos: Boolean = false
     private lateinit var adapter: VoteAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,8 +40,9 @@ class VoteActivity : AppCompatActivity() {
         setContentView(R.layout.activity_vote)
         ThemeManager.aplicarDrawables(this)
 
-        jugadores = intent.getParcelableArrayListExtra<Jugador>("JUGADORES")?.toMutableList() ?: mutableListOf()
-        palabra   = intent.getStringExtra("PALABRA") ?: ""
+        jugadores         = intent.getParcelableArrayListExtra<Jugador>("JUGADORES")?.toMutableList() ?: mutableListOf()
+        palabra           = intent.getStringExtra("PALABRA") ?: ""
+        modoDatosCuriosos = intent.getBooleanExtra("MODO_DATOS_CURIOSOS", false)
 
         recyclerVotos = findViewById(R.id.recyclerVotos)
         btnConfirmar  = findViewById(R.id.btnConfirmarVoto)
@@ -137,13 +139,23 @@ class VoteActivity : AppCompatActivity() {
                     TipoJugador.IMPOSTOR -> if (femenino) "la impostora" else "el impostor"
                     else -> if (femenino) "la señora blanca" else "el señor blanco"
                 }
-                GameDialog(this)
-                    .icon("⚠️")
-                    .title("¡Te han pillado!")
-                    .message("${votado.nombre} era $rol.\n\n¡Pero intenta salvarte!")
-                    .cancelable(false)
-                    .positiveButton("Intentar") { abrirPantallaAdivinar(votado) }
-                    .show()
+                if (modoDatosCuriosos) {
+                    GameDialog(this)
+                        .icon("⚠️")
+                        .title("¡Te han pillado!")
+                        .message("${votado.nombre} era $rol.\n¡La partida continúa sin él!")
+                        .cancelable(false)
+                        .positiveButton("OK") { eliminarJugadorYVolver(votado) }
+                        .show()
+                } else {
+                    GameDialog(this)
+                        .icon("⚠️")
+                        .title("¡Te han pillado!")
+                        .message("${votado.nombre} era $rol.\n\n¡Pero intenta salvarte!")
+                        .cancelable(false)
+                        .positiveButton("Intentar") { abrirPantallaAdivinar(votado) }
+                        .show()
+                }
             }
         }
     }

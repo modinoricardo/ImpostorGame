@@ -1,0 +1,12 @@
+[
+  {"id":1,"es":"Ciencia","en":"Science","zhHans":"科学","zhHant":"科學","emoji":"🔬","datos":[]},
+  {"id":2,"es":"Historia","en":"History","zhHans":"历史","zhHant":"歷史","emoji":"📜","datos":[]},
+  {"id":3,"es":"Animales","en":"Animals","zhHans":"动物","zhHant":"動物","emoji":"🦁","datos":[]},
+  {"id":4,"es":"Geografía","en":"Geography","zhHans":"地理","zhHant":"地理","emoji":"🌍","datos":[]},
+  {"id":5,"es":"Cuerpo Humano","en":"Human Body","zhHans":"人体","zhHant":"人體","emoji":"🫀","datos":[]},
+  {"id":6,"es":"Tecnología","en":"Technology","zhHans":"技术","zhHant":"技術","emoji":"💻","datos":[]},
+  {"id":7,"es":"Arte y Cultura","en":"Art & Culture","zhHans":"艺术与文化","zhHant":"藝術與文化","emoji":"🎨","datos":[]},
+  {"id":8,"es":"Naturaleza","en":"Nature","zhHans":"自然","zhHant":"自然","emoji":"🌿","datos":[]},
+  {"id":9,"es":"Deporte","en":"Sports","zhHans":"体育","zhHant":"體育","emoji":"⚽","datos":[]},
+  {"id":10,"es":"Comida","en":"Food","zhHans":"美食","zhHant":"美食","emoji":"🍕","datos":[]}
+]
