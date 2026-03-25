@@ -50,6 +50,18 @@ class CategoryAdapterSelect(
     private fun applySelectedStyle(holder: CategoryViewHolder, selected: Boolean) {
         val ctx = holder.itemView.context
         when {
+            ThemeManager.esFinal(ctx) -> {
+                holder.textEmoji.alpha = if (selected) 1f else 0.82f
+                if (selected) {
+                    holder.cardCategory.setBackgroundResource(R.drawable.bg_category_selected_final)
+                    holder.textTitle.setTypeface(null, Typeface.BOLD)
+                    holder.textTitle.setTextColor(Color.parseColor("#FFF4DF"))
+                } else {
+                    holder.cardCategory.setBackgroundResource(R.drawable.bg_category_normal_final)
+                    holder.textTitle.setTypeface(null, Typeface.NORMAL)
+                    holder.textTitle.setTextColor(Color.parseColor("#E1D5C7"))
+                }
+            }
             ThemeManager.esCarmesi(ctx) -> {
                 if (selected) {
                     holder.cardCategory.setBackgroundResource(R.drawable.bg_category_selected_carmesi)

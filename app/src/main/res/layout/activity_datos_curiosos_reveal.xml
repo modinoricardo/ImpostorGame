@@ -102,6 +102,7 @@
                     android:visibility="gone">
 
                     <TextView
+                        android:id="@+id/txtImpostorEmoji"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="🕵️"
@@ -109,6 +110,7 @@
                         android:layout_marginBottom="16dp" />
 
                     <TextView
+                        android:id="@+id/txtImpostorTitulo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/datos_eres_impostor"
@@ -120,6 +122,7 @@
                         android:layout_marginBottom="12dp" />
 
                     <TextView
+                        android:id="@+id/txtImpostorSubtitulo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/datos_inventa_dato"
@@ -156,6 +159,7 @@
                         android:layout_marginBottom="16dp" />
 
                     <TextView
+                        android:id="@+id/txtLabelContenido"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/datos_label_dato"
@@ -174,6 +178,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/bg_reveal_cover"
+                android:clipToOutline="true"
                 android:clickable="true"
                 android:focusable="true">
 
@@ -184,12 +189,6 @@
                     android:scaleType="centerCrop"
                     android:contentDescription="@null" />
 
-                <!-- Degradado inferior sobre la imagen -->
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    android:layout_gravity="bottom"
-                    android:background="@drawable/gradient_bottom_dark" />
 
                 <!-- Hint de tap -->
                 <LinearLayout

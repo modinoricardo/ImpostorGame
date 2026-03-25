@@ -2,12 +2,14 @@ package com.ricardomodino.impostorgame.activities
 
 import android.Manifest
 import android.animation.LayoutTransition
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
 import android.graphics.Matrix
 import androidx.exifinterface.media.ExifInterface
 import android.os.Bundle
+import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -416,9 +418,31 @@ class ImpostorRevealActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private fun onEventos() {
-        cardViewPrincipal.setOnClickListener {
-            if (!isRevealed) revelarPalabra()
+        if (ThemeManager.esJmc(this)) {
+            // JMC: tap único con animación de revelación
+            cardViewPrincipal.setOnClickListener {
+                if (!isRevealed) revelarPalabra()
+            }
+        } else {
+            // Resto de estilos: mantener pulsado para ver, soltar para ocultar
+            presText.text = "MANTENER PULSADO PARA REVELAR PALABRA"
+            cardViewPrincipal.setOnTouchListener { _, event ->
+                when (event.action) {
+                    MotionEvent.ACTION_DOWN -> {
+                        cardViewPrincipal.parent?.requestDisallowInterceptTouchEvent(true)
+                        if (opciones.modoLoco && modoLocoActivo) mostrarPalabraModoLoco()
+                        else mostrarPalabraNormal()
+                        nenxtPlayer.visibility = View.VISIBLE
+                        true
+                    }
+                    MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
+                        ocultarPalabra(); true
+                    }
+                    else -> false
+                }
+            }
         }
         nenxtPlayer.setOnClickListener { btnNextPlayer() }
     }
@@ -456,13 +480,22 @@ class ImpostorRevealActivity : AppCompatActivity() {
     }
 
     private fun ocultarPalabra() {
-        isRevealed = false
-        detailsPlayer.visibility = View.GONE;   detailsPlayer.translationY = 0f; detailsPlayer.alpha = 1f
-        hintPlayer.visibility    = View.GONE;   hintPlayer.translationY = 0f;    hintPlayer.alpha = 1f
-        imgWord.visibility       = View.GONE;   imgWord.translationY = 0f;       imgWord.alpha = 1f
-        imgDedo.visibility       = View.VISIBLE; imgDedo.translationY = 0f;      imgDedo.alpha = 1f
-        txtTwo.visibility        = View.VISIBLE; txtTwo.translationY = 0f;       txtTwo.alpha = 1f
-        presText.visibility      = View.VISIBLE; presText.translationY = 0f;     presText.alpha = 1f
+        if (ThemeManager.esJmc(this)) {
+            isRevealed = false
+            detailsPlayer.visibility = View.GONE;    detailsPlayer.translationY = 0f; detailsPlayer.alpha = 1f
+            hintPlayer.visibility    = View.GONE;    hintPlayer.translationY = 0f;    hintPlayer.alpha = 1f
+            imgWord.visibility       = View.GONE;    imgWord.translationY = 0f;       imgWord.alpha = 1f
+            imgDedo.visibility       = View.VISIBLE; imgDedo.translationY = 0f;       imgDedo.alpha = 1f
+            txtTwo.visibility        = View.VISIBLE; txtTwo.translationY = 0f;        txtTwo.alpha = 1f
+            presText.visibility      = View.VISIBLE; presText.translationY = 0f;      presText.alpha = 1f
+        } else {
+            detailsPlayer.visibility = View.GONE
+            hintPlayer.visibility    = View.GONE
+            imgWord.visibility       = View.GONE
+            imgDedo.visibility       = View.VISIBLE
+            txtTwo.visibility        = View.VISIBLE
+            presText.visibility      = View.VISIBLE
+        }
     }
 
     private fun mostrarPalabraNormal() {

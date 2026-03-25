@@ -1,6 +1,8 @@
 package com.ricardomodino.impostorgame.activities
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.view.MotionEvent
 import android.graphics.Color
 import android.media.AudioFormat
 import android.media.AudioManager
@@ -39,7 +41,7 @@ class DatosCuriososRevealActivity : AppCompatActivity() {
     private val playerViewModel: PlayerViewModel by viewModels()
     private val datosViewModel: DatosCuriososViewModel by viewModels()
 
-    private lateinit var layoutRoot: LinearLayout
+    private lateinit var layoutRoot: android.widget.FrameLayout
     private lateinit var txtContador: TextView
     private lateinit var txtNombre: TextView
     private lateinit var lineaAcento: View
@@ -123,7 +125,7 @@ class DatosCuriososRevealActivity : AppCompatActivity() {
     }
 
     private fun bindViews() {
-        layoutRoot       = findViewById(R.id.rootDatosCuriosos)
+        layoutRoot       = findViewById<android.widget.FrameLayout>(R.id.rootDatosCuriosos)
         txtContador      = findViewById(R.id.txtContadorJugador)
         txtNombre        = findViewById(R.id.txtNombreJugador)
         lineaAcento      = findViewById(R.id.lineaAcento)
@@ -150,7 +152,8 @@ class DatosCuriososRevealActivity : AppCompatActivity() {
             val top = insets.getInsets(
                 WindowInsetsCompat.Type.statusBars() or WindowInsetsCompat.Type.displayCutout()
             ).top
-            v.updatePadding(top = top + 24)
+            val bottom = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
+            v.updatePadding(top = top + 24, bottom = bottom + 24)
             insets
         }
     }
@@ -170,6 +173,9 @@ class DatosCuriososRevealActivity : AppCompatActivity() {
         }
         datosAsignados = mapa
     }
+
+    private fun datosPartida(): ArrayList<DatoCurioso> =
+        ArrayList(listaJugadores.indices.mapNotNull { datosAsignados[it] })
 
     private fun mostrarJugador(index: Int) {
         cubiertaRevelada = false
@@ -203,11 +209,40 @@ class DatosCuriososRevealActivity : AppCompatActivity() {
         txtNombre.translationX = 60f
         txtNombre.alpha = 0f
         txtNombre.animate().translationX(0f).alpha(1f).setDuration(300L).start()
+
+        // En modo no-JMC preparar contenido del nuevo jugador detrás de la cubierta
+        if (!ThemeManager.esJmc(this)) prepararContenido()
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private fun configurarBotones() {
-        capaCubierta.setOnClickListener {
-            if (!cubiertaRevelada) revelarDato()
+        if (ThemeManager.esJmc(this)) {
+            // JMC: tap para revelar con animación deslizante
+            capaCubierta.setOnClickListener {
+                if (!cubiertaRevelada) revelarDatoJmc()
+            }
+        } else {
+            // CLASICO / CARMESI / otros: mantener pulsado para ver, soltar para ocultar
+            prepararContenido()
+            capaCubierta.setOnTouchListener { _, event ->
+                when (event.action) {
+                    MotionEvent.ACTION_DOWN -> {
+                        capaCubierta.visibility  = View.INVISIBLE
+                        layoutHintTap.visibility = View.GONE
+                        true
+                    }
+                    MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
+                        capaCubierta.visibility  = View.VISIBLE
+                        layoutHintTap.visibility = View.VISIBLE
+                        if (!cubiertaRevelada) {
+                            cubiertaRevelada = true
+                            btnSiguiente.visibility = View.VISIBLE
+                        }
+                        true
+                    }
+                    else -> false
+                }
+            }
         }
 
         btnSiguiente.setOnClickListener {
@@ -221,13 +256,9 @@ class DatosCuriososRevealActivity : AppCompatActivity() {
         }
     }
 
-    private fun revelarDato() {
-        cubiertaRevelada = true
-        val index    = playerInGame
-        val esImpostor = index in indicesImpostores
-
-        // Preparar contenido ANTES de animar
-        if (esImpostor) {
+    private fun prepararContenido() {
+        val index = playerInGame
+        if (index in indicesImpostores) {
             layoutImpostor.visibility = View.VISIBLE
             layoutDato.visibility     = View.GONE
         } else {
@@ -236,8 +267,12 @@ class DatosCuriososRevealActivity : AppCompatActivity() {
             layoutDato.visibility     = View.VISIBLE
             layoutImpostor.visibility = View.GONE
         }
+    }
 
-        // Animar cubierta hacia arriba
+    private fun revelarDatoJmc() {
+        cubiertaRevelada = true
+        prepararContenido()
+
         val alturaCard = capaCubierta.height.toFloat().takeIf { it > 0f }
             ?: resources.displayMetrics.heightPixels.toFloat()
 
@@ -246,13 +281,12 @@ class DatosCuriososRevealActivity : AppCompatActivity() {
             .alpha(0f)
             .setDuration(400L)
             .withEndAction {
-                capaCubierta.visibility  = View.GONE
-                btnSiguiente.visibility  = View.VISIBLE
-                btnSiguiente.alpha       = 0f
+                capaCubierta.visibility   = View.GONE
+                btnSiguiente.visibility   = View.VISIBLE
+                btnSiguiente.alpha        = 0f
                 btnSiguiente.translationY = 20f
                 btnSiguiente.animate().alpha(1f).translationY(0f).setDuration(250L).start()
             }.start()
-
         playRevealTone()
     }
 
@@ -297,6 +331,7 @@ class DatosCuriososRevealActivity : AppCompatActivity() {
             putParcelableArrayListExtra("LISTA_JUGADORES", ArrayList(jugadoresConRoles))
             putExtra("JUGADOR_EMPIEZA", playerViewModel.pickJugadorQueEmpieza(jugadoresConRoles)?.nombre ?: "")
             putParcelableArrayListExtra("LISTA_CATEGORIAS", ArrayList<android.os.Parcelable>())
+            putParcelableArrayListExtra("DATOS_PARTIDA", datosPartida())
             putExtra("PALABRA", "")
             putExtra("IMPOSTOR", nombresImpostores)
             putExtra("SENORES_BLANCOS", "")

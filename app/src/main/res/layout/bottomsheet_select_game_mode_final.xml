@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootBottomSheet"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="@drawable/bg_reveal_content">
+
+    <View
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"
+        android:background="#4400E5FF" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:gravity="center"
+        android:text="@string/mode_titulo"
+        android:textColor="@android:color/white"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:shadowColor="#00E5FF"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="12" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:text="@string/mode_subtitulo"
+        android:textColor="#CCFFFFFF"
+        android:textSize="14sp" />
+
+    <!-- Modo Clásico -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardModoClasico"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="0dp"
+        app:cardUseCompatPadding="true"
+        app:cardBackgroundColor="@android:color/transparent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:background="@drawable/bg_reveal_content">
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/mode_clasico_titulo" android:textColor="@android:color/white" android:textSize="18sp" android:textStyle="bold" />
+                <TextView android:id="@+id/iconCheckClasico" android:layout_width="24dp" android:layout_height="24dp" android:text="✓" android:textSize="18sp" android:textColor="#00E5FF" android:textStyle="bold" android:gravity="center" android:visibility="visible" />
+            </LinearLayout>
+
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6dp" android:justificationMode="inter_word" android:text="@string/mode_clasico_desc" android:textColor="#CCFFFFFF" android:textSize="13sp" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Modo Misterioso -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardModoMisterioso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="0dp"
+        app:cardUseCompatPadding="true"
+        app:cardBackgroundColor="@android:color/transparent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:background="@drawable/bg_reveal_content">
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/mode_misterioso_titulo" android:textColor="@android:color/white" android:textSize="18sp" android:textStyle="bold" />
+                <TextView android:id="@+id/iconCheckMisterioso" android:layout_width="24dp" android:layout_height="24dp" android:text="✓" android:textSize="18sp" android:textColor="#00E5FF" android:textStyle="bold" android:gravity="center" android:visibility="gone" />
+            </LinearLayout>
+
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:justificationMode="inter_word" android:layout_marginTop="6dp" android:text="@string/mode_misterioso_desc" android:textColor="#CCFFFFFF" android:textSize="13sp" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Modo Datos Curiosos -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardModoDatosCuriosos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="0dp"
+        app:cardUseCompatPadding="true"
+        app:cardBackgroundColor="@android:color/transparent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:background="@drawable/bg_reveal_content">
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/mode_datos_titulo" android:textColor="@android:color/white" android:textSize="18sp" android:textStyle="bold" />
+                <TextView android:id="@+id/iconCheckDatosCuriosos" android:layout_width="24dp" android:layout_height="24dp" android:text="✓" android:textSize="18sp" android:textColor="#00E5FF" android:textStyle="bold" android:gravity="center" android:visibility="gone" />
+            </LinearLayout>
+
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6dp" android:justificationMode="inter_word" android:text="@string/mode_datos_desc" android:textColor="#CCFFFFFF" android:textSize="13sp" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <Space android:layout_width="match_parent" android:layout_height="8dp" />
+
+    <Button
+        android:id="@+id/btnConfirmModo"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="@string/mode_confirmar"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:background="@drawable/btn_final"
+        android:backgroundTint="@null"
+        app:backgroundTint="@null" />
+
+    <Space android:layout_width="wrap_content" android:layout_height="60dp" />
+
+</LinearLayout>

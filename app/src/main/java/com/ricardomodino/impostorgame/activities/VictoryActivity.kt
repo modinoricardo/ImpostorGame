@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.ricardomodino.impostorgame.R
 import com.ricardomodino.impostorgame.managers.LocaleManager
 import com.ricardomodino.impostorgame.managers.ThemeManager
+import com.ricardomodino.impostorgame.modelos.DatoCurioso
 import com.ricardomodino.impostorgame.modelos.Jugador
 import com.ricardomodino.impostorgame.views.VictoryParticleView
 
@@ -24,7 +25,7 @@ class VictoryActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         ThemeManager.aplicarTema(this)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_victory)
+        setContentView(if (ThemeManager.esFinal(this)) R.layout.activity_victory_final else R.layout.activity_victory)
 
         SelfieManager.clear()
 
@@ -122,10 +123,12 @@ class VictoryActivity : AppCompatActivity() {
                 val jugadores = intent.getParcelableArrayListExtra<Jugador>("LISTA_JUGADORES")
                 val nextIntent = Intent(this, PlayGameActivity::class.java).apply {
                     putParcelableArrayListExtra("LISTA_JUGADORES", jugadores)
+                    putParcelableArrayListExtra("DATOS_PARTIDA", intent.getParcelableArrayListExtra<DatoCurioso>("DATOS_PARTIDA"))
                     putExtra("PALABRA", intent.getStringExtra("PALABRA"))
                     putExtra("IMPOSTOR", intent.getStringExtra("IMPOSTOR"))
                     putExtra("SENORES_BLANCOS", intent.getStringExtra("SENORES_BLANCOS"))
                     putExtra("MODO_MISTERIOSO", intent.getBooleanExtra("MODO_MISTERIOSO", false))
+                    putExtra("MODO_DATOS_CURIOSOS", intent.getBooleanExtra("MODO_DATOS_CURIOSOS", false))
                     putExtra("TIEMPO_LIMITADO", false)
                     putExtra("VICTORIA_INMEDIATA", true)
                     flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK

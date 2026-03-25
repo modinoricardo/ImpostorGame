@@ -23,7 +23,11 @@ class AcercaDeBottomSheet : BottomSheetDialogFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View = inflater.inflate(R.layout.bottomsheet_acerca_de, container, false)
+    ): View = inflater.inflate(
+        if (ThemeManager.esFinal(requireContext())) R.layout.bottomsheet_acerca_de_final
+        else R.layout.bottomsheet_acerca_de,
+        container, false
+    )
 
     override fun onStart() {
         super.onStart()

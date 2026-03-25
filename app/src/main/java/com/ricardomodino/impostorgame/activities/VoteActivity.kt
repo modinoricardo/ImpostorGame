@@ -42,7 +42,7 @@ class VoteActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         ThemeManager.aplicarTema(this)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_vote)
+        setContentView(if (ThemeManager.esFinal(this)) R.layout.activity_vote_final else R.layout.activity_vote)
         ThemeManager.aplicarDrawables(this)
 
         jugadores         = intent.getParcelableArrayListExtra<Jugador>("JUGADORES")?.toMutableList() ?: mutableListOf()

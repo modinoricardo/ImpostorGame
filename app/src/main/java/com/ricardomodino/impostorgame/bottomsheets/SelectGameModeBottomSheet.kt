@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import com.ricardomodino.impostorgame.R
+import com.ricardomodino.impostorgame.managers.ThemeManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.ricardomodino.impostorgame.modelos.GameOptions
@@ -40,7 +41,11 @@ class SelectGameModeBottomSheet : BottomSheetDialogFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View = inflater.inflate(R.layout.bottomsheet_select_game_mode, container, false)
+    ): View = inflater.inflate(
+        if (ThemeManager.esFinal(requireContext())) R.layout.bottomsheet_select_game_mode_final
+        else R.layout.bottomsheet_select_game_mode,
+        container, false
+    )
 
     override fun onStart() {
         super.onStart()

@@ -36,21 +36,24 @@ class GameDialog(private val context: Context) {
         apply { negText = text; negAction = action }
 
     fun show() {
+        val esFinal = ThemeManager.esFinal(context)
         val d = Dialog(context)
         d.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        d.setContentView(R.layout.dialog_game)
+        d.setContentView(if (esFinal) R.layout.dialog_game_final else R.layout.dialog_game)
         d.setCancelable(isCancelable)
         d.window?.apply {
             setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT)
             setBackgroundDrawableResource(android.R.color.transparent)
         }
 
-        d.findViewById<View>(R.id.dlgRoot)
-            .setBackgroundResource(ThemeManager.getBgMain(context))
+        if (!esFinal) {
+            d.findViewById<View>(R.id.dlgRoot)
+                .setBackgroundResource(ThemeManager.getBgMain(context))
+        }
 
         val emojiIcon = d.findViewById<TextView>(R.id.dlgIcon)
         val imageIcon = d.findViewById<ImageView>(R.id.dlgIconImage)
-        val accentColor = ThemeManager.getAccentColor(context)
+        val accentColor = if (esFinal) 0xFFE7C87D.toInt() else ThemeManager.getAccentColor(context)
 
         if (iconRes != null) {
             imageIcon.visibility = View.VISIBLE
@@ -60,6 +63,7 @@ class GameDialog(private val context: Context) {
         } else {
             emojiIcon.visibility = View.VISIBLE
             emojiIcon.text = icon
+            if (esFinal) emojiIcon.setTextColor(accentColor)
             imageIcon.visibility = View.GONE
         }
 
@@ -80,7 +84,12 @@ class GameDialog(private val context: Context) {
             d.findViewById<Button>(R.id.dlgBtnNegative).apply {
                 visibility = View.VISIBLE
                 text = label
-                setTextColor(Color.parseColor("#BFC4FF"))
+                if (esFinal) {
+                    setBackgroundResource(R.drawable.btn_dialog_final_secondary)
+                    setTextColor(Color.parseColor("#F0D9A9"))
+                } else {
+                    setTextColor(Color.parseColor("#BFC4FF"))
+                }
                 setOnClickListener { d.dismiss(); negAction?.invoke() }
             }
         }

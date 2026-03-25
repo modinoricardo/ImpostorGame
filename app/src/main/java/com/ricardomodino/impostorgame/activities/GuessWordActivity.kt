@@ -22,7 +22,7 @@ class GuessWordActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         ThemeManager.aplicarTema(this)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_guess_word)
+        setContentView(if (ThemeManager.esFinal(this)) R.layout.activity_guess_word_final else R.layout.activity_guess_word)
         ThemeManager.aplicarDrawables(this)
 
         val nombreVotado   = intent.getStringExtra("NOMBRE_VOTADO") ?: ""

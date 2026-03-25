@@ -1,0 +1,3017 @@
+[
+    {
+        "id":  1,
+        "title":  "Animales",
+        "iconEmoji":  "🦁",
+        "items":  [
+                      {
+                          "name":  "Perro",
+                          "hints":  [
+                                        "Mascota",
+                                        "Ladra",
+                                        "Paseo"
+                                    ]
+                      },
+                      {
+                          "name":  "Gato",
+                          "hints":  [
+                                        "Felino",
+                                        "Maúlla",
+                                        "Bigotes"
+                                    ]
+                      },
+                      {
+                          "name":  "Tiburón",
+                          "hints":  [
+                                        "Océano",
+                                        "Aletas",
+                                        "Depredador"
+                                    ]
+                      },
+                      {
+                          "name":  "Águila",
+                          "hints":  [
+                                        "Altura",
+                                        "Pico",
+                                        "Alas"
+                                    ]
+                      },
+                      {
+                          "name":  "Elefante",
+                          "hints":  [
+                                        "Trompa",
+                                        "Colmillos",
+                                        "Gigante"
+                                    ]
+                      },
+                      {
+                          "name":  "León",
+                          "hints":  [
+                                        "Sabana",
+                                        "Melena",
+                                        "Ruge"
+                                    ]
+                      },
+                      {
+                          "name":  "Delfín",
+                          "hints":  [
+                                        "Mar",
+                                        "Inteligente",
+                                        "Salta"
+                                    ]
+                      },
+                      {
+                          "name":  "Lobo",
+                          "hints":  [
+                                        "Aullido",
+                                        "Manada",
+                                        "Bosque"
+                                    ]
+                      },
+                      {
+                          "name":  "Jirafa",
+                          "hints":  [
+                                        "Cuello largo",
+                                        "Manchas",
+                                        "África"
+                                    ]
+                      },
+                      {
+                          "name":  "Panda",
+                          "hints":  [
+                                        "Bambú",
+                                        "Blanco y negro",
+                                        "China"
+                                    ]
+                      },
+                      {
+                          "name":  "Canguro",
+                          "hints":  [
+                                        "Salta",
+                                        "Marsupial",
+                                        "Australia"
+                                    ]
+                      },
+                      {
+                          "name":  "Pingüino",
+                          "hints":  [
+                                        "Hielo",
+                                        "Antártida"
+                                    ]
+                      },
+                      {
+                          "name":  "Camaleón",
+                          "hints":  [
+                                        "Cambia de color",
+                                        "Lengua larga",
+                                        "Reptil"
+                                    ]
+                      },
+                      {
+                          "name":  "Búho",
+                          "hints":  [
+                                        "Noche",
+                                        "Ojos grandes",
+                                        "Ulula"
+                                    ]
+                      },
+                      {
+                          "name":  "Zorro",
+                          "hints":  [
+                                        "Astuto",
+                                        "Cola",
+                                        "Bosque"
+                                    ]
+                      },
+                      {
+                          "name":  "Tigre",
+                          "hints":  [
+                                        "Rayas",
+                                        "Selva",
+                                        "Felino"
+                                    ]
+                      },
+                      {
+                          "name":  "Hipopótamo",
+                          "hints":  [
+                                        "Río",
+                                        "Grande",
+                                        "Agresivo"
+                                    ]
+                      },
+                      {
+                          "name":  "Koala",
+                          "hints":  [
+                                        "Eucalipto",
+                                        "Marsupial",
+                                        "Duerme mucho"
+                                    ]
+                      },
+                      {
+                          "name":  "Rinoceronte",
+                          "hints":  [
+                                        "Cuerno",
+                                        "Pesado",
+                                        "Sabana"
+                                    ]
+                      },
+                      {
+                          "name":  "Pulpo",
+                          "hints":  [
+                                        "Tentáculos",
+                                        "Mar",
+                                        "Inteligente"
+                                    ]
+                      },
+                      {
+                          "name":  "Serpiente",
+                          "hints":  [
+                                        "Reptil",
+                                        "Sin patas",
+                                        "Veneno"
+                                    ]
+                      },
+                      {
+                          "name":  "Oso polar",
+                          "hints":  [
+                                        "Ártico",
+                                        "Blanco",
+                                        "Carnívoro"
+                                    ]
+                      },
+                      {
+                          "name":  "Mono",
+                          "hints":  [
+                                        "Árboles",
+                                        "Banana",
+                                        "Tarzán"
+                                    ]
+                      },
+                      {
+                          "name":  "Pavo real",
+                          "hints":  [
+                                        "Plumas",
+                                        "Cola",
+                                        "Colorido"
+                                    ]
+                      },
+                      {
+                          "name":  "Murciélago",
+                          "hints":  [
+                                        "Nocturno",
+                                        "Vuela",
+                                        "Cueva"
+                                    ]
+                      },
+                      {
+                          "name":  "Flamenco",
+                          "hints":  [
+                                        "Rosa",
+                                        "Una pata",
+                                        "Laguna"
+                                    ]
+                      },
+                      {
+                          "name":  "Tortuga",
+                          "hints":  [
+                                        "Lenta",
+                                        "Caparazón",
+                                        "Larga vida"
+                                    ]
+                      },
+                      {
+                          "name":  "Cocodrilo",
+                          "hints":  [
+                                        "Río",
+                                        "Dientes",
+                                        "Reptil"
+                                    ]
+                      },
+                      {
+                          "name":  "Ballena",
+                          "hints":  [
+                                        "Mar",
+                                        "Canto",
+                                        "Enorme"
+                                    ]
+                      },
+                      {
+                          "name":  "Caballo",
+                          "hints":  [
+                                        "Galopa",
+                                        "Crin",
+                                        "Herradura"
+                                    ]
+                      },
+                      {
+                          "name":  "Cerdo",
+                          "hints":  [
+                                        "Granja",
+                                        "Rosa",
+                                        "Barro"
+                                    ]
+                      },
+                      {
+                          "name":  "Vaca",
+                          "hints":  [
+                                        "Leche",
+                                        "Manchas",
+                                        "Muge"
+                                    ]
+                      },
+                      {
+                          "name":  "Oveja",
+                          "hints":  [
+                                        "Lana",
+                                        "Balido",
+                                        "Rebaño"
+                                    ]
+                      },
+                      {
+                          "name":  "Gorila",
+                          "hints":  [
+                                        "Pecho",
+                                        "Selva",
+                                        "Fuerza"
+                                    ]
+                      },
+                      {
+                          "name":  "Leopardo",
+                          "hints":  [
+                                        "Puntos",
+                                        "Rápido",
+                                        "Árbol"
+                                    ]
+                      },
+                      {
+                          "name":  "Camello",
+                          "hints":  [
+                                        "Joroba",
+                                        "Desierto",
+                                        "Agua"
+                                    ]
+                      },
+                      {
+                          "name":  "Cebra",
+                          "hints":  [
+                                        "Rayas",
+                                        "África",
+                                        "Caballo"
+                                    ]
+                      },
+                      {
+                          "name":  "Ñu",
+                          "hints":  [
+                                        "Migración",
+                                        "África",
+                                        "Manada"
+                                    ]
+                      },
+                      {
+                          "name":  "Piraña",
+                          "hints":  [
+                                        "Dientes",
+                                        "Río",
+                                        "Banco"
+                                    ]
+                      },
+                      {
+                          "name":  "Medusa",
+                          "hints":  [
+                                        "Transparente",
+                                        "Pica",
+                                        "Mar"
+                                    ]
+                      }
+                  ]
+    },
+    {
+        "id":  2,
+        "title":  "Objetos cotidianos",
+        "iconEmoji":  "🏠",
+        "items":  [
+                      {
+                          "name":  "Taza",
+                          "hints":  [
+                                        "Café",
+                                        "Líquido",
+                                        "Cerámica"
+                                    ]
+                      },
+                      {
+                          "name":  "Móvil",
+                          "hints":  [
+                                        "Pantalla",
+                                        "Llamadas",
+                                        "Apps"
+                                    ]
+                      },
+                      {
+                          "name":  "Llaves",
+                          "hints":  [
+                                        "Cerradura",
+                                        "Metal",
+                                        "Bolsillo"
+                                    ]
+                      },
+                      {
+                          "name":  "Mochila",
+                          "hints":  [
+                                        "Libros",
+                                        "Espalda",
+                                        "Cremallera"
+                                    ]
+                      },
+                      {
+                          "name":  "Sofá",
+                          "hints":  [
+                                        "Siesta",
+                                        "Salón",
+                                        "Comodidad"
+                                    ]
+                      },
+                      {
+                          "name":  "Lámpara",
+                          "hints":  [
+                                        "Bombilla",
+                                        "Luz",
+                                        "Mesa"
+                                    ]
+                      },
+                      {
+                          "name":  "Reloj",
+                          "hints":  [
+                                        "Minutos",
+                                        "Hora",
+                                        "Muñeca"
+                                    ]
+                      },
+                      {
+                          "name":  "Mesa",
+                          "hints":  [
+                                        "Madera",
+                                        "Comer",
+                                        "Patas"
+                                    ]
+                      },
+                      {
+                          "name":  "Silla",
+                          "hints":  [
+                                        "Sentarse",
+                                        "Respaldo",
+                                        "Patas"
+                                    ]
+                      },
+                      {
+                          "name":  "Cuchara",
+                          "hints":  [
+                                        "Sopa",
+                                        "Metal",
+                                        "Comer"
+                                    ]
+                      },
+                      {
+                          "name":  "Tenedor",
+                          "hints":  [
+                                        "Pinchos",
+                                        "Plato",
+                                        "Cubierto"
+                                    ]
+                      },
+                      {
+                          "name":  "Cuchillo",
+                          "hints":  [
+                                        "Cortar",
+                                        "Filo",
+                                        "Cocina"
+                                    ]
+                      },
+                      {
+                          "name":  "Vaso",
+                          "hints":  [
+                                        "Agua",
+                                        "Cristal",
+                                        "Beber"
+                                    ]
+                      },
+                      {
+                          "name":  "Botella",
+                          "hints":  [
+                                        "Tapón",
+                                        "Líquido",
+                                        "Plástico"
+                                    ]
+                      },
+                      {
+                          "name":  "Televisión",
+                          "hints":  [
+                                        "Pantalla",
+                                        "Canales",
+                                        "Sofá"
+                                    ]
+                      },
+                      {
+                          "name":  "Ordenador",
+                          "hints":  [
+                                        "Teclado",
+                                        "Ratón",
+                                        "Pantalla"
+                                    ]
+                      },
+                      {
+                          "name":  "Portátil",
+                          "hints":  [
+                                        "Batería",
+                                        "Pantalla",
+                                        "Teclado"
+                                    ]
+                      },
+                      {
+                          "name":  "Cargador",
+                          "hints":  [
+                                        "Energía",
+                                        "Cable",
+                                        "Enchufe"
+                                    ]
+                      },
+                      {
+                          "name":  "Auriculares",
+                          "hints":  [
+                                        "Música",
+                                        "Orejas",
+                                        "Sonido"
+                                    ]
+                      },
+                      {
+                          "name":  "Ventana",
+                          "hints":  [
+                                        "Cristal",
+                                        "Luz",
+                                        "Abrir"
+                                    ]
+                      },
+                      {
+                          "name":  "Puerta",
+                          "hints":  [
+                                        "Abrir",
+                                        "Cerrar",
+                                        "Entrada"
+                                    ]
+                      },
+                      {
+                          "name":  "Espejo",
+                          "hints":  [
+                                        "Reflejo",
+                                        "Cara",
+                                        "Cristal"
+                                    ]
+                      },
+                      {
+                          "name":  "Cama",
+                          "hints":  [
+                                        "Dormir",
+                                        "Colchón",
+                                        "Sábana"
+                                    ]
+                      },
+                      {
+                          "name":  "Almohada",
+                          "hints":  [
+                                        "Cabeza",
+                                        "Dormir",
+                                        "Blanda"
+                                    ]
+                      },
+                      {
+                          "name":  "Mando",
+                          "hints":  [
+                                        "Botones",
+                                        "Televisión",
+                                        "Pilas"
+                                    ]
+                      },
+                      {
+                          "name":  "Enchufe",
+                          "hints":  [
+                                        "Corriente",
+                                        "Pared",
+                                        "Energía"
+                                    ]
+                      },
+                      {
+                          "name":  "Alfombra",
+                          "hints":  [
+                                        "Suelo",
+                                        "Pisar",
+                                        "Decoración"
+                                    ]
+                      },
+                      {
+                          "name":  "Paraguas",
+                          "hints":  [
+                                        "Lluvia",
+                                        "Abrir",
+                                        "Mojarse"
+                                    ]
+                      },
+                      {
+                          "name":  "Tijeras",
+                          "hints":  [
+                                        "Cortar",
+                                        "Dos hojas",
+                                        "Papel"
+                                    ]
+                      },
+                      {
+                          "name":  "Bolígrafo",
+                          "hints":  [
+                                        "Escribir",
+                                        "Tinta",
+                                        "Capuchón"
+                                    ]
+                      },
+                      {
+                          "name":  "Cuaderno",
+                          "hints":  [
+                                        "Hojas",
+                                        "Escribir",
+                                        "Espiral"
+                                    ]
+                      },
+                      {
+                          "name":  "Nevera",
+                          "hints":  [
+                                        "Frío",
+                                        "Comida",
+                                        "Cocina"
+                                    ]
+                      },
+                      {
+                          "name":  "Microondas",
+                          "hints":  [
+                                        "Calentar",
+                                        "Girar",
+                                        "Pitido"
+                                    ]
+                      },
+                      {
+                          "name":  "Lavadora",
+                          "hints":  [
+                                        "Ropa",
+                                        "Centrifugar",
+                                        "Detergente"
+                                    ]
+                      },
+                      {
+                          "name":  "Aspiradora",
+                          "hints":  [
+                                        "Polvo",
+                                        "Ruido",
+                                        "Suelo"
+                                    ]
+                      },
+                      {
+                          "name":  "Plancha",
+                          "hints":  [
+                                        "Ropa",
+                                        "Vapor",
+                                        "Calor"
+                                    ]
+                      },
+                      {
+                          "name":  "Escoba",
+                          "hints":  [
+                                        "Barrer",
+                                        "Bruja",
+                                        "Suelo"
+                                    ]
+                      },
+                      {
+                          "name":  "Toalla",
+                          "hints":  [
+                                        "Secarse",
+                                        "Baño",
+                                        "Suave"
+                                    ]
+                      },
+                      {
+                          "name":  "Jabón",
+                          "hints":  [
+                                        "Espuma",
+                                        "Lavar",
+                                        "Olor"
+                                    ]
+                      },
+                      {
+                          "name":  "Cepillo de dientes",
+                          "hints":  [
+                                        "Pasta",
+                                        "Mañana",
+                                        "Noche"
+                                    ]
+                      }
+                  ]
+    },
+    {
+        "id":  3,
+        "title":  "Personajes famosos",
+        "iconEmoji":  "👤",
+        "items":  [
+                      {
+                          "name":  "Shakira",
+                          "hints":  [
+                                        "Caderas",
+                                        "Colombia",
+                                        "Waka Waka"
+                                    ]
+                      },
+                      {
+                          "name":  "Messi",
+                          "hints":  [
+                                        "Balón",
+                                        "Argentina",
+                                        "Pulga"
+                                    ]
+                      },
+                      {
+                          "name":  "Taylor Swift",
+                          "hints":  [
+                                        "Conciertos",
+                                        "Rubia",
+                                        "Eras Tour"
+                                    ]
+                      },
+                      {
+                          "name":  "Leonardo DiCaprio",
+                          "hints":  [
+                                        "Óscar",
+                                        "Titanic",
+                                        "Actor"
+                                    ]
+                      },
+                      {
+                          "name":  "Hitler",
+                          "hints":  [
+                                        "El que llega más alto con la mano",
+                                        "Bigote",
+                                        "Austria"
+                                    ]
+                      },
+                      {
+                          "name":  "Cristiano Ronaldo",
+                          "hints":  [
+                                        "Siuu",
+                                        "Portugal",
+                                        "Goles"
+                                    ]
+                      },
+                      {
+                          "name":  "Michael Jackson",
+                          "hints":  [
+                                        "Moonwalk",
+                                        "Pop",
+                                        "Guante"
+                                    ]
+                      },
+                      {
+                          "name":  "Elon Musk",
+                          "hints":  [
+                                        "Tesla",
+                                        "Cohetes",
+                                        "Twitter"
+                                    ]
+                      },
+                      {
+                          "name":  "Madonna",
+                          "hints":  [
+                                        "Reina del pop",
+                                        "Conos",
+                                        "Material Girl"
+                                    ]
+                      },
+                      {
+                          "name":  "Freddie Mercury",
+                          "hints":  [
+                                        "Queen",
+                                        "Bigote",
+                                        "Bohemian Rhapsody"
+                                    ]
+                      },
+                      {
+                          "name":  "Albert Einstein",
+                          "hints":  [
+                                        "Lengua",
+                                        "Física",
+                                        "Relatividad"
+                                    ]
+                      },
+                      {
+                          "name":  "Napoleón",
+                          "hints":  [
+                                        "Pequeño",
+                                        "Francia",
+                                        "Exilio"
+                                    ]
+                      },
+                      {
+                          "name":  "Cleopatra",
+                          "hints":  [
+                                        "Egipto",
+                                        "Serpiente",
+                                        "Reina"
+                                    ]
+                      },
+                      {
+                          "name":  "Steve Jobs",
+                          "hints":  [
+                                        "Manzana",
+                                        "Negro",
+                                        "iPhone"
+                                    ]
+                      },
+                      {
+                          "name":  "Bill Gates",
+                          "hints":  [
+                                        "Windows",
+                                        "Vacunas",
+                                        "Multimillonario"
+                                    ]
+                      },
+                      {
+                          "name":  "Beyoncé",
+                          "hints":  [
+                                        "Lemonade",
+                                        "Diva",
+                                        "Jay-Z"
+                                    ]
+                      },
+                      {
+                          "name":  "Eminem",
+                          "hints":  [
+                                        "Detroit",
+                                        "Rap",
+                                        "8 Mile"
+                                    ]
+                      },
+                      {
+                          "name":  "Pablo Picasso",
+                          "hints":  [
+                                        "Cubismo",
+                                        "Pintor",
+                                        "España"
+                                    ]
+                      },
+                      {
+                          "name":  "Walt Disney",
+                          "hints":  [
+                                        "Mickey",
+                                        "Cuentos",
+                                        "Parques"
+                                    ]
+                      },
+                      {
+                          "name":  "Bruce Lee",
+                          "hints":  [
+                                        "Artes marciales",
+                                        "Rápido",
+                                        "Hong Kong"
+                                    ]
+                      },
+                      {
+                          "name":  "Elvis Presley",
+                          "hints":  [
+                                        "Rock and roll",
+                                        "Pelvis",
+                                        "Vegas"
+                                    ]
+                      },
+                      {
+                          "name":  "Marilyn Monroe",
+                          "hints":  [
+                                        "Vestido",
+                                        "Rubia",
+                                        "Kennedy"
+                                    ]
+                      },
+                      {
+                          "name":  "Charles Darwin",
+                          "hints":  [
+                                        "Evolución",
+                                        "Tortugas",
+                                        "Barco"
+                                    ]
+                      },
+                      {
+                          "name":  "Stephen Hawking",
+                          "hints":  [
+                                        "Silla de ruedas",
+                                        "Universo",
+                                        "Agujeros negros"
+                                    ]
+                      },
+                      {
+                          "name":  "Rihanna",
+                          "hints":  [
+                                        "Barbados",
+                                        "Paraguas",
+                                        "Fenty"
+                                    ]
+                      },
+                      {
+                          "name":  "Adele",
+                          "hints":  [
+                                        "Hello",
+                                        "Voz",
+                                        "Londres"
+                                    ]
+                      },
+                      {
+                          "name":  "Jeff Bezos",
+                          "hints":  [
+                                        "Amazon",
+                                        "Calvo",
+                                        "Paquetes"
+                                    ]
+                      },
+                      {
+                          "name":  "Mark Zuckerberg",
+                          "hints":  [
+                                        "Facebook",
+                                        "Robot",
+                                        "Datos"
+                                    ]
+                      },
+                      {
+                          "name":  "Lady Gaga",
+                          "hints":  [
+                                        "Carne",
+                                        "Extravagante",
+                                        "Poker Face"
+                                    ]
+                      },
+                      {
+                          "name":  "Drake",
+                          "hints":  [
+                                        "Toronto",
+                                        "Rap",
+                                        "Champagne Papi"
+                                    ]
+                      },
+                      {
+                          "name":  "Kanye West",
+                          "hints":  [
+                                        "Ego",
+                                        "Kim",
+                                        "Yeezy"
+                                    ]
+                      },
+                      {
+                          "name":  "Roger Federer",
+                          "hints":  [
+                                        "Tenis",
+                                        "Elegancia",
+                                        "Suiza"
+                                    ]
+                      },
+                      {
+                          "name":  "Usain Bolt",
+                          "hints":  [
+                                        "Rayo",
+                                        "Jamaica",
+                                        "100 metros"
+                                    ]
+                      },
+                      {
+                          "name":  "Muhammad Ali",
+                          "hints":  [
+                                        "Mariposa",
+                                        "Boxeo",
+                                        "Flota"
+                                    ]
+                      },
+                      {
+                          "name":  "Michael Jordan",
+                          "hints":  [
+                                        "Jumpman",
+                                        "Bulls",
+                                        "Anillos"
+                                    ]
+                      },
+                      {
+                          "name":  "Leonardo da Vinci",
+                          "hints":  [
+                                        "Mona Lisa",
+                                        "Inventos",
+                                        "Italia"
+                                    ]
+                      },
+                      {
+                          "name":  "Shakespeare",
+                          "hints":  [
+                                        "Romeo",
+                                        "Teatro",
+                                        "Inglaterra"
+                                    ]
+                      },
+                      {
+                          "name":  "Mozart",
+                          "hints":  [
+                                        "Niño prodigio",
+                                        "Piano",
+                                        "Austria"
+                                    ]
+                      },
+                      {
+                          "name":  "Beethoven",
+                          "hints":  [
+                                        "Sordo",
+                                        "Sinfonía",
+                                        "Alemania"
+                                    ]
+                      },
+                      {
+                          "name":  "Nelson Mandela",
+                          "hints":  [
+                                        "Prisión",
+                                        "Sudáfrica",
+                                        "Libertad"
+                                    ]
+                      },
+                      {
+                          "name":  "Gandhi",
+                          "hints":  [
+                                        "Paz",
+                                        "India",
+                                        "Sábana"
+                                    ]
+                      },
+                      {
+                          "name":  "Martin Luther King",
+                          "hints":  [
+                                        "Sueño",
+                                        "Discurso",
+                                        "Derechos"
+                                    ]
+                      },
+                      {
+                          "name":  "Barack Obama",
+                          "hints":  [
+                                        "Yes we can",
+                                        "USA",
+                                        "Nobel"
+                                    ]
+                      },
+                      {
+                          "name":  "Penélope Cruz",
+                          "hints":  [
+                                        "España",
+                                        "Óscar",
+                                        "Actriz"
+                                    ]
+                      },
+                      {
+                          "name":  "Pedro Almodóvar",
+                          "hints":  [
+                                        "Manchuela",
+                                        "Colores",
+                                        "Director"
+                                    ]
+                      },
+                      {
+                          "name":  "Rafael Nadal",
+                          "hints":  [
+                                        "Tenis",
+                                        "Mallorca",
+                                        "Arcilla"
+                                    ]
+                      },
+                      {
+                          "name":  "Lewis Hamilton",
+                          "hints":  [
+                                        "F1",
+                                        "Negro",
+                                        "Mercedes"
+                                    ]
+                      },
+                      {
+                          "name":  "Serena Williams",
+                          "hints":  [
+                                        "Tenis",
+                                        "Fuerza",
+                                        "USA"
+                                    ]
+                      },
+                      {
+                          "name":  "Kobe Bryant",
+                          "hints":  [
+                                        "Mamba",
+                                        "Lakers",
+                                        "24"
+                                    ]
+                      },
+                      {
+                          "name":  "Tom Hanks",
+                          "hints":  [
+                                        "Forrest",
+                                        "Náufrago",
+                                        "Simpático"
+                                    ]
+                      },
+                      {
+                          "name":  "Brad Pitt",
+                          "hints":  [
+                                        "Guapo",
+                                        "Fight Club",
+                                        "Actor"
+                                    ]
+                      },
+                      {
+                          "name":  "Angelina Jolie",
+                          "hints":  [
+                                        "Labios",
+                                        "Hijos",
+                                        "Lara Croft"
+                                    ]
+                      },
+                      {
+                          "name":  "Johnny Depp",
+                          "hints":  [
+                                        "Pirata",
+                                        "Sombrero",
+                                        "Burton"
+                                    ]
+                      },
+                      {
+                          "name":  "Scarlett Johansson",
+                          "hints":  [
+                                        "Viuda Negra",
+                                        "Rubia",
+                                        "Marvel"
+                                    ]
+                      },
+                      {
+                          "name":  "Robert Downey Jr",
+                          "hints":  [
+                                        "Iron Man",
+                                        "Sarcasmo",
+                                        "Marvel"
+                                    ]
+                      },
+                      {
+                          "name":  "Dwayne Johnson",
+                          "hints":  [
+                                        "La Roca",
+                                        "Músculos",
+                                        "WWE"
+                                    ]
+                      },
+                      {
+                          "name":  "Will Smith",
+                          "hints":  [
+                                        "Bofetón",
+                                        "Men in Black",
+                                        "Rapero"
+                                    ]
+                      },
+                      {
+                          "name":  "Jim Carrey",
+                          "hints":  [
+                                        "Caras",
+                                        "Comedia",
+                                        "Máscara"
+                                    ]
+                      },
+                      {
+                          "name":  "Keanu Reeves",
+                          "hints":  [
+                                        "Matrix",
+                                        "Moto",
+                                        "Neo"
+                                    ]
+                      },
+                      {
+                          "name":  "Morgan Freeman",
+                          "hints":  [
+                                        "Voz",
+                                        "Dios",
+                                        "Narrador"
+                                    ]
+                      },
+                      {
+                          "name":  "Meryl Streep",
+                          "hints":  [
+                                        "Diablo viste de Prada",
+                                        "Óscar",
+                                        "Actriz"
+                                    ]
+                      },
+                      {
+                          "name":  "Audrey Hepburn",
+                          "hints":  [
+                                        "Elegancia",
+                                        "Desayuno con diamantes",
+                                        "Clásica"
+                                    ]
+                      },
+                      {
+                          "name":  "Pablo Escobar",
+                          "hints":  [
+                                        "Colombia",
+                                        "Plata o plomo",
+                                        "Narco"
+                                    ]
+                      },
+                      {
+                          "name":  "Che Guevara",
+                          "hints":  [
+                                        "Boina",
+                                        "Revolución",
+                                        "Cuba"
+                                    ]
+                      },
+                      {
+                          "name":  "Marco Polo",
+                          "hints":  [
+                                        "China",
+                                        "Viajes",
+                                        "Venecia"
+                                    ]
+                      },
+                      {
+                          "name":  "Alejandro Magno",
+                          "hints":  [
+                                        "Conquista",
+                                        "Caballo",
+                                        "Macedonia"
+                                    ]
+                      },
+                      {
+                          "name":  "Julio César",
+                          "hints":  [
+                                        "Et tu Brute",
+                                        "Roma",
+                                        "Togas"
+                                    ]
+                      },
+                      {
+                          "name":  "Isaac Newton",
+                          "hints":  [
+                                        "Manzana",
+                                        "Gravedad",
+                                        "Física"
+                                    ]
+                      },
+                      {
+                          "name":  "Nikola Tesla",
+                          "hints":  [
+                                        "Electricidad",
+                                        "Corriente",
+                                        "Inventor"
+                                    ]
+                      },
+                      {
+                          "name":  "Salvador Dalí",
+                          "hints":  [
+                                        "Bigote",
+                                        "Relojes",
+                                        "Surrealismo"
+                                    ]
+                      },
+                      {
+                          "name":  "Vincent van Gogh",
+                          "hints":  [
+                                        "Oreja",
+                                        "Girasoles",
+                                        "Pintor"
+                                    ]
+                      },
+                      {
+                          "name":  "Frida Kahlo",
+                          "hints":  [
+                                        "Ceja",
+                                        "México",
+                                        "Autorretratos"
+                                    ]
+                      },
+                      {
+                          "name":  "Bruce Willis",
+                          "hints":  [
+                                        "Calvo",
+                                        "Die Hard",
+                                        "Acción"
+                                    ]
+                      },
+                      {
+                          "name":  "Arnold Schwarzenegger",
+                          "hints":  [
+                                        "Terminator",
+                                        "Músculo",
+                                        "Gobernador"
+                                    ]
+                      },
+                      {
+                          "name":  "Sylvester Stallone",
+                          "hints":  [
+                                        "Rocky",
+                                        "Puños",
+                                        "Rambo"
+                                    ]
+                      },
+                      {
+                          "name":  "Robin Williams",
+                          "hints":  [
+                                        "Comedia",
+                                        "Genio",
+                                        "Mrs. Doubtfire"
+                                    ]
+                      },
+                      {
+                          "name":  "Charlie Chaplin",
+                          "hints":  [
+                                        "Bigote",
+                                        "Mudo",
+                                        "Bombín"
+                                    ]
+                      },
+                      {
+                          "name":  "Oprah Winfrey",
+                          "hints":  [
+                                        "Coche",
+                                        "Entrevistas",
+                                        "USA"
+                                    ]
+                      },
+                      {
+                          "name":  "Ellen DeGeneres",
+                          "hints":  [
+                                        "Bailar",
+                                        "Presentadora",
+                                        "Simpática"
+                                    ]
+                      },
+                      {
+                          "name":  "Gordon Ramsay",
+                          "hints":  [
+                                        "Cocina",
+                                        "Grita",
+                                        "Chef"
+                                    ]
+                      },
+                      {
+                          "name":  "David Beckham",
+                          "hints":  [
+                                        "Fútbol",
+                                        "Tatuajes",
+                                        "Victoria"
+                                    ]
+                      },
+                      {
+                          "name":  "Ronaldinho",
+                          "hints":  [
+                                        "Sonrisa",
+                                        "Brasil",
+                                        "Goles"
+                                    ]
+                      },
+                      {
+                          "name":  "Zinedine Zidane",
+                          "hints":  [
+                                        "Cabezazo",
+                                        "Francia",
+                                        "Balón de Oro"
+                                    ]
+                      },
+                      {
+                          "name":  "Pelé",
+                          "hints":  [
+                                        "Brasil",
+                                        "Goles",
+                                        "Rey"
+                                    ]
+                      },
+                      {
+                          "name":  "Maradona",
+                          "hints":  [
+                                        "Mano de Dios",
+                                        "Argentina",
+                                        "Crack"
+                                    ]
+                      },
+                      {
+                          "name":  "Tiger Woods",
+                          "hints":  [
+                                        "Golf",
+                                        "Verde",
+                                        "Escándalo"
+                                    ]
+                      },
+                      {
+                          "name":  "Mike Tyson",
+                          "hints":  [
+                                        "Oreja",
+                                        "Boxeo",
+                                        "Tatuaje"
+                                    ]
+                      },
+                      {
+                          "name":  "Conor McGregor",
+                          "hints":  [
+                                        "Whisky",
+                                        "MMA",
+                                        "Irlandés"
+                                    ]
+                      },
+                      {
+                          "name":  "LeBron James",
+                          "hints":  [
+                                        "NBA",
+                                        "Calvo",
+                                        "Rey"
+                                    ]
+                      },
+                      {
+                          "name":  "Neymar",
+                          "hints":  [
+                                        "Brasil",
+                                        "Regate",
+                                        "Llora"
+                                    ]
+                      },
+                      {
+                          "name":  "Ibai Llanos",
+                          "hints":  [
+                                        "Twitch",
+                                        "Bilbao",
+                                        "Porcino"
+                                    ]
+                      },
+                      {
+                          "name":  "Ibrahimović",
+                          "hints":  [
+                                        "Ego",
+                                        "Acrobático",
+                                        "Suecia"
+                                    ]
+                      },
+                      {
+                          "name":  "Alejandro Sanz",
+                          "hints":  [
+                                        "España",
+                                        "Balada",
+                                        "Voz"
+                                    ]
+                      },
+                      {
+                          "name":  "Enrique Iglesias",
+                          "hints":  [
+                                        "España",
+                                        "Lunar",
+                                        "Héroe"
+                                    ]
+                      },
+                      {
+                          "name":  "Rosalía",
+                          "hints":  [
+                                        "Flamenco",
+                                        "Barcelona",
+                                        "Motomami"
+                                    ]
+                      },
+                      {
+                          "name":  "Bad Bunny",
+                          "hints":  [
+                                        "Puerto Rico",
+                                        "Reggaeton",
+                                        "Conejo"
+                                    ]
+                      },
+                      {
+                          "name":  "J Balvin",
+                          "hints":  [
+                                        "Colombia",
+                                        "Colores",
+                                        "Reggaeton"
+                                    ]
+                      },
+                      {
+                          "name":  "Daddy Yankee",
+                          "hints":  [
+                                        "Gasolina",
+                                        "Puerto Rico",
+                                        "Reggaeton"
+                                    ]
+                      },
+                      {
+                          "name":  "Celia Cruz",
+                          "hints":  [
+                                        "Azúcar",
+                                        "Cuba",
+                                        "Salsa"
+                                    ]
+                      },
+                      {
+                          "name":  "Marc Anthony",
+                          "hints":  [
+                                        "Salsa",
+                                        "Jennifer Lopez",
+                                        "Nueva York"
+                                    ]
+                      },
+                      {
+                          "name":  "Placido Domingo",
+                          "hints":  [
+                                        "Ópera",
+                                        "España",
+                                        "Tenor"
+                                    ]
+                      },
+                      {
+                          "name":  "Paco de Lucía",
+                          "hints":  [
+                                        "Guitarra",
+                                        "Flamenco",
+                                        "España"
+                                    ]
+                      }
+                  ]
+    },
+    {
+        "id":  4,
+        "title":  "Superhéroes",
+        "iconEmoji":  "🦸‍♂️",
+        "items":  [
+                      {
+                          "name":  "Superman",
+                          "hints":  [
+                                        "Capa",
+                                        "Volar",
+                                        "Fuerza"
+                                    ]
+                      },
+                      {
+                          "name":  "Batman",
+                          "hints":  [
+                                        "Murciélago",
+                                        "Noche",
+                                        "Detective"
+                                    ]
+                      },
+                      {
+                          "name":  "Spiderman",
+                          "hints":  [
+                                        "Telarañas",
+                                        "Trepar",
+                                        "Arácnido"
+                                    ]
+                      },
+                      {
+                          "name":  "Iron Man",
+                          "hints":  [
+                                        "Armadura",
+                                        "Tecnología",
+                                        "Vuelo"
+                                    ]
+                      },
+                      {
+                          "name":  "Wonder Woman",
+                          "hints":  [
+                                        "Lazo",
+                                        "Amazona",
+                                        "Fuerza"
+                                    ]
+                      },
+                      {
+                          "name":  "Hulk",
+                          "hints":  [
+                                        "Verde",
+                                        "Fuerza",
+                                        "Ira"
+                                    ]
+                      },
+                      {
+                          "name":  "Thor",
+                          "hints":  [
+                                        "Martillo",
+                                        "Trueno",
+                                        "Dios"
+                                    ]
+                      },
+                      {
+                          "name":  "Capitán América",
+                          "hints":  [
+                                        "Escudo",
+                                        "Líder",
+                                        "Soldado"
+                                    ]
+                      },
+                      {
+                          "name":  "Flash",
+                          "hints":  [
+                                        "Velocidad",
+                                        "Rápido",
+                                        "Tiempo"
+                                    ]
+                      },
+                      {
+                          "name":  "Aquaman",
+                          "hints":  [
+                                        "Mar",
+                                        "Tridente",
+                                        "Océano"
+                                    ]
+                      },
+                      {
+                          "name":  "Black Widow",
+                          "hints":  [
+                                        "Espía",
+                                        "Combate",
+                                        "Sigilo"
+                                    ]
+                      },
+                      {
+                          "name":  "Doctor Strange",
+                          "hints":  [
+                                        "Magia",
+                                        "Hechizos",
+                                        "Tiempo"
+                                    ]
+                      },
+                      {
+                          "name":  "Pantera Negra",
+                          "hints":  [
+                                        "Wakanda",
+                                        "Traje",
+                                        "Rey"
+                                    ]
+                      },
+                      {
+                          "name":  "Ant Man",
+                          "hints":  [
+                                        "Pequeño",
+                                        "Grande",
+                                        "Hormiga"
+                                    ]
+                      },
+                      {
+                          "name":  "Visión",
+                          "hints":  [
+                                        "Mente",
+                                        "Gema",
+                                        "Android"
+                                    ]
+                      },
+                      {
+                          "name":  "Scarlet Witch",
+                          "hints":  [
+                                        "Magia",
+                                        "Caos",
+                                        "Poder"
+                                    ]
+                      },
+                      {
+                          "name":  "Green Lantern",
+                          "hints":  [
+                                        "Anillo",
+                                        "Voluntad",
+                                        "Energía"
+                                    ]
+                      },
+                      {
+                          "name":  "Deadpool",
+                          "hints":  [
+                                        "Humor",
+                                        "Regeneración",
+                                        "Katana"
+                                    ]
+                      },
+                      {
+                          "name":  "Wolverine",
+                          "hints":  [
+                                        "Garras",
+                                        "Metal",
+                                        "Regeneración"
+                                    ]
+                      },
+                      {
+                          "name":  "Capitana Marvel",
+                          "hints":  [
+                                        "Energía",
+                                        "Volar",
+                                        "Espacio"
+                                    ]
+                      },
+                      {
+                          "name":  "Daredevil",
+                          "hints":  [
+                                        "Ciego",
+                                        "Bastón",
+                                        "Abogado"
+                                    ]
+                      },
+                      {
+                          "name":  "Hawkeye",
+                          "hints":  [
+                                        "Arco",
+                                        "Flecha",
+                                        "Puntería"
+                                    ]
+                      },
+                      {
+                          "name":  "Black Panther",
+                          "hints":  [
+                                        "Garras",
+                                        "Vibranio",
+                                        "África"
+                                    ]
+                      },
+                      {
+                          "name":  "Star Lord",
+                          "hints":  [
+                                        "Walkman",
+                                        "Espacio",
+                                        "Mix"
+                                    ]
+                      },
+                      {
+                          "name":  "Gamora",
+                          "hints":  [
+                                        "Verde",
+                                        "Espada",
+                                        "Thanos"
+                                    ]
+                      },
+                      {
+                          "name":  "Rocket",
+                          "hints":  [
+                                        "Mapache",
+                                        "Armas",
+                                        "Guardianes"
+                                    ]
+                      },
+                      {
+                          "name":  "Groot",
+                          "hints":  [
+                                        "Árbol",
+                                        "I am Groot",
+                                        "Guardianes"
+                                    ]
+                      },
+                      {
+                          "name":  "Thanos",
+                          "hints":  [
+                                        "Guantelete",
+                                        "Chasquido",
+                                        "Morado"
+                                    ]
+                      },
+                      {
+                          "name":  "Loki",
+                          "hints":  [
+                                        "Engaño",
+                                        "Asgard",
+                                        "Cuernos"
+                                    ]
+                      },
+                      {
+                          "name":  "Venom",
+                          "hints":  [
+                                        "Lengua",
+                                        "Negro",
+                                        "Simbionte"
+                                    ]
+                      }
+                  ]
+    },
+    {
+        "id":  5,
+        "title":  "Comidas",
+        "iconEmoji":  "🍕",
+        "items":  [
+                      {
+                          "name":  "Lasaña",
+                          "hints":  [
+                                        "Capas",
+                                        "Pasta",
+                                        "Horno"
+                                    ]
+                      },
+                      {
+                          "name":  "Croqueta",
+                          "hints":  [
+                                        "Rellena",
+                                        "Frita",
+                                        "Bechamel"
+                                    ]
+                      },
+                      {
+                          "name":  "Gazpacho",
+                          "hints":  [
+                                        "Tomate",
+                                        "Frío",
+                                        "Verano"
+                                    ]
+                      },
+                      {
+                          "name":  "Manzana",
+                          "hints":  [
+                                        "Roja",
+                                        "Fruta",
+                                        "Morder"
+                                    ]
+                      },
+                      {
+                          "name":  "Espaguetis",
+                          "hints":  [
+                                        "Tenedor",
+                                        "Pasta",
+                                        "Salsa"
+                                    ]
+                      },
+                      {
+                          "name":  "Hamburguesa",
+                          "hints":  [
+                                        "Carne",
+                                        "Pan",
+                                        "Queso"
+                                    ]
+                      },
+                      {
+                          "name":  "Tortilla",
+                          "hints":  [
+                                        "Huevos",
+                                        "Patata",
+                                        "Sartén"
+                                    ]
+                      },
+                      {
+                          "name":  "Pizza",
+                          "hints":  [
+                                        "Queso",
+                                        "Masa",
+                                        "Horno"
+                                    ]
+                      },
+                      {
+                          "name":  "Paella",
+                          "hints":  [
+                                        "Arroz",
+                                        "Sartén",
+                                        "Marisco"
+                                    ]
+                      },
+                      {
+                          "name":  "Ensalada",
+                          "hints":  [
+                                        "Lechuga",
+                                        "Tomate",
+                                        "Aliño"
+                                    ]
+                      },
+                      {
+                          "name":  "Sopa",
+                          "hints":  [
+                                        "Caldo",
+                                        "Cuchara",
+                                        "Caliente"
+                                    ]
+                      },
+                      {
+                          "name":  "Sandwich",
+                          "hints":  [
+                                        "Pan",
+                                        "Relleno",
+                                        "Lonchas"
+                                    ]
+                      },
+                      {
+                          "name":  "Helado",
+                          "hints":  [
+                                        "Frío",
+                                        "Dulce",
+                                        "Cono"
+                                    ]
+                      },
+                      {
+                          "name":  "Chocolate",
+                          "hints":  [
+                                        "Dulce",
+                                        "Cacao",
+                                        "Tableta"
+                                    ]
+                      },
+                      {
+                          "name":  "Queso",
+                          "hints":  [
+                                        "Leche",
+                                        "Curado",
+                                        "Lonchas"
+                                    ]
+                      },
+                      {
+                          "name":  "Yogur",
+                          "hints":  [
+                                        "Cuchara",
+                                        "Frío",
+                                        "Lácteo"
+                                    ]
+                      },
+                      {
+                          "name":  "Pan",
+                          "hints":  [
+                                        "Harina",
+                                        "Horno",
+                                        "Miga"
+                                    ]
+                      },
+                      {
+                          "name":  "Arroz",
+                          "hints":  [
+                                        "Grano",
+                                        "Blanco",
+                                        "Cocer"
+                                    ]
+                      },
+                      {
+                          "name":  "Pollo",
+                          "hints":  [
+                                        "Carne",
+                                        "Asado",
+                                        "Pechuga"
+                                    ]
+                      },
+                      {
+                          "name":  "Pescado",
+                          "hints":  [
+                                        "Mar",
+                                        "Espinas",
+                                        "Plancha"
+                                    ]
+                      },
+                      {
+                          "name":  "Sushi",
+                          "hints":  [
+                                        "Arroz",
+                                        "Pescado",
+                                        "Palillos"
+                                    ]
+                      },
+                      {
+                          "name":  "Burrito",
+                          "hints":  [
+                                        "Tortilla",
+                                        "Relleno",
+                                        "México"
+                                    ]
+                      },
+                      {
+                          "name":  "Kebab",
+                          "hints":  [
+                                        "Pan",
+                                        "Carne",
+                                        "Salsa"
+                                    ]
+                      },
+                      {
+                          "name":  "Empanada",
+                          "hints":  [
+                                        "Masa",
+                                        "Relleno",
+                                        "Horno"
+                                    ]
+                      },
+                      {
+                          "name":  "Churros",
+                          "hints":  [
+                                        "Fritos",
+                                        "Azúcar",
+                                        "Chocolate"
+                                    ]
+                      },
+                      {
+                          "name":  "Galletas",
+                          "hints":  [
+                                        "Dulce",
+                                        "Horno",
+                                        "Crujiente"
+                                    ]
+                      },
+                      {
+                          "name":  "Cereales",
+                          "hints":  [
+                                        "Leche",
+                                        "Desayuno",
+                                        "Bol"
+                                    ]
+                      },
+                      {
+                          "name":  "Café",
+                          "hints":  [
+                                        "Taza",
+                                        "Caliente",
+                                        "Energía"
+                                    ]
+                      },
+                      {
+                          "name":  "Croissant",
+                          "hints":  [
+                                        "Mantequilla",
+                                        "Hojaldrado",
+                                        "Desayuno"
+                                    ]
+                      },
+                      {
+                          "name":  "Donut",
+                          "hints":  [
+                                        "Agujero",
+                                        "Glaseado",
+                                        "Dulce"
+                                    ]
+                      },
+                      {
+                          "name":  "Brownie",
+                          "hints":  [
+                                        "Chocolate",
+                                        "Nueces",
+                                        "Horno"
+                                    ]
+                      },
+                      {
+                          "name":  "Tarta",
+                          "hints":  [
+                                        "Cumpleaños",
+                                        "Velas",
+                                        "Dulce"
+                                    ]
+                      },
+                      {
+                          "name":  "Flan",
+                          "hints":  [
+                                        "Huevo",
+                                        "Caramelo",
+                                        "Tembla"
+                                    ]
+                      },
+                      {
+                          "name":  "Natillas",
+                          "hints":  [
+                                        "Crema",
+                                        "Galleta",
+                                        "Dulce"
+                                    ]
+                      },
+                      {
+                          "name":  "Arroz con leche",
+                          "hints":  [
+                                        "Canela",
+                                        "Dulce",
+                                        "Postre"
+                                    ]
+                      },
+                      {
+                          "name":  "Fabada",
+                          "hints":  [
+                                        "Asturiana",
+                                        "Alubias",
+                                        "Chorizo"
+                                    ]
+                      },
+                      {
+                          "name":  "Cocido madrileño",
+                          "hints":  [
+                                        "Garbanzos",
+                                        "Madrid",
+                                        "Caldo"
+                                    ]
+                      },
+                      {
+                          "name":  "Pulpo a la gallega",
+                          "hints":  [
+                                        "Pimentón",
+                                        "Galicia",
+                                        "Tentáculos"
+                                    ]
+                      },
+                      {
+                          "name":  "Crêpe",
+                          "hints":  [
+                                        "Fino",
+                                        "Relleno",
+                                        "Francia"
+                                    ]
+                      },
+                      {
+                          "name":  "Waffles",
+                          "hints":  [
+                                        "Cuadrícula",
+                                        "Mantequilla",
+                                        "Sirope"
+                                    ]
+                      },
+                      {
+                          "name":  "Tostada",
+                          "hints":  [
+                                        "Desayuno",
+                                        "Pan",
+                                        "Crujiente"
+                                    ]
+                      },
+                      {
+                          "name":  "Macarrones",
+                          "hints":  [
+                                        "Pasta",
+                                        "Salsa",
+                                        "Horno"
+                                    ]
+                      },
+                      {
+                          "name":  "Tarta de queso",
+                          "hints":  [
+                                        "Postre",
+                                        "Cremosa",
+                                        "Horno"
+                                    ]
+                      },
+                      {
+                          "name":  "Tacos",
+                          "hints":  [
+                                        "México",
+                                        "Tortilla",
+                                        "Relleno"
+                                    ]
+                      },
+                      {
+                          "name":  "Arepa",
+                          "hints":  [
+                                        "Maíz",
+                                        "Rellena",
+                                        "Venezuela"
+                                    ]
+                      },
+                      {
+                          "name":  "Hot dog",
+                          "hints":  [
+                                        "Pan",
+                                        "Salchicha",
+                                        "Mostaza"
+                                    ]
+                      },
+                      {
+                          "name":  "Empanadillas",
+                          "hints":  [
+                                        "Relleno",
+                                        "Fritas",
+                                        "Masa"
+                                    ]
+                      },
+                      {
+                          "name":  "Patatas fritas",
+                          "hints":  [
+                                        "Crujientes",
+                                        "Aceite",
+                                        "Sal"
+                                    ]
+                      },
+                      {
+                          "name":  "Hummus",
+                          "hints":  [
+                                        "Garbanzos",
+                                        "Crema",
+                                        "Untar"
+                                    ]
+                      },
+                      {
+                          "name":  "Tiramisú",
+                          "hints":  [
+                                        "Café",
+                                        "Cacao",
+                                        "Postre"
+                                    ]
+                      },
+                      {
+                          "name":  "Fajitas",
+                          "hints":  [
+                                        "Tortilla",
+                                        "Pollo",
+                                        "Verduras"
+                                    ]
+                      },
+                      {
+                          "name":  "Nuggets",
+                          "hints":  [
+                                        "Pollo",
+                                        "Crujientes",
+                                        "Fritos"
+                                    ]
+                      },
+                      {
+                          "name":  "Salmorejo",
+                          "hints":  [
+                                        "Tomate",
+                                        "Pan",
+                                        "Frío"
+                                    ]
+                      },
+                      {
+                          "name":  "Puré de patata",
+                          "hints":  [
+                                        "Suave",
+                                        "Acompañamiento",
+                                        "Crema"
+                                    ]
+                      },
+                      {
+                          "name":  "Calamares",
+                          "hints":  [
+                                        "Anillas",
+                                        "Fritos",
+                                        "Mar"
+                                    ]
+                      },
+                      {
+                          "name":  "Tortitas",
+                          "hints":  [
+                                        "Desayuno",
+                                        "Dulce",
+                                        "Sirope"
+                                    ]
+                      },
+                      {
+                          "name":  "Muffin",
+                          "hints":  [
+                                        "Dulce",
+                                        "Horno",
+                                        "Esponjoso"
+                                    ]
+                      },
+                      {
+                          "name":  "Batido",
+                          "hints":  [
+                                        "Frío",
+                                        "Líquido",
+                                        "Dulce"
+                                    ]
+                      },
+                      {
+                          "name":  "Canelones",
+                          "hints":  [
+                                        "Pasta",
+                                        "Relleno",
+                                        "Horno"
+                                    ]
+                      },
+                      {
+                          "name":  "Pisto",
+                          "hints":  [
+                                        "Verduras",
+                                        "Sartén",
+                                        "España"
+                                    ]
+                      },
+                      {
+                          "name":  "Merluza",
+                          "hints":  [
+                                        "Pescado",
+                                        "Blanco",
+                                        "Plancha"
+                                    ]
+                      },
+                      {
+                          "name":  "Tortellini",
+                          "hints":  [
+                                        "Pasta",
+                                        "Rellenos",
+                                        "Italia"
+                                    ]
+                      },
+                      {
+                          "name":  "Magdalena",
+                          "hints":  [
+                                        "Dulce",
+                                        "Esponjosa",
+                                        "Desayuno"
+                                    ]
+                      },
+                      {
+                          "name":  "Bizcocho",
+                          "hints":  [
+                                        "Horno",
+                                        "Esponjoso",
+                                        "Dulce"
+                                    ]
+                      },
+                      {
+                          "name":  "Alitas de pollo",
+                          "hints":  [
+                                        "Fritas",
+                                        "Salsa",
+                                        "Crujientes"
+                                    ]
+                      },
+                      {
+                          "name":  "Patatas bravas",
+                          "hints":  [
+                                        "Salsa",
+                                        "Tapa",
+                                        "España"
+                                    ]
+                      },
+                      {
+                          "name":  "Crema de verduras",
+                          "hints":  [
+                                        "Caliente",
+                                        "Suave",
+                                        "Cuchara"
+                                    ]
+                      },
+                      {
+                          "name":  "Tallarines",
+                          "hints":  [
+                                        "Pasta",
+                                        "Largos",
+                                        "Salsa"
+                                    ]
+                      },
+                      {
+                          "name":  "Melón",
+                          "hints":  [
+                                        "Fruta",
+                                        "Dulce",
+                                        "Verano"
+                                    ]
+                      },
+                      {
+                          "name":  "Torrijas",
+                          "hints":  [
+                                        "Pan",
+                                        "Dulce",
+                                        "Semana Santa"
+                                    ]
+                      }
+                  ]
+    },
+    {
+        "id":  6,
+        "title":  "Colores",
+        "iconEmoji":  "🪅",
+        "items":  [
+                      {
+                          "name":  "Rojo",
+                          "hints":  [
+                                        "Sangre",
+                                        "Fuego",
+                                        "Pasión"
+                                    ]
+                      },
+                      {
+                          "name":  "Verde",
+                          "hints":  [
+                                        "Esperanza",
+                                        "Hierba",
+                                        "Naturaleza"
+                                    ]
+                      },
+                      {
+                          "name":  "Naranja",
+                          "hints":  [
+                                        "Mandarina",
+                                        "Atardecer",
+                                        "Fruta"
+                                    ]
+                      },
+                      {
+                          "name":  "Azul",
+                          "hints":  [
+                                        "Cielo",
+                                        "Mar",
+                                        "Frío"
+                                    ]
+                      },
+                      {
+                          "name":  "Blanco",
+                          "hints":  [
+                                        "Nieve",
+                                        "Luz",
+                                        "Puro"
+                                    ]
+                      },
+                      {
+                          "name":  "Negro",
+                          "hints":  [
+                                        "Carbón",
+                                        "Noche",
+                                        "Sombra"
+                                    ]
+                      },
+                      {
+                          "name":  "Gris",
+                          "hints":  [
+                                        "Ceniza",
+                                        "Nublado",
+                                        "Metal"
+                                    ]
+                      },
+                      {
+                          "name":  "Amarillo",
+                          "hints":  [
+                                        "Sol",
+                                        "Limón",
+                                        "Brillante"
+                                    ]
+                      },
+                      {
+                          "name":  "Rosa",
+                          "hints":  [
+                                        "Flor",
+                                        "Romántico",
+                                        "Chicle"
+                                    ]
+                      },
+                      {
+                          "name":  "Morado",
+                          "hints":  [
+                                        "Uva",
+                                        "Misterio",
+                                        "Noche"
+                                    ]
+                      },
+                      {
+                          "name":  "Violeta",
+                          "hints":  [
+                                        "Flor",
+                                        "Intenso",
+                                        "Tono"
+                                    ]
+                      },
+                      {
+                          "name":  "Marrón",
+                          "hints":  [
+                                        "Tierra",
+                                        "Madera",
+                                        "Chocolate"
+                                    ]
+                      },
+                      {
+                          "name":  "Beige",
+                          "hints":  [
+                                        "Arena",
+                                        "Suave",
+                                        "Neutral"
+                                    ]
+                      },
+                      {
+                          "name":  "Turquesa",
+                          "hints":  [
+                                        "Mar",
+                                        "Gema",
+                                        "Playa"
+                                    ]
+                      },
+                      {
+                          "name":  "Cian",
+                          "hints":  [
+                                        "Tinta",
+                                        "Azulado",
+                                        "Agua"
+                                    ]
+                      },
+                      {
+                          "name":  "Magenta",
+                          "hints":  [
+                                        "Impresión",
+                                        "Fuerte",
+                                        "Tinta"
+                                    ]
+                      },
+                      {
+                          "name":  "Fucsia",
+                          "hints":  [
+                                        "Vivo",
+                                        "Rosa",
+                                        "Llamativo"
+                                    ]
+                      },
+                      {
+                          "name":  "Lila",
+                          "hints":  [
+                                        "Suave",
+                                        "Flor",
+                                        "Morado"
+                                    ]
+                      },
+                      {
+                          "name":  "Coral",
+                          "hints":  [
+                                        "Mar",
+                                        "Rosado",
+                                        "Arrecife"
+                                    ]
+                      },
+                      {
+                          "name":  "Salmón",
+                          "hints":  [
+                                        "Pescado",
+                                        "Rosado",
+                                        "Tono"
+                                    ]
+                      },
+                      {
+                          "name":  "Ocre",
+                          "hints":  [
+                                        "Tierra",
+                                        "Amarillo",
+                                        "Antiguo"
+                                    ]
+                      },
+                      {
+                          "name":  "Oliva",
+                          "hints":  [
+                                        "Verde",
+                                        "Aceite",
+                                        "Militar"
+                                    ]
+                      },
+                      {
+                          "name":  "Esmeralda",
+                          "hints":  [
+                                        "Gema",
+                                        "Verde",
+                                        "Brillo"
+                                    ]
+                      },
+                      {
+                          "name":  "Azul marino",
+                          "hints":  [
+                                        "Oscuro",
+                                        "Mar",
+                                        "Uniforme"
+                                    ]
+                      },
+                      {
+                          "name":  "Celeste",
+                          "hints":  [
+                                        "Claro",
+                                        "Cielo",
+                                        "Suave"
+                                    ]
+                      },
+                      {
+                          "name":  "Granate",
+                          "hints":  [
+                                        "Vino",
+                                        "Oscuro",
+                                        "Rojo"
+                                    ]
+                      },
+                      {
+                          "name":  "Plateado",
+                          "hints":  [
+                                        "Metal",
+                                        "Brillo",
+                                        "Gris"
+                                    ]
+                      },
+                      {
+                          "name":  "Dorado",
+                          "hints":  [
+                                        "Oro",
+                                        "Lujo",
+                                        "Brillo"
+                                    ]
+                      }
+                  ]
+    },
+    {
+        "id":  7,
+        "title":  "Random",
+        "iconEmoji":  "🙃",
+        "items":  [
+                      {
+                          "name":  "Jugador más cercano (distancia física)",
+                          "hints":  [
+                                        "Está en tu burbuja",
+                                        "No tienes que proyectar la voz",
+                                        "Con un gesto basta"
+                                    ]
+                      },
+                      {
+                          "name":  "Jugador más mayor (edad más alta)",
+                          "hints":  [
+                                        "Tiene referencias que no todos pillan",
+                                        "Ha visto cosas repetirse",
+                                        "Se nota en cómo lo cuenta"
+                                    ]
+                      },
+                      {
+                          "name":  "Jugador más alto (mayor estatura)",
+                          "hints":  [
+                                        "Cambia la perspectiva del grupo",
+                                        "En fotos tu ojo va ahí",
+                                        "No pasa desapercibido de pie"
+                                    ]
+                      },
+                      {
+                          "name":  "Jugador más joven (edad más baja)",
+                          "hints":  [
+                                        "Tiene primera vez en muchas cosas",
+                                        "Le sobra energía a ciertas horas",
+                                        "Ciertas frases le suenan normales"
+                                    ]
+                      },
+                      {
+                          "name":  "Jugador con el pelo más largo",
+                          "hints":  [
+                                        "Tiene rutina sin decirlo",
+                                        "A veces estorba y a veces ayuda",
+                                        "En movimiento se nota más"
+                                    ]
+                      },
+                      {
+                          "name":  "Jugador con la voz más grave",
+                          "hints":  [
+                                        "Su tono llena el espacio",
+                                        "Da sensación de radio",
+                                        "Con poco volumen llega igual"
+                                    ]
+                      },
+                      {
+                          "name":  "Jugador con la voz más aguda",
+                          "hints":  [
+                                        "Destaca sin querer",
+                                        "Cambia mucho según el momento",
+                                        "En emoción se delata"
+                                    ]
+                      },
+                      {
+                          "name":  "Jugador más puntual",
+                          "hints":  [
+                                        "Para él a tiempo no existe",
+                                        "Prefiere esperar que llegar justo",
+                                        "Le incomoda improvisar horarios"
+                                    ]
+                      },
+                      {
+                          "name":  "Jugador más despistado",
+                          "hints":  [
+                                        "Va en automático a ratos",
+                                        "Se le escapan detalles obvios",
+                                        "Vive en su propio hilo"
+                                    ]
+                      },
+                      {
+                          "name":  "Jugador más ordenado",
+                          "hints":  [
+                                        "Se nota en lo pequeño",
+                                        "Le molesta el desorden ajeno",
+                                        "Tiene su manera de hacerlo todo"
+                                    ]
+                      },
+                      {
+                          "name":  "Jugador más dormilón",
+                          "hints":  [
+                                        "Se apaga fácil",
+                                        "El descanso le llama",
+                                        "Siempre podría ser un ratito más"
+                                    ]
+                      },
+                      {
+                          "name":  "Jugador más deportista",
+                          "hints":  [
+                                        "Su cuerpo habla por él",
+                                        "Tiene hábitos que se notan",
+                                        "El movimiento es su idioma"
+                                    ]
+                      },
+                      {
+                          "name":  "Jugador más competitivo",
+                          "hints":  [
+                                        "Se le encienden los ojos",
+                                        "No se lo toma solo por jugar",
+                                        "Necesita saber quién gana"
+                                    ]
+                      },
+                      {
+                          "name":  "Jugador más tranquilo",
+                          "hints":  [
+                                        "Baja la temperatura del ambiente",
+                                        "No reacciona rápido",
+                                        "Su presencia calma"
+                                    ]
+                      },
+                      {
+                          "name":  "Jugador más impaciente",
+                          "hints":  [
+                                        "El tiempo le pesa",
+                                        "Le cuesta el luego",
+                                        "Quiere el final ya"
+                                    ]
+                      },
+                      {
+                          "name":  "Jugador que más usa el móvil",
+                          "hints":  [
+                                        "Siempre está en dos sitios a la vez",
+                                        "Tiene reflejos de pantalla",
+                                        "Nunca está del todo presente"
+                                    ]
+                      },
+                      {
+                          "name":  "Jugador más bromista",
+                          "hints":  [
+                                        "Encuentra huecos para rematar",
+                                        "Tiene respuestas listas",
+                                        "Le sale sin pensarlo"
+                                    ]
+                      },
+                      {
+                          "name":  "Jugador más serio",
+                          "hints":  [
+                                        "No regala reacciones",
+                                        "Su cara no lo cuenta todo",
+                                        "Va a lo funcional"
+                                    ]
+                      },
+                      {
+                          "name":  "Jugador más miedoso",
+                          "hints":  [
+                                        "Su cerebro imagina finales",
+                                        "Prefiere lo predecible",
+                                        "Evita lo raro"
+                                    ]
+                      },
+                      {
+                          "name":  "Jugador más fan de la música",
+                          "hints":  [
+                                        "Se le nota en el ritmo",
+                                        "Tiene una banda sonora interna",
+                                        "Reconoce cosas sin esfuerzo"
+                                    ]
+                      },
+                      {
+                          "name":  "Jugador con mejor memoria",
+                          "hints":  [
+                                        "Guarda detalles como si nada",
+                                        "Conecta cosas antiguas",
+                                        "Se acuerda cuando tú no"
+                                    ]
+                      },
+                      {
+                          "name":  "Jugador más hablador",
+                          "hints":  [
+                                        "Piensa hablando",
+                                        "Un tema lleva a otro",
+                                        "Su silencio dura poco"
+                                    ]
+                      },
+                      {
+                          "name":  "Jugador más callado",
+                          "hints":  [
+                                        "Habla cuando merece la pena",
+                                        "Observa más de lo que parece",
+                                        "Responde con lo justo"
+                                    ]
+                      },
+                      {
+                          "name":  "Jugador más fashion",
+                          "hints":  [
+                                        "Hay intención en lo que lleva",
+                                        "Parece montado sin esfuerzo",
+                                        "Su imagen habla primero"
+                                    ]
+                      },
+                      {
+                          "name":  "¿Quién tiene más probabilidad de llegar tarde?",
+                          "hints":  [
+                                        "Siempre se le cruza algo",
+                                        "Su reloj va diferente",
+                                        "Aparece cuando ya está en marcha"
+                                    ]
+                      },
+                      {
+                          "name":  "¿Quién se reiría primero si nadie puede reír?",
+                          "hints":  [
+                                        "No puede con la presión",
+                                        "Le entra la risa floja",
+                                        "Basta una mirada"
+                                    ]
+                      },
+                      {
+                          "name":  "¿Quién mentiría mejor en una mentira piadosa?",
+                          "hints":  [
+                                        "Tiene cara de póker",
+                                        "Convence sin esfuerzo",
+                                        "Lo suaviza todo"
+                                    ]
+                      },
+                      {
+                          "name":  "¿Quién sobreviviría más tiempo sin móvil?",
+                          "hints":  [
+                                        "Tiene vida más allá",
+                                        "No depende de la pantalla",
+                                        "Le cuesta menos desconectar"
+                                    ]
+                      },
+                      {
+                          "name":  "¿Quién organizaría mejor una escapada?",
+                          "hints":  [
+                                        "Piensa en los detalles",
+                                        "Ya tiene el plan en la cabeza",
+                                        "Le gusta controlar el itinerario"
+                                    ]
+                      },
+                      {
+                          "name":  "¿Quién sería el primero en rendirse en un reto físico?",
+                          "hints":  [
+                                        "El cuerpo manda",
+                                        "No es lo suyo",
+                                        "Busca la salida antes"
+                                    ]
+                      },
+                      {
+                          "name":  "¿Quién cantaría en el karaoke sin que le pidan?",
+                          "hints":  [
+                                        "El micro le llama",
+                                        "No necesita excusa",
+                                        "Le da igual el nivel"
+                                    ]
+                      }
+                  ]
+    },
+    {
+        "id":  8,
+        "title":  "Deportes",
+        "iconEmoji":  "🎾",
+        "items":  [
+                      {
+                          "name":  "Waterpolo",
+                          "hints":  [
+                                        "Agua",
+                                        "Pelota",
+                                        "Bañador"
+                                    ]
+                      },
+                      {
+                          "name":  "Cricket",
+                          "hints":  [
+                                        "Bate",
+                                        "Pelota",
+                                        "Inglés"
+                                    ]
+                      },
+                      {
+                          "name":  "Golf",
+                          "hints":  [
+                                        "Hoyo",
+                                        "Césped",
+                                        "Palos"
+                                    ]
+                      },
+                      {
+                          "name":  "Baloncesto",
+                          "hints":  [
+                                        "Alto",
+                                        "Aro",
+                                        "Balón"
+                                    ]
+                      },
+                      {
+                          "name":  "Fútbol",
+                          "hints":  [
+                                        "Estadio",
+                                        "Balón",
+                                        "Gol"
+                                    ]
+                      },
+                      {
+                          "name":  "Tenis",
+                          "hints":  [
+                                        "Raqueta",
+                                        "Red",
+                                        "Set"
+                                    ]
+                      },
+                      {
+                          "name":  "Fórmula 1",
+                          "hints":  [
+                                        "Rueda",
+                                        "Velocidad",
+                                        "Bandera"
+                                    ]
+                      },
+                      {
+                          "name":  "Moto GP",
+                          "hints":  [
+                                        "Casco",
+                                        "Curva",
+                                        "Asfalto"
+                                    ]
+                      },
+                      {
+                          "name":  "Natación",
+                          "hints":  [
+                                        "Piscina",
+                                        "Braza",
+                                        "Gafas"
+                                    ]
+                      },
+                      {
+                          "name":  "Atletismo",
+                          "hints":  [
+                                        "Pista",
+                                        "Velocidad",
+                                        "Salto"
+                                    ]
+                      },
+                      {
+                          "name":  "Ciclismo",
+                          "hints":  [
+                                        "Bicicleta",
+                                        "Maillot",
+                                        "Montaña"
+                                    ]
+                      },
+                      {
+                          "name":  "Boxeo",
+                          "hints":  [
+                                        "Guantes",
+                                        "Ring",
+                                        "Nocaut"
+                                    ]
+                      },
+                      {
+                          "name":  "Rugby",
+                          "hints":  [
+                                        "Oval",
+                                        "Melé",
+                                        "Placaje"
+                                    ]
+                      },
+                      {
+                          "name":  "Béisbol",
+                          "hints":  [
+                                        "Bate",
+                                        "Guante",
+                                        "Home run"
+                                    ]
+                      },
+                      {
+                          "name":  "Hockey sobre hielo",
+                          "hints":  [
+                                        "Puck",
+                                        "Patines",
+                                        "Palo"
+                                    ]
+                      },
+                      {
+                          "name":  "Esquí",
+                          "hints":  [
+                                        "Nieve",
+                                        "Cuesta",
+                                        "Bastones"
+                                    ]
+                      },
+                      {
+                          "name":  "Surf",
+                          "hints":  [
+                                        "Ola",
+                                        "Tabla",
+                                        "Playa"
+                                    ]
+                      },
+                      {
+                          "name":  "Escalada",
+                          "hints":  [
+                                        "Roca",
+                                        "Cuerda",
+                                        "Pies"
+                                    ]
+                      },
+                      {
+                          "name":  "Esgrima",
+                          "hints":  [
+                                        "Espada",
+                                        "Máscara",
+                                        "Touché"
+                                    ]
+                      },
+                      {
+                          "name":  "Judo",
+                          "hints":  [
+                                        "Tatami",
+                                        "Kimono",
+                                        "Ippon"
+                                    ]
+                      },
+                      {
+                          "name":  "Kárate",
+                          "hints":  [
+                                        "Cinturón",
+                                        "Kata",
+                                        "Kiai"
+                                    ]
+                      },
+                      {
+                          "name":  "Balonmano",
+                          "hints":  [
+                                        "Portería",
+                                        "Salto",
+                                        "Siete metros"
+                                    ]
+                      },
+                      {
+                          "name":  "Voleibol",
+                          "hints":  [
+                                        "Red",
+                                        "Saque",
+                                        "Remate"
+                                    ]
+                      },
+                      {
+                          "name":  "Padel",
+                          "hints":  [
+                                        "Pared",
+                                        "Pista",
+                                        "Cristal"
+                                    ]
+                      },
+                      {
+                          "name":  "Ping pong",
+                          "hints":  [
+                                        "Mesa",
+                                        "Pelotita",
+                                        "Paleta"
+                                    ]
+                      },
+                      {
+                          "name":  "Dardos",
+                          "hints":  [
+                                        "Diana",
+                                        "Punta",
+                                        "Pub"
+                                    ]
+                      },
+                      {
+                          "name":  "Billar",
+                          "hints":  [
+                                        "Taco",
+                                        "Bola",
+                                        "Mesa verde"
+                                    ]
+                      },
+                      {
+                          "name":  "Ajedrez",
+                          "hints":  [
+                                        "Tablero",
+                                        "Rey",
+                                        "Jaque mate"
+                                    ]
+                      },
+                      {
+                          "name":  "Lucha libre",
+                          "hints":  [
+                                        "Máscara",
+                                        "Ring",
+                                        "Llave"
+                                    ]
+                      }
+                  ]
+    }
+]

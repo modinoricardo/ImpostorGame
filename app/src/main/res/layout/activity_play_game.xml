@@ -132,12 +132,22 @@
                 android:background="@drawable/bg_card_main" android:orientation="vertical"
                 android:paddingStart="20dp" android:paddingTop="14dp"
                 android:paddingEnd="20dp" android:paddingBottom="14dp">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="LA PALABRA ERA" android:textColor="#AAFFFFFF" android:textSize="11sp"
-                    android:textStyle="bold" android:letterSpacing="0.1" android:layout_marginBottom="4dp"/>
-                <TextView android:id="@+id/txtPalabra"
+                <TextView android:id="@+id/txtLabelPalabra"
                     android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:textColor="#E6FFFFFF" android:textSize="18sp" android:textStyle="bold"/>
+                    android:text="@string/play_label_word_reveal" android:textColor="#AAFFFFFF" android:textSize="11sp"
+                    android:textStyle="bold" android:letterSpacing="0.1" android:layout_marginBottom="4dp"/>
+                <androidx.core.widget.NestedScrollView
+                    android:id="@+id/scrollPalabra"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fillViewport="true"
+                    android:overScrollMode="ifContentScrolls"
+                    android:scrollbars="vertical">
+
+                    <TextView android:id="@+id/txtPalabra"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:textColor="#E6FFFFFF" android:textSize="18sp" android:textStyle="bold"/>
+                </androidx.core.widget.NestedScrollView>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 

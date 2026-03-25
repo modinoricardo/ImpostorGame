@@ -2,7 +2,11 @@
   "permissions": {
     "allow": [
       "Bash(find /c/Users/Ricardo/AndroidStudioProjects/ImpostorGame -type f \\\\\\(-path *res/anim* -o -path *res/drawable* \\\\\\))",
-      "Bash(grep -E \"\\\\.\\(xml|json\\)$\")"
+      "Bash(grep -E \"\\\\.\\(xml|json\\)$\")",
+      "Bash(./gradlew assembleDebug --info)",
+      "Bash(./gradlew assembleDebug --stacktrace)",
+      "Bash(./gradlew assembleDebug)",
+      "Bash(./gradlew tasks:*)"
     ]
   }
 }

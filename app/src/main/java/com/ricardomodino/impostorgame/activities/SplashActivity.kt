@@ -53,7 +53,7 @@ class SplashActivity : AppCompatActivity() {
         )
         ThemeManager.aplicarTema(this)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
+        setContentView(if (ThemeManager.esFinal(this)) R.layout.activity_splash_final else R.layout.activity_splash)
 
         val characters = listOf(
             findViewById<ImageView>(R.id.char0),

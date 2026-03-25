@@ -1,35 +1,46 @@
 package com.ricardomodino.impostorgame.activities
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.Typeface
 import android.media.ToneGenerator
 import android.media.AudioManager
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.view.View
-import android.widget.Button
-import android.widget.TextView
-import androidx.activity.OnBackPressedCallback
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.updatePadding
-import com.ricardomodino.impostorgame.R
-import androidx.activity.enableEdgeToEdge
-import androidx.cardview.widget.CardView
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.ForegroundColorSpan
-import androidx.core.content.ContextCompat
-import android.graphics.Typeface
 import android.text.style.StyleSpan
+import android.util.TypedValue
+import android.view.Gravity
+import android.view.View
+import android.view.animation.AccelerateDecelerateInterpolator
+import android.widget.Button
+import android.widget.TextView
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
+import androidx.core.widget.NestedScrollView
 import com.ricardomodino.impostorgame.PlayerViewModel
+import com.airbnb.lottie.LottieAnimationView
+import com.airbnb.lottie.LottieDrawable
+import com.ricardomodino.impostorgame.R
 import com.ricardomodino.impostorgame.managers.GameDialog
 import com.ricardomodino.impostorgame.managers.LocaleManager
 import com.ricardomodino.impostorgame.managers.ThemeManager
+import com.ricardomodino.impostorgame.modelos.DatoCurioso
 import com.ricardomodino.impostorgame.modelos.Jugador
-import android.media.MediaPlayer
 import com.ricardomodino.impostorgame.modelos.TipoJugador
 
 class PlayGameActivity : AppCompatActivity() {
@@ -38,17 +49,22 @@ class PlayGameActivity : AppCompatActivity() {
     private lateinit var btnVotar: Button
     private lateinit var txtHabla: TextView
     private lateinit var txtTimer: TextView
+    private lateinit var txtSubtitle: TextView
+    private lateinit var txtFooter: TextView
+    private lateinit var txtLabelPalabra: TextView
     private lateinit var listaJugadores: List<Jugador>
     private lateinit var palabraJugada: String
     private lateinit var btnRevelar: Button
     private lateinit var cardViewPalabra: CardView
     private lateinit var cardResumen: CardView
     private lateinit var cardSenorBlanco: CardView
+    private lateinit var scrollPalabra: NestedScrollView
     private lateinit var txtPalabra: TextView
     private lateinit var txtImpostorNombre: TextView
     private lateinit var txtSenorBlancoNombre: TextView
     private lateinit var nombreImpostor: String
     private lateinit var nombresSenoresBlancos: String
+    private var datosPartida: List<DatoCurioso> = emptyList()
     private var modoMisterioso: Boolean = false
     private var modoDatosCuriosos: Boolean = false
     private var tiempoLimitado: Boolean = false
@@ -58,6 +74,31 @@ class PlayGameActivity : AppCompatActivity() {
     private var mediaPlayer: MediaPlayer? = null
     private var countDownTimer: CountDownTimer? = null
     private lateinit var cardsContainer: android.widget.LinearLayout
+    private var lottieFinalInvitado: LottieAnimationView? = null
+    private var animacionFinalSeleccionada: String? = null
+    private val animacionesFinales = listOf(
+        "final_reveal/cute_doggie.json",
+        "final_reveal/delivery_riding.json",
+        "final_reveal/groovy_walk_cycle.json",
+        "final_reveal/loading_50_among_us.json",
+        "final_reveal/run_forrest_run.json",
+        "final_reveal/running_character.json",
+        "final_reveal/walk_cycling_shoes.json",
+        "final_reveal/walker_man.json",
+        "final_reveal/walking_avocado.json",
+        "final_reveal/walking_orange.json"
+    )
+    private val intervaloAnimacionFinalMs = 10_000L
+    private val duracionAnimacionFinalMs = 6_860L
+    private val repetirAnimacionFinal = Runnable {
+        if (!isFinishing &&
+            !isDestroyed &&
+            ThemeManager.esFinal(this) &&
+            ::cardsContainer.isInitialized &&
+            cardsContainer.visibility == View.VISIBLE) {
+            animarInvitadoFinal()
+        }
+    }
 
     override fun attachBaseContext(newBase: android.content.Context) {
         super.attachBaseContext(LocaleManager.wrap(newBase))
@@ -67,21 +108,26 @@ class PlayGameActivity : AppCompatActivity() {
         ThemeManager.aplicarTema(this)
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_play_game)
+        setContentView(if (ThemeManager.esFinal(this)) R.layout.activity_play_game_final else R.layout.activity_play_game)
         ThemeManager.aplicarDrawables(this)
 
         btnNewGame           = findViewById(R.id.btnNewGame)
         btnVotar             = findViewById(R.id.btnVotar)
         txtHabla             = findViewById(R.id.txtImpostor)
         txtTimer             = findViewById(R.id.txtTimer)
+        txtSubtitle          = findViewById(R.id.txtSubtitle)
+        txtFooter            = findViewById(R.id.txtFooter)
+        txtLabelPalabra      = findViewById(R.id.txtLabelPalabra)
         btnRevelar           = findViewById(R.id.btnRevelar)
         cardViewPalabra      = findViewById(R.id.cardViewPalabra)
         cardResumen          = findViewById(R.id.cardResumen)
         cardSenorBlanco      = findViewById(R.id.cardSenorBlanco)
+        scrollPalabra        = findViewById(R.id.scrollPalabra)
         txtPalabra           = findViewById(R.id.txtPalabra)
         txtImpostorNombre    = findViewById(R.id.txtImpostorNombre)
         txtSenorBlancoNombre = findViewById(R.id.txtSenorBlancoNombre)
-        cardsContainer = findViewById(R.id.cardsContainer)
+        cardsContainer       = findViewById(R.id.cardsContainer)
+        lottieFinalInvitado  = findViewById(R.id.lottieFinalInvitado)
 
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
@@ -111,6 +157,7 @@ class PlayGameActivity : AppCompatActivity() {
         }
 
         listaJugadores       = intent.getParcelableArrayListExtra<Jugador>("LISTA_JUGADORES")?.toList().orEmpty()
+        datosPartida         = intent.getParcelableArrayListExtra<DatoCurioso>("DATOS_PARTIDA")?.toList().orEmpty()
         palabraJugada        = intent.getStringExtra("PALABRA") ?: ""
         nombreImpostor       = intent.getStringExtra("IMPOSTOR") ?: ""
         nombresSenoresBlancos = intent.getStringExtra("SENORES_BLANCOS") ?: ""
@@ -173,13 +220,15 @@ class PlayGameActivity : AppCompatActivity() {
     private fun tiempoAgotado() {
         try { ToneGenerator(AudioManager.STREAM_MUSIC, 100).startTone(ToneGenerator.TONE_PROP_NACK, 1000) } catch (_: Exception) {}
         val intent = Intent(this, VictoryActivity::class.java).apply {
-            putExtra("GANADOR", "CIVILES")
-            putExtra("MOTIVO", "¡Todos los impostores han sido eliminados!")
+            putExtra("GANADOR", "IMPOSTORES")
+            putExtra("MOTIVO", "¡Se acabó el tiempo!")
             putExtra("IR_A_REVEAL", true)
             putParcelableArrayListExtra("LISTA_JUGADORES", ArrayList(listaJugadores))
+            putParcelableArrayListExtra("DATOS_PARTIDA", ArrayList(datosPartida))
             putExtra("PALABRA", palabraJugada)
             putExtra("IMPOSTOR", nombreImpostor)
             putExtra("SENORES_BLANCOS", nombresSenoresBlancos)
+            putExtra("MODO_DATOS_CURIOSOS", modoDatosCuriosos)
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
         startActivity(intent)
@@ -218,9 +267,11 @@ class PlayGameActivity : AppCompatActivity() {
                             putExtra("MOTIVO", "¡Todos los impostores han sido eliminados!")
                             putExtra("IR_A_REVEAL", true)
                             putParcelableArrayListExtra("LISTA_JUGADORES", ArrayList(listaJugadores))
+                            putParcelableArrayListExtra("DATOS_PARTIDA", ArrayList(datosPartida))
                             putExtra("PALABRA", palabraJugada)
                             putExtra("IMPOSTOR", nombreImpostor)
                             putExtra("SENORES_BLANCOS", nombresSenoresBlancos)
+                            putExtra("MODO_DATOS_CURIOSOS", modoDatosCuriosos)
                             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                         })
                     }
@@ -231,9 +282,11 @@ class PlayGameActivity : AppCompatActivity() {
                             putExtra("MOTIVO", "Los civiles están en minoria.")
                             putExtra("IR_A_REVEAL", true)
                             putParcelableArrayListExtra("LISTA_JUGADORES", ArrayList(listaJugadores))
+                            putParcelableArrayListExtra("DATOS_PARTIDA", ArrayList(datosPartida))
                             putExtra("PALABRA", palabraJugada)
                             putExtra("IMPOSTOR", nombreImpostor)
                             putExtra("SENORES_BLANCOS", nombresSenoresBlancos)
+                            putExtra("MODO_DATOS_CURIOSOS", modoDatosCuriosos)
                             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                         })
                     }
@@ -278,6 +331,8 @@ class PlayGameActivity : AppCompatActivity() {
         cardsContainer.visibility = View.VISIBLE
         countDownTimer?.cancel()
         txtTimer.visibility = View.GONE
+        txtSubtitle.text = getString(R.string.play_subtitle_reveal)
+        txtFooter.text = getString(R.string.play_footer_reveal)
         if (!impostorContado) {
             // nombreImpostor puede ser "Juan, Pedro" cuando hay varios impostores.
             // Dividimos por coma para incrementar el contador de cada uno por separado.
@@ -305,17 +360,158 @@ class PlayGameActivity : AppCompatActivity() {
         }
 
         cardViewPalabra.visibility = View.VISIBLE
-        val sp = SpannableString(palabraJugada)
-        sp.setSpan(ForegroundColorSpan(colorPalabra), 0, palabraJugada.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        sp.setSpan(StyleSpan(Typeface.BOLD), 0, palabraJugada.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        txtPalabra.text = sp
+        configurarTarjetaFinal(colorPalabra)
 
         ThemeManager.aplicarDrawables(this)
         btnRevelar.visibility = View.GONE
         btnVotar.visibility   = View.GONE
+        iniciarAnimacionFinalPeriodica()
     }
 
     private fun dpToPx(dp: Int): Int = (dp * resources.displayMetrics.density).toInt()
+
+    private fun configurarTarjetaFinal(colorPalabra: Int) {
+        scrollPalabra.scrollTo(0, 0)
+        val params = scrollPalabra.layoutParams
+
+        if (modoDatosCuriosos) {
+            txtLabelPalabra.text = getString(R.string.play_label_facts_reveal)
+            params.height = dpToPx(240)
+            scrollPalabra.layoutParams = params
+
+            txtPalabra.gravity = Gravity.START
+            txtPalabra.setTextColor(ContextCompat.getColor(this, android.R.color.white))
+            txtPalabra.setTypeface(Typeface.DEFAULT, Typeface.NORMAL)
+            txtPalabra.setLineSpacing(0f, 1.2f)
+            txtPalabra.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15f)
+            txtPalabra.text = construirResumenDatosPartida()
+        } else {
+            txtLabelPalabra.text = getString(R.string.play_label_word_reveal)
+            params.height = android.widget.LinearLayout.LayoutParams.WRAP_CONTENT
+            scrollPalabra.layoutParams = params
+
+            val sp = SpannableString(palabraJugada)
+            sp.setSpan(ForegroundColorSpan(colorPalabra), 0, palabraJugada.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+            sp.setSpan(StyleSpan(Typeface.BOLD), 0, palabraJugada.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+            txtPalabra.gravity = Gravity.START
+            txtPalabra.setLineSpacing(0f, 1f)
+            txtPalabra.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18f)
+            txtPalabra.text = sp
+        }
+    }
+
+    private fun construirResumenDatosPartida(): String {
+        if (datosPartida.isEmpty()) return getString(R.string.play_facts_unavailable)
+        return datosPartida.mapIndexed { index, dato ->
+            "${index + 1}. ${getTextoDato(dato)}"
+        }.joinToString("\n\n")
+    }
+
+    private fun getTextoDato(dato: DatoCurioso): String = when (LocaleManager.getLanguage(this)) {
+        "en" -> dato.en
+        "zh-Hans" -> dato.zhHans
+        "zh-Hant" -> dato.zhHant
+        else -> dato.es
+    }
+
+    private fun iniciarAnimacionFinalPeriodica() {
+        val invitado = lottieFinalInvitado ?: return
+        if (!ThemeManager.esFinal(this)) return
+
+        animacionFinalSeleccionada = animacionFinalSeleccionada ?: animacionesFinales.random()
+        invitado.removeCallbacks(repetirAnimacionFinal)
+        animarInvitadoFinal()
+    }
+
+    private fun detenerAnimacionFinalPeriodica() {
+        val invitado = lottieFinalInvitado ?: return
+        invitado.removeCallbacks(repetirAnimacionFinal)
+        invitado.cancelAnimation()
+        invitado.animate().cancel()
+        invitado.visibility = View.GONE
+    }
+
+    private fun animarInvitadoFinal() {
+        val invitado = lottieFinalInvitado ?: return
+        if (!ThemeManager.esFinal(this)) return
+
+        invitado.cancelAnimation()
+        invitado.animate().cancel()
+        invitado.clearAnimation()
+        invitado.progress = 0f
+        invitado.speed = 0.8f
+        invitado.repeatCount = LottieDrawable.INFINITE
+        invitado.setAnimation(animacionFinalSeleccionada ?: animacionesFinales.random())
+        invitado.setFailureListener {
+            invitado.cancelAnimation()
+            invitado.visibility = View.GONE
+        }
+
+        invitado.post {
+            val rootWidth = findViewById<View>(R.id.main).width.toFloat()
+            val invitadoWidth = invitado.width.toFloat().takeIf { it > 0f } ?: dpToPx(220).toFloat()
+            val inicioX = -(invitadoWidth + dpToPx(42))
+            val puntoMedio = rootWidth * 0.2f
+            val salidaX = rootWidth + invitadoWidth + dpToPx(36)
+
+            invitado.visibility = View.VISIBLE
+            invitado.alpha = 0f
+            invitado.translationX = inicioX
+            invitado.translationY = dpToPx(10).toFloat()
+            invitado.scaleX = 1f
+            invitado.scaleY = 1f
+            invitado.rotation = 0f
+            invitado.playAnimation()
+
+            val entrada = AnimatorSet().apply {
+                playTogether(
+                    ObjectAnimator.ofFloat(invitado, View.TRANSLATION_X, invitado.translationX, puntoMedio),
+                    ObjectAnimator.ofFloat(invitado, View.TRANSLATION_Y, invitado.translationY, 0f),
+                    ObjectAnimator.ofFloat(invitado, View.ALPHA, 0f, 0.98f)
+                )
+                duration = 1300L
+                interpolator = AccelerateDecelerateInterpolator()
+            }
+
+            val paseo = AnimatorSet().apply {
+                playTogether(
+                    ObjectAnimator.ofFloat(invitado, View.TRANSLATION_X, puntoMedio, rootWidth * 0.56f),
+                    ObjectAnimator.ofFloat(invitado, View.TRANSLATION_Y, 0f, -dpToPx(6).toFloat(), 0f)
+                )
+                duration = 3600L
+                interpolator = AccelerateDecelerateInterpolator()
+            }
+
+            val salida = AnimatorSet().apply {
+                playTogether(
+                    ObjectAnimator.ofFloat(invitado, View.TRANSLATION_X, rootWidth * 0.56f, salidaX.toFloat()),
+                    ObjectAnimator.ofFloat(invitado, View.ALPHA, 0.98f, 0f)
+                )
+                duration = 1700L
+                interpolator = AccelerateDecelerateInterpolator()
+            }
+
+            AnimatorSet().apply {
+                playSequentially(entrada, paseo, salida)
+                startDelay = 260L
+                addListener(object : AnimatorListenerAdapter() {
+                    override fun onAnimationEnd(animation: Animator) {
+                        invitado.cancelAnimation()
+                        invitado.visibility = View.GONE
+                        invitado.translationX = 0f
+                        invitado.translationY = 0f
+                        invitado.alpha = 1f
+                        invitado.removeCallbacks(repetirAnimacionFinal)
+                        invitado.postDelayed(
+                            repetirAnimacionFinal,
+                            (intervaloAnimacionFinalMs - duracionAnimacionFinalMs).coerceAtLeast(0L)
+                        )
+                    }
+                })
+                start()
+            }
+        }
+    }
 
     private fun mensajeAlerta(titulo: String, msg: String) {
         GameDialog(this)
@@ -328,6 +524,22 @@ class PlayGameActivity : AppCompatActivity() {
 
     private fun stopBell() { mediaPlayer?.stop(); mediaPlayer?.release(); mediaPlayer = null }
 
-    override fun onStop() { super.onStop(); stopBell() }
-    override fun onDestroy() { super.onDestroy(); countDownTimer?.cancel() }
+    override fun onStart() {
+        super.onStart()
+        if (ThemeManager.esFinal(this) && ::cardsContainer.isInitialized && cardsContainer.visibility == View.VISIBLE) {
+            iniciarAnimacionFinalPeriodica()
+        }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        detenerAnimacionFinalPeriodica()
+        stopBell()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        detenerAnimacionFinalPeriodica()
+        countDownTimer?.cancel()
+    }
 }

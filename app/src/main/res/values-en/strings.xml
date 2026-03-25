@@ -34,6 +34,11 @@
     <!-- PlayGameActivity -->
     <string name="play_title">IMPOSTOR</string>
     <string name="play_subtitle">Roles ready. Voices off. Chaos on.</string>
+    <string name="play_subtitle_reveal">Match over. Here comes the truth.</string>
+    <string name="play_footer_reveal">Impostor and word revealed.</string>
+    <string name="play_label_word_reveal">THE WORD WAS</string>
+    <string name="play_label_facts_reveal">FACTS FROM THIS MATCH</string>
+    <string name="play_facts_unavailable">There are no facts to show.</string>
     <string name="play_btn_votar">🗳 VOTE</string>
     <string name="play_btn_revelar">REVEAL IMPOSTOR AND WORD</string>
     <string name="play_btn_nueva_partida">NEW GAME</string>
@@ -109,6 +114,8 @@
     <string name="estilo_carmesi_desc">Crimson red · Tense · Mysterious</string>
     <string name="estilo_jmc_nombre">🖤 JMC</string>
     <string name="estilo_jmc_desc">Pure black · Green · Minimalist</string>
+    <string name="estilo_final_nombre">⭐ Final Style</string>
+    <string name="estilo_final_desc">Cinematic · Elegant · Premium</string>
 
     <!-- SugerenciasBottomSheet -->
     <string name="sug_titulo">Suggest improvements</string>

@@ -33,6 +33,11 @@
     <!-- PlayGameActivity -->
     <string name="play_title">IMPOSTOR</string>
     <string name="play_subtitle">Roles listos. Voces apagadas. Caos encendido.</string>
+    <string name="play_subtitle_reveal">Fin de partida. Aqui se revela la verdad.</string>
+    <string name="play_footer_reveal">Impostor y palabra al descubierto.</string>
+    <string name="play_label_word_reveal">LA PALABRA ERA</string>
+    <string name="play_label_facts_reveal">DATOS DE LA PARTIDA</string>
+    <string name="play_facts_unavailable">No hay datos para mostrar.</string>
     <string name="play_btn_votar">🗳 VOTAR</string>
     <string name="play_btn_revelar">REVELAR IMPOSTOR Y PALABRA</string>
     <string name="play_btn_nueva_partida">NUEVA PARTIDA</string>
@@ -108,6 +113,8 @@
     <string name="estilo_carmesi_desc">Rojo carmesí · Tenso · Misterioso</string>
     <string name="estilo_jmc_nombre">🖤 JMC</string>
     <string name="estilo_jmc_desc">Negro puro · Verde · Minimalista</string>
+    <string name="estilo_final_nombre">⭐ Estilo Final</string>
+    <string name="estilo_final_desc">Cinemático · Elegante · Premium</string>
 
     <!-- SugerenciasBottomSheet -->
     <string name="sug_titulo">Sugerir mejoras</string>

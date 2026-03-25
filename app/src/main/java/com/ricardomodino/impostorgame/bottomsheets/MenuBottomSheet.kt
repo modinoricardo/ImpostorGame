@@ -26,7 +26,11 @@ class MenuBottomSheet : BottomSheetDialogFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View = inflater.inflate(R.layout.bottomsheet_menu, container, false)
+    ): View = inflater.inflate(
+        if (ThemeManager.esFinal(requireContext())) R.layout.bottomsheet_menu_final
+        else R.layout.bottomsheet_menu,
+        container, false
+    )
 
     override fun onStart() {
         super.onStart()

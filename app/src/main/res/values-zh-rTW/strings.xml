@@ -34,6 +34,11 @@
     <!-- PlayGameActivity -->
     <string name="play_title">臥底</string>
     <string name="play_subtitle">角色就緒。保持沉默。混亂開始。</string>
+    <string name="play_subtitle_reveal">對局結束。真相揭曉。</string>
+    <string name="play_footer_reveal">臥底和詞語已揭曉。</string>
+    <string name="play_label_word_reveal">詞語是</string>
+    <string name="play_label_facts_reveal">本局冷知識</string>
+    <string name="play_facts_unavailable">沒有可顯示的內容。</string>
     <string name="play_btn_votar">🗳 投票</string>
     <string name="play_btn_revelar">揭示臥底和詞語</string>
     <string name="play_btn_nueva_partida">新遊戲</string>
@@ -109,6 +114,8 @@
     <string name="estilo_carmesi_desc">深紅色 · 緊張 · 神秘</string>
     <string name="estilo_jmc_nombre">🖤 JMC</string>
     <string name="estilo_jmc_desc">純黑 · 綠色 · 極簡</string>
+    <string name="estilo_final_nombre">⭐ 終極風格</string>
+    <string name="estilo_final_desc">電影感 · 優雅 · 高級</string>
 
     <!-- SugerenciasBottomSheet -->
     <string name="sug_titulo">建議改進</string>

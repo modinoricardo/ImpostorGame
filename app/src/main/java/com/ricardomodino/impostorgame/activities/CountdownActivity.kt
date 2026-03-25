@@ -34,7 +34,7 @@ class CountdownActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         ThemeManager.aplicarTema(this)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_countdown_fullscreen)
+        setContentView(if (ThemeManager.esFinal(this)) R.layout.activity_countdown_fullscreen_final else R.layout.activity_countdown_fullscreen)
 
         txtCountdown = findViewById(R.id.txtCountdown)
 
@@ -48,9 +48,9 @@ class CountdownActivity : AppCompatActivity() {
         val players    = intent.getParcelableArrayListExtra<Jugador>("PLAYERS")
         val categories = intent.getParcelableArrayListExtra<Category>("CATEGORIES")
         val opciones   = intent.getParcelableExtra<GameOptions>("OPCIONES")
-        val esDatosCuriosos = opciones?.modoDatosCuriosos == true
+        val usarEstiloFinal = ThemeManager.esFinal(this)
 
-        startCountdown(players, categories, opciones, esDatosCuriosos)
+        startCountdown(players, categories, opciones, usarEstiloFinal)
     }
 
     private fun cancelarCuentaAtras() {
@@ -110,7 +110,7 @@ class CountdownActivity : AppCompatActivity() {
             if (isCancelled || isFinishing || isDestroyed) return
 
             if (index >= numbers.size) {
-                val destino = if (esDatosCuriosos) DatosCuriososRevealActivity::class.java
+                val destino = if (esDatosCuriosos) EstiloFinalRevealActivity::class.java
                               else ImpostorRevealActivity::class.java
                 val intent = Intent(this, destino).apply {
                     putParcelableArrayListExtra("PLAYERS", players)

@@ -1,302 +1,802 @@
 [
-  {
-    "id": 1, "es": "Ciencia", "en": "Science", "zhHans": "科学", "zhHant": "科學", "emoji": "🔬",
-    "datos": [
-      {"id":1001,"es":"El ADN humano comparte un 98,7% con el chimpancé.","en":"Human DNA shares 98.7% with chimpanzees.","zhHans":"人类DNA与黑猩猩共享98.7%。","zhHant":"人類DNA與黑猩猩共享98.7%。"},
-      {"id":1002,"es":"La luz tarda 8 minutos en llegar del Sol a la Tierra.","en":"Light takes 8 minutes to travel from the Sun to Earth.","zhHans":"光从太阳到地球需要8分钟。","zhHant":"光從太陽到地球需要8分鐘。"},
-      {"id":1003,"es":"El agua caliente puede congelarse antes que la fría: efecto Mpemba.","en":"Hot water can freeze faster than cold water: the Mpemba effect.","zhHans":"热水有时比冷水冻得更快，称为姆潘巴效应。","zhHant":"熱水有時比冷水凍得更快，稱為姆潘巴效應。"},
-      {"id":1004,"es":"Un rayo alcanza los 30.000 °C, cinco veces más que la superficie solar.","en":"A lightning bolt reaches 30,000°C, five times hotter than the sun's surface.","zhHans":"闪电温度达30000°C，是太阳表面的五倍。","zhHant":"閃電溫度達30000°C，是太陽表面的五倍。"},
-      {"id":1005,"es":"El universo tiene unos 13.800 millones de años.","en":"The universe is about 13.8 billion years old.","zhHans":"宇宙约有138亿年的历史。","zhHant":"宇宙約有138億年的歷史。"},
-      {"id":1006,"es":"El oxígeno es el elemento más abundante en la corteza terrestre.","en":"Oxygen is the most abundant element in Earth's crust.","zhHans":"氧是地壳中最丰富的元素。","zhHant":"氧是地殼中最豐富的元素。"},
-      {"id":1007,"es":"Un gramo de ADN puede almacenar hasta 215 petabytes de datos.","en":"One gram of DNA can store up to 215 petabytes of data.","zhHans":"一克DNA可以存储高达215拍字节的数据。","zhHant":"一克DNA可以儲存高達215拍位元組的數據。"},
-      {"id":1008,"es":"El sonido viaja cuatro veces más rápido en el agua que en el aire.","en":"Sound travels four times faster in water than in air.","zhHans":"声音在水中的传播速度是空气中的四倍。","zhHant":"聲音在水中的傳播速度是空氣中的四倍。"},
-      {"id":1009,"es":"Los neutrones estrellas giran hasta 700 veces por segundo.","en":"Neutron stars can spin up to 700 times per second.","zhHans":"中子星每秒可旋转多达700次。","zhHant":"中子星每秒可旋轉多達700次。"},
-      {"id":1010,"es":"El número de átomos en un grano de arena supera las estrellas visibles.","en":"The number of atoms in a grain of sand exceeds the visible stars.","zhHans":"一粒沙子中的原子数量超过肉眼可见的星星数量。","zhHant":"一粒沙子中的原子數量超過肉眼可見的星星數量。"},
-      {"id":1011,"es":"Venus gira en sentido contrario al resto de los planetas del sistema solar.","en":"Venus rotates in the opposite direction to most planets in the solar system.","zhHans":"金星的自转方向与太阳系大多数行星相反。","zhHant":"金星的自轉方向與太陽系大多數行星相反。"},
-      {"id":1012,"es":"El hidrógeno es el elemento más abundante del universo.","en":"Hydrogen is the most abundant element in the universe.","zhHans":"氢是宇宙中最丰富的元素。","zhHant":"氫是宇宙中最豐富的元素。"},
-      {"id":1013,"es":"El cerebro humano genera unos 23 vatios de energía eléctrica.","en":"The human brain generates about 23 watts of electrical energy.","zhHans":"人脑产生约23瓦的电能。","zhHant":"人腦產生約23瓦的電能。"},
-      {"id":1014,"es":"La velocidad de la luz en el vacío es de 299.792 km/s.","en":"The speed of light in a vacuum is 299,792 km/s.","zhHans":"光在真空中的速度为299,792千米/秒。","zhHant":"光在真空中的速度為299,792公里/秒。"},
-      {"id":1015,"es":"Saturno es menos denso que el agua: flotaría en un océano gigante.","en":"Saturn is less dense than water and would float in a giant ocean.","zhHans":"土星的密度比水小，会漂浮在巨大的海洋上。","zhHant":"土星的密度比水小，會漂浮在巨大的海洋上。"},
-      {"id":1016,"es":"El plutonio es el elemento más pesado que se encuentra en la naturaleza.","en":"Plutonium is the heaviest element found in nature.","zhHans":"钚是自然界中最重的元素。","zhHant":"鈈是自然界中最重的元素。"},
-      {"id":1017,"es":"En el espacio no hay sonido porque no existe materia para propagarlo.","en":"There is no sound in space because there is no matter to propagate it.","zhHans":"太空中没有声音，因为没有物质来传播它。","zhHant":"太空中沒有聲音，因為沒有物質來傳播它。"},
-      {"id":1018,"es":"El agua es el único compuesto que existe de forma natural en tres estados.","en":"Water is the only compound naturally found in all three states of matter.","zhHans":"水是唯一以三种自然状态存在的化合物。","zhHant":"水是唯一以三種自然狀態存在的化合物。"},
-      {"id":1019,"es":"Los diamantes pueden arder si se calientan a más de 800 °C.","en":"Diamonds can burn if heated above 800°C.","zhHans":"钻石在800°C以上会燃烧。","zhHant":"鑽石在800°C以上會燃燒。"},
-      {"id":1020,"es":"La Luna se aleja de la Tierra unos 3,8 cm cada año.","en":"The Moon moves away from Earth about 3.8 cm every year.","zhHans":"月球每年远离地球约3.8厘米。","zhHant":"月球每年遠離地球約3.8公分。"},
-      {"id":1021,"es":"El número Pi tiene infinitos decimales sin patrón repetible.","en":"The number Pi has infinite decimals with no repeating pattern.","zhHans":"圆周率π有无限不重复的小数位。","zhHant":"圓周率π有無限不重複的小數位。"},
-      {"id":1022,"es":"Las abejas pueden reconocer rostros humanos.","en":"Bees can recognize human faces.","zhHans":"蜜蜂能够识别人类面孔。","zhHant":"蜜蜂能夠識別人類面孔。"},
-      {"id":1023,"es":"El ozono huele a cloro y protege la Tierra de la radiación ultravioleta.","en":"Ozone smells like chlorine and protects Earth from ultraviolet radiation.","zhHans":"臭氧闻起来像氯气，保护地球免受紫外线辐射。","zhHant":"臭氧聞起來像氯氣，保護地球免受紫外線輻射。"},
-      {"id":1024,"es":"Una cucharadita de material de estrella de neutrones pesa mil millones de toneladas.","en":"A teaspoon of neutron star material weighs one billion tonnes.","zhHans":"一茶匙中子星物质重达十亿吨。","zhHant":"一茶匙中子星物質重達十億噸。"},
-      {"id":1025,"es":"El fósforo blanco puede arder espontáneamente al contacto con el aire.","en":"White phosphorus can ignite spontaneously on contact with air.","zhHans":"白磷与空气接触会自燃。","zhHant":"白磷與空氣接觸會自燃。"}
-    ]
-  },
-  {
-    "id": 2, "es": "Historia", "en": "History", "zhHans": "历史", "zhHant": "歷史", "emoji": "📜",
-    "datos": [
-      {"id":2001,"es":"La Gran Muralla China no es visible desde el espacio a simple vista.","en":"The Great Wall of China is not visible from space with the naked eye.","zhHans":"长城用肉眼从太空看不到。","zhHant":"長城用肉眼從太空看不到。"},
-      {"id":2002,"es":"Cleopatra vivió más cerca de la llegada del iPhone que de la construcción de las pirámides.","en":"Cleopatra lived closer to the iPhone launch than to the building of the pyramids.","zhHans":"克利奥帕特拉距iPhone发布比距金字塔建造更近。","zhHant":"克利奧帕特拉距iPhone發布比距金字塔建造更近。"},
-      {"id":2003,"es":"El Imperio Romano tardó 503 años en caer, desde el 476 d.C. hasta el Imperio Bizantino.","en":"The Roman Empire took over 500 years to fall completely.","zhHans":"罗马帝国花了500多年才完全灭亡。","zhHant":"羅馬帝國花了500多年才完全滅亡。"},
-      {"id":2004,"es":"Napoleón fue derrotado en Waterloo en menos de 100 días tras regresar del exilio.","en":"Napoleon was defeated at Waterloo less than 100 days after returning from exile.","zhHans":"拿破仑从流亡归来后不到100天就在滑铁卢被击败。","zhHant":"拿破崙從流亡歸來後不到100天就在滑鐵盧被擊敗。"},
-      {"id":2005,"es":"La penicilina fue descubierta por accidente por Alexander Fleming en 1928.","en":"Penicillin was accidentally discovered by Alexander Fleming in 1928.","zhHans":"青霉素于1928年由亚历山大·弗莱明偶然发现。","zhHant":"青黴素於1928年由亞歷山大·弗萊明偶然發現。"},
-      {"id":2006,"es":"Los vikingos llegaron a América 500 años antes que Colón.","en":"Vikings reached America 500 years before Columbus.","zhHans":"维京人比哥伦布早500年到达美洲。","zhHant":"維京人比哥倫布早500年到達美洲。"},
-      {"id":2007,"es":"La Primera Guerra Mundial fue desencadenada por el asesinato de un archiduque.","en":"World War I was triggered by the assassination of an archduke.","zhHans":"第一次世界大战因一位大公遇刺而引发。","zhHant":"第一次世界大戰因一位大公遇刺而引發。"},
-      {"id":2008,"es":"El Imperio Mongol fue el mayor imperio contiguo de la historia.","en":"The Mongol Empire was the largest contiguous empire in history.","zhHans":"蒙古帝国是历史上最大的连续帝国。","zhHant":"蒙古帝國是歷史上最大的連續帝國。"},
-      {"id":2009,"es":"La Revolución Francesa comenzó en 1789 con la toma de la Bastilla.","en":"The French Revolution began in 1789 with the storming of the Bastille.","zhHans":"法国大革命于1789年攻占巴士底狱时开始。","zhHant":"法國大革命於1789年攻占巴士底獄時開始。"},
-      {"id":2010,"es":"Einstein rechazó la presidencia de Israel en 1952.","en":"Einstein declined the presidency of Israel in 1952.","zhHans":"爱因斯坦于1952年拒绝了以色列总统职位。","zhHant":"愛因斯坦於1952年拒絕了以色列總統職位。"},
-      {"id":2011,"es":"El Titanic tardó solo 2 horas y 40 minutos en hundirse.","en":"The Titanic sank in just 2 hours and 40 minutes.","zhHans":"泰坦尼克号仅用了2小时40分钟就沉没了。","zhHant":"鐵達尼號僅用了2小時40分鐘就沉沒了。"},
-      {"id":2012,"es":"La Antigua Grecia inventó los Juegos Olímpicos en el año 776 a.C.","en":"Ancient Greece invented the Olympic Games in 776 BC.","zhHans":"古希腊于公元前776年发明了奥林匹克运动会。","zhHant":"古希臘於公元前776年發明了奧林匹克運動會。"},
-      {"id":2013,"es":"La Muralla de Berlín cayó el 9 de noviembre de 1989.","en":"The Berlin Wall fell on November 9, 1989.","zhHans":"柏林墙于1989年11月9日倒塌。","zhHant":"柏林牆於1989年11月9日倒塌。"},
-      {"id":2014,"es":"Julio César fue asesinado con 23 puñaladas el 15 de marzo del 44 a.C.","en":"Julius Caesar was stabbed 23 times on March 15, 44 BC.","zhHans":"尤利乌斯·恺撒于公元前44年3月15日被刺23刀。","zhHant":"尤利烏斯·凱撒於公元前44年3月15日被刺23刀。"},
-      {"id":2015,"es":"La bomba atómica fue lanzada sobre Hiroshima el 6 de agosto de 1945.","en":"The atomic bomb was dropped on Hiroshima on August 6, 1945.","zhHans":"原子弹于1945年8月6日投在广岛。","zhHant":"原子彈於1945年8月6日投在廣島。"},
-      {"id":2016,"es":"La escritura cuneiforme sumeria es una de las más antiguas del mundo.","en":"Sumerian cuneiform is one of the oldest writing systems in the world.","zhHans":"苏美尔楔形文字是世界上最古老的书写系统之一。","zhHant":"蘇美爾楔形文字是世界上最古老的書寫系統之一。"},
-      {"id":2017,"es":"Marie Curie fue la primera persona en ganar dos premios Nobel.","en":"Marie Curie was the first person to win two Nobel Prizes.","zhHans":"玛丽·居里是第一个赢得两项诺贝尔奖的人。","zhHant":"瑪麗·居里是第一個贏得兩項諾貝爾獎的人。"},
-      {"id":2018,"es":"La Mona Lisa no tiene cejas porque en el Renacimiento era moda afeitárselas.","en":"The Mona Lisa has no eyebrows because shaving them was fashionable in the Renaissance.","zhHans":"蒙娜丽莎没有眉毛，因为文艺复兴时期流行剃掉眉毛。","zhHant":"蒙娜麗莎沒有眉毛，因為文藝復興時期流行剃掉眉毛。"},
-      {"id":2019,"es":"El Imperio Otomano existió durante más de 600 años, de 1299 a 1922.","en":"The Ottoman Empire lasted over 600 years, from 1299 to 1922.","zhHans":"奥斯曼帝国存在了600多年，从1299年到1922年。","zhHant":"鄂圖曼帝國存在了600多年，從1299年到1922年。"},
-      {"id":2020,"es":"Neil Armstrong pisó la Luna el 20 de julio de 1969.","en":"Neil Armstrong walked on the Moon on July 20, 1969.","zhHans":"尼尔·阿姆斯特朗于1969年7月20日登上月球。","zhHant":"尼爾·阿姆斯壯於1969年7月20日登上月球。"},
-      {"id":2021,"es":"La caída de Constantinopla en 1453 marcó el fin de la Edad Media.","en":"The fall of Constantinople in 1453 marked the end of the Middle Ages.","zhHans":"1453年君士坦丁堡的陷落标志着中世纪的结束。","zhHant":"1453年君士坦丁堡的陷落標誌著中世紀的結束。"},
-      {"id":2022,"es":"Las pirámides de Giza tienen más de 4.500 años de antigüedad.","en":"The Pyramids of Giza are over 4,500 years old.","zhHans":"吉萨金字塔已有4500多年的历史。","zhHant":"吉薩金字塔已有4500多年的歷史。"},
-      {"id":2023,"es":"La Peste Negra mató a un tercio de la población europea en el siglo XIV.","en":"The Black Death killed a third of Europe's population in the 14th century.","zhHans":"黑死病在14世纪杀死了欧洲三分之一的人口。","zhHant":"黑死病在14世紀殺死了歐洲三分之一的人口。"},
-      {"id":2024,"es":"Cristóbal Colón nunca supo que había llegado a América; creía estar en Asia.","en":"Christopher Columbus never knew he had reached America; he thought he was in Asia.","zhHans":"哥伦布从不知道自己到达了美洲，他以为自己在亚洲。","zhHant":"哥倫布從不知道自己到達了美洲，他以為自己在亞洲。"},
-      {"id":2025,"es":"La Segunda Guerra Mundial fue el conflicto más mortífero de la historia humana.","en":"World War II was the deadliest conflict in human history.","zhHans":"第二次世界大战是人类历史上死亡人数最多的冲突。","zhHant":"第二次世界大戰是人類歷史上死亡人數最多的衝突。"}
-    ]
-  },
-  {
-    "id": 3, "es": "Animales", "en": "Animals", "zhHans": "动物", "zhHant": "動物", "emoji": "🦁",
-    "datos": [
-      {"id":3001,"es":"Los pulpos tienen tres corazones y sangre azul.","en":"Octopuses have three hearts and blue blood.","zhHans":"章鱼有三个心脏和蓝色的血液。","zhHant":"章魚有三個心臟和藍色的血液。"},
-      {"id":3002,"es":"Las jirafas tienen el mismo número de vértebras en el cuello que los humanos: 7.","en":"Giraffes have the same number of neck vertebrae as humans: 7.","zhHans":"长颈鹿和人类颈部脊椎数量相同：7块。","zhHant":"長頸鹿和人類頸部脊椎數量相同：7塊。"},
-      {"id":3003,"es":"Los elefantes son los únicos animales que no pueden saltar.","en":"Elephants are the only animals that cannot jump.","zhHans":"大象是唯一不能跳跃的动物。","zhHant":"大象是唯一不能跳躍的動物。"},
-      {"id":3004,"es":"El colibrí es el único pájaro que puede volar hacia atrás.","en":"The hummingbird is the only bird that can fly backwards.","zhHans":"蜂鸟是唯一能向后飞行的鸟类。","zhHant":"蜂鳥是唯一能向後飛行的鳥類。"},
-      {"id":3005,"es":"Los delfines duermen con un ojo abierto para mantenerse alerta.","en":"Dolphins sleep with one eye open to stay alert.","zhHans":"海豚睡觉时睁着一只眼睛以保持警觉。","zhHant":"海豚睡覺時睜著一隻眼睛以保持警覺。"},
-      {"id":3006,"es":"Una colmena de abejas puede recorrer 90.000 km para producir 1 kg de miel.","en":"A beehive travels 90,000 km to produce 1 kg of honey.","zhHans":"一个蜂巢需飞行90,000公里才能产生1公斤蜂蜜。","zhHant":"一個蜂巢需飛行90,000公里才能產生1公斤蜂蜜。"},
-      {"id":3007,"es":"Los caracoles pueden dormir hasta tres años seguidos.","en":"Snails can sleep for up to three years.","zhHans":"蜗牛可以连续睡眠长达三年。","zhHant":"蝸牛可以連續睡眠長達三年。"},
-      {"id":3008,"es":"El tiburón ballena es el pez más grande del mundo.","en":"The whale shark is the largest fish in the world.","zhHans":"鲸鲨是世界上最大的鱼类。","zhHant":"鯨鯊是世界上最大的魚類。"},
-      {"id":3009,"es":"Los flamencos son rosados porque comen camarones y algas con carotenoides.","en":"Flamingos are pink because they eat shrimp and algae containing carotenoids.","zhHans":"火烈鸟呈粉红色是因为它们吃含有类胡萝卜素的虾和藻类。","zhHant":"紅鶴呈粉紅色是因為牠們吃含有類胡蘿蔔素的蝦和藻類。"},
-      {"id":3010,"es":"El cocodrilo no puede sacar la lengua hacia afuera.","en":"Crocodiles cannot stick their tongue out.","zhHans":"鳄鱼不能伸出舌头。","zhHant":"鱷魚不能伸出舌頭。"},
-      {"id":3011,"es":"Los gatos tienen 32 músculos en cada oreja.","en":"Cats have 32 muscles in each ear.","zhHans":"猫每只耳朵有32块肌肉。","zhHant":"貓每隻耳朵有32塊肌肉。"},
-      {"id":3012,"es":"Los osos polares tienen la piel negra bajo su pelo blanco transparente.","en":"Polar bears have black skin under their transparent white fur.","zhHans":"北极熊在透明白毛下面的皮肤是黑色的。","zhHant":"北極熊在透明白毛下面的皮膚是黑色的。"},
-      {"id":3013,"es":"Un grupo de cuervos se llama 'asesinato' en inglés (murder of crows).","en":"A group of crows is called a 'murder'.","zhHans":"一群乌鸦在英语中称为'murder'（谋杀）。","zhHant":"一群烏鴉在英語中稱為'murder'（謀殺）。"},
-      {"id":3014,"es":"El pulpo puede cambiar de color y textura en menos de un segundo.","en":"An octopus can change color and texture in less than a second.","zhHans":"章鱼可以在不到一秒内改变颜色和质地。","zhHant":"章魚可以在不到一秒內改變顏色和質地。"},
-      {"id":3015,"es":"Los pingüinos tienen parejas de por vida y se hacen regalos de piedras.","en":"Penguins mate for life and give each other stones as gifts.","zhHans":"企鹅终身配对，并互赠石头作为礼物。","zhHant":"企鵝終身配對，並互贈石頭作為禮物。"},
-      {"id":3016,"es":"El chimpancé puede aprender lenguaje de signos.","en":"Chimpanzees can learn sign language.","zhHans":"黑猩猩可以学习手语。","zhHant":"黑猩猩可以學習手語。"},
-      {"id":3017,"es":"Las mariposas saborean con sus patas.","en":"Butterflies taste with their feet.","zhHans":"蝴蝶用脚来品尝味道。","zhHant":"蝴蝶用腳來品嚐味道。"},
-      {"id":3018,"es":"El corazón de una ballena azul pesa tanto como un coche pequeño.","en":"A blue whale's heart weighs as much as a small car.","zhHans":"蓝鲸的心脏重量相当于一辆小型汽车。","zhHant":"藍鯨的心臟重量相當於一輛小型汽車。"},
-      {"id":3019,"es":"Los perros pueden oler el tiempo gracias a su olfato ultra sensible.","en":"Dogs can smell the passage of time thanks to their ultra-sensitive nose.","zhHans":"狗可以通过其超灵敏的嗅觉感知时间的流逝。","zhHant":"狗可以通過其超靈敏的嗅覺感知時間的流逝。"},
-      {"id":3020,"es":"La hormiga puede levantar 50 veces su propio peso.","en":"An ant can lift 50 times its own body weight.","zhHans":"蚂蚁可以举起自身体重50倍的重量。","zhHant":"螞蟻可以舉起自身體重50倍的重量。"},
-      {"id":3021,"es":"Los loros pueden vivir más de 80 años en cautividad.","en":"Parrots can live more than 80 years in captivity.","zhHans":"鹦鹉在人工饲养条件下可以活80多年。","zhHant":"鸚鵡在人工飼養條件下可以活80多年。"},
-      {"id":3022,"es":"El camaleón mueve cada ojo de forma independiente.","en":"The chameleon moves each eye independently.","zhHans":"变色龙可以独立移动每只眼睛。","zhHant":"變色龍可以獨立移動每隻眼睛。"},
-      {"id":3023,"es":"Los tiburones no tienen huesos; su esqueleto es de cartílago.","en":"Sharks have no bones; their skeleton is made of cartilage.","zhHans":"鲨鱼没有骨头，其骨架由软骨构成。","zhHant":"鯊魚沒有骨頭，其骨架由軟骨構成。"},
-      {"id":3024,"es":"El guepardo es el animal terrestre más rápido: alcanza 120 km/h.","en":"The cheetah is the fastest land animal, reaching 120 km/h.","zhHans":"猎豹是陆地上最快的动物，速度可达120公里/小时。","zhHant":"獵豹是陸地上最快的動物，速度可達120公里/小時。"},
-      {"id":3025,"es":"Los cuervos son tan inteligentes que pueden usar herramientas para resolver problemas.","en":"Crows are so intelligent they can use tools to solve problems.","zhHans":"乌鸦非常聪明，能使用工具解决问题。","zhHant":"烏鴉非常聰明，能使用工具解決問題。"}
-    ]
-  },
-  {
-    "id": 4, "es": "Geografía", "en": "Geography", "zhHans": "地理", "zhHant": "地理", "emoji": "🌍",
-    "datos": [
-      {"id":4001,"es":"Rusia abarca 11 zonas horarias diferentes.","en":"Russia spans 11 different time zones.","zhHans":"俄罗斯跨越11个不同的时区。","zhHant":"俄羅斯跨越11個不同的時區。"},
-      {"id":4002,"es":"El Nilo y el Amazonas compiten por el título de río más largo del mundo.","en":"The Nile and Amazon compete for the title of world's longest river.","zhHans":"尼罗河和亚马逊河争夺世界最长河流的称号。","zhHant":"尼羅河和亞馬遜河爭奪世界最長河流的稱號。"},
-      {"id":4003,"es":"Australia es el único país que ocupa un continente entero.","en":"Australia is the only country that occupies an entire continent.","zhHans":"澳大利亚是唯一一个占据整个大陆的国家。","zhHant":"澳大利亞是唯一一個佔據整個大陸的國家。"},
-      {"id":4004,"es":"El punto más profundo del océano es la Fosa de las Marianas, a 11 km de profundidad.","en":"The deepest ocean point is the Mariana Trench, 11 km deep.","zhHans":"海洋最深处是马里亚纳海沟，深达11公里。","zhHant":"海洋最深處是馬里亞納海溝，深達11公里。"},
-      {"id":4005,"es":"Canadá tiene la mayor cantidad de lagos de agua dulce del mundo.","en":"Canada has the most freshwater lakes in the world.","zhHans":"加拿大拥有世界上最多的淡水湖。","zhHant":"加拿大擁有世界上最多的淡水湖。"},
-      {"id":4006,"es":"El desierto del Sahara es más grande que el continente europeo.","en":"The Sahara Desert is larger than the European continent.","zhHans":"撒哈拉沙漠比欧洲大陆还大。","zhHant":"撒哈拉沙漠比歐洲大陸還大。"},
-      {"id":4007,"es":"El Everest crece unos 4 mm cada año por la actividad tectónica.","en":"Mount Everest grows about 4 mm per year due to tectonic activity.","zhHans":"由于板块活动，珠穆朗玛峰每年升高约4毫米。","zhHant":"由於板塊活動，珠穆朗瑪峰每年升高約4毫米。"},
-      {"id":4008,"es":"La Antártida contiene el 70% del agua dulce del planeta en forma de hielo.","en":"Antarctica holds 70% of the planet's freshwater as ice.","zhHans":"南极洲以冰的形式储存了地球70%的淡水。","zhHant":"南極洲以冰的形式儲存了地球70%的淡水。"},
-      {"id":4009,"es":"La ciudad de Tokio es la más poblada del mundo, con más de 37 millones de habitantes.","en":"Tokyo is the world's most populous city, with over 37 million inhabitants.","zhHans":"东京是世界上人口最多的城市，有超过3700万居民。","zhHant":"東京是世界上人口最多的城市，有超過3700萬居民。"},
-      {"id":4010,"es":"El lago Baikal contiene el 20% del agua dulce superficial del mundo.","en":"Lake Baikal contains 20% of the world's surface freshwater.","zhHans":"贝加尔湖含有世界20%的地表淡水。","zhHant":"貝加爾湖含有世界20%的地表淡水。"},
-      {"id":4011,"es":"Hay más idiomas en Papúa Nueva Guinea que en cualquier otro país del mundo.","en":"Papua New Guinea has more languages than any other country in the world.","zhHans":"巴布亚新几内亚拥有比世界上任何其他国家更多的语言。","zhHant":"巴布亞紐幾內亞擁有比世界上任何其他國家更多的語言。"},
-      {"id":4012,"es":"El río Amazonas vierte más agua al mar que los siguientes siete ríos juntos.","en":"The Amazon River discharges more water than the next seven rivers combined.","zhHans":"亚马逊河排入海洋的水量超过其后七条河流的总和。","zhHant":"亞馬遜河排入海洋的水量超過其後七條河流的總和。"},
-      {"id":4013,"es":"El punto más alejado del centro de la Tierra está en el volcán Chimborazo, Ecuador.","en":"The point farthest from Earth's center is Chimborazo volcano in Ecuador.","zhHans":"距离地球中心最远的点是厄瓜多尔的钦博拉索火山。","zhHant":"距離地球中心最遠的點是厄瓜多爾的欽博拉索火山。"},
-      {"id":4014,"es":"Mónaco es el país con mayor densidad de población del mundo.","en":"Monaco is the most densely populated country in the world.","zhHans":"摩纳哥是世界上人口密度最高的国家。","zhHant":"摩納哥是世界上人口密度最高的國家。"},
-      {"id":4015,"es":"La Gran Barrera de Coral es la estructura viviente más grande del planeta.","en":"The Great Barrier Reef is the largest living structure on Earth.","zhHans":"大堡礁是地球上最大的生命结构。","zhHant":"大堡礁是地球上最大的生命結構。"},
-      {"id":4016,"es":"El río Misisipi desemboca en el golfo de México y drena 31 estados de EE.UU.","en":"The Mississippi River drains 31 US states as it flows to the Gulf of Mexico.","zhHans":"密西西比河流入墨西哥湾，流域覆盖美国31个州。","zhHant":"密西西比河流入墨西哥灣，流域覆蓋美國31個州。"},
-      {"id":4017,"es":"Islandia no tiene mosquitos; su clima frío los hace inviables.","en":"Iceland has no mosquitoes; its cold climate makes them unviable.","zhHans":"冰岛没有蚊子，寒冷的气候使其无法生存。","zhHant":"冰島沒有蚊子，寒冷的氣候使其無法生存。"},
-      {"id":4018,"es":"El volcán Mauna Kea mide más de 10.000 metros desde la base oceánica.","en":"Mauna Kea measures over 10,000 meters from its oceanic base.","zhHans":"从海底算起，冒纳凯阿火山高度超过10,000米。","zhHant":"從海底算起，冒納凱阿火山高度超過10,000米。"},
-      {"id":4019,"es":"Bolivia y Paraguay son los únicos países sin litoral de América del Sur.","en":"Bolivia and Paraguay are the only landlocked countries in South America.","zhHans":"玻利维亚和巴拉圭是南美洲仅有的内陆国家。","zhHant":"玻利維亞和巴拉圭是南美洲僅有的內陸國家。"},
-      {"id":4020,"es":"Las cataratas Victoria son las más anchas del mundo con 1.708 metros.","en":"Victoria Falls are the world's widest waterfall at 1,708 meters.","zhHans":"维多利亚瀑布宽1708米，是世界上最宽的瀑布。","zhHant":"維多利亞瀑布寬1708公尺，是世界上最寬的瀑布。"},
-      {"id":4021,"es":"Estambul es la única ciudad del mundo situada en dos continentes.","en":"Istanbul is the only city in the world situated on two continents.","zhHans":"伊斯坦布尔是世界上唯一横跨两个大陆的城市。","zhHant":"伊斯坦堡是世界上唯一橫跨兩個大陸的城市。"},
-      {"id":4022,"es":"El desierto de Atacama en Chile es el más árido del planeta.","en":"The Atacama Desert in Chile is the driest place on Earth.","zhHans":"智利的阿塔卡马沙漠是地球上最干旱的地方。","zhHant":"智利的阿塔卡馬沙漠是地球上最乾旱的地方。"},
-      {"id":4023,"es":"El volcán Kilauea en Hawái lleva en erupción casi continua desde 1983.","en":"Hawaii's Kilauea volcano has been nearly continuously erupting since 1983.","zhHans":"夏威夷的基拉韦厄火山自1983年以来几乎持续喷发。","zhHant":"夏威夷的基拉韋厄火山自1983年以來幾乎持續噴發。"},
-      {"id":4024,"es":"La selva amazónica produce el 20% del oxígeno del planeta.","en":"The Amazon rainforest produces 20% of the planet's oxygen.","zhHans":"亚马逊雨林产生地球20%的氧气。","zhHant":"亞馬遜雨林產生地球20%的氧氣。"},
-      {"id":4025,"es":"El Mediterráneo está conectado al Atlántico solo por el estrecho de Gibraltar.","en":"The Mediterranean connects to the Atlantic only via the Strait of Gibraltar.","zhHans":"地中海只通过直布罗陀海峡与大西洋相连。","zhHant":"地中海只通過直布羅陀海峽與大西洋相連。"}
-    ]
-  },
-  {
-    "id": 5, "es": "Cuerpo Humano", "en": "Human Body", "zhHans": "人体", "zhHant": "人體", "emoji": "🫀",
-    "datos": [
-      {"id":5001,"es":"El cuerpo humano tiene más de 37 billones de células.","en":"The human body has more than 37 trillion cells.","zhHans":"人体有超过37万亿个细胞。","zhHant":"人體有超過37兆個細胞。"},
-      {"id":5002,"es":"Los huesos son cinco veces más resistentes que el acero del mismo peso.","en":"Bones are five times stronger than steel of the same weight.","zhHans":"骨骼的强度是同重量钢铁的五倍。","zhHant":"骨骼的強度是同重量鋼鐵的五倍。"},
-      {"id":5003,"es":"El cerebro consume el 20% de la energía del cuerpo pese a pesar solo el 2%.","en":"The brain consumes 20% of the body's energy despite being only 2% of body weight.","zhHans":"大脑仅占体重的2%，却消耗20%的身体能量。","zhHant":"大腦僅佔體重的2%，卻消耗20%的身體能量。"},
-      {"id":5004,"es":"El ojo humano puede distinguir hasta 10 millones de colores.","en":"The human eye can distinguish up to 10 million colors.","zhHans":"人眼可以分辨多达1000万种颜色。","zhHant":"人眼可以分辨多達1000萬種顏色。"},
-      {"id":5005,"es":"El corazón late unas 100.000 veces al día, unos 3.000 millones en una vida.","en":"The heart beats about 100,000 times a day, about 3 billion in a lifetime.","zhHans":"心脏每天跳动约10万次，一生约跳动30亿次。","zhHant":"心臟每天跳動約10萬次，一生約跳動30億次。"},
-      {"id":5006,"es":"Los vasos sanguíneos del cuerpo humano suman más de 100.000 km.","en":"The blood vessels in the human body total over 100,000 km.","zhHans":"人体血管总长度超过100,000公里。","zhHant":"人體血管總長度超過100,000公里。"},
-      {"id":5007,"es":"Los pulmones tienen la misma superficie que una pista de tenis.","en":"The lungs have the same surface area as a tennis court.","zhHans":"肺部的表面积相当于一个网球场。","zhHant":"肺部的表面積相當於一個網球場。"},
-      {"id":5008,"es":"Las huellas dactilares son únicas incluso entre gemelos idénticos.","en":"Fingerprints are unique even between identical twins.","zhHans":"即使是同卵双胞胎，指纹也是独一无二的。","zhHant":"即使是同卵雙胞胎，指紋也是獨一無二的。"},
-      {"id":5009,"es":"El cuerpo humano produce 25 millones de células nuevas por segundo.","en":"The human body produces 25 million new cells every second.","zhHans":"人体每秒产生2500万个新细胞。","zhHant":"人體每秒產生2500萬個新細胞。"},
-      {"id":5010,"es":"El olfato humano puede detectar más de un billón de olores diferentes.","en":"The human sense of smell can detect over a trillion different scents.","zhHans":"人类的嗅觉可以探测超过一万亿种不同的气味。","zhHant":"人類的嗅覺可以探測超過一兆種不同的氣味。"},
-      {"id":5011,"es":"El estómago produce un nuevo revestimiento cada dos semanas para no digerirse a sí mismo.","en":"The stomach produces a new lining every two weeks to avoid digesting itself.","zhHans":"胃每两周产生一层新内壁，以避免自我消化。","zhHant":"胃每兩週產生一層新內壁，以避免自我消化。"},
-      {"id":5012,"es":"Los riñones filtran toda la sangre del cuerpo unas 300 veces al día.","en":"The kidneys filter all the body's blood about 300 times a day.","zhHans":"肾脏每天过滤全身血液约300次。","zhHant":"腎臟每天過濾全身血液約300次。"},
-      {"id":5013,"es":"Un bebé nace con 270 huesos; los adultos tienen solo 206.","en":"A baby is born with 270 bones; adults have only 206.","zhHans":"婴儿出生时有270块骨头，成人只有206块。","zhHant":"嬰兒出生時有270塊骨頭，成人只有206塊。"},
-      {"id":5014,"es":"La piel es el órgano más grande del cuerpo humano.","en":"The skin is the largest organ of the human body.","zhHans":"皮肤是人体最大的器官。","zhHant":"皮膚是人體最大的器官。"},
-      {"id":5015,"es":"El cuerpo humano tiene más bacterias que células propias.","en":"The human body has more bacteria than its own cells.","zhHans":"人体内的细菌数量超过自身细胞数量。","zhHant":"人體內的細菌數量超過自身細胞數量。"},
-      {"id":5016,"es":"La córnea del ojo no tiene vasos sanguíneos y recibe oxígeno directamente del aire.","en":"The cornea has no blood vessels and gets oxygen directly from the air.","zhHans":"角膜没有血管，直接从空气中获取氧气。","zhHant":"角膜沒有血管，直接從空氣中獲取氧氣。"},
-      {"id":5017,"es":"El hígado puede regenerarse por completo aunque quede solo el 25% del tejido.","en":"The liver can fully regenerate even if only 25% of the tissue remains.","zhHant":"即使只剩25%的组织，肝脏也能完全再生。","zhHans":"即使只剩25%的組織，肝臟也能完全再生。"},
-      {"id":5018,"es":"El cerebro humano tiene unos 86.000 millones de neuronas.","en":"The human brain has about 86 billion neurons.","zhHans":"人脑约有860亿个神经元。","zhHant":"人腦約有860億個神經元。"},
-      {"id":5019,"es":"El nervio más largo del cuerpo es el ciático, que va de la columna a los pies.","en":"The longest nerve in the body is the sciatic nerve, running from the spine to the feet.","zhHans":"人体最长的神经是坐骨神经，从脊椎延伸到脚部。","zhHant":"人體最長的神經是坐骨神經，從脊椎延伸到腳部。"},
-      {"id":5020,"es":"Los músculos del ojo se mueven más de 100.000 veces al día.","en":"Eye muscles move more than 100,000 times a day.","zhHans":"眼部肌肉每天运动超过10万次。","zhHant":"眼部肌肉每天運動超過10萬次。"},
-      {"id":5021,"es":"El cuerpo humano desprende suficiente calor en 30 minutos para hervir agua.","en":"The human body releases enough heat in 30 minutes to boil water.","zhHans":"人体在30分钟内释放的热量足以将水烧开。","zhHant":"人體在30分鐘內釋放的熱量足以將水燒開。"},
-      {"id":5022,"es":"Los dientes son la única parte del cuerpo que no puede regenerarse.","en":"Teeth are the only part of the body that cannot regenerate.","zhHans":"牙齿是人体唯一无法再生的部分。","zhHant":"牙齒是人體唯一無法再生的部分。"},
-      {"id":5023,"es":"La proteína más abundante del cuerpo es el colágeno.","en":"The most abundant protein in the body is collagen.","zhHans":"人体中含量最多的蛋白质是胶原蛋白。","zhHant":"人體中含量最多的蛋白質是膠原蛋白。"},
-      {"id":5024,"es":"El cuerpo humano produce saliva suficiente para llenar dos bañeras al año.","en":"The human body produces enough saliva to fill two bathtubs per year.","zhHans":"人体每年产生的唾液足以装满两个浴缸。","zhHant":"人體每年產生的唾液足以裝滿兩個浴缸。"},
-      {"id":5025,"es":"Los huesos del oído son los más pequeños del cuerpo: el estribo mide 3 mm.","en":"The ear bones are the smallest in the body: the stirrup is just 3 mm.","zhHans":"耳骨是人体最小的骨骼：镫骨只有3毫米。","zhHant":"耳骨是人體最小的骨骼：鐙骨只有3毫米。"}
-    ]
-  },
-  {
-    "id": 6, "es": "Tecnología", "en": "Technology", "zhHans": "技术", "zhHant": "技術", "emoji": "💻",
-    "datos": [
-      {"id":6001,"es":"El primer mensaje enviado por internet fue 'LO'; el sistema se cayó antes de completar 'LOGIN'.","en":"The first internet message was 'LO'; the system crashed before completing 'LOGIN'.","zhHans":"互联网上发送的第一条消息是'LO'，系统在完成'LOGIN'前崩溃了。","zhHant":"網際網路上發送的第一條訊息是'LO'，系統在完成'LOGIN'前崩潰了。"},
-      {"id":6002,"es":"El primer teléfono móvil comercial pesaba casi un kilo y costaba 4.000 dólares.","en":"The first commercial mobile phone weighed nearly a kilogram and cost $4,000.","zhHans":"第一款商业手机重约一公斤，售价4000美元。","zhHant":"第一款商業手機重約一公斤，售價4000美元。"},
-      {"id":6003,"es":"El botón 'me gusta' de Facebook fue pensado originalmente como 'awesome'.","en":"Facebook's 'Like' button was originally planned to be called 'Awesome'.","zhHans":"Facebook的'点赞'按钮最初计划称为'太棒了'。","zhHant":"Facebook的'讚'按鈕最初計劃稱為'太棒了'。"},
-      {"id":6004,"es":"Google comenzó como un proyecto de investigación universitario llamado 'BackRub'.","en":"Google started as a university research project called 'BackRub'.","zhHans":"谷歌最初是一个名为'BackRub'的大学研究项目。","zhHant":"谷歌最初是一個名為'BackRub'的大學研究項目。"},
-      {"id":6005,"es":"El primer videojuego comercial fue Pong, lanzado por Atari en 1972.","en":"The first commercial video game was Pong, released by Atari in 1972.","zhHans":"第一款商业电子游戏是1972年雅达利发布的Pong。","zhHant":"第一款商業電子遊戲是1972年雅達利發布的Pong。"},
-      {"id":6006,"es":"El primer ordenador personal pesaba más de 500 kg.","en":"The first personal computer weighed more than 500 kg.","zhHans":"第一台个人计算机重量超过500公斤。","zhHant":"第一台個人電腦重量超過500公斤。"},
-      {"id":6007,"es":"YouTube fue fundado por tres exempleados de PayPal en febrero de 2005.","en":"YouTube was founded by three former PayPal employees in February 2005.","zhHans":"YouTube由三名前PayPal员工于2005年2月创立。","zhHant":"YouTube由三名前PayPal員工於2005年2月創立。"},
-      {"id":6008,"es":"El código QR fue inventado en Japón en 1994 para rastrear piezas de automóviles.","en":"The QR code was invented in Japan in 1994 to track car parts.","zhHans":"二维码于1994年在日本发明，用于追踪汽车零件。","zhHant":"二維碼於1994年在日本發明，用於追蹤汽車零件。"},
-      {"id":6009,"es":"El primer correo electrónico fue enviado por Ray Tomlinson en 1971.","en":"The first email was sent by Ray Tomlinson in 1971.","zhHans":"第一封电子邮件由雷·汤姆林森于1971年发送。","zhHant":"第一封電子郵件由雷·湯姆林森於1971年發送。"},
-      {"id":6010,"es":"El transistor, inventado en 1947, es el componente más fabricado de la historia.","en":"The transistor, invented in 1947, is the most manufactured component in history.","zhHans":"晶体管于1947年发明，是历史上制造量最大的元件。","zhHant":"電晶體於1947年發明，是歷史上製造量最大的元件。"},
-      {"id":6011,"es":"Amazon comenzó vendiendo solo libros desde el garaje de Jeff Bezos.","en":"Amazon started selling only books from Jeff Bezos's garage.","zhHans":"亚马逊最初只在杰夫·贝佐斯的车库里卖书。","zhHant":"亞馬遜最初只在傑夫·貝佐斯的車庫裡賣書。"},
-      {"id":6012,"es":"El primer iPhone no tenía opción de copiar y pegar texto.","en":"The first iPhone did not have a copy-and-paste feature.","zhHans":"第一代iPhone没有复制粘贴功能。","zhHant":"第一代iPhone沒有複製貼上功能。"},
-      {"id":6013,"es":"El 90% del dato mundial fue generado en los últimos dos años.","en":"90% of the world's data was generated in the last two years.","zhHans":"全球90%的数据是在最近两年内产生的。","zhHant":"全球90%的數據是在最近兩年內產生的。"},
-      {"id":6014,"es":"El GPS fue desarrollado por el ejército de EE.UU. y se abrió al público en 1983.","en":"GPS was developed by the US military and opened to the public in 1983.","zhHans":"GPS由美国军方开发，并于1983年向公众开放。","zhHant":"GPS由美國軍方開發，並於1983年向公眾開放。"},
-      {"id":6015,"es":"El nombre 'Bluetooth' viene de Harald Bluetooth, un rey vikingo del siglo X.","en":"The name 'Bluetooth' comes from Harald Bluetooth, a 10th-century Viking king.","zhHans":"'蓝牙'这个名字来源于10世纪维京国王哈拉尔·蓝牙。","zhHant":"'藍牙'這個名字來源於10世紀維京國王哈拉爾·藍牙。"},
-      {"id":6016,"es":"El primer dominio .com registrado fue Symbolics.com en marzo de 1985.","en":"The first .com domain registered was Symbolics.com in March 1985.","zhHans":"第一个注册的.com域名是1985年3月的Symbolics.com。","zhHant":"第一個註冊的.com域名是1985年3月的Symbolics.com。"},
-      {"id":6017,"es":"La inteligencia artificial ya supera a los humanos en reconocimiento de imágenes.","en":"Artificial intelligence already surpasses humans in image recognition.","zhHans":"人工智能在图像识别方面已经超越了人类。","zhHant":"人工智能在圖像識別方面已經超越了人類。"},
-      {"id":6018,"es":"Un chip moderno contiene más de 100 mil millones de transistores.","en":"A modern chip contains more than 100 billion transistors.","zhHans":"现代芯片包含超过1000亿个晶体管。","zhHant":"現代芯片包含超過1000億個電晶體。"},
-      {"id":6019,"es":"La World Wide Web fue inventada por Tim Berners-Lee en 1989.","en":"The World Wide Web was invented by Tim Berners-Lee in 1989.","zhHans":"万维网由蒂姆·伯纳斯-李于1989年发明。","zhHant":"全球資訊網由提姆·伯納斯-李於1989年發明。"},
-      {"id":6020,"es":"El primer robot industrial fue instalado en General Motors en 1961.","en":"The first industrial robot was installed at General Motors in 1961.","zhHans":"第一台工业机器人于1961年安装在通用汽车公司。","zhHant":"第一台工業機器人於1961年安裝在通用汽車公司。"},
-      {"id":6021,"es":"Netflix comenzó como un servicio de alquiler de DVD por correo postal.","en":"Netflix started as a DVD rental service by mail.","zhHans":"Netflix最初是一项通过邮政租借DVD的服务。","zhHant":"Netflix最初是一項通過郵政租借DVD的服務。"},
-      {"id":6022,"es":"El ordenador más potente del mundo puede hacer más de un trillón de cálculos por segundo.","en":"The world's most powerful computer can do over a trillion calculations per second.","zhHans":"世界上最强大的计算机每秒可进行超过一万亿次计算。","zhHant":"世界上最強大的電腦每秒可進行超過一兆次計算。"},
-      {"id":6023,"es":"Twitter fue creado en una sola tarde de sesión de brainstorming en 2006.","en":"Twitter was created in a single brainstorming session afternoon in 2006.","zhHans":"推特于2006年在一个下午的头脑风暴会议中创建。","zhHant":"推特於2006年在一個下午的腦力激盪會議中創建。"},
-      {"id":6024,"es":"El primer satélite artificial fue el Sputnik 1, lanzado por la URSS en 1957.","en":"The first artificial satellite was Sputnik 1, launched by the USSR in 1957.","zhHans":"第一颗人造卫星是苏联于1957年发射的斯普特尼克1号。","zhHant":"第一顆人造衛星是蘇聯於1957年發射的史普尼克1號。"},
-      {"id":6025,"es":"El lenguaje de programación Python fue nombrado por el grupo cómico Monty Python.","en":"The Python programming language was named after the Monty Python comedy group.","zhHans":"Python编程语言以喜剧团体Monty Python命名。","zhHant":"Python程式語言以喜劇團體Monty Python命名。"}
-    ]
-  },
-  {
-    "id": 7, "es": "Arte y Cultura", "en": "Art & Culture", "zhHans": "艺术与文化", "zhHant": "藝術與文化", "emoji": "🎨",
-    "datos": [
-      {"id":7001,"es":"La Mona Lisa de Leonardo da Vinci mide solo 77 x 53 cm.","en":"Leonardo da Vinci's Mona Lisa measures only 77 x 53 cm.","zhHans":"达芬奇的蒙娜丽莎只有77×53厘米大小。","zhHant":"達文西的蒙娜麗莎只有77×53公分大小。"},
-      {"id":7002,"es":"Beethoven compuso su Novena Sinfonía siendo completamente sordo.","en":"Beethoven composed his Ninth Symphony while completely deaf.","zhHans":"贝多芬在完全失聪的情况下创作了第九交响曲。","zhHant":"貝多芬在完全失聰的情況下創作了第九交響曲。"},
-      {"id":7003,"es":"Shakespeare inventó más de 1.700 palabras que usamos hoy en inglés.","en":"Shakespeare invented over 1,700 words we still use in English today.","zhHans":"莎士比亚发明了1700多个我们今天仍在使用的英语单词。","zhHant":"莎士比亞發明了1700多個我們今天仍在使用的英語單詞。"},
-      {"id":7004,"es":"El Guernica de Picasso mide casi 8 metros de ancho.","en":"Picasso's Guernica is nearly 8 meters wide.","zhHans":"毕加索的《格尔尼卡》宽近8米。","zhHant":"畢卡索的《格爾尼卡》寬近8公尺。"},
-      {"id":7005,"es":"El libro más vendido de la historia, después de la Biblia, es Don Quijote.","en":"The best-selling book in history after the Bible is Don Quixote.","zhHans":"继《圣经》之后，历史上最畅销的书是《堂吉诃德》。","zhHant":"繼《聖經》之後，歷史上最暢銷的書是《唐吉訶德》。"},
-      {"id":7006,"es":"El Coliseo de Roma podía albergar hasta 80.000 espectadores.","en":"The Colosseum in Rome could hold up to 80,000 spectators.","zhHans":"罗马竞技场可容纳多达80,000名观众。","zhHant":"羅馬競技場可容納多達80,000名觀眾。"},
-      {"id":7007,"es":"La Capilla Sixtina tardó 4 años en pintarse; Miguel Ángel lo hizo casi en solitario.","en":"The Sistine Chapel took 4 years to paint; Michelangelo did it almost alone.","zhHans":"西斯廷教堂花了4年时间绘制，米开朗基罗几乎独自完成。","zhHant":"西斯汀教堂花了4年時間繪製，米開朗基羅幾乎獨自完成。"},
-      {"id":7008,"es":"El jazz nació en Nueva Orleans a principios del siglo XX.","en":"Jazz was born in New Orleans at the beginning of the 20th century.","zhHans":"爵士乐在20世纪初诞生于新奥尔良。","zhHant":"爵士樂在20世紀初誕生於紐奧良。"},
-      {"id":7009,"es":"Los hieroglíficos egipcios fueron descifrados gracias a la piedra Rosetta.","en":"Egyptian hieroglyphics were deciphered thanks to the Rosetta Stone.","zhHans":"埃及象形文字得益于罗塞塔石碑而被破译。","zhHant":"埃及象形文字得益於羅塞塔石碑而被破譯。"},
-      {"id":7010,"es":"El Taj Mahal fue construido por el emperador mogol Shah Jahan en honor a su esposa.","en":"The Taj Mahal was built by Mughal emperor Shah Jahan in honor of his wife.","zhHans":"泰姬陵由莫卧儿皇帝沙贾汗为纪念妻子而建。","zhHant":"泰姬陵由蒙兀兒皇帝沙賈汗為紀念妻子而建。"},
-      {"id":7011,"es":"Leonardo da Vinci escribía al revés, de derecha a izquierda.","en":"Leonardo da Vinci wrote backwards, from right to left.","zhHans":"达芬奇从右到左反向书写。","zhHant":"達文西從右到左反向書寫。"},
-      {"id":7012,"es":"Los Juegos Olímpicos modernos fueron fundados por Pierre de Coubertin en 1896.","en":"The modern Olympic Games were founded by Pierre de Coubertin in 1896.","zhHans":"现代奥林匹克运动会由皮埃尔·德·顾拜旦于1896年创立。","zhHant":"現代奧林匹克運動會由皮埃爾·德·顧拜旦於1896年創立。"},
-      {"id":7013,"es":"El Louvre de París es el museo más visitado del mundo.","en":"The Louvre in Paris is the most visited museum in the world.","zhHans":"巴黎卢浮宫是世界上参观人数最多的博物馆。","zhHant":"巴黎羅浮宮是世界上參觀人數最多的博物館。"},
-      {"id":7014,"es":"El flamenco fue declarado Patrimonio Cultural Inmaterial de la Humanidad por la UNESCO.","en":"Flamenco was declared an Intangible Cultural Heritage by UNESCO.","zhHans":"弗拉门戈被联合国教科文组织列为非物质文化遗产。","zhHant":"佛朗明哥被聯合國教科文組織列為非物質文化遺產。"},
-      {"id":7015,"es":"Van Gogh vendió solo un cuadro en vida: La viña roja.","en":"Van Gogh sold only one painting in his lifetime: The Red Vineyard.","zhHans":"梵高一生只卖出了一幅画：《红色葡萄园》。","zhHant":"梵谷一生只賣出了一幅畫：《紅色葡萄園》。"},
-      {"id":7016,"es":"El teatro griego antiguo usaba máscaras para amplificar la voz.","en":"Ancient Greek theater used masks to amplify the voice.","zhHans":"古希腊戏剧使用面具来放大声音。","zhHant":"古希臘戲劇使用面具來放大聲音。"},
-      {"id":7017,"es":"El flamenco tiene más de 50 estilos distintos llamados 'palos'.","en":"Flamenco has over 50 distinct styles called 'palos'.","zhHans":"弗拉门戈有超过50种不同的风格，称为'palos'。","zhHant":"佛朗明哥有超過50種不同的風格，稱為'palos'。"},
-      {"id":7018,"es":"La ópera nació en Italia a finales del siglo XVI.","en":"Opera was born in Italy at the end of the 16th century.","zhHans":"歌剧诞生于16世纪末的意大利。","zhHant":"歌劇誕生於16世紀末的義大利。"},
-      {"id":7019,"es":"El alfabeto latino tiene su origen en el alfabeto fenicio del siglo IX a.C.","en":"The Latin alphabet has its origins in the Phoenician alphabet of the 9th century BC.","zhHans":"拉丁字母起源于公元前9世纪的腓尼基字母。","zhHant":"拉丁字母起源於公元前9世紀的腓尼基字母。"},
-      {"id":7020,"es":"El ballet clásico se desarrolló en la corte de Luis XIV de Francia.","en":"Classical ballet developed in the court of Louis XIV of France.","zhHans":"古典芭蕾在法国路易十四宫廷中发展起来。","zhHant":"古典芭蕾在法國路易十四宮廷中發展起來。"},
-      {"id":7021,"es":"Cervantes y Shakespeare murieron el mismo año: 1616.","en":"Cervantes and Shakespeare both died in the same year: 1616.","zhHans":"塞万提斯和莎士比亚在同一年去世：1616年。","zhHant":"塞萬提斯和莎士比亞在同一年去世：1616年。"},
-      {"id":7022,"es":"El manga japonés tiene sus raíces en los dibujos del siglo XII.","en":"Japanese manga has its roots in 12th-century drawings.","zhHans":"日本漫画的根源可追溯到12世纪的绘画。","zhHant":"日本漫畫的根源可追溯到12世紀的繪畫。"},
-      {"id":7023,"es":"La Torre Eiffel fue construida en solo dos años, de 1887 a 1889.","en":"The Eiffel Tower was built in just two years, from 1887 to 1889.","zhHans":"埃菲尔铁塔仅用两年时间建成，从1887年到1889年。","zhHant":"艾菲爾鐵塔僅用兩年時間建成，從1887年到1889年。"},
-      {"id":7024,"es":"El término 'Renaissance' significa 'renacimiento' en francés.","en":"The term 'Renaissance' means 'rebirth' in French.","zhHans":"'文艺复兴'（Renaissance）在法语中意为'重生'。","zhHant":"'文藝復興'（Renaissance）在法語中意為'重生'。"},
-      {"id":7025,"es":"La Gran Muralla es Patrimonio de la Humanidad desde 1987.","en":"The Great Wall has been a UNESCO World Heritage Site since 1987.","zhHans":"长城自1987年起成为联合国教科文组织世界遗产。","zhHant":"長城自1987年起成為聯合國教科文組織世界遺產。"}
-    ]
-  },
-  {
-    "id": 8, "es": "Naturaleza", "en": "Nature", "zhHans": "自然", "zhHant": "自然", "emoji": "🌿",
-    "datos": [
-      {"id":8001,"es":"Los árboles se comunican entre sí a través de redes de hongos subterráneos.","en":"Trees communicate with each other through underground fungal networks.","zhHans":"树木通过地下真菌网络相互交流。","zhHant":"樹木通過地下真菌網絡相互交流。"},
-      {"id":8002,"es":"Un árbol baobab puede almacenar hasta 120.000 litros de agua en su tronco.","en":"A baobab tree can store up to 120,000 liters of water in its trunk.","zhHans":"猴面包树的树干可以储存多达120,000升的水。","zhHant":"猴麵包樹的樹幹可以儲存多達120,000升的水。"},
-      {"id":8003,"es":"El árbol más alto del mundo es una secuoya de 115,7 metros en California.","en":"The world's tallest tree is a 115.7-meter redwood in California.","zhHans":"世界上最高的树是加利福尼亚州一棵115.7米高的红杉。","zhHant":"世界上最高的樹是加利福尼亞州一棵115.7公尺高的紅杉。"},
-      {"id":8004,"es":"Los hongos no son plantas ni animales; son un reino propio.","en":"Fungi are neither plants nor animals; they form their own kingdom.","zhHans":"真菌既不是植物也不是动物，它们构成自己独立的界。","zhHant":"真菌既不是植物也不是動物，它們構成自己獨立的界。"},
-      {"id":8005,"es":"El bambú puede crecer hasta 90 cm en un solo día.","en":"Bamboo can grow up to 90 cm in a single day.","zhHans":"竹子一天可以生长多达90厘米。","zhHant":"竹子一天可以生長多達90公分。"},
-      {"id":8006,"es":"Las plantas producen oxígeno mediante la fotosíntesis usando luz solar y CO₂.","en":"Plants produce oxygen through photosynthesis using sunlight and CO₂.","zhHans":"植物通过光合作用，利用阳光和CO₂产生氧气。","zhHant":"植物通過光合作用，利用陽光和CO₂產生氧氣。"},
-      {"id":8007,"es":"El árbol de Pando en Utah es un organismo único con 47.000 troncos y 80.000 años.","en":"The Pando tree in Utah is a single organism with 47,000 trunks and 80,000 years old.","zhHans":"犹他州的潘多树是一个单一生物体，有47,000根树干，已有80,000年历史。","zhHant":"猶他州的潘多樹是一個單一生物體，有47,000根樹幹，已有80,000年歷史。"},
-      {"id":8008,"es":"El veneno de la rana dardo dorada es suficiente para matar a 10 personas.","en":"The golden poison frog has enough venom to kill 10 people.","zhHans":"金毒箭蛙的毒液足以杀死10个人。","zhHant":"金毒箭蛙的毒液足以殺死10個人。"},
-      {"id":8009,"es":"Los glaciares contienen el 69% del agua dulce del planeta.","en":"Glaciers contain 69% of the planet's freshwater.","zhHans":"冰川含有地球69%的淡水。","zhHant":"冰川含有地球69%的淡水。"},
-      {"id":8010,"es":"Una tormenta eléctrica produce suficiente energía para iluminar una ciudad.","en":"A thunderstorm produces enough energy to power a city.","zhHans":"一场雷暴产生的能量足以为一座城市提供电力。","zhHant":"一場雷暴產生的能量足以為一座城市提供電力。"},
-      {"id":8011,"es":"Las tormentas de arena del Sahara fertilizan el Amazonas con sus minerales.","en":"Saharan sandstorms fertilize the Amazon with their minerals.","zhHans":"撒哈拉沙尘暴用其矿物质为亚马逊雨林施肥。","zhHant":"撒哈拉沙塵暴用其礦物質為亞馬遜雨林施肥。"},
-      {"id":8012,"es":"El agua puede existir en estado sólido, líquido y gaseoso de forma simultánea.","en":"Water can exist in solid, liquid and gaseous states simultaneously.","zhHans":"水可以同时以固态、液态和气态存在。","zhHant":"水可以同時以固態、液態和氣態存在。"},
-      {"id":8013,"es":"El vuelo de una mariposa en Brasil puede influir en el clima en Texas.","en":"A butterfly flapping its wings in Brazil can influence weather in Texas.","zhHans":"巴西一只蝴蝶扇动翅膀可能影响德克萨斯州的天气。","zhHant":"巴西一隻蝴蝶扇動翅膀可能影響德克薩斯州的天氣。"},
-      {"id":8014,"es":"La planta Venus atrapamoscas puede contar: necesita dos toques para cerrarse.","en":"The Venus flytrap can count: it needs two touches to close.","zhHans":"捕蝇草会计数：它需要被触碰两次才会关闭。","zhHant":"捕蠅草會計數：它需要被觸碰兩次才會關閉。"},
-      {"id":8015,"es":"Las auroras boreales se producen cuando partículas solares chocan con la atmósfera.","en":"Northern lights occur when solar particles collide with the atmosphere.","zhHans":"极光是太阳粒子与大气层碰撞时产生的。","zhHant":"極光是太陽粒子與大氣層碰撞時產生的。"},
-      {"id":8016,"es":"El 71% de la superficie terrestre está cubierta por agua.","en":"71% of Earth's surface is covered by water.","zhHans":"地球表面的71%被水覆盖。","zhHant":"地球表面的71%被水覆蓋。"},
-      {"id":8017,"es":"Los terremotos más grandes liberan la energía de miles de bombas atómicas.","en":"The largest earthquakes release the energy of thousands of atomic bombs.","zhHans":"最大的地震释放出相当于数千枚原子弹的能量。","zhHant":"最大的地震釋放出相當於數千枚原子彈的能量。"},
-      {"id":8018,"es":"La temperatura en el interior de la Tierra puede alcanzar los 6.000 °C.","en":"The temperature inside Earth can reach 6,000°C.","zhHans":"地球内部温度可达6,000°C。","zhHant":"地球內部溫度可達6,000°C。"},
-      {"id":8019,"es":"Los océanos absorben el 25% del CO₂ que emitimos y regulan el clima global.","en":"Oceans absorb 25% of the CO₂ we emit and regulate the global climate.","zhHans":"海洋吸收我们排放的25%的CO₂，并调节全球气候。","zhHant":"海洋吸收我們排放的25%的CO₂，並調節全球氣候。"},
-      {"id":8020,"es":"Un volcán submarino llamado Hunga Tonga hizo la mayor explosión del siglo XXI.","en":"An underwater volcano called Hunga Tonga caused the largest explosion of the 21st century.","zhHans":"一座名为洪加汤加的海底火山引发了21世纪最大的爆炸。","zhHant":"一座名為洪加湯加的海底火山引發了21世紀最大的爆炸。"},
-      {"id":8021,"es":"Los bosques cubren el 31% de la superficie terrestre del planeta.","en":"Forests cover 31% of the planet's land surface.","zhHans":"森林覆盖了地球陆地面积的31%。","zhHant":"森林覆蓋了地球陸地面積的31%。"},
-      {"id":8022,"es":"La sequía más larga registrada duró 400 años en el desierto de Atacama.","en":"The longest recorded drought lasted 400 years in the Atacama Desert.","zhHans":"有记录以来最长的干旱持续了400年，发生在阿塔卡马沙漠。","zhHant":"有記錄以來最長的乾旱持續了400年，發生在阿塔卡馬沙漠。"},
-      {"id":8023,"es":"Las nubes de tormenta pueden contener más de 500.000 toneladas de agua.","en":"Storm clouds can contain more than 500,000 tonnes of water.","zhHans":"暴风云可含有超过500,000吨的水。","zhHant":"暴風雲可含有超過500,000噸的水。"},
-      {"id":8024,"es":"La Gran Mancha Roja de Júpiter es una tormenta que lleva más de 350 años activa.","en":"Jupiter's Great Red Spot is a storm that has been active for over 350 years.","zhHans":"木星的大红斑是一场持续了350多年的风暴。","zhHant":"木星的大紅斑是一場持續了350多年的風暴。"},
-      {"id":8025,"es":"El mar Muerto es tan salado que los bañistas flotan sin esfuerzo.","en":"The Dead Sea is so salty that swimmers float effortlessly.","zhHans":"死海的盐度极高，游泳者可以毫不费力地漂浮。","zhHant":"死海的鹽度極高，游泳者可以毫不費力地漂浮。"}
-    ]
-  },
-  {
-    "id": 9, "es": "Deporte", "en": "Sports", "zhHans": "体育", "zhHant": "體育", "emoji": "⚽",
-    "datos": [
-      {"id":9001,"es":"El fútbol es el deporte más popular del mundo, con más de 4.000 millones de seguidores.","en":"Football is the world's most popular sport, with over 4 billion followers.","zhHans":"足球是世界上最受欢迎的运动，拥有超过40亿球迷。","zhHant":"足球是世界上最受歡迎的運動，擁有超過40億球迷。"},
-      {"id":9002,"es":"Usain Bolt corrió los 100 metros en 9,58 segundos, récord mundial desde 2009.","en":"Usain Bolt ran 100 meters in 9.58 seconds, world record since 2009.","zhHans":"尤塞恩·博尔特以9.58秒跑完100米，自2009年以来保持世界纪录。","zhHant":"尤塞恩·博爾特以9.58秒跑完100公尺，自2009年以來保持世界紀錄。"},
-      {"id":9003,"es":"El ajedrez fue inventado en India hace más de 1.500 años.","en":"Chess was invented in India over 1,500 years ago.","zhHans":"国际象棋是1500多年前在印度发明的。","zhHant":"國際象棋是1500多年前在印度發明的。"},
-      {"id":9004,"es":"Michael Jordan fue rechazado del equipo de baloncesto de su instituto.","en":"Michael Jordan was cut from his high school basketball team.","zhHans":"迈克尔·乔丹曾被高中篮球队拒绝。","zhHant":"麥可·喬丹曾被高中籃球隊拒絕。"},
-      {"id":9005,"es":"Los Juegos Olímpicos modernos se celebraron por primera vez en Atenas en 1896.","en":"The modern Olympic Games were first held in Athens in 1896.","zhHans":"现代奥林匹克运动会于1896年首次在雅典举行。","zhHant":"現代奧林匹克運動會於1896年首次在雅典舉行。"},
-      {"id":9006,"es":"El tenis de mesa es el deporte más practicado en China.","en":"Table tennis is the most practiced sport in China.","zhHans":"乒乓球是中国最流行的运动。","zhHant":"乒乓球是中國最流行的運動。"},
-      {"id":9007,"es":"La maratón mide 42,195 km porque esa fue la distancia que corrió Filípides en la Antigua Grecia.","en":"The marathon is 42.195 km because that was the distance Pheidippides ran in Ancient Greece.","zhHans":"马拉松全长42.195公里，因为这是古希腊菲迪皮季斯跑的距离。","zhHant":"馬拉松全長42.195公里，因為這是古希臘斐迪庇第斯跑的距離。"},
-      {"id":9008,"es":"El golf fue el primer deporte practicado en la Luna por el astronauta Alan Shepard.","en":"Golf was the first sport played on the Moon by astronaut Alan Shepard.","zhHans":"高尔夫是宇航员艾伦·谢泼德在月球上打的第一项运动。","zhHant":"高爾夫是太空人艾倫·謝帕德在月球上打的第一項運動。"},
-      {"id":9009,"es":"Rafael Nadal es el único tenista con 14 títulos de Roland Garros.","en":"Rafael Nadal is the only tennis player with 14 Roland Garros titles.","zhHans":"拉斐尔·纳达尔是唯一赢得14次法国网球公开赛冠军的球员。","zhHant":"拉斐爾·納達爾是唯一贏得14次法國網球公開賽冠軍的球員。"},
-      {"id":9010,"es":"El sumo es el deporte nacional de Japón y tiene más de 2.000 años de historia.","en":"Sumo is Japan's national sport and has over 2,000 years of history.","zhHans":"相扑是日本的国家运动，有超过2000年的历史。","zhHant":"相撲是日本的國家運動，有超過2000年的歷史。"},
-      {"id":9011,"es":"El deporte más rápido del mundo es el bádminton, con proyectiles a 400 km/h.","en":"The world's fastest sport is badminton, with shuttlecocks reaching 400 km/h.","zhHans":"世界上速度最快的运动是羽毛球，羽毛球速度可达400公里/小时。","zhHant":"世界上速度最快的運動是羽毛球，羽毛球速度可達400公里/小時。"},
-      {"id":9012,"es":"El béisbol es el deporte más popular en Cuba, República Dominicana y Japón.","en":"Baseball is the most popular sport in Cuba, the Dominican Republic, and Japan.","zhHans":"棒球是古巴、多米尼加共和国和日本最受欢迎的运动。","zhHant":"棒球是古巴、多明尼加共和國和日本最受歡迎的運動。"},
-      {"id":9013,"es":"La Copa del Mundo de fútbol es el evento deportivo más visto del planeta.","en":"The FIFA World Cup is the most watched sporting event on the planet.","zhHans":"足球世界杯是全球观看人数最多的体育赛事。","zhHant":"足球世界盃是全球觀看人數最多的體育賽事。"},
-      {"id":9014,"es":"Los Juegos Olímpicos de 1900 en París incluyeron competición de tiro a palomas vivas.","en":"The 1900 Paris Olympics included live pigeon shooting as a competition.","zhHans":"1900年巴黎奥运会包括了射击活鸽子的比赛。","zhHant":"1900年巴黎奧運會包括了射擊活鴿子的比賽。"},
-      {"id":9015,"es":"El récord mundial de flexiones es de 10.507 en 24 horas.","en":"The world record for push-ups is 10,507 in 24 hours.","zhHans":"24小时内俯卧撑的世界纪录是10,507次。","zhHant":"24小時內伏地挺身的世界紀錄是10,507次。"},
-      {"id":9016,"es":"El baloncesto fue inventado en 1891 por el canadiense James Naismith.","en":"Basketball was invented in 1891 by Canadian James Naismith.","zhHans":"篮球由加拿大人詹姆斯·奈史密斯于1891年发明。","zhHant":"籃球由加拿大人詹姆斯·奈史密斯於1891年發明。"},
-      {"id":9017,"es":"El nadador Michael Phelps ganó 23 medallas de oro olímpicas en su carrera.","en":"Swimmer Michael Phelps won 23 Olympic gold medals in his career.","zhHans":"游泳运动员迈克尔·菲尔普斯在职业生涯中赢得了23枚奥运金牌。","zhHant":"游泳運動員麥可·菲爾普斯在職業生涯中贏得了23枚奧運金牌。"},
-      {"id":9018,"es":"El Tour de Francia se disputa desde 1903 y es la carrera ciclista más famosa.","en":"The Tour de France has been held since 1903 and is the most famous cycling race.","zhHans":"环法自行车赛自1903年起举办，是最著名的自行车比赛。","zhHant":"環法自行車賽自1903年起舉辦，是最著名的自行車比賽。"},
-      {"id":9019,"es":"El rugby fue inventado en 1823 cuando un jugador cogió el balón con las manos.","en":"Rugby was invented in 1823 when a player picked up the ball with his hands.","zhHans":"橄榄球于1823年发明，当时一名球员用手捡起了球。","zhHant":"橄欖球於1823年發明，當時一名球員用手撿起了球。"},
-      {"id":9020,"es":"La esgrima es uno de los pocos deportes que ha estado en todos los Juegos Olímpicos modernos.","en":"Fencing is one of the few sports that has featured in every modern Olympics.","zhHans":"击剑是少数几个在每届现代奥运会上都有的运动项目之一。","zhHant":"擊劍是少數幾個在每屆現代奧運會上都有的運動項目之一。"},
-      {"id":9021,"es":"El hockey sobre hielo tiene la temporada más larga de los deportes profesionales.","en":"Ice hockey has the longest regular season of professional sports.","zhHans":"冰球拥有职业体育中最长的常规赛季。","zhHant":"冰球擁有職業體育中最長的常規賽季。"},
-      {"id":9022,"es":"El ping-pong fue inventado en Inglaterra como entretenimiento de salón en el siglo XIX.","en":"Ping-pong was invented in England as drawing-room entertainment in the 19th century.","zhHans":"乒乓球在19世纪作为英国客厅娱乐活动被发明出来。","zhHant":"乒乓球在19世紀作為英國客廳娛樂活動被發明出來。"},
-      {"id":9023,"es":"Simone Biles tiene más de 30 medallas en campeonatos mundiales de gimnasia.","en":"Simone Biles has over 30 medals at World Gymnastics Championships.","zhHans":"西蒙·拜尔斯在世界体操锦标赛上赢得了超过30枚奖牌。","zhHant":"西蒙·拜爾斯在世界體操錦標賽上贏得了超過30枚獎牌。"},
-      {"id":9024,"es":"La pelota de golf tiene entre 300 y 500 pequeños hoyuelos en su superficie.","en":"A golf ball has between 300 and 500 small dimples on its surface.","zhHans":"高尔夫球表面有300到500个小凹坑。","zhHant":"高爾夫球表面有300到500個小凹坑。"},
-      {"id":9025,"es":"El fútbol americano fue derivado del rugby a finales del siglo XIX en EE.UU.","en":"American football was derived from rugby in the late 19th century in the US.","zhHans":"美式橄榄球是19世纪末美国从橄榄球衍生出来的运动。","zhHant":"美式橄欖球是19世紀末美國從橄欖球衍生出來的運動。"}
-    ]
-  },
-  {
-    "id": 10, "es": "Comida", "en": "Food", "zhHans": "美食", "zhHant": "美食", "emoji": "🍕",
-    "datos": [
-      {"id":10001,"es":"La pizza fue originalmente un plato de los pobres de Nápoles en el siglo XVIII.","en":"Pizza was originally a poor people's dish in 18th-century Naples.","zhHans":"披萨最初是18世纪那不勒斯穷人的食物。","zhHant":"披薩最初是18世紀那不勒斯窮人的食物。"},
-      {"id":10002,"es":"La miel es el único alimento que nunca caduca; se han encontrado comestible con 3.000 años.","en":"Honey is the only food that never expires; 3,000-year-old honey has been found edible.","zhHans":"蜂蜜是唯一不会过期的食物，3000年前的蜂蜜仍可食用。","zhHant":"蜂蜜是唯一不會過期的食物，3000年前的蜂蜜仍可食用。"},
-      {"id":10003,"es":"El chocolate fue originalmente una bebida amarga consumida por los aztecas.","en":"Chocolate was originally a bitter drink consumed by the Aztecs.","zhHans":"巧克力最初是阿兹特克人饮用的苦味饮料。","zhHant":"巧克力最初是阿茲特克人飲用的苦味飲料。"},
-      {"id":10004,"es":"El tomate es botánicamente una fruta, aunque se usa como verdura en cocina.","en":"A tomato is botanically a fruit, although used as a vegetable in cooking.","zhHans":"番茄在植物学上是一种水果，但在烹饪中作为蔬菜使用。","zhHant":"番茄在植物學上是一種水果，但在烹飪中作為蔬菜使用。"},
-      {"id":10005,"es":"El wasabi real es tan raro que la mayoría del wasabi en restaurantes es rábano picante coloreado.","en":"Real wasabi is so rare that most restaurant wasabi is colored horseradish.","zhHans":"真正的山葵非常稀有，大多数餐厅里的山葵都是染色的辣根。","zhHant":"真正的山葵非常稀有，大多數餐廳裡的山葵都是染色的辣根。"},
-      {"id":10006,"es":"El café es la segunda bebida más consumida en el mundo después del agua.","en":"Coffee is the second most consumed drink in the world after water.","zhHans":"咖啡是继水之后世界上消费量第二大的饮料。","zhHant":"咖啡是繼水之後世界上消費量第二大的飲料。"},
-      {"id":10007,"es":"Los italianos consumen más de 25 kg de pasta por persona al año.","en":"Italians consume over 25 kg of pasta per person per year.","zhHans":"意大利人每年人均消费超过25公斤意大利面。","zhHant":"義大利人每年人均消費超過25公斤義大利麵。"},
-      {"id":10008,"es":"El chile más picante del mundo es el Pepper X, con más de 2 millones de Scoville.","en":"The world's hottest chili is Pepper X, with over 2 million Scoville units.","zhHans":"世界上最辣的辣椒是Pepper X，超过200万史高维尔单位。","zhHant":"世界上最辣的辣椒是Pepper X，超過200萬史高維爾單位。"},
-      {"id":10009,"es":"Las espinacas no tienen tanto hierro como se creía; el mito surgió de un error de coma decimal.","en":"Spinach does not have as much iron as believed; the myth came from a decimal point error.","zhHans":"菠菜的铁含量没有人们认为的那么高，这个误解来自一个小数点错误。","zhHant":"菠菜的鐵含量沒有人們認為的那麼高，這個誤解來自一個小數點錯誤。"},
-      {"id":10010,"es":"El sushi original era un método de conservación del pescado con arroz fermentado.","en":"Original sushi was a method of preserving fish with fermented rice.","zhHans":"最初的寿司是一种用发酵米饭保存鱼的方法。","zhHant":"最初的壽司是一種用發酵米飯保存魚的方法。"},
-      {"id":10011,"es":"Francia tiene más de 1.200 variedades de queso reconocidas oficialmente.","en":"France has over 1,200 officially recognized varieties of cheese.","zhHans":"法国有超过1200种官方认可的奶酪品种。","zhHant":"法國有超過1200種官方認可的奶酪品種。"},
-      {"id":10012,"es":"La vainilla es la segunda especia más cara del mundo, después del azafrán.","en":"Vanilla is the second most expensive spice in the world, after saffron.","zhHans":"香草是世界上第二贵的香料，仅次于藏红花。","zhHant":"香草是世界上第二貴的香料，僅次於番紅花。"},
-      {"id":10013,"es":"El aguacate es técnicamente una baya, igual que el plátano y la sandía.","en":"Avocado is technically a berry, as are bananas and watermelons.","zhHans":"牛油果在技术上是浆果，香蕉和西瓜也是。","zhHant":"酪梨在技術上是漿果，香蕉和西瓜也是。"},
-      {"id":10014,"es":"El pan es uno de los alimentos más antiguos; se han encontrado restos de 14.000 años.","en":"Bread is one of the oldest foods; remains dating back 14,000 years have been found.","zhHans":"面包是最古老的食物之一，已发现14,000年前的面包残留物。","zhHant":"麵包是最古老的食物之一，已發現14,000年前的麵包殘留物。"},
-      {"id":10015,"es":"Los chiles contienen capsaicina, que engaña al cerebro haciéndole creer que hay calor.","en":"Chilis contain capsaicin, which tricks the brain into feeling heat.","zhHans":"辣椒含有辣椒素，欺骗大脑使其感觉有热量。","zhHant":"辣椒含有辣椒素，欺騙大腦使其感覺有熱量。"},
-      {"id":10016,"es":"El helado fue inventado en China hace más de 2.000 años con nieve y zumo de fruta.","en":"Ice cream was invented in China over 2,000 years ago using snow and fruit juice.","zhHans":"冰淇淋是2000多年前在中国用雪和果汁发明的。","zhHant":"冰淇淋是2000多年前在中國用雪和果汁發明的。"},
-      {"id":10017,"es":"El azúcar era tan caro en la Edad Media que era considerado una especia de lujo.","en":"Sugar was so expensive in the Middle Ages it was considered a luxury spice.","zhHans":"在中世纪，糖非常昂贵，被视为一种奢侈香料。","zhHant":"在中世紀，糖非常昂貴，被視為一種奢侈香料。"},
-      {"id":10018,"es":"Los japoneses comen más de 5.000 millones de porciones de ramen instantáneo al año.","en":"The Japanese eat over 5 billion servings of instant ramen per year.","zhHans":"日本人每年消费超过500亿份方便面。","zhHant":"日本人每年消費超過500億份方便麵。"},
-      {"id":10019,"es":"El ketchup fue vendido como medicamento en los años 1830 para tratar dolencias digestivas.","en":"Ketchup was sold as medicine in the 1830s to treat digestive ailments.","zhHans":"番茄酱在1830年代作为治疗消化疾病的药物出售。","zhHant":"番茄醬在1830年代作為治療消化疾病的藥物出售。"},
-      {"id":10020,"es":"El queso emmental tiene agujeros porque las bacterias producen CO₂ durante la maduración.","en":"Emmental cheese has holes because bacteria produce CO₂ during aging.","zhHans":"埃门塔尔奶酪有孔是因为细菌在熟化过程中产生CO₂。","zhHant":"埃門塔爾奶酪有孔是因為細菌在熟化過程中產生CO₂。"},
-      {"id":10021,"es":"El café fue descubierto, según la leyenda, por un pastor etíope que vio sus cabras bailar.","en":"Coffee was discovered, according to legend, by an Ethiopian shepherd who saw his goats dancing.","zhHans":"据传说，咖啡是由一位埃塞俄比亚牧羊人发现的，他看到山羊跳舞。","zhHant":"據傳說，咖啡是由一位衣索比亞牧羊人發現的，他看到山羊跳舞。"},
-      {"id":10022,"es":"Los frutos secos más consumidos en el mundo son el maní y las almendras.","en":"The most consumed nuts in the world are peanuts and almonds.","zhHans":"世界上消费量最大的坚果是花生和杏仁。","zhHant":"世界上消費量最大的堅果是花生和杏仁。"},
-      {"id":10023,"es":"El aceite de oliva virgen extra debe tener menos de 0,8 grados de acidez.","en":"Extra virgin olive oil must have less than 0.8 degrees of acidity.","zhHans":"特级初榨橄榄油的酸度必须低于0.8度。","zhHant":"特級初榨橄欖油的酸度必須低於0.8度。"},
-      {"id":10024,"es":"El maíz es el cereal más producido en el mundo, superando al trigo y al arroz.","en":"Corn is the most produced cereal in the world, surpassing wheat and rice.","zhHans":"玉米是世界上产量最大的谷物，超过小麦和水稻。","zhHant":"玉米是世界上產量最大的穀物，超過小麥和水稻。"},
-      {"id":10025,"es":"El cacao en polvo tiene más antioxidantes que el vino tinto o el té verde.","en":"Cocoa powder has more antioxidants than red wine or green tea.","zhHans":"可可粉的抗氧化剂含量高于红葡萄酒或绿茶。","zhHant":"可可粉的抗氧化劑含量高於紅葡萄酒或綠茶。"}
-    ]
-  }
+    {
+        "id":  1,
+        "es":  "Ciencia",
+        "en":  "Science",
+        "zhHans":  "Ã§Â§â€˜Ã¥Â­Â¦",
+        "zhHant":  "Ã§Â§â€˜Ã¥Â­Â¸",
+        "emoji":  "Ã°Å¸â€Â¬",
+        "datos":  [
+                      {
+                          "id":  1001,
+                          "es":  "Tu ADN coincide en un 98,7% con el de un chimpancé.",
+                          "en":  "Human DNA shares 98.7% with chimpanzees.",
+                          "zhHans":  "Ã¤ÂºÂºÃ§Â±Â»DNAÃ¤Â¸Å½Ã©Â»â€˜Ã§Å’Â©Ã§Å’Â©Ã¥â€¦Â±Ã¤ÂºÂ«98.7%Ã£â‚¬â€š",
+                          "zhHant":  "Ã¤ÂºÂºÃ©Â¡Å¾DNAÃ¨Ë†â€¡Ã©Â»â€˜Ã§Å’Â©Ã§Å’Â©Ã¥â€¦Â±Ã¤ÂºÂ«98.7%Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  1002,
+                          "es":  "La luz del Sol tarda unos 8 minutos en alcanzarnos, así que siempre lo vemos con retraso.",
+                          "en":  "Light takes 8 minutes to travel from the Sun to Earth.",
+                          "zhHans":  "Ã¥â€¦â€°Ã¤Â»Å½Ã¥Â¤ÂªÃ©ËœÂ³Ã¥Ë†Â°Ã¥Å“Â°Ã§ÂÆ’Ã©Å“â‚¬Ã¨Â¦Â8Ã¥Ë†â€ Ã©â€™Å¸Ã£â‚¬â€š",
+                          "zhHant":  "Ã¥â€¦â€°Ã¥Â¾Å¾Ã¥Â¤ÂªÃ©â„¢Â½Ã¥Ë†Â°Ã¥Å“Â°Ã§ÂÆ’Ã©Å“â‚¬Ã¨Â¦Â8Ã¥Ë†â€ Ã©ÂËœÃ£â‚¬â€š"
+                      },
+                      {
+                          "id":  1004,
+                          "es":  "Un rayo puede calentarse hasta 30.000 °C: más que la superficie del Sol.",
+                          "en":  "A lightning bolt reaches 30,000Ã‚Â°C, five times hotter than the sun\u0027s surface.",
+                          "zhHans":  "Ã©â€”ÂªÃ§â€ÂµÃ¦Â¸Â©Ã¥ÂºÂ¦Ã¨Â¾Â¾30000Ã‚Â°CÃ¯Â¼Å’Ã¦ËœÂ¯Ã¥Â¤ÂªÃ©ËœÂ³Ã¨Â¡Â¨Ã©ÂÂ¢Ã§Å¡â€žÃ¤Âºâ€Ã¥â‚¬ÂÃ£â‚¬â€š",
+                          "zhHant":  "Ã©â€“Æ’Ã©â€ºÂ»Ã¦ÂºÂ«Ã¥ÂºÂ¦Ã©Ââ€30000Ã‚Â°CÃ¯Â¼Å’Ã¦ËœÂ¯Ã¥Â¤ÂªÃ©â„¢Â½Ã¨Â¡Â¨Ã©ÂÂ¢Ã§Å¡â€žÃ¤Âºâ€Ã¥â‚¬ÂÃ£â‚¬â€š"
+                      },
+                      {
+                          "id":  1005,
+                          "es":  "El universo tiene unos 13.800 millones de años: todo empezó muchísimo antes de que existiera la Tierra.",
+                          "en":  "The universe is about 13.8 billion years old.",
+                          "zhHans":  "Ã¥Â®â€¡Ã¥Â®â„¢Ã§ÂºÂ¦Ã¦Å“â€°138Ã¤ÂºÂ¿Ã¥Â¹Â´Ã§Å¡â€žÃ¥Å½â€ Ã¥ÂÂ²Ã£â‚¬â€š",
+                          "zhHant":  "Ã¥Â®â€¡Ã¥Â®â„¢Ã§Â´â€žÃ¦Å“â€°138Ã¥â€žâ€žÃ¥Â¹Â´Ã§Å¡â€žÃ¦Â­Â·Ã¥ÂÂ²Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  1008,
+                          "es":  "Bajo el agua, el sonido corre unas cuatro veces más rápido que en el aire.",
+                          "en":  "Sound travels four times faster in water than in air.",
+                          "zhHans":  "Ã¥Â£Â°Ã©Å¸Â³Ã¥Å“Â¨Ã¦Â°Â´Ã¤Â¸Â­Ã§Å¡â€žÃ¤Â¼Â Ã¦â€™Â­Ã©â‚¬Å¸Ã¥ÂºÂ¦Ã¦ËœÂ¯Ã§Â©ÂºÃ¦Â°â€Ã¤Â¸Â­Ã§Å¡â€žÃ¥â€ºâ€ºÃ¥â‚¬ÂÃ£â‚¬â€š",
+                          "zhHant":  "Ã¨ÂÂ²Ã©Å¸Â³Ã¥Å“Â¨Ã¦Â°Â´Ã¤Â¸Â­Ã§Å¡â€žÃ¥â€šÂ³Ã¦â€™Â­Ã©â‚¬Å¸Ã¥ÂºÂ¦Ã¦ËœÂ¯Ã§Â©ÂºÃ¦Â°Â£Ã¤Â¸Â­Ã§Å¡â€žÃ¥â€ºâ€ºÃ¥â‚¬ÂÃ£â‚¬â€š"
+                      },
+                      {
+                          "id":  1009,
+                          "es":  "Una estrella de neutrones puede girar más de 700 veces por segundo.",
+                          "en":  "Neutron stars can spin up to 700 times per second.",
+                          "zhHans":  "Ã¤Â¸Â­Ã¥Â­ÂÃ¦ËœÅ¸Ã¦Â¯ÂÃ§Â§â€™Ã¥ÂÂ¯Ã¦â€”â€¹Ã¨Â½Â¬Ã¥Â¤Å¡Ã¨Â¾Â¾700Ã¦Â¬Â¡Ã£â‚¬â€š",
+                          "zhHant":  "Ã¤Â¸Â­Ã¥Â­ÂÃ¦ËœÅ¸Ã¦Â¯ÂÃ§Â§â€™Ã¥ÂÂ¯Ã¦â€”â€¹Ã¨Â½â€°Ã¥Â¤Å¡Ã©Ââ€700Ã¦Â¬Â¡Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  1010,
+                          "es":  "En un simple grano de arena hay más átomos que estrellas visibles en el cielo.",
+                          "en":  "The number of atoms in a grain of sand exceeds the visible stars.",
+                          "zhHans":  "Ã¤Â¸â‚¬Ã§Â²â€™Ã¦Â²â„¢Ã¥Â­ÂÃ¤Â¸Â­Ã§Å¡â€žÃ¥Å½Å¸Ã¥Â­ÂÃ¦â€¢Â°Ã©â€¡ÂÃ¨Â¶â€¦Ã¨Â¿â€¡Ã¨â€šâ€°Ã§Å“Â¼Ã¥ÂÂ¯Ã¨Â§ÂÃ§Å¡â€žÃ¦ËœÅ¸Ã¦ËœÅ¸Ã¦â€¢Â°Ã©â€¡ÂÃ£â‚¬â€š",
+                          "zhHant":  "Ã¤Â¸â‚¬Ã§Â²â€™Ã¦Â²â„¢Ã¥Â­ÂÃ¤Â¸Â­Ã§Å¡â€žÃ¥Å½Å¸Ã¥Â­ÂÃ¦â€¢Â¸Ã©â€¡ÂÃ¨Â¶â€¦Ã©ÂÅ½Ã¨â€šâ€°Ã§Å“Â¼Ã¥ÂÂ¯Ã¨Â¦â€¹Ã§Å¡â€žÃ¦ËœÅ¸Ã¦ËœÅ¸Ã¦â€¢Â¸Ã©â€¡ÂÃ£â‚¬â€š"
+                      },
+                      {
+                          "id":  1011,
+                          "es":  "Venus gira al revés que la mayoría de planetas del sistema solar.",
+                          "en":  "Venus rotates in the opposite direction to most planets in the solar system.",
+                          "zhHans":  "Ã©â€¡â€˜Ã¦ËœÅ¸Ã§Å¡â€žÃ¨â€¡ÂªÃ¨Â½Â¬Ã¦â€“Â¹Ã¥Ââ€˜Ã¤Â¸Å½Ã¥Â¤ÂªÃ©ËœÂ³Ã§Â³Â»Ã¥Â¤Â§Ã¥Â¤Å¡Ã¦â€¢Â°Ã¨Â¡Å’Ã¦ËœÅ¸Ã§â€ºÂ¸Ã¥ÂÂÃ£â‚¬â€š",
+                          "zhHant":  "Ã©â€¡â€˜Ã¦ËœÅ¸Ã§Å¡â€žÃ¨â€¡ÂªÃ¨Â½â€°Ã¦â€“Â¹Ã¥Ââ€˜Ã¨Ë†â€¡Ã¥Â¤ÂªÃ©â„¢Â½Ã§Â³Â»Ã¥Â¤Â§Ã¥Â¤Å¡Ã¦â€¢Â¸Ã¨Â¡Å’Ã¦ËœÅ¸Ã§â€ºÂ¸Ã¥ÂÂÃ£â‚¬â€š"
+                      },
+                      {
+                          "id":  1017,
+                          "es":  "En el espacio nadie te oiría gritar: sin materia, el sonido no viaja.",
+                          "en":  "There is no sound in space because there is no matter to propagate it.",
+                          "zhHans":  "Ã¥Â¤ÂªÃ§Â©ÂºÃ¤Â¸Â­Ã¦Â²Â¡Ã¦Å“â€°Ã¥Â£Â°Ã©Å¸Â³Ã¯Â¼Å’Ã¥â€ºÂ Ã¤Â¸ÂºÃ¦Â²Â¡Ã¦Å“â€°Ã§â€°Â©Ã¨Â´Â¨Ã¦ÂÂ¥Ã¤Â¼Â Ã¦â€™Â­Ã¥Â®Æ’Ã£â‚¬â€š",
+                          "zhHant":  "Ã¥Â¤ÂªÃ§Â©ÂºÃ¤Â¸Â­Ã¦Â²â€™Ã¦Å“â€°Ã¨ÂÂ²Ã©Å¸Â³Ã¯Â¼Å’Ã¥â€ºÂ Ã§â€šÂºÃ¦Â²â€™Ã¦Å“â€°Ã§â€°Â©Ã¨Â³ÂªÃ¤Â¾â€ Ã¥â€šÂ³Ã¦â€™Â­Ã¥Â®Æ’Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  1020,
+                          "es":  "La Luna se nos escapa despacio: se aleja de la Tierra unos 3,8 cm al año.",
+                          "en":  "The Moon moves away from Earth about 3.8 cm every year.",
+                          "zhHans":  "Ã¦Å“Ë†Ã§ÂÆ’Ã¦Â¯ÂÃ¥Â¹Â´Ã¨Â¿Å“Ã§Â¦Â»Ã¥Å“Â°Ã§ÂÆ’Ã§ÂºÂ¦3.8Ã¥Å½ËœÃ§Â±Â³Ã£â‚¬â€š",
+                          "zhHant":  "Ã¦Å“Ë†Ã§ÂÆ’Ã¦Â¯ÂÃ¥Â¹Â´Ã©ÂÂ Ã©â€ºÂ¢Ã¥Å“Â°Ã§ÂÆ’Ã§Â´â€ž3.8Ã¥â€¦Â¬Ã¥Ë†â€ Ã£â‚¬â€š"
+                      }
+                  ]
+    },
+    {
+        "id":  2,
+        "es":  "Historia",
+        "en":  "History",
+        "zhHans":  "Ã¥Å½â€ Ã¥ÂÂ²",
+        "zhHant":  "Ã¦Â­Â·Ã¥ÂÂ²",
+        "emoji":  "Ã°Å¸â€œÅ“",
+        "datos":  [
+                      {
+                          "id":  2001,
+                          "es":  "La Gran Muralla China no se ve desde el espacio a simple vista, aunque el mito siga vivo.",
+                          "en":  "The Great Wall of China is not visible from space with the naked eye.",
+                          "zhHans":  "Ã©â€¢Â¿Ã¥Å¸Å½Ã§â€Â¨Ã¨â€šâ€°Ã§Å“Â¼Ã¤Â»Å½Ã¥Â¤ÂªÃ§Â©ÂºÃ§Å“â€¹Ã¤Â¸ÂÃ¥Ë†Â°Ã£â‚¬â€š",
+                          "zhHant":  "Ã©â€¢Â·Ã¥Å¸Å½Ã§â€Â¨Ã¨â€šâ€°Ã§Å“Â¼Ã¥Â¾Å¾Ã¥Â¤ÂªÃ§Â©ÂºÃ§Å“â€¹Ã¤Â¸ÂÃ¥Ë†Â°Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  2002,
+                          "es":  "Cleopatra nació más cerca del iPhone que de la construcción de las pirámides.",
+                          "en":  "Cleopatra lived closer to the iPhone launch than to the building of the pyramids.",
+                          "zhHans":  "Ã¥â€¦â€¹Ã¥Ë†Â©Ã¥Â¥Â¥Ã¥Â¸â€¢Ã§â€°Â¹Ã¦â€¹â€°Ã¨Â·ÂiPhoneÃ¥Ââ€˜Ã¥Â¸Æ’Ã¦Â¯â€Ã¨Â·ÂÃ©â€¡â€˜Ã¥Â­â€”Ã¥Â¡â€Ã¥Â»ÂºÃ©â‚¬Â Ã¦â€ºÂ´Ã¨Â¿â€˜Ã£â‚¬â€š",
+                          "zhHant":  "Ã¥â€¦â€¹Ã¥Ë†Â©Ã¥Â¥Â§Ã¥Â¸â€¢Ã§â€°Â¹Ã¦â€¹â€°Ã¨Â·ÂiPhoneÃ§â„¢Â¼Ã¥Â¸Æ’Ã¦Â¯â€Ã¨Â·ÂÃ©â€¡â€˜Ã¥Â­â€”Ã¥Â¡â€Ã¥Â»ÂºÃ©â‚¬Â Ã¦â€ºÂ´Ã¨Â¿â€˜Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  2004,
+                          "es":  "Napoleón volvió del exilio y cayó en Waterloo antes de cumplir 100 días.",
+                          "en":  "Napoleon was defeated at Waterloo less than 100 days after returning from exile.",
+                          "zhHans":  "Ã¦â€¹Â¿Ã§Â Â´Ã¤Â»â€˜Ã¤Â»Å½Ã¦ÂµÂÃ¤ÂºÂ¡Ã¥Â½â€™Ã¦ÂÂ¥Ã¥ÂÅ½Ã¤Â¸ÂÃ¥Ë†Â°100Ã¥Â¤Â©Ã¥Â°Â±Ã¥Å“Â¨Ã¦Â»â€˜Ã©â€œÂÃ¥ÂÂ¢Ã¨Â¢Â«Ã¥â€¡Â»Ã¨Â´Â¥Ã£â‚¬â€š",
+                          "zhHant":  "Ã¦â€¹Â¿Ã§Â Â´Ã¥Â´â„¢Ã¥Â¾Å¾Ã¦ÂµÂÃ¤ÂºÂ¡Ã¦Â­Â¸Ã¤Â¾â€ Ã¥Â¾Å’Ã¤Â¸ÂÃ¥Ë†Â°100Ã¥Â¤Â©Ã¥Â°Â±Ã¥Å“Â¨Ã¦Â»â€˜Ã©ÂÂµÃ§â€ºÂ§Ã¨Â¢Â«Ã¦â€œÅ Ã¦â€¢â€”Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  2005,
+                          "es":  "La penicilina nació por accidente: Fleming encontró moho donde no debía.",
+                          "en":  "Penicillin was accidentally discovered by Alexander Fleming in 1928.",
+                          "zhHans":  "Ã©Ââ€™Ã©Å“â€°Ã§Â´Â Ã¤ÂºÅ½1928Ã¥Â¹Â´Ã§â€Â±Ã¤ÂºÅ¡Ã¥Å½â€ Ã¥Â±Â±Ã¥Â¤Â§Ã‚Â·Ã¥Â¼â€”Ã¨Å½Â±Ã¦ËœÅ½Ã¥ÂÂ¶Ã§â€žÂ¶Ã¥Ââ€˜Ã§Å½Â°Ã£â‚¬â€š",
+                          "zhHant":  "Ã©Ââ€™Ã©Â»Â´Ã§Â´Â Ã¦â€“Â¼1928Ã¥Â¹Â´Ã§â€Â±Ã¤ÂºÅ¾Ã¦Â­Â·Ã¥Â±Â±Ã¥Â¤Â§Ã‚Â·Ã¥Â¼â€”Ã¨ÂÅ Ã¦ËœÅ½Ã¥ÂÂ¶Ã§â€žÂ¶Ã§â„¢Â¼Ã§ÂÂ¾Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  2006,
+                          "es":  "Los vikingos llegaron a América unos 500 años antes que Colón.",
+                          "en":  "Vikings reached America 500 years before Columbus.",
+                          "zhHans":  "Ã§Â»Â´Ã¤ÂºÂ¬Ã¤ÂºÂºÃ¦Â¯â€Ã¥â€œÂ¥Ã¤Â¼Â¦Ã¥Â¸Æ’Ã¦â€”Â©500Ã¥Â¹Â´Ã¥Ë†Â°Ã¨Â¾Â¾Ã§Â¾Å½Ã¦Â´Â²Ã£â‚¬â€š",
+                          "zhHant":  "Ã§Â¶Â­Ã¤ÂºÂ¬Ã¤ÂºÂºÃ¦Â¯â€Ã¥â€œÂ¥Ã¥â‚¬Â«Ã¥Â¸Æ’Ã¦â€”Â©500Ã¥Â¹Â´Ã¥Ë†Â°Ã©Ââ€Ã§Â¾Å½Ã¦Â´Â²Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  2008,
+                          "es":  "El Imperio Mongol llegó a ser el mayor imperio contiguo de la historia.",
+                          "en":  "The Mongol Empire was the largest contiguous empire in history.",
+                          "zhHans":  "Ã¨â€™â„¢Ã¥ÂÂ¤Ã¥Â¸ÂÃ¥â€ºÂ½Ã¦ËœÂ¯Ã¥Å½â€ Ã¥ÂÂ²Ã¤Â¸Å Ã¦Å“â‚¬Ã¥Â¤Â§Ã§Å¡â€žÃ¨Â¿Å¾Ã§Â»Â­Ã¥Â¸ÂÃ¥â€ºÂ½Ã£â‚¬â€š",
+                          "zhHant":  "Ã¨â€™â„¢Ã¥ÂÂ¤Ã¥Â¸ÂÃ¥Å“â€¹Ã¦ËœÂ¯Ã¦Â­Â·Ã¥ÂÂ²Ã¤Â¸Å Ã¦Å“â‚¬Ã¥Â¤Â§Ã§Å¡â€žÃ©â‚¬Â£Ã§ÂºÅ’Ã¥Â¸ÂÃ¥Å“â€¹Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  2009,
+                          "es":  "La Revolución Francesa estalló en 1789 con la toma de la Bastilla.",
+                          "en":  "The French Revolution began in 1789 with the storming of the Bastille.",
+                          "zhHans":  "Ã¦Â³â€¢Ã¥â€ºÂ½Ã¥Â¤Â§Ã©ÂÂ©Ã¥â€˜Â½Ã¤ÂºÅ½1789Ã¥Â¹Â´Ã¦â€Â»Ã¥ÂÂ Ã¥Â·Â´Ã¥Â£Â«Ã¥Âºâ€¢Ã§â€¹Â±Ã¦â€”Â¶Ã¥Â¼â‚¬Ã¥Â§â€¹Ã£â‚¬â€š",
+                          "zhHant":  "Ã¦Â³â€¢Ã¥Å“â€¹Ã¥Â¤Â§Ã©ÂÂ©Ã¥â€˜Â½Ã¦â€“Â¼1789Ã¥Â¹Â´Ã¦â€Â»Ã¥ÂÂ Ã¥Â·Â´Ã¥Â£Â«Ã¥Âºâ€¢Ã§Ââ€žÃ¦â„¢â€šÃ©â€“â€¹Ã¥Â§â€¹Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  2010,
+                          "es":  "A Albert Einstein le ofrecieron la presidencia de Israel en 1952, y dijo que no.",
+                          "en":  "Einstein declined the presidency of Israel in 1952.",
+                          "zhHans":  "Ã§Ë†Â±Ã¥â€ºÂ Ã¦â€“Â¯Ã¥ÂÂ¦Ã¤ÂºÅ½1952Ã¥Â¹Â´Ã¦â€¹â€™Ã§Â»ÂÃ¤Âºâ€ Ã¤Â»Â¥Ã¨â€°Â²Ã¥Ë†â€”Ã¦â‚¬Â»Ã§Â»Å¸Ã¨ÂÅ’Ã¤Â½ÂÃ£â‚¬â€š",
+                          "zhHant":  "Ã¦â€žâ€ºÃ¥â€ºÂ Ã¦â€“Â¯Ã¥ÂÂ¦Ã¦â€“Â¼1952Ã¥Â¹Â´Ã¦â€¹â€™Ã§Âµâ€¢Ã¤Âºâ€ Ã¤Â»Â¥Ã¨â€°Â²Ã¥Ë†â€”Ã§Â¸Â½Ã§ÂµÂ±Ã¨ÂÂ·Ã¤Â½ÂÃ£â‚¬â€š"
+                      },
+                      {
+                          "id":  2013,
+                          "es":  "El Muro de Berlín cayó el 9 de noviembre de 1989 y cambió Europa en una noche.",
+                          "en":  "The Berlin Wall fell on November 9, 1989.",
+                          "zhHans":  "Ã¦Å¸ÂÃ¦Å¾â€”Ã¥Â¢â„¢Ã¤ÂºÅ½1989Ã¥Â¹Â´11Ã¦Å“Ë†9Ã¦â€”Â¥Ã¥â‚¬â€™Ã¥Â¡Å’Ã£â‚¬â€š",
+                          "zhHant":  "Ã¦Å¸ÂÃ¦Å¾â€”Ã§â€°â€ Ã¦â€“Â¼1989Ã¥Â¹Â´11Ã¦Å“Ë†9Ã¦â€”Â¥Ã¥â‚¬â€™Ã¥Â¡Å’Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  2020,
+                          "es":  "Neil Armstrong pisó la Luna el 20 de julio de 1969.",
+                          "en":  "Neil Armstrong walked on the Moon on July 20, 1969.",
+                          "zhHans":  "Ã¥Â°Â¼Ã¥Â°â€Ã‚Â·Ã©ËœÂ¿Ã¥Â§â€ Ã¦â€“Â¯Ã§â€°Â¹Ã¦Å“â€”Ã¤ÂºÅ½1969Ã¥Â¹Â´7Ã¦Å“Ë†20Ã¦â€”Â¥Ã§â„¢Â»Ã¤Â¸Å Ã¦Å“Ë†Ã§ÂÆ’Ã£â‚¬â€š",
+                          "zhHant":  "Ã¥Â°Â¼Ã§Ë†Â¾Ã‚Â·Ã©ËœÂ¿Ã¥Â§â€ Ã¦â€“Â¯Ã¥Â£Â¯Ã¦â€“Â¼1969Ã¥Â¹Â´7Ã¦Å“Ë†20Ã¦â€”Â¥Ã§â„¢Â»Ã¤Â¸Å Ã¦Å“Ë†Ã§ÂÆ’Ã£â‚¬â€š"
+                      }
+                  ]
+    },
+    {
+        "id":  3,
+        "es":  "Animales",
+        "en":  "Animals",
+        "zhHans":  "Ã¥Å Â¨Ã§â€°Â©",
+        "zhHant":  "Ã¥â€¹â€¢Ã§â€°Â©",
+        "emoji":  "Ã°Å¸Â¦Â",
+        "datos":  [
+                      {
+                          "id":  3001,
+                          "es":  "Los pulpos tienen tres corazones y sangre azul.",
+                          "en":  "Octopuses have three hearts and blue blood.",
+                          "zhHans":  "Ã§Â«Â Ã©Â±Â¼Ã¦Å“â€°Ã¤Â¸â€°Ã¤Â¸ÂªÃ¥Â¿Æ’Ã¨â€žÂÃ¥â€™Å’Ã¨â€œÂÃ¨â€°Â²Ã§Å¡â€žÃ¨Â¡â‚¬Ã¦Â¶Â²Ã£â‚¬â€š",
+                          "zhHant":  "Ã§Â«Â Ã©Â­Å¡Ã¦Å“â€°Ã¤Â¸â€°Ã¥â‚¬â€¹Ã¥Â¿Æ’Ã¨â€¡Å¸Ã¥â€™Å’Ã¨â€”ÂÃ¨â€°Â²Ã§Å¡â€žÃ¨Â¡â‚¬Ã¦Â¶Â²Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  3002,
+                          "es":  "Las jirafas tienen solo siete vértebras en el cuello, las mismas que tú.",
+                          "en":  "Giraffes have the same number of neck vertebrae as humans: 7.",
+                          "zhHans":  "Ã©â€¢Â¿Ã©Â¢Ë†Ã©Â¹Â¿Ã¥â€™Å’Ã¤ÂºÂºÃ§Â±Â»Ã©Â¢Ë†Ã©Æ’Â¨Ã¨â€žÅ Ã¦Â¤Å½Ã¦â€¢Â°Ã©â€¡ÂÃ§â€ºÂ¸Ã¥ÂÅ’Ã¯Â¼Å¡7Ã¥Ââ€”Ã£â‚¬â€š",
+                          "zhHant":  "Ã©â€¢Â·Ã©Â Â¸Ã©Â¹Â¿Ã¥â€™Å’Ã¤ÂºÂºÃ©Â¡Å¾Ã©Â Â¸Ã©Æ’Â¨Ã¨â€žÅ Ã¦Â¤Å½Ã¦â€¢Â¸Ã©â€¡ÂÃ§â€ºÂ¸Ã¥ÂÅ’Ã¯Â¼Å¡7Ã¥Â¡Å Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  3004,
+                          "es":  "El colibrí es el único pájaro capaz de volar hacia atrás.",
+                          "en":  "The hummingbird is the only bird that can fly backwards.",
+                          "zhHans":  "Ã¨Å“â€šÃ©Â¸Å¸Ã¦ËœÂ¯Ã¥â€Â¯Ã¤Â¸â‚¬Ã¨Æ’Â½Ã¥Ââ€˜Ã¥ÂÅ½Ã©Â£Å¾Ã¨Â¡Å’Ã§Å¡â€žÃ©Â¸Å¸Ã§Â±Â»Ã£â‚¬â€š",
+                          "zhHant":  "Ã¨Å“â€šÃ©Â³Â¥Ã¦ËœÂ¯Ã¥â€Â¯Ã¤Â¸â‚¬Ã¨Æ’Â½Ã¥Ââ€˜Ã¥Â¾Å’Ã©Â£â€ºÃ¨Â¡Å’Ã§Å¡â€žÃ©Â³Â¥Ã©Â¡Å¾Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  3005,
+                          "es":  "Los delfines duermen con medio cerebro despierto y, a menudo, con un ojo abierto.",
+                          "en":  "Dolphins sleep with one eye open to stay alert.",
+                          "zhHans":  "Ã¦ÂµÂ·Ã¨Â±Å¡Ã§ÂÂ¡Ã¨Â§â€°Ã¦â€”Â¶Ã§ÂÂÃ§Ââ‚¬Ã¤Â¸â‚¬Ã¥ÂÂªÃ§Å“Â¼Ã§Ââ€ºÃ¤Â»Â¥Ã¤Â¿ÂÃ¦Å’ÂÃ¨Â­Â¦Ã¨Â§â€°Ã£â‚¬â€š",
+                          "zhHant":  "Ã¦ÂµÂ·Ã¨Â±Å¡Ã§ÂÂ¡Ã¨Â¦ÂºÃ¦â„¢â€šÃ§ÂÅ“Ã¨â€˜â€”Ã¤Â¸â‚¬Ã©Å¡Â»Ã§Å“Â¼Ã§Ââ€ºÃ¤Â»Â¥Ã¤Â¿ÂÃ¦Å’ÂÃ¨Â­Â¦Ã¨Â¦ÂºÃ£â‚¬â€š"
+                      },
+                      {
+                          "id":  3008,
+                          "es":  "El tiburón ballena es el pez más grande del planeta.",
+                          "en":  "The whale shark is the largest fish in the world.",
+                          "zhHans":  "Ã©Â²Â¸Ã©Â²Â¨Ã¦ËœÂ¯Ã¤Â¸â€“Ã§â€¢Å’Ã¤Â¸Å Ã¦Å“â‚¬Ã¥Â¤Â§Ã§Å¡â€žÃ©Â±Â¼Ã§Â±Â»Ã£â‚¬â€š",
+                          "zhHant":  "Ã©Â¯Â¨Ã©Â¯Å Ã¦ËœÂ¯Ã¤Â¸â€“Ã§â€¢Å’Ã¤Â¸Å Ã¦Å“â‚¬Ã¥Â¤Â§Ã§Å¡â€žÃ©Â­Å¡Ã©Â¡Å¾Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  3009,
+                          "es":  "Los flamencos no nacen rosas: se tiñen con los pigmentos de su comida.",
+                          "en":  "Flamingos are pink because they eat shrimp and algae containing carotenoids.",
+                          "zhHans":  "Ã§ÂÂ«Ã§Æ’Ë†Ã©Â¸Å¸Ã¥â€˜Ë†Ã§Â²â€°Ã§ÂºÂ¢Ã¨â€°Â²Ã¦ËœÂ¯Ã¥â€ºÂ Ã¤Â¸ÂºÃ¥Â®Æ’Ã¤Â»Â¬Ã¥ÂÆ’Ã¥ÂÂ«Ã¦Å“â€°Ã§Â±Â»Ã¨Æ’Â¡Ã¨ÂÂÃ¥ÂÅ“Ã§Â´Â Ã§Å¡â€žÃ¨â„¢Â¾Ã¥â€™Å’Ã¨â€”Â»Ã§Â±Â»Ã£â‚¬â€š",
+                          "zhHant":  "Ã§Â´â€¦Ã©Â¶Â´Ã¥â€˜Ë†Ã§Â²â€°Ã§Â´â€¦Ã¨â€°Â²Ã¦ËœÂ¯Ã¥â€ºÂ Ã§â€šÂºÃ§â€°Â Ã¥â‚¬â€˜Ã¥ÂÆ’Ã¥ÂÂ«Ã¦Å“â€°Ã©Â¡Å¾Ã¨Æ’Â¡Ã¨ËœÂ¿Ã¨â€â€Ã§Â´Â Ã§Å¡â€žÃ¨ÂÂ¦Ã¥â€™Å’Ã¨â€”Â»Ã©Â¡Å¾Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  3010,
+                          "es":  "Un cocodrilo no puede sacar la lengua hacia fuera.",
+                          "en":  "Crocodiles cannot stick their tongue out.",
+                          "zhHans":  "Ã©Â³â€žÃ©Â±Â¼Ã¤Â¸ÂÃ¨Æ’Â½Ã¤Â¼Â¸Ã¥â€¡ÂºÃ¨Ë†Å’Ã¥Â¤Â´Ã£â‚¬â€š",
+                          "zhHant":  "Ã©Â±Â·Ã©Â­Å¡Ã¤Â¸ÂÃ¨Æ’Â½Ã¤Â¼Â¸Ã¥â€¡ÂºÃ¨Ë†Å’Ã©Â Â­Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  3012,
+                          "es":  "Bajo el pelaje blanco de un oso polar hay piel negra.",
+                          "en":  "Polar bears have black skin under their transparent white fur.",
+                          "zhHans":  "Ã¥Å’â€”Ã¦Å¾ÂÃ§â€ Å Ã¥Å“Â¨Ã©â‚¬ÂÃ¦ËœÅ½Ã§â„¢Â½Ã¦Â¯â€ºÃ¤Â¸â€¹Ã©ÂÂ¢Ã§Å¡â€žÃ§Å¡Â®Ã¨â€šÂ¤Ã¦ËœÂ¯Ã©Â»â€˜Ã¨â€°Â²Ã§Å¡â€žÃ£â‚¬â€š",
+                          "zhHant":  "Ã¥Å’â€”Ã¦Â¥ÂµÃ§â€ Å Ã¥Å“Â¨Ã©â‚¬ÂÃ¦ËœÅ½Ã§â„¢Â½Ã¦Â¯â€ºÃ¤Â¸â€¹Ã©ÂÂ¢Ã§Å¡â€žÃ§Å¡Â®Ã¨â€ Å¡Ã¦ËœÂ¯Ã©Â»â€˜Ã¨â€°Â²Ã§Å¡â€žÃ£â‚¬â€š"
+                      },
+                      {
+                          "id":  3014,
+                          "es":  "Un pulpo puede cambiar color y textura en menos de un segundo.",
+                          "en":  "An octopus can change color and texture in less than a second.",
+                          "zhHans":  "Ã§Â«Â Ã©Â±Â¼Ã¥ÂÂ¯Ã¤Â»Â¥Ã¥Å“Â¨Ã¤Â¸ÂÃ¥Ë†Â°Ã¤Â¸â‚¬Ã§Â§â€™Ã¥â€ â€¦Ã¦â€Â¹Ã¥ÂËœÃ©Â¢Å“Ã¨â€°Â²Ã¥â€™Å’Ã¨Â´Â¨Ã¥Å“Â°Ã£â‚¬â€š",
+                          "zhHant":  "Ã§Â«Â Ã©Â­Å¡Ã¥ÂÂ¯Ã¤Â»Â¥Ã¥Å“Â¨Ã¤Â¸ÂÃ¥Ë†Â°Ã¤Â¸â‚¬Ã§Â§â€™Ã¥â€¦Â§Ã¦â€Â¹Ã¨Â®Å Ã©Â¡ÂÃ¨â€°Â²Ã¥â€™Å’Ã¨Â³ÂªÃ¥Å“Â°Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  3017,
+                          "es":  "Las mariposas saborean con las patas.",
+                          "en":  "Butterflies taste with their feet.",
+                          "zhHans":  "Ã¨ÂÂ´Ã¨ÂÂ¶Ã§â€Â¨Ã¨â€žÅ¡Ã¦ÂÂ¥Ã¥â€œÂÃ¥Â°ÂÃ¥â€˜Â³Ã©Ââ€œÃ£â‚¬â€š",
+                          "zhHant":  "Ã¨ÂÂ´Ã¨ÂÂ¶Ã§â€Â¨Ã¨â€¦Â³Ã¤Â¾â€ Ã¥â€œÂÃ¥Å¡ÂÃ¥â€˜Â³Ã©Ââ€œÃ£â‚¬â€š"
+                      }
+                  ]
+    },
+    {
+        "id":  4,
+        "es":  "Geografía",
+        "en":  "Geography",
+        "zhHans":  "Ã¥Å“Â°Ã§Ââ€ ",
+        "zhHant":  "Ã¥Å“Â°Ã§Ââ€ ",
+        "emoji":  "Ã°Å¸Å’Â",
+        "datos":  [
+                      {
+                          "id":  4001,
+                          "es":  "Rusia se reparte en 11 husos horarios: cuando amanece en un lado, en otro ya casi es mañana.",
+                          "en":  "Russia spans 11 different time zones.",
+                          "zhHans":  "Ã¤Â¿â€žÃ§Â½â€”Ã¦â€“Â¯Ã¨Â·Â¨Ã¨Â¶Å 11Ã¤Â¸ÂªÃ¤Â¸ÂÃ¥ÂÅ’Ã§Å¡â€žÃ¦â€”Â¶Ã¥Å’ÂºÃ£â‚¬â€š",
+                          "zhHant":  "Ã¤Â¿â€žÃ§Â¾â€¦Ã¦â€“Â¯Ã¨Â·Â¨Ã¨Â¶Å 11Ã¥â‚¬â€¹Ã¤Â¸ÂÃ¥ÂÅ’Ã§Å¡â€žÃ¦â„¢â€šÃ¥Ââ‚¬Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  4003,
+                          "es":  "Australia es el único país que ocupa un continente entero.",
+                          "en":  "Australia is the only country that occupies an entire continent.",
+                          "zhHans":  "Ã¦Â¾Â³Ã¥Â¤Â§Ã¥Ë†Â©Ã¤ÂºÅ¡Ã¦ËœÂ¯Ã¥â€Â¯Ã¤Â¸â‚¬Ã¤Â¸â‚¬Ã¤Â¸ÂªÃ¥ÂÂ Ã¦ÂÂ®Ã¦â€¢Â´Ã¤Â¸ÂªÃ¥Â¤Â§Ã©â„¢â€ Ã§Å¡â€žÃ¥â€ºÂ½Ã¥Â®Â¶Ã£â‚¬â€š",
+                          "zhHant":  "Ã¦Â¾Â³Ã¥Â¤Â§Ã¥Ë†Â©Ã¤ÂºÅ¾Ã¦ËœÂ¯Ã¥â€Â¯Ã¤Â¸â‚¬Ã¤Â¸â‚¬Ã¥â‚¬â€¹Ã¤Â½â€Ã¦â€œÅ¡Ã¦â€¢Â´Ã¥â‚¬â€¹Ã¥Â¤Â§Ã©â„¢Â¸Ã§Å¡â€žÃ¥Å“â€¹Ã¥Â®Â¶Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  4004,
+                          "es":  "La Fosa de las Marianas baja unos 11 kilómetros: más honda que alto es el Everest.",
+                          "en":  "The deepest ocean point is the Mariana Trench, 11 km deep.",
+                          "zhHans":  "Ã¦ÂµÂ·Ã¦Â´â€¹Ã¦Å“â‚¬Ã¦Â·Â±Ã¥Â¤â€žÃ¦ËœÂ¯Ã©Â©Â¬Ã©â€¡Å’Ã¤ÂºÅ¡Ã§ÂºÂ³Ã¦ÂµÂ·Ã¦Â²Å¸Ã¯Â¼Å’Ã¦Â·Â±Ã¨Â¾Â¾11Ã¥â€¦Â¬Ã©â€¡Å’Ã£â‚¬â€š",
+                          "zhHant":  "Ã¦ÂµÂ·Ã¦Â´â€¹Ã¦Å“â‚¬Ã¦Â·Â±Ã¨â„¢â€¢Ã¦ËœÂ¯Ã©Â¦Â¬Ã©â€¡Å’Ã¤ÂºÅ¾Ã§Â´ÂÃ¦ÂµÂ·Ã¦ÂºÂÃ¯Â¼Å’Ã¦Â·Â±Ã©Ââ€11Ã¥â€¦Â¬Ã©â€¡Å’Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  4005,
+                          "es":  "Canadá tiene más lagos que cualquier otro país del mundo.",
+                          "en":  "Canada has the most freshwater lakes in the world.",
+                          "zhHans":  "Ã¥Å Â Ã¦â€¹Â¿Ã¥Â¤Â§Ã¦â€¹Â¥Ã¦Å“â€°Ã¤Â¸â€“Ã§â€¢Å’Ã¤Â¸Å Ã¦Å“â‚¬Ã¥Â¤Å¡Ã§Å¡â€žÃ¦Â·Â¡Ã¦Â°Â´Ã¦Â¹â€“Ã£â‚¬â€š",
+                          "zhHant":  "Ã¥Å Â Ã¦â€¹Â¿Ã¥Â¤Â§Ã¦â€œÂÃ¦Å“â€°Ã¤Â¸â€“Ã§â€¢Å’Ã¤Â¸Å Ã¦Å“â‚¬Ã¥Â¤Å¡Ã§Å¡â€žÃ¦Â·Â¡Ã¦Â°Â´Ã¦Â¹â€“Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  4008,
+                          "es":  "La Antártida guarda cerca del 70% del agua dulce del planeta en forma de hielo.",
+                          "en":  "Antarctica holds 70% of the planet\u0027s freshwater as ice.",
+                          "zhHans":  "Ã¥Ââ€”Ã¦Å¾ÂÃ¦Â´Â²Ã¤Â»Â¥Ã¥â€ Â°Ã§Å¡â€žÃ¥Â½Â¢Ã¥Â¼ÂÃ¥â€šÂ¨Ã¥Â­ËœÃ¤Âºâ€ Ã¥Å“Â°Ã§ÂÆ’70%Ã§Å¡â€žÃ¦Â·Â¡Ã¦Â°Â´Ã£â‚¬â€š",
+                          "zhHant":  "Ã¥Ââ€”Ã¦Â¥ÂµÃ¦Â´Â²Ã¤Â»Â¥Ã¥â€ Â°Ã§Å¡â€žÃ¥Â½Â¢Ã¥Â¼ÂÃ¥â€žÂ²Ã¥Â­ËœÃ¤Âºâ€ Ã¥Å“Â°Ã§ÂÆ’70%Ã§Å¡â€žÃ¦Â·Â¡Ã¦Â°Â´Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  4010,
+                          "es":  "El lago Baikal concentra cerca del 20% del agua dulce superficial del mundo.",
+                          "en":  "Lake Baikal contains 20% of the world\u0027s surface freshwater.",
+                          "zhHans":  "Ã¨Â´ÂÃ¥Å Â Ã¥Â°â€Ã¦Â¹â€“Ã¥ÂÂ«Ã¦Å“â€°Ã¤Â¸â€“Ã§â€¢Å’20%Ã§Å¡â€žÃ¥Å“Â°Ã¨Â¡Â¨Ã¦Â·Â¡Ã¦Â°Â´Ã£â‚¬â€š",
+                          "zhHant":  "Ã¨Â²ÂÃ¥Å Â Ã§Ë†Â¾Ã¦Â¹â€“Ã¥ÂÂ«Ã¦Å“â€°Ã¤Â¸â€“Ã§â€¢Å’20%Ã§Å¡â€žÃ¥Å“Â°Ã¨Â¡Â¨Ã¦Â·Â¡Ã¦Â°Â´Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  4011,
+                          "es":  "Papúa Nueva Guinea tiene más lenguas que ningún otro país.",
+                          "en":  "Papua New Guinea has more languages than any other country in the world.",
+                          "zhHans":  "Ã¥Â·Â´Ã¥Â¸Æ’Ã¤ÂºÅ¡Ã¦â€“Â°Ã¥â€¡Â Ã¥â€ â€¦Ã¤ÂºÅ¡Ã¦â€¹Â¥Ã¦Å“â€°Ã¦Â¯â€Ã¤Â¸â€“Ã§â€¢Å’Ã¤Â¸Å Ã¤Â»Â»Ã¤Â½â€¢Ã¥â€¦Â¶Ã¤Â»â€“Ã¥â€ºÂ½Ã¥Â®Â¶Ã¦â€ºÂ´Ã¥Â¤Å¡Ã§Å¡â€žÃ¨Â¯Â­Ã¨Â¨â‚¬Ã£â‚¬â€š",
+                          "zhHant":  "Ã¥Â·Â´Ã¥Â¸Æ’Ã¤ÂºÅ¾Ã§Â´ÂÃ¥Â¹Â¾Ã¥â€¦Â§Ã¤ÂºÅ¾Ã¦â€œÂÃ¦Å“â€°Ã¦Â¯â€Ã¤Â¸â€“Ã§â€¢Å’Ã¤Â¸Å Ã¤Â»Â»Ã¤Â½â€¢Ã¥â€¦Â¶Ã¤Â»â€“Ã¥Å“â€¹Ã¥Â®Â¶Ã¦â€ºÂ´Ã¥Â¤Å¡Ã§Å¡â€žÃ¨ÂªÅ¾Ã¨Â¨â‚¬Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  4013,
+                          "es":  "El punto de la Tierra más alejado de su centro no es el Everest, sino el Chimborazo.",
+                          "en":  "The point farthest from Earth\u0027s center is Chimborazo volcano in Ecuador.",
+                          "zhHans":  "Ã¨Â·ÂÃ§Â¦Â»Ã¥Å“Â°Ã§ÂÆ’Ã¤Â¸Â­Ã¥Â¿Æ’Ã¦Å“â‚¬Ã¨Â¿Å“Ã§Å¡â€žÃ§â€šÂ¹Ã¦ËœÂ¯Ã¥Å½â€žÃ§â€œÅ“Ã¥Â¤Å¡Ã¥Â°â€Ã§Å¡â€žÃ©â€™Â¦Ã¥ÂÅ¡Ã¦â€¹â€°Ã§Â´Â¢Ã§ÂÂ«Ã¥Â±Â±Ã£â‚¬â€š",
+                          "zhHant":  "Ã¨Â·ÂÃ©â€ºÂ¢Ã¥Å“Â°Ã§ÂÆ’Ã¤Â¸Â­Ã¥Â¿Æ’Ã¦Å“â‚¬Ã©ÂÂ Ã§Å¡â€žÃ©Â»Å¾Ã¦ËœÂ¯Ã¥Å½â€žÃ§â€œÅ“Ã¥Â¤Å¡Ã§Ë†Â¾Ã§Å¡â€žÃ¦Â¬Â½Ã¥ÂÅ¡Ã¦â€¹â€°Ã§Â´Â¢Ã§ÂÂ«Ã¥Â±Â±Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  4015,
+                          "es":  "La Gran Barrera de Coral es la estructura viva más grande del planeta.",
+                          "en":  "The Great Barrier Reef is the largest living structure on Earth.",
+                          "zhHans":  "Ã¥Â¤Â§Ã¥Â Â¡Ã§Â¤ÂÃ¦ËœÂ¯Ã¥Å“Â°Ã§ÂÆ’Ã¤Â¸Å Ã¦Å“â‚¬Ã¥Â¤Â§Ã§Å¡â€žÃ§â€Å¸Ã¥â€˜Â½Ã§Â»â€œÃ¦Å¾â€žÃ£â‚¬â€š",
+                          "zhHant":  "Ã¥Â¤Â§Ã¥Â Â¡Ã§Â¤ÂÃ¦ËœÂ¯Ã¥Å“Â°Ã§ÂÆ’Ã¤Â¸Å Ã¦Å“â‚¬Ã¥Â¤Â§Ã§Å¡â€žÃ§â€Å¸Ã¥â€˜Â½Ã§ÂµÂÃ¦Â§â€¹Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  4018,
+                          "es":  "Si mides el Mauna Kea desde su base submarina, supera los 10.000 metros.",
+                          "en":  "Mauna Kea measures over 10,000 meters from its oceanic base.",
+                          "zhHans":  "Ã¤Â»Å½Ã¦ÂµÂ·Ã¥Âºâ€¢Ã§Â®â€”Ã¨ÂµÂ·Ã¯Â¼Å’Ã¥â€ â€™Ã§ÂºÂ³Ã¥â€¡Â¯Ã©ËœÂ¿Ã§ÂÂ«Ã¥Â±Â±Ã©Â«ËœÃ¥ÂºÂ¦Ã¨Â¶â€¦Ã¨Â¿â€¡10,000Ã§Â±Â³Ã£â‚¬â€š",
+                          "zhHant":  "Ã¥Â¾Å¾Ã¦ÂµÂ·Ã¥Âºâ€¢Ã§Â®â€”Ã¨ÂµÂ·Ã¯Â¼Å’Ã¥â€ â€™Ã§Â´ÂÃ¥â€¡Â±Ã©ËœÂ¿Ã§ÂÂ«Ã¥Â±Â±Ã©Â«ËœÃ¥ÂºÂ¦Ã¨Â¶â€¦Ã©ÂÅ½10,000Ã§Â±Â³Ã£â‚¬â€š"
+                      }
+                  ]
+    },
+    {
+        "id":  5,
+        "es":  "Cuerpo Humano",
+        "en":  "Human Body",
+        "zhHans":  "Ã¤ÂºÂºÃ¤Â½â€œ",
+        "zhHant":  "Ã¤ÂºÂºÃ©Â«â€",
+        "emoji":  "Ã°Å¸Â«â‚¬",
+        "datos":  [
+                      {
+                          "id":  5001,
+                          "es":  "Tu cuerpo está hecho de más de 37 billones de células.",
+                          "en":  "The human body has more than 37 trillion cells.",
+                          "zhHans":  "Ã¤ÂºÂºÃ¤Â½â€œÃ¦Å“â€°Ã¨Â¶â€¦Ã¨Â¿â€¡37Ã¤Â¸â€¡Ã¤ÂºÂ¿Ã¤Â¸ÂªÃ§Â»â€ Ã¨Æ’Å¾Ã£â‚¬â€š",
+                          "zhHant":  "Ã¤ÂºÂºÃ©Â«â€Ã¦Å“â€°Ã¨Â¶â€¦Ã©ÂÅ½37Ã¥â€¦â€ Ã¥â‚¬â€¹Ã§Â´Â°Ã¨Æ’Å¾Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  5003,
+                          "es":  "Tu cerebro pesa poco, pero gasta alrededor del 20% de la energía del cuerpo.",
+                          "en":  "The brain consumes 20% of the body\u0027s energy despite being only 2% of body weight.",
+                          "zhHans":  "Ã¥Â¤Â§Ã¨â€žâ€˜Ã¤Â»â€¦Ã¥ÂÂ Ã¤Â½â€œÃ©â€¡ÂÃ§Å¡â€ž2%Ã¯Â¼Å’Ã¥ÂÂ´Ã¦Â¶Ë†Ã¨â‚¬â€”20%Ã§Å¡â€žÃ¨ÂºÂ«Ã¤Â½â€œÃ¨Æ’Â½Ã©â€¡ÂÃ£â‚¬â€š",
+                          "zhHant":  "Ã¥Â¤Â§Ã¨â€¦Â¦Ã¥Æ’â€¦Ã¤Â½â€Ã©Â«â€Ã©â€¡ÂÃ§Å¡â€ž2%Ã¯Â¼Å’Ã¥ÂÂ»Ã¦Â¶Ë†Ã¨â‚¬â€”20%Ã§Å¡â€žÃ¨ÂºÂ«Ã©Â«â€Ã¨Æ’Â½Ã©â€¡ÂÃ£â‚¬â€š"
+                      },
+                      {
+                          "id":  5005,
+                          "es":  "Tu corazón late unas 100.000 veces al día.",
+                          "en":  "The heart beats about 100,000 times a day, about 3 billion in a lifetime.",
+                          "zhHans":  "Ã¥Â¿Æ’Ã¨â€žÂÃ¦Â¯ÂÃ¥Â¤Â©Ã¨Â·Â³Ã¥Å Â¨Ã§ÂºÂ¦10Ã¤Â¸â€¡Ã¦Â¬Â¡Ã¯Â¼Å’Ã¤Â¸â‚¬Ã§â€Å¸Ã§ÂºÂ¦Ã¨Â·Â³Ã¥Å Â¨30Ã¤ÂºÂ¿Ã¦Â¬Â¡Ã£â‚¬â€š",
+                          "zhHant":  "Ã¥Â¿Æ’Ã¨â€¡Å¸Ã¦Â¯ÂÃ¥Â¤Â©Ã¨Â·Â³Ã¥â€¹â€¢Ã§Â´â€ž10Ã¨ÂÂ¬Ã¦Â¬Â¡Ã¯Â¼Å’Ã¤Â¸â‚¬Ã§â€Å¸Ã§Â´â€žÃ¨Â·Â³Ã¥â€¹â€¢30Ã¥â€žâ€žÃ¦Â¬Â¡Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  5006,
+                          "es":  "Si alinearas todos tus vasos sanguíneos, superarían los 100.000 kilómetros.",
+                          "en":  "The blood vessels in the human body total over 100,000 km.",
+                          "zhHans":  "Ã¤ÂºÂºÃ¤Â½â€œÃ¨Â¡â‚¬Ã§Â®Â¡Ã¦â‚¬Â»Ã©â€¢Â¿Ã¥ÂºÂ¦Ã¨Â¶â€¦Ã¨Â¿â€¡100,000Ã¥â€¦Â¬Ã©â€¡Å’Ã£â‚¬â€š",
+                          "zhHant":  "Ã¤ÂºÂºÃ©Â«â€Ã¨Â¡â‚¬Ã§Â®Â¡Ã§Â¸Â½Ã©â€¢Â·Ã¥ÂºÂ¦Ã¨Â¶â€¦Ã©ÂÅ½100,000Ã¥â€¦Â¬Ã©â€¡Å’Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  5007,
+                          "es":  "La superficie interna de tus pulmones ronda la de una pista de tenis.",
+                          "en":  "The lungs have the same surface area as a tennis court.",
+                          "zhHans":  "Ã¨â€šÂºÃ©Æ’Â¨Ã§Å¡â€žÃ¨Â¡Â¨Ã©ÂÂ¢Ã§Â§Â¯Ã§â€ºÂ¸Ã¥Â½â€œÃ¤ÂºÅ½Ã¤Â¸â‚¬Ã¤Â¸ÂªÃ§Â½â€˜Ã§ÂÆ’Ã¥Å“ÂºÃ£â‚¬â€š",
+                          "zhHant":  "Ã¨â€šÂºÃ©Æ’Â¨Ã§Å¡â€žÃ¨Â¡Â¨Ã©ÂÂ¢Ã§Â©ÂÃ§â€ºÂ¸Ã§â€¢Â¶Ã¦â€“Â¼Ã¤Â¸â‚¬Ã¥â‚¬â€¹Ã§Â¶Â²Ã§ÂÆ’Ã¥Â Â´Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  5008,
+                          "es":  "Ni siquiera los gemelos idénticos comparten huellas dactilares.",
+                          "en":  "Fingerprints are unique even between identical twins.",
+                          "zhHans":  "Ã¥ÂÂ³Ã¤Â½Â¿Ã¦ËœÂ¯Ã¥ÂÅ’Ã¥ÂÂµÃ¥ÂÅ’Ã¨Æ’Å¾Ã¨Æ’Å½Ã¯Â¼Å’Ã¦Å’â€¡Ã§ÂºÂ¹Ã¤Â¹Å¸Ã¦ËœÂ¯Ã§â€¹Â¬Ã¤Â¸â‚¬Ã¦â€”Â Ã¤ÂºÅ’Ã§Å¡â€žÃ£â‚¬â€š",
+                          "zhHant":  "Ã¥ÂÂ³Ã¤Â½Â¿Ã¦ËœÂ¯Ã¥ÂÅ’Ã¥ÂÂµÃ©â€ºâ„¢Ã¨Æ’Å¾Ã¨Æ’Å½Ã¯Â¼Å’Ã¦Å’â€¡Ã§Â´â€¹Ã¤Â¹Å¸Ã¦ËœÂ¯Ã§ÂÂ¨Ã¤Â¸â‚¬Ã§â€žÂ¡Ã¤ÂºÅ’Ã§Å¡â€žÃ£â‚¬â€š"
+                      },
+                      {
+                          "id":  5010,
+                          "es":  "Tu nariz puede diferenciar más de un billón de olores.",
+                          "en":  "The human sense of smell can detect over a trillion different scents.",
+                          "zhHans":  "Ã¤ÂºÂºÃ§Â±Â»Ã§Å¡â€žÃ¥â€”â€¦Ã¨Â§â€°Ã¥ÂÂ¯Ã¤Â»Â¥Ã¦Å½Â¢Ã¦Âµâ€¹Ã¨Â¶â€¦Ã¨Â¿â€¡Ã¤Â¸â‚¬Ã¤Â¸â€¡Ã¤ÂºÂ¿Ã§Â§ÂÃ¤Â¸ÂÃ¥ÂÅ’Ã§Å¡â€žÃ¦Â°â€Ã¥â€˜Â³Ã£â‚¬â€š",
+                          "zhHant":  "Ã¤ÂºÂºÃ©Â¡Å¾Ã§Å¡â€žÃ¥â€”â€¦Ã¨Â¦ÂºÃ¥ÂÂ¯Ã¤Â»Â¥Ã¦Å½Â¢Ã¦Â¸Â¬Ã¨Â¶â€¦Ã©ÂÅ½Ã¤Â¸â‚¬Ã¥â€¦â€ Ã§Â¨Â®Ã¤Â¸ÂÃ¥ÂÅ’Ã§Å¡â€žÃ¦Â°Â£Ã¥â€˜Â³Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  5013,
+                          "es":  "Naces con unos 270 huesos, pero de adulto te quedas con 206.",
+                          "en":  "A baby is born with 270 bones; adults have only 206.",
+                          "zhHans":  "Ã¥Â©Â´Ã¥â€žÂ¿Ã¥â€¡ÂºÃ§â€Å¸Ã¦â€”Â¶Ã¦Å“â€°270Ã¥Ââ€”Ã©ÂªÂ¨Ã¥Â¤Â´Ã¯Â¼Å’Ã¦Ë†ÂÃ¤ÂºÂºÃ¥ÂÂªÃ¦Å“â€°206Ã¥Ââ€”Ã£â‚¬â€š",
+                          "zhHant":  "Ã¥Â¬Â°Ã¥â€¦â€™Ã¥â€¡ÂºÃ§â€Å¸Ã¦â„¢â€šÃ¦Å“â€°270Ã¥Â¡Å Ã©ÂªÂ¨Ã©Â Â­Ã¯Â¼Å’Ã¦Ë†ÂÃ¤ÂºÂºÃ¥ÂÂªÃ¦Å“â€°206Ã¥Â¡Å Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  5016,
+                          "es":  "La córnea no tiene vasos sanguíneos: toma oxígeno directamente del aire.",
+                          "en":  "The cornea has no blood vessels and gets oxygen directly from the air.",
+                          "zhHans":  "Ã¨Â§â€™Ã¨â€ Å“Ã¦Â²Â¡Ã¦Å“â€°Ã¨Â¡â‚¬Ã§Â®Â¡Ã¯Â¼Å’Ã§â€ºÂ´Ã¦Å½Â¥Ã¤Â»Å½Ã§Â©ÂºÃ¦Â°â€Ã¤Â¸Â­Ã¨Å½Â·Ã¥Ââ€“Ã¦Â°Â§Ã¦Â°â€Ã£â‚¬â€š",
+                          "zhHant":  "Ã¨Â§â€™Ã¨â€ Å“Ã¦Â²â€™Ã¦Å“â€°Ã¨Â¡â‚¬Ã§Â®Â¡Ã¯Â¼Å’Ã§â€ºÂ´Ã¦Å½Â¥Ã¥Â¾Å¾Ã§Â©ÂºÃ¦Â°Â£Ã¤Â¸Â­Ã§ÂÂ²Ã¥Ââ€“Ã¦Â°Â§Ã¦Â°Â£Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  5018,
+                          "es":  "Tu cerebro alberga alrededor de 86.000 millones de neuronas.",
+                          "en":  "The human brain has about 86 billion neurons.",
+                          "zhHans":  "Ã¤ÂºÂºÃ¨â€žâ€˜Ã§ÂºÂ¦Ã¦Å“â€°860Ã¤ÂºÂ¿Ã¤Â¸ÂªÃ§Â¥Å¾Ã§Â»ÂÃ¥â€¦Æ’Ã£â‚¬â€š",
+                          "zhHant":  "Ã¤ÂºÂºÃ¨â€¦Â¦Ã§Â´â€žÃ¦Å“â€°860Ã¥â€žâ€žÃ¥â‚¬â€¹Ã§Â¥Å¾Ã§Â¶â€œÃ¥â€¦Æ’Ã£â‚¬â€š"
+                      }
+                  ]
+    },
+    {
+        "id":  6,
+        "es":  "Tecnología",
+        "en":  "Technology",
+        "zhHans":  "Ã¦Å â‚¬Ã¦Å“Â¯",
+        "zhHant":  "Ã¦Å â‚¬Ã¨Â¡â€œ",
+        "emoji":  "Ã°Å¸â€™Â»",
+        "datos":  [
+                      {
+                          "id":  6001,
+                          "es":  "El primer mensaje de internet quiso decir LOGIN, pero la red cayó tras escribir solo LO.",
+                          "en":  "The first internet message was \u0027LO\u0027; the system crashed before completing \u0027LOGIN\u0027.",
+                          "zhHans":  "Ã¤Âºâ€™Ã¨Ââ€Ã§Â½â€˜Ã¤Â¸Å Ã¥Ââ€˜Ã©â‚¬ÂÃ§Å¡â€žÃ§Â¬Â¬Ã¤Â¸â‚¬Ã¦ÂÂ¡Ã¦Â¶Ë†Ã¦ÂÂ¯Ã¦ËœÂ¯\u0027LO\u0027Ã¯Â¼Å’Ã§Â³Â»Ã§Â»Å¸Ã¥Å“Â¨Ã¥Â®Å’Ã¦Ë†Â\u0027LOGIN\u0027Ã¥â€°ÂÃ¥Â´Â©Ã¦ÂºÆ’Ã¤Âºâ€ Ã£â‚¬â€š",
+                          "zhHant":  "Ã§Â¶Â²Ã©Å¡â€ºÃ§Â¶Â²Ã¨Â·Â¯Ã¤Â¸Å Ã§â„¢Â¼Ã©â‚¬ÂÃ§Å¡â€žÃ§Â¬Â¬Ã¤Â¸â‚¬Ã¦Â¢ÂÃ¨Â¨Å Ã¦ÂÂ¯Ã¦ËœÂ¯\u0027LO\u0027Ã¯Â¼Å’Ã§Â³Â»Ã§ÂµÂ±Ã¥Å“Â¨Ã¥Â®Å’Ã¦Ë†Â\u0027LOGIN\u0027Ã¥â€°ÂÃ¥Â´Â©Ã¦Â½Â°Ã¤Âºâ€ Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  6002,
+                          "es":  "El primer móvil comercial pesaba casi un kilo y costaba unos 4.000 dólares.",
+                          "en":  "The first commercial mobile phone weighed nearly a kilogram and cost $4,000.",
+                          "zhHans":  "Ã§Â¬Â¬Ã¤Â¸â‚¬Ã¦Â¬Â¾Ã¥â€¢â€ Ã¤Â¸Å¡Ã¦â€°â€¹Ã¦Å“ÂºÃ©â€¡ÂÃ§ÂºÂ¦Ã¤Â¸â‚¬Ã¥â€¦Â¬Ã¦â€“Â¤Ã¯Â¼Å’Ã¥â€Â®Ã¤Â»Â·4000Ã§Â¾Å½Ã¥â€¦Æ’Ã£â‚¬â€š",
+                          "zhHant":  "Ã§Â¬Â¬Ã¤Â¸â‚¬Ã¦Â¬Â¾Ã¥â€¢â€ Ã¦Â¥Â­Ã¦â€°â€¹Ã¦Â©Å¸Ã©â€¡ÂÃ§Â´â€žÃ¤Â¸â‚¬Ã¥â€¦Â¬Ã¦â€“Â¤Ã¯Â¼Å’Ã¥â€Â®Ã¥Æ’Â¹4000Ã§Â¾Å½Ã¥â€¦Æ’Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  6004,
+                          "es":  "Google empezó como un proyecto universitario con un nombre bastante raro: BackRub.",
+                          "en":  "Google started as a university research project called \u0027BackRub\u0027.",
+                          "zhHans":  "Ã¨Â°Â·Ã¦Â­Å’Ã¦Å“â‚¬Ã¥Ë†ÂÃ¦ËœÂ¯Ã¤Â¸â‚¬Ã¤Â¸ÂªÃ¥ÂÂÃ¤Â¸Âº\u0027BackRub\u0027Ã§Å¡â€žÃ¥Â¤Â§Ã¥Â­Â¦Ã§Â â€Ã§Â©Â¶Ã©Â¡Â¹Ã§â€ºÂ®Ã£â‚¬â€š",
+                          "zhHant":  "Ã¨Â°Â·Ã¦Â­Å’Ã¦Å“â‚¬Ã¥Ë†ÂÃ¦ËœÂ¯Ã¤Â¸â‚¬Ã¥â‚¬â€¹Ã¥ÂÂÃ§â€šÂº\u0027BackRub\u0027Ã§Å¡â€žÃ¥Â¤Â§Ã¥Â­Â¸Ã§Â â€Ã§Â©Â¶Ã©Â â€¦Ã§â€ºÂ®Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  6007,
+                          "es":  "YouTube nació en 2005 gracias a tres ex empleados de PayPal.",
+                          "en":  "YouTube was founded by three former PayPal employees in February 2005.",
+                          "zhHans":  "YouTubeÃ§â€Â±Ã¤Â¸â€°Ã¥ÂÂÃ¥â€°ÂPayPalÃ¥â€˜ËœÃ¥Â·Â¥Ã¤ÂºÅ½2005Ã¥Â¹Â´2Ã¦Å“Ë†Ã¥Ë†â€ºÃ§Â«â€¹Ã£â‚¬â€š",
+                          "zhHant":  "YouTubeÃ§â€Â±Ã¤Â¸â€°Ã¥ÂÂÃ¥â€°ÂPayPalÃ¥â€œÂ¡Ã¥Â·Â¥Ã¦â€“Â¼2005Ã¥Â¹Â´2Ã¦Å“Ë†Ã¥â€°ÂµÃ§Â«â€¹Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  6008,
+                          "es":  "El QR se inventó en Japón para seguir piezas de coches, no para cartas de bar.",
+                          "en":  "The QR code was invented in Japan in 1994 to track car parts.",
+                          "zhHans":  "Ã¤ÂºÅ’Ã§Â»Â´Ã§Â ÂÃ¤ÂºÅ½1994Ã¥Â¹Â´Ã¥Å“Â¨Ã¦â€”Â¥Ã¦Å“Â¬Ã¥Ââ€˜Ã¦ËœÅ½Ã¯Â¼Å’Ã§â€Â¨Ã¤ÂºÅ½Ã¨Â¿Â½Ã¨Â¸ÂªÃ¦Â±Â½Ã¨Â½Â¦Ã©â€ºÂ¶Ã¤Â»Â¶Ã£â‚¬â€š",
+                          "zhHant":  "Ã¤ÂºÅ’Ã§Â¶Â­Ã§Â¢Â¼Ã¦â€“Â¼1994Ã¥Â¹Â´Ã¥Å“Â¨Ã¦â€”Â¥Ã¦Å“Â¬Ã§â„¢Â¼Ã¦ËœÅ½Ã¯Â¼Å’Ã§â€Â¨Ã¦â€“Â¼Ã¨Â¿Â½Ã¨Â¹Â¤Ã¦Â±Â½Ã¨Â»Å Ã©â€ºÂ¶Ã¤Â»Â¶Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  6009,
+                          "es":  "El primer email lo envió Ray Tomlinson en 1971.",
+                          "en":  "The first email was sent by Ray Tomlinson in 1971.",
+                          "zhHans":  "Ã§Â¬Â¬Ã¤Â¸â‚¬Ã¥Â°ÂÃ§â€ÂµÃ¥Â­ÂÃ©â€šÂ®Ã¤Â»Â¶Ã§â€Â±Ã©â€ºÂ·Ã‚Â·Ã¦Â±Â¤Ã¥Â§â€ Ã¦Å¾â€”Ã¦Â£Â®Ã¤ÂºÅ½1971Ã¥Â¹Â´Ã¥Ââ€˜Ã©â‚¬ÂÃ£â‚¬â€š",
+                          "zhHant":  "Ã§Â¬Â¬Ã¤Â¸â‚¬Ã¥Â°ÂÃ©â€ºÂ»Ã¥Â­ÂÃ©Æ’ÂµÃ¤Â»Â¶Ã§â€Â±Ã©â€ºÂ·Ã‚Â·Ã¦Â¹Â¯Ã¥Â§â€ Ã¦Å¾â€”Ã¦Â£Â®Ã¦â€“Â¼1971Ã¥Â¹Â´Ã§â„¢Â¼Ã©â‚¬ÂÃ£â‚¬â€š"
+                      },
+                      {
+                          "id":  6011,
+                          "es":  "Amazon arrancó vendiendo solo libros desde el garaje de Jeff Bezos.",
+                          "en":  "Amazon started selling only books from Jeff Bezos\u0027s garage.",
+                          "zhHans":  "Ã¤ÂºÅ¡Ã©Â©Â¬Ã©â‚¬Å Ã¦Å“â‚¬Ã¥Ë†ÂÃ¥ÂÂªÃ¥Å“Â¨Ã¦ÂÂ°Ã¥Â¤Â«Ã‚Â·Ã¨Â´ÂÃ¤Â½ÂÃ¦â€“Â¯Ã§Å¡â€žÃ¨Â½Â¦Ã¥Âºâ€œÃ©â€¡Å’Ã¥Ââ€“Ã¤Â¹Â¦Ã£â‚¬â€š",
+                          "zhHant":  "Ã¤ÂºÅ¾Ã©Â¦Â¬Ã©ÂÅ“Ã¦Å“â‚¬Ã¥Ë†ÂÃ¥ÂÂªÃ¥Å“Â¨Ã¥â€šâ€˜Ã¥Â¤Â«Ã‚Â·Ã¨Â²ÂÃ¤Â½ÂÃ¦â€“Â¯Ã§Å¡â€žÃ¨Â»Å Ã¥ÂºÂ«Ã¨Â£Â¡Ã¨Â³Â£Ã¦â€ºÂ¸Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  6012,
+                          "es":  "El primer iPhone salió sin copiar ni pegar.",
+                          "en":  "The first iPhone did not have a copy-and-paste feature.",
+                          "zhHans":  "Ã§Â¬Â¬Ã¤Â¸â‚¬Ã¤Â»Â£iPhoneÃ¦Â²Â¡Ã¦Å“â€°Ã¥Â¤ÂÃ¥Ë†Â¶Ã§Â²ËœÃ¨Â´Â´Ã¥Å Å¸Ã¨Æ’Â½Ã£â‚¬â€š",
+                          "zhHant":  "Ã§Â¬Â¬Ã¤Â¸â‚¬Ã¤Â»Â£iPhoneÃ¦Â²â€™Ã¦Å“â€°Ã¨Â¤â€¡Ã¨Â£Â½Ã¨Â²Â¼Ã¤Â¸Å Ã¥Å Å¸Ã¨Æ’Â½Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  6015,
+                          "es":  "Bluetooth se llama así por Harald Bluetooth, un rey vikingo del siglo X.",
+                          "en":  "The name \u0027Bluetooth\u0027 comes from Harald Bluetooth, a 10th-century Viking king.",
+                          "zhHans":  "\u0027Ã¨â€œÂÃ§â€°â„¢\u0027Ã¨Â¿â„¢Ã¤Â¸ÂªÃ¥ÂÂÃ¥Â­â€”Ã¦ÂÂ¥Ã¦ÂºÂÃ¤ÂºÅ½10Ã¤Â¸â€“Ã§ÂºÂªÃ§Â»Â´Ã¤ÂºÂ¬Ã¥â€ºÂ½Ã§Å½â€¹Ã¥â€œË†Ã¦â€¹â€°Ã¥Â°â€Ã‚Â·Ã¨â€œÂÃ§â€°â„¢Ã£â‚¬â€š",
+                          "zhHant":  "\u0027Ã¨â€”ÂÃ§â€°â„¢\u0027Ã©â‚¬â„¢Ã¥â‚¬â€¹Ã¥ÂÂÃ¥Â­â€”Ã¤Â¾â€ Ã¦ÂºÂÃ¦â€“Â¼10Ã¤Â¸â€“Ã§Â´â‚¬Ã§Â¶Â­Ã¤ÂºÂ¬Ã¥Å“â€¹Ã§Å½â€¹Ã¥â€œË†Ã¦â€¹â€°Ã§Ë†Â¾Ã‚Â·Ã¨â€”ÂÃ§â€°â„¢Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  6019,
+                          "es":  "La World Wide Web la inventó Tim Berners-Lee en 1989.",
+                          "en":  "The World Wide Web was invented by Tim Berners-Lee in 1989.",
+                          "zhHans":  "Ã¤Â¸â€¡Ã§Â»Â´Ã§Â½â€˜Ã§â€Â±Ã¨â€™â€šÃ¥Â§â€ Ã‚Â·Ã¤Â¼Â¯Ã§ÂºÂ³Ã¦â€“Â¯-Ã¦ÂÅ½Ã¤ÂºÅ½1989Ã¥Â¹Â´Ã¥Ââ€˜Ã¦ËœÅ½Ã£â‚¬â€š",
+                          "zhHant":  "Ã¥â€¦Â¨Ã§ÂÆ’Ã¨Â³â€¡Ã¨Â¨Å Ã§Â¶Â²Ã§â€Â±Ã¦ÂÂÃ¥Â§â€ Ã‚Â·Ã¤Â¼Â¯Ã§Â´ÂÃ¦â€“Â¯-Ã¦ÂÅ½Ã¦â€“Â¼1989Ã¥Â¹Â´Ã§â„¢Â¼Ã¦ËœÅ½Ã£â‚¬â€š"
+                      }
+                  ]
+    },
+    {
+        "id":  7,
+        "es":  "Arte y Cultura",
+        "en":  "Art \u0026 Culture",
+        "zhHans":  "Ã¨â€°ÂºÃ¦Å“Â¯Ã¤Â¸Å½Ã¦â€“â€¡Ã¥Å’â€“",
+        "zhHant":  "Ã¨â€”ÂÃ¨Â¡â€œÃ¨Ë†â€¡Ã¦â€“â€¡Ã¥Å’â€“",
+        "emoji":  "Ã°Å¸Å½Â¨",
+        "datos":  [
+                      {
+                          "id":  7001,
+                          "es":  "La Mona Lisa es famosísima, pero cabe en un cuadro de solo 77 x 53 cm.",
+                          "en":  "Leonardo da Vinci\u0027s Mona Lisa measures only 77 x 53 cm.",
+                          "zhHans":  "Ã¨Â¾Â¾Ã¨Å Â¬Ã¥Â¥â€¡Ã§Å¡â€žÃ¨â€™â„¢Ã¥Â¨Å“Ã¤Â¸Â½Ã¨Å½Å½Ã¥ÂÂªÃ¦Å“â€°77Ãƒâ€”53Ã¥Å½ËœÃ§Â±Â³Ã¥Â¤Â§Ã¥Â°ÂÃ£â‚¬â€š",
+                          "zhHant":  "Ã©Ââ€Ã¦â€“â€¡Ã¨Â¥Â¿Ã§Å¡â€žÃ¨â€™â„¢Ã¥Â¨Å“Ã©Âºâ€”Ã¨Å½Å½Ã¥ÂÂªÃ¦Å“â€°77Ãƒâ€”53Ã¥â€¦Â¬Ã¥Ë†â€ Ã¥Â¤Â§Ã¥Â°ÂÃ£â‚¬â€š"
+                      },
+                      {
+                          "id":  7002,
+                          "es":  "Beethoven compuso su Novena Sinfonía cuando ya estaba completamente sordo.",
+                          "en":  "Beethoven composed his Ninth Symphony while completely deaf.",
+                          "zhHans":  "Ã¨Â´ÂÃ¥Â¤Å¡Ã¨Å Â¬Ã¥Å“Â¨Ã¥Â®Å’Ã¥â€¦Â¨Ã¥Â¤Â±Ã¨ÂÂªÃ§Å¡â€žÃ¦Æ’â€¦Ã¥â€ ÂµÃ¤Â¸â€¹Ã¥Ë†â€ºÃ¤Â½Å“Ã¤Âºâ€ Ã§Â¬Â¬Ã¤Â¹ÂÃ¤ÂºÂ¤Ã¥â€œÂÃ¦â€ºÂ²Ã£â‚¬â€š",
+                          "zhHant":  "Ã¨Â²ÂÃ¥Â¤Å¡Ã¨Å Â¬Ã¥Å“Â¨Ã¥Â®Å’Ã¥â€¦Â¨Ã¥Â¤Â±Ã¨ÂÂ°Ã§Å¡â€žÃ¦Æ’â€¦Ã¦Â³ÂÃ¤Â¸â€¹Ã¥â€°ÂµÃ¤Â½Å“Ã¤Âºâ€ Ã§Â¬Â¬Ã¤Â¹ÂÃ¤ÂºÂ¤Ã©Å¸Â¿Ã¦â€ºÂ²Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  7004,
+                          "es":  "El Guernica de Picasso mide casi 8 metros de ancho.",
+                          "en":  "Picasso\u0027s Guernica is nearly 8 meters wide.",
+                          "zhHans":  "Ã¦Â¯â€¢Ã¥Å Â Ã§Â´Â¢Ã§Å¡â€žÃ£â‚¬Å Ã¦Â Â¼Ã¥Â°â€Ã¥Â°Â¼Ã¥ÂÂ¡Ã£â‚¬â€¹Ã¥Â®Â½Ã¨Â¿â€˜8Ã§Â±Â³Ã£â‚¬â€š",
+                          "zhHant":  "Ã§â€¢Â¢Ã¥ÂÂ¡Ã§Â´Â¢Ã§Å¡â€žÃ£â‚¬Å Ã¦Â Â¼Ã§Ë†Â¾Ã¥Â°Â¼Ã¥ÂÂ¡Ã£â‚¬â€¹Ã¥Â¯Â¬Ã¨Â¿â€˜8Ã¥â€¦Â¬Ã¥Â°ÂºÃ£â‚¬â€š"
+                      },
+                      {
+                          "id":  7006,
+                          "es":  "El Coliseo de Roma podía reunir a unas 80.000 personas.",
+                          "en":  "The Colosseum in Rome could hold up to 80,000 spectators.",
+                          "zhHans":  "Ã§Â½â€”Ã©Â©Â¬Ã§Â«Å¾Ã¦Å â‚¬Ã¥Å“ÂºÃ¥ÂÂ¯Ã¥Â®Â¹Ã§ÂºÂ³Ã¥Â¤Å¡Ã¨Â¾Â¾80,000Ã¥ÂÂÃ¨Â§â€šÃ¤Â¼â€”Ã£â‚¬â€š",
+                          "zhHant":  "Ã§Â¾â€¦Ã©Â¦Â¬Ã§Â«Â¶Ã¦Å â‚¬Ã¥Â Â´Ã¥ÂÂ¯Ã¥Â®Â¹Ã§Â´ÂÃ¥Â¤Å¡Ã©Ââ€80,000Ã¥ÂÂÃ¨Â§â‚¬Ã§Å“Â¾Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  7007,
+                          "es":  "Miguel Ángel tardó cuatro años en pintar la Capilla Sixtina, casi él solo.",
+                          "en":  "The Sistine Chapel took 4 years to paint; Michelangelo did it almost alone.",
+                          "zhHans":  "Ã¨Â¥Â¿Ã¦â€“Â¯Ã¥Â»Â·Ã¦â€¢â„¢Ã¥Â â€šÃ¨Å Â±Ã¤Âºâ€ 4Ã¥Â¹Â´Ã¦â€”Â¶Ã©â€”Â´Ã§Â»ËœÃ¥Ë†Â¶Ã¯Â¼Å’Ã§Â±Â³Ã¥Â¼â‚¬Ã¦Å“â€”Ã¥Å¸ÂºÃ§Â½â€”Ã¥â€¡Â Ã¤Â¹Å½Ã§â€¹Â¬Ã¨â€¡ÂªÃ¥Â®Å’Ã¦Ë†ÂÃ£â‚¬â€š",
+                          "zhHant":  "Ã¨Â¥Â¿Ã¦â€“Â¯Ã¦Â±â‚¬Ã¦â€¢â„¢Ã¥Â â€šÃ¨Å Â±Ã¤Âºâ€ 4Ã¥Â¹Â´Ã¦â„¢â€šÃ©â€“â€œÃ§Â¹ÂªÃ¨Â£Â½Ã¯Â¼Å’Ã§Â±Â³Ã©â€“â€¹Ã¦Å“â€”Ã¥Å¸ÂºÃ§Â¾â€¦Ã¥Â¹Â¾Ã¤Â¹Å½Ã§ÂÂ¨Ã¨â€¡ÂªÃ¥Â®Å’Ã¦Ë†ÂÃ£â‚¬â€š"
+                      },
+                      {
+                          "id":  7008,
+                          "es":  "El jazz nació en Nueva Orleans mezclando tradiciones de medio mundo.",
+                          "en":  "Jazz was born in New Orleans at the beginning of the 20th century.",
+                          "zhHans":  "Ã§Ë†ÂµÃ¥Â£Â«Ã¤Â¹ÂÃ¥Å“Â¨20Ã¤Â¸â€“Ã§ÂºÂªÃ¥Ë†ÂÃ¨Â¯Å¾Ã§â€Å¸Ã¤ÂºÅ½Ã¦â€“Â°Ã¥Â¥Â¥Ã¥Â°â€Ã¨â€°Â¯Ã£â‚¬â€š",
+                          "zhHant":  "Ã§Ë†ÂµÃ¥Â£Â«Ã¦Â¨â€šÃ¥Å“Â¨20Ã¤Â¸â€“Ã§Â´â‚¬Ã¥Ë†ÂÃ¨Âªâ€¢Ã§â€Å¸Ã¦â€“Â¼Ã§Â´ÂÃ¥Â¥Â§Ã¨â€°Â¯Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  7009,
+                          "es":  "Los jeroglíficos egipcios se descifraron gracias a la piedra Rosetta.",
+                          "en":  "Egyptian hieroglyphics were deciphered thanks to the Rosetta Stone.",
+                          "zhHans":  "Ã¥Å¸Æ’Ã¥ÂÅ Ã¨Â±Â¡Ã¥Â½Â¢Ã¦â€“â€¡Ã¥Â­â€”Ã¥Â¾â€”Ã§â€ºÅ Ã¤ÂºÅ½Ã§Â½â€”Ã¥Â¡Å¾Ã¥Â¡â€Ã§Å¸Â³Ã§Â¢â€˜Ã¨â‚¬Å’Ã¨Â¢Â«Ã§Â Â´Ã¨Â¯â€˜Ã£â‚¬â€š",
+                          "zhHant":  "Ã¥Å¸Æ’Ã¥ÂÅ Ã¨Â±Â¡Ã¥Â½Â¢Ã¦â€“â€¡Ã¥Â­â€”Ã¥Â¾â€”Ã§â€ºÅ Ã¦â€“Â¼Ã§Â¾â€¦Ã¥Â¡Å¾Ã¥Â¡â€Ã§Å¸Â³Ã§Â¢â€˜Ã¨â‚¬Å’Ã¨Â¢Â«Ã§Â Â´Ã¨Â­Â¯Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  7010,
+                          "es":  "El Taj Mahal se levantó como homenaje del emperador Shah Jahan a su esposa.",
+                          "en":  "The Taj Mahal was built by Mughal emperor Shah Jahan in honor of his wife.",
+                          "zhHans":  "Ã¦Â³Â°Ã¥Â§Â¬Ã©â„¢ÂµÃ§â€Â±Ã¨Å½Â«Ã¥ÂÂ§Ã¥â€žÂ¿Ã§Å¡â€¡Ã¥Â¸ÂÃ¦Â²â„¢Ã¨Â´Â¾Ã¦Â±â€”Ã¤Â¸ÂºÃ§ÂºÂªÃ¥Â¿ÂµÃ¥Â¦Â»Ã¥Â­ÂÃ¨â‚¬Å’Ã¥Â»ÂºÃ£â‚¬â€š",
+                          "zhHant":  "Ã¦Â³Â°Ã¥Â§Â¬Ã©â„¢ÂµÃ§â€Â±Ã¨â€™â„¢Ã¥â€¦â‚¬Ã¥â€¦â€™Ã§Å¡â€¡Ã¥Â¸ÂÃ¦Â²â„¢Ã¨Â³Ë†Ã¦Â±â€”Ã§â€šÂºÃ§Â´â‚¬Ã¥Â¿ÂµÃ¥Â¦Â»Ã¥Â­ÂÃ¨â‚¬Å’Ã¥Â»ÂºÃ£â‚¬â€š"
+                      },
+                      {
+                          "id":  7013,
+                          "es":  "El Louvre es el museo más visitado del planeta.",
+                          "en":  "The Louvre in Paris is the most visited museum in the world.",
+                          "zhHans":  "Ã¥Â·Â´Ã©Â»Å½Ã¥ÂÂ¢Ã¦ÂµÂ®Ã¥Â®Â«Ã¦ËœÂ¯Ã¤Â¸â€“Ã§â€¢Å’Ã¤Â¸Å Ã¥Ââ€šÃ¨Â§â€šÃ¤ÂºÂºÃ¦â€¢Â°Ã¦Å“â‚¬Ã¥Â¤Å¡Ã§Å¡â€žÃ¥ÂÅ¡Ã§â€°Â©Ã©Â¦â€ Ã£â‚¬â€š",
+                          "zhHant":  "Ã¥Â·Â´Ã©Â»Å½Ã§Â¾â€¦Ã¦ÂµÂ®Ã¥Â®Â®Ã¦ËœÂ¯Ã¤Â¸â€“Ã§â€¢Å’Ã¤Â¸Å Ã¥ÂÆ’Ã¨Â§â‚¬Ã¤ÂºÂºÃ¦â€¢Â¸Ã¦Å“â‚¬Ã¥Â¤Å¡Ã§Å¡â€žÃ¥ÂÅ¡Ã§â€°Â©Ã©Â¤Â¨Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  7015,
+                          "es":  "Van Gogh vendió muy poco en vida: solo se le atribuye una venta segura.",
+                          "en":  "Van Gogh sold only one painting in his lifetime: The Red Vineyard.",
+                          "zhHans":  "Ã¦Â¢ÂµÃ©Â«ËœÃ¤Â¸â‚¬Ã§â€Å¸Ã¥ÂÂªÃ¥Ââ€“Ã¥â€¡ÂºÃ¤Âºâ€ Ã¤Â¸â‚¬Ã¥Â¹â€¦Ã§â€Â»Ã¯Â¼Å¡Ã£â‚¬Å Ã§ÂºÂ¢Ã¨â€°Â²Ã¨â€˜Â¡Ã¨Ââ€žÃ¥â€ºÂ­Ã£â‚¬â€¹Ã£â‚¬â€š",
+                          "zhHant":  "Ã¦Â¢ÂµÃ¨Â°Â·Ã¤Â¸â‚¬Ã§â€Å¸Ã¥ÂÂªÃ¨Â³Â£Ã¥â€¡ÂºÃ¤Âºâ€ Ã¤Â¸â‚¬Ã¥Â¹â€¦Ã§â€¢Â«Ã¯Â¼Å¡Ã£â‚¬Å Ã§Â´â€¦Ã¨â€°Â²Ã¨â€˜Â¡Ã¨Ââ€žÃ¥Å“â€™Ã£â‚¬â€¹Ã£â‚¬â€š"
+                      }
+                  ]
+    },
+    {
+        "id":  8,
+        "es":  "Naturaleza",
+        "en":  "Nature",
+        "zhHans":  "Ã¨â€¡ÂªÃ§â€žÂ¶",
+        "zhHant":  "Ã¨â€¡ÂªÃ§â€žÂ¶",
+        "emoji":  "Ã°Å¸Å’Â¿",
+        "datos":  [
+                      {
+                          "id":  8003,
+                          "es":  "El árbol más alto conocido supera los 115 metros y es una secuoya de California.",
+                          "en":  "The world\u0027s tallest tree is a 115.7-meter redwood in California.",
+                          "zhHans":  "Ã¤Â¸â€“Ã§â€¢Å’Ã¤Â¸Å Ã¦Å“â‚¬Ã©Â«ËœÃ§Å¡â€žÃ¦Â â€˜Ã¦ËœÂ¯Ã¥Å Â Ã¥Ë†Â©Ã§Â¦ÂÃ¥Â°Â¼Ã¤ÂºÅ¡Ã¥Â·Å¾Ã¤Â¸â‚¬Ã¦Â£Âµ115.7Ã§Â±Â³Ã©Â«ËœÃ§Å¡â€žÃ§ÂºÂ¢Ã¦Ââ€°Ã£â‚¬â€š",
+                          "zhHant":  "Ã¤Â¸â€“Ã§â€¢Å’Ã¤Â¸Å Ã¦Å“â‚¬Ã©Â«ËœÃ§Å¡â€žÃ¦Â¨Â¹Ã¦ËœÂ¯Ã¥Å Â Ã¥Ë†Â©Ã§Â¦ÂÃ¥Â°Â¼Ã¤ÂºÅ¾Ã¥Â·Å¾Ã¤Â¸â‚¬Ã¦Â£Âµ115.7Ã¥â€¦Â¬Ã¥Â°ÂºÃ©Â«ËœÃ§Å¡â€žÃ§Â´â€¦Ã¦Ââ€°Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  8004,
+                          "es":  "Los hongos no son plantas ni animales: juegan en su propia liga.",
+                          "en":  "Fungi are neither plants nor animals; they form their own kingdom.",
+                          "zhHans":  "Ã§Å“Å¸Ã¨ÂÅ’Ã¦â€”Â¢Ã¤Â¸ÂÃ¦ËœÂ¯Ã¦Â¤ÂÃ§â€°Â©Ã¤Â¹Å¸Ã¤Â¸ÂÃ¦ËœÂ¯Ã¥Å Â¨Ã§â€°Â©Ã¯Â¼Å’Ã¥Â®Æ’Ã¤Â»Â¬Ã¦Å¾â€žÃ¦Ë†ÂÃ¨â€¡ÂªÃ¥Â·Â±Ã§â€¹Â¬Ã§Â«â€¹Ã§Å¡â€žÃ§â€¢Å’Ã£â‚¬â€š",
+                          "zhHant":  "Ã§Å“Å¸Ã¨ÂÅ’Ã¦â€”Â¢Ã¤Â¸ÂÃ¦ËœÂ¯Ã¦Â¤ÂÃ§â€°Â©Ã¤Â¹Å¸Ã¤Â¸ÂÃ¦ËœÂ¯Ã¥â€¹â€¢Ã§â€°Â©Ã¯Â¼Å’Ã¥Â®Æ’Ã¥â‚¬â€˜Ã¦Â§â€¹Ã¦Ë†ÂÃ¨â€¡ÂªÃ¥Â·Â±Ã§ÂÂ¨Ã§Â«â€¹Ã§Å¡â€žÃ§â€¢Å’Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  8005,
+                          "es":  "Algunas especies de bambú pueden crecer hasta 90 centímetros en un día.",
+                          "en":  "Bamboo can grow up to 90 cm in a single day.",
+                          "zhHans":  "Ã§Â«Â¹Ã¥Â­ÂÃ¤Â¸â‚¬Ã¥Â¤Â©Ã¥ÂÂ¯Ã¤Â»Â¥Ã§â€Å¸Ã©â€¢Â¿Ã¥Â¤Å¡Ã¨Â¾Â¾90Ã¥Å½ËœÃ§Â±Â³Ã£â‚¬â€š",
+                          "zhHant":  "Ã§Â«Â¹Ã¥Â­ÂÃ¤Â¸â‚¬Ã¥Â¤Â©Ã¥ÂÂ¯Ã¤Â»Â¥Ã§â€Å¸Ã©â€¢Â·Ã¥Â¤Å¡Ã©Ââ€90Ã¥â€¦Â¬Ã¥Ë†â€ Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  8007,
+                          "es":  "Pando parece un bosque, pero en realidad es un único organismo con miles de troncos.",
+                          "en":  "The Pando tree in Utah is a single organism with 47,000 trunks and 80,000 years old.",
+                          "zhHans":  "Ã§Å Â¹Ã¤Â»â€“Ã¥Â·Å¾Ã§Å¡â€žÃ¦Â½ËœÃ¥Â¤Å¡Ã¦Â â€˜Ã¦ËœÂ¯Ã¤Â¸â‚¬Ã¤Â¸ÂªÃ¥Ââ€¢Ã¤Â¸â‚¬Ã§â€Å¸Ã§â€°Â©Ã¤Â½â€œÃ¯Â¼Å’Ã¦Å“â€°47,000Ã¦Â Â¹Ã¦Â â€˜Ã¥Â¹Â²Ã¯Â¼Å’Ã¥Â·Â²Ã¦Å“â€°80,000Ã¥Â¹Â´Ã¥Å½â€ Ã¥ÂÂ²Ã£â‚¬â€š",
+                          "zhHant":  "Ã§Å’Â¶Ã¤Â»â€“Ã¥Â·Å¾Ã§Å¡â€žÃ¦Â½ËœÃ¥Â¤Å¡Ã¦Â¨Â¹Ã¦ËœÂ¯Ã¤Â¸â‚¬Ã¥â‚¬â€¹Ã¥â€“Â®Ã¤Â¸â‚¬Ã§â€Å¸Ã§â€°Â©Ã©Â«â€Ã¯Â¼Å’Ã¦Å“â€°47,000Ã¦Â Â¹Ã¦Â¨Â¹Ã¥Â¹Â¹Ã¯Â¼Å’Ã¥Â·Â²Ã¦Å“â€°80,000Ã¥Â¹Â´Ã¦Â­Â·Ã¥ÂÂ²Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  8009,
+                          "es":  "Los glaciares guardan alrededor del 69% del agua dulce del planeta.",
+                          "en":  "Glaciers contain 69% of the planet\u0027s freshwater.",
+                          "zhHans":  "Ã¥â€ Â°Ã¥Â·ÂÃ¥ÂÂ«Ã¦Å“â€°Ã¥Å“Â°Ã§ÂÆ’69%Ã§Å¡â€žÃ¦Â·Â¡Ã¦Â°Â´Ã£â‚¬â€š",
+                          "zhHant":  "Ã¥â€ Â°Ã¥Â·ÂÃ¥ÂÂ«Ã¦Å“â€°Ã¥Å“Â°Ã§ÂÆ’69%Ã§Å¡â€žÃ¦Â·Â¡Ã¦Â°Â´Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  8011,
+                          "es":  "El polvo del Sahara viaja hasta el Amazonas y ayuda a fertilizarlo.",
+                          "en":  "Saharan sandstorms fertilize the Amazon with their minerals.",
+                          "zhHans":  "Ã¦â€™â€™Ã¥â€œË†Ã¦â€¹â€°Ã¦Â²â„¢Ã¥Â°ËœÃ¦Å¡Â´Ã§â€Â¨Ã¥â€¦Â¶Ã§Å¸Â¿Ã§â€°Â©Ã¨Â´Â¨Ã¤Â¸ÂºÃ¤ÂºÅ¡Ã©Â©Â¬Ã©â‚¬Å Ã©â€ºÂ¨Ã¦Å¾â€”Ã¦â€“Â½Ã¨â€šÂ¥Ã£â‚¬â€š",
+                          "zhHant":  "Ã¦â€™â€™Ã¥â€œË†Ã¦â€¹â€°Ã¦Â²â„¢Ã¥Â¡ÂµÃ¦Å¡Â´Ã§â€Â¨Ã¥â€¦Â¶Ã§Â¤Â¦Ã§â€°Â©Ã¨Â³ÂªÃ§â€šÂºÃ¤ÂºÅ¾Ã©Â¦Â¬Ã©ÂÅ“Ã©â€ºÂ¨Ã¦Å¾â€”Ã¦â€“Â½Ã¨â€šÂ¥Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  8012,
+                          "es":  "El agua puede existir como sólido, líquido y gas al mismo tiempo.",
+                          "en":  "Water can exist in solid, liquid and gaseous states simultaneously.",
+                          "zhHans":  "Ã¦Â°Â´Ã¥ÂÂ¯Ã¤Â»Â¥Ã¥ÂÅ’Ã¦â€”Â¶Ã¤Â»Â¥Ã¥â€ºÂºÃ¦â‚¬ÂÃ£â‚¬ÂÃ¦Â¶Â²Ã¦â‚¬ÂÃ¥â€™Å’Ã¦Â°â€Ã¦â‚¬ÂÃ¥Â­ËœÃ¥Å“Â¨Ã£â‚¬â€š",
+                          "zhHant":  "Ã¦Â°Â´Ã¥ÂÂ¯Ã¤Â»Â¥Ã¥ÂÅ’Ã¦â„¢â€šÃ¤Â»Â¥Ã¥â€ºÂºÃ¦â€¦â€¹Ã£â‚¬ÂÃ¦Â¶Â²Ã¦â€¦â€¹Ã¥â€™Å’Ã¦Â°Â£Ã¦â€¦â€¹Ã¥Â­ËœÃ¥Å“Â¨Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  8014,
+                          "es":  "La Venus atrapamoscas no se cierra al primer roce: espera dos toques para no malgastar energía.",
+                          "en":  "The Venus flytrap can count: it needs two touches to close.",
+                          "zhHans":  "Ã¦Ââ€¢Ã¨Ââ€¡Ã¨Ââ€°Ã¤Â¼Å¡Ã¨Â®Â¡Ã¦â€¢Â°Ã¯Â¼Å¡Ã¥Â®Æ’Ã©Å“â‚¬Ã¨Â¦ÂÃ¨Â¢Â«Ã¨Â§Â¦Ã§Â¢Â°Ã¤Â¸Â¤Ã¦Â¬Â¡Ã¦â€°ÂÃ¤Â¼Å¡Ã¥â€¦Â³Ã©â€”Â­Ã£â‚¬â€š",
+                          "zhHant":  "Ã¦Ââ€¢Ã¨Â â€¦Ã¨Ââ€°Ã¦Å“Æ’Ã¨Â¨Ë†Ã¦â€¢Â¸Ã¯Â¼Å¡Ã¥Â®Æ’Ã©Å“â‚¬Ã¨Â¦ÂÃ¨Â¢Â«Ã¨Â§Â¸Ã§Â¢Â°Ã¥â€¦Â©Ã¦Â¬Â¡Ã¦â€°ÂÃ¦Å“Æ’Ã©â€”Å“Ã©â€“â€°Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  8015,
+                          "es":  "Las auroras aparecen cuando partículas solares chocan con la atmósfera.",
+                          "en":  "Northern lights occur when solar particles collide with the atmosphere.",
+                          "zhHans":  "Ã¦Å¾ÂÃ¥â€¦â€°Ã¦ËœÂ¯Ã¥Â¤ÂªÃ©ËœÂ³Ã§Â²â€™Ã¥Â­ÂÃ¤Â¸Å½Ã¥Â¤Â§Ã¦Â°â€Ã¥Â±â€šÃ§Â¢Â°Ã¦â€™Å¾Ã¦â€”Â¶Ã¤ÂºÂ§Ã§â€Å¸Ã§Å¡â€žÃ£â‚¬â€š",
+                          "zhHant":  "Ã¦Â¥ÂµÃ¥â€¦â€°Ã¦ËœÂ¯Ã¥Â¤ÂªÃ©â„¢Â½Ã§Â²â€™Ã¥Â­ÂÃ¨Ë†â€¡Ã¥Â¤Â§Ã¦Â°Â£Ã¥Â±Â¤Ã§Â¢Â°Ã¦â€™Å¾Ã¦â„¢â€šÃ§â€Â¢Ã§â€Å¸Ã§Å¡â€žÃ£â‚¬â€š"
+                      },
+                      {
+                          "id":  8019,
+                          "es":  "Los océanos absorben cerca de una cuarta parte del CO2 que emitimos.",
+                          "en":  "Oceans absorb 25% of the COÃ¢â€šâ€š we emit and regulate the global climate.",
+                          "zhHans":  "Ã¦ÂµÂ·Ã¦Â´â€¹Ã¥ÂÂ¸Ã¦â€Â¶Ã¦Ë†â€˜Ã¤Â»Â¬Ã¦Å½â€™Ã¦â€Â¾Ã§Å¡â€ž25%Ã§Å¡â€žCOÃ¢â€šâ€šÃ¯Â¼Å’Ã¥Â¹Â¶Ã¨Â°Æ’Ã¨Å â€šÃ¥â€¦Â¨Ã§ÂÆ’Ã¦Â°â€Ã¥â‚¬â„¢Ã£â‚¬â€š",
+                          "zhHant":  "Ã¦ÂµÂ·Ã¦Â´â€¹Ã¥ÂÂ¸Ã¦â€Â¶Ã¦Ë†â€˜Ã¥â‚¬â€˜Ã¦Å½â€™Ã¦â€Â¾Ã§Å¡â€ž25%Ã§Å¡â€žCOÃ¢â€šâ€šÃ¯Â¼Å’Ã¤Â¸Â¦Ã¨ÂªÂ¿Ã§Â¯â‚¬Ã¥â€¦Â¨Ã§ÂÆ’Ã¦Â°Â£Ã¥â‚¬â„¢Ã£â‚¬â€š"
+                      }
+                  ]
+    },
+    {
+        "id":  9,
+        "es":  "Deporte",
+        "en":  "Sports",
+        "zhHans":  "Ã¤Â½â€œÃ¨â€šÂ²",
+        "zhHant":  "Ã©Â«â€Ã¨â€šÂ²",
+        "emoji":  "Ã¢Å¡Â½",
+        "datos":  [
+                      {
+                          "id":  9002,
+                          "es":  "Usain Bolt hizo los 100 metros en 9,58 segundos y dejó la marca para la historia.",
+                          "en":  "Usain Bolt ran 100 meters in 9.58 seconds, world record since 2009.",
+                          "zhHans":  "Ã¥Â°Â¤Ã¥Â¡Å¾Ã¦ÂÂ©Ã‚Â·Ã¥ÂÅ¡Ã¥Â°â€Ã§â€°Â¹Ã¤Â»Â¥9.58Ã§Â§â€™Ã¨Â·â€˜Ã¥Â®Å’100Ã§Â±Â³Ã¯Â¼Å’Ã¨â€¡Âª2009Ã¥Â¹Â´Ã¤Â»Â¥Ã¦ÂÂ¥Ã¤Â¿ÂÃ¦Å’ÂÃ¤Â¸â€“Ã§â€¢Å’Ã§ÂºÂªÃ¥Â½â€¢Ã£â‚¬â€š",
+                          "zhHant":  "Ã¥Â°Â¤Ã¥Â¡Å¾Ã¦ÂÂ©Ã‚Â·Ã¥ÂÅ¡Ã§Ë†Â¾Ã§â€°Â¹Ã¤Â»Â¥9.58Ã§Â§â€™Ã¨Â·â€˜Ã¥Â®Å’100Ã¥â€¦Â¬Ã¥Â°ÂºÃ¯Â¼Å’Ã¨â€¡Âª2009Ã¥Â¹Â´Ã¤Â»Â¥Ã¤Â¾â€ Ã¤Â¿ÂÃ¦Å’ÂÃ¤Â¸â€“Ã§â€¢Å’Ã§Â´â‚¬Ã©Å’â€žÃ£â‚¬â€š"
+                      },
+                      {
+                          "id":  9003,
+                          "es":  "El ajedrez nació en la India hace más de 1.500 años.",
+                          "en":  "Chess was invented in India over 1,500 years ago.",
+                          "zhHans":  "Ã¥â€ºÂ½Ã©â„¢â€¦Ã¨Â±Â¡Ã¦Â£â€¹Ã¦ËœÂ¯1500Ã¥Â¤Å¡Ã¥Â¹Â´Ã¥â€°ÂÃ¥Å“Â¨Ã¥ÂÂ°Ã¥ÂºÂ¦Ã¥Ââ€˜Ã¦ËœÅ½Ã§Å¡â€žÃ£â‚¬â€š",
+                          "zhHant":  "Ã¥Å“â€¹Ã©Å¡â€ºÃ¨Â±Â¡Ã¦Â£â€¹Ã¦ËœÂ¯1500Ã¥Â¤Å¡Ã¥Â¹Â´Ã¥â€°ÂÃ¥Å“Â¨Ã¥ÂÂ°Ã¥ÂºÂ¦Ã§â„¢Â¼Ã¦ËœÅ½Ã§Å¡â€žÃ£â‚¬â€š"
+                      },
+                      {
+                          "id":  9004,
+                          "es":  "Antes de ser leyenda, Michael Jordan fue descartado del equipo principal de su instituto.",
+                          "en":  "Michael Jordan was cut from his high school basketball team.",
+                          "zhHans":  "Ã¨Â¿Ë†Ã¥â€¦â€¹Ã¥Â°â€Ã‚Â·Ã¤Â¹â€Ã¤Â¸Â¹Ã¦â€ºÂ¾Ã¨Â¢Â«Ã©Â«ËœÃ¤Â¸Â­Ã§Â¯Â®Ã§ÂÆ’Ã©ËœÅ¸Ã¦â€¹â€™Ã§Â»ÂÃ£â‚¬â€š",
+                          "zhHant":  "Ã©ÂºÂ¥Ã¥ÂÂ¯Ã‚Â·Ã¥â€“Â¬Ã¤Â¸Â¹Ã¦â€ºÂ¾Ã¨Â¢Â«Ã©Â«ËœÃ¤Â¸Â­Ã§Â±Æ’Ã§ÂÆ’Ã©Å¡Å Ã¦â€¹â€™Ã§Âµâ€¢Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  9005,
+                          "es":  "Los Juegos Olímpicos modernos arrancaron en Atenas en 1896.",
+                          "en":  "The modern Olympic Games were first held in Athens in 1896.",
+                          "zhHans":  "Ã§Å½Â°Ã¤Â»Â£Ã¥Â¥Â¥Ã¦Å¾â€”Ã¥Å’Â¹Ã¥â€¦â€¹Ã¨Â¿ÂÃ¥Å Â¨Ã¤Â¼Å¡Ã¤ÂºÅ½1896Ã¥Â¹Â´Ã©Â¦â€“Ã¦Â¬Â¡Ã¥Å“Â¨Ã©â€ºâ€¦Ã¥â€¦Â¸Ã¤Â¸Â¾Ã¨Â¡Å’Ã£â‚¬â€š",
+                          "zhHant":  "Ã§ÂÂ¾Ã¤Â»Â£Ã¥Â¥Â§Ã¦Å¾â€”Ã¥Å’Â¹Ã¥â€¦â€¹Ã©Ââ€¹Ã¥â€¹â€¢Ã¦Å“Æ’Ã¦â€“Â¼1896Ã¥Â¹Â´Ã©Â¦â€“Ã¦Â¬Â¡Ã¥Å“Â¨Ã©â€ºâ€¦Ã¥â€¦Â¸Ã¨Ë†â€°Ã¨Â¡Å’Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  9008,
+                          "es":  "El primer deporte jugado en la Luna fue el golf.",
+                          "en":  "Golf was the first sport played on the Moon by astronaut Alan Shepard.",
+                          "zhHans":  "Ã©Â«ËœÃ¥Â°â€Ã¥Â¤Â«Ã¦ËœÂ¯Ã¥Â®â€¡Ã¨Ë†ÂªÃ¥â€˜ËœÃ¨â€°Â¾Ã¤Â¼Â¦Ã‚Â·Ã¨Â°Â¢Ã¦Â³Â¼Ã¥Â¾Â·Ã¥Å“Â¨Ã¦Å“Ë†Ã§ÂÆ’Ã¤Â¸Å Ã¦â€°â€œÃ§Å¡â€žÃ§Â¬Â¬Ã¤Â¸â‚¬Ã©Â¡Â¹Ã¨Â¿ÂÃ¥Å Â¨Ã£â‚¬â€š",
+                          "zhHant":  "Ã©Â«ËœÃ§Ë†Â¾Ã¥Â¤Â«Ã¦ËœÂ¯Ã¥Â¤ÂªÃ§Â©ÂºÃ¤ÂºÂºÃ¨â€°Â¾Ã¥â‚¬Â«Ã‚Â·Ã¨Â¬ÂÃ¥Â¸â€¢Ã¥Â¾Â·Ã¥Å“Â¨Ã¦Å“Ë†Ã§ÂÆ’Ã¤Â¸Å Ã¦â€°â€œÃ§Å¡â€žÃ§Â¬Â¬Ã¤Â¸â‚¬Ã©Â â€¦Ã©Ââ€¹Ã¥â€¹â€¢Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  9009,
+                          "es":  "Rafael Nadal levantó 14 Roland Garros, una barbaridad casi imposible de repetir.",
+                          "en":  "Rafael Nadal is the only tennis player with 14 Roland Garros titles.",
+                          "zhHans":  "Ã¦â€¹â€°Ã¦â€“ÂÃ¥Â°â€Ã‚Â·Ã§ÂºÂ³Ã¨Â¾Â¾Ã¥Â°â€Ã¦ËœÂ¯Ã¥â€Â¯Ã¤Â¸â‚¬Ã¨ÂµÂ¢Ã¥Â¾â€”14Ã¦Â¬Â¡Ã¦Â³â€¢Ã¥â€ºÂ½Ã§Â½â€˜Ã§ÂÆ’Ã¥â€¦Â¬Ã¥Â¼â‚¬Ã¨Âµâ€ºÃ¥â€ Â Ã¥â€ â€ºÃ§Å¡â€žÃ§ÂÆ’Ã¥â€˜ËœÃ£â‚¬â€š",
+                          "zhHant":  "Ã¦â€¹â€°Ã¦â€“ÂÃ§Ë†Â¾Ã‚Â·Ã§Â´ÂÃ©Ââ€Ã§Ë†Â¾Ã¦ËœÂ¯Ã¥â€Â¯Ã¤Â¸â‚¬Ã¨Â´ÂÃ¥Â¾â€”14Ã¦Â¬Â¡Ã¦Â³â€¢Ã¥Å“â€¹Ã§Â¶Â²Ã§ÂÆ’Ã¥â€¦Â¬Ã©â€“â€¹Ã¨Â³Â½Ã¥â€ Â Ã¨Â»ÂÃ§Å¡â€žÃ§ÂÆ’Ã¥â€œÂ¡Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  9011,
+                          "es":  "Un volante de bádminton puede salir disparado a más de 400 km/h.",
+                          "en":  "The world\u0027s fastest sport is badminton, with shuttlecocks reaching 400 km/h.",
+                          "zhHans":  "Ã¤Â¸â€“Ã§â€¢Å’Ã¤Â¸Å Ã©â‚¬Å¸Ã¥ÂºÂ¦Ã¦Å“â‚¬Ã¥Â¿Â«Ã§Å¡â€žÃ¨Â¿ÂÃ¥Å Â¨Ã¦ËœÂ¯Ã§Â¾Â½Ã¦Â¯â€ºÃ§ÂÆ’Ã¯Â¼Å’Ã§Â¾Â½Ã¦Â¯â€ºÃ§ÂÆ’Ã©â‚¬Å¸Ã¥ÂºÂ¦Ã¥ÂÂ¯Ã¨Â¾Â¾400Ã¥â€¦Â¬Ã©â€¡Å’/Ã¥Â°ÂÃ¦â€”Â¶Ã£â‚¬â€š",
+                          "zhHant":  "Ã¤Â¸â€“Ã§â€¢Å’Ã¤Â¸Å Ã©â‚¬Å¸Ã¥ÂºÂ¦Ã¦Å“â‚¬Ã¥Â¿Â«Ã§Å¡â€žÃ©Ââ€¹Ã¥â€¹â€¢Ã¦ËœÂ¯Ã§Â¾Â½Ã¦Â¯â€ºÃ§ÂÆ’Ã¯Â¼Å’Ã§Â¾Â½Ã¦Â¯â€ºÃ§ÂÆ’Ã©â‚¬Å¸Ã¥ÂºÂ¦Ã¥ÂÂ¯Ã©Ââ€400Ã¥â€¦Â¬Ã©â€¡Å’/Ã¥Â°ÂÃ¦â„¢â€šÃ£â‚¬â€š"
+                      },
+                      {
+                          "id":  9014,
+                          "es":  "En París 1900 hubo una prueba olímpica de tiro a palomas vivas.",
+                          "en":  "The 1900 Paris Olympics included live pigeon shooting as a competition.",
+                          "zhHans":  "1900Ã¥Â¹Â´Ã¥Â·Â´Ã©Â»Å½Ã¥Â¥Â¥Ã¨Â¿ÂÃ¤Â¼Å¡Ã¥Å’â€¦Ã¦â€¹Â¬Ã¤Âºâ€ Ã¥Â°â€žÃ¥â€¡Â»Ã¦Â´Â»Ã©Â¸Â½Ã¥Â­ÂÃ§Å¡â€žÃ¦Â¯â€Ã¨Âµâ€ºÃ£â‚¬â€š",
+                          "zhHant":  "1900Ã¥Â¹Â´Ã¥Â·Â´Ã©Â»Å½Ã¥Â¥Â§Ã©Ââ€¹Ã¦Å“Æ’Ã¥Å’â€¦Ã¦â€¹Â¬Ã¤Âºâ€ Ã¥Â°â€žÃ¦â€œÅ Ã¦Â´Â»Ã©Â´Â¿Ã¥Â­ÂÃ§Å¡â€žÃ¦Â¯â€Ã¨Â³Â½Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  9016,
+                          "es":  "James Naismith inventó el baloncesto en 1891 con dos cestas de melocotones.",
+                          "en":  "Basketball was invented in 1891 by Canadian James Naismith.",
+                          "zhHans":  "Ã§Â¯Â®Ã§ÂÆ’Ã§â€Â±Ã¥Å Â Ã¦â€¹Â¿Ã¥Â¤Â§Ã¤ÂºÂºÃ¨Â©Â¹Ã¥Â§â€ Ã¦â€“Â¯Ã‚Â·Ã¥Â¥Ë†Ã¥ÂÂ²Ã¥Â¯â€ Ã¦â€“Â¯Ã¤ÂºÅ½1891Ã¥Â¹Â´Ã¥Ââ€˜Ã¦ËœÅ½Ã£â‚¬â€š",
+                          "zhHant":  "Ã§Â±Æ’Ã§ÂÆ’Ã§â€Â±Ã¥Å Â Ã¦â€¹Â¿Ã¥Â¤Â§Ã¤ÂºÂºÃ¨Â©Â¹Ã¥Â§â€ Ã¦â€“Â¯Ã‚Â·Ã¥Â¥Ë†Ã¥ÂÂ²Ã¥Â¯â€ Ã¦â€“Â¯Ã¦â€“Â¼1891Ã¥Â¹Â´Ã§â„¢Â¼Ã¦ËœÅ½Ã£â‚¬â€š"
+                      },
+                      {
+                          "id":  9017,
+                          "es":  "Michael Phelps se retiró con 23 oros olímpicos.",
+                          "en":  "Swimmer Michael Phelps won 23 Olympic gold medals in his career.",
+                          "zhHans":  "Ã¦Â¸Â¸Ã¦Â³Â³Ã¨Â¿ÂÃ¥Å Â¨Ã¥â€˜ËœÃ¨Â¿Ë†Ã¥â€¦â€¹Ã¥Â°â€Ã‚Â·Ã¨ÂÂ²Ã¥Â°â€Ã¦â„¢Â®Ã¦â€“Â¯Ã¥Å“Â¨Ã¨ÂÅ’Ã¤Â¸Å¡Ã§â€Å¸Ã¦Â¶Â¯Ã¤Â¸Â­Ã¨ÂµÂ¢Ã¥Â¾â€”Ã¤Âºâ€ 23Ã¦Å¾Å¡Ã¥Â¥Â¥Ã¨Â¿ÂÃ©â€¡â€˜Ã§â€°Å’Ã£â‚¬â€š",
+                          "zhHant":  "Ã¦Â¸Â¸Ã¦Â³Â³Ã©Ââ€¹Ã¥â€¹â€¢Ã¥â€œÂ¡Ã©ÂºÂ¥Ã¥ÂÂ¯Ã‚Â·Ã¨ÂÂ²Ã§Ë†Â¾Ã¦â„¢Â®Ã¦â€“Â¯Ã¥Å“Â¨Ã¨ÂÂ·Ã¦Â¥Â­Ã§â€Å¸Ã¦Â¶Â¯Ã¤Â¸Â­Ã¨Â´ÂÃ¥Â¾â€”Ã¤Âºâ€ 23Ã¦Å¾Å¡Ã¥Â¥Â§Ã©Ââ€¹Ã©â€¡â€˜Ã§â€°Å’Ã£â‚¬â€š"
+                      }
+                  ]
+    },
+    {
+        "id":  10,
+        "es":  "Comida",
+        "en":  "Food",
+        "zhHans":  "美食",
+        "zhHant":  "美食",
+        "emoji":  "🍕",
+        "datos":  [
+                      {
+                          "id":  10001,
+                          "es":  "La pizza nació como comida humilde en Nápoles antes de conquistar el planeta.",
+                          "en":  "Pizza was originally a poor people\u0027s dish in 18th-century Naples.",
+                          "zhHans":  "披萨最初是18世纪那不勒斯穷人的食物。",
+                          "zhHant":  "披薩最初是18世紀那不勒斯窮人的食物。"
+                      },
+                      {
+                          "id":  10003,
+                          "es":  "El chocolate empezó siendo una bebida amarga mucho antes de convertirse en postre.",
+                          "en":  "Chocolate was originally a bitter drink consumed by the Aztecs.",
+                          "zhHans":  "巧克力最初是阿兹特克人饮用的苦味饮料。",
+                          "zhHant":  "巧克力最初是阿茲特克人飲用的苦味飲料。"
+                      },
+                      {
+                          "id":  10004,
+                          "es":  "Botánicamente, el tomate es una fruta aunque en la cocina juegue de verdura.",
+                          "en":  "A tomato is botanically a fruit, although used as a vegetable in cooking.",
+                          "zhHans":  "番茄在植物学上是一种水果，但在烹饪中作为蔬菜使用。",
+                          "zhHant":  "番茄在植物學上是一種水果，但在烹飪中作為蔬菜使用。"
+                      },
+                      {
+                          "id":  10005,
+                          "es":  "El wasabi auténtico es tan raro que muchas veces te sirven otra cosa teñida de verde.",
+                          "en":  "Real wasabi is so rare that most restaurant wasabi is colored horseradish.",
+                          "zhHans":  "真正的山葵非常稀有，大多数餐厅里的山葵都是染色的辣根。",
+                          "zhHant":  "真正的山葵非常稀有，大多數餐廳裡的山葵都是染色的辣根。"
+                      },
+                      {
+                          "id":  10008,
+                          "es":  "Pepper X supera los 2 millones en la escala Scoville y es una auténtica locura.",
+                          "en":  "The world\u0027s hottest chili is Pepper X, with over 2 million Scoville units.",
+                          "zhHans":  "世界上最辣的辣椒是Pepper X，超过200万史高维尔单位。",
+                          "zhHant":  "世界上最辣的辣椒是Pepper X，超過200萬史高維爾單位。"
+                      },
+                      {
+                          "id":  10010,
+                          "es":  "El sushi empezó como una técnica para conservar pescado con arroz fermentado.",
+                          "en":  "Original sushi was a method of preserving fish with fermented rice.",
+                          "zhHans":  "最初的寿司是一种用发酵米饭保存鱼的方法。",
+                          "zhHant":  "最初的壽司是一種用發酵米飯保存魚的方法。"
+                      },
+                      {
+                          "id":  10011,
+                          "es":  "Francia presume de más de 1.200 variedades de queso reconocidas.",
+                          "en":  "France has over 1,200 officially recognized varieties of cheese.",
+                          "zhHans":  "法国有超过1200种官方认可的奶酪品种。",
+                          "zhHant":  "法國有超過1200種官方認可的奶酪品種。"
+                      },
+                      {
+                          "id":  10012,
+                          "es":  "La vainilla es la segunda especia más cara del mundo, solo por detrás del azafrán.",
+                          "en":  "Vanilla is the second most expensive spice in the world, after saffron.",
+                          "zhHans":  "香草是世界上第二贵的香料，仅次于藏红花。",
+                          "zhHant":  "香草是世界上第二貴的香料，僅次於番紅花。"
+                      },
+                      {
+                          "id":  10015,
+                          "es":  "La capsaicina del chile engaña a tu cerebro y le hace creer que se está quemando.",
+                          "en":  "Chilis contain capsaicin, which tricks the brain into feeling heat.",
+                          "zhHans":  "辣椒含有辣椒素，欺骗大脑使其感觉有热量。",
+                          "zhHant":  "辣椒含有辣椒素，欺騙大腦使其感覺有熱量。"
+                      },
+                      {
+                          "id":  10020,
+                          "es":  "Los agujeros del emmental aparecen porque las bacterias sueltan CO2 al madurar.",
+                          "en":  "Emmental cheese has holes because bacteria produce CO₂ during aging.",
+                          "zhHans":  "埃门塔尔奶酪有孔是因为细菌在熟化过程中产生CO₂。",
+                          "zhHant":  "埃門塔爾奶酪有孔是因為細菌在熟化過程中產生CO₂。"
+                      }
+                  ]
+    }
 ]

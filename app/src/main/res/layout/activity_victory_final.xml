@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0A0A0F">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_datos_curiosos" />
+
+    <com.ricardomodino.impostorgame.views.VictoryParticleView
+        android:id="@+id/particleView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="32dp">
+
+        <!-- Línea acento en la parte superior del bloque -->
+        <View
+            android:layout_width="48dp"
+            android:layout_height="3dp"
+            android:background="#00E5FF"
+            android:layout_marginBottom="24dp" />
+
+        <TextView
+            android:id="@+id/txtTrophy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/victory_trophy"
+            android:textSize="100sp"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:id="@+id/txtVictoryTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/victory_title"
+            android:textSize="48sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:shadowColor="#00E5FF"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="30"
+            android:layout_marginBottom="12dp" />
+
+        <TextView
+            android:id="@+id/txtVictorySubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/victory_subtitle"
+            android:textSize="20sp"
+            android:textColor="#CCFFFFFF"
+            android:gravity="center"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/txtVictoryMotivo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="14sp"
+            android:textColor="#AAFFFFFF"
+            android:gravity="center"
+            android:layout_marginBottom="48dp" />
+
+        <Button
+            android:id="@+id/btnVictoryNewGame"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:text="@string/victory_nueva_partida"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:background="@drawable/btn_final"
+            android:backgroundTint="@null"
+            app:backgroundTint="@null" />
+
+    </LinearLayout>
+
+</FrameLayout>

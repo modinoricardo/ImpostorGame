@@ -95,7 +95,7 @@ class MainActivity : AppCompatActivity(),
         ThemeManager.aplicarTema(this)
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        setContentView(if (ThemeManager.esFinal(this)) R.layout.activity_main_final else R.layout.activity_main)
 
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
@@ -414,18 +414,15 @@ class MainActivity : AppCompatActivity(),
 
     override fun onGameModeConfirmed(nuevasOpciones: GameOptions) {
         opciones = nuevasOpciones
-        txtModoJuegoSeleccionado.text = when {
-            opciones.modoMisterioso    -> "🌑 Misterioso"
-            opciones.modoDatosCuriosos -> "🧠 Datos Curiosos"
-            else                       -> "🕵️ Clásico"
-        }
+        txtModoJuegoSeleccionado.text = textoModoJuegoSeleccionado()
 
         cardViewNumSenoresBlancos.visibility = if (opciones.modoMisterioso) View.VISIBLE else View.GONE
 
         if (!opciones.modoMisterioso) {
             opciones = opciones.copy(numSenoresBlancos = 0)
-        } else {
-            // En modo misterioso: ocultar y desactivar modo loco
+        }
+        if (opciones.modoMisterioso || opciones.modoDatosCuriosos) {
+            // En modo misterioso/datos curiosos: ocultar y desactivar modo loco
             opciones = opciones.copy(modoLoco = false)
             switchModoLoco.isChecked = false
         }
@@ -433,7 +430,7 @@ class MainActivity : AppCompatActivity(),
         // Ocultar/mostrar cards según modo
         val cardPista = findViewById<androidx.cardview.widget.CardView>(R.id.cardViewPistaImpostor)
         val cardLoco  = findViewById<androidx.cardview.widget.CardView>(R.id.cardViewModoLoco)
-        if (opciones.modoMisterioso) {
+        if (opciones.modoMisterioso || opciones.modoDatosCuriosos) {
             cardPista.visibility = View.GONE
             cardLoco.visibility  = View.GONE
         } else {
@@ -513,11 +510,18 @@ class MainActivity : AppCompatActivity(),
             putBoolean("tiempoLimitado", opciones.tiempoLimitado)
             putBoolean("camaraActiva", opciones.camaraActiva)
             putBoolean("modoMisterioso", opciones.modoMisterioso)
+            putBoolean("modoDatosCuriosos", opciones.modoDatosCuriosos)
             putInt("numImpostores", opciones.numImpostores)
             putInt("numSenoresBlancos", opciones.numSenoresBlancos)
             putInt("minutos", opciones.minutos)
             apply()
         }
+    }
+
+    private fun textoModoJuegoSeleccionado(): String = when {
+        opciones.modoMisterioso -> getString(R.string.main_modo_misterioso)
+        opciones.modoDatosCuriosos -> getString(R.string.main_modo_datos_curiosos)
+        else -> getString(R.string.main_modo_clasico)
     }
 
     private fun restaurarOpciones() {
@@ -528,6 +532,7 @@ class MainActivity : AppCompatActivity(),
             tiempoLimitado = prefs.getBoolean("tiempoLimitado", false),
             camaraActiva = prefs.getBoolean("camaraActiva", false),
             modoMisterioso = prefs.getBoolean("modoMisterioso", false),
+            modoDatosCuriosos = prefs.getBoolean("modoDatosCuriosos", false),
             numImpostores = prefs.getInt("numImpostores", 1),
             numSenoresBlancos = prefs.getInt("numSenoresBlancos", 0),
             minutos = prefs.getInt("minutos", 3)
@@ -541,6 +546,17 @@ class MainActivity : AppCompatActivity(),
         layoutSelectorMinutos.visibility = if (opciones.tiempoLimitado) View.VISIBLE else View.GONE
         txtNumImpostores.text = opciones.numImpostores.toString()
         txtNumSenoresBlancos.text = opciones.numSenoresBlancos.toString()
+        txtModoJuegoSeleccionado.text = textoModoJuegoSeleccionado()
+        cardViewNumSenoresBlancos.visibility = if (opciones.modoMisterioso) View.VISIBLE else View.GONE
+        val cardPista = findViewById<androidx.cardview.widget.CardView>(R.id.cardViewPistaImpostor)
+        val cardLoco  = findViewById<androidx.cardview.widget.CardView>(R.id.cardViewModoLoco)
+        if (opciones.modoMisterioso || opciones.modoDatosCuriosos) {
+            cardPista.visibility = View.GONE
+            cardLoco.visibility  = View.GONE
+        } else {
+            cardPista.visibility = View.VISIBLE
+            cardLoco.visibility  = View.VISIBLE
+        }
     }
 
 }

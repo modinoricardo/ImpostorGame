@@ -31,7 +31,11 @@ class SelectCategoriesBottomSheet : BottomSheetDialogFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.bottomsheet_select_categories, container, false)
+        return inflater.inflate(
+            if (ThemeManager.esFinal(requireContext())) R.layout.bottomsheet_select_categories_final
+            else R.layout.bottomsheet_select_categories,
+            container, false
+        )
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

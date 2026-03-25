@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:id="@+id/rootAcercaDe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:background="@drawable/bg_reveal_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="16dp">
+
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/ic_arrow_back"
+                android:tint="#00E5FF"
+                android:padding="4dp"
+                android:clickable="true"
+                android:focusable="true" />
+
+            <TextView
+                android:id="@+id/txtTituloAcercaDe"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/acerca_titulo"
+                android:textColor="@android:color/white"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:shadowColor="#00E5FF"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="12" />
+
+            <View android:layout_width="36dp" android:layout_height="36dp" />
+
+        </LinearLayout>
+
+        <!-- Avatar -->
+        <TextView
+            android:id="@+id/txtAvatar"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="8dp"
+            android:text="R"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            android:textColor="#00E5FF"
+            android:gravity="center"
+            android:background="@drawable/bg_reveal_content"
+            android:elevation="4dp" />
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:text="Ricardo Modino" android:textColor="@android:color/white" android:textSize="20sp" android:textStyle="bold" android:layout_marginBottom="4dp" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:text="@string/acerca_creador" android:textColor="#AAFFFFFF" android:textSize="13sp" android:layout_marginBottom="24dp" />
+
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#2200E5FF" android:layout_marginBottom="20dp" />
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/acerca_descripcion" android:textColor="#DDFFFFFF" android:textSize="14sp" android:lineSpacingMultiplier="1.5" android:layout_marginBottom="16dp" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/acerca_uso" android:textColor="#DDFFFFFF" android:textSize="14sp" android:lineSpacingMultiplier="1.5" android:layout_marginBottom="16dp" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/acerca_frase" android:textColor="#DDFFFFFF" android:textSize="14sp" android:lineSpacingMultiplier="1.5" android:layout_marginBottom="16dp" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/acerca_agradecimiento" android:textColor="#DDFFFFFF" android:textSize="14sp" android:lineSpacingMultiplier="1.5" android:layout_marginBottom="16dp" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/acerca_abrazo" android:textColor="#DDFFFFFF" android:textSize="14sp" android:lineSpacingMultiplier="1.5" android:layout_marginBottom="28dp" />
+
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#2200E5FF" android:layout_marginBottom="20dp" />
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/acerca_contacto" android:textColor="@android:color/white" android:textSize="16sp" android:textStyle="bold" android:layout_marginBottom="14dp" />
+
+        <LinearLayout
+            android:id="@+id/layoutInstagram"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="12dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="12dp"
+            android:background="@drawable/bg_reveal_content">
+            <TextView android:layout_width="32dp" android:layout_height="32dp" android:text="📸" android:textSize="18sp" android:gravity="center" />
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Instagram" android:textColor="#AAFFFFFF" android:textSize="12sp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@elrichi27" android:textColor="@android:color/white" android:textSize="15sp" android:textStyle="bold" />
+            </LinearLayout>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="›" android:textColor="#00E5FF" android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="12dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="12dp"
+            android:background="@drawable/bg_reveal_content">
+            <TextView android:layout_width="32dp" android:layout_height="32dp" android:text="✉️" android:textSize="18sp" android:gravity="center" />
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Email" android:textColor="#AAFFFFFF" android:textSize="12sp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="modinoricardo@gmail.com" android:textColor="@android:color/white" android:textSize="15sp" android:textStyle="bold" />
+            </LinearLayout>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="›" android:textColor="#00E5FF" android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutGithub"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="12dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="12dp"
+            android:background="@drawable/bg_reveal_content">
+            <TextView android:layout_width="32dp" android:layout_height="32dp" android:text="💻" android:textSize="18sp" android:gravity="center" />
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="GitHub" android:textColor="#AAFFFFFF" android:textSize="12sp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="modinoricardo" android:textColor="@android:color/white" android:textSize="15sp" android:textStyle="bold" />
+            </LinearLayout>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="›" android:textColor="#00E5FF" android:textSize="20sp" />
+        </LinearLayout>
+
+        <Space android:layout_width="match_parent" android:layout_height="48dp" />
+
+    </LinearLayout>
+</ScrollView>
