@@ -10,7 +10,7 @@
     <string name="main_title">Catch the \n impostor</string>
     <string name="main_edit_players">Edit Players</string>
     <string name="main_num_impostores">Number of impostors</string>
-    <string name="main_senores_blancos">White Mister</string>
+    <string name="main_senores_blancos">Mr. White</string>
     <string name="main_categorias">Categories and words</string>
     <string name="main_modo_juego">Game mode</string>
     <string name="main_modo_clasico">🕵️ Classic</string>
@@ -42,14 +42,18 @@
     <string name="play_btn_votar">🗳 VOTE</string>
     <string name="play_btn_revelar">REVEAL IMPOSTOR AND WORD</string>
     <string name="play_btn_nueva_partida">NEW GAME</string>
+    <string name="play_no_word_value">There was no word</string>
+    <string name="preview_game_name">Catch the Impostor</string>
+    <string name="staicy_edition">STAICY EDITION</string>
+    <string name="reveal_identity_question">Impostor or not?</string>
 
-    <!-- ImpostorRevealActivity -->
+    <!-- ClassicRevealActivity -->
     <string name="reveal_no_digas">Don\'t tell anyone this word!</string>
     <string name="reveal_toca">TAP TO REVEAL</string>
     <string name="reveal_siguiente">⏭ NEXT PLAYER</string>
     <string name="reveal_empezar">START GAME!</string>
 
-    <!-- DatosCuriososRevealActivity -->
+    <!-- CoverRevealActivity -->
     <string name="datos_modo_label">🧠 FUN FACTS</string>
     <string name="datos_eres_impostor">YOU ARE THE IMPOSTOR</string>
     <string name="datos_inventa_dato">Make up a fun fact\nwhen it\'s your turn</string>
@@ -82,7 +86,7 @@
     <string name="mode_clasico_titulo">🕵️ Classic</string>
     <string name="mode_clasico_desc">There is one impostor. Civilians know the word and must find the impostor.</string>
     <string name="mode_misterioso_titulo">🌑 Mysterious</string>
-    <string name="mode_misterioso_desc">The impostor doesn\'t know they are the impostor. They receive a hint related to the civilians\' word. There is a \"White Mister\" who receives no word and must pretend to be a civilian.</string>
+    <string name="mode_misterioso_desc">The impostor doesn\'t know they are the impostor. They receive a hint related to the civilians\' word. There is a \"Mr. White\" who receives no word and must pretend to be a civilian.</string>
     <string name="mode_datos_titulo">🧠 Fun Facts</string>
     <string name="mode_datos_desc">Each player receives a different fun fact. Impostors receive nothing and must make one up.</string>
     <string name="mode_confirmar">Confirm</string>
@@ -123,6 +127,13 @@
     <string name="sug_email_hint">Your email (optional)</string>
     <string name="sug_texto_hint">Write your suggestion or improvement here…</string>
     <string name="sug_enviar">Send</string>
+    <string name="sug_enviando">Sending…</string>
+    <string name="sug_write_first">Write your suggestion first</string>
+    <string name="sug_invalid_email">Invalid email</string>
+    <string name="sug_too_short">Your suggestion is too short. Add a bit more detail.</string>
+    <string name="sug_not_configured">Sending is not configured. Contact the developer.</string>
+    <string name="sug_send_error">Could not send it. Check your connection.</string>
+    <string name="sug_sent_success">Thanks! Your suggestion has been sent.</string>
 
     <!-- AcercaDeBottomSheet -->
     <string name="acerca_titulo">About</string>
@@ -133,6 +144,8 @@
     <string name="acerca_agradecimiento">Special thanks to the person who drives and inspires me to create projects like this, and who always supports me every step of the way: Ste.H. Without you, none of this would make the same sense.</string>
     <string name="acerca_abrazo">A hug to everyone who plays it.</string>
     <string name="acerca_contacto">Contact</string>
+    <string name="acerca_email_label">Email</string>
+    <string name="acerca_send_email">Send email</string>
 
     <!-- Compartidos -->
     <string name="jugador">Player</string>
@@ -142,10 +155,108 @@
     <string name="editar_jugadores_toca">Tap a name to edit</string>
     <string name="agregar_jugador_hint">Add new player name</string>
     <string name="confirmar">Confirm</string>
+    <string name="edit_players_delete_block_title">You can\'t remove that player</string>
+    <string name="edit_players_delete_block_msg">You need at least 3 players to play. Instead of deleting one, you can edit one of the existing players.</string>
+    <string name="edit_players_too_much_love_title">Too much love</string>
+    <string name="edit_players_too_much_love_msg">That name radiates extraordinary levels of affection and tenderness. It might overload the system.</string>
+    <string name="edit_players_clue_found_title">CLUE FOUND</string>
+    <string name="edit_players_clue_found_msg">TE L♥ HEYE TK UOTPOWWO.\n♥V WVX L♥ ULZVLG O, ULAE ♥VHKYKLTPL.\nUOAO BE♥PAOA, ÑLML YET♥VBKA♥L.\nOUOJOÑO TE ♥KACL.\nTE ÑO YOWEA VPKW.\nÑO AL♥UVL♥PO♥.\nLTYKLTÑLWO.</string>
+    <string name="edit_players_add_error_title">Error adding player</string>
+    <string name="edit_players_add_error_msg">The player could not be added. Enter a valid name and try again.</string>
 
     <!-- Diálogos genéricos -->
     <string name="dialog_salir_titulo">Exit</string>
     <string name="dialog_salir_msg">Do you want to leave the game?</string>
     <string name="dialog_salir_si">Exit</string>
     <string name="dialog_salir_no">Cancel</string>
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_view_result">View result</string>
+    <string name="dialog_try">Try</string>
+    <string name="dialog_reveal">Reveal</string>
+
+    <!-- Dynamic summaries -->
+    <plurals name="main_count_impostor">
+        <item quantity="one">%d impostor</item>
+        <item quantity="other">%d impostors</item>
+    </plurals>
+    <plurals name="main_count_civil">
+        <item quantity="one">%d civilian</item>
+        <item quantity="other">%d civilians</item>
+    </plurals>
+    <plurals name="main_count_white_mister">
+        <item quantity="one">%d Mr. White</item>
+        <item quantity="other">%d Mr. Whites</item>
+    </plurals>
+    <string name="main_summary_pair">%1$s · %2$s</string>
+    <string name="main_categories_available">Available categories: %1$d</string>
+    <string name="main_categories_selected">Selected categories: %1$d of %2$d</string>
+    <string name="main_duration_value">%1$d min</string>
+    <string name="main_invalid_config_title">Invalid setup</string>
+    <string name="main_invalid_need_non_civil_mysterious">There must be at least one impostor or one Mr. White to play.</string>
+    <string name="main_invalid_need_impostor">There must be at least one impostor to play.</string>
+    <string name="main_invalid_too_many_non_civilians">There are too many non-civilians. With %1$d players, the maximum is %2$d non-civilians.</string>
+    <string name="main_invalid_generic">This setup is not valid. Check the number of impostors and Mr. Whites.</string>
+
+    <!-- Match -->
+    <string name="play_turn_speaks">%1$s, you speak first!</string>
+    <string name="play_no_players_available">No players available</string>
+    <string name="play_label_impostor_reveal">IMPOSTOR</string>
+    <string name="play_timer_format">&#9201; %1$d:%2$02d</string>
+    <string name="play_timer_zero">&#9201; 0:00</string>
+    <string name="play_time_up_reason">Time ran out!</string>
+    <string name="play_civilians_win_reason">All impostors have been eliminated!</string>
+    <string name="play_impostors_majority_reason">The civilians are outnumbered.</string>
+    <string name="dialog_reveal_impostor_title">Reveal impostor</string>
+    <string name="dialog_reveal_impostor_msg">Do you want to reveal the impostor?</string>
+
+    <!-- Reveal -->
+    <string name="reveal_hold_to_reveal">HOLD TO REVEAL THE WORD</string>
+    <string name="reveal_player_progress">Player %1$d of %2$d</string>
+    <string name="reveal_mr_white_title">MR. WHITE</string>
+    <string name="reveal_no_word">You have no word</string>
+    <string name="reveal_your_hint">YOUR HINT</string>
+    <string name="reveal_your_word">YOUR WORD</string>
+    <string name="reveal_you_are_impostor">YOU ARE THE\nIMPOSTOR</string>
+    <string name="reveal_roles_unbalanced_title">Unbalanced roles</string>
+    <string name="reveal_roles_unbalanced_msg">Non-civilians are equal to or greater than civilians.\nThe impostors win automatically!</string>
+    <string name="reveal_victory_no_civilians_reason">Non-civilians outnumbered the civilians.</string>
+    <string name="reveal_hint_prefix">Hint: %1$s</string>
+    <string name="reveal_first_letter_prefix">First letter: %1$s</string>
+
+    <!-- Voting -->
+    <string name="vote_role_impostor">the impostor</string>
+    <string name="vote_role_impostor_one_of_many">one of the impostors</string>
+    <string name="vote_role_mr_white">Mr. White</string>
+    <string name="vote_caught_title">You got them!</string>
+    <string name="vote_message_revealed_continue">%1$s was %2$s.\nThe match continues without that player!</string>
+    <string name="vote_message_revealed_try">%1$s was %2$s.\n\nBut they still get one last chance!</string>
+    <string name="vote_oops_title">Oops!</string>
+    <string name="vote_message_innocent_too_many">%1$s was innocent.\nThere are too many impostors in the match!</string>
+    <string name="vote_message_innocent_continue">%1$s was innocent.\nThe match continues.</string>
+
+    <!-- Guess word -->
+    <string name="guess_role_impostor">the impostor</string>
+    <string name="guess_role_mr_white">Mr. White</string>
+    <string name="guess_save_group">save the group</string>
+    <string name="guess_save_yourself">save yourself</string>
+    <string name="guess_subtitle_reveal">%1$s is %2$s.\nGuess the word to %3$s.</string>
+    <string name="guess_correct_reason">%1$s guessed the word!</string>
+    <string name="guess_last_threat_reason">%1$s was the last threat!</string>
+    <string name="guess_incorrect_title">Wrong word</string>
+    <string name="guess_message_no_threats">%1$s has been eliminated.\nNo non-civilians remain!</string>
+    <string name="guess_message_impostors_dominate">%1$s has been eliminated.\nThe impostors now dominate the match!</string>
+    <string name="guess_message_word_wrong">That was not the word.\n%1$s has been eliminated.</string>
+    <string name="guess_reason_impostors_dominate">The impostors outnumbered the civilians.</string>
+    <string name="guess_action_view_victory">View victory</string>
+
+    <!-- Victory -->
+    <string name="victory_impostors_title">THE IMPOSTORS WIN!</string>
+    <string name="victory_impostors_subtitle">The civilians never had a chance</string>
+    <string name="victory_civilians_title">THE IMPOSTORS HAVE BEEN EXPOSED!</string>
+    <string name="victory_civilians_subtitle_1">The truth always comes out</string>
+    <string name="victory_civilians_subtitle_2">Deception never lasts forever</string>
+    <string name="victory_civilians_subtitle_3">Together, they are unstoppable</string>
+    <string name="victory_civilians_subtitle_4">No one can hide forever</string>
+    <string name="victory_civilians_subtitle_5">Justice has prevailed</string>
+    <string name="victory_reveal_button">🔍 REVEAL</string>
 </resources>

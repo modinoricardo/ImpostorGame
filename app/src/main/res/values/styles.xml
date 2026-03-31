@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- Estilo base para todos los TextViews: nunca corta palabras a mitad -->
+    <style name="ImpostorGame.TextView" parent="android:Widget.TextView">
+        <item name="android:hyphenationFrequency">none</item>
+        <item name="android:breakStrategy">simple</item>
+    </style>
+
     <style name="Impostor.Card">
         <item name="cardUseCompatPadding">true</item>
         <item name="cardCornerRadius">22dp</item>

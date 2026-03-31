@@ -4,8 +4,12 @@
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
 
     <application
+        android:name=".ImpostorGameApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -16,13 +20,12 @@
         android:theme="@style/Theme.ImpostorGame">
 
         <activity android:name=".activities.PlayGameActivity" android:exported="false" />
-        <activity android:name=".activities.ImpostorRevealActivity" android:exported="false" />
+        <activity android:name=".activities.ClassicRevealActivity" android:exported="false" />
+        <activity android:name=".activities.CoverRevealActivity" android:exported="false" />
         <activity android:name=".activities.CountdownActivity" android:exported="false" />
         <activity android:name=".activities.VoteActivity" android:exported="false" />
         <activity android:name=".activities.VictoryActivity" android:exported="false" />
         <activity android:name=".activities.GuessWordActivity" android:exported="false" />
-        <activity android:name=".activities.DatosCuriososRevealActivity" android:exported="false" />
-        <activity android:name=".activities.EstiloFinalRevealActivity" android:exported="false" />
 
         <!--
             SplashActivity es ahora el punto de entrada de la app.

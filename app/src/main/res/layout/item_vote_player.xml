@@ -16,22 +16,21 @@
             android:layout_height="90dp"
             android:scaleType="centerCrop"
             android:src="@drawable/civil1"
-            android:background="@drawable/bg_card_main"
+            android:background="@drawable/bg_vote_avatar_circle"
             android:clipToOutline="true" />
 
-        <!-- Overlay seleccionado -->
         <View
             android:id="@+id/overlaySelected"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#8000E5FF"
+            android:background="@drawable/bg_vote_overlay_circle"
             android:visibility="gone" />
 
         <TextView
             android:id="@+id/txtCheck"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="✓"
+            android:text="&#10003;"
             android:textSize="36sp"
             android:textColor="@android:color/white"
             android:gravity="center"
@@ -44,7 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Jugador"
+        android:text="@string/jugador"
         android:textColor="@android:color/white"
         android:textSize="12sp"
         android:layout_marginTop="4dp"

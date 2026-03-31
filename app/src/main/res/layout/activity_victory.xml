@@ -29,12 +29,15 @@
 
         <TextView
             android:id="@+id/txtVictoryTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/victory_title"
             android:textSize="48sp"
             android:textStyle="bold"
             android:textColor="@android:color/white"
+            android:gravity="center"
+            android:hyphenationFrequency="none"
+            android:breakStrategy="simple"
             android:shadowColor="#FFD700"
             android:shadowDx="0"
             android:shadowDy="0"

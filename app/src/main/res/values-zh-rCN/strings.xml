@@ -42,14 +42,18 @@
     <string name="play_btn_votar">🗳 投票</string>
     <string name="play_btn_revelar">揭示卧底和词语</string>
     <string name="play_btn_nueva_partida">新游戏</string>
+    <string name="play_no_word_value">这一局没有词语</string>
+    <string name="preview_game_name">抓住卧底</string>
+    <string name="staicy_edition">STAICY 特别版</string>
+    <string name="reveal_identity_question">到底是不是卧底？</string>
 
-    <!-- ImpostorRevealActivity -->
+    <!-- ClassicRevealActivity -->
     <string name="reveal_no_digas">不要把这个词告诉任何人！</string>
     <string name="reveal_toca">点击揭示</string>
     <string name="reveal_siguiente">⏭ 下一位玩家</string>
     <string name="reveal_empezar">开始游戏！</string>
 
-    <!-- DatosCuriososRevealActivity -->
+    <!-- CoverRevealActivity -->
     <string name="datos_modo_label">🧠 趣味知识</string>
     <string name="datos_eres_impostor">你是卧底</string>
     <string name="datos_inventa_dato">轮到你时\n编造一个趣味知识</string>
@@ -123,6 +127,13 @@
     <string name="sug_email_hint">您的邮箱（可选）</string>
     <string name="sug_texto_hint">在此写下您的建议或改进意见…</string>
     <string name="sug_enviar">发送</string>
+    <string name="sug_enviando">发送中…</string>
+    <string name="sug_write_first">请先写下你的建议</string>
+    <string name="sug_invalid_email">邮箱无效</string>
+    <string name="sug_too_short">你的建议太短了，请再补充一些细节。</string>
+    <string name="sug_not_configured">发送功能尚未配置，请联系开发者。</string>
+    <string name="sug_send_error">发送失败，请检查网络连接。</string>
+    <string name="sug_sent_success">谢谢！你的建议已经发送。</string>
 
     <!-- AcercaDeBottomSheet -->
     <string name="acerca_titulo">关于</string>
@@ -133,6 +144,8 @@
     <string name="acerca_agradecimiento">特别感谢那个激励和启发我创建这类项目的人，她始终支持我每一步：Ste.H。没有你，这一切都不会有同样的意义。</string>
     <string name="acerca_abrazo">拥抱所有玩这款游戏的人。</string>
     <string name="acerca_contacto">联系方式</string>
+    <string name="acerca_email_label">邮箱</string>
+    <string name="acerca_send_email">发送邮件</string>
 
     <!-- Compartidos -->
     <string name="jugador">玩家</string>
@@ -142,10 +155,105 @@
     <string name="editar_jugadores_toca">点击名称进行编辑</string>
     <string name="agregar_jugador_hint">添加新玩家姓名</string>
     <string name="confirmar">确认</string>
+    <string name="edit_players_delete_block_title">不能删除</string>
+    <string name="edit_players_delete_block_msg">开始游戏至少需要 3 位玩家。与其删除，不如编辑现有玩家之一。</string>
+    <string name="edit_players_too_much_love_title">爱意太浓了</string>
+    <string name="edit_players_too_much_love_msg">这个名字散发出超高浓度的爱与温柔，可能会让系统过载。</string>
+    <string name="edit_players_clue_found_title">发现线索</string>
+    <string name="edit_players_clue_found_msg">TE L♥ HEYE TK UOTPOWWO.\n♥V WVX L♥ ULZVLG O, ULAE ♥VHKYKLTPL.\nUOAO BE♥PAOA, ÑLML YET♥VBKA♥L.\nOUOJOÑO TE ♥KACL.\nTE ÑO YOWEA VPKW.\nÑO AL♥UVL♥PO♥.\nLTYKLTÑLWO.</string>
+    <string name="edit_players_add_error_title">添加玩家出错</string>
+    <string name="edit_players_add_error_msg">无法添加该玩家。请输入有效名字后重试。</string>
 
     <!-- Diálogos genéricos -->
     <string name="dialog_salir_titulo">退出</string>
     <string name="dialog_salir_msg">您要退出游戏吗？</string>
     <string name="dialog_salir_si">退出</string>
     <string name="dialog_salir_no">取消</string>
+    <string name="dialog_ok">确定</string>
+    <string name="dialog_view_result">查看结果</string>
+    <string name="dialog_try">尝试</string>
+    <string name="dialog_reveal">揭示</string>
+
+    <!-- Dynamic summaries -->
+    <plurals name="main_count_impostor">
+        <item quantity="other">%d 名卧底</item>
+    </plurals>
+    <plurals name="main_count_civil">
+        <item quantity="other">%d 名平民</item>
+    </plurals>
+    <plurals name="main_count_white_mister">
+        <item quantity="other">%d 名白板</item>
+    </plurals>
+    <string name="main_summary_pair">%1$s · %2$s</string>
+    <string name="main_categories_available">可用分类：%1$d</string>
+    <string name="main_categories_selected">已选分类：%1$d / %2$d</string>
+    <string name="main_duration_value">%1$d 分钟</string>
+    <string name="main_invalid_config_title">配置无效</string>
+    <string name="main_invalid_need_non_civil_mysterious">至少需要一名卧底或一名白板才能开始游戏。</string>
+    <string name="main_invalid_need_impostor">至少需要一名卧底才能开始游戏。</string>
+    <string name="main_invalid_too_many_non_civilians">非平民人数过多。%1$d 名玩家时，非平民最多只能有 %2$d 人。</string>
+    <string name="main_invalid_generic">当前配置无效，请检查卧底和白板人数。</string>
+
+    <!-- Match -->
+    <string name="play_turn_speaks">由 %1$s 先发言！</string>
+    <string name="play_no_players_available">没有可用玩家</string>
+    <string name="play_label_impostor_reveal">卧底</string>
+    <string name="play_timer_format">&#9201; %1$d:%2$02d</string>
+    <string name="play_timer_zero">&#9201; 0:00</string>
+    <string name="play_time_up_reason">时间到了！</string>
+    <string name="play_civilians_win_reason">所有卧底都已被淘汰！</string>
+    <string name="play_impostors_majority_reason">平民人数已经处于劣势。</string>
+    <string name="dialog_reveal_impostor_title">揭示卧底</string>
+    <string name="dialog_reveal_impostor_msg">要揭示卧底吗？</string>
+
+    <!-- Reveal -->
+    <string name="reveal_hold_to_reveal">长按以揭示词语</string>
+    <string name="reveal_player_progress">玩家 %1$d / %2$d</string>
+    <string name="reveal_mr_white_title">白板</string>
+    <string name="reveal_no_word">你没有词语</string>
+    <string name="reveal_your_hint">你的提示</string>
+    <string name="reveal_your_word">你的词语</string>
+    <string name="reveal_you_are_impostor">你是\n卧底</string>
+    <string name="reveal_roles_unbalanced_title">角色失衡</string>
+    <string name="reveal_roles_unbalanced_msg">非平民人数已经等于或超过平民人数。\n卧底自动获胜！</string>
+    <string name="reveal_victory_no_civilians_reason">非平民人数超过了平民人数。</string>
+    <string name="reveal_hint_prefix">提示：%1$s</string>
+    <string name="reveal_first_letter_prefix">首字母：%1$s</string>
+
+    <!-- Voting -->
+    <string name="vote_role_impostor">卧底</string>
+    <string name="vote_role_impostor_one_of_many">其中一名卧底</string>
+    <string name="vote_role_mr_white">白板</string>
+    <string name="vote_caught_title">抓到了！</string>
+    <string name="vote_message_revealed_continue">%1$s 是 %2$s。\n这局会在没有该玩家的情况下继续！</string>
+    <string name="vote_message_revealed_try">%1$s 是 %2$s。\n\n但他们还有最后一次机会！</string>
+    <string name="vote_oops_title">哎呀！</string>
+    <string name="vote_message_innocent_too_many">%1$s 是无辜的。\n场上卧底太多了！</string>
+    <string name="vote_message_innocent_continue">%1$s 是无辜的。\n游戏继续。</string>
+
+    <!-- Guess word -->
+    <string name="guess_role_impostor">卧底</string>
+    <string name="guess_role_mr_white">白板</string>
+    <string name="guess_save_group">拯救全队</string>
+    <string name="guess_save_yourself">拯救自己</string>
+    <string name="guess_subtitle_reveal">%1$s 是 %2$s。\n猜出词语来%3$s。</string>
+    <string name="guess_correct_reason">%1$s 猜中了词语！</string>
+    <string name="guess_last_threat_reason">%1$s 是最后一个威胁！</string>
+    <string name="guess_incorrect_title">猜错了</string>
+    <string name="guess_message_no_threats">%1$s 已被淘汰。\n场上已经没有非平民了！</string>
+    <string name="guess_message_impostors_dominate">%1$s 已被淘汰。\n卧底现在已经掌控局势！</string>
+    <string name="guess_message_word_wrong">那不是正确的词语。\n%1$s 已被淘汰。</string>
+    <string name="guess_reason_impostors_dominate">卧底人数已经超过平民。</string>
+    <string name="guess_action_view_victory">查看胜利结果</string>
+
+    <!-- Victory -->
+    <string name="victory_impostors_title">卧底获胜！</string>
+    <string name="victory_impostors_subtitle">平民几乎没有机会</string>
+    <string name="victory_civilians_title">卧底已经被揭穿！</string>
+    <string name="victory_civilians_subtitle_1">真相总会浮出水面</string>
+    <string name="victory_civilians_subtitle_2">欺骗不会永远持续</string>
+    <string name="victory_civilians_subtitle_3">团结起来就无人能挡</string>
+    <string name="victory_civilians_subtitle_4">没有人能永远隐藏</string>
+    <string name="victory_civilians_subtitle_5">正义取得了胜利</string>
+    <string name="victory_reveal_button">🔍 揭示</string>
 </resources>

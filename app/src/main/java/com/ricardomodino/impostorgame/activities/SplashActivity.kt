@@ -13,10 +13,9 @@ import android.view.WindowManager
 import android.view.animation.LinearInterpolator
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import com.ricardomodino.impostorgame.R
-import com.ricardomodino.impostorgame.managers.LocaleManager
+import com.ricardomodino.impostorgame.managers.ImmersiveModeManager
 import com.ricardomodino.impostorgame.managers.ThemeManager
 
 /**
@@ -32,7 +31,7 @@ import com.ricardomodino.impostorgame.managers.ThemeManager
  *  android:noHistory="true" en el manifest evita que al pulsar atrás desde
  *  MainActivity se vuelva a esta pantalla.
  */
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : BaseGameActivity() {
 
     private val handler = Handler(Looper.getMainLooper())
     private var navigated = false
@@ -40,20 +39,23 @@ class SplashActivity : AppCompatActivity() {
     // Índice del impostor dentro de la fila de personajes (0-based)
     private val impostorIndex = 3
 
-    override fun attachBaseContext(newBase: android.content.Context) {
-        super.attachBaseContext(LocaleManager.wrap(newBase))
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
-        // Pantalla completa antes de inflar el layout para evitar parpadeos
+        // Pantalla completa antes de inflar el layout para evitar parpadeos.
+        // window.setFlags debe ir ANTES de super.onCreate (que aplica el tema y llama a AppCompatActivity).
         @Suppress("DEPRECATION")
         window.setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
-        ThemeManager.aplicarTema(this)
         super.onCreate(savedInstanceState)
-        setContentView(if (ThemeManager.esFinal(this)) R.layout.activity_splash_final else R.layout.activity_splash)
+        setContentView(
+            when {
+                ThemeManager.esFinal(this) -> R.layout.activity_splash_final
+                ThemeManager.esCarmesi(this) -> R.layout.activity_splash_carmesi
+                else -> R.layout.activity_splash
+            }
+        )
+        ImmersiveModeManager.applyActivityContentInsets(this)
 
         val characters = listOf(
             findViewById<ImageView>(R.id.char0),
@@ -123,11 +125,12 @@ class SplashActivity : AppCompatActivity() {
         handler.postDelayed({
             val impostor = characters[impostorIndex]
 
-            // El impostor escala hacia arriba para destacar
+            // El impostor escala hacia arriba para destacar y se eleva sobre sus vecinos
             AnimatorSet().apply {
                 playTogether(
                     ObjectAnimator.ofFloat(impostor, "scaleX", 1f, 1.3f),
-                    ObjectAnimator.ofFloat(impostor, "scaleY", 1f, 1.3f)
+                    ObjectAnimator.ofFloat(impostor, "scaleY", 1f, 1.3f),
+                    ObjectAnimator.ofFloat(impostor, "translationZ", 0f, 20f)
                 )
                 duration     = 280
                 interpolator = FastOutSlowInInterpolator()

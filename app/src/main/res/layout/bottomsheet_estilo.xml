@@ -25,7 +25,7 @@
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:src="@drawable/ic_arrow_back"
-            android:tint="@android:color/white"
+            app:tint="@android:color/white"
             android:padding="4dp"
             android:clickable="true"
             android:focusable="true" />
@@ -60,7 +60,7 @@
         android:textColor="#CCFFFFFF"
         android:textSize="13sp" />
 
-    <!-- Tema Clásico -->
+    <!-- Tema ClÃ¡sico -->
     <androidx.cardview.widget.CardView
         android:id="@+id/cardTemaClasico"
         android:layout_width="match_parent"
@@ -80,7 +80,7 @@
             android:background="@drawable/bg_card_main"
             android:padding="18dp">
 
-            <!-- Preview fondo clásico -->
+            <!-- Preview fondo clÃ¡sico -->
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="72dp"
@@ -95,7 +95,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Atrapa al Impostor"
+                    android:text="@string/preview_game_name"
                     android:textColor="@android:color/white"
                     android:textSize="15sp"
                     android:textStyle="bold"
@@ -140,7 +140,7 @@
                     android:id="@+id/checkTemaClasico"
                     android:layout_width="28dp"
                     android:layout_height="28dp"
-                    android:text="✓"
+                    android:text="&#10003;"
                     android:textSize="18sp"
                     android:textColor="#00E5FF"
                     android:textStyle="bold"
@@ -152,7 +152,7 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <!-- Tema Carmesí -->
+    <!-- Tema CarmesÃ­ -->
     <androidx.cardview.widget.CardView
         android:id="@+id/cardTemaCarmesi"
         android:layout_width="match_parent"
@@ -172,7 +172,7 @@
             android:background="@drawable/bg_card_main_red"
             android:padding="18dp">
 
-            <!-- Preview fondo carmesí -->
+            <!-- Preview fondo carmesÃ­ -->
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="72dp"
@@ -187,7 +187,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Atrapa al Impostor"
+                    android:text="@string/preview_game_name"
                     android:textColor="@android:color/white"
                     android:textSize="15sp"
                     android:textStyle="bold"
@@ -232,7 +232,7 @@
                     android:id="@+id/checkTemaCarmesi"
                     android:layout_width="28dp"
                     android:layout_height="28dp"
-                    android:text="✓"
+                    android:text="&#10003;"
                     android:textSize="18sp"
                     android:textColor="#FF1744"
                     android:textStyle="bold"
@@ -253,6 +253,7 @@
         android:layout_marginBottom="14dp"
         android:clickable="true"
         android:focusable="true"
+        android:visibility="gone"
         app:cardCornerRadius="18dp"
         app:cardElevation="6dp"
         app:cardUseCompatPadding="true"
@@ -279,7 +280,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Atrapa al Impostor"
+                    android:text="@string/preview_game_name"
                     android:textColor="@android:color/white"
                     android:textSize="15sp"
                     android:textStyle="bold"
@@ -324,7 +325,7 @@
                     android:id="@+id/checkTemaJmc"
                     android:layout_width="28dp"
                     android:layout_height="28dp"
-                    android:text="✓"
+                    android:text="&#10003;"
                     android:textSize="18sp"
                     android:textColor="#00C853"
                     android:textStyle="bold"
@@ -353,31 +354,43 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@drawable/bg_card_main"
+            android:background="@drawable/bg_estilo_final_option_featured"
             android:padding="18dp">
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="72dp"
-                android:layout_marginBottom="14dp">
+                android:layout_height="96dp"
+                android:layout_marginBottom="14dp"
+                android:background="@drawable/bg_estilo_final_preview_hero">
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/bg_neon_space" />
+                    android:layout_margin="6dp"
+                    android:background="@drawable/bg_datos_curiosos" />
+
+                <View
+                    android:layout_width="38dp"
+                    android:layout_height="3dp"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:background="#D0E7C87D" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="⭐ Estilo Final"
-                    android:textColor="@android:color/white"
-                    android:textSize="15sp"
+                    android:gravity="center"
+                    android:letterSpacing="0.06"
+                    android:text="@string/estilo_final_nombre"
+                    android:textColor="#FFF1CF"
+                    android:textSize="16sp"
                     android:textStyle="bold"
-                    android:shadowColor="#FFD600"
+                    android:shadowColor="#80E7C87D"
                     android:shadowDx="0"
                     android:shadowDy="0"
-                    android:shadowRadius="12" />
+                    android:shadowRadius="14" />
 
             </FrameLayout>
 
@@ -397,7 +410,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/estilo_final_nombre"
-                        android:textColor="@android:color/white"
+                        android:textColor="#FFF3D8"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
@@ -405,7 +418,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/estilo_final_desc"
-                        android:textColor="#AAFFFFFF"
+                        android:textColor="#D0BC95"
                         android:textSize="12sp"
                         android:layout_marginTop="2dp" />
 
@@ -415,9 +428,9 @@
                     android:id="@+id/checkTemaFinal"
                     android:layout_width="28dp"
                     android:layout_height="28dp"
-                    android:text="✓"
+                    android:text="&#10003;"
                     android:textSize="18sp"
-                    android:textColor="#FFD600"
+                    android:textColor="#E7C87D"
                     android:textStyle="bold"
                     android:gravity="center"
                     android:visibility="gone" />
@@ -427,7 +440,6 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <Space android:layout_width="match_parent" android:layout_height="48dp" />
 
 </LinearLayout>
 

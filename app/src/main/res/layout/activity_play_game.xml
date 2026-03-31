@@ -97,7 +97,7 @@
                 android:paddingStart="20dp" android:paddingTop="14dp"
                 android:paddingEnd="20dp" android:paddingBottom="14dp">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="IMPOSTOR" android:textColor="#FF1744" android:textSize="11sp"
+                    android:text="@string/play_label_impostor_reveal" android:textColor="#FF1744" android:textSize="11sp"
                     android:textStyle="bold" android:letterSpacing="0.1" android:layout_marginBottom="4dp"/>
                 <TextView android:id="@+id/txtImpostorNombre"
                     android:layout_width="wrap_content" android:layout_height="wrap_content"
@@ -115,7 +115,7 @@
                 android:paddingStart="20dp" android:paddingTop="14dp"
                 android:paddingEnd="20dp" android:paddingBottom="14dp">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="SEÑOR BLANCO" android:textColor="#FF1744" android:textSize="11sp"
+                    android:text="@string/reveal_mr_white_title" android:textColor="#FF1744" android:textSize="11sp"
                     android:textStyle="bold" android:letterSpacing="0.1" android:layout_marginBottom="4dp"/>
                 <TextView android:id="@+id/txtSenorBlancoNombre"
                     android:layout_width="wrap_content" android:layout_height="wrap_content"

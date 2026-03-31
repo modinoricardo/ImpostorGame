@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dlgRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#960408"
+    android:foregroundGravity="center"
+    android:padding="24dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/bg_dialog_carmesi_card"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingStart="24dp"
+        android:paddingTop="20dp"
+        android:paddingEnd="24dp"
+        android:paddingBottom="24dp">
+
+        <View
+            android:layout_width="54dp"
+            android:layout_height="4dp"
+            android:layout_marginBottom="18dp"
+            android:background="#66F2D0D8" />
+
+        <TextView
+            android:id="@+id/dlgIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="18dp"
+            android:gravity="center"
+            android:textColor="#F4D6DD"
+            android:textSize="54sp" />
+
+        <ImageView
+            android:id="@+id/dlgIconImage"
+            android:layout_width="58dp"
+            android:layout_height="58dp"
+            android:layout_marginBottom="18dp"
+            android:contentDescription="@null"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/dlgTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:gravity="center"
+            android:letterSpacing="0.01"
+            android:textAlignment="center"
+            android:textColor="#FFF4F6"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/dlgMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="26dp"
+            android:gravity="center"
+            android:lineSpacingExtra="5dp"
+            android:textAlignment="center"
+            android:textColor="#DCC8CF"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/dlgBtnNegative"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/btn_dialog_carmesi_secondary"
+            android:textAllCaps="false"
+            android:textColor="#F0D0D7"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/dlgBtnPositive"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:background="@drawable/btn_neon_red"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</FrameLayout>

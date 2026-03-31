@@ -1,12 +1,16 @@
-package com.ricardomodino.impostorgame
+package com.ricardomodino.impostorgame.adapters
 
+import android.animation.ValueAnimator
 import android.graphics.Color
 import android.graphics.Typeface
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.ricardomodino.impostorgame.R
 import com.ricardomodino.impostorgame.managers.ThemeManager
 import com.ricardomodino.impostorgame.modelos.Category
 
@@ -22,8 +26,9 @@ class CategoryAdapterSelect(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
+        val layout = if (ThemeManager.esCarmesi(parent.context)) R.layout.item_category_select_carmesi else R.layout.item_category_select
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_category_select, parent, false)
+            .inflate(layout, parent, false)
         return CategoryViewHolder(view)
     }
 
@@ -66,11 +71,11 @@ class CategoryAdapterSelect(
                 if (selected) {
                     holder.cardCategory.setBackgroundResource(R.drawable.bg_category_selected_carmesi)
                     holder.textTitle.setTypeface(null, Typeface.BOLD)
-                    holder.textTitle.setTextColor(Color.WHITE)
+                    holder.textTitle.setTextColor(ContextCompat.getColor(ctx, R.color.carmesi_text_primary))
                 } else {
                     holder.cardCategory.setBackgroundResource(R.drawable.bg_category_normal_carmesi)
                     holder.textTitle.setTypeface(null, Typeface.NORMAL)
-                    holder.textTitle.setTextColor(Color.parseColor("#CCFFFFFF"))
+                    holder.textTitle.setTextColor(ContextCompat.getColor(ctx, R.color.carmesi_text_secondary))
                 }
             }
             ThemeManager.esJmc(ctx) -> {
@@ -93,6 +98,28 @@ class CategoryAdapterSelect(
                     holder.textTitle.setTypeface(null, Typeface.NORMAL)
                 }
             }
+        }
+
+        val targetTextSp = if (selected) 18f else 16f
+        val targetEmojiSp = if (selected) 26f else 22f
+        val prevSelected = holder.cardCategory.tag as? Boolean ?: false
+        holder.cardCategory.tag = selected
+
+        if (prevSelected != selected) {
+            animateTextSize(holder.textTitle, holder.textTitle.textSize, targetTextSp, holder)
+            animateTextSize(holder.textEmoji, holder.textEmoji.textSize, targetEmojiSp, holder)
+        } else {
+            holder.textTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, targetTextSp)
+            holder.textEmoji.setTextSize(TypedValue.COMPLEX_UNIT_SP, targetEmojiSp)
+        }
+    }
+
+    private fun animateTextSize(view: TextView, fromPx: Float, toSp: Float, holder: CategoryViewHolder) {
+        val toPx = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, toSp, view.resources.displayMetrics)
+        ValueAnimator.ofFloat(fromPx, toPx).apply {
+            duration = 200
+            addUpdateListener { view.setTextSize(TypedValue.COMPLEX_UNIT_PX, it.animatedValue as Float) }
+            start()
         }
     }
 }

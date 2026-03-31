@@ -10,17 +10,17 @@
     <LinearLayout
         android:id="@+id/cardCategory"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="52dp"
         android:background="@drawable/bg_card_main"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:padding="12dp">
+        android:paddingHorizontal="12dp">
 
         <TextView
             android:id="@+id/textEmoji"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="🏠"
+            android:text=""
             android:textSize="22sp"
             android:layout_marginEnd="12dp" />
 
@@ -29,9 +29,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Objetos cotidianos"
+            android:text=""
             android:textColor="@android:color/black"
             android:textSize="16sp" />
     </LinearLayout>
 
 </LinearLayout>
+

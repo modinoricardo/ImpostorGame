@@ -82,12 +82,12 @@ object ThemeManager {
         else         -> R.drawable.ring_neon_soft
     }
     fun getAccentColor(context: Context) = when (getTema(context)) {
-        TEMA_CARMESI -> 0xFFFF1744.toInt()
+        TEMA_CARMESI -> 0xFFD92C58.toInt()
         TEMA_JMC     -> 0xFF00C853.toInt()
         else         -> 0xFF00E5FF.toInt()
     }
     fun getCheckColor(context: Context) = when (getTema(context)) {
-        TEMA_CARMESI -> "#FF1744"
+        TEMA_CARMESI -> "#F3D3DA"
         TEMA_JMC     -> "#00C853"
         TEMA_FINAL   -> "#E7C87D"
         else         -> "#00E5FF"
@@ -149,7 +149,7 @@ object ThemeManager {
             root.setBackgroundResource(btnRes)
         }
         // También TextViews usados como botones +/-
-        if (root is TextView && (root.text == "+" || root.text == "−")) {
+        if (root is TextView && (root.text == "+" || root.text == "-" || root.text == "−")) {
             root.setBackgroundResource(btnRes)
         }
     }

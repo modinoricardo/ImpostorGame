@@ -20,7 +20,7 @@
         android:orientation="vertical"
         android:padding="24dp">
 
-        <!-- Cabecera: número de jugador -->
+        <!-- Cabecera: nÃºmero de jugador -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -34,7 +34,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Jugador 1 de 4"
+                android:text=""
                 android:textColor="#80FFFFFF"
                 android:textSize="13sp"
                 android:letterSpacing="0.08" />
@@ -57,7 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
-            android:text="JUGADOR"
+            android:text="@string/jugador"
             android:textColor="@android:color/white"
             android:textSize="32sp"
             android:textStyle="bold"
@@ -65,7 +65,7 @@
             android:maxLines="1"
             android:ellipsize="end" />
 
-        <!-- Línea separadora con color de acento -->
+        <!-- LÃ­nea separadora con color de acento -->
         <View
             android:id="@+id/lineaAcento"
             android:layout_width="48dp"
@@ -74,7 +74,7 @@
             android:background="#00E5FF"
             android:layout_gravity="start" />
 
-        <!-- Tarjeta central de revelación (FrameLayout para animación) -->
+        <!-- Tarjeta central de revelaciÃ³n (FrameLayout para animaciÃ³n) -->
         <FrameLayout
             android:id="@+id/cardReveal"
             android:layout_width="match_parent"
@@ -105,7 +105,7 @@
                         android:id="@+id/txtImpostorEmoji"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="🕵️"
+                        android:text="&#128373;&#65039;"
                         android:textSize="56sp"
                         android:layout_marginBottom="16dp" />
 
@@ -203,7 +203,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="↑"
+                        android:text="&#8593;"
                         android:textColor="#CCFFFFFF"
                         android:textSize="24sp"
                         android:textStyle="bold"
@@ -223,7 +223,7 @@
 
         </FrameLayout>
 
-        <!-- Botón siguiente -->
+        <!-- BotÃ³n siguiente -->
         <androidx.cardview.widget.CardView
             android:id="@+id/btnSiguienteJugador"
             android:layout_width="match_parent"
@@ -258,3 +258,4 @@
     </LinearLayout>
 
 </FrameLayout>
+

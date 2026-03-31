@@ -3,21 +3,69 @@
     <item>
         <shape>
             <gradient
-                android:type="linear"
                 android:angle="270"
-                android:startColor="#1A0B0B"
-                android:centerColor="#33100F"
-                android:endColor="#12070A"/>
+                android:startColor="@color/carmesi_bg_top"
+                android:centerColor="@color/carmesi_bg_mid"
+                android:endColor="@color/carmesi_bg_bottom"
+                android:type="linear" />
         </shape>
     </item>
-    <item android:top="-120dp" android:left="-120dp">
-        <shape>
+
+    <item
+        android:gravity="top|end"
+        android:right="-120dp"
+        android:top="-120dp">
+        <shape android:shape="oval">
+            <size
+                android:width="420dp"
+                android:height="420dp" />
             <gradient
-                android:type="linear"
-                android:angle="45"
-                android:startColor="#33FF1744"
-                android:centerColor="#22FF4040"
-                android:endColor="#00000000"/>
+                android:startColor="@color/carmesi_bg_glow"
+                android:centerColor="@color/carmesi_bg_glow_soft"
+                android:endColor="@android:color/transparent"
+                android:gradientRadius="240dp"
+                android:type="radial" />
+        </shape>
+    </item>
+
+    <item
+        android:bottom="-180dp"
+        android:gravity="bottom|start"
+        android:left="-160dp">
+        <shape android:shape="oval">
+            <size
+                android:width="500dp"
+                android:height="500dp" />
+            <gradient
+                android:startColor="#28A31536"
+                android:centerColor="#18C82F59"
+                android:endColor="@android:color/transparent"
+                android:gradientRadius="280dp"
+                android:type="radial" />
+        </shape>
+    </item>
+
+    <item android:gravity="top">
+        <shape>
+            <size android:height="220dp" />
+            <gradient
+                android:angle="90"
+                android:startColor="#18FFF0F2"
+                android:centerColor="#08F1D7DE"
+                android:endColor="@android:color/transparent"
+                android:type="linear" />
+        </shape>
+    </item>
+
+    <item android:gravity="bottom">
+        <shape>
+            <size android:height="260dp" />
+            <gradient
+                android:angle="270"
+                android:startColor="#32170C11"
+                android:centerColor="#1B12090E"
+                android:endColor="@android:color/transparent"
+                android:type="linear" />
         </shape>
     </item>
 </layer-list>

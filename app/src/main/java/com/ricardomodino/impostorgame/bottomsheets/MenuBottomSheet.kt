@@ -1,6 +1,5 @@
 package com.ricardomodino.impostorgame.bottomsheets
 
-import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,44 +11,27 @@ import com.ricardomodino.impostorgame.managers.SoundManager
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.ricardomodino.impostorgame.R
 import com.ricardomodino.impostorgame.managers.LocaleManager
 import com.ricardomodino.impostorgame.managers.ThemeManager
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class MenuBottomSheet : BottomSheetDialogFragment() {
+class MenuBottomSheet : BaseGameBottomSheet() {
 
     companion object {
         const val TAG = "MenuBottomSheet"
     }
 
+    override val animationDuration: Long = 400L
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View = inflater.inflate(
-        if (ThemeManager.esFinal(requireContext())) R.layout.bottomsheet_menu_final
+        if (ThemeManager.esCarmesi(requireContext())) R.layout.bottomsheet_menu_carmesi
+        else if (ThemeManager.esFinal(requireContext())) R.layout.bottomsheet_menu_final
         else R.layout.bottomsheet_menu,
         container, false
     )
-
-    override fun onStart() {
-        super.onStart()
-        val bottomSheet = dialog?.findViewById<View>(
-            com.google.android.material.R.id.design_bottom_sheet
-        ) ?: return
-        bottomSheet.background = ContextCompat.getDrawable(requireContext(), R.drawable.bottomsheet_rounded)
-        bottomSheet.post {
-            val h = if (bottomSheet.height > 0) bottomSheet.height
-            else bottomSheet.resources.displayMetrics.heightPixels
-            bottomSheet.translationY = h.toFloat()
-            bottomSheet.alpha = 0f
-            bottomSheet.animate().translationY(0f).alpha(1f)
-                .setDuration(400L).setInterpolator(DecelerateInterpolator(2f)).start()
-        }
-        val behavior = BottomSheetBehavior.from(bottomSheet)
-        behavior.isDraggable = true
-        behavior.isHideable = true
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -57,7 +39,9 @@ class MenuBottomSheet : BottomSheetDialogFragment() {
         // ── Aplicar tema ──
         val bgCard  = ThemeManager.getBgCard(requireContext())
         val accent  = ThemeManager.getAccentColor(requireContext())
-        view.findViewById<View>(R.id.rootBottomSheet)?.setBackgroundResource(bgCard)
+        view.findViewById<View>(R.id.rootBottomSheet)?.setBackgroundResource(
+            if (ThemeManager.esCarmesi(requireContext())) R.drawable.bg_carmesi_sheet else bgCard
+        )
         // Título "Menú"
         view.findViewById<TextView>(R.id.txtMenuTitle)?.setShadowLayer(12f, 0f, 0f, accent)
         // Cards internas
@@ -99,7 +83,7 @@ class MenuBottomSheet : BottomSheetDialogFragment() {
         val actual = LocaleManager.getLanguage(requireContext())
         val seleccionado = idiomas.indexOf(actual).coerceAtLeast(0)
 
-        AlertDialog.Builder(requireContext())
+        MaterialAlertDialogBuilder(requireContext())
             .setTitle(getString(R.string.menu_idioma))
             .setSingleChoiceItems(etiquetas, seleccionado) { dialog, which ->
                 val nuevoIdioma = idiomas[which]

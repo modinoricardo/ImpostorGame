@@ -37,9 +37,16 @@ class GameDialog(private val context: Context) {
 
     fun show() {
         val esFinal = ThemeManager.esFinal(context)
+        val esCarmesi = ThemeManager.esCarmesi(context)
         val d = Dialog(context)
         d.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        d.setContentView(if (esFinal) R.layout.dialog_game_final else R.layout.dialog_game)
+        d.setContentView(
+            when {
+                esFinal -> R.layout.dialog_game_final
+                esCarmesi -> R.layout.dialog_game_carmesi
+                else -> R.layout.dialog_game
+            }
+        )
         d.setCancelable(isCancelable)
         d.window?.apply {
             setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT)
@@ -53,7 +60,11 @@ class GameDialog(private val context: Context) {
 
         val emojiIcon = d.findViewById<TextView>(R.id.dlgIcon)
         val imageIcon = d.findViewById<ImageView>(R.id.dlgIconImage)
-        val accentColor = if (esFinal) 0xFFE7C87D.toInt() else ThemeManager.getAccentColor(context)
+        val accentColor = when {
+            esFinal -> 0xFFE7C87D.toInt()
+            esCarmesi -> 0xFFF0D0D7.toInt()
+            else -> ThemeManager.getAccentColor(context)
+        }
 
         if (iconRes != null) {
             imageIcon.visibility = View.VISIBLE
@@ -84,16 +95,13 @@ class GameDialog(private val context: Context) {
             d.findViewById<Button>(R.id.dlgBtnNegative).apply {
                 visibility = View.VISIBLE
                 text = label
-                if (esFinal) {
-                    setBackgroundResource(R.drawable.btn_dialog_final_secondary)
-                    setTextColor(Color.parseColor("#F0D9A9"))
-                } else {
-                    setTextColor(Color.parseColor("#BFC4FF"))
-                }
+                setBackgroundResource(ThemeManager.getBtnNeon(context))
+                setTextColor(Color.WHITE)
                 setOnClickListener { d.dismiss(); negAction?.invoke() }
             }
         }
 
         d.show()
+        ImmersiveModeManager.apply(d.window)
     }
 }

@@ -1,12 +1,8 @@
 package com.ricardomodino.impostorgame.activities
 
 import android.content.Intent
-import android.media.AudioFormat
-import android.media.AudioManager
-import android.media.AudioTrack
+import android.graphics.Bitmap
 import com.ricardomodino.impostorgame.managers.SoundManager
-import kotlin.math.PI
-import kotlin.math.sin
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,17 +11,17 @@ import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ricardomodino.impostorgame.R
 import com.ricardomodino.impostorgame.managers.GameDialog
-import com.ricardomodino.impostorgame.managers.LocaleManager
+import com.ricardomodino.impostorgame.managers.ImmersiveModeManager
+import com.ricardomodino.impostorgame.managers.PlayerImageManager
 import com.ricardomodino.impostorgame.managers.ThemeManager
 import com.ricardomodino.impostorgame.modelos.Jugador
 import com.ricardomodino.impostorgame.modelos.TipoJugador
 
-class VoteActivity : AppCompatActivity() {
+class VoteActivity : BaseGameActivity() {
 
     private lateinit var recyclerVotos: RecyclerView
     private lateinit var btnConfirmar: Button
@@ -35,19 +31,21 @@ class VoteActivity : AppCompatActivity() {
     private var modoDatosCuriosos: Boolean = false
     private lateinit var adapter: VoteAdapter
 
-    override fun attachBaseContext(newBase: android.content.Context) {
-        super.attachBaseContext(LocaleManager.wrap(newBase))
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
-        ThemeManager.aplicarTema(this)
         super.onCreate(savedInstanceState)
-        setContentView(if (ThemeManager.esFinal(this)) R.layout.activity_vote_final else R.layout.activity_vote)
+        setContentView(
+            when {
+                ThemeManager.esFinal(this) -> R.layout.activity_vote_final
+                ThemeManager.esCarmesi(this) -> R.layout.activity_vote_carmesi
+                else -> R.layout.activity_vote
+            }
+        )
+        ImmersiveModeManager.applyActivityContentInsets(this, includeBottomInset = true)
         ThemeManager.aplicarDrawables(this)
 
-        jugadores         = intent.getParcelableArrayListExtra<Jugador>("JUGADORES")?.toMutableList() ?: mutableListOf()
-        palabra           = intent.getStringExtra("PALABRA") ?: ""
-        modoDatosCuriosos = intent.getBooleanExtra("MODO_DATOS_CURIOSOS", false)
+        jugadores         = intent.getParcelableArrayListExtra<Jugador>(IntentKeys.JUGADORES)?.toMutableList() ?: mutableListOf()
+        palabra           = intent.getStringExtra(IntentKeys.PALABRA) ?: ""
+        modoDatosCuriosos = intent.getBooleanExtra(IntentKeys.MODO_DATOS_CURIOSOS, false)
 
         recyclerVotos = findViewById(R.id.recyclerVotos)
         btnConfirmar  = findViewById(R.id.btnConfirmarVoto)
@@ -68,43 +66,17 @@ class VoteActivity : AppCompatActivity() {
         }
     }
 
-    private fun playCountdownTone(frequencyHz: Float, durationMs: Int = 140) {
-        if (!SoundManager.isSoundEnabled(this)) return
-        try {
-            val sampleRate = 44100
-            val numSamples = sampleRate * durationMs / 1000
-            val fadeLen    = (sampleRate * 0.015).toInt()
-            val samples    = ShortArray(numSamples)
-            for (i in 0 until numSamples) {
-                val env = when {
-                    i < fadeLen              -> i.toDouble() / fadeLen
-                    i > numSamples - fadeLen -> (numSamples - i).toDouble() / fadeLen
-                    else                     -> 1.0
-                }
-                samples[i] = (env * 0.7 * Short.MAX_VALUE *
-                        sin(2.0 * PI * frequencyHz * i / sampleRate)).toInt().toShort()
-            }
-            val minBuf = AudioTrack.getMinBufferSize(
-                sampleRate, AudioFormat.CHANNEL_OUT_MONO, AudioFormat.ENCODING_PCM_16BIT
-            )
-            val track = AudioTrack(
-                AudioManager.STREAM_MUSIC, sampleRate,
-                AudioFormat.CHANNEL_OUT_MONO, AudioFormat.ENCODING_PCM_16BIT,
-                maxOf(minBuf, numSamples * 2), AudioTrack.MODE_STATIC
-            )
-            track.write(samples, 0, numSamples)
-            track.setNotificationMarkerPosition(numSamples)
-            track.setPlaybackPositionUpdateListener(object : AudioTrack.OnPlaybackPositionUpdateListener {
-                override fun onMarkerReached(t: AudioTrack) { t.release() }
-                override fun onPeriodicNotification(t: AudioTrack) {}
-            })
-            track.play()
-        } catch (_: Exception) {}
-    }
+    private fun playCountdownTone(frequencyHz: Float, durationMs: Int = 140) =
+        SoundManager.playCountdownTone(this, frequencyHz, durationMs)
 
     private fun mostrarCountdownVoto() {
-        val overlay = layoutInflater.inflate(R.layout.activity_countdown_fullscreen, null)
+        val overlay = layoutInflater.inflate(
+            if (ThemeManager.esCarmesi(this)) R.layout.activity_countdown_fullscreen_carmesi
+            else R.layout.activity_countdown_fullscreen,
+            null
+        )
         val txt = overlay.findViewById<TextView>(R.id.txtCountdown)
+        val txtAccent = overlay.findViewById<TextView?>(R.id.txtCountdownAccent)
         val decorView = window.decorView as ViewGroup
         overlay.layoutParams = FrameLayout.LayoutParams(
             FrameLayout.LayoutParams.MATCH_PARENT,
@@ -112,9 +84,18 @@ class VoteActivity : AppCompatActivity() {
         )
         decorView.addView(overlay)
 
-        val toneFreqs = mapOf("3" to 392f, "2" to 494f, "1" to 659f)
-        val numbers = listOf("3", "2", "1")
+        val esCarmesi = ThemeManager.esCarmesi(this)
+        val numbers = if (esCarmesi) listOf("3", "2", "1", "\u2665") else listOf("3", "2", "1")
+        val toneFreqs = if (esCarmesi) {
+            mapOf("3" to 392f, "2" to 494f, "1" to 659f, "\u2665" to 880f)
+        } else {
+            mapOf("3" to 392f, "2" to 494f, "1" to 659f)
+        }
         var i = 0
+
+        if (esCarmesi) {
+            txtAccent?.alpha = 0.34f
+        }
 
         fun next() {
             if (i >= numbers.size) {
@@ -123,6 +104,9 @@ class VoteActivity : AppCompatActivity() {
                 return
             }
             txt.text = numbers[i]
+            if (esCarmesi && numbers[i] == "\u2665") {
+                txtAccent?.animate()?.scaleX(1.12f)?.scaleY(1.12f)?.alpha(1f)?.setDuration(260L)?.start()
+            }
             playCountdownTone(toneFreqs[numbers[i]] ?: 440f)
             txt.scaleX = 0.2f; txt.scaleY = 0.2f; txt.alpha = 0f
             txt.animate().scaleX(1f).scaleY(1f).alpha(1f).setDuration(350L)
@@ -139,26 +123,32 @@ class VoteActivity : AppCompatActivity() {
         when (votado.tipo) {
             TipoJugador.NORMAL -> mostrarMensajeCivil(votado)
             TipoJugador.IMPOSTOR, TipoJugador.SENOR_BLANCO -> {
-                val femenino = esFemenino(votado.nombre)
+                val impostoresVivos = jugadores.count { it.tipo == TipoJugador.IMPOSTOR }
                 val rol = when (votado.tipo) {
-                    TipoJugador.IMPOSTOR -> if (femenino) "la impostora" else "el impostor"
-                    else -> if (femenino) "la señora blanca" else "el señor blanco"
+                    TipoJugador.IMPOSTOR -> {
+                        if (impostoresVivos > 1) {
+                            getString(R.string.vote_role_impostor_one_of_many)
+                        } else {
+                            getString(R.string.vote_role_impostor)
+                        }
+                    }
+                    else -> getString(R.string.vote_role_mr_white)
                 }
                 if (modoDatosCuriosos) {
                     GameDialog(this)
-                        .icon("⚠️")
-                        .title("¡Te han pillado!")
-                        .message("${votado.nombre} era $rol.\n¡La partida continúa sin él!")
+                        .icon("\u26A0\uFE0F")
+                        .title(getString(R.string.vote_caught_title))
+                        .message(getString(R.string.vote_message_revealed_continue, votado.nombre, rol))
                         .cancelable(false)
-                        .positiveButton("OK") { eliminarJugadorYVolver(votado) }
+                        .positiveButton(getString(R.string.dialog_ok)) { eliminarJugadorYVolver(votado) }
                         .show()
                 } else {
                     GameDialog(this)
-                        .icon("⚠️")
-                        .title("¡Te han pillado!")
-                        .message("${votado.nombre} era $rol.\n\n¡Pero intenta salvarte!")
+                        .icon("\u26A0\uFE0F")
+                        .title(getString(R.string.vote_caught_title))
+                        .message(getString(R.string.vote_message_revealed_try, votado.nombre, rol))
                         .cancelable(false)
-                        .positiveButton("Intentar") { abrirPantallaAdivinar(votado) }
+                        .positiveButton(getString(R.string.dialog_try)) { abrirPantallaAdivinar(votado) }
                         .show()
                 }
             }
@@ -169,28 +159,27 @@ class VoteActivity : AppCompatActivity() {
         val nuevaLista = ArrayList(jugadores.filter { it.nombre != votado.nombre })
         val noCiviles = nuevaLista.count { it.tipo == TipoJugador.IMPOSTOR || it.tipo == TipoJugador.SENOR_BLANCO }
         val civiles = nuevaLista.count { it.tipo == TipoJugador.NORMAL }
-        val art = if (esFemenino(votado.nombre)) "una" else "un"
 
         if (noCiviles >= civiles && noCiviles > 0) {
             GameDialog(this)
-                .icon("😢")
-                .title("¡Ups!")
-                .message("${votado.nombre} era $art pobre civil inocente.\n¡Hay demasiados impostores en la partida!")
+                .icon("\uD83D\uDE22")
+                .title(getString(R.string.vote_oops_title))
+                .message(getString(R.string.vote_message_innocent_too_many, votado.nombre))
                 .cancelable(false)
-                .positiveButton("OK") {
+                .positiveButton(getString(R.string.dialog_ok)) {
                     setResult(RESULT_OK, Intent().apply {
-                        putParcelableArrayListExtra("JUGADORES_ACTUALIZADOS", nuevaLista)
+                        putParcelableArrayListExtra(IntentKeys.JUGADORES_ACTUALIZADOS, nuevaLista)
                     })
                     finish()
                 }
                 .show()
         } else {
             GameDialog(this)
-                .icon("😢")
-                .title("¡Ups!")
-                .message("${votado.nombre} era $art pobre civil inocente.\nLa partida continúa.")
+                .icon("\uD83D\uDE22")
+                .title(getString(R.string.vote_oops_title))
+                .message(getString(R.string.vote_message_innocent_continue, votado.nombre))
                 .cancelable(false)
-                .positiveButton("OK") { eliminarJugadorYVolver(votado) }
+                .positiveButton(getString(R.string.dialog_ok)) { eliminarJugadorYVolver(votado) }
                 .show()
         }
     }
@@ -199,12 +188,12 @@ class VoteActivity : AppCompatActivity() {
 
     private fun abrirPantallaAdivinar(votado: Jugador) {
         val intent = Intent(this, GuessWordActivity::class.java).apply {
-            putExtra("NOMBRE_VOTADO", votado.nombre)
-            putExtra("TIPO_VOTADO", votado.tipo.name)
-            putExtra("PALABRA", palabra)
-            putExtra("IMPOSTOR", intent.getStringExtra("IMPOSTOR") ?: "")
-            putExtra("SENORES_BLANCOS", intent.getStringExtra("SENORES_BLANCOS") ?: "")
-            putParcelableArrayListExtra("JUGADORES", ArrayList(jugadores))
+            putExtra(IntentKeys.NOMBRE_VOTADO, votado.nombre)
+            putExtra(IntentKeys.TIPO_VOTADO, votado.tipo.name)
+            putExtra(IntentKeys.PALABRA, palabra)
+            putExtra(IntentKeys.IMPOSTOR, intent.getStringExtra(IntentKeys.IMPOSTOR) ?: "")
+            putExtra(IntentKeys.SENORES_BLANCOS, intent.getStringExtra(IntentKeys.SENORES_BLANCOS) ?: "")
+            putParcelableArrayListExtra(IntentKeys.JUGADORES, ArrayList(jugadores))
         }
         startActivityForResult(intent, REQUEST_GUESS)
     }
@@ -212,7 +201,7 @@ class VoteActivity : AppCompatActivity() {
     private fun eliminarJugadorYVolver(votado: Jugador) {
         val nuevaLista = ArrayList(jugadores.filter { it.nombre != votado.nombre })
         setResult(RESULT_OK, Intent().apply {
-            putParcelableArrayListExtra("JUGADORES_ACTUALIZADOS", nuevaLista)
+            putParcelableArrayListExtra(IntentKeys.JUGADORES_ACTUALIZADOS, nuevaLista)
         })
         finish()
     }
@@ -234,12 +223,9 @@ class VoteActivity : AppCompatActivity() {
 
         private var selected = -1
 
-        private val civilImages = listOf(
-            R.drawable.civil1, R.drawable.civil2, R.drawable.civil3,
-            R.drawable.civil4, R.drawable.civil5, R.drawable.civil6,
-            R.drawable.civil7, R.drawable.civil8, R.drawable.civil9,
-            R.drawable.civil10
-        ).shuffled()
+        private val civilImages: List<Bitmap> = PlayerImageManager.getShuffledPool(
+            this@VoteActivity, list.size
+        )
 
         inner class VH(v: View) : RecyclerView.ViewHolder(v) {
             val img: ImageView  = v.findViewById(R.id.imgPlayerAvatar)
@@ -249,7 +235,14 @@ class VoteActivity : AppCompatActivity() {
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-            VH(LayoutInflater.from(parent.context).inflate(R.layout.item_vote_player, parent, false))
+            VH(
+                LayoutInflater.from(parent.context).inflate(
+                    if (ThemeManager.esCarmesi(parent.context)) R.layout.item_vote_player_carmesi
+                    else R.layout.item_vote_player,
+                    parent,
+                    false
+                )
+            )
 
         override fun getItemCount() = list.size
 
@@ -261,8 +254,8 @@ class VoteActivity : AppCompatActivity() {
             if (selfie != null) {
                 holder.img.setImageBitmap(selfie)
             } else {
-                val imgRes = if (position < civilImages.size) civilImages[position] else R.drawable.civil1
-                holder.img.setImageResource(imgRes)
+                if (position < civilImages.size) holder.img.setImageBitmap(civilImages[position])
+                else PlayerImageManager.getRandom(this@VoteActivity)?.let { holder.img.setImageBitmap(it) }
             }
 
             val sel = selected == position
@@ -270,12 +263,15 @@ class VoteActivity : AppCompatActivity() {
             holder.check.visibility   = if (sel) View.VISIBLE else View.GONE
 
             holder.itemView.setOnClickListener {
+                val currentPosition = holder.bindingAdapterPosition
+                if (currentPosition == RecyclerView.NO_POSITION) return@setOnClickListener
                 val prev = selected
-                selected = position
+                selected = currentPosition
                 if (prev >= 0) notifyItemChanged(prev)
-                notifyItemChanged(position)
-                onSelected(position)
+                notifyItemChanged(currentPosition)
+                onSelected(currentPosition)
             }
         }
     }
 }
+

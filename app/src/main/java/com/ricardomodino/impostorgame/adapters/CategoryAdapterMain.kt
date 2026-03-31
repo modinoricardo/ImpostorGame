@@ -1,10 +1,11 @@
-package com.ricardomodino.impostorgame
+package com.ricardomodino.impostorgame.adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.ricardomodino.impostorgame.R
 import com.ricardomodino.impostorgame.managers.ThemeManager
 import com.ricardomodino.impostorgame.modelos.Category
 
@@ -17,8 +18,9 @@ class CategoryAdapterMain(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val layout = if (ThemeManager.esCarmesi(parent.context)) R.layout.item_category_main_carmesi else R.layout.item_category_main
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_category_main, parent, false)
+            .inflate(layout, parent, false)
         return ViewHolder(view)
     }
 

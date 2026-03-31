@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <gradient
+                android:angle="270"
+                android:startColor="@color/carmesi_bg_top"
+                android:centerColor="@color/carmesi_bg_mid"
+                android:endColor="@color/carmesi_bg_bottom"
+                android:type="linear" />
+        </shape>
+    </item>
+
+    <item
+        android:gravity="top|start"
+        android:left="-140dp"
+        android:top="-120dp">
+        <shape android:shape="oval">
+            <size
+                android:width="460dp"
+                android:height="460dp" />
+            <gradient
+                android:startColor="#4FA01132"
+                android:centerColor="#20C72B56"
+                android:endColor="@android:color/transparent"
+                android:gradientRadius="260dp"
+                android:type="radial" />
+        </shape>
+    </item>
+
+    <item
+        android:bottom="-160dp"
+        android:gravity="bottom|end"
+        android:right="-120dp">
+        <shape android:shape="oval">
+            <size
+                android:width="400dp"
+                android:height="400dp" />
+            <gradient
+                android:startColor="#20A81A3F"
+                android:centerColor="#16F2D8DE"
+                android:endColor="@android:color/transparent"
+                android:gradientRadius="220dp"
+                android:type="radial" />
+        </shape>
+    </item>
+
+    <item android:gravity="top">
+        <shape>
+            <size android:height="240dp" />
+            <gradient
+                android:angle="90"
+                android:startColor="#1FFFF2F4"
+                android:centerColor="#0AF3DAE0"
+                android:endColor="@android:color/transparent"
+                android:type="linear" />
+        </shape>
+    </item>
+
+    <item android:gravity="bottom">
+        <shape>
+            <size android:height="220dp" />
+            <gradient
+                android:angle="270"
+                android:startColor="#2C180D12"
+                android:centerColor="#1612090E"
+                android:endColor="@android:color/transparent"
+                android:type="linear" />
+        </shape>
+    </item>
+</layer-list>

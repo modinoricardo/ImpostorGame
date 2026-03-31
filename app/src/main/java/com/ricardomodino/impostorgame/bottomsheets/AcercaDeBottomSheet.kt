@@ -6,49 +6,35 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.DecelerateInterpolator
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.core.content.ContextCompat
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.ricardomodino.impostorgame.R
 import com.ricardomodino.impostorgame.managers.ThemeManager
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class AcercaDeBottomSheet : BottomSheetDialogFragment() {
+class AcercaDeBottomSheet : BaseGameBottomSheet() {
 
     companion object {
         const val TAG = "AcercaDeBottomSheet"
     }
 
+    override val animationDuration: Long = 400L
+    override val isDraggableSheet: Boolean = false
+    override val isHideableSheet: Boolean = false
+    override val expandOnStart: Boolean = true
+
+    override fun onSheetReady(behavior: BottomSheetBehavior<View>) {
+        behavior.peekHeight = resources.displayMetrics.heightPixels
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View = inflater.inflate(
-        if (ThemeManager.esFinal(requireContext())) R.layout.bottomsheet_acerca_de_final
+        if (ThemeManager.esCarmesi(requireContext())) R.layout.bottomsheet_acerca_de_carmesi
+        else if (ThemeManager.esFinal(requireContext())) R.layout.bottomsheet_acerca_de_final
         else R.layout.bottomsheet_acerca_de,
         container, false
     )
-
-    override fun onStart() {
-        super.onStart()
-        val bottomSheet = dialog?.findViewById<View>(
-            com.google.android.material.R.id.design_bottom_sheet
-        ) ?: return
-        bottomSheet.background = ContextCompat.getDrawable(requireContext(), R.drawable.bottomsheet_rounded)
-        val behavior = BottomSheetBehavior.from(bottomSheet)
-        behavior.state = BottomSheetBehavior.STATE_EXPANDED
-        behavior.isDraggable = false
-        behavior.isHideable = false
-        behavior.peekHeight = bottomSheet.resources.displayMetrics.heightPixels
-        bottomSheet.post {
-            val h = if (bottomSheet.height > 0) bottomSheet.height
-            else bottomSheet.resources.displayMetrics.heightPixels
-            bottomSheet.translationY = h.toFloat()
-            bottomSheet.alpha = 0f
-            bottomSheet.animate().translationY(0f).alpha(1f)
-                .setDuration(400L).setInterpolator(DecelerateInterpolator(2f)).start()
-        }
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -56,17 +42,21 @@ class AcercaDeBottomSheet : BottomSheetDialogFragment() {
         // ── Aplicar tema ──
         val bgCard = ThemeManager.getBgCard(requireContext())
         val accent = ThemeManager.getAccentColor(requireContext())
-        view.findViewById<View>(R.id.rootAcercaDe)?.setBackgroundResource(bgCard)
+        view.findViewById<View>(R.id.rootAcercaDe)?.setBackgroundResource(
+            if (ThemeManager.esCarmesi(requireContext())) R.drawable.bg_carmesi_sheet else bgCard
+        )
         // Título
         view.findViewById<TextView>(R.id.txtTituloAcercaDe)?.setShadowLayer(12f, 0f, 0f, accent)
         // Avatar inicial "R"
         view.findViewById<TextView>(R.id.txtAvatar)?.apply {
             setTextColor(accent)
-            setBackgroundResource(bgCard)
+            setBackgroundResource(if (ThemeManager.esCarmesi(requireContext())) R.drawable.bg_carmesi_badge else bgCard)
         }
         // Cards de contacto
         listOf(R.id.layoutInstagram, R.id.layoutEmail, R.id.layoutGithub).forEach { id ->
-            view.findViewById<LinearLayout>(id)?.setBackgroundResource(bgCard)
+            view.findViewById<LinearLayout>(id)?.setBackgroundResource(
+                if (ThemeManager.esCarmesi(requireContext())) R.drawable.bg_carmesi_soft_panel else bgCard
+            )
         }
 
         view.findViewById<View>(R.id.btnBack)?.setOnClickListener { dismiss() }
@@ -78,7 +68,7 @@ class AcercaDeBottomSheet : BottomSheetDialogFragment() {
             val intent = Intent(Intent.ACTION_SENDTO).apply {
                 data = Uri.parse("mailto:modinoricardo@gmail.com")
             }
-            startActivity(Intent.createChooser(intent, "Enviar email"))
+            startActivity(Intent.createChooser(intent, getString(R.string.acerca_send_email)))
         }
         view.findViewById<LinearLayout>(R.id.layoutGithub).setOnClickListener {
             abrirUrl("https://github.com/modinoricardo")

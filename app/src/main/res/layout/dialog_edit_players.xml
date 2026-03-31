@@ -79,7 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="12dp"
             android:src="@drawable/ic_mas"
-            android:tint="@android:color/white" />
+            app:tint="@android:color/white" />
 
     </LinearLayout>
 

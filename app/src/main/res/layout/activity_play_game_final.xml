@@ -163,7 +163,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
                     android:letterSpacing="0.1"
-                    android:text="IMPOSTOR"
+                    android:text="@string/play_label_impostor_reveal"
                     android:textColor="#FF4444"
                     android:textSize="11sp"
                     android:textStyle="bold" />
@@ -204,7 +204,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
                     android:letterSpacing="0.1"
-                    android:text="SEÑOR BLANCO"
+                    android:text="@string/reveal_mr_white_title"
                     android:textColor="#AAFFFFFF"
                     android:textSize="11sp"
                     android:textStyle="bold" />

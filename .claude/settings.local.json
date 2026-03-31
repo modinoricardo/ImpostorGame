@@ -6,7 +6,30 @@
       "Bash(./gradlew assembleDebug --info)",
       "Bash(./gradlew assembleDebug --stacktrace)",
       "Bash(./gradlew assembleDebug)",
-      "Bash(./gradlew tasks:*)"
+      "Bash(./gradlew tasks:*)",
+      "Bash(./gradlew clean:*)",
+      "Bash(xmllint --noout app/src/main/res/values/strings.xml)",
+      "Bash(del \"C:\\\\Users\\\\Ricardo\\\\AndroidStudioProjects\\\\ImpostorGame\\\\app\\\\src\\\\main\\\\java\\\\com\\\\ricardomodino\\\\impostorgame\\\\modelos\\\\OptionMain.kt\")",
+      "Bash(./gradlew compileDebugKotlin)",
+      "Bash(./gradlew compileDebugKotlin --info)",
+      "Bash(JAVA_HOME=\"C:\\\\Program Files\\\\Android\\\\Android Studio\\\\jbr\" ./gradlew compileDebugKotlin)",
+      "Bash(JAVA_HOME=\"C:\\\\Program Files\\\\Android\\\\Android Studio\\\\jbr\" ./gradlew assembleDebug)",
+      "Bash(python3 -c \":*)",
+      "Bash(python3:*)",
+      "Bash(dir \"C:\\\\Users\\\\Ricardo\\\\AndroidStudioProjects\\\\ImpostorGame\\\\app\\\\src\\\\main\\\\res\" /b /ad)",
+      "Bash(for f:*)",
+      "Bash(do)",
+      "Bash(sed -i 's/<!-- ImpostorRevealActivity -->/<!-- ClassicRevealActivity -->/g' \"$f\")",
+      "Bash(sed -i 's/<!-- DatosCuriososRevealActivity -->/<!-- CoverRevealActivity -->/g' \"$f\")",
+      "Bash(done)",
+      "Bash(./gradlew compileDebugKotlin --stacktrace)",
+      "Bash(java -version)",
+      "Read(//c/Program Files/Android/Android Studio/jbr/bin/**)",
+      "Bash(\"C:\\\\Program Files\\\\Android\\\\Android Studio\\\\jbr\\\\bin\\\\java\" -version)",
+      "Bash(ls \"C:\\\\Users\\\\Ricardo\\\\AndroidStudioProjects\\\\ImpostorGame\\\\.claude\\\\worktrees\\\\agent-a44eb752\\\\app\\\\src\\\\main\\\\java\\\\com\\\\ricardomodino\\\\impostorgame\\\\activities\"\" 2>/dev/null || echo \"worktree ya eliminado \")",
+      "Bash(JAVA_HOME=\"C:/Program Files/Android/Android Studio/jbr\" ./gradlew compileDebugKotlin)",
+      "Bash(do sed:*)",
+      "Bash(echo \"✅ $f\")"
     ]
   }
 }

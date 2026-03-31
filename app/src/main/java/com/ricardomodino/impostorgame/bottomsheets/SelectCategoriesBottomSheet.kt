@@ -11,15 +11,13 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.ricardomodino.impostorgame.CategoryAdapterSelect
-import com.ricardomodino.impostorgame.CategoryViewModel
+import com.ricardomodino.impostorgame.adapters.CategoryAdapterSelect
+import com.ricardomodino.impostorgame.viewmodel.CategoryViewModel
 import com.ricardomodino.impostorgame.R
 import com.ricardomodino.impostorgame.managers.ThemeManager
 import com.ricardomodino.impostorgame.modelos.Category
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class SelectCategoriesBottomSheet : BottomSheetDialogFragment() {
+class SelectCategoriesBottomSheet : BaseGameBottomSheet() {
 
     interface Listener {
         fun onCategoriesConfirmed(selected: List<Category>)
@@ -28,11 +26,15 @@ class SelectCategoriesBottomSheet : BottomSheetDialogFragment() {
     private lateinit var categoryViewModel: CategoryViewModel
     private lateinit var adapter: CategoryAdapterSelect
 
+    override val isDraggableSheet: Boolean = false
+    override val isHideableSheet: Boolean = false
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(
-            if (ThemeManager.esFinal(requireContext())) R.layout.bottomsheet_select_categories_final
+            if (ThemeManager.esCarmesi(requireContext())) R.layout.bottomsheet_select_categories_carmesi
+            else if (ThemeManager.esFinal(requireContext())) R.layout.bottomsheet_select_categories_final
             else R.layout.bottomsheet_select_categories,
             container, false
         )
@@ -45,7 +47,9 @@ class SelectCategoriesBottomSheet : BottomSheetDialogFragment() {
         val bgCard  = ThemeManager.getBgCard(requireContext())
         val btnNeon = ThemeManager.getBtnNeon(requireContext())
         val accent  = ThemeManager.getAccentColor(requireContext())
-        view.findViewById<View>(R.id.rootCategories)?.setBackgroundResource(bgCard)
+        view.findViewById<View>(R.id.rootCategories)?.setBackgroundResource(
+            if (ThemeManager.esCarmesi(requireContext())) R.drawable.bg_carmesi_sheet else bgCard
+        )
         view.findViewById<TextView>(R.id.textTitle)?.setShadowLayer(10f, 0f, 0f, accent)
         view.findViewById<Button>(R.id.btnConfirmCategories)?.setBackgroundResource(btnNeon)
 
@@ -70,32 +74,6 @@ class SelectCategoriesBottomSheet : BottomSheetDialogFragment() {
             (activity as? Listener)?.onCategoriesConfirmed(selected)
             dismiss()
         }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        val bottomSheet = dialog?.findViewById<View>(
-            com.google.android.material.R.id.design_bottom_sheet
-        ) ?: return
-
-        bottomSheet.background = ContextCompat.getDrawable(
-            requireContext(), R.drawable.bottomsheet_rounded
-        )
-
-        bottomSheet.post {
-            val h = if (bottomSheet.height > 0) bottomSheet.height
-            else bottomSheet.resources.displayMetrics.heightPixels
-            bottomSheet.translationY = h.toFloat()
-            bottomSheet.alpha = 0f
-            bottomSheet.animate()
-                .translationY(0f).alpha(1f)
-                .setDuration(550L)
-                .setInterpolator(DecelerateInterpolator(2f)).start()
-        }
-
-        val behavior = BottomSheetBehavior.from(bottomSheet)
-        behavior.isDraggable = false
-        behavior.isHideable = false
     }
 
     companion object {

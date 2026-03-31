@@ -14,15 +14,15 @@
         android:layout_height="match_parent"
         android:background="@drawable/bg_datos_curiosos" />
 
-    <!-- Botón menú -->
+    <!-- BotÃ³n menÃº -->
     <TextView
         android:id="@+id/btnMenu"
         android:layout_width="44dp"
         android:layout_height="44dp"
         android:layout_gravity="top|end"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="27dp"
         android:layout_marginEnd="16dp"
-        android:text="⋯"
+        android:text="..."
         android:textSize="26sp"
         android:textColor="@android:color/white"
         android:gravity="center"
@@ -40,15 +40,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingBottom="96dp">
+            android:paddingBottom="48dp">
 
-            <Space android:layout_width="match_parent" android:layout_height="50dp" />
-
-            <!-- Título -->
+            <!-- TÃ­tulo -->
             <TextView
                 android:id="@+id/titleTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="27dp"
                 android:layout_marginStart="24dp"
                 android:layout_marginBottom="4dp"
                 android:gravity="center"
@@ -61,7 +60,7 @@
                 android:shadowDy="0"
                 android:shadowRadius="14" />
 
-            <!-- Línea acento bajo el título -->
+            <!-- LÃ­nea acento bajo el tÃ­tulo -->
             <View
                 android:layout_width="48dp"
                 android:layout_height="3dp"
@@ -124,7 +123,7 @@
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- CardView Número de Impostores -->
+            <!-- CardView NÃºmero de Impostores -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewNumImpostores"
                 android:layout_width="match_parent"
@@ -168,7 +167,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="4dp"
-                                android:text="1 impostor · 2 civiles"
+                                android:text=""
                                 android:textSize="13sp"
                                 android:textColor="#CCFFFFFF" />
 
@@ -178,7 +177,7 @@
                             android:id="@+id/btnMenosImpostores"
                             android:layout_width="36dp"
                             android:layout_height="36dp"
-                            android:text="−"
+                            android:text="-"
                             android:textSize="22sp"
                             android:textColor="@android:color/white"
                             android:gravity="center"
@@ -214,7 +213,7 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- CardView Señores Blancos -->
+            <!-- CardView SeÃ±ores Blancos -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewNumSenoresBlancos"
                 android:layout_width="match_parent"
@@ -259,7 +258,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="4dp"
-                                android:text="1 señor blanco"
+                                android:text=""
                                 android:textSize="13sp"
                                 android:textColor="#CCFFFFFF" />
 
@@ -269,7 +268,7 @@
                             android:id="@+id/btnMenosSenoresBlancos"
                             android:layout_width="36dp"
                             android:layout_height="36dp"
-                            android:text="−"
+                            android:text="-"
                             android:textSize="22sp"
                             android:textColor="@android:color/white"
                             android:gravity="center"
@@ -305,7 +304,7 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- CardView Categorías -->
+            <!-- CardView CategorÃ­as -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewCategorias"
                 android:layout_width="match_parent"
@@ -352,7 +351,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/textTituloCategorias"
                         android:layout_toStartOf="@id/imageViewArrowCategorias"
-                        android:text="3 categorías disponibles"
+                        android:text=""
                         android:textSize="14sp"
                         android:textColor="#CCFFFFFF" />
 
@@ -367,6 +366,63 @@
                         android:paddingTop="8dp" />
 
                 </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- CardView CategorÃ­as Datos Curiosos -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewCategoriasDatos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:visibility="gone"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp"
+                app:cardPreventCornerOverlap="false"
+                app:cardUseCompatPadding="true"
+                app:cardBackgroundColor="@android:color/transparent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:padding="16dp"
+                    android:background="@drawable/bg_reveal_content">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="4dp"
+                            android:text="@string/main_categorias"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="@android:color/white" />
+
+                        <TextView
+                            android:id="@+id/textResumenCategoriasDatos"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="14sp"
+                            android:textColor="#CCFFFFFF" />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/chevron_right_24"
+                        app:tint="#00E5FF" />
+
+                </LinearLayout>
             </androidx.cardview.widget.CardView>
 
             <!-- CardView Modo de Juego -->
@@ -502,7 +558,7 @@
                                         android:id="@+id/checkPistaCompleta"
                                         android:layout_width="20dp"
                                         android:layout_height="20dp"
-                                        android:text="✓"
+                                        android:text="&#10003;"
                                         android:textSize="15sp"
                                         android:textColor="#00E5FF"
                                         android:textStyle="bold"
@@ -561,7 +617,7 @@
                                         android:id="@+id/checkPrimeraLetra"
                                         android:layout_width="20dp"
                                         android:layout_height="20dp"
-                                        android:text="✓"
+                                        android:text="&#10003;"
                                         android:textSize="15sp"
                                         android:textColor="#00E5FF"
                                         android:textStyle="bold"
@@ -711,7 +767,7 @@
                             android:id="@+id/btnMenosMinutos"
                             android:layout_width="36dp"
                             android:layout_height="36dp"
-                            android:text="−"
+                            android:text="-"
                             android:textSize="22sp"
                             android:textColor="@android:color/white"
                             android:gravity="center"
@@ -724,7 +780,7 @@
                             android:id="@+id/txtNumMinutos"
                             android:layout_width="60dp"
                             android:layout_height="wrap_content"
-                            android:text="3 min"
+                            android:text=""
                             android:textSize="16sp"
                             android:textColor="@android:color/white"
                             android:textStyle="bold"
@@ -747,7 +803,7 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- CardView Cámara -->
+            <!-- CardView CÃ¡mara -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewCamara"
                 android:layout_width="match_parent"
@@ -798,7 +854,7 @@
         </LinearLayout>
     </ScrollView>
 
-    <!-- Botón iniciar -->
+    <!-- BotÃ³n iniciar -->
     <Button
         android:id="@+id/btnStartGame"
         android:layout_width="match_parent"
@@ -821,3 +877,4 @@
         android:visibility="gone" />
 
 </FrameLayout>
+

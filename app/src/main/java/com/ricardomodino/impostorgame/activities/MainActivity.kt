@@ -5,33 +5,31 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.cardview.widget.CardView
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.updatePadding
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.ricardomodino.impostorgame.modelos.Category
-import com.ricardomodino.impostorgame.CategoryAdapterMain
-import com.ricardomodino.impostorgame.CategoryViewModel
+import com.ricardomodino.impostorgame.adapters.CategoryAdapterMain
+import com.ricardomodino.impostorgame.viewmodel.CategoryViewModel
 import com.ricardomodino.impostorgame.bottomsheets.EditPlayersBottomSheet
 import com.ricardomodino.impostorgame.modelos.GameOptions
-import com.ricardomodino.impostorgame.PlayerAdapterMain
-import com.ricardomodino.impostorgame.PlayerViewModel
+import com.ricardomodino.impostorgame.adapters.PlayerAdapterMain
+import com.ricardomodino.impostorgame.viewmodel.PlayerViewModel
 import com.ricardomodino.impostorgame.R
 import com.ricardomodino.impostorgame.bottomsheets.SelectCategoriesBottomSheet
+import com.ricardomodino.impostorgame.bottomsheets.SelectDatosCategoriesBottomSheet
 import com.ricardomodino.impostorgame.bottomsheets.MenuBottomSheet
 import com.ricardomodino.impostorgame.bottomsheets.SelectGameModeBottomSheet
+import com.ricardomodino.impostorgame.viewmodel.DatosCuriososViewModel
+import com.ricardomodino.impostorgame.viewmodel.MainViewModel
 import com.ricardomodino.impostorgame.managers.GameDialog
-import com.ricardomodino.impostorgame.managers.LocaleManager
+import com.ricardomodino.impostorgame.managers.ImmersiveModeManager
 import com.ricardomodino.impostorgame.managers.ThemeManager
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
@@ -39,8 +37,9 @@ import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.material.switchmaterial.SwitchMaterial
 
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
-class MainActivity : AppCompatActivity(),
+class MainActivity : BaseGameActivity(),
     SelectCategoriesBottomSheet.Listener,
+    SelectDatosCategoriesBottomSheet.Listener,
     SelectGameModeBottomSheet.Listener {
 
     private lateinit var cardViewModoJuego: CardView
@@ -84,18 +83,22 @@ class MainActivity : AppCompatActivity(),
 
     private var originalCategoriasColor: Int = 0
     private var originalCategoriasColorsSaved = false
-    private lateinit var opciones: GameOptions
-
-    override fun attachBaseContext(newBase: android.content.Context) {
-        super.attachBaseContext(LocaleManager.wrap(newBase))
-    }
+    private lateinit var cardViewCategoriasDatos: CardView
+    private lateinit var textResumenCategoriasDatos: TextView
+    private lateinit var datosViewModel: DatosCuriososViewModel
+    private lateinit var mainViewModel: MainViewModel
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
-        ThemeManager.aplicarTema(this)
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(if (ThemeManager.esFinal(this)) R.layout.activity_main_final else R.layout.activity_main)
+        setContentView(
+            when {
+                ThemeManager.esFinal(this) -> R.layout.activity_main_final
+                ThemeManager.esCarmesi(this) -> R.layout.activity_main_carmesi
+                else -> R.layout.activity_main
+            }
+        )
 
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
@@ -111,6 +114,7 @@ class MainActivity : AppCompatActivity(),
         categoriesRecyclerView = findViewById(R.id.categoriesRecyclerView)
         btnStartGame = findViewById(R.id.btnStartGame)
         btnMenu = findViewById(R.id.btnMenu)
+        ImmersiveModeManager.applyRootInsets(main, includeBottomInset = false, includeTopInset = false)
         switchModoLoco = findViewById(R.id.switchModoLoco)
         cardOpcionPistaCompleta = findViewById(R.id.cardOpcionPistaCompleta)
         cardOpcionPrimeraLetra  = findViewById(R.id.cardOpcionPrimeraLetra)
@@ -136,24 +140,19 @@ class MainActivity : AppCompatActivity(),
 
         playersRecyclerView.isNestedScrollingEnabled = false
 
-        ViewCompat.setOnApplyWindowInsetsListener(main) { v, insets ->
-            val top = insets.getInsets(
-                WindowInsetsCompat.Type.statusBars() or WindowInsetsCompat.Type.displayCutout()
-            ).top
-            v.updatePadding(top = top)
-            insets
-        }
+        cardViewCategoriasDatos  = findViewById(R.id.cardViewCategoriasDatos)
+        textResumenCategoriasDatos = findViewById(R.id.textResumenCategoriasDatos)
 
-        val baseBottomMargin = (btnStartGame.layoutParams as ViewGroup.MarginLayoutParams).bottomMargin
-        ViewCompat.setOnApplyWindowInsetsListener(btnStartGame) { v, insets ->
-            val nav = insets.getInsets(WindowInsetsCompat.Type.navigationBars())
-            (v.layoutParams as ViewGroup.MarginLayoutParams).bottomMargin = baseBottomMargin + nav.bottom
-            v.requestLayout()
-            insets
-        }
+        txtResumenImpostores.text = ""
+        txtResumenSenoresBlancos.text = ""
+        textResumenCategorias.text = ""
+        textResumenCategoriasDatos.text = ""
+        txtNumMinutos.text = ""
 
-        playerViewModel = ViewModelProvider(this).get(PlayerViewModel::class.java)
+        playerViewModel   = ViewModelProvider(this).get(PlayerViewModel::class.java)
         categoryViewModel = ViewModelProvider(this).get(CategoryViewModel::class.java)
+        datosViewModel    = ViewModelProvider(this).get(DatosCuriososViewModel::class.java)
+        mainViewModel     = ViewModelProvider(this).get(MainViewModel::class.java)
 
         val playersLayoutManager = FlexboxLayoutManager(this).apply {
             flexDirection = FlexDirection.ROW
@@ -164,9 +163,10 @@ class MainActivity : AppCompatActivity(),
         playersRecyclerView.adapter = playerAdapter
         playerViewModel.players.observe(this) { lista ->
             playerAdapter.updatePlayers(lista)
-            actualizarResumenImpostores()
-            actualizarResumenSenoresBlancos()
-            actualizarBotonEmpezar()
+            val opts = mainViewModel.opcionesActuales
+            actualizarResumenImpostores(opts)
+            actualizarResumenSenoresBlancos(opts)
+            actualizarBotonEmpezar(opts)
         }
 
         val categoriesLayoutManager = FlexboxLayoutManager(this).apply {
@@ -177,12 +177,31 @@ class MainActivity : AppCompatActivity(),
         categoryAdapterMain = CategoryAdapterMain(emptyList())
         categoriesRecyclerView.adapter = categoryAdapterMain
 
-        opciones = GameOptions(tipoPista = GameOptions.PISTA_COMPLETA, modoLoco = false, modoMisterioso = false, numImpostores = 1, numSenoresBlancos = 0)
-        restaurarOpciones()
-
-        actualizarResumenImpostores()
-        actualizarResumenSenoresBlancos()
-        actualizarBotonEmpezar()
+        // Observer central: cualquier cambio en opciones actualiza toda la UI
+        mainViewModel.opciones.observe(this) { opts ->
+            actualizarResumenImpostores(opts)
+            actualizarResumenSenoresBlancos(opts)
+            actualizarBotonEmpezar(opts)
+            if (switchModoLoco.isChecked != opts.modoLoco) switchModoLoco.isChecked = opts.modoLoco
+            if (switchTiempoLimitado.isChecked != opts.tiempoLimitado) switchTiempoLimitado.isChecked = opts.tiempoLimitado
+            if (switchCamara.isChecked != opts.camaraActiva) switchCamara.isChecked = opts.camaraActiva
+            txtNumMinutos.text = getString(R.string.main_duration_value, opts.minutos)
+            layoutSelectorMinutos.visibility = if (opts.tiempoLimitado) View.VISIBLE else View.GONE
+            txtModoJuegoSeleccionado.text = textoModoJuegoSeleccionado(opts)
+            cardViewNumSenoresBlancos.visibility = if (opts.modoMisterioso) View.VISIBLE else View.GONE
+            actualizarSeleccionPista(opts)
+            val cardPista = findViewById<androidx.cardview.widget.CardView>(R.id.cardViewPistaImpostor)
+            val cardLoco  = findViewById<androidx.cardview.widget.CardView>(R.id.cardViewModoLoco)
+            if (opts.modoMisterioso || opts.modoDatosCuriosos) {
+                cardPista.visibility = View.GONE
+                cardLoco.visibility  = View.GONE
+            } else {
+                cardPista.visibility = View.VISIBLE
+                cardLoco.visibility  = View.VISIBLE
+            }
+            cardViewCategorias.visibility     = if (opts.modoDatosCuriosos) View.GONE  else View.VISIBLE
+            cardViewCategoriasDatos.visibility = if (opts.modoDatosCuriosos) View.VISIBLE else View.GONE
+        }
 
         SelfieManager.init(cacheDir)
         aplicarDrawablesTema()
@@ -191,33 +210,26 @@ class MainActivity : AppCompatActivity(),
 
     private fun numJugadores() = playerViewModel.players.value?.size ?: 3
 
-    private fun civiles(impostores: Int = opciones.numImpostores, blancos: Int = opciones.numSenoresBlancos): Int {
-        return numJugadores() - impostores - (if (opciones.modoMisterioso) blancos else 0)
+
+    private fun actualizarBotonEmpezar(opts: GameOptions) {
+        btnStartGame.alpha = if (mainViewModel.esConfiguracionValida(numJugadores(), opts)) 1f else 0.4f
     }
 
-    private fun esConfiguracionValida(impostores: Int = opciones.numImpostores, blancos: Int = opciones.numSenoresBlancos): Boolean {
-        val total = numJugadores()
-        val noCiviles = impostores + (if (opciones.modoMisterioso) blancos else 0)
-        val hayAlMenosUnNoCivil = if (opciones.modoMisterioso) (impostores + blancos) > 0 else impostores > 0
-        return hayAlMenosUnNoCivil && noCiviles <= total / 2
-    }
-
-    private fun actualizarBotonEmpezar() {
-        val valido = esConfiguracionValida()
-        btnStartGame.alpha = if (valido) 1f else 0.4f
-    }
-
-    private fun actualizarResumenImpostores() {
-        val imp = opciones.numImpostores
-        val civs = civiles()
-        txtResumenImpostores.text = "$imp impostor${if (imp > 1) "es" else ""} · $civs civil${if (civs != 1) "es" else ""}"
+    private fun actualizarResumenImpostores(opts: GameOptions) {
+        val imp = opts.numImpostores
+        val civs = mainViewModel.civiles(numJugadores(), opts)
+        val impText = resources.getQuantityString(R.plurals.main_count_impostor, imp, imp)
+        val civText = resources.getQuantityString(R.plurals.main_count_civil, civs, civs)
+        txtResumenImpostores.text = getString(R.string.main_summary_pair, impText, civText)
         txtNumImpostores.text = imp.toString()
     }
 
-    private fun actualizarResumenSenoresBlancos() {
-        val blancos = opciones.numSenoresBlancos
-        val civs = civiles()
-        txtResumenSenoresBlancos.text = "$blancos señor${if (blancos > 1) "es" else ""} blanco${if (blancos > 1) "s" else ""} · $civs civil${if (civs != 1) "es" else ""}"
+    private fun actualizarResumenSenoresBlancos(opts: GameOptions) {
+        val blancos = opts.numSenoresBlancos
+        val civs = mainViewModel.civiles(numJugadores(), opts)
+        val blancosText = resources.getQuantityString(R.plurals.main_count_white_mister, blancos, blancos)
+        val civText = resources.getQuantityString(R.plurals.main_count_civil, civs, civs)
+        txtResumenSenoresBlancos.text = getString(R.string.main_summary_pair, blancosText, civText)
         txtNumSenoresBlancos.text = blancos.toString()
     }
 
@@ -240,8 +252,7 @@ class MainActivity : AppCompatActivity(),
             categoryAdapterMain.updateCategories(categoriasParaMostrar)
             val total = list.size
             val seleccionadas = seleccionadasList.size
-            textResumenCategorias.text = if (seleccionadas == 0) "Categorías disponibles: $total"
-            else "Categorías seleccionadas: $seleccionadas de $total"
+            textResumenCategorias.text = resumenCategorias(total, seleccionadas)
         }
 
         // ── Jugadores ──
@@ -271,48 +282,12 @@ class MainActivity : AppCompatActivity(),
         }
 
         // ── Selector impostores ──
-        btnMasImpostores.setOnClickListener {
-            val nuevo = opciones.numImpostores + 1
-            val max = maxImpostoresPermitidos()
-            if (nuevo <= max) {
-                opciones = opciones.copy(numImpostores = nuevo)
-                ajustarOpcionesALimites()
-                actualizarResumenImpostores()
-                actualizarResumenSenoresBlancos()
-                actualizarBotonEmpezar()
-            }
-        }
-        btnMenosImpostores.setOnClickListener {
-            val nuevo = opciones.numImpostores - 1
-            if (nuevo >= 0) {
-                opciones = opciones.copy(numImpostores = nuevo)
-                ajustarOpcionesALimites()
-                actualizarResumenImpostores()
-                actualizarResumenSenoresBlancos()
-                actualizarBotonEmpezar()
-            }
-        }
+        btnMasImpostores.setOnClickListener { mainViewModel.incrementarImpostores(numJugadores()) }
+        btnMenosImpostores.setOnClickListener { mainViewModel.decrementarImpostores(numJugadores()) }
 
         // ── Selector señores blancos ──
-        btnMasSenoresBlancos.setOnClickListener {
-            val nuevo = opciones.numSenoresBlancos + 1
-            val max = maxBlancosPermitidos()
-            if (nuevo <= max) {
-                opciones = opciones.copy(numSenoresBlancos = nuevo)
-                ajustarOpcionesALimites()
-                actualizarResumenSenoresBlancos()
-                actualizarBotonEmpezar()
-            }
-        }
-        btnMenosSenoresBlancos.setOnClickListener {
-            val nuevo = opciones.numSenoresBlancos - 1
-            if (nuevo >= 0) {
-                opciones = opciones.copy(numSenoresBlancos = nuevo)
-                ajustarOpcionesALimites()
-                actualizarResumenSenoresBlancos()
-                actualizarBotonEmpezar()
-            }
-        }
+        btnMasSenoresBlancos.setOnClickListener { mainViewModel.incrementarBlancos(numJugadores()) }
+        btnMenosSenoresBlancos.setOnClickListener { mainViewModel.decrementarBlancos(numJugadores()) }
 
         // ── Categorías ──
         cardViewCategorias.setOnClickListener {
@@ -340,9 +315,19 @@ class MainActivity : AppCompatActivity(),
             false
         }
 
+        // ── Categorías Datos Curiosos ──
+        datosViewModel.categorias.observe(this) { list ->
+            val total = list.size
+            val sel   = list.count { it.isSelected }
+            textResumenCategoriasDatos.text = resumenCategorias(total, sel)
+        }
+        cardViewCategoriasDatos.setOnClickListener {
+            SelectDatosCategoriesBottomSheet().show(supportFragmentManager, SelectDatosCategoriesBottomSheet.TAG)
+        }
+
         // ── Modo de juego ──
         cardViewSeleccionModo.setOnClickListener {
-            SelectGameModeBottomSheet.newInstance(opciones)
+            SelectGameModeBottomSheet.newInstance(mainViewModel.opcionesActuales)
                 .show(supportFragmentManager, SelectGameModeBottomSheet.TAG)
         }
 
@@ -352,106 +337,72 @@ class MainActivity : AppCompatActivity(),
         }
 
         // ── Switches ──
-        switchModoLoco.setOnCheckedChangeListener { _, isChecked -> opciones = opciones.copy(modoLoco = isChecked) }
-
+        switchModoLoco.setOnCheckedChangeListener { _, isChecked ->
+            mainViewModel.actualizarOpciones(mainViewModel.opcionesActuales.copy(modoLoco = isChecked))
+        }
         switchTiempoLimitado.setOnCheckedChangeListener { _, isChecked ->
-            opciones = opciones.copy(tiempoLimitado = isChecked)
-            layoutSelectorMinutos.visibility = if (isChecked) View.VISIBLE else View.GONE
+            mainViewModel.actualizarOpciones(mainViewModel.opcionesActuales.copy(tiempoLimitado = isChecked))
         }
-
         switchCamara.setOnCheckedChangeListener { _, isChecked ->
-            opciones = opciones.copy(camaraActiva = isChecked)
+            mainViewModel.actualizarOpciones(mainViewModel.opcionesActuales.copy(camaraActiva = isChecked))
         }
 
+        // ── Minutos ──
         btnMasMinutos.setOnClickListener {
-            val nuevo = (opciones.minutos + 1).coerceAtMost(10)
-            opciones = opciones.copy(minutos = nuevo)
-            txtNumMinutos.text = "$nuevo min"
+            val nuevo = (mainViewModel.opcionesActuales.minutos + 1).coerceAtMost(10)
+            mainViewModel.actualizarOpciones(mainViewModel.opcionesActuales.copy(minutos = nuevo))
+        }
+        btnMenosMinutos.setOnClickListener {
+            val nuevo = (mainViewModel.opcionesActuales.minutos - 1).coerceAtLeast(1)
+            mainViewModel.actualizarOpciones(mainViewModel.opcionesActuales.copy(minutos = nuevo))
         }
 
-        btnMenosMinutos.setOnClickListener {
-            val nuevo = (opciones.minutos - 1).coerceAtLeast(1)
-            opciones = opciones.copy(minutos = nuevo)
-            txtNumMinutos.text = "$nuevo min"
-        }
+        // ── Tipo de pista ──
         cardOpcionPistaCompleta.setOnClickListener {
-            opciones = opciones.copy(tipoPista = GameOptions.PISTA_COMPLETA)
-            actualizarSeleccionPista()
+            mainViewModel.actualizarOpciones(mainViewModel.opcionesActuales.copy(tipoPista = GameOptions.PISTA_COMPLETA))
         }
         cardOpcionPrimeraLetra.setOnClickListener {
-            opciones = opciones.copy(tipoPista = GameOptions.PRIMERA_LETRA)
-            actualizarSeleccionPista()
+            mainViewModel.actualizarOpciones(mainViewModel.opcionesActuales.copy(tipoPista = GameOptions.PRIMERA_LETRA))
         }
 
         // ── Botón empezar ──
         btnStartGame.setOnClickListener {
-            if (!esConfiguracionValida()) {
-                val total = numJugadores()
-                val noCiviles = opciones.numImpostores + (if (opciones.modoMisterioso) opciones.numSenoresBlancos else 0)
+            val opts = mainViewModel.opcionesActuales
+            val nj   = numJugadores()
+            if (!mainViewModel.esConfiguracionValida(nj, opts)) {
+                val noCiviles = opts.numImpostores + (if (opts.modoMisterioso) opts.numSenoresBlancos else 0)
                 val mensaje = when {
-                    opciones.modoMisterioso && (opciones.numImpostores + opciones.numSenoresBlancos) == 0 ->
-                        "Debe haber al menos un impostor o un señor blanco para poder jugar."
-                    !opciones.modoMisterioso && opciones.numImpostores == 0 ->
-                        "Debe haber al menos un impostor para poder jugar."
-                    noCiviles > total / 2 ->
-                        "Hay demasiados no civiles. Con $total jugadores puede haber como máximo ${total / 2} no civiles."
+                    opts.modoMisterioso && (opts.numImpostores + opts.numSenoresBlancos) == 0 ->
+                        getString(R.string.main_invalid_need_non_civil_mysterious)
+                    !opts.modoMisterioso && opts.numImpostores == 0 ->
+                        getString(R.string.main_invalid_need_impostor)
+                    noCiviles > nj / 2 ->
+                        getString(R.string.main_invalid_too_many_non_civilians, nj, nj / 2)
                     else ->
-                        "La configuración no es válida. Revisa el número de impostores y señores blancos."
+                        getString(R.string.main_invalid_generic)
                 }
-                mensajeAlerta("Configuración inválida", mensaje)
+                mensajeAlerta(getString(R.string.main_invalid_config_title), mensaje)
                 return@setOnClickListener
             }
             val intent = Intent(this, CountdownActivity::class.java).apply {
-                putParcelableArrayListExtra("PLAYERS", ArrayList(playerViewModel.players.value ?: emptyList()))
-                putParcelableArrayListExtra("CATEGORIES", ArrayList(categoryViewModel.categories.value ?: emptyList()))
-                putExtra("OPCIONES", opciones)
+                putParcelableArrayListExtra(IntentKeys.PLAYERS, ArrayList(playerViewModel.players.value ?: emptyList()))
+                putParcelableArrayListExtra(IntentKeys.CATEGORIES, ArrayList(categoryViewModel.categories.value ?: emptyList()))
+                putExtra(IntentKeys.OPCIONES, opts)
             }
             SelfieManager.clear()
-            guardarOpciones()
+            mainViewModel.guardar()
             startGameLauncher.launch(intent)
         }
     }
 
     override fun onGameModeConfirmed(nuevasOpciones: GameOptions) {
-        opciones = nuevasOpciones
-        txtModoJuegoSeleccionado.text = textoModoJuegoSeleccionado()
-
-        cardViewNumSenoresBlancos.visibility = if (opciones.modoMisterioso) View.VISIBLE else View.GONE
-
-        if (!opciones.modoMisterioso) {
-            opciones = opciones.copy(numSenoresBlancos = 0)
-        }
-        if (opciones.modoMisterioso || opciones.modoDatosCuriosos) {
-            // En modo misterioso/datos curiosos: ocultar y desactivar modo loco
-            opciones = opciones.copy(modoLoco = false)
-            switchModoLoco.isChecked = false
-        }
-
-        // Ocultar/mostrar cards según modo
-        val cardPista = findViewById<androidx.cardview.widget.CardView>(R.id.cardViewPistaImpostor)
-        val cardLoco  = findViewById<androidx.cardview.widget.CardView>(R.id.cardViewModoLoco)
-        if (opciones.modoMisterioso || opciones.modoDatosCuriosos) {
-            cardPista.visibility = View.GONE
-            cardLoco.visibility  = View.GONE
-        } else {
-            cardPista.visibility = View.VISIBLE
-            cardLoco.visibility  = View.VISIBLE
-        }
-
-        if (!esConfiguracionValida(opciones.numImpostores, opciones.numSenoresBlancos)) {
-            opciones = opciones.copy(numImpostores = 1, numSenoresBlancos = 0)
-        }
-
-        actualizarResumenImpostores()
-        actualizarResumenSenoresBlancos()
-        actualizarBotonEmpezar()
+        // La lógica de negocio (resetear modoLoco, validar impostores, etc.)
+        // vive en el ViewModel; el observer central actualiza toda la UI.
+        mainViewModel.confirmarModoJuego(nuevasOpciones, numJugadores())
     }
 
-    override fun onResume() { super.onResume() }
-    fun onBottomSheetClosed() {}
-
-    private fun actualizarSeleccionPista() {
-        val pistaCompleta = opciones.tipoPista == GameOptions.PISTA_COMPLETA
+    private fun actualizarSeleccionPista(opts: GameOptions) {
+        val pistaCompleta = opts.tipoPista == GameOptions.PISTA_COMPLETA
         checkPistaCompleta.visibility = if (pistaCompleta) View.VISIBLE else View.GONE
         checkPrimeraLetra.visibility  = if (!pistaCompleta) View.VISIBLE else View.GONE
     }
@@ -464,99 +415,35 @@ class MainActivity : AppCompatActivity(),
             .icon("!")
             .title(titulo)
             .message(mensaje)
-            .positiveButton("OK")
+            .positiveButton(getString(R.string.dialog_ok))
             .show()
+    }
+
+    override fun onDatosCategoriesConfirmed() {
+        val list  = datosViewModel.categorias.value ?: emptyList()
+        val total = list.size
+        val sel   = list.count { it.isSelected }
+        textResumenCategoriasDatos.text = resumenCategorias(total, sel)
     }
 
     override fun onCategoriesConfirmed(selected: List<Category>) {
         val total = categoryViewModel.categories.value?.size ?: 0
         val seleccionadas = selected.size
-        textResumenCategorias.text = if (seleccionadas == 0) "Categorías disponibles: $total"
-        else "Categorías seleccionadas: $seleccionadas de $total"
+        textResumenCategorias.text = resumenCategorias(total, seleccionadas)
     }
 
-    private fun maxNoCiviles(): Int = numJugadores() / 2
-
-    private fun maxImpostoresPermitidos(): Int {
-        val max = maxNoCiviles()
-        val blancos = if (opciones.modoMisterioso) opciones.numSenoresBlancos else 0
-        return (max - blancos).coerceAtLeast(0)
-    }
-
-    private fun maxBlancosPermitidos(): Int {
-        if (!opciones.modoMisterioso) return 0
-        val max = maxNoCiviles()
-        val imp = opciones.numImpostores
-        return (max - imp).coerceAtLeast(0)
-    }
-
-    private fun ajustarOpcionesALimites() {
-        val impMax = maxImpostoresPermitidos()
-        val blancosMax = maxBlancosPermitidos()
-        val imp = opciones.numImpostores.coerceIn(0, impMax)
-        val blancos = opciones.numSenoresBlancos.coerceIn(0, blancosMax)
-        opciones = opciones.copy(numImpostores = imp, numSenoresBlancos = blancos)
-    }
+    private fun resumenCategorias(total: Int, seleccionadas: Int): String =
+        if (seleccionadas == 0) getString(R.string.main_categories_available, total)
+        else getString(R.string.main_categories_selected, seleccionadas, total)
 
     private fun aplicarDrawablesTema() {
         ThemeManager.aplicarDrawables(this)
     }
 
-    private fun guardarOpciones() {
-        val prefs = getSharedPreferences("opciones", MODE_PRIVATE)
-        prefs.edit().apply {
-            putBoolean("modoLoco", opciones.modoLoco)
-            putString("tipoPista", opciones.tipoPista)
-            putBoolean("tiempoLimitado", opciones.tiempoLimitado)
-            putBoolean("camaraActiva", opciones.camaraActiva)
-            putBoolean("modoMisterioso", opciones.modoMisterioso)
-            putBoolean("modoDatosCuriosos", opciones.modoDatosCuriosos)
-            putInt("numImpostores", opciones.numImpostores)
-            putInt("numSenoresBlancos", opciones.numSenoresBlancos)
-            putInt("minutos", opciones.minutos)
-            apply()
-        }
-    }
-
-    private fun textoModoJuegoSeleccionado(): String = when {
-        opciones.modoMisterioso -> getString(R.string.main_modo_misterioso)
-        opciones.modoDatosCuriosos -> getString(R.string.main_modo_datos_curiosos)
-        else -> getString(R.string.main_modo_clasico)
-    }
-
-    private fun restaurarOpciones() {
-        val prefs = getSharedPreferences("opciones", MODE_PRIVATE)
-        opciones = opciones.copy(
-            modoLoco = prefs.getBoolean("modoLoco", false),
-            tipoPista = prefs.getString("tipoPista", GameOptions.PISTA_COMPLETA) ?: GameOptions.PISTA_COMPLETA,
-            tiempoLimitado = prefs.getBoolean("tiempoLimitado", false),
-            camaraActiva = prefs.getBoolean("camaraActiva", false),
-            modoMisterioso = prefs.getBoolean("modoMisterioso", false),
-            modoDatosCuriosos = prefs.getBoolean("modoDatosCuriosos", false),
-            numImpostores = prefs.getInt("numImpostores", 1),
-            numSenoresBlancos = prefs.getInt("numSenoresBlancos", 0),
-            minutos = prefs.getInt("minutos", 3)
-        )
-        // Aplicar a los switches y controles
-        switchModoLoco.isChecked = opciones.modoLoco
-        actualizarSeleccionPista()
-        switchTiempoLimitado.isChecked = opciones.tiempoLimitado
-        switchCamara.isChecked = opciones.camaraActiva
-        txtNumMinutos.text = "${opciones.minutos} min"
-        layoutSelectorMinutos.visibility = if (opciones.tiempoLimitado) View.VISIBLE else View.GONE
-        txtNumImpostores.text = opciones.numImpostores.toString()
-        txtNumSenoresBlancos.text = opciones.numSenoresBlancos.toString()
-        txtModoJuegoSeleccionado.text = textoModoJuegoSeleccionado()
-        cardViewNumSenoresBlancos.visibility = if (opciones.modoMisterioso) View.VISIBLE else View.GONE
-        val cardPista = findViewById<androidx.cardview.widget.CardView>(R.id.cardViewPistaImpostor)
-        val cardLoco  = findViewById<androidx.cardview.widget.CardView>(R.id.cardViewModoLoco)
-        if (opciones.modoMisterioso || opciones.modoDatosCuriosos) {
-            cardPista.visibility = View.GONE
-            cardLoco.visibility  = View.GONE
-        } else {
-            cardPista.visibility = View.VISIBLE
-            cardLoco.visibility  = View.VISIBLE
-        }
+    private fun textoModoJuegoSeleccionado(opts: GameOptions): String = when {
+        opts.modoMisterioso    -> getString(if (ThemeManager.esCarmesi(this)) R.string.main_modo_misterioso_carmesi else R.string.main_modo_misterioso)
+        opts.modoDatosCuriosos -> getString(if (ThemeManager.esCarmesi(this)) R.string.main_modo_datos_curiosos_carmesi else R.string.main_modo_datos_curiosos)
+        else                   -> getString(if (ThemeManager.esCarmesi(this)) R.string.main_modo_clasico_carmesi else R.string.main_modo_clasico)
     }
 
 }

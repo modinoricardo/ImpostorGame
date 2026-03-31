@@ -1,4 +1,4 @@
-package com.ricardomodino.impostorgame.bottomsheets
+﻿package com.ricardomodino.impostorgame.bottomsheets
 
 import android.content.Context
 import android.os.Build
@@ -15,9 +15,9 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.content.pm.PackageInfoCompat
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.ricardomodino.impostorgame.BuildConfig
 import com.ricardomodino.impostorgame.R
 import com.ricardomodino.impostorgame.managers.ThemeManager
@@ -33,7 +33,7 @@ import javax.mail.Transport
 import javax.mail.internet.InternetAddress
 import javax.mail.internet.MimeMessage
 
-class SugerenciasBottomSheet : BottomSheetDialogFragment() {
+class SugerenciasBottomSheet : BaseGameBottomSheet() {
 
     companion object {
         const val TAG       = "SugerenciasBottomSheet"
@@ -41,54 +41,40 @@ class SugerenciasBottomSheet : BottomSheetDialogFragment() {
         private const val KEY_EMAIL = "user_email"
     }
 
+    override val animationDuration: Long = 400L
+    override val isDraggableSheet: Boolean = false
+    override val isHideableSheet: Boolean = false
+    override val expandOnStart: Boolean = true
+
+    override fun onSheetReady(behavior: BottomSheetBehavior<View>) {
+        behavior.peekHeight = resources.displayMetrics.heightPixels
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View = inflater.inflate(
-        if (ThemeManager.esFinal(requireContext())) R.layout.bottomsheet_sugerencias_final
+        if (ThemeManager.esCarmesi(requireContext())) R.layout.bottomsheet_sugerencias_carmesi
+        else if (ThemeManager.esFinal(requireContext())) R.layout.bottomsheet_sugerencias_final
         else R.layout.bottomsheet_sugerencias,
         container, false
     )
 
-    override fun onStart() {
-        super.onStart()
-        val bottomSheet = dialog?.findViewById<View>(
-            com.google.android.material.R.id.design_bottom_sheet
-        ) ?: return
-        bottomSheet.background =
-            ContextCompat.getDrawable(requireContext(), R.drawable.bottomsheet_rounded)
-        bottomSheet.post {
-            val h = if (bottomSheet.height > 0) bottomSheet.height
-                    else bottomSheet.resources.displayMetrics.heightPixels
-            bottomSheet.translationY = h.toFloat()
-            bottomSheet.alpha = 0f
-            bottomSheet.animate().translationY(0f).alpha(1f)
-                .setDuration(400L).setInterpolator(DecelerateInterpolator(2f)).start()
-        }
-        BottomSheetBehavior.from(bottomSheet).apply {
-            state       = BottomSheetBehavior.STATE_EXPANDED
-            isDraggable = false
-            isHideable  = false
-            peekHeight  = bottomSheet.resources.displayMetrics.heightPixels
-        }
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // ── Aplicar tema ──────────────────────────────────────────────────────
+        // â”€â”€ Aplicar tema â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         val accent = ThemeManager.getAccentColor(requireContext())
         view.findViewById<View>(R.id.rootSugerencias)
-            ?.setBackgroundResource(ThemeManager.getBgCard(requireContext()))
+            ?.setBackgroundResource(if (ThemeManager.esCarmesi(requireContext())) R.drawable.bg_carmesi_sheet else ThemeManager.getBgCard(requireContext()))
         view.findViewById<TextView>(R.id.txtTituloSugerencias)
             ?.setShadowLayer(12f, 0f, 0f, accent)
         view.findViewById<Button>(R.id.btnEnviarSugerencia)
             ?.setBackgroundResource(ThemeManager.getBtnNeon(requireContext()))
 
-        // ── Botón atrás ───────────────────────────────────────────────────────
+        // â”€â”€ BotÃ³n atrÃ¡s â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         view.findViewById<View>(R.id.btnBackSugerencias)?.setOnClickListener { dismiss() }
 
-        // ── Email persistente (SharedPreferences) ─────────────────────────────
+        // â”€â”€ Email persistente (SharedPreferences) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         val editEmail = view.findViewById<EditText>(R.id.editEmail)
         val prefs = requireContext().getSharedPreferences(PREFS, Context.MODE_PRIVATE)
         editEmail.setText(prefs.getString(KEY_EMAIL, ""))
@@ -100,49 +86,49 @@ class SugerenciasBottomSheet : BottomSheetDialogFragment() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })
 
-        // ── Botón Enviar ──────────────────────────────────────────────────────
+        // â”€â”€ BotÃ³n Enviar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         val editSugerencia = view.findViewById<EditText>(R.id.editSugerencia)
         val btnEnviar      = view.findViewById<Button>(R.id.btnEnviarSugerencia)
         btnEnviar.setOnClickListener {
             val texto = editSugerencia.text.toString().trim()
             val email = editEmail.text.toString().trim()
             if (texto.isEmpty()) {
-                editSugerencia.error = "Escribe tu sugerencia primero"
+                editSugerencia.error = getString(R.string.sug_write_first)
                 return@setOnClickListener
             }
             if (email.isNotEmpty() && !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                editEmail.error = "Email no válido"
+                editEmail.error = getString(R.string.sug_invalid_email)
                 return@setOnClickListener
             }
             enviar(texto, email, btnEnviar)
         }
     }
 
-    // ── Flujo principal ───────────────────────────────────────────────────────
+    // â”€â”€ Flujo principal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     private fun enviar(mensaje: String, emailUsuario: String, btnEnviar: Button) {
         if (mensaje.length < 15) {
-            Toast.makeText(requireContext(), "Tu sugerencia es demasiado corta. Añade más detalle.", Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), getString(R.string.sug_too_short), Toast.LENGTH_LONG).show()
             return
         }
         if (BuildConfig.GMAIL_SENDER.isEmpty() || BuildConfig.GMAIL_PASSWORD.isEmpty()) {
-            Toast.makeText(requireContext(), "El envío no está configurado. Contacta al desarrollador.", Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), getString(R.string.sug_not_configured), Toast.LENGTH_LONG).show()
             return
         }
 
         btnEnviar.isEnabled = false
-        btnEnviar.text      = "Enviando…"
+        btnEnviar.text      = getString(R.string.sug_enviando)
 
         lifecycleScope.launch {
             try {
                 withContext(Dispatchers.IO) { mandarEmail(mensaje, emailUsuario) }
             } catch (e: Exception) {
-                if (isAdded) mostrarError("Error al enviar. Comprueba tu conexión.", btnEnviar)
+                if (isAdded) mostrarError(getString(R.string.sug_send_error), btnEnviar)
                 return@launch
             }
 
             if (isAdded) {
-                Toast.makeText(requireContext(), "¡Gracias! Tu sugerencia ha sido enviada.", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), getString(R.string.sug_sent_success), Toast.LENGTH_LONG).show()
                 dismiss()
             }
         }
@@ -151,10 +137,10 @@ class SugerenciasBottomSheet : BottomSheetDialogFragment() {
     private fun mostrarError(msg: String, btnEnviar: Button) {
         Toast.makeText(requireContext(), msg, Toast.LENGTH_LONG).show()
         btnEnviar.isEnabled = true
-        btnEnviar.text      = "Enviar"
+        btnEnviar.text      = getString(R.string.sug_enviar)
     }
 
-    // ── Gmail SMTP ────────────────────────────────────────────────────────────
+    // â”€â”€ Gmail SMTP â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     private fun mandarEmail(mensajeUsuario: String, emailUsuario: String) {
         val props = Properties().apply {
@@ -177,7 +163,7 @@ class SugerenciasBottomSheet : BottomSheetDialogFragment() {
 
         val appVersion = try {
             val info = requireContext().packageManager.getPackageInfo(requireContext().packageName, 0)
-            "${info.versionName} (build ${info.longVersionCode})"
+            "${info.versionName} (build ${PackageInfoCompat.getLongVersionCode(info)})"
         } catch (_: Exception) { "Desconocida" }
 
         val fecha = java.text.SimpleDateFormat("dd/MM/yyyy HH:mm", java.util.Locale.getDefault())
@@ -188,7 +174,7 @@ class SugerenciasBottomSheet : BottomSheetDialogFragment() {
             appendLine(mensajeUsuario)
             appendLine()
             appendLine("=".repeat(40))
-            appendLine("USUARIO    : ${emailUsuario.ifEmpty { "Anónimo" }}")
+            appendLine("USUARIO    : ${emailUsuario.ifEmpty { "AnÃ³nimo" }}")
             appendLine("DISPOSITIVO: ${Build.MANUFACTURER} ${Build.MODEL} (Android ${Build.VERSION.RELEASE})")
             appendLine("APP        : ImpostorGame v$appVersion")
             appendLine("FECHA      : $fecha")
@@ -205,3 +191,4 @@ class SugerenciasBottomSheet : BottomSheetDialogFragment() {
         }.also { Transport.send(it) }
     }
 }
+

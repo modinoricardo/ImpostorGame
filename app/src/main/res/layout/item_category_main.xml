@@ -8,5 +8,6 @@
     android:layout_margin="4dp"
     android:background="@drawable/bg_card_main"
     android:textColor="@android:color/white"
-    android:text="🦁 Animales"
+    android:text=""
     android:textSize="14sp" />
+

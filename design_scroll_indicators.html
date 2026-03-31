@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scroll Indicators - ImpostorGame</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #0a0a1a;
+    font-family: 'Segoe UI', sans-serif;
+    color: white;
+    padding: 32px 24px;
+    min-height: 100vh;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    color: #00E5FF;
+    text-shadow: 0 0 16px #00E5FF88;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+
+  .subtitle {
+    text-align: center;
+    color: #ffffff88;
+    font-size: 13px;
+    margin-bottom: 36px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .option-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: #00E5FF;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .option-desc {
+    font-size: 11px;
+    color: #ffffff66;
+    text-align: center;
+    line-height: 1.5;
+    min-height: 32px;
+  }
+
+  /* ── Panel base (imita un BottomSheet de Android) ── */
+  .phone {
+    width: 100%;
+    height: 360px;
+    background: #12122a;
+    border-radius: 24px;
+    border: 1.5px solid #ffffff18;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Handle */
+  .handle {
+    width: 36px;
+    height: 4px;
+    background: #ffffff33;
+    border-radius: 2px;
+    margin: 14px auto 10px;
+    flex-shrink: 0;
+  }
+
+  /* Título del panel */
+  .panel-title {
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+    color: white;
+    text-shadow: 0 0 10px #00E5FF66;
+    margin-bottom: 8px;
+    flex-shrink: 0;
+    padding: 0 16px;
+  }
+
+  /* Contenedor scrollable */
+  .scroll-area {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    padding: 0 14px;
+  }
+
+  /* Cards dentro del scroll */
+  .card {
+    background: #1e1e3a;
+    border: 1px solid #ffffff14;
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .card-emoji { font-size: 18px; }
+
+  .card-text { flex: 1; }
+  .card-text strong { display: block; font-size: 13px; color: #ffffffdd; }
+  .card-text span { font-size: 11px; color: #ffffff66; }
+
+  .card-arrow { color: #ffffff44; font-size: 16px; }
+
+  /* ═══════════════════════════════════════════════
+     OPCIÓN A — Fade gradient solamente
+  ═══════════════════════════════════════════════ */
+  .fade-only::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 72px;
+    background: linear-gradient(to bottom, transparent, #12122a);
+    pointer-events: none;
+    border-radius: 0 0 12px 12px;
+  }
+
+  /* ═══════════════════════════════════════════════
+     OPCIÓN B — Flecha animada solamente
+  ═══════════════════════════════════════════════ */
+  .arrow-only-wrap {
+    position: relative;
+  }
+
+  .arrow-badge {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    animation: pulse-arrow 1.6s ease-in-out infinite;
+    z-index: 10;
+  }
+
+  .arrow-badge .chevron {
+    width: 24px;
+    height: 24px;
+    border-right: 2.5px solid #00E5FF;
+    border-bottom: 2.5px solid #00E5FF;
+    transform: rotate(45deg);
+    border-radius: 2px;
+    box-shadow: 0 0 8px #00E5FF88;
+  }
+
+  @keyframes pulse-arrow {
+    0%, 100% { opacity: 1; transform: translateX(-50%) translateY(0); }
+    50%       { opacity: 0.45; transform: translateX(-50%) translateY(5px); }
+  }
+
+  /* ═══════════════════════════════════════════════
+     OPCIÓN C — Fade + Flecha combinado
+  ═══════════════════════════════════════════════ */
+  .combo-wrap {
+    position: relative;
+  }
+
+  .combo-fade::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 80px;
+    background: linear-gradient(to bottom, transparent, #12122a);
+    pointer-events: none;
+  }
+
+  .combo-arrow {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: pulse-combo 1.6s ease-in-out infinite;
+    z-index: 10;
+  }
+
+  .combo-arrow .chevron {
+    width: 22px;
+    height: 22px;
+    border-right: 2.5px solid #00E5FF;
+    border-bottom: 2.5px solid #00E5FF;
+    transform: rotate(45deg);
+    border-radius: 2px;
+    box-shadow: 0 0 10px #00E5FFaa;
+  }
+
+  @keyframes pulse-combo {
+    0%, 100% { opacity: 1;    transform: translateX(-50%) translateY(0px); }
+    50%       { opacity: 0.4; transform: translateX(-50%) translateY(6px); }
+  }
+
+  /* ═══════════════════════════════════════════════
+     OPCIÓN D — Scrollbar nativo
+  ═══════════════════════════════════════════════ */
+  .scrollbar-area {
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: #00E5FF44 transparent;
+    height: 100%;
+  }
+
+  .scrollbar-area::-webkit-scrollbar {
+    width: 4px;
+  }
+  .scrollbar-area::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-area::-webkit-scrollbar-thumb {
+    background: #00E5FF55;
+    border-radius: 4px;
+  }
+
+  /* ── Etiqueta de recomendación ── */
+  .badge-rec {
+    background: linear-gradient(135deg, #00E5FF22, #00E5FF44);
+    border: 1px solid #00E5FF66;
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #00E5FF;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .badge-desc {
+    background: #ffffff0a;
+    border: 1px solid #ffffff18;
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 11px;
+    color: #ffffff55;
+    letter-spacing: 0.5px;
+  }
+
+  .note {
+    max-width: 960px;
+    margin: 28px auto 0;
+    background: #ffffff08;
+    border: 1px solid #ffffff14;
+    border-radius: 12px;
+    padding: 14px 20px;
+    font-size: 12px;
+    color: #ffffff66;
+    line-height: 1.7;
+    text-align: center;
+  }
+  .note strong { color: #00E5FFaa; }
+</style>
+</head>
+<body>
+
+<h1>INDICADORES DE SCROLL</h1>
+<p class="subtitle">Simulación de cómo quedaría cada opción en los paneles del juego</p>
+
+<div class="grid">
+
+  <!-- ══ OPCIÓN A ══ -->
+  <div class="option">
+    <span class="option-label">Opción A</span>
+    <span class="option-desc">Fade gradient<br>solo</span>
+
+    <div class="phone">
+      <div class="handle"></div>
+      <div class="panel-title">⚙️ Menú</div>
+      <div class="scroll-area fade-only">
+        <div class="card"><span class="card-emoji">🎨</span><div class="card-text"><strong>Estilo</strong><span>Cambia el tema</span></div><span class="card-arrow">›</span></div>
+        <div class="card"><span class="card-emoji">🔊</span><div class="card-text"><strong>Sonido</strong><span>Activar efectos</span></div><span class="card-arrow">›</span></div>
+        <div class="card"><span class="card-emoji">👤</span><div class="card-text"><strong>Acerca de</strong><span>El desarrollador</span></div><span class="card-arrow">›</span></div>
+        <div class="card"><span class="card-emoji">💡</span><div class="card-text"><strong>Sugerencias</strong><span>Enviar idea</span></div><span class="card-arrow">›</span></div>
+        <div class="card"><span class="card-emoji">🌐</span><div class="card-text"><strong>Idioma</strong><span>Español</span></div><span class="card-arrow">›</span></div>
+      </div>
+    </div>
+
+    <span class="badge-desc">Sutil · pasivo</span>
+  </div>
+
+  <!-- ══ OPCIÓN B ══ -->
+  <div class="option">
+    <span class="option-label">Opción B</span>
+    <span class="option-desc">Flecha animada<br>sola</span>
+
+    <div class="phone">
+      <div class="handle"></div>
+      <div class="panel-title">⚙️ Menú</div>
+      <div class="scroll-area arrow-only-wrap">
+        <div class="card"><span class="card-emoji">🎨</span><div class="card-text"><strong>Estilo</strong><span>Cambia el tema</span></div><span class="card-arrow">›</span></div>
+        <div class="card"><span class="card-emoji">🔊</span><div class="card-text"><strong>Sonido</strong><span>Activar efectos</span></div><span class="card-arrow">›</span></div>
+        <div class="card"><span class="card-emoji">👤</span><div class="card-text"><strong>Acerca de</strong><span>El desarrollador</span></div><span class="card-arrow">›</span></div>
+        <div class="card"><span class="card-emoji">💡</span><div class="card-text"><strong>Sugerencias</strong><span>Enviar idea</span></div><span class="card-arrow">›</span></div>
+        <div class="card"><span class="card-emoji">🌐</span><div class="card-text"><strong>Idioma</strong><span>Español</span></div><span class="card-arrow">›</span></div>
+        <div class="arrow-badge"><div class="chevron"></div></div>
+      </div>
+    </div>
+
+    <span class="badge-desc">Obvio · sin contexto</span>
+  </div>
+
+  <!-- ══ OPCIÓN C ══ -->
+  <div class="option">
+    <span class="option-label">Opción C</span>
+    <span class="option-desc">Fade + Flecha<br>combinado</span>
+
+    <div class="phone">
+      <div class="handle"></div>
+      <div class="panel-title">⚙️ Menú</div>
+      <div class="scroll-area combo-wrap combo-fade">
+        <div class="card"><span class="card-emoji">🎨</span><div class="card-text"><strong>Estilo</strong><span>Cambia el tema</span></div><span class="card-arrow">›</span></div>
+        <div class="card"><span class="card-emoji">🔊</span><div class="card-text"><strong>Sonido</strong><span>Activar efectos</span></div><span class="card-arrow">›</span></div>
+        <div class="card"><span class="card-emoji">👤</span><div class="card-text"><strong>Acerca de</strong><span>El desarrollador</span></div><span class="card-arrow">›</span></div>
+        <div class="card"><span class="card-emoji">💡</span><div class="card-text"><strong>Sugerencias</strong><span>Enviar idea</span></div><span class="card-arrow">›</span></div>
+        <div class="card"><span class="card-emoji">🌐</span><div class="card-text"><strong>Idioma</strong><span>Español</span></div><span class="card-arrow">›</span></div>
+        <div class="combo-arrow"><div class="chevron"></div></div>
+      </div>
+    </div>
+
+    <span class="badge-rec">★ Recomendado</span>
+  </div>
+
+  <!-- ══ OPCIÓN D ══ -->
+  <div class="option">
+    <span class="option-label">Opción D</span>
+    <span class="option-desc">Scrollbar nativo<br>de Android</span>
+
+    <div class="phone">
+      <div class="handle"></div>
+      <div class="panel-title">⚙️ Menú</div>
+      <div class="scroll-area" style="padding-right: 8px;">
+        <div class="scrollbar-area">
+          <div class="card"><span class="card-emoji">🎨</span><div class="card-text"><strong>Estilo</strong><span>Cambia el tema</span></div><span class="card-arrow">›</span></div>
+          <div class="card"><span class="card-emoji">🔊</span><div class="card-text"><strong>Sonido</strong><span>Activar efectos</span></div><span class="card-arrow">›</span></div>
+          <div class="card"><span class="card-emoji">👤</span><div class="card-text"><strong>Acerca de</strong><span>El desarrollador</span></div><span class="card-arrow">›</span></div>
+          <div class="card"><span class="card-emoji">💡</span><div class="card-text"><strong>Sugerencias</strong><span>Enviar idea</span></div><span class="card-arrow">›</span></div>
+          <div class="card"><span class="card-emoji">🌐</span><div class="card-text"><strong>Idioma</strong><span>Español</span></div><span class="card-arrow">›</span></div>
+        </div>
+      </div>
+    </div>
+
+    <span class="badge-desc">Simple · poco elegante</span>
+  </div>
+
+</div>
+
+<p class="note">
+  La flecha <strong>desaparece automáticamente</strong> cuando el usuario llega al final del scroll.<br>
+  En Android se implementa escuchando el estado del ScrollView y ocultando la flecha con una animación de fade-out.
+</p>
+
+</body>
+</html>

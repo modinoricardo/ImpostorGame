@@ -1,42 +1,54 @@
 package com.ricardomodino.impostorgame.activities
 
 import android.content.Intent
-import android.media.AudioFormat
-import android.media.AudioManager
-import android.media.AudioTrack
 import android.os.Bundle
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
-import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.enableEdgeToEdge
 import com.ricardomodino.impostorgame.R
+import com.ricardomodino.impostorgame.managers.ImmersiveModeManager
 import com.ricardomodino.impostorgame.managers.SoundManager
-import com.ricardomodino.impostorgame.managers.LocaleManager
 import com.ricardomodino.impostorgame.managers.ThemeManager
 import com.ricardomodino.impostorgame.modelos.Category
 import com.ricardomodino.impostorgame.modelos.GameOptions
 import com.ricardomodino.impostorgame.modelos.Jugador
-import kotlin.math.PI
-import kotlin.math.sin
 
-class CountdownActivity : AppCompatActivity() {
+class CountdownActivity : BaseGameActivity() {
 
     private lateinit var txtCountdown: TextView
 
     // Flag para detener los callbacks de animación cuando el usuario pulsa atrás.
     // Sin este flag, el withEndAction sigue ejecutándose aunque la Activity ya se esté cerrando,
-    // lo que lanzaba ImpostorRevealActivity desde una Activity destruida (Activity fantasma).
+    // lo que lanzaba ClassicRevealActivity desde una Activity destruida (Activity fantasma).
     private var isCancelled = false
 
-    override fun attachBaseContext(newBase: android.content.Context) {
-        super.attachBaseContext(LocaleManager.wrap(newBase))
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
-        ThemeManager.aplicarTema(this)
         super.onCreate(savedInstanceState)
-        setContentView(if (ThemeManager.esFinal(this)) R.layout.activity_countdown_fullscreen_final else R.layout.activity_countdown_fullscreen)
+        if (ThemeManager.esCarmesi(this)) {
+            enableEdgeToEdge()
+        }
+        setContentView(
+            when {
+                ThemeManager.esFinal(this) -> R.layout.activity_countdown_fullscreen_final
+                ThemeManager.esCarmesi(this) -> R.layout.activity_countdown_fullscreen_carmesi
+                else -> R.layout.activity_countdown_fullscreen
+            }
+        )
 
         txtCountdown = findViewById(R.id.txtCountdown)
+
+        if (ThemeManager.esCarmesi(this)) {
+            val countdownRoot = findViewById<android.view.View>(R.id.countdownRoot)
+            val density = resources.displayMetrics.density
+            val extraTop = (18 * density).toInt()
+            val extraBottom = (22 * density).toInt()
+            ImmersiveModeManager.applyRootInsets(
+                countdownRoot,
+                includeBottomInset = true,
+                extraTop = extraTop,
+                extraBottom = extraBottom
+            )
+        }
 
         // Pulsar atrás durante la cuenta cancela la partida y vuelve al menú principal.
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
@@ -45,9 +57,9 @@ class CountdownActivity : AppCompatActivity() {
             }
         })
 
-        val players    = intent.getParcelableArrayListExtra<Jugador>("PLAYERS")
-        val categories = intent.getParcelableArrayListExtra<Category>("CATEGORIES")
-        val opciones   = intent.getParcelableExtra<GameOptions>("OPCIONES")
+        val players    = intent.getParcelableArrayListExtra<Jugador>(IntentKeys.PLAYERS)
+        val categories = intent.getParcelableArrayListExtra<Category>(IntentKeys.CATEGORIES)
+        val opciones   = intent.getParcelableExtra<GameOptions>(IntentKeys.OPCIONES)
         val usarEstiloFinal = ThemeManager.esFinal(this)
 
         startCountdown(players, categories, opciones, usarEstiloFinal)
@@ -59,41 +71,8 @@ class CountdownActivity : AppCompatActivity() {
         finish()
     }
 
-    private fun playCountdownTone(frequencyHz: Float, durationMs: Int = 140) {
-        if (!SoundManager.isSoundEnabled(this)) return
-        try {
-            val sampleRate = 44100
-            val numSamples = sampleRate * durationMs / 1000
-            val fadeLen    = (sampleRate * 0.015).toInt() // 15 ms fade in/out
-            val samples    = ShortArray(numSamples)
-
-            for (i in 0 until numSamples) {
-                val env = when {
-                    i < fadeLen              -> i.toDouble() / fadeLen
-                    i > numSamples - fadeLen -> (numSamples - i).toDouble() / fadeLen
-                    else                     -> 1.0
-                }
-                samples[i] = (env * 0.7 * Short.MAX_VALUE *
-                        sin(2.0 * PI * frequencyHz * i / sampleRate)).toInt().toShort()
-            }
-
-            val minBuf = AudioTrack.getMinBufferSize(
-                sampleRate, AudioFormat.CHANNEL_OUT_MONO, AudioFormat.ENCODING_PCM_16BIT
-            )
-            val track = AudioTrack(
-                AudioManager.STREAM_MUSIC, sampleRate,
-                AudioFormat.CHANNEL_OUT_MONO, AudioFormat.ENCODING_PCM_16BIT,
-                maxOf(minBuf, numSamples * 2), AudioTrack.MODE_STATIC
-            )
-            track.write(samples, 0, numSamples)
-            track.setNotificationMarkerPosition(numSamples)
-            track.setPlaybackPositionUpdateListener(object : AudioTrack.OnPlaybackPositionUpdateListener {
-                override fun onMarkerReached(t: AudioTrack) { t.release() }
-                override fun onPeriodicNotification(t: AudioTrack) {}
-            })
-            track.play()
-        } catch (_: Exception) {}
-    }
+    private fun playCountdownTone(frequencyHz: Float, durationMs: Int = 140) =
+        SoundManager.playCountdownTone(this, frequencyHz, durationMs)
 
     private fun startCountdown(
         players: ArrayList<Jugador>?,
@@ -101,21 +80,27 @@ class CountdownActivity : AppCompatActivity() {
         opciones: GameOptions?,
         esDatosCuriosos: Boolean = false
     ) {
-        val toneFreqs = mapOf("3" to 392f, "2" to 494f, "1" to 659f, "¡Ya!" to 880f)
-        val numbers   = listOf("3", "2", "1", "¡Ya!")
-        var index     = 0
+        val txtCountdownAccent = findViewById<TextView?>(R.id.txtCountdownAccent)
+        val esCarmesi = ThemeManager.esCarmesi(this)
+        val finalCue = if (esCarmesi) "\u2665" else "¡Ya!"
+        val toneFreqs = mapOf("3" to 392f, "2" to 494f, "1" to 659f, finalCue to 880f)
+        val numbers = listOf("3", "2", "1", finalCue)
+        var index = 0
+
+        if (esCarmesi) {
+            txtCountdownAccent?.alpha = 0.34f
+        }
 
         fun showNext() {
-            // Si el usuario pulsó atrás o la Activity ya está cerrándose, no continuar.
             if (isCancelled || isFinishing || isDestroyed) return
 
             if (index >= numbers.size) {
-                val destino = if (esDatosCuriosos) EstiloFinalRevealActivity::class.java
-                              else ImpostorRevealActivity::class.java
+                val destino = if (esDatosCuriosos) CoverRevealActivity::class.java
+                else ClassicRevealActivity::class.java
                 val intent = Intent(this, destino).apply {
-                    putParcelableArrayListExtra("PLAYERS", players)
-                    putParcelableArrayListExtra("CATEGORIES", categories)
-                    putExtra("OPCIONES", opciones)
+                    putParcelableArrayListExtra(IntentKeys.PLAYERS, players)
+                    putParcelableArrayListExtra(IntentKeys.CATEGORIES, categories)
+                    putExtra(IntentKeys.OPCIONES, opciones)
                 }
                 startActivity(intent)
                 finish()
@@ -126,13 +111,22 @@ class CountdownActivity : AppCompatActivity() {
             val text = numbers[index]
             txtCountdown.text = text
 
-            val freq     = toneFreqs[text] ?: 440f
-            val duration = if (text == "¡Ya!") 220 else 140
+            if (esCarmesi && text == finalCue) {
+                txtCountdownAccent?.animate()
+                    ?.scaleX(1.12f)
+                    ?.scaleY(1.12f)
+                    ?.alpha(1f)
+                    ?.setDuration(280L)
+                    ?.start()
+            }
+
+            val freq = toneFreqs[text] ?: 440f
+            val duration = if (text == finalCue) 220 else 140
             playCountdownTone(freq, duration)
 
             txtCountdown.scaleX = 0f
             txtCountdown.scaleY = 0f
-            txtCountdown.alpha  = 0f
+            txtCountdown.alpha = 0f
             txtCountdown.animate()
                 .scaleX(1f).scaleY(1f).alpha(1f)
                 .setDuration(300L)

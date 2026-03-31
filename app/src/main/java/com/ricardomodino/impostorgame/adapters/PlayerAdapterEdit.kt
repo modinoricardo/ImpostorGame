@@ -1,4 +1,4 @@
-package com.ricardomodino.impostorgame
+package com.ricardomodino.impostorgame.adapters
 
 import android.os.Handler
 import android.os.Looper
@@ -13,6 +13,7 @@ import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
 import android.content.Context
 import android.view.inputmethod.InputMethodManager
+import com.ricardomodino.impostorgame.R
 import com.ricardomodino.impostorgame.extensions.expandTouchArea
 import com.ricardomodino.impostorgame.managers.ThemeManager
 import com.ricardomodino.impostorgame.modelos.Jugador
@@ -37,8 +38,9 @@ class PlayerAdapterEdit(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlayerViewHolder {
+        val layout = if (ThemeManager.esCarmesi(parent.context)) R.layout.item_player_edit_carmesi else R.layout.item_player_edit
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_player_edit, parent, false)
+            .inflate(layout, parent, false)
         return PlayerViewHolder(view)
     }
 

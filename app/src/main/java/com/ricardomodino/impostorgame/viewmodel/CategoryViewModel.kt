@@ -1,4 +1,4 @@
-﻿package com.ricardomodino.impostorgame
+﻿package com.ricardomodino.impostorgame.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

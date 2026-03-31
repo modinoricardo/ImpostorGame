@@ -9,7 +9,7 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp">
 
-    <!-- S central: solo visible en carmesí (se controla por código) -->
+    <!-- S central: solo visible en carmesÃ­ (se controla por cÃ³digo) -->
     <ImageView
         android:id="@+id/imgLetraS"
         android:layout_width="300dp"
@@ -22,7 +22,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Glow verde suave detrás de la card -->
+    <!-- Glow verde suave detrÃ¡s de la card -->
     <View
         android:id="@+id/ring1"
         android:layout_width="300dp"
@@ -66,7 +66,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:animateLayoutChanges="true"
             android:background="@drawable/bg_card_main"
             android:padding="20dp">
 
@@ -118,11 +117,11 @@
 
             <TextView
                 android:id="@+id/detailsPlayer"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="20dp"
-                android:text="¿Impostor o no?"
+                android:text="@string/reveal_identity_question"
                 android:gravity="center"
                 android:textSize="32sp"
                 android:textStyle="bold"
@@ -141,7 +140,7 @@
 
             <TextView
                 android:id="@+id/hintPlayer"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
@@ -156,7 +155,7 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <!-- Botón siguiente jugador -->
+    <!-- BotÃ³n siguiente jugador -->
     <androidx.cardview.widget.CardView
         android:id="@+id/nenxtPlayer"
         android:layout_width="0dp"

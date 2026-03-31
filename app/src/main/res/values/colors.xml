@@ -21,10 +21,27 @@
     <color name="imp_glass_stroke">#B38F8CFF</color>
 
     <!-- Carmesí -->
-    <color name="carmesi_accent">#FF1744</color>
-    <color name="carmesi_primary_dark">#1A0B0B</color>
-    <color name="carmesi_glass_bg">#803D0A0A</color>
-    <color name="carmesi_glass_stroke">#B3FF1744</color>
+    <color name="carmesi_accent">#E8305E</color>
+    <color name="carmesi_primary_dark">#1A0C10</color>
+    <color name="carmesi_bg_top">#3A1620</color>
+    <color name="carmesi_bg_mid">#2A1018</color>
+    <color name="carmesi_bg_bottom">#200C14</color>
+    <color name="carmesi_bg_glow">#44E8305E</color>
+    <color name="carmesi_bg_glow_soft">#22D02550</color>
+    <color name="carmesi_glass_bg">#80381018</color>
+    <color name="carmesi_glass_stroke">#99F0C5CF</color>
+    <color name="carmesi_surface">#321525</color>
+    <color name="carmesi_surface_alt">#3E1A2A</color>
+    <color name="carmesi_surface_soft">#221018</color>
+    <color name="carmesi_stroke">#52D7C2C8</color>
+    <color name="carmesi_stroke_soft">#2DD7C2C8</color>
+    <color name="carmesi_text_primary">#FFF6F2F3</color>
+    <color name="carmesi_text_secondary">#CBB9BE</color>
+    <color name="carmesi_text_muted">#8F7D82</color>
+    <color name="carmesi_rose">#E3CED2</color>
+    <color name="carmesi_rose_soft">#46E3CED2</color>
+    <color name="carmesi_panel_shadow">#120A0E</color>
+    <color name="carmesi_overlay">#A6180C14</color>
 
     <!-- Juego -->
     <color name="colorImpostor">#FF0000</color>

@@ -8,30 +8,31 @@ import android.view.animation.BounceInterpolator
 import android.view.animation.OvershootInterpolator
 import android.widget.Button
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import com.ricardomodino.impostorgame.R
-import com.ricardomodino.impostorgame.managers.LocaleManager
+import com.ricardomodino.impostorgame.managers.ImmersiveModeManager
 import com.ricardomodino.impostorgame.managers.ThemeManager
 import com.ricardomodino.impostorgame.modelos.DatoCurioso
 import com.ricardomodino.impostorgame.modelos.Jugador
 import com.ricardomodino.impostorgame.views.VictoryParticleView
 
-class VictoryActivity : AppCompatActivity() {
-
-    override fun attachBaseContext(newBase: android.content.Context) {
-        super.attachBaseContext(LocaleManager.wrap(newBase))
-    }
+class VictoryActivity : BaseGameActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        ThemeManager.aplicarTema(this)
         super.onCreate(savedInstanceState)
-        setContentView(if (ThemeManager.esFinal(this)) R.layout.activity_victory_final else R.layout.activity_victory)
+        setContentView(
+            when {
+                ThemeManager.esFinal(this) -> R.layout.activity_victory_final
+                ThemeManager.esCarmesi(this) -> R.layout.activity_victory_carmesi
+                else -> R.layout.activity_victory
+            }
+        )
+        ImmersiveModeManager.applyActivityContentInsets(this, includeBottomInset = true)
 
         SelfieManager.clear()
 
-        val ganador   = intent.getStringExtra("GANADOR") ?: "IMPOSTORES"
-        val motivo    = intent.getStringExtra("MOTIVO") ?: ""
-        val irAReveal = intent.getBooleanExtra("IR_A_REVEAL", false)
+        val ganador   = intent.getStringExtra(IntentKeys.GANADOR) ?: "IMPOSTORES"
+        val motivo    = intent.getStringExtra(IntentKeys.MOTIVO) ?: ""
+        val irAReveal = intent.getBooleanExtra(IntentKeys.IR_A_REVEAL, false)
 
         val particleView = findViewById<VictoryParticleView>(R.id.particleView)
         val txtTrophy    = findViewById<TextView>(R.id.txtTrophy)
@@ -39,42 +40,36 @@ class VictoryActivity : AppCompatActivity() {
         val txtSubtitle  = findViewById<TextView>(R.id.txtVictorySubtitle)
         val txtMotivo    = findViewById<TextView>(R.id.txtVictoryMotivo)
         val btnNewGame   = findViewById<Button>(R.id.btnVictoryNewGame)
+        val mensajesCiviles = listOf(
+            getString(R.string.victory_civilians_subtitle_1),
+            getString(R.string.victory_civilians_subtitle_2),
+            getString(R.string.victory_civilians_subtitle_3),
+            getString(R.string.victory_civilians_subtitle_4),
+            getString(R.string.victory_civilians_subtitle_5)
+        )
 
         particleView.setGanador(ganador)
 
         if (ganador == "IMPOSTORES") {
-            txtTrophy.text   = "😈"
-            txtTitle.text    = "¡LOS IMPOSTORES GANAN!"
-            // Subtítulo dinámico según el motivo
-            txtSubtitle.text = if (motivo.contains("adivinó"))
-                "¡Descubiertos pero no derrotados!"
-            else
-                "Los civiles nunca tuvieron una oportunidad"
-            txtTitle.setShadowLayer(30f, 0f, 0f, 0xFFFF1744.toInt())
+            txtTrophy.text   = "\uD83D\uDE08"
+            txtTitle.text    = getString(R.string.victory_impostors_title)
+            txtSubtitle.text = getString(R.string.victory_impostors_subtitle)
+            val sombra = if (ThemeManager.esCarmesi(this)) 0x66D92C58.toInt() else 0xFFFF1744.toInt()
+            txtTitle.setShadowLayer(30f, 0f, 0f, sombra)
         } else {
-            txtTrophy.text = "🎉"
-            // Título según número de impostores
-            val hayVarios = motivo.contains("impostores")
-            txtTitle.text = if (hayVarios) "¡LOS IMPOSTORES HAN SIDO DESCUBIERTOS!"
-            else "¡EL IMPOSTOR HA SIDO DESCUBIERTO!"
-            // Mensajes aleatorios para civiles
-            val mensajesCiviles = listOf(
-                "La verdad siempre sale a la luz",
-                "El engaño tiene los días contados",
-                "Juntos son imparables",
-                "Nadie puede esconderse para siempre",
-                "La justicia ha triunfado"
-            )
+            txtTrophy.text = "\uD83C\uDF89"
+            txtTitle.text = getString(R.string.victory_civilians_title)
             txtSubtitle.text = mensajesCiviles.random()
-            txtTitle.setShadowLayer(30f, 0f, 0f, 0xFF00E5FF.toInt())
+            val sombra = if (ThemeManager.esCarmesi(this)) 0x66F0D0D7.toInt() else 0xFF00E5FF.toInt()
+            txtTitle.setShadowLayer(30f, 0f, 0f, sombra)
         }
 
         txtMotivo.text = motivo
 
-        // Si hay que ir al reveal, cambiar texto del botón
-        btnNewGame.text = "🔍 DESVELAR"
+        // Si hay que ir al reveal, cambiar texto del botÃ³n
+        btnNewGame.text = getString(R.string.victory_reveal_button)
 
-        // Animación entrada
+        // AnimaciÃ³n entrada
         listOf(txtTrophy, txtTitle, txtSubtitle, txtMotivo).forEachIndexed { i, v ->
             v.alpha = 0f; v.translationY = 80f
             v.animate().alpha(1f).translationY(0f)
@@ -83,11 +78,11 @@ class VictoryActivity : AppCompatActivity() {
         }
 
         // Rebote emoji
-// Animación continua del emoji
+// AnimaciÃ³n continua del emoji
         txtTrophy.postDelayed({
             fun animar() {
                 if (ganador == "IMPOSTORES") {
-                    // Demonio: rotación de guiño continua
+                    // Demonio: rotaciÃ³n de guiÃ±o continua
                     txtTrophy.animate()
                         .rotationY(360f).setDuration(800L)
                         .withEndAction {
@@ -120,20 +115,21 @@ class VictoryActivity : AppCompatActivity() {
         } catch (_: Exception) {}
 
         btnNewGame.setOnClickListener {
-                val jugadores = intent.getParcelableArrayListExtra<Jugador>("LISTA_JUGADORES")
+                val jugadores = intent.getParcelableArrayListExtra<Jugador>(IntentKeys.LISTA_JUGADORES)
                 val nextIntent = Intent(this, PlayGameActivity::class.java).apply {
-                    putParcelableArrayListExtra("LISTA_JUGADORES", jugadores)
-                    putParcelableArrayListExtra("DATOS_PARTIDA", intent.getParcelableArrayListExtra<DatoCurioso>("DATOS_PARTIDA"))
-                    putExtra("PALABRA", intent.getStringExtra("PALABRA"))
-                    putExtra("IMPOSTOR", intent.getStringExtra("IMPOSTOR"))
-                    putExtra("SENORES_BLANCOS", intent.getStringExtra("SENORES_BLANCOS"))
-                    putExtra("MODO_MISTERIOSO", intent.getBooleanExtra("MODO_MISTERIOSO", false))
-                    putExtra("MODO_DATOS_CURIOSOS", intent.getBooleanExtra("MODO_DATOS_CURIOSOS", false))
-                    putExtra("TIEMPO_LIMITADO", false)
-                    putExtra("VICTORIA_INMEDIATA", true)
+                    putParcelableArrayListExtra(IntentKeys.LISTA_JUGADORES, jugadores)
+                    putParcelableArrayListExtra(IntentKeys.DATOS_PARTIDA, intent.getParcelableArrayListExtra<DatoCurioso>(IntentKeys.DATOS_PARTIDA))
+                    putExtra(IntentKeys.PALABRA, intent.getStringExtra(IntentKeys.PALABRA))
+                    putExtra(IntentKeys.IMPOSTOR, intent.getStringExtra(IntentKeys.IMPOSTOR))
+                    putExtra(IntentKeys.SENORES_BLANCOS, intent.getStringExtra(IntentKeys.SENORES_BLANCOS))
+                    putExtra(IntentKeys.MODO_MISTERIOSO, intent.getBooleanExtra(IntentKeys.MODO_MISTERIOSO, false))
+                    putExtra(IntentKeys.MODO_DATOS_CURIOSOS, intent.getBooleanExtra(IntentKeys.MODO_DATOS_CURIOSOS, false))
+                    putExtra(IntentKeys.TIEMPO_LIMITADO, false)
+                    putExtra(IntentKeys.VICTORIA_INMEDIATA, true)
                     flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 }
                 startActivity(nextIntent)
         }
     }
 }
+

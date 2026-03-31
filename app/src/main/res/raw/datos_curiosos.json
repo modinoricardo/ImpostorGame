@@ -1,802 +1,802 @@
 [
     {
-        "id":  1,
-        "es":  "Ciencia",
-        "en":  "Science",
-        "zhHans":  "Ã§Â§â€˜Ã¥Â­Â¦",
-        "zhHant":  "Ã§Â§â€˜Ã¥Â­Â¸",
-        "emoji":  "Ã°Å¸â€Â¬",
-        "datos":  [
-                      {
-                          "id":  1001,
-                          "es":  "Tu ADN coincide en un 98,7% con el de un chimpancé.",
-                          "en":  "Human DNA shares 98.7% with chimpanzees.",
-                          "zhHans":  "Ã¤ÂºÂºÃ§Â±Â»DNAÃ¤Â¸Å½Ã©Â»â€˜Ã§Å’Â©Ã§Å’Â©Ã¥â€¦Â±Ã¤ÂºÂ«98.7%Ã£â‚¬â€š",
-                          "zhHant":  "Ã¤ÂºÂºÃ©Â¡Å¾DNAÃ¨Ë†â€¡Ã©Â»â€˜Ã§Å’Â©Ã§Å’Â©Ã¥â€¦Â±Ã¤ÂºÂ«98.7%Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  1002,
-                          "es":  "La luz del Sol tarda unos 8 minutos en alcanzarnos, así que siempre lo vemos con retraso.",
-                          "en":  "Light takes 8 minutes to travel from the Sun to Earth.",
-                          "zhHans":  "Ã¥â€¦â€°Ã¤Â»Å½Ã¥Â¤ÂªÃ©ËœÂ³Ã¥Ë†Â°Ã¥Å“Â°Ã§ÂÆ’Ã©Å“â‚¬Ã¨Â¦Â8Ã¥Ë†â€ Ã©â€™Å¸Ã£â‚¬â€š",
-                          "zhHant":  "Ã¥â€¦â€°Ã¥Â¾Å¾Ã¥Â¤ÂªÃ©â„¢Â½Ã¥Ë†Â°Ã¥Å“Â°Ã§ÂÆ’Ã©Å“â‚¬Ã¨Â¦Â8Ã¥Ë†â€ Ã©ÂËœÃ£â‚¬â€š"
-                      },
-                      {
-                          "id":  1004,
-                          "es":  "Un rayo puede calentarse hasta 30.000 °C: más que la superficie del Sol.",
-                          "en":  "A lightning bolt reaches 30,000Ã‚Â°C, five times hotter than the sun\u0027s surface.",
-                          "zhHans":  "Ã©â€”ÂªÃ§â€ÂµÃ¦Â¸Â©Ã¥ÂºÂ¦Ã¨Â¾Â¾30000Ã‚Â°CÃ¯Â¼Å’Ã¦ËœÂ¯Ã¥Â¤ÂªÃ©ËœÂ³Ã¨Â¡Â¨Ã©ÂÂ¢Ã§Å¡â€žÃ¤Âºâ€Ã¥â‚¬ÂÃ£â‚¬â€š",
-                          "zhHant":  "Ã©â€“Æ’Ã©â€ºÂ»Ã¦ÂºÂ«Ã¥ÂºÂ¦Ã©Ââ€30000Ã‚Â°CÃ¯Â¼Å’Ã¦ËœÂ¯Ã¥Â¤ÂªÃ©â„¢Â½Ã¨Â¡Â¨Ã©ÂÂ¢Ã§Å¡â€žÃ¤Âºâ€Ã¥â‚¬ÂÃ£â‚¬â€š"
-                      },
-                      {
-                          "id":  1005,
-                          "es":  "El universo tiene unos 13.800 millones de años: todo empezó muchísimo antes de que existiera la Tierra.",
-                          "en":  "The universe is about 13.8 billion years old.",
-                          "zhHans":  "Ã¥Â®â€¡Ã¥Â®â„¢Ã§ÂºÂ¦Ã¦Å“â€°138Ã¤ÂºÂ¿Ã¥Â¹Â´Ã§Å¡â€žÃ¥Å½â€ Ã¥ÂÂ²Ã£â‚¬â€š",
-                          "zhHant":  "Ã¥Â®â€¡Ã¥Â®â„¢Ã§Â´â€žÃ¦Å“â€°138Ã¥â€žâ€žÃ¥Â¹Â´Ã§Å¡â€žÃ¦Â­Â·Ã¥ÂÂ²Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  1008,
-                          "es":  "Bajo el agua, el sonido corre unas cuatro veces más rápido que en el aire.",
-                          "en":  "Sound travels four times faster in water than in air.",
-                          "zhHans":  "Ã¥Â£Â°Ã©Å¸Â³Ã¥Å“Â¨Ã¦Â°Â´Ã¤Â¸Â­Ã§Å¡â€žÃ¤Â¼Â Ã¦â€™Â­Ã©â‚¬Å¸Ã¥ÂºÂ¦Ã¦ËœÂ¯Ã§Â©ÂºÃ¦Â°â€Ã¤Â¸Â­Ã§Å¡â€žÃ¥â€ºâ€ºÃ¥â‚¬ÂÃ£â‚¬â€š",
-                          "zhHant":  "Ã¨ÂÂ²Ã©Å¸Â³Ã¥Å“Â¨Ã¦Â°Â´Ã¤Â¸Â­Ã§Å¡â€žÃ¥â€šÂ³Ã¦â€™Â­Ã©â‚¬Å¸Ã¥ÂºÂ¦Ã¦ËœÂ¯Ã§Â©ÂºÃ¦Â°Â£Ã¤Â¸Â­Ã§Å¡â€žÃ¥â€ºâ€ºÃ¥â‚¬ÂÃ£â‚¬â€š"
-                      },
-                      {
-                          "id":  1009,
-                          "es":  "Una estrella de neutrones puede girar más de 700 veces por segundo.",
-                          "en":  "Neutron stars can spin up to 700 times per second.",
-                          "zhHans":  "Ã¤Â¸Â­Ã¥Â­ÂÃ¦ËœÅ¸Ã¦Â¯ÂÃ§Â§â€™Ã¥ÂÂ¯Ã¦â€”â€¹Ã¨Â½Â¬Ã¥Â¤Å¡Ã¨Â¾Â¾700Ã¦Â¬Â¡Ã£â‚¬â€š",
-                          "zhHant":  "Ã¤Â¸Â­Ã¥Â­ÂÃ¦ËœÅ¸Ã¦Â¯ÂÃ§Â§â€™Ã¥ÂÂ¯Ã¦â€”â€¹Ã¨Â½â€°Ã¥Â¤Å¡Ã©Ââ€700Ã¦Â¬Â¡Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  1010,
-                          "es":  "En un simple grano de arena hay más átomos que estrellas visibles en el cielo.",
-                          "en":  "The number of atoms in a grain of sand exceeds the visible stars.",
-                          "zhHans":  "Ã¤Â¸â‚¬Ã§Â²â€™Ã¦Â²â„¢Ã¥Â­ÂÃ¤Â¸Â­Ã§Å¡â€žÃ¥Å½Å¸Ã¥Â­ÂÃ¦â€¢Â°Ã©â€¡ÂÃ¨Â¶â€¦Ã¨Â¿â€¡Ã¨â€šâ€°Ã§Å“Â¼Ã¥ÂÂ¯Ã¨Â§ÂÃ§Å¡â€žÃ¦ËœÅ¸Ã¦ËœÅ¸Ã¦â€¢Â°Ã©â€¡ÂÃ£â‚¬â€š",
-                          "zhHant":  "Ã¤Â¸â‚¬Ã§Â²â€™Ã¦Â²â„¢Ã¥Â­ÂÃ¤Â¸Â­Ã§Å¡â€žÃ¥Å½Å¸Ã¥Â­ÂÃ¦â€¢Â¸Ã©â€¡ÂÃ¨Â¶â€¦Ã©ÂÅ½Ã¨â€šâ€°Ã§Å“Â¼Ã¥ÂÂ¯Ã¨Â¦â€¹Ã§Å¡â€žÃ¦ËœÅ¸Ã¦ËœÅ¸Ã¦â€¢Â¸Ã©â€¡ÂÃ£â‚¬â€š"
-                      },
-                      {
-                          "id":  1011,
-                          "es":  "Venus gira al revés que la mayoría de planetas del sistema solar.",
-                          "en":  "Venus rotates in the opposite direction to most planets in the solar system.",
-                          "zhHans":  "Ã©â€¡â€˜Ã¦ËœÅ¸Ã§Å¡â€žÃ¨â€¡ÂªÃ¨Â½Â¬Ã¦â€“Â¹Ã¥Ââ€˜Ã¤Â¸Å½Ã¥Â¤ÂªÃ©ËœÂ³Ã§Â³Â»Ã¥Â¤Â§Ã¥Â¤Å¡Ã¦â€¢Â°Ã¨Â¡Å’Ã¦ËœÅ¸Ã§â€ºÂ¸Ã¥ÂÂÃ£â‚¬â€š",
-                          "zhHant":  "Ã©â€¡â€˜Ã¦ËœÅ¸Ã§Å¡â€žÃ¨â€¡ÂªÃ¨Â½â€°Ã¦â€“Â¹Ã¥Ââ€˜Ã¨Ë†â€¡Ã¥Â¤ÂªÃ©â„¢Â½Ã§Â³Â»Ã¥Â¤Â§Ã¥Â¤Å¡Ã¦â€¢Â¸Ã¨Â¡Å’Ã¦ËœÅ¸Ã§â€ºÂ¸Ã¥ÂÂÃ£â‚¬â€š"
-                      },
-                      {
-                          "id":  1017,
-                          "es":  "En el espacio nadie te oiría gritar: sin materia, el sonido no viaja.",
-                          "en":  "There is no sound in space because there is no matter to propagate it.",
-                          "zhHans":  "Ã¥Â¤ÂªÃ§Â©ÂºÃ¤Â¸Â­Ã¦Â²Â¡Ã¦Å“â€°Ã¥Â£Â°Ã©Å¸Â³Ã¯Â¼Å’Ã¥â€ºÂ Ã¤Â¸ÂºÃ¦Â²Â¡Ã¦Å“â€°Ã§â€°Â©Ã¨Â´Â¨Ã¦ÂÂ¥Ã¤Â¼Â Ã¦â€™Â­Ã¥Â®Æ’Ã£â‚¬â€š",
-                          "zhHant":  "Ã¥Â¤ÂªÃ§Â©ÂºÃ¤Â¸Â­Ã¦Â²â€™Ã¦Å“â€°Ã¨ÂÂ²Ã©Å¸Â³Ã¯Â¼Å’Ã¥â€ºÂ Ã§â€šÂºÃ¦Â²â€™Ã¦Å“â€°Ã§â€°Â©Ã¨Â³ÂªÃ¤Â¾â€ Ã¥â€šÂ³Ã¦â€™Â­Ã¥Â®Æ’Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  1020,
-                          "es":  "La Luna se nos escapa despacio: se aleja de la Tierra unos 3,8 cm al año.",
-                          "en":  "The Moon moves away from Earth about 3.8 cm every year.",
-                          "zhHans":  "Ã¦Å“Ë†Ã§ÂÆ’Ã¦Â¯ÂÃ¥Â¹Â´Ã¨Â¿Å“Ã§Â¦Â»Ã¥Å“Â°Ã§ÂÆ’Ã§ÂºÂ¦3.8Ã¥Å½ËœÃ§Â±Â³Ã£â‚¬â€š",
-                          "zhHant":  "Ã¦Å“Ë†Ã§ÂÆ’Ã¦Â¯ÂÃ¥Â¹Â´Ã©ÂÂ Ã©â€ºÂ¢Ã¥Å“Â°Ã§ÂÆ’Ã§Â´â€ž3.8Ã¥â€¦Â¬Ã¥Ë†â€ Ã£â‚¬â€š"
-                      }
-                  ]
+        "id": 1,
+        "es": "Ciencia",
+        "en": "Science",
+        "zhHans": "Ã§Â§â€˜Ã¥Â­Â¦",
+        "zhHant": "Ã§Â§â€˜Ã¥Â­Â¸",
+        "emoji": "🧬",
+        "datos": [
+            {
+                "id": 1001,
+                "es": "Tu ADN coincide en un 98,7% con el de un chimpancé.",
+                "en": "Human DNA shares 98.7% with chimpanzees.",
+                "zhHans": "Ã¤ÂºÂºÃ§Â±Â»DNAÃ¤Â¸Å½Ã©Â»â€˜Ã§Å’Â©Ã§Å’Â©Ã¥â€¦Â±Ã¤ÂºÂ«98.7%Ã£â‚¬â€š",
+                "zhHant": "Ã¤ÂºÂºÃ©Â¡Å¾DNAÃ¨Ë†â€¡Ã©Â»â€˜Ã§Å’Â©Ã§Å’Â©Ã¥â€¦Â±Ã¤ÂºÂ«98.7%Ã£â‚¬â€š"
+            },
+            {
+                "id": 1002,
+                "es": "La luz del Sol tarda unos 8 minutos en alcanzarnos, así que siempre lo vemos con retraso.",
+                "en": "Light takes 8 minutes to travel from the Sun to Earth.",
+                "zhHans": "Ã¥â€¦â€°Ã¤Â»Å½Ã¥Â¤ÂªÃ©ËœÂ³Ã¥Ë†Â°Ã¥Å“Â°Ã§ÂÆ’Ã©Å“â‚¬Ã¨Â¦Â8Ã¥Ë†â€ Ã©â€™Å¸Ã£â‚¬â€š",
+                "zhHant": "Ã¥â€¦â€°Ã¥Â¾Å¾Ã¥Â¤ÂªÃ©â„¢Â½Ã¥Ë†Â°Ã¥Å“Â°Ã§ÂÆ’Ã©Å“â‚¬Ã¨Â¦Â8Ã¥Ë†â€ Ã©ÂËœÃ£â‚¬â€š"
+            },
+            {
+                "id": 1004,
+                "es": "Un rayo puede calentarse hasta 30.000 °C: más que la superficie del Sol.",
+                "en": "A lightning bolt reaches 30,000Ã‚Â°C, five times hotter than the sun's surface.",
+                "zhHans": "Ã©â€”ÂªÃ§â€ÂµÃ¦Â¸Â©Ã¥ÂºÂ¦Ã¨Â¾Â¾30000Ã‚Â°CÃ¯Â¼Å’Ã¦ËœÂ¯Ã¥Â¤ÂªÃ©ËœÂ³Ã¨Â¡Â¨Ã©ÂÂ¢Ã§Å¡â€žÃ¤Âºâ€Ã¥â‚¬ÂÃ£â‚¬â€š",
+                "zhHant": "Ã©â€“Æ’Ã©â€ºÂ»Ã¦ÂºÂ«Ã¥ÂºÂ¦Ã©Ââ€30000Ã‚Â°CÃ¯Â¼Å’Ã¦ËœÂ¯Ã¥Â¤ÂªÃ©â„¢Â½Ã¨Â¡Â¨Ã©ÂÂ¢Ã§Å¡â€žÃ¤Âºâ€Ã¥â‚¬ÂÃ£â‚¬â€š"
+            },
+            {
+                "id": 1005,
+                "es": "El universo tiene unos 13.800 millones de años: todo empezó muchísimo antes de que existiera la Tierra.",
+                "en": "The universe is about 13.8 billion years old.",
+                "zhHans": "Ã¥Â®â€¡Ã¥Â®â„¢Ã§ÂºÂ¦Ã¦Å“â€°138Ã¤ÂºÂ¿Ã¥Â¹Â´Ã§Å¡â€žÃ¥Å½â€ Ã¥ÂÂ²Ã£â‚¬â€š",
+                "zhHant": "Ã¥Â®â€¡Ã¥Â®â„¢Ã§Â´â€žÃ¦Å“â€°138Ã¥â€žâ€žÃ¥Â¹Â´Ã§Å¡â€žÃ¦Â­Â·Ã¥ÂÂ²Ã£â‚¬â€š"
+            },
+            {
+                "id": 1008,
+                "es": "Bajo el agua, el sonido corre unas cuatro veces más rápido que en el aire.",
+                "en": "Sound travels four times faster in water than in air.",
+                "zhHans": "Ã¥Â£Â°Ã©Å¸Â³Ã¥Å“Â¨Ã¦Â°Â´Ã¤Â¸Â­Ã§Å¡â€žÃ¤Â¼Â Ã¦â€™Â­Ã©â‚¬Å¸Ã¥ÂºÂ¦Ã¦ËœÂ¯Ã§Â©ÂºÃ¦Â°â€Ã¤Â¸Â­Ã§Å¡â€žÃ¥â€ºâ€ºÃ¥â‚¬ÂÃ£â‚¬â€š",
+                "zhHant": "Ã¨ÂÂ²Ã©Å¸Â³Ã¥Å“Â¨Ã¦Â°Â´Ã¤Â¸Â­Ã§Å¡â€žÃ¥â€šÂ³Ã¦â€™Â­Ã©â‚¬Å¸Ã¥ÂºÂ¦Ã¦ËœÂ¯Ã§Â©ÂºÃ¦Â°Â£Ã¤Â¸Â­Ã§Å¡â€žÃ¥â€ºâ€ºÃ¥â‚¬ÂÃ£â‚¬â€š"
+            },
+            {
+                "id": 1009,
+                "es": "Una estrella de neutrones puede girar más de 700 veces por segundo.",
+                "en": "Neutron stars can spin up to 700 times per second.",
+                "zhHans": "Ã¤Â¸Â­Ã¥Â­ÂÃ¦ËœÅ¸Ã¦Â¯ÂÃ§Â§â€™Ã¥ÂÂ¯Ã¦â€”â€¹Ã¨Â½Â¬Ã¥Â¤Å¡Ã¨Â¾Â¾700Ã¦Â¬Â¡Ã£â‚¬â€š",
+                "zhHant": "Ã¤Â¸Â­Ã¥Â­ÂÃ¦ËœÅ¸Ã¦Â¯ÂÃ§Â§â€™Ã¥ÂÂ¯Ã¦â€”â€¹Ã¨Â½â€°Ã¥Â¤Å¡Ã©Ââ€700Ã¦Â¬Â¡Ã£â‚¬â€š"
+            },
+            {
+                "id": 1010,
+                "es": "En un simple grano de arena hay más átomos que estrellas visibles en el cielo.",
+                "en": "The number of atoms in a grain of sand exceeds the visible stars.",
+                "zhHans": "Ã¤Â¸â‚¬Ã§Â²â€™Ã¦Â²â„¢Ã¥Â­ÂÃ¤Â¸Â­Ã§Å¡â€žÃ¥Å½Å¸Ã¥Â­ÂÃ¦â€¢Â°Ã©â€¡ÂÃ¨Â¶â€¦Ã¨Â¿â€¡Ã¨â€šâ€°Ã§Å“Â¼Ã¥ÂÂ¯Ã¨Â§ÂÃ§Å¡â€žÃ¦ËœÅ¸Ã¦ËœÅ¸Ã¦â€¢Â°Ã©â€¡ÂÃ£â‚¬â€š",
+                "zhHant": "Ã¤Â¸â‚¬Ã§Â²â€™Ã¦Â²â„¢Ã¥Â­ÂÃ¤Â¸Â­Ã§Å¡â€žÃ¥Å½Å¸Ã¥Â­ÂÃ¦â€¢Â¸Ã©â€¡ÂÃ¨Â¶â€¦Ã©ÂÅ½Ã¨â€šâ€°Ã§Å“Â¼Ã¥ÂÂ¯Ã¨Â¦â€¹Ã§Å¡â€žÃ¦ËœÅ¸Ã¦ËœÅ¸Ã¦â€¢Â¸Ã©â€¡ÂÃ£â‚¬â€š"
+            },
+            {
+                "id": 1011,
+                "es": "Venus gira al revés que la mayoría de planetas del sistema solar.",
+                "en": "Venus rotates in the opposite direction to most planets in the solar system.",
+                "zhHans": "Ã©â€¡â€˜Ã¦ËœÅ¸Ã§Å¡â€žÃ¨â€¡ÂªÃ¨Â½Â¬Ã¦â€“Â¹Ã¥Ââ€˜Ã¤Â¸Å½Ã¥Â¤ÂªÃ©ËœÂ³Ã§Â³Â»Ã¥Â¤Â§Ã¥Â¤Å¡Ã¦â€¢Â°Ã¨Â¡Å’Ã¦ËœÅ¸Ã§â€ºÂ¸Ã¥ÂÂÃ£â‚¬â€š",
+                "zhHant": "Ã©â€¡â€˜Ã¦ËœÅ¸Ã§Å¡â€žÃ¨â€¡ÂªÃ¨Â½â€°Ã¦â€“Â¹Ã¥Ââ€˜Ã¨Ë†â€¡Ã¥Â¤ÂªÃ©â„¢Â½Ã§Â³Â»Ã¥Â¤Â§Ã¥Â¤Å¡Ã¦â€¢Â¸Ã¨Â¡Å’Ã¦ËœÅ¸Ã§â€ºÂ¸Ã¥ÂÂÃ£â‚¬â€š"
+            },
+            {
+                "id": 1017,
+                "es": "En el espacio nadie te oiría gritar: sin materia, el sonido no viaja.",
+                "en": "There is no sound in space because there is no matter to propagate it.",
+                "zhHans": "Ã¥Â¤ÂªÃ§Â©ÂºÃ¤Â¸Â­Ã¦Â²Â¡Ã¦Å“â€°Ã¥Â£Â°Ã©Å¸Â³Ã¯Â¼Å’Ã¥â€ºÂ Ã¤Â¸ÂºÃ¦Â²Â¡Ã¦Å“â€°Ã§â€°Â©Ã¨Â´Â¨Ã¦ÂÂ¥Ã¤Â¼Â Ã¦â€™Â­Ã¥Â®Æ’Ã£â‚¬â€š",
+                "zhHant": "Ã¥Â¤ÂªÃ§Â©ÂºÃ¤Â¸Â­Ã¦Â²â€™Ã¦Å“â€°Ã¨ÂÂ²Ã©Å¸Â³Ã¯Â¼Å’Ã¥â€ºÂ Ã§â€šÂºÃ¦Â²â€™Ã¦Å“â€°Ã§â€°Â©Ã¨Â³ÂªÃ¤Â¾â€ Ã¥â€šÂ³Ã¦â€™Â­Ã¥Â®Æ’Ã£â‚¬â€š"
+            },
+            {
+                "id": 1020,
+                "es": "La Luna se nos escapa despacio: se aleja de la Tierra unos 3,8 cm al año.",
+                "en": "The Moon moves away from Earth about 3.8 cm every year.",
+                "zhHans": "Ã¦Å“Ë†Ã§ÂÆ’Ã¦Â¯ÂÃ¥Â¹Â´Ã¨Â¿Å“Ã§Â¦Â»Ã¥Å“Â°Ã§ÂÆ’Ã§ÂºÂ¦3.8Ã¥Å½ËœÃ§Â±Â³Ã£â‚¬â€š",
+                "zhHant": "Ã¦Å“Ë†Ã§ÂÆ’Ã¦Â¯ÂÃ¥Â¹Â´Ã©ÂÂ Ã©â€ºÂ¢Ã¥Å“Â°Ã§ÂÆ’Ã§Â´â€ž3.8Ã¥â€¦Â¬Ã¥Ë†â€ Ã£â‚¬â€š"
+            }
+        ]
     },
     {
-        "id":  2,
-        "es":  "Historia",
-        "en":  "History",
-        "zhHans":  "Ã¥Å½â€ Ã¥ÂÂ²",
-        "zhHant":  "Ã¦Â­Â·Ã¥ÂÂ²",
-        "emoji":  "Ã°Å¸â€œÅ“",
-        "datos":  [
-                      {
-                          "id":  2001,
-                          "es":  "La Gran Muralla China no se ve desde el espacio a simple vista, aunque el mito siga vivo.",
-                          "en":  "The Great Wall of China is not visible from space with the naked eye.",
-                          "zhHans":  "Ã©â€¢Â¿Ã¥Å¸Å½Ã§â€Â¨Ã¨â€šâ€°Ã§Å“Â¼Ã¤Â»Å½Ã¥Â¤ÂªÃ§Â©ÂºÃ§Å“â€¹Ã¤Â¸ÂÃ¥Ë†Â°Ã£â‚¬â€š",
-                          "zhHant":  "Ã©â€¢Â·Ã¥Å¸Å½Ã§â€Â¨Ã¨â€šâ€°Ã§Å“Â¼Ã¥Â¾Å¾Ã¥Â¤ÂªÃ§Â©ÂºÃ§Å“â€¹Ã¤Â¸ÂÃ¥Ë†Â°Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  2002,
-                          "es":  "Cleopatra nació más cerca del iPhone que de la construcción de las pirámides.",
-                          "en":  "Cleopatra lived closer to the iPhone launch than to the building of the pyramids.",
-                          "zhHans":  "Ã¥â€¦â€¹Ã¥Ë†Â©Ã¥Â¥Â¥Ã¥Â¸â€¢Ã§â€°Â¹Ã¦â€¹â€°Ã¨Â·ÂiPhoneÃ¥Ââ€˜Ã¥Â¸Æ’Ã¦Â¯â€Ã¨Â·ÂÃ©â€¡â€˜Ã¥Â­â€”Ã¥Â¡â€Ã¥Â»ÂºÃ©â‚¬Â Ã¦â€ºÂ´Ã¨Â¿â€˜Ã£â‚¬â€š",
-                          "zhHant":  "Ã¥â€¦â€¹Ã¥Ë†Â©Ã¥Â¥Â§Ã¥Â¸â€¢Ã§â€°Â¹Ã¦â€¹â€°Ã¨Â·ÂiPhoneÃ§â„¢Â¼Ã¥Â¸Æ’Ã¦Â¯â€Ã¨Â·ÂÃ©â€¡â€˜Ã¥Â­â€”Ã¥Â¡â€Ã¥Â»ÂºÃ©â‚¬Â Ã¦â€ºÂ´Ã¨Â¿â€˜Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  2004,
-                          "es":  "Napoleón volvió del exilio y cayó en Waterloo antes de cumplir 100 días.",
-                          "en":  "Napoleon was defeated at Waterloo less than 100 days after returning from exile.",
-                          "zhHans":  "Ã¦â€¹Â¿Ã§Â Â´Ã¤Â»â€˜Ã¤Â»Å½Ã¦ÂµÂÃ¤ÂºÂ¡Ã¥Â½â€™Ã¦ÂÂ¥Ã¥ÂÅ½Ã¤Â¸ÂÃ¥Ë†Â°100Ã¥Â¤Â©Ã¥Â°Â±Ã¥Å“Â¨Ã¦Â»â€˜Ã©â€œÂÃ¥ÂÂ¢Ã¨Â¢Â«Ã¥â€¡Â»Ã¨Â´Â¥Ã£â‚¬â€š",
-                          "zhHant":  "Ã¦â€¹Â¿Ã§Â Â´Ã¥Â´â„¢Ã¥Â¾Å¾Ã¦ÂµÂÃ¤ÂºÂ¡Ã¦Â­Â¸Ã¤Â¾â€ Ã¥Â¾Å’Ã¤Â¸ÂÃ¥Ë†Â°100Ã¥Â¤Â©Ã¥Â°Â±Ã¥Å“Â¨Ã¦Â»â€˜Ã©ÂÂµÃ§â€ºÂ§Ã¨Â¢Â«Ã¦â€œÅ Ã¦â€¢â€”Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  2005,
-                          "es":  "La penicilina nació por accidente: Fleming encontró moho donde no debía.",
-                          "en":  "Penicillin was accidentally discovered by Alexander Fleming in 1928.",
-                          "zhHans":  "Ã©Ââ€™Ã©Å“â€°Ã§Â´Â Ã¤ÂºÅ½1928Ã¥Â¹Â´Ã§â€Â±Ã¤ÂºÅ¡Ã¥Å½â€ Ã¥Â±Â±Ã¥Â¤Â§Ã‚Â·Ã¥Â¼â€”Ã¨Å½Â±Ã¦ËœÅ½Ã¥ÂÂ¶Ã§â€žÂ¶Ã¥Ââ€˜Ã§Å½Â°Ã£â‚¬â€š",
-                          "zhHant":  "Ã©Ââ€™Ã©Â»Â´Ã§Â´Â Ã¦â€“Â¼1928Ã¥Â¹Â´Ã§â€Â±Ã¤ÂºÅ¾Ã¦Â­Â·Ã¥Â±Â±Ã¥Â¤Â§Ã‚Â·Ã¥Â¼â€”Ã¨ÂÅ Ã¦ËœÅ½Ã¥ÂÂ¶Ã§â€žÂ¶Ã§â„¢Â¼Ã§ÂÂ¾Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  2006,
-                          "es":  "Los vikingos llegaron a América unos 500 años antes que Colón.",
-                          "en":  "Vikings reached America 500 years before Columbus.",
-                          "zhHans":  "Ã§Â»Â´Ã¤ÂºÂ¬Ã¤ÂºÂºÃ¦Â¯â€Ã¥â€œÂ¥Ã¤Â¼Â¦Ã¥Â¸Æ’Ã¦â€”Â©500Ã¥Â¹Â´Ã¥Ë†Â°Ã¨Â¾Â¾Ã§Â¾Å½Ã¦Â´Â²Ã£â‚¬â€š",
-                          "zhHant":  "Ã§Â¶Â­Ã¤ÂºÂ¬Ã¤ÂºÂºÃ¦Â¯â€Ã¥â€œÂ¥Ã¥â‚¬Â«Ã¥Â¸Æ’Ã¦â€”Â©500Ã¥Â¹Â´Ã¥Ë†Â°Ã©Ââ€Ã§Â¾Å½Ã¦Â´Â²Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  2008,
-                          "es":  "El Imperio Mongol llegó a ser el mayor imperio contiguo de la historia.",
-                          "en":  "The Mongol Empire was the largest contiguous empire in history.",
-                          "zhHans":  "Ã¨â€™â„¢Ã¥ÂÂ¤Ã¥Â¸ÂÃ¥â€ºÂ½Ã¦ËœÂ¯Ã¥Å½â€ Ã¥ÂÂ²Ã¤Â¸Å Ã¦Å“â‚¬Ã¥Â¤Â§Ã§Å¡â€žÃ¨Â¿Å¾Ã§Â»Â­Ã¥Â¸ÂÃ¥â€ºÂ½Ã£â‚¬â€š",
-                          "zhHant":  "Ã¨â€™â„¢Ã¥ÂÂ¤Ã¥Â¸ÂÃ¥Å“â€¹Ã¦ËœÂ¯Ã¦Â­Â·Ã¥ÂÂ²Ã¤Â¸Å Ã¦Å“â‚¬Ã¥Â¤Â§Ã§Å¡â€žÃ©â‚¬Â£Ã§ÂºÅ’Ã¥Â¸ÂÃ¥Å“â€¹Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  2009,
-                          "es":  "La Revolución Francesa estalló en 1789 con la toma de la Bastilla.",
-                          "en":  "The French Revolution began in 1789 with the storming of the Bastille.",
-                          "zhHans":  "Ã¦Â³â€¢Ã¥â€ºÂ½Ã¥Â¤Â§Ã©ÂÂ©Ã¥â€˜Â½Ã¤ÂºÅ½1789Ã¥Â¹Â´Ã¦â€Â»Ã¥ÂÂ Ã¥Â·Â´Ã¥Â£Â«Ã¥Âºâ€¢Ã§â€¹Â±Ã¦â€”Â¶Ã¥Â¼â‚¬Ã¥Â§â€¹Ã£â‚¬â€š",
-                          "zhHant":  "Ã¦Â³â€¢Ã¥Å“â€¹Ã¥Â¤Â§Ã©ÂÂ©Ã¥â€˜Â½Ã¦â€“Â¼1789Ã¥Â¹Â´Ã¦â€Â»Ã¥ÂÂ Ã¥Â·Â´Ã¥Â£Â«Ã¥Âºâ€¢Ã§Ââ€žÃ¦â„¢â€šÃ©â€“â€¹Ã¥Â§â€¹Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  2010,
-                          "es":  "A Albert Einstein le ofrecieron la presidencia de Israel en 1952, y dijo que no.",
-                          "en":  "Einstein declined the presidency of Israel in 1952.",
-                          "zhHans":  "Ã§Ë†Â±Ã¥â€ºÂ Ã¦â€“Â¯Ã¥ÂÂ¦Ã¤ÂºÅ½1952Ã¥Â¹Â´Ã¦â€¹â€™Ã§Â»ÂÃ¤Âºâ€ Ã¤Â»Â¥Ã¨â€°Â²Ã¥Ë†â€”Ã¦â‚¬Â»Ã§Â»Å¸Ã¨ÂÅ’Ã¤Â½ÂÃ£â‚¬â€š",
-                          "zhHant":  "Ã¦â€žâ€ºÃ¥â€ºÂ Ã¦â€“Â¯Ã¥ÂÂ¦Ã¦â€“Â¼1952Ã¥Â¹Â´Ã¦â€¹â€™Ã§Âµâ€¢Ã¤Âºâ€ Ã¤Â»Â¥Ã¨â€°Â²Ã¥Ë†â€”Ã§Â¸Â½Ã§ÂµÂ±Ã¨ÂÂ·Ã¤Â½ÂÃ£â‚¬â€š"
-                      },
-                      {
-                          "id":  2013,
-                          "es":  "El Muro de Berlín cayó el 9 de noviembre de 1989 y cambió Europa en una noche.",
-                          "en":  "The Berlin Wall fell on November 9, 1989.",
-                          "zhHans":  "Ã¦Å¸ÂÃ¦Å¾â€”Ã¥Â¢â„¢Ã¤ÂºÅ½1989Ã¥Â¹Â´11Ã¦Å“Ë†9Ã¦â€”Â¥Ã¥â‚¬â€™Ã¥Â¡Å’Ã£â‚¬â€š",
-                          "zhHant":  "Ã¦Å¸ÂÃ¦Å¾â€”Ã§â€°â€ Ã¦â€“Â¼1989Ã¥Â¹Â´11Ã¦Å“Ë†9Ã¦â€”Â¥Ã¥â‚¬â€™Ã¥Â¡Å’Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  2020,
-                          "es":  "Neil Armstrong pisó la Luna el 20 de julio de 1969.",
-                          "en":  "Neil Armstrong walked on the Moon on July 20, 1969.",
-                          "zhHans":  "Ã¥Â°Â¼Ã¥Â°â€Ã‚Â·Ã©ËœÂ¿Ã¥Â§â€ Ã¦â€“Â¯Ã§â€°Â¹Ã¦Å“â€”Ã¤ÂºÅ½1969Ã¥Â¹Â´7Ã¦Å“Ë†20Ã¦â€”Â¥Ã§â„¢Â»Ã¤Â¸Å Ã¦Å“Ë†Ã§ÂÆ’Ã£â‚¬â€š",
-                          "zhHant":  "Ã¥Â°Â¼Ã§Ë†Â¾Ã‚Â·Ã©ËœÂ¿Ã¥Â§â€ Ã¦â€“Â¯Ã¥Â£Â¯Ã¦â€“Â¼1969Ã¥Â¹Â´7Ã¦Å“Ë†20Ã¦â€”Â¥Ã§â„¢Â»Ã¤Â¸Å Ã¦Å“Ë†Ã§ÂÆ’Ã£â‚¬â€š"
-                      }
-                  ]
+        "id": 2,
+        "es": "Historia",
+        "en": "History",
+        "zhHans": "Ã¥Å½â€ Ã¥ÂÂ²",
+        "zhHant": "Ã¦Â­Â·Ã¥ÂÂ²",
+        "emoji": "📜",
+        "datos": [
+            {
+                "id": 2001,
+                "es": "La Gran Muralla China no se ve desde el espacio a simple vista, aunque el mito siga vivo.",
+                "en": "The Great Wall of China is not visible from space with the naked eye.",
+                "zhHans": "Ã©â€¢Â¿Ã¥Å¸Å½Ã§â€Â¨Ã¨â€šâ€°Ã§Å“Â¼Ã¤Â»Å½Ã¥Â¤ÂªÃ§Â©ÂºÃ§Å“â€¹Ã¤Â¸ÂÃ¥Ë†Â°Ã£â‚¬â€š",
+                "zhHant": "Ã©â€¢Â·Ã¥Å¸Å½Ã§â€Â¨Ã¨â€šâ€°Ã§Å“Â¼Ã¥Â¾Å¾Ã¥Â¤ÂªÃ§Â©ÂºÃ§Å“â€¹Ã¤Â¸ÂÃ¥Ë†Â°Ã£â‚¬â€š"
+            },
+            {
+                "id": 2002,
+                "es": "Cleopatra nació más cerca del iPhone que de la construcción de las pirámides.",
+                "en": "Cleopatra lived closer to the iPhone launch than to the building of the pyramids.",
+                "zhHans": "Ã¥â€¦â€¹Ã¥Ë†Â©Ã¥Â¥Â¥Ã¥Â¸â€¢Ã§â€°Â¹Ã¦â€¹â€°Ã¨Â·ÂiPhoneÃ¥Ââ€˜Ã¥Â¸Æ’Ã¦Â¯â€Ã¨Â·ÂÃ©â€¡â€˜Ã¥Â­â€”Ã¥Â¡â€Ã¥Â»ÂºÃ©â‚¬Â Ã¦â€ºÂ´Ã¨Â¿â€˜Ã£â‚¬â€š",
+                "zhHant": "Ã¥â€¦â€¹Ã¥Ë†Â©Ã¥Â¥Â§Ã¥Â¸â€¢Ã§â€°Â¹Ã¦â€¹â€°Ã¨Â·ÂiPhoneÃ§â„¢Â¼Ã¥Â¸Æ’Ã¦Â¯â€Ã¨Â·ÂÃ©â€¡â€˜Ã¥Â­â€”Ã¥Â¡â€Ã¥Â»ÂºÃ©â‚¬Â Ã¦â€ºÂ´Ã¨Â¿â€˜Ã£â‚¬â€š"
+            },
+            {
+                "id": 2004,
+                "es": "Napoleón volvió del exilio y cayó en Waterloo antes de cumplir 100 días.",
+                "en": "Napoleon was defeated at Waterloo less than 100 days after returning from exile.",
+                "zhHans": "Ã¦â€¹Â¿Ã§Â Â´Ã¤Â»â€˜Ã¤Â»Å½Ã¦ÂµÂÃ¤ÂºÂ¡Ã¥Â½â€™Ã¦ÂÂ¥Ã¥ÂÅ½Ã¤Â¸ÂÃ¥Ë†Â°100Ã¥Â¤Â©Ã¥Â°Â±Ã¥Å“Â¨Ã¦Â»â€˜Ã©â€œÂÃ¥ÂÂ¢Ã¨Â¢Â«Ã¥â€¡Â»Ã¨Â´Â¥Ã£â‚¬â€š",
+                "zhHant": "Ã¦â€¹Â¿Ã§Â Â´Ã¥Â´â„¢Ã¥Â¾Å¾Ã¦ÂµÂÃ¤ÂºÂ¡Ã¦Â­Â¸Ã¤Â¾â€ Ã¥Â¾Å’Ã¤Â¸ÂÃ¥Ë†Â°100Ã¥Â¤Â©Ã¥Â°Â±Ã¥Å“Â¨Ã¦Â»â€˜Ã©ÂÂµÃ§â€ºÂ§Ã¨Â¢Â«Ã¦â€œÅ Ã¦â€¢â€”Ã£â‚¬â€š"
+            },
+            {
+                "id": 2005,
+                "es": "La penicilina nació por accidente: Fleming encontró moho donde no debía.",
+                "en": "Penicillin was accidentally discovered by Alexander Fleming in 1928.",
+                "zhHans": "Ã©Ââ€™Ã©Å“â€°Ã§Â´Â Ã¤ÂºÅ½1928Ã¥Â¹Â´Ã§â€Â±Ã¤ÂºÅ¡Ã¥Å½â€ Ã¥Â±Â±Ã¥Â¤Â§Ã‚Â·Ã¥Â¼â€”Ã¨Å½Â±Ã¦ËœÅ½Ã¥ÂÂ¶Ã§â€žÂ¶Ã¥Ââ€˜Ã§Å½Â°Ã£â‚¬â€š",
+                "zhHant": "Ã©Ââ€™Ã©Â»Â´Ã§Â´Â Ã¦â€“Â¼1928Ã¥Â¹Â´Ã§â€Â±Ã¤ÂºÅ¾Ã¦Â­Â·Ã¥Â±Â±Ã¥Â¤Â§Ã‚Â·Ã¥Â¼â€”Ã¨ÂÅ Ã¦ËœÅ½Ã¥ÂÂ¶Ã§â€žÂ¶Ã§â„¢Â¼Ã§ÂÂ¾Ã£â‚¬â€š"
+            },
+            {
+                "id": 2006,
+                "es": "Los vikingos llegaron a América unos 500 años antes que Colón.",
+                "en": "Vikings reached America 500 years before Columbus.",
+                "zhHans": "Ã§Â»Â´Ã¤ÂºÂ¬Ã¤ÂºÂºÃ¦Â¯â€Ã¥â€œÂ¥Ã¤Â¼Â¦Ã¥Â¸Æ’Ã¦â€”Â©500Ã¥Â¹Â´Ã¥Ë†Â°Ã¨Â¾Â¾Ã§Â¾Å½Ã¦Â´Â²Ã£â‚¬â€š",
+                "zhHant": "Ã§Â¶Â­Ã¤ÂºÂ¬Ã¤ÂºÂºÃ¦Â¯â€Ã¥â€œÂ¥Ã¥â‚¬Â«Ã¥Â¸Æ’Ã¦â€”Â©500Ã¥Â¹Â´Ã¥Ë†Â°Ã©Ââ€Ã§Â¾Å½Ã¦Â´Â²Ã£â‚¬â€š"
+            },
+            {
+                "id": 2008,
+                "es": "El Imperio Mongol llegó a ser el mayor imperio contiguo de la historia.",
+                "en": "The Mongol Empire was the largest contiguous empire in history.",
+                "zhHans": "Ã¨â€™â„¢Ã¥ÂÂ¤Ã¥Â¸ÂÃ¥â€ºÂ½Ã¦ËœÂ¯Ã¥Å½â€ Ã¥ÂÂ²Ã¤Â¸Å Ã¦Å“â‚¬Ã¥Â¤Â§Ã§Å¡â€žÃ¨Â¿Å¾Ã§Â»Â­Ã¥Â¸ÂÃ¥â€ºÂ½Ã£â‚¬â€š",
+                "zhHant": "Ã¨â€™â„¢Ã¥ÂÂ¤Ã¥Â¸ÂÃ¥Å“â€¹Ã¦ËœÂ¯Ã¦Â­Â·Ã¥ÂÂ²Ã¤Â¸Å Ã¦Å“â‚¬Ã¥Â¤Â§Ã§Å¡â€žÃ©â‚¬Â£Ã§ÂºÅ’Ã¥Â¸ÂÃ¥Å“â€¹Ã£â‚¬â€š"
+            },
+            {
+                "id": 2009,
+                "es": "La Revolución Francesa estalló en 1789 con la toma de la Bastilla.",
+                "en": "The French Revolution began in 1789 with the storming of the Bastille.",
+                "zhHans": "Ã¦Â³â€¢Ã¥â€ºÂ½Ã¥Â¤Â§Ã©ÂÂ©Ã¥â€˜Â½Ã¤ÂºÅ½1789Ã¥Â¹Â´Ã¦â€Â»Ã¥ÂÂ Ã¥Â·Â´Ã¥Â£Â«Ã¥Âºâ€¢Ã§â€¹Â±Ã¦â€”Â¶Ã¥Â¼â‚¬Ã¥Â§â€¹Ã£â‚¬â€š",
+                "zhHant": "Ã¦Â³â€¢Ã¥Å“â€¹Ã¥Â¤Â§Ã©ÂÂ©Ã¥â€˜Â½Ã¦â€“Â¼1789Ã¥Â¹Â´Ã¦â€Â»Ã¥ÂÂ Ã¥Â·Â´Ã¥Â£Â«Ã¥Âºâ€¢Ã§Ââ€žÃ¦â„¢â€šÃ©â€“â€¹Ã¥Â§â€¹Ã£â‚¬â€š"
+            },
+            {
+                "id": 2010,
+                "es": "A Albert Einstein le ofrecieron la presidencia de Israel en 1952, y dijo que no.",
+                "en": "Einstein declined the presidency of Israel in 1952.",
+                "zhHans": "Ã§Ë†Â±Ã¥â€ºÂ Ã¦â€“Â¯Ã¥ÂÂ¦Ã¤ÂºÅ½1952Ã¥Â¹Â´Ã¦â€¹â€™Ã§Â»ÂÃ¤Âºâ€ Ã¤Â»Â¥Ã¨â€°Â²Ã¥Ë†â€”Ã¦â‚¬Â»Ã§Â»Å¸Ã¨ÂÅ’Ã¤Â½ÂÃ£â‚¬â€š",
+                "zhHant": "Ã¦â€žâ€ºÃ¥â€ºÂ Ã¦â€“Â¯Ã¥ÂÂ¦Ã¦â€“Â¼1952Ã¥Â¹Â´Ã¦â€¹â€™Ã§Âµâ€¢Ã¤Âºâ€ Ã¤Â»Â¥Ã¨â€°Â²Ã¥Ë†â€”Ã§Â¸Â½Ã§ÂµÂ±Ã¨ÂÂ·Ã¤Â½ÂÃ£â‚¬â€š"
+            },
+            {
+                "id": 2013,
+                "es": "El Muro de Berlín cayó el 9 de noviembre de 1989 y cambió Europa en una noche.",
+                "en": "The Berlin Wall fell on November 9, 1989.",
+                "zhHans": "Ã¦Å¸ÂÃ¦Å¾â€”Ã¥Â¢â„¢Ã¤ÂºÅ½1989Ã¥Â¹Â´11Ã¦Å“Ë†9Ã¦â€”Â¥Ã¥â‚¬â€™Ã¥Â¡Å’Ã£â‚¬â€š",
+                "zhHant": "Ã¦Å¸ÂÃ¦Å¾â€”Ã§â€°â€ Ã¦â€“Â¼1989Ã¥Â¹Â´11Ã¦Å“Ë†9Ã¦â€”Â¥Ã¥â‚¬â€™Ã¥Â¡Å’Ã£â‚¬â€š"
+            },
+            {
+                "id": 2020,
+                "es": "Neil Armstrong pisó la Luna el 20 de julio de 1969.",
+                "en": "Neil Armstrong walked on the Moon on July 20, 1969.",
+                "zhHans": "Ã¥Â°Â¼Ã¥Â°â€Ã‚Â·Ã©ËœÂ¿Ã¥Â§â€ Ã¦â€“Â¯Ã§â€°Â¹Ã¦Å“â€”Ã¤ÂºÅ½1969Ã¥Â¹Â´7Ã¦Å“Ë†20Ã¦â€”Â¥Ã§â„¢Â»Ã¤Â¸Å Ã¦Å“Ë†Ã§ÂÆ’Ã£â‚¬â€š",
+                "zhHant": "Ã¥Â°Â¼Ã§Ë†Â¾Ã‚Â·Ã©ËœÂ¿Ã¥Â§â€ Ã¦â€“Â¯Ã¥Â£Â¯Ã¦â€“Â¼1969Ã¥Â¹Â´7Ã¦Å“Ë†20Ã¦â€”Â¥Ã§â„¢Â»Ã¤Â¸Å Ã¦Å“Ë†Ã§ÂÆ’Ã£â‚¬â€š"
+            }
+        ]
     },
     {
-        "id":  3,
-        "es":  "Animales",
-        "en":  "Animals",
-        "zhHans":  "Ã¥Å Â¨Ã§â€°Â©",
-        "zhHant":  "Ã¥â€¹â€¢Ã§â€°Â©",
-        "emoji":  "Ã°Å¸Â¦Â",
-        "datos":  [
-                      {
-                          "id":  3001,
-                          "es":  "Los pulpos tienen tres corazones y sangre azul.",
-                          "en":  "Octopuses have three hearts and blue blood.",
-                          "zhHans":  "Ã§Â«Â Ã©Â±Â¼Ã¦Å“â€°Ã¤Â¸â€°Ã¤Â¸ÂªÃ¥Â¿Æ’Ã¨â€žÂÃ¥â€™Å’Ã¨â€œÂÃ¨â€°Â²Ã§Å¡â€žÃ¨Â¡â‚¬Ã¦Â¶Â²Ã£â‚¬â€š",
-                          "zhHant":  "Ã§Â«Â Ã©Â­Å¡Ã¦Å“â€°Ã¤Â¸â€°Ã¥â‚¬â€¹Ã¥Â¿Æ’Ã¨â€¡Å¸Ã¥â€™Å’Ã¨â€”ÂÃ¨â€°Â²Ã§Å¡â€žÃ¨Â¡â‚¬Ã¦Â¶Â²Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  3002,
-                          "es":  "Las jirafas tienen solo siete vértebras en el cuello, las mismas que tú.",
-                          "en":  "Giraffes have the same number of neck vertebrae as humans: 7.",
-                          "zhHans":  "Ã©â€¢Â¿Ã©Â¢Ë†Ã©Â¹Â¿Ã¥â€™Å’Ã¤ÂºÂºÃ§Â±Â»Ã©Â¢Ë†Ã©Æ’Â¨Ã¨â€žÅ Ã¦Â¤Å½Ã¦â€¢Â°Ã©â€¡ÂÃ§â€ºÂ¸Ã¥ÂÅ’Ã¯Â¼Å¡7Ã¥Ââ€”Ã£â‚¬â€š",
-                          "zhHant":  "Ã©â€¢Â·Ã©Â Â¸Ã©Â¹Â¿Ã¥â€™Å’Ã¤ÂºÂºÃ©Â¡Å¾Ã©Â Â¸Ã©Æ’Â¨Ã¨â€žÅ Ã¦Â¤Å½Ã¦â€¢Â¸Ã©â€¡ÂÃ§â€ºÂ¸Ã¥ÂÅ’Ã¯Â¼Å¡7Ã¥Â¡Å Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  3004,
-                          "es":  "El colibrí es el único pájaro capaz de volar hacia atrás.",
-                          "en":  "The hummingbird is the only bird that can fly backwards.",
-                          "zhHans":  "Ã¨Å“â€šÃ©Â¸Å¸Ã¦ËœÂ¯Ã¥â€Â¯Ã¤Â¸â‚¬Ã¨Æ’Â½Ã¥Ââ€˜Ã¥ÂÅ½Ã©Â£Å¾Ã¨Â¡Å’Ã§Å¡â€žÃ©Â¸Å¸Ã§Â±Â»Ã£â‚¬â€š",
-                          "zhHant":  "Ã¨Å“â€šÃ©Â³Â¥Ã¦ËœÂ¯Ã¥â€Â¯Ã¤Â¸â‚¬Ã¨Æ’Â½Ã¥Ââ€˜Ã¥Â¾Å’Ã©Â£â€ºÃ¨Â¡Å’Ã§Å¡â€žÃ©Â³Â¥Ã©Â¡Å¾Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  3005,
-                          "es":  "Los delfines duermen con medio cerebro despierto y, a menudo, con un ojo abierto.",
-                          "en":  "Dolphins sleep with one eye open to stay alert.",
-                          "zhHans":  "Ã¦ÂµÂ·Ã¨Â±Å¡Ã§ÂÂ¡Ã¨Â§â€°Ã¦â€”Â¶Ã§ÂÂÃ§Ââ‚¬Ã¤Â¸â‚¬Ã¥ÂÂªÃ§Å“Â¼Ã§Ââ€ºÃ¤Â»Â¥Ã¤Â¿ÂÃ¦Å’ÂÃ¨Â­Â¦Ã¨Â§â€°Ã£â‚¬â€š",
-                          "zhHant":  "Ã¦ÂµÂ·Ã¨Â±Å¡Ã§ÂÂ¡Ã¨Â¦ÂºÃ¦â„¢â€šÃ§ÂÅ“Ã¨â€˜â€”Ã¤Â¸â‚¬Ã©Å¡Â»Ã§Å“Â¼Ã§Ââ€ºÃ¤Â»Â¥Ã¤Â¿ÂÃ¦Å’ÂÃ¨Â­Â¦Ã¨Â¦ÂºÃ£â‚¬â€š"
-                      },
-                      {
-                          "id":  3008,
-                          "es":  "El tiburón ballena es el pez más grande del planeta.",
-                          "en":  "The whale shark is the largest fish in the world.",
-                          "zhHans":  "Ã©Â²Â¸Ã©Â²Â¨Ã¦ËœÂ¯Ã¤Â¸â€“Ã§â€¢Å’Ã¤Â¸Å Ã¦Å“â‚¬Ã¥Â¤Â§Ã§Å¡â€žÃ©Â±Â¼Ã§Â±Â»Ã£â‚¬â€š",
-                          "zhHant":  "Ã©Â¯Â¨Ã©Â¯Å Ã¦ËœÂ¯Ã¤Â¸â€“Ã§â€¢Å’Ã¤Â¸Å Ã¦Å“â‚¬Ã¥Â¤Â§Ã§Å¡â€žÃ©Â­Å¡Ã©Â¡Å¾Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  3009,
-                          "es":  "Los flamencos no nacen rosas: se tiñen con los pigmentos de su comida.",
-                          "en":  "Flamingos are pink because they eat shrimp and algae containing carotenoids.",
-                          "zhHans":  "Ã§ÂÂ«Ã§Æ’Ë†Ã©Â¸Å¸Ã¥â€˜Ë†Ã§Â²â€°Ã§ÂºÂ¢Ã¨â€°Â²Ã¦ËœÂ¯Ã¥â€ºÂ Ã¤Â¸ÂºÃ¥Â®Æ’Ã¤Â»Â¬Ã¥ÂÆ’Ã¥ÂÂ«Ã¦Å“â€°Ã§Â±Â»Ã¨Æ’Â¡Ã¨ÂÂÃ¥ÂÅ“Ã§Â´Â Ã§Å¡â€žÃ¨â„¢Â¾Ã¥â€™Å’Ã¨â€”Â»Ã§Â±Â»Ã£â‚¬â€š",
-                          "zhHant":  "Ã§Â´â€¦Ã©Â¶Â´Ã¥â€˜Ë†Ã§Â²â€°Ã§Â´â€¦Ã¨â€°Â²Ã¦ËœÂ¯Ã¥â€ºÂ Ã§â€šÂºÃ§â€°Â Ã¥â‚¬â€˜Ã¥ÂÆ’Ã¥ÂÂ«Ã¦Å“â€°Ã©Â¡Å¾Ã¨Æ’Â¡Ã¨ËœÂ¿Ã¨â€â€Ã§Â´Â Ã§Å¡â€žÃ¨ÂÂ¦Ã¥â€™Å’Ã¨â€”Â»Ã©Â¡Å¾Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  3010,
-                          "es":  "Un cocodrilo no puede sacar la lengua hacia fuera.",
-                          "en":  "Crocodiles cannot stick their tongue out.",
-                          "zhHans":  "Ã©Â³â€žÃ©Â±Â¼Ã¤Â¸ÂÃ¨Æ’Â½Ã¤Â¼Â¸Ã¥â€¡ÂºÃ¨Ë†Å’Ã¥Â¤Â´Ã£â‚¬â€š",
-                          "zhHant":  "Ã©Â±Â·Ã©Â­Å¡Ã¤Â¸ÂÃ¨Æ’Â½Ã¤Â¼Â¸Ã¥â€¡ÂºÃ¨Ë†Å’Ã©Â Â­Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  3012,
-                          "es":  "Bajo el pelaje blanco de un oso polar hay piel negra.",
-                          "en":  "Polar bears have black skin under their transparent white fur.",
-                          "zhHans":  "Ã¥Å’â€”Ã¦Å¾ÂÃ§â€ Å Ã¥Å“Â¨Ã©â‚¬ÂÃ¦ËœÅ½Ã§â„¢Â½Ã¦Â¯â€ºÃ¤Â¸â€¹Ã©ÂÂ¢Ã§Å¡â€žÃ§Å¡Â®Ã¨â€šÂ¤Ã¦ËœÂ¯Ã©Â»â€˜Ã¨â€°Â²Ã§Å¡â€žÃ£â‚¬â€š",
-                          "zhHant":  "Ã¥Å’â€”Ã¦Â¥ÂµÃ§â€ Å Ã¥Å“Â¨Ã©â‚¬ÂÃ¦ËœÅ½Ã§â„¢Â½Ã¦Â¯â€ºÃ¤Â¸â€¹Ã©ÂÂ¢Ã§Å¡â€žÃ§Å¡Â®Ã¨â€ Å¡Ã¦ËœÂ¯Ã©Â»â€˜Ã¨â€°Â²Ã§Å¡â€žÃ£â‚¬â€š"
-                      },
-                      {
-                          "id":  3014,
-                          "es":  "Un pulpo puede cambiar color y textura en menos de un segundo.",
-                          "en":  "An octopus can change color and texture in less than a second.",
-                          "zhHans":  "Ã§Â«Â Ã©Â±Â¼Ã¥ÂÂ¯Ã¤Â»Â¥Ã¥Å“Â¨Ã¤Â¸ÂÃ¥Ë†Â°Ã¤Â¸â‚¬Ã§Â§â€™Ã¥â€ â€¦Ã¦â€Â¹Ã¥ÂËœÃ©Â¢Å“Ã¨â€°Â²Ã¥â€™Å’Ã¨Â´Â¨Ã¥Å“Â°Ã£â‚¬â€š",
-                          "zhHant":  "Ã§Â«Â Ã©Â­Å¡Ã¥ÂÂ¯Ã¤Â»Â¥Ã¥Å“Â¨Ã¤Â¸ÂÃ¥Ë†Â°Ã¤Â¸â‚¬Ã§Â§â€™Ã¥â€¦Â§Ã¦â€Â¹Ã¨Â®Å Ã©Â¡ÂÃ¨â€°Â²Ã¥â€™Å’Ã¨Â³ÂªÃ¥Å“Â°Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  3017,
-                          "es":  "Las mariposas saborean con las patas.",
-                          "en":  "Butterflies taste with their feet.",
-                          "zhHans":  "Ã¨ÂÂ´Ã¨ÂÂ¶Ã§â€Â¨Ã¨â€žÅ¡Ã¦ÂÂ¥Ã¥â€œÂÃ¥Â°ÂÃ¥â€˜Â³Ã©Ââ€œÃ£â‚¬â€š",
-                          "zhHant":  "Ã¨ÂÂ´Ã¨ÂÂ¶Ã§â€Â¨Ã¨â€¦Â³Ã¤Â¾â€ Ã¥â€œÂÃ¥Å¡ÂÃ¥â€˜Â³Ã©Ââ€œÃ£â‚¬â€š"
-                      }
-                  ]
+        "id": 3,
+        "es": "Animales",
+        "en": "Animals",
+        "zhHans": "Ã¥Å Â¨Ã§â€°Â©",
+        "zhHant": "Ã¥â€¹â€¢Ã§â€°Â©",
+        "emoji": "🦁",
+        "datos": [
+            {
+                "id": 3001,
+                "es": "Los pulpos tienen tres corazones y sangre azul.",
+                "en": "Octopuses have three hearts and blue blood.",
+                "zhHans": "Ã§Â«Â Ã©Â±Â¼Ã¦Å“â€°Ã¤Â¸â€°Ã¤Â¸ÂªÃ¥Â¿Æ’Ã¨â€žÂÃ¥â€™Å’Ã¨â€œÂÃ¨â€°Â²Ã§Å¡â€žÃ¨Â¡â‚¬Ã¦Â¶Â²Ã£â‚¬â€š",
+                "zhHant": "Ã§Â«Â Ã©Â­Å¡Ã¦Å“â€°Ã¤Â¸â€°Ã¥â‚¬â€¹Ã¥Â¿Æ’Ã¨â€¡Å¸Ã¥â€™Å’Ã¨â€”ÂÃ¨â€°Â²Ã§Å¡â€žÃ¨Â¡â‚¬Ã¦Â¶Â²Ã£â‚¬â€š"
+            },
+            {
+                "id": 3002,
+                "es": "Las jirafas tienen solo siete vértebras en el cuello, las mismas que tú.",
+                "en": "Giraffes have the same number of neck vertebrae as humans: 7.",
+                "zhHans": "Ã©â€¢Â¿Ã©Â¢Ë†Ã©Â¹Â¿Ã¥â€™Å’Ã¤ÂºÂºÃ§Â±Â»Ã©Â¢Ë†Ã©Æ’Â¨Ã¨â€žÅ Ã¦Â¤Å½Ã¦â€¢Â°Ã©â€¡ÂÃ§â€ºÂ¸Ã¥ÂÅ’Ã¯Â¼Å¡7Ã¥Ââ€”Ã£â‚¬â€š",
+                "zhHant": "Ã©â€¢Â·Ã©Â Â¸Ã©Â¹Â¿Ã¥â€™Å’Ã¤ÂºÂºÃ©Â¡Å¾Ã©Â Â¸Ã©Æ’Â¨Ã¨â€žÅ Ã¦Â¤Å½Ã¦â€¢Â¸Ã©â€¡ÂÃ§â€ºÂ¸Ã¥ÂÅ’Ã¯Â¼Å¡7Ã¥Â¡Å Ã£â‚¬â€š"
+            },
+            {
+                "id": 3004,
+                "es": "El colibrí es el único pájaro capaz de volar hacia atrás.",
+                "en": "The hummingbird is the only bird that can fly backwards.",
+                "zhHans": "Ã¨Å“â€šÃ©Â¸Å¸Ã¦ËœÂ¯Ã¥â€Â¯Ã¤Â¸â‚¬Ã¨Æ’Â½Ã¥Ââ€˜Ã¥ÂÅ½Ã©Â£Å¾Ã¨Â¡Å’Ã§Å¡â€žÃ©Â¸Å¸Ã§Â±Â»Ã£â‚¬â€š",
+                "zhHant": "Ã¨Å“â€šÃ©Â³Â¥Ã¦ËœÂ¯Ã¥â€Â¯Ã¤Â¸â‚¬Ã¨Æ’Â½Ã¥Ââ€˜Ã¥Â¾Å’Ã©Â£â€ºÃ¨Â¡Å’Ã§Å¡â€žÃ©Â³Â¥Ã©Â¡Å¾Ã£â‚¬â€š"
+            },
+            {
+                "id": 3005,
+                "es": "Los delfines duermen con medio cerebro despierto y, a menudo, con un ojo abierto.",
+                "en": "Dolphins sleep with one eye open to stay alert.",
+                "zhHans": "Ã¦ÂµÂ·Ã¨Â±Å¡Ã§ÂÂ¡Ã¨Â§â€°Ã¦â€”Â¶Ã§ÂÂÃ§Ââ‚¬Ã¤Â¸â‚¬Ã¥ÂÂªÃ§Å“Â¼Ã§Ââ€ºÃ¤Â»Â¥Ã¤Â¿ÂÃ¦Å’ÂÃ¨Â­Â¦Ã¨Â§â€°Ã£â‚¬â€š",
+                "zhHant": "Ã¦ÂµÂ·Ã¨Â±Å¡Ã§ÂÂ¡Ã¨Â¦ÂºÃ¦â„¢â€šÃ§ÂÅ“Ã¨â€˜â€”Ã¤Â¸â‚¬Ã©Å¡Â»Ã§Å“Â¼Ã§Ââ€ºÃ¤Â»Â¥Ã¤Â¿ÂÃ¦Å’ÂÃ¨Â­Â¦Ã¨Â¦ÂºÃ£â‚¬â€š"
+            },
+            {
+                "id": 3008,
+                "es": "El tiburón ballena es el pez más grande del planeta.",
+                "en": "The whale shark is the largest fish in the world.",
+                "zhHans": "Ã©Â²Â¸Ã©Â²Â¨Ã¦ËœÂ¯Ã¤Â¸â€“Ã§â€¢Å’Ã¤Â¸Å Ã¦Å“â‚¬Ã¥Â¤Â§Ã§Å¡â€žÃ©Â±Â¼Ã§Â±Â»Ã£â‚¬â€š",
+                "zhHant": "Ã©Â¯Â¨Ã©Â¯Å Ã¦ËœÂ¯Ã¤Â¸â€“Ã§â€¢Å’Ã¤Â¸Å Ã¦Å“â‚¬Ã¥Â¤Â§Ã§Å¡â€žÃ©Â­Å¡Ã©Â¡Å¾Ã£â‚¬â€š"
+            },
+            {
+                "id": 3009,
+                "es": "Los flamencos no nacen rosas: se tiñen con los pigmentos de su comida.",
+                "en": "Flamingos are pink because they eat shrimp and algae containing carotenoids.",
+                "zhHans": "Ã§ÂÂ«Ã§Æ’Ë†Ã©Â¸Å¸Ã¥â€˜Ë†Ã§Â²â€°Ã§ÂºÂ¢Ã¨â€°Â²Ã¦ËœÂ¯Ã¥â€ºÂ Ã¤Â¸ÂºÃ¥Â®Æ’Ã¤Â»Â¬Ã¥ÂÆ’Ã¥ÂÂ«Ã¦Å“â€°Ã§Â±Â»Ã¨Æ’Â¡Ã¨ÂÂÃ¥ÂÅ“Ã§Â´Â Ã§Å¡â€žÃ¨â„¢Â¾Ã¥â€™Å’Ã¨â€”Â»Ã§Â±Â»Ã£â‚¬â€š",
+                "zhHant": "Ã§Â´â€¦Ã©Â¶Â´Ã¥â€˜Ë†Ã§Â²â€°Ã§Â´â€¦Ã¨â€°Â²Ã¦ËœÂ¯Ã¥â€ºÂ Ã§â€šÂºÃ§â€°Â Ã¥â‚¬â€˜Ã¥ÂÆ’Ã¥ÂÂ«Ã¦Å“â€°Ã©Â¡Å¾Ã¨Æ’Â¡Ã¨ËœÂ¿Ã¨â€â€Ã§Â´Â Ã§Å¡â€žÃ¨ÂÂ¦Ã¥â€™Å’Ã¨â€”Â»Ã©Â¡Å¾Ã£â‚¬â€š"
+            },
+            {
+                "id": 3010,
+                "es": "Un cocodrilo no puede sacar la lengua hacia fuera.",
+                "en": "Crocodiles cannot stick their tongue out.",
+                "zhHans": "Ã©Â³â€žÃ©Â±Â¼Ã¤Â¸ÂÃ¨Æ’Â½Ã¤Â¼Â¸Ã¥â€¡ÂºÃ¨Ë†Å’Ã¥Â¤Â´Ã£â‚¬â€š",
+                "zhHant": "Ã©Â±Â·Ã©Â­Å¡Ã¤Â¸ÂÃ¨Æ’Â½Ã¤Â¼Â¸Ã¥â€¡ÂºÃ¨Ë†Å’Ã©Â Â­Ã£â‚¬â€š"
+            },
+            {
+                "id": 3012,
+                "es": "Bajo el pelaje blanco de un oso polar hay piel negra.",
+                "en": "Polar bears have black skin under their transparent white fur.",
+                "zhHans": "Ã¥Å’â€”Ã¦Å¾ÂÃ§â€ Å Ã¥Å“Â¨Ã©â‚¬ÂÃ¦ËœÅ½Ã§â„¢Â½Ã¦Â¯â€ºÃ¤Â¸â€¹Ã©ÂÂ¢Ã§Å¡â€žÃ§Å¡Â®Ã¨â€šÂ¤Ã¦ËœÂ¯Ã©Â»â€˜Ã¨â€°Â²Ã§Å¡â€žÃ£â‚¬â€š",
+                "zhHant": "Ã¥Å’â€”Ã¦Â¥ÂµÃ§â€ Å Ã¥Å“Â¨Ã©â‚¬ÂÃ¦ËœÅ½Ã§â„¢Â½Ã¦Â¯â€ºÃ¤Â¸â€¹Ã©ÂÂ¢Ã§Å¡â€žÃ§Å¡Â®Ã¨â€ Å¡Ã¦ËœÂ¯Ã©Â»â€˜Ã¨â€°Â²Ã§Å¡â€žÃ£â‚¬â€š"
+            },
+            {
+                "id": 3014,
+                "es": "Un pulpo puede cambiar color y textura en menos de un segundo.",
+                "en": "An octopus can change color and texture in less than a second.",
+                "zhHans": "Ã§Â«Â Ã©Â±Â¼Ã¥ÂÂ¯Ã¤Â»Â¥Ã¥Å“Â¨Ã¤Â¸ÂÃ¥Ë†Â°Ã¤Â¸â‚¬Ã§Â§â€™Ã¥â€ â€¦Ã¦â€Â¹Ã¥ÂËœÃ©Â¢Å“Ã¨â€°Â²Ã¥â€™Å’Ã¨Â´Â¨Ã¥Å“Â°Ã£â‚¬â€š",
+                "zhHant": "Ã§Â«Â Ã©Â­Å¡Ã¥ÂÂ¯Ã¤Â»Â¥Ã¥Å“Â¨Ã¤Â¸ÂÃ¥Ë†Â°Ã¤Â¸â‚¬Ã§Â§â€™Ã¥â€¦Â§Ã¦â€Â¹Ã¨Â®Å Ã©Â¡ÂÃ¨â€°Â²Ã¥â€™Å’Ã¨Â³ÂªÃ¥Å“Â°Ã£â‚¬â€š"
+            },
+            {
+                "id": 3017,
+                "es": "Las mariposas saborean con las patas.",
+                "en": "Butterflies taste with their feet.",
+                "zhHans": "Ã¨ÂÂ´Ã¨ÂÂ¶Ã§â€Â¨Ã¨â€žÅ¡Ã¦ÂÂ¥Ã¥â€œÂÃ¥Â°ÂÃ¥â€˜Â³Ã©Ââ€œÃ£â‚¬â€š",
+                "zhHant": "Ã¨ÂÂ´Ã¨ÂÂ¶Ã§â€Â¨Ã¨â€¦Â³Ã¤Â¾â€ Ã¥â€œÂÃ¥Å¡ÂÃ¥â€˜Â³Ã©Ââ€œÃ£â‚¬â€š"
+            }
+        ]
     },
     {
-        "id":  4,
-        "es":  "Geografía",
-        "en":  "Geography",
-        "zhHans":  "Ã¥Å“Â°Ã§Ââ€ ",
-        "zhHant":  "Ã¥Å“Â°Ã§Ââ€ ",
-        "emoji":  "Ã°Å¸Å’Â",
-        "datos":  [
-                      {
-                          "id":  4001,
-                          "es":  "Rusia se reparte en 11 husos horarios: cuando amanece en un lado, en otro ya casi es mañana.",
-                          "en":  "Russia spans 11 different time zones.",
-                          "zhHans":  "Ã¤Â¿â€žÃ§Â½â€”Ã¦â€“Â¯Ã¨Â·Â¨Ã¨Â¶Å 11Ã¤Â¸ÂªÃ¤Â¸ÂÃ¥ÂÅ’Ã§Å¡â€žÃ¦â€”Â¶Ã¥Å’ÂºÃ£â‚¬â€š",
-                          "zhHant":  "Ã¤Â¿â€žÃ§Â¾â€¦Ã¦â€“Â¯Ã¨Â·Â¨Ã¨Â¶Å 11Ã¥â‚¬â€¹Ã¤Â¸ÂÃ¥ÂÅ’Ã§Å¡â€žÃ¦â„¢â€šÃ¥Ââ‚¬Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  4003,
-                          "es":  "Australia es el único país que ocupa un continente entero.",
-                          "en":  "Australia is the only country that occupies an entire continent.",
-                          "zhHans":  "Ã¦Â¾Â³Ã¥Â¤Â§Ã¥Ë†Â©Ã¤ÂºÅ¡Ã¦ËœÂ¯Ã¥â€Â¯Ã¤Â¸â‚¬Ã¤Â¸â‚¬Ã¤Â¸ÂªÃ¥ÂÂ Ã¦ÂÂ®Ã¦â€¢Â´Ã¤Â¸ÂªÃ¥Â¤Â§Ã©â„¢â€ Ã§Å¡â€žÃ¥â€ºÂ½Ã¥Â®Â¶Ã£â‚¬â€š",
-                          "zhHant":  "Ã¦Â¾Â³Ã¥Â¤Â§Ã¥Ë†Â©Ã¤ÂºÅ¾Ã¦ËœÂ¯Ã¥â€Â¯Ã¤Â¸â‚¬Ã¤Â¸â‚¬Ã¥â‚¬â€¹Ã¤Â½â€Ã¦â€œÅ¡Ã¦â€¢Â´Ã¥â‚¬â€¹Ã¥Â¤Â§Ã©â„¢Â¸Ã§Å¡â€žÃ¥Å“â€¹Ã¥Â®Â¶Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  4004,
-                          "es":  "La Fosa de las Marianas baja unos 11 kilómetros: más honda que alto es el Everest.",
-                          "en":  "The deepest ocean point is the Mariana Trench, 11 km deep.",
-                          "zhHans":  "Ã¦ÂµÂ·Ã¦Â´â€¹Ã¦Å“â‚¬Ã¦Â·Â±Ã¥Â¤â€žÃ¦ËœÂ¯Ã©Â©Â¬Ã©â€¡Å’Ã¤ÂºÅ¡Ã§ÂºÂ³Ã¦ÂµÂ·Ã¦Â²Å¸Ã¯Â¼Å’Ã¦Â·Â±Ã¨Â¾Â¾11Ã¥â€¦Â¬Ã©â€¡Å’Ã£â‚¬â€š",
-                          "zhHant":  "Ã¦ÂµÂ·Ã¦Â´â€¹Ã¦Å“â‚¬Ã¦Â·Â±Ã¨â„¢â€¢Ã¦ËœÂ¯Ã©Â¦Â¬Ã©â€¡Å’Ã¤ÂºÅ¾Ã§Â´ÂÃ¦ÂµÂ·Ã¦ÂºÂÃ¯Â¼Å’Ã¦Â·Â±Ã©Ââ€11Ã¥â€¦Â¬Ã©â€¡Å’Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  4005,
-                          "es":  "Canadá tiene más lagos que cualquier otro país del mundo.",
-                          "en":  "Canada has the most freshwater lakes in the world.",
-                          "zhHans":  "Ã¥Å Â Ã¦â€¹Â¿Ã¥Â¤Â§Ã¦â€¹Â¥Ã¦Å“â€°Ã¤Â¸â€“Ã§â€¢Å’Ã¤Â¸Å Ã¦Å“â‚¬Ã¥Â¤Å¡Ã§Å¡â€žÃ¦Â·Â¡Ã¦Â°Â´Ã¦Â¹â€“Ã£â‚¬â€š",
-                          "zhHant":  "Ã¥Å Â Ã¦â€¹Â¿Ã¥Â¤Â§Ã¦â€œÂÃ¦Å“â€°Ã¤Â¸â€“Ã§â€¢Å’Ã¤Â¸Å Ã¦Å“â‚¬Ã¥Â¤Å¡Ã§Å¡â€žÃ¦Â·Â¡Ã¦Â°Â´Ã¦Â¹â€“Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  4008,
-                          "es":  "La Antártida guarda cerca del 70% del agua dulce del planeta en forma de hielo.",
-                          "en":  "Antarctica holds 70% of the planet\u0027s freshwater as ice.",
-                          "zhHans":  "Ã¥Ââ€”Ã¦Å¾ÂÃ¦Â´Â²Ã¤Â»Â¥Ã¥â€ Â°Ã§Å¡â€žÃ¥Â½Â¢Ã¥Â¼ÂÃ¥â€šÂ¨Ã¥Â­ËœÃ¤Âºâ€ Ã¥Å“Â°Ã§ÂÆ’70%Ã§Å¡â€žÃ¦Â·Â¡Ã¦Â°Â´Ã£â‚¬â€š",
-                          "zhHant":  "Ã¥Ââ€”Ã¦Â¥ÂµÃ¦Â´Â²Ã¤Â»Â¥Ã¥â€ Â°Ã§Å¡â€žÃ¥Â½Â¢Ã¥Â¼ÂÃ¥â€žÂ²Ã¥Â­ËœÃ¤Âºâ€ Ã¥Å“Â°Ã§ÂÆ’70%Ã§Å¡â€žÃ¦Â·Â¡Ã¦Â°Â´Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  4010,
-                          "es":  "El lago Baikal concentra cerca del 20% del agua dulce superficial del mundo.",
-                          "en":  "Lake Baikal contains 20% of the world\u0027s surface freshwater.",
-                          "zhHans":  "Ã¨Â´ÂÃ¥Å Â Ã¥Â°â€Ã¦Â¹â€“Ã¥ÂÂ«Ã¦Å“â€°Ã¤Â¸â€“Ã§â€¢Å’20%Ã§Å¡â€žÃ¥Å“Â°Ã¨Â¡Â¨Ã¦Â·Â¡Ã¦Â°Â´Ã£â‚¬â€š",
-                          "zhHant":  "Ã¨Â²ÂÃ¥Å Â Ã§Ë†Â¾Ã¦Â¹â€“Ã¥ÂÂ«Ã¦Å“â€°Ã¤Â¸â€“Ã§â€¢Å’20%Ã§Å¡â€žÃ¥Å“Â°Ã¨Â¡Â¨Ã¦Â·Â¡Ã¦Â°Â´Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  4011,
-                          "es":  "Papúa Nueva Guinea tiene más lenguas que ningún otro país.",
-                          "en":  "Papua New Guinea has more languages than any other country in the world.",
-                          "zhHans":  "Ã¥Â·Â´Ã¥Â¸Æ’Ã¤ÂºÅ¡Ã¦â€“Â°Ã¥â€¡Â Ã¥â€ â€¦Ã¤ÂºÅ¡Ã¦â€¹Â¥Ã¦Å“â€°Ã¦Â¯â€Ã¤Â¸â€“Ã§â€¢Å’Ã¤Â¸Å Ã¤Â»Â»Ã¤Â½â€¢Ã¥â€¦Â¶Ã¤Â»â€“Ã¥â€ºÂ½Ã¥Â®Â¶Ã¦â€ºÂ´Ã¥Â¤Å¡Ã§Å¡â€žÃ¨Â¯Â­Ã¨Â¨â‚¬Ã£â‚¬â€š",
-                          "zhHant":  "Ã¥Â·Â´Ã¥Â¸Æ’Ã¤ÂºÅ¾Ã§Â´ÂÃ¥Â¹Â¾Ã¥â€¦Â§Ã¤ÂºÅ¾Ã¦â€œÂÃ¦Å“â€°Ã¦Â¯â€Ã¤Â¸â€“Ã§â€¢Å’Ã¤Â¸Å Ã¤Â»Â»Ã¤Â½â€¢Ã¥â€¦Â¶Ã¤Â»â€“Ã¥Å“â€¹Ã¥Â®Â¶Ã¦â€ºÂ´Ã¥Â¤Å¡Ã§Å¡â€žÃ¨ÂªÅ¾Ã¨Â¨â‚¬Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  4013,
-                          "es":  "El punto de la Tierra más alejado de su centro no es el Everest, sino el Chimborazo.",
-                          "en":  "The point farthest from Earth\u0027s center is Chimborazo volcano in Ecuador.",
-                          "zhHans":  "Ã¨Â·ÂÃ§Â¦Â»Ã¥Å“Â°Ã§ÂÆ’Ã¤Â¸Â­Ã¥Â¿Æ’Ã¦Å“â‚¬Ã¨Â¿Å“Ã§Å¡â€žÃ§â€šÂ¹Ã¦ËœÂ¯Ã¥Å½â€žÃ§â€œÅ“Ã¥Â¤Å¡Ã¥Â°â€Ã§Å¡â€žÃ©â€™Â¦Ã¥ÂÅ¡Ã¦â€¹â€°Ã§Â´Â¢Ã§ÂÂ«Ã¥Â±Â±Ã£â‚¬â€š",
-                          "zhHant":  "Ã¨Â·ÂÃ©â€ºÂ¢Ã¥Å“Â°Ã§ÂÆ’Ã¤Â¸Â­Ã¥Â¿Æ’Ã¦Å“â‚¬Ã©ÂÂ Ã§Å¡â€žÃ©Â»Å¾Ã¦ËœÂ¯Ã¥Å½â€žÃ§â€œÅ“Ã¥Â¤Å¡Ã§Ë†Â¾Ã§Å¡â€žÃ¦Â¬Â½Ã¥ÂÅ¡Ã¦â€¹â€°Ã§Â´Â¢Ã§ÂÂ«Ã¥Â±Â±Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  4015,
-                          "es":  "La Gran Barrera de Coral es la estructura viva más grande del planeta.",
-                          "en":  "The Great Barrier Reef is the largest living structure on Earth.",
-                          "zhHans":  "Ã¥Â¤Â§Ã¥Â Â¡Ã§Â¤ÂÃ¦ËœÂ¯Ã¥Å“Â°Ã§ÂÆ’Ã¤Â¸Å Ã¦Å“â‚¬Ã¥Â¤Â§Ã§Å¡â€žÃ§â€Å¸Ã¥â€˜Â½Ã§Â»â€œÃ¦Å¾â€žÃ£â‚¬â€š",
-                          "zhHant":  "Ã¥Â¤Â§Ã¥Â Â¡Ã§Â¤ÂÃ¦ËœÂ¯Ã¥Å“Â°Ã§ÂÆ’Ã¤Â¸Å Ã¦Å“â‚¬Ã¥Â¤Â§Ã§Å¡â€žÃ§â€Å¸Ã¥â€˜Â½Ã§ÂµÂÃ¦Â§â€¹Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  4018,
-                          "es":  "Si mides el Mauna Kea desde su base submarina, supera los 10.000 metros.",
-                          "en":  "Mauna Kea measures over 10,000 meters from its oceanic base.",
-                          "zhHans":  "Ã¤Â»Å½Ã¦ÂµÂ·Ã¥Âºâ€¢Ã§Â®â€”Ã¨ÂµÂ·Ã¯Â¼Å’Ã¥â€ â€™Ã§ÂºÂ³Ã¥â€¡Â¯Ã©ËœÂ¿Ã§ÂÂ«Ã¥Â±Â±Ã©Â«ËœÃ¥ÂºÂ¦Ã¨Â¶â€¦Ã¨Â¿â€¡10,000Ã§Â±Â³Ã£â‚¬â€š",
-                          "zhHant":  "Ã¥Â¾Å¾Ã¦ÂµÂ·Ã¥Âºâ€¢Ã§Â®â€”Ã¨ÂµÂ·Ã¯Â¼Å’Ã¥â€ â€™Ã§Â´ÂÃ¥â€¡Â±Ã©ËœÂ¿Ã§ÂÂ«Ã¥Â±Â±Ã©Â«ËœÃ¥ÂºÂ¦Ã¨Â¶â€¦Ã©ÂÅ½10,000Ã§Â±Â³Ã£â‚¬â€š"
-                      }
-                  ]
+        "id": 4,
+        "es": "Geografía",
+        "en": "Geography",
+        "zhHans": "Ã¥Å“Â°Ã§Ââ€ ",
+        "zhHant": "Ã¥Å“Â°Ã§Ââ€ ",
+        "emoji": "🗺️",
+        "datos": [
+            {
+                "id": 4001,
+                "es": "Rusia se reparte en 11 husos horarios: cuando amanece en un lado, en otro ya casi es mañana.",
+                "en": "Russia spans 11 different time zones.",
+                "zhHans": "Ã¤Â¿â€žÃ§Â½â€”Ã¦â€“Â¯Ã¨Â·Â¨Ã¨Â¶Å 11Ã¤Â¸ÂªÃ¤Â¸ÂÃ¥ÂÅ’Ã§Å¡â€žÃ¦â€”Â¶Ã¥Å’ÂºÃ£â‚¬â€š",
+                "zhHant": "Ã¤Â¿â€žÃ§Â¾â€¦Ã¦â€“Â¯Ã¨Â·Â¨Ã¨Â¶Å 11Ã¥â‚¬â€¹Ã¤Â¸ÂÃ¥ÂÅ’Ã§Å¡â€žÃ¦â„¢â€šÃ¥Ââ‚¬Ã£â‚¬â€š"
+            },
+            {
+                "id": 4003,
+                "es": "Australia es el único país que ocupa un continente entero.",
+                "en": "Australia is the only country that occupies an entire continent.",
+                "zhHans": "Ã¦Â¾Â³Ã¥Â¤Â§Ã¥Ë†Â©Ã¤ÂºÅ¡Ã¦ËœÂ¯Ã¥â€Â¯Ã¤Â¸â‚¬Ã¤Â¸â‚¬Ã¤Â¸ÂªÃ¥ÂÂ Ã¦ÂÂ®Ã¦â€¢Â´Ã¤Â¸ÂªÃ¥Â¤Â§Ã©â„¢â€ Ã§Å¡â€žÃ¥â€ºÂ½Ã¥Â®Â¶Ã£â‚¬â€š",
+                "zhHant": "Ã¦Â¾Â³Ã¥Â¤Â§Ã¥Ë†Â©Ã¤ÂºÅ¾Ã¦ËœÂ¯Ã¥â€Â¯Ã¤Â¸â‚¬Ã¤Â¸â‚¬Ã¥â‚¬â€¹Ã¤Â½â€Ã¦â€œÅ¡Ã¦â€¢Â´Ã¥â‚¬â€¹Ã¥Â¤Â§Ã©â„¢Â¸Ã§Å¡â€žÃ¥Å“â€¹Ã¥Â®Â¶Ã£â‚¬â€š"
+            },
+            {
+                "id": 4004,
+                "es": "La Fosa de las Marianas baja unos 11 kilómetros: más honda que alto es el Everest.",
+                "en": "The deepest ocean point is the Mariana Trench, 11 km deep.",
+                "zhHans": "Ã¦ÂµÂ·Ã¦Â´â€¹Ã¦Å“â‚¬Ã¦Â·Â±Ã¥Â¤â€žÃ¦ËœÂ¯Ã©Â©Â¬Ã©â€¡Å’Ã¤ÂºÅ¡Ã§ÂºÂ³Ã¦ÂµÂ·Ã¦Â²Å¸Ã¯Â¼Å’Ã¦Â·Â±Ã¨Â¾Â¾11Ã¥â€¦Â¬Ã©â€¡Å’Ã£â‚¬â€š",
+                "zhHant": "Ã¦ÂµÂ·Ã¦Â´â€¹Ã¦Å“â‚¬Ã¦Â·Â±Ã¨â„¢â€¢Ã¦ËœÂ¯Ã©Â¦Â¬Ã©â€¡Å’Ã¤ÂºÅ¾Ã§Â´ÂÃ¦ÂµÂ·Ã¦ÂºÂÃ¯Â¼Å’Ã¦Â·Â±Ã©Ââ€11Ã¥â€¦Â¬Ã©â€¡Å’Ã£â‚¬â€š"
+            },
+            {
+                "id": 4005,
+                "es": "Canadá tiene más lagos que cualquier otro país del mundo.",
+                "en": "Canada has the most freshwater lakes in the world.",
+                "zhHans": "Ã¥Å Â Ã¦â€¹Â¿Ã¥Â¤Â§Ã¦â€¹Â¥Ã¦Å“â€°Ã¤Â¸â€“Ã§â€¢Å’Ã¤Â¸Å Ã¦Å“â‚¬Ã¥Â¤Å¡Ã§Å¡â€žÃ¦Â·Â¡Ã¦Â°Â´Ã¦Â¹â€“Ã£â‚¬â€š",
+                "zhHant": "Ã¥Å Â Ã¦â€¹Â¿Ã¥Â¤Â§Ã¦â€œÂÃ¦Å“â€°Ã¤Â¸â€“Ã§â€¢Å’Ã¤Â¸Å Ã¦Å“â‚¬Ã¥Â¤Å¡Ã§Å¡â€žÃ¦Â·Â¡Ã¦Â°Â´Ã¦Â¹â€“Ã£â‚¬â€š"
+            },
+            {
+                "id": 4008,
+                "es": "La Antártida guarda cerca del 70% del agua dulce del planeta en forma de hielo.",
+                "en": "Antarctica holds 70% of the planet's freshwater as ice.",
+                "zhHans": "Ã¥Ââ€”Ã¦Å¾ÂÃ¦Â´Â²Ã¤Â»Â¥Ã¥â€ Â°Ã§Å¡â€žÃ¥Â½Â¢Ã¥Â¼ÂÃ¥â€šÂ¨Ã¥Â­ËœÃ¤Âºâ€ Ã¥Å“Â°Ã§ÂÆ’70%Ã§Å¡â€žÃ¦Â·Â¡Ã¦Â°Â´Ã£â‚¬â€š",
+                "zhHant": "Ã¥Ââ€”Ã¦Â¥ÂµÃ¦Â´Â²Ã¤Â»Â¥Ã¥â€ Â°Ã§Å¡â€žÃ¥Â½Â¢Ã¥Â¼ÂÃ¥â€žÂ²Ã¥Â­ËœÃ¤Âºâ€ Ã¥Å“Â°Ã§ÂÆ’70%Ã§Å¡â€žÃ¦Â·Â¡Ã¦Â°Â´Ã£â‚¬â€š"
+            },
+            {
+                "id": 4010,
+                "es": "El lago Baikal concentra cerca del 20% del agua dulce superficial del mundo.",
+                "en": "Lake Baikal contains 20% of the world's surface freshwater.",
+                "zhHans": "Ã¨Â´ÂÃ¥Å Â Ã¥Â°â€Ã¦Â¹â€“Ã¥ÂÂ«Ã¦Å“â€°Ã¤Â¸â€“Ã§â€¢Å’20%Ã§Å¡â€žÃ¥Å“Â°Ã¨Â¡Â¨Ã¦Â·Â¡Ã¦Â°Â´Ã£â‚¬â€š",
+                "zhHant": "Ã¨Â²ÂÃ¥Å Â Ã§Ë†Â¾Ã¦Â¹â€“Ã¥ÂÂ«Ã¦Å“â€°Ã¤Â¸â€“Ã§â€¢Å’20%Ã§Å¡â€žÃ¥Å“Â°Ã¨Â¡Â¨Ã¦Â·Â¡Ã¦Â°Â´Ã£â‚¬â€š"
+            },
+            {
+                "id": 4011,
+                "es": "Papúa Nueva Guinea tiene más lenguas que ningún otro país.",
+                "en": "Papua New Guinea has more languages than any other country in the world.",
+                "zhHans": "Ã¥Â·Â´Ã¥Â¸Æ’Ã¤ÂºÅ¡Ã¦â€“Â°Ã¥â€¡Â Ã¥â€ â€¦Ã¤ÂºÅ¡Ã¦â€¹Â¥Ã¦Å“â€°Ã¦Â¯â€Ã¤Â¸â€“Ã§â€¢Å’Ã¤Â¸Å Ã¤Â»Â»Ã¤Â½â€¢Ã¥â€¦Â¶Ã¤Â»â€“Ã¥â€ºÂ½Ã¥Â®Â¶Ã¦â€ºÂ´Ã¥Â¤Å¡Ã§Å¡â€žÃ¨Â¯Â­Ã¨Â¨â‚¬Ã£â‚¬â€š",
+                "zhHant": "Ã¥Â·Â´Ã¥Â¸Æ’Ã¤ÂºÅ¾Ã§Â´ÂÃ¥Â¹Â¾Ã¥â€¦Â§Ã¤ÂºÅ¾Ã¦â€œÂÃ¦Å“â€°Ã¦Â¯â€Ã¤Â¸â€“Ã§â€¢Å’Ã¤Â¸Å Ã¤Â»Â»Ã¤Â½â€¢Ã¥â€¦Â¶Ã¤Â»â€“Ã¥Å“â€¹Ã¥Â®Â¶Ã¦â€ºÂ´Ã¥Â¤Å¡Ã§Å¡â€žÃ¨ÂªÅ¾Ã¨Â¨â‚¬Ã£â‚¬â€š"
+            },
+            {
+                "id": 4013,
+                "es": "El punto de la Tierra más alejado de su centro no es el Everest, sino el Chimborazo.",
+                "en": "The point farthest from Earth's center is Chimborazo volcano in Ecuador.",
+                "zhHans": "Ã¨Â·ÂÃ§Â¦Â»Ã¥Å“Â°Ã§ÂÆ’Ã¤Â¸Â­Ã¥Â¿Æ’Ã¦Å“â‚¬Ã¨Â¿Å“Ã§Å¡â€žÃ§â€šÂ¹Ã¦ËœÂ¯Ã¥Å½â€žÃ§â€œÅ“Ã¥Â¤Å¡Ã¥Â°â€Ã§Å¡â€žÃ©â€™Â¦Ã¥ÂÅ¡Ã¦â€¹â€°Ã§Â´Â¢Ã§ÂÂ«Ã¥Â±Â±Ã£â‚¬â€š",
+                "zhHant": "Ã¨Â·ÂÃ©â€ºÂ¢Ã¥Å“Â°Ã§ÂÆ’Ã¤Â¸Â­Ã¥Â¿Æ’Ã¦Å“â‚¬Ã©ÂÂ Ã§Å¡â€žÃ©Â»Å¾Ã¦ËœÂ¯Ã¥Å½â€žÃ§â€œÅ“Ã¥Â¤Å¡Ã§Ë†Â¾Ã§Å¡â€žÃ¦Â¬Â½Ã¥ÂÅ¡Ã¦â€¹â€°Ã§Â´Â¢Ã§ÂÂ«Ã¥Â±Â±Ã£â‚¬â€š"
+            },
+            {
+                "id": 4015,
+                "es": "La Gran Barrera de Coral es la estructura viva más grande del planeta.",
+                "en": "The Great Barrier Reef is the largest living structure on Earth.",
+                "zhHans": "Ã¥Â¤Â§Ã¥Â Â¡Ã§Â¤ÂÃ¦ËœÂ¯Ã¥Å“Â°Ã§ÂÆ’Ã¤Â¸Å Ã¦Å“â‚¬Ã¥Â¤Â§Ã§Å¡â€žÃ§â€Å¸Ã¥â€˜Â½Ã§Â»â€œÃ¦Å¾â€žÃ£â‚¬â€š",
+                "zhHant": "Ã¥Â¤Â§Ã¥Â Â¡Ã§Â¤ÂÃ¦ËœÂ¯Ã¥Å“Â°Ã§ÂÆ’Ã¤Â¸Å Ã¦Å“â‚¬Ã¥Â¤Â§Ã§Å¡â€žÃ§â€Å¸Ã¥â€˜Â½Ã§ÂµÂÃ¦Â§â€¹Ã£â‚¬â€š"
+            },
+            {
+                "id": 4018,
+                "es": "Si mides el Mauna Kea desde su base submarina, supera los 10.000 metros.",
+                "en": "Mauna Kea measures over 10,000 meters from its oceanic base.",
+                "zhHans": "Ã¤Â»Å½Ã¦ÂµÂ·Ã¥Âºâ€¢Ã§Â®â€”Ã¨ÂµÂ·Ã¯Â¼Å’Ã¥â€ â€™Ã§ÂºÂ³Ã¥â€¡Â¯Ã©ËœÂ¿Ã§ÂÂ«Ã¥Â±Â±Ã©Â«ËœÃ¥ÂºÂ¦Ã¨Â¶â€¦Ã¨Â¿â€¡10,000Ã§Â±Â³Ã£â‚¬â€š",
+                "zhHant": "Ã¥Â¾Å¾Ã¦ÂµÂ·Ã¥Âºâ€¢Ã§Â®â€”Ã¨ÂµÂ·Ã¯Â¼Å’Ã¥â€ â€™Ã§Â´ÂÃ¥â€¡Â±Ã©ËœÂ¿Ã§ÂÂ«Ã¥Â±Â±Ã©Â«ËœÃ¥ÂºÂ¦Ã¨Â¶â€¦Ã©ÂÅ½10,000Ã§Â±Â³Ã£â‚¬â€š"
+            }
+        ]
     },
     {
-        "id":  5,
-        "es":  "Cuerpo Humano",
-        "en":  "Human Body",
-        "zhHans":  "Ã¤ÂºÂºÃ¤Â½â€œ",
-        "zhHant":  "Ã¤ÂºÂºÃ©Â«â€",
-        "emoji":  "Ã°Å¸Â«â‚¬",
-        "datos":  [
-                      {
-                          "id":  5001,
-                          "es":  "Tu cuerpo está hecho de más de 37 billones de células.",
-                          "en":  "The human body has more than 37 trillion cells.",
-                          "zhHans":  "Ã¤ÂºÂºÃ¤Â½â€œÃ¦Å“â€°Ã¨Â¶â€¦Ã¨Â¿â€¡37Ã¤Â¸â€¡Ã¤ÂºÂ¿Ã¤Â¸ÂªÃ§Â»â€ Ã¨Æ’Å¾Ã£â‚¬â€š",
-                          "zhHant":  "Ã¤ÂºÂºÃ©Â«â€Ã¦Å“â€°Ã¨Â¶â€¦Ã©ÂÅ½37Ã¥â€¦â€ Ã¥â‚¬â€¹Ã§Â´Â°Ã¨Æ’Å¾Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  5003,
-                          "es":  "Tu cerebro pesa poco, pero gasta alrededor del 20% de la energía del cuerpo.",
-                          "en":  "The brain consumes 20% of the body\u0027s energy despite being only 2% of body weight.",
-                          "zhHans":  "Ã¥Â¤Â§Ã¨â€žâ€˜Ã¤Â»â€¦Ã¥ÂÂ Ã¤Â½â€œÃ©â€¡ÂÃ§Å¡â€ž2%Ã¯Â¼Å’Ã¥ÂÂ´Ã¦Â¶Ë†Ã¨â‚¬â€”20%Ã§Å¡â€žÃ¨ÂºÂ«Ã¤Â½â€œÃ¨Æ’Â½Ã©â€¡ÂÃ£â‚¬â€š",
-                          "zhHant":  "Ã¥Â¤Â§Ã¨â€¦Â¦Ã¥Æ’â€¦Ã¤Â½â€Ã©Â«â€Ã©â€¡ÂÃ§Å¡â€ž2%Ã¯Â¼Å’Ã¥ÂÂ»Ã¦Â¶Ë†Ã¨â‚¬â€”20%Ã§Å¡â€žÃ¨ÂºÂ«Ã©Â«â€Ã¨Æ’Â½Ã©â€¡ÂÃ£â‚¬â€š"
-                      },
-                      {
-                          "id":  5005,
-                          "es":  "Tu corazón late unas 100.000 veces al día.",
-                          "en":  "The heart beats about 100,000 times a day, about 3 billion in a lifetime.",
-                          "zhHans":  "Ã¥Â¿Æ’Ã¨â€žÂÃ¦Â¯ÂÃ¥Â¤Â©Ã¨Â·Â³Ã¥Å Â¨Ã§ÂºÂ¦10Ã¤Â¸â€¡Ã¦Â¬Â¡Ã¯Â¼Å’Ã¤Â¸â‚¬Ã§â€Å¸Ã§ÂºÂ¦Ã¨Â·Â³Ã¥Å Â¨30Ã¤ÂºÂ¿Ã¦Â¬Â¡Ã£â‚¬â€š",
-                          "zhHant":  "Ã¥Â¿Æ’Ã¨â€¡Å¸Ã¦Â¯ÂÃ¥Â¤Â©Ã¨Â·Â³Ã¥â€¹â€¢Ã§Â´â€ž10Ã¨ÂÂ¬Ã¦Â¬Â¡Ã¯Â¼Å’Ã¤Â¸â‚¬Ã§â€Å¸Ã§Â´â€žÃ¨Â·Â³Ã¥â€¹â€¢30Ã¥â€žâ€žÃ¦Â¬Â¡Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  5006,
-                          "es":  "Si alinearas todos tus vasos sanguíneos, superarían los 100.000 kilómetros.",
-                          "en":  "The blood vessels in the human body total over 100,000 km.",
-                          "zhHans":  "Ã¤ÂºÂºÃ¤Â½â€œÃ¨Â¡â‚¬Ã§Â®Â¡Ã¦â‚¬Â»Ã©â€¢Â¿Ã¥ÂºÂ¦Ã¨Â¶â€¦Ã¨Â¿â€¡100,000Ã¥â€¦Â¬Ã©â€¡Å’Ã£â‚¬â€š",
-                          "zhHant":  "Ã¤ÂºÂºÃ©Â«â€Ã¨Â¡â‚¬Ã§Â®Â¡Ã§Â¸Â½Ã©â€¢Â·Ã¥ÂºÂ¦Ã¨Â¶â€¦Ã©ÂÅ½100,000Ã¥â€¦Â¬Ã©â€¡Å’Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  5007,
-                          "es":  "La superficie interna de tus pulmones ronda la de una pista de tenis.",
-                          "en":  "The lungs have the same surface area as a tennis court.",
-                          "zhHans":  "Ã¨â€šÂºÃ©Æ’Â¨Ã§Å¡â€žÃ¨Â¡Â¨Ã©ÂÂ¢Ã§Â§Â¯Ã§â€ºÂ¸Ã¥Â½â€œÃ¤ÂºÅ½Ã¤Â¸â‚¬Ã¤Â¸ÂªÃ§Â½â€˜Ã§ÂÆ’Ã¥Å“ÂºÃ£â‚¬â€š",
-                          "zhHant":  "Ã¨â€šÂºÃ©Æ’Â¨Ã§Å¡â€žÃ¨Â¡Â¨Ã©ÂÂ¢Ã§Â©ÂÃ§â€ºÂ¸Ã§â€¢Â¶Ã¦â€“Â¼Ã¤Â¸â‚¬Ã¥â‚¬â€¹Ã§Â¶Â²Ã§ÂÆ’Ã¥Â Â´Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  5008,
-                          "es":  "Ni siquiera los gemelos idénticos comparten huellas dactilares.",
-                          "en":  "Fingerprints are unique even between identical twins.",
-                          "zhHans":  "Ã¥ÂÂ³Ã¤Â½Â¿Ã¦ËœÂ¯Ã¥ÂÅ’Ã¥ÂÂµÃ¥ÂÅ’Ã¨Æ’Å¾Ã¨Æ’Å½Ã¯Â¼Å’Ã¦Å’â€¡Ã§ÂºÂ¹Ã¤Â¹Å¸Ã¦ËœÂ¯Ã§â€¹Â¬Ã¤Â¸â‚¬Ã¦â€”Â Ã¤ÂºÅ’Ã§Å¡â€žÃ£â‚¬â€š",
-                          "zhHant":  "Ã¥ÂÂ³Ã¤Â½Â¿Ã¦ËœÂ¯Ã¥ÂÅ’Ã¥ÂÂµÃ©â€ºâ„¢Ã¨Æ’Å¾Ã¨Æ’Å½Ã¯Â¼Å’Ã¦Å’â€¡Ã§Â´â€¹Ã¤Â¹Å¸Ã¦ËœÂ¯Ã§ÂÂ¨Ã¤Â¸â‚¬Ã§â€žÂ¡Ã¤ÂºÅ’Ã§Å¡â€žÃ£â‚¬â€š"
-                      },
-                      {
-                          "id":  5010,
-                          "es":  "Tu nariz puede diferenciar más de un billón de olores.",
-                          "en":  "The human sense of smell can detect over a trillion different scents.",
-                          "zhHans":  "Ã¤ÂºÂºÃ§Â±Â»Ã§Å¡â€žÃ¥â€”â€¦Ã¨Â§â€°Ã¥ÂÂ¯Ã¤Â»Â¥Ã¦Å½Â¢Ã¦Âµâ€¹Ã¨Â¶â€¦Ã¨Â¿â€¡Ã¤Â¸â‚¬Ã¤Â¸â€¡Ã¤ÂºÂ¿Ã§Â§ÂÃ¤Â¸ÂÃ¥ÂÅ’Ã§Å¡â€žÃ¦Â°â€Ã¥â€˜Â³Ã£â‚¬â€š",
-                          "zhHant":  "Ã¤ÂºÂºÃ©Â¡Å¾Ã§Å¡â€žÃ¥â€”â€¦Ã¨Â¦ÂºÃ¥ÂÂ¯Ã¤Â»Â¥Ã¦Å½Â¢Ã¦Â¸Â¬Ã¨Â¶â€¦Ã©ÂÅ½Ã¤Â¸â‚¬Ã¥â€¦â€ Ã§Â¨Â®Ã¤Â¸ÂÃ¥ÂÅ’Ã§Å¡â€žÃ¦Â°Â£Ã¥â€˜Â³Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  5013,
-                          "es":  "Naces con unos 270 huesos, pero de adulto te quedas con 206.",
-                          "en":  "A baby is born with 270 bones; adults have only 206.",
-                          "zhHans":  "Ã¥Â©Â´Ã¥â€žÂ¿Ã¥â€¡ÂºÃ§â€Å¸Ã¦â€”Â¶Ã¦Å“â€°270Ã¥Ââ€”Ã©ÂªÂ¨Ã¥Â¤Â´Ã¯Â¼Å’Ã¦Ë†ÂÃ¤ÂºÂºÃ¥ÂÂªÃ¦Å“â€°206Ã¥Ââ€”Ã£â‚¬â€š",
-                          "zhHant":  "Ã¥Â¬Â°Ã¥â€¦â€™Ã¥â€¡ÂºÃ§â€Å¸Ã¦â„¢â€šÃ¦Å“â€°270Ã¥Â¡Å Ã©ÂªÂ¨Ã©Â Â­Ã¯Â¼Å’Ã¦Ë†ÂÃ¤ÂºÂºÃ¥ÂÂªÃ¦Å“â€°206Ã¥Â¡Å Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  5016,
-                          "es":  "La córnea no tiene vasos sanguíneos: toma oxígeno directamente del aire.",
-                          "en":  "The cornea has no blood vessels and gets oxygen directly from the air.",
-                          "zhHans":  "Ã¨Â§â€™Ã¨â€ Å“Ã¦Â²Â¡Ã¦Å“â€°Ã¨Â¡â‚¬Ã§Â®Â¡Ã¯Â¼Å’Ã§â€ºÂ´Ã¦Å½Â¥Ã¤Â»Å½Ã§Â©ÂºÃ¦Â°â€Ã¤Â¸Â­Ã¨Å½Â·Ã¥Ââ€“Ã¦Â°Â§Ã¦Â°â€Ã£â‚¬â€š",
-                          "zhHant":  "Ã¨Â§â€™Ã¨â€ Å“Ã¦Â²â€™Ã¦Å“â€°Ã¨Â¡â‚¬Ã§Â®Â¡Ã¯Â¼Å’Ã§â€ºÂ´Ã¦Å½Â¥Ã¥Â¾Å¾Ã§Â©ÂºÃ¦Â°Â£Ã¤Â¸Â­Ã§ÂÂ²Ã¥Ââ€“Ã¦Â°Â§Ã¦Â°Â£Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  5018,
-                          "es":  "Tu cerebro alberga alrededor de 86.000 millones de neuronas.",
-                          "en":  "The human brain has about 86 billion neurons.",
-                          "zhHans":  "Ã¤ÂºÂºÃ¨â€žâ€˜Ã§ÂºÂ¦Ã¦Å“â€°860Ã¤ÂºÂ¿Ã¤Â¸ÂªÃ§Â¥Å¾Ã§Â»ÂÃ¥â€¦Æ’Ã£â‚¬â€š",
-                          "zhHant":  "Ã¤ÂºÂºÃ¨â€¦Â¦Ã§Â´â€žÃ¦Å“â€°860Ã¥â€žâ€žÃ¥â‚¬â€¹Ã§Â¥Å¾Ã§Â¶â€œÃ¥â€¦Æ’Ã£â‚¬â€š"
-                      }
-                  ]
+        "id": 5,
+        "es": "Cuerpo Humano",
+        "en": "Human Body",
+        "zhHans": "Ã¤ÂºÂºÃ¤Â½â€œ",
+        "zhHant": "Ã¤ÂºÂºÃ©Â«â€",
+        "emoji": "🫀",
+        "datos": [
+            {
+                "id": 5001,
+                "es": "Tu cuerpo está hecho de más de 37 billones de células.",
+                "en": "The human body has more than 37 trillion cells.",
+                "zhHans": "Ã¤ÂºÂºÃ¤Â½â€œÃ¦Å“â€°Ã¨Â¶â€¦Ã¨Â¿â€¡37Ã¤Â¸â€¡Ã¤ÂºÂ¿Ã¤Â¸ÂªÃ§Â»â€ Ã¨Æ’Å¾Ã£â‚¬â€š",
+                "zhHant": "Ã¤ÂºÂºÃ©Â«â€Ã¦Å“â€°Ã¨Â¶â€¦Ã©ÂÅ½37Ã¥â€¦â€ Ã¥â‚¬â€¹Ã§Â´Â°Ã¨Æ’Å¾Ã£â‚¬â€š"
+            },
+            {
+                "id": 5003,
+                "es": "Tu cerebro pesa poco, pero gasta alrededor del 20% de la energía del cuerpo.",
+                "en": "The brain consumes 20% of the body's energy despite being only 2% of body weight.",
+                "zhHans": "Ã¥Â¤Â§Ã¨â€žâ€˜Ã¤Â»â€¦Ã¥ÂÂ Ã¤Â½â€œÃ©â€¡ÂÃ§Å¡â€ž2%Ã¯Â¼Å’Ã¥ÂÂ´Ã¦Â¶Ë†Ã¨â‚¬â€”20%Ã§Å¡â€žÃ¨ÂºÂ«Ã¤Â½â€œÃ¨Æ’Â½Ã©â€¡ÂÃ£â‚¬â€š",
+                "zhHant": "Ã¥Â¤Â§Ã¨â€¦Â¦Ã¥Æ’â€¦Ã¤Â½â€Ã©Â«â€Ã©â€¡ÂÃ§Å¡â€ž2%Ã¯Â¼Å’Ã¥ÂÂ»Ã¦Â¶Ë†Ã¨â‚¬â€”20%Ã§Å¡â€žÃ¨ÂºÂ«Ã©Â«â€Ã¨Æ’Â½Ã©â€¡ÂÃ£â‚¬â€š"
+            },
+            {
+                "id": 5005,
+                "es": "Tu corazón late unas 100.000 veces al día.",
+                "en": "The heart beats about 100,000 times a day, about 3 billion in a lifetime.",
+                "zhHans": "Ã¥Â¿Æ’Ã¨â€žÂÃ¦Â¯ÂÃ¥Â¤Â©Ã¨Â·Â³Ã¥Å Â¨Ã§ÂºÂ¦10Ã¤Â¸â€¡Ã¦Â¬Â¡Ã¯Â¼Å’Ã¤Â¸â‚¬Ã§â€Å¸Ã§ÂºÂ¦Ã¨Â·Â³Ã¥Å Â¨30Ã¤ÂºÂ¿Ã¦Â¬Â¡Ã£â‚¬â€š",
+                "zhHant": "Ã¥Â¿Æ’Ã¨â€¡Å¸Ã¦Â¯ÂÃ¥Â¤Â©Ã¨Â·Â³Ã¥â€¹â€¢Ã§Â´â€ž10Ã¨ÂÂ¬Ã¦Â¬Â¡Ã¯Â¼Å’Ã¤Â¸â‚¬Ã§â€Å¸Ã§Â´â€žÃ¨Â·Â³Ã¥â€¹â€¢30Ã¥â€žâ€žÃ¦Â¬Â¡Ã£â‚¬â€š"
+            },
+            {
+                "id": 5006,
+                "es": "Si alinearas todos tus vasos sanguíneos, superarían los 100.000 kilómetros.",
+                "en": "The blood vessels in the human body total over 100,000 km.",
+                "zhHans": "Ã¤ÂºÂºÃ¤Â½â€œÃ¨Â¡â‚¬Ã§Â®Â¡Ã¦â‚¬Â»Ã©â€¢Â¿Ã¥ÂºÂ¦Ã¨Â¶â€¦Ã¨Â¿â€¡100,000Ã¥â€¦Â¬Ã©â€¡Å’Ã£â‚¬â€š",
+                "zhHant": "Ã¤ÂºÂºÃ©Â«â€Ã¨Â¡â‚¬Ã§Â®Â¡Ã§Â¸Â½Ã©â€¢Â·Ã¥ÂºÂ¦Ã¨Â¶â€¦Ã©ÂÅ½100,000Ã¥â€¦Â¬Ã©â€¡Å’Ã£â‚¬â€š"
+            },
+            {
+                "id": 5007,
+                "es": "La superficie interna de tus pulmones ronda la de una pista de tenis.",
+                "en": "The lungs have the same surface area as a tennis court.",
+                "zhHans": "Ã¨â€šÂºÃ©Æ’Â¨Ã§Å¡â€žÃ¨Â¡Â¨Ã©ÂÂ¢Ã§Â§Â¯Ã§â€ºÂ¸Ã¥Â½â€œÃ¤ÂºÅ½Ã¤Â¸â‚¬Ã¤Â¸ÂªÃ§Â½â€˜Ã§ÂÆ’Ã¥Å“ÂºÃ£â‚¬â€š",
+                "zhHant": "Ã¨â€šÂºÃ©Æ’Â¨Ã§Å¡â€žÃ¨Â¡Â¨Ã©ÂÂ¢Ã§Â©ÂÃ§â€ºÂ¸Ã§â€¢Â¶Ã¦â€“Â¼Ã¤Â¸â‚¬Ã¥â‚¬â€¹Ã§Â¶Â²Ã§ÂÆ’Ã¥Â Â´Ã£â‚¬â€š"
+            },
+            {
+                "id": 5008,
+                "es": "Ni siquiera los gemelos idénticos comparten huellas dactilares.",
+                "en": "Fingerprints are unique even between identical twins.",
+                "zhHans": "Ã¥ÂÂ³Ã¤Â½Â¿Ã¦ËœÂ¯Ã¥ÂÅ’Ã¥ÂÂµÃ¥ÂÅ’Ã¨Æ’Å¾Ã¨Æ’Å½Ã¯Â¼Å’Ã¦Å’â€¡Ã§ÂºÂ¹Ã¤Â¹Å¸Ã¦ËœÂ¯Ã§â€¹Â¬Ã¤Â¸â‚¬Ã¦â€”Â Ã¤ÂºÅ’Ã§Å¡â€žÃ£â‚¬â€š",
+                "zhHant": "Ã¥ÂÂ³Ã¤Â½Â¿Ã¦ËœÂ¯Ã¥ÂÅ’Ã¥ÂÂµÃ©â€ºâ„¢Ã¨Æ’Å¾Ã¨Æ’Å½Ã¯Â¼Å’Ã¦Å’â€¡Ã§Â´â€¹Ã¤Â¹Å¸Ã¦ËœÂ¯Ã§ÂÂ¨Ã¤Â¸â‚¬Ã§â€žÂ¡Ã¤ÂºÅ’Ã§Å¡â€žÃ£â‚¬â€š"
+            },
+            {
+                "id": 5010,
+                "es": "Tu nariz puede diferenciar más de un billón de olores.",
+                "en": "The human sense of smell can detect over a trillion different scents.",
+                "zhHans": "Ã¤ÂºÂºÃ§Â±Â»Ã§Å¡â€žÃ¥â€”â€¦Ã¨Â§â€°Ã¥ÂÂ¯Ã¤Â»Â¥Ã¦Å½Â¢Ã¦Âµâ€¹Ã¨Â¶â€¦Ã¨Â¿â€¡Ã¤Â¸â‚¬Ã¤Â¸â€¡Ã¤ÂºÂ¿Ã§Â§ÂÃ¤Â¸ÂÃ¥ÂÅ’Ã§Å¡â€žÃ¦Â°â€Ã¥â€˜Â³Ã£â‚¬â€š",
+                "zhHant": "Ã¤ÂºÂºÃ©Â¡Å¾Ã§Å¡â€žÃ¥â€”â€¦Ã¨Â¦ÂºÃ¥ÂÂ¯Ã¤Â»Â¥Ã¦Å½Â¢Ã¦Â¸Â¬Ã¨Â¶â€¦Ã©ÂÅ½Ã¤Â¸â‚¬Ã¥â€¦â€ Ã§Â¨Â®Ã¤Â¸ÂÃ¥ÂÅ’Ã§Å¡â€žÃ¦Â°Â£Ã¥â€˜Â³Ã£â‚¬â€š"
+            },
+            {
+                "id": 5013,
+                "es": "Naces con unos 270 huesos, pero de adulto te quedas con 206.",
+                "en": "A baby is born with 270 bones; adults have only 206.",
+                "zhHans": "Ã¥Â©Â´Ã¥â€žÂ¿Ã¥â€¡ÂºÃ§â€Å¸Ã¦â€”Â¶Ã¦Å“â€°270Ã¥Ââ€”Ã©ÂªÂ¨Ã¥Â¤Â´Ã¯Â¼Å’Ã¦Ë†ÂÃ¤ÂºÂºÃ¥ÂÂªÃ¦Å“â€°206Ã¥Ââ€”Ã£â‚¬â€š",
+                "zhHant": "Ã¥Â¬Â°Ã¥â€¦â€™Ã¥â€¡ÂºÃ§â€Å¸Ã¦â„¢â€šÃ¦Å“â€°270Ã¥Â¡Å Ã©ÂªÂ¨Ã©Â Â­Ã¯Â¼Å’Ã¦Ë†ÂÃ¤ÂºÂºÃ¥ÂÂªÃ¦Å“â€°206Ã¥Â¡Å Ã£â‚¬â€š"
+            },
+            {
+                "id": 5016,
+                "es": "La córnea no tiene vasos sanguíneos: toma oxígeno directamente del aire.",
+                "en": "The cornea has no blood vessels and gets oxygen directly from the air.",
+                "zhHans": "Ã¨Â§â€™Ã¨â€ Å“Ã¦Â²Â¡Ã¦Å“â€°Ã¨Â¡â‚¬Ã§Â®Â¡Ã¯Â¼Å’Ã§â€ºÂ´Ã¦Å½Â¥Ã¤Â»Å½Ã§Â©ÂºÃ¦Â°â€Ã¤Â¸Â­Ã¨Å½Â·Ã¥Ââ€“Ã¦Â°Â§Ã¦Â°â€Ã£â‚¬â€š",
+                "zhHant": "Ã¨Â§â€™Ã¨â€ Å“Ã¦Â²â€™Ã¦Å“â€°Ã¨Â¡â‚¬Ã§Â®Â¡Ã¯Â¼Å’Ã§â€ºÂ´Ã¦Å½Â¥Ã¥Â¾Å¾Ã§Â©ÂºÃ¦Â°Â£Ã¤Â¸Â­Ã§ÂÂ²Ã¥Ââ€“Ã¦Â°Â§Ã¦Â°Â£Ã£â‚¬â€š"
+            },
+            {
+                "id": 5018,
+                "es": "Tu cerebro alberga alrededor de 86.000 millones de neuronas.",
+                "en": "The human brain has about 86 billion neurons.",
+                "zhHans": "Ã¤ÂºÂºÃ¨â€žâ€˜Ã§ÂºÂ¦Ã¦Å“â€°860Ã¤ÂºÂ¿Ã¤Â¸ÂªÃ§Â¥Å¾Ã§Â»ÂÃ¥â€¦Æ’Ã£â‚¬â€š",
+                "zhHant": "Ã¤ÂºÂºÃ¨â€¦Â¦Ã§Â´â€žÃ¦Å“â€°860Ã¥â€žâ€žÃ¥â‚¬â€¹Ã§Â¥Å¾Ã§Â¶â€œÃ¥â€¦Æ’Ã£â‚¬â€š"
+            }
+        ]
     },
     {
-        "id":  6,
-        "es":  "Tecnología",
-        "en":  "Technology",
-        "zhHans":  "Ã¦Å â‚¬Ã¦Å“Â¯",
-        "zhHant":  "Ã¦Å â‚¬Ã¨Â¡â€œ",
-        "emoji":  "Ã°Å¸â€™Â»",
-        "datos":  [
-                      {
-                          "id":  6001,
-                          "es":  "El primer mensaje de internet quiso decir LOGIN, pero la red cayó tras escribir solo LO.",
-                          "en":  "The first internet message was \u0027LO\u0027; the system crashed before completing \u0027LOGIN\u0027.",
-                          "zhHans":  "Ã¤Âºâ€™Ã¨Ââ€Ã§Â½â€˜Ã¤Â¸Å Ã¥Ââ€˜Ã©â‚¬ÂÃ§Å¡â€žÃ§Â¬Â¬Ã¤Â¸â‚¬Ã¦ÂÂ¡Ã¦Â¶Ë†Ã¦ÂÂ¯Ã¦ËœÂ¯\u0027LO\u0027Ã¯Â¼Å’Ã§Â³Â»Ã§Â»Å¸Ã¥Å“Â¨Ã¥Â®Å’Ã¦Ë†Â\u0027LOGIN\u0027Ã¥â€°ÂÃ¥Â´Â©Ã¦ÂºÆ’Ã¤Âºâ€ Ã£â‚¬â€š",
-                          "zhHant":  "Ã§Â¶Â²Ã©Å¡â€ºÃ§Â¶Â²Ã¨Â·Â¯Ã¤Â¸Å Ã§â„¢Â¼Ã©â‚¬ÂÃ§Å¡â€žÃ§Â¬Â¬Ã¤Â¸â‚¬Ã¦Â¢ÂÃ¨Â¨Å Ã¦ÂÂ¯Ã¦ËœÂ¯\u0027LO\u0027Ã¯Â¼Å’Ã§Â³Â»Ã§ÂµÂ±Ã¥Å“Â¨Ã¥Â®Å’Ã¦Ë†Â\u0027LOGIN\u0027Ã¥â€°ÂÃ¥Â´Â©Ã¦Â½Â°Ã¤Âºâ€ Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  6002,
-                          "es":  "El primer móvil comercial pesaba casi un kilo y costaba unos 4.000 dólares.",
-                          "en":  "The first commercial mobile phone weighed nearly a kilogram and cost $4,000.",
-                          "zhHans":  "Ã§Â¬Â¬Ã¤Â¸â‚¬Ã¦Â¬Â¾Ã¥â€¢â€ Ã¤Â¸Å¡Ã¦â€°â€¹Ã¦Å“ÂºÃ©â€¡ÂÃ§ÂºÂ¦Ã¤Â¸â‚¬Ã¥â€¦Â¬Ã¦â€“Â¤Ã¯Â¼Å’Ã¥â€Â®Ã¤Â»Â·4000Ã§Â¾Å½Ã¥â€¦Æ’Ã£â‚¬â€š",
-                          "zhHant":  "Ã§Â¬Â¬Ã¤Â¸â‚¬Ã¦Â¬Â¾Ã¥â€¢â€ Ã¦Â¥Â­Ã¦â€°â€¹Ã¦Â©Å¸Ã©â€¡ÂÃ§Â´â€žÃ¤Â¸â‚¬Ã¥â€¦Â¬Ã¦â€“Â¤Ã¯Â¼Å’Ã¥â€Â®Ã¥Æ’Â¹4000Ã§Â¾Å½Ã¥â€¦Æ’Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  6004,
-                          "es":  "Google empezó como un proyecto universitario con un nombre bastante raro: BackRub.",
-                          "en":  "Google started as a university research project called \u0027BackRub\u0027.",
-                          "zhHans":  "Ã¨Â°Â·Ã¦Â­Å’Ã¦Å“â‚¬Ã¥Ë†ÂÃ¦ËœÂ¯Ã¤Â¸â‚¬Ã¤Â¸ÂªÃ¥ÂÂÃ¤Â¸Âº\u0027BackRub\u0027Ã§Å¡â€žÃ¥Â¤Â§Ã¥Â­Â¦Ã§Â â€Ã§Â©Â¶Ã©Â¡Â¹Ã§â€ºÂ®Ã£â‚¬â€š",
-                          "zhHant":  "Ã¨Â°Â·Ã¦Â­Å’Ã¦Å“â‚¬Ã¥Ë†ÂÃ¦ËœÂ¯Ã¤Â¸â‚¬Ã¥â‚¬â€¹Ã¥ÂÂÃ§â€šÂº\u0027BackRub\u0027Ã§Å¡â€žÃ¥Â¤Â§Ã¥Â­Â¸Ã§Â â€Ã§Â©Â¶Ã©Â â€¦Ã§â€ºÂ®Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  6007,
-                          "es":  "YouTube nació en 2005 gracias a tres ex empleados de PayPal.",
-                          "en":  "YouTube was founded by three former PayPal employees in February 2005.",
-                          "zhHans":  "YouTubeÃ§â€Â±Ã¤Â¸â€°Ã¥ÂÂÃ¥â€°ÂPayPalÃ¥â€˜ËœÃ¥Â·Â¥Ã¤ÂºÅ½2005Ã¥Â¹Â´2Ã¦Å“Ë†Ã¥Ë†â€ºÃ§Â«â€¹Ã£â‚¬â€š",
-                          "zhHant":  "YouTubeÃ§â€Â±Ã¤Â¸â€°Ã¥ÂÂÃ¥â€°ÂPayPalÃ¥â€œÂ¡Ã¥Â·Â¥Ã¦â€“Â¼2005Ã¥Â¹Â´2Ã¦Å“Ë†Ã¥â€°ÂµÃ§Â«â€¹Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  6008,
-                          "es":  "El QR se inventó en Japón para seguir piezas de coches, no para cartas de bar.",
-                          "en":  "The QR code was invented in Japan in 1994 to track car parts.",
-                          "zhHans":  "Ã¤ÂºÅ’Ã§Â»Â´Ã§Â ÂÃ¤ÂºÅ½1994Ã¥Â¹Â´Ã¥Å“Â¨Ã¦â€”Â¥Ã¦Å“Â¬Ã¥Ââ€˜Ã¦ËœÅ½Ã¯Â¼Å’Ã§â€Â¨Ã¤ÂºÅ½Ã¨Â¿Â½Ã¨Â¸ÂªÃ¦Â±Â½Ã¨Â½Â¦Ã©â€ºÂ¶Ã¤Â»Â¶Ã£â‚¬â€š",
-                          "zhHant":  "Ã¤ÂºÅ’Ã§Â¶Â­Ã§Â¢Â¼Ã¦â€“Â¼1994Ã¥Â¹Â´Ã¥Å“Â¨Ã¦â€”Â¥Ã¦Å“Â¬Ã§â„¢Â¼Ã¦ËœÅ½Ã¯Â¼Å’Ã§â€Â¨Ã¦â€“Â¼Ã¨Â¿Â½Ã¨Â¹Â¤Ã¦Â±Â½Ã¨Â»Å Ã©â€ºÂ¶Ã¤Â»Â¶Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  6009,
-                          "es":  "El primer email lo envió Ray Tomlinson en 1971.",
-                          "en":  "The first email was sent by Ray Tomlinson in 1971.",
-                          "zhHans":  "Ã§Â¬Â¬Ã¤Â¸â‚¬Ã¥Â°ÂÃ§â€ÂµÃ¥Â­ÂÃ©â€šÂ®Ã¤Â»Â¶Ã§â€Â±Ã©â€ºÂ·Ã‚Â·Ã¦Â±Â¤Ã¥Â§â€ Ã¦Å¾â€”Ã¦Â£Â®Ã¤ÂºÅ½1971Ã¥Â¹Â´Ã¥Ââ€˜Ã©â‚¬ÂÃ£â‚¬â€š",
-                          "zhHant":  "Ã§Â¬Â¬Ã¤Â¸â‚¬Ã¥Â°ÂÃ©â€ºÂ»Ã¥Â­ÂÃ©Æ’ÂµÃ¤Â»Â¶Ã§â€Â±Ã©â€ºÂ·Ã‚Â·Ã¦Â¹Â¯Ã¥Â§â€ Ã¦Å¾â€”Ã¦Â£Â®Ã¦â€“Â¼1971Ã¥Â¹Â´Ã§â„¢Â¼Ã©â‚¬ÂÃ£â‚¬â€š"
-                      },
-                      {
-                          "id":  6011,
-                          "es":  "Amazon arrancó vendiendo solo libros desde el garaje de Jeff Bezos.",
-                          "en":  "Amazon started selling only books from Jeff Bezos\u0027s garage.",
-                          "zhHans":  "Ã¤ÂºÅ¡Ã©Â©Â¬Ã©â‚¬Å Ã¦Å“â‚¬Ã¥Ë†ÂÃ¥ÂÂªÃ¥Å“Â¨Ã¦ÂÂ°Ã¥Â¤Â«Ã‚Â·Ã¨Â´ÂÃ¤Â½ÂÃ¦â€“Â¯Ã§Å¡â€žÃ¨Â½Â¦Ã¥Âºâ€œÃ©â€¡Å’Ã¥Ââ€“Ã¤Â¹Â¦Ã£â‚¬â€š",
-                          "zhHant":  "Ã¤ÂºÅ¾Ã©Â¦Â¬Ã©ÂÅ“Ã¦Å“â‚¬Ã¥Ë†ÂÃ¥ÂÂªÃ¥Å“Â¨Ã¥â€šâ€˜Ã¥Â¤Â«Ã‚Â·Ã¨Â²ÂÃ¤Â½ÂÃ¦â€“Â¯Ã§Å¡â€žÃ¨Â»Å Ã¥ÂºÂ«Ã¨Â£Â¡Ã¨Â³Â£Ã¦â€ºÂ¸Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  6012,
-                          "es":  "El primer iPhone salió sin copiar ni pegar.",
-                          "en":  "The first iPhone did not have a copy-and-paste feature.",
-                          "zhHans":  "Ã§Â¬Â¬Ã¤Â¸â‚¬Ã¤Â»Â£iPhoneÃ¦Â²Â¡Ã¦Å“â€°Ã¥Â¤ÂÃ¥Ë†Â¶Ã§Â²ËœÃ¨Â´Â´Ã¥Å Å¸Ã¨Æ’Â½Ã£â‚¬â€š",
-                          "zhHant":  "Ã§Â¬Â¬Ã¤Â¸â‚¬Ã¤Â»Â£iPhoneÃ¦Â²â€™Ã¦Å“â€°Ã¨Â¤â€¡Ã¨Â£Â½Ã¨Â²Â¼Ã¤Â¸Å Ã¥Å Å¸Ã¨Æ’Â½Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  6015,
-                          "es":  "Bluetooth se llama así por Harald Bluetooth, un rey vikingo del siglo X.",
-                          "en":  "The name \u0027Bluetooth\u0027 comes from Harald Bluetooth, a 10th-century Viking king.",
-                          "zhHans":  "\u0027Ã¨â€œÂÃ§â€°â„¢\u0027Ã¨Â¿â„¢Ã¤Â¸ÂªÃ¥ÂÂÃ¥Â­â€”Ã¦ÂÂ¥Ã¦ÂºÂÃ¤ÂºÅ½10Ã¤Â¸â€“Ã§ÂºÂªÃ§Â»Â´Ã¤ÂºÂ¬Ã¥â€ºÂ½Ã§Å½â€¹Ã¥â€œË†Ã¦â€¹â€°Ã¥Â°â€Ã‚Â·Ã¨â€œÂÃ§â€°â„¢Ã£â‚¬â€š",
-                          "zhHant":  "\u0027Ã¨â€”ÂÃ§â€°â„¢\u0027Ã©â‚¬â„¢Ã¥â‚¬â€¹Ã¥ÂÂÃ¥Â­â€”Ã¤Â¾â€ Ã¦ÂºÂÃ¦â€“Â¼10Ã¤Â¸â€“Ã§Â´â‚¬Ã§Â¶Â­Ã¤ÂºÂ¬Ã¥Å“â€¹Ã§Å½â€¹Ã¥â€œË†Ã¦â€¹â€°Ã§Ë†Â¾Ã‚Â·Ã¨â€”ÂÃ§â€°â„¢Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  6019,
-                          "es":  "La World Wide Web la inventó Tim Berners-Lee en 1989.",
-                          "en":  "The World Wide Web was invented by Tim Berners-Lee in 1989.",
-                          "zhHans":  "Ã¤Â¸â€¡Ã§Â»Â´Ã§Â½â€˜Ã§â€Â±Ã¨â€™â€šÃ¥Â§â€ Ã‚Â·Ã¤Â¼Â¯Ã§ÂºÂ³Ã¦â€“Â¯-Ã¦ÂÅ½Ã¤ÂºÅ½1989Ã¥Â¹Â´Ã¥Ââ€˜Ã¦ËœÅ½Ã£â‚¬â€š",
-                          "zhHant":  "Ã¥â€¦Â¨Ã§ÂÆ’Ã¨Â³â€¡Ã¨Â¨Å Ã§Â¶Â²Ã§â€Â±Ã¦ÂÂÃ¥Â§â€ Ã‚Â·Ã¤Â¼Â¯Ã§Â´ÂÃ¦â€“Â¯-Ã¦ÂÅ½Ã¦â€“Â¼1989Ã¥Â¹Â´Ã§â„¢Â¼Ã¦ËœÅ½Ã£â‚¬â€š"
-                      }
-                  ]
+        "id": 6,
+        "es": "Tecnología",
+        "en": "Technology",
+        "zhHans": "Ã¦Å â‚¬Ã¦Å“Â¯",
+        "zhHant": "Ã¦Å â‚¬Ã¨Â¡â€œ",
+        "emoji": "💻",
+        "datos": [
+            {
+                "id": 6001,
+                "es": "El primer mensaje de internet quiso decir LOGIN, pero la red cayó tras escribir solo LO.",
+                "en": "The first internet message was 'LO'; the system crashed before completing 'LOGIN'.",
+                "zhHans": "Ã¤Âºâ€™Ã¨Ââ€Ã§Â½â€˜Ã¤Â¸Å Ã¥Ââ€˜Ã©â‚¬ÂÃ§Å¡â€žÃ§Â¬Â¬Ã¤Â¸â‚¬Ã¦ÂÂ¡Ã¦Â¶Ë†Ã¦ÂÂ¯Ã¦ËœÂ¯'LO'Ã¯Â¼Å’Ã§Â³Â»Ã§Â»Å¸Ã¥Å“Â¨Ã¥Â®Å’Ã¦Ë†Â'LOGIN'Ã¥â€°ÂÃ¥Â´Â©Ã¦ÂºÆ’Ã¤Âºâ€ Ã£â‚¬â€š",
+                "zhHant": "Ã§Â¶Â²Ã©Å¡â€ºÃ§Â¶Â²Ã¨Â·Â¯Ã¤Â¸Å Ã§â„¢Â¼Ã©â‚¬ÂÃ§Å¡â€žÃ§Â¬Â¬Ã¤Â¸â‚¬Ã¦Â¢ÂÃ¨Â¨Å Ã¦ÂÂ¯Ã¦ËœÂ¯'LO'Ã¯Â¼Å’Ã§Â³Â»Ã§ÂµÂ±Ã¥Å“Â¨Ã¥Â®Å’Ã¦Ë†Â'LOGIN'Ã¥â€°ÂÃ¥Â´Â©Ã¦Â½Â°Ã¤Âºâ€ Ã£â‚¬â€š"
+            },
+            {
+                "id": 6002,
+                "es": "El primer móvil comercial pesaba casi un kilo y costaba unos 4.000 dólares.",
+                "en": "The first commercial mobile phone weighed nearly a kilogram and cost $4,000.",
+                "zhHans": "Ã§Â¬Â¬Ã¤Â¸â‚¬Ã¦Â¬Â¾Ã¥â€¢â€ Ã¤Â¸Å¡Ã¦â€°â€¹Ã¦Å“ÂºÃ©â€¡ÂÃ§ÂºÂ¦Ã¤Â¸â‚¬Ã¥â€¦Â¬Ã¦â€“Â¤Ã¯Â¼Å’Ã¥â€Â®Ã¤Â»Â·4000Ã§Â¾Å½Ã¥â€¦Æ’Ã£â‚¬â€š",
+                "zhHant": "Ã§Â¬Â¬Ã¤Â¸â‚¬Ã¦Â¬Â¾Ã¥â€¢â€ Ã¦Â¥Â­Ã¦â€°â€¹Ã¦Â©Å¸Ã©â€¡ÂÃ§Â´â€žÃ¤Â¸â‚¬Ã¥â€¦Â¬Ã¦â€“Â¤Ã¯Â¼Å’Ã¥â€Â®Ã¥Æ’Â¹4000Ã§Â¾Å½Ã¥â€¦Æ’Ã£â‚¬â€š"
+            },
+            {
+                "id": 6004,
+                "es": "Google empezó como un proyecto universitario con un nombre bastante raro: BackRub.",
+                "en": "Google started as a university research project called 'BackRub'.",
+                "zhHans": "Ã¨Â°Â·Ã¦Â­Å’Ã¦Å“â‚¬Ã¥Ë†ÂÃ¦ËœÂ¯Ã¤Â¸â‚¬Ã¤Â¸ÂªÃ¥ÂÂÃ¤Â¸Âº'BackRub'Ã§Å¡â€žÃ¥Â¤Â§Ã¥Â­Â¦Ã§Â â€Ã§Â©Â¶Ã©Â¡Â¹Ã§â€ºÂ®Ã£â‚¬â€š",
+                "zhHant": "Ã¨Â°Â·Ã¦Â­Å’Ã¦Å“â‚¬Ã¥Ë†ÂÃ¦ËœÂ¯Ã¤Â¸â‚¬Ã¥â‚¬â€¹Ã¥ÂÂÃ§â€šÂº'BackRub'Ã§Å¡â€žÃ¥Â¤Â§Ã¥Â­Â¸Ã§Â â€Ã§Â©Â¶Ã©Â â€¦Ã§â€ºÂ®Ã£â‚¬â€š"
+            },
+            {
+                "id": 6007,
+                "es": "YouTube nació en 2005 gracias a tres ex empleados de PayPal.",
+                "en": "YouTube was founded by three former PayPal employees in February 2005.",
+                "zhHans": "YouTubeÃ§â€Â±Ã¤Â¸â€°Ã¥ÂÂÃ¥â€°ÂPayPalÃ¥â€˜ËœÃ¥Â·Â¥Ã¤ÂºÅ½2005Ã¥Â¹Â´2Ã¦Å“Ë†Ã¥Ë†â€ºÃ§Â«â€¹Ã£â‚¬â€š",
+                "zhHant": "YouTubeÃ§â€Â±Ã¤Â¸â€°Ã¥ÂÂÃ¥â€°ÂPayPalÃ¥â€œÂ¡Ã¥Â·Â¥Ã¦â€“Â¼2005Ã¥Â¹Â´2Ã¦Å“Ë†Ã¥â€°ÂµÃ§Â«â€¹Ã£â‚¬â€š"
+            },
+            {
+                "id": 6008,
+                "es": "El QR se inventó en Japón para seguir piezas de coches, no para cartas de bar.",
+                "en": "The QR code was invented in Japan in 1994 to track car parts.",
+                "zhHans": "Ã¤ÂºÅ’Ã§Â»Â´Ã§Â ÂÃ¤ÂºÅ½1994Ã¥Â¹Â´Ã¥Å“Â¨Ã¦â€”Â¥Ã¦Å“Â¬Ã¥Ââ€˜Ã¦ËœÅ½Ã¯Â¼Å’Ã§â€Â¨Ã¤ÂºÅ½Ã¨Â¿Â½Ã¨Â¸ÂªÃ¦Â±Â½Ã¨Â½Â¦Ã©â€ºÂ¶Ã¤Â»Â¶Ã£â‚¬â€š",
+                "zhHant": "Ã¤ÂºÅ’Ã§Â¶Â­Ã§Â¢Â¼Ã¦â€“Â¼1994Ã¥Â¹Â´Ã¥Å“Â¨Ã¦â€”Â¥Ã¦Å“Â¬Ã§â„¢Â¼Ã¦ËœÅ½Ã¯Â¼Å’Ã§â€Â¨Ã¦â€“Â¼Ã¨Â¿Â½Ã¨Â¹Â¤Ã¦Â±Â½Ã¨Â»Å Ã©â€ºÂ¶Ã¤Â»Â¶Ã£â‚¬â€š"
+            },
+            {
+                "id": 6009,
+                "es": "El primer email lo envió Ray Tomlinson en 1971.",
+                "en": "The first email was sent by Ray Tomlinson in 1971.",
+                "zhHans": "Ã§Â¬Â¬Ã¤Â¸â‚¬Ã¥Â°ÂÃ§â€ÂµÃ¥Â­ÂÃ©â€šÂ®Ã¤Â»Â¶Ã§â€Â±Ã©â€ºÂ·Ã‚Â·Ã¦Â±Â¤Ã¥Â§â€ Ã¦Å¾â€”Ã¦Â£Â®Ã¤ÂºÅ½1971Ã¥Â¹Â´Ã¥Ââ€˜Ã©â‚¬ÂÃ£â‚¬â€š",
+                "zhHant": "Ã§Â¬Â¬Ã¤Â¸â‚¬Ã¥Â°ÂÃ©â€ºÂ»Ã¥Â­ÂÃ©Æ’ÂµÃ¤Â»Â¶Ã§â€Â±Ã©â€ºÂ·Ã‚Â·Ã¦Â¹Â¯Ã¥Â§â€ Ã¦Å¾â€”Ã¦Â£Â®Ã¦â€“Â¼1971Ã¥Â¹Â´Ã§â„¢Â¼Ã©â‚¬ÂÃ£â‚¬â€š"
+            },
+            {
+                "id": 6011,
+                "es": "Amazon arrancó vendiendo solo libros desde el garaje de Jeff Bezos.",
+                "en": "Amazon started selling only books from Jeff Bezos's garage.",
+                "zhHans": "Ã¤ÂºÅ¡Ã©Â©Â¬Ã©â‚¬Å Ã¦Å“â‚¬Ã¥Ë†ÂÃ¥ÂÂªÃ¥Å“Â¨Ã¦ÂÂ°Ã¥Â¤Â«Ã‚Â·Ã¨Â´ÂÃ¤Â½ÂÃ¦â€“Â¯Ã§Å¡â€žÃ¨Â½Â¦Ã¥Âºâ€œÃ©â€¡Å’Ã¥Ââ€“Ã¤Â¹Â¦Ã£â‚¬â€š",
+                "zhHant": "Ã¤ÂºÅ¾Ã©Â¦Â¬Ã©ÂÅ“Ã¦Å“â‚¬Ã¥Ë†ÂÃ¥ÂÂªÃ¥Å“Â¨Ã¥â€šâ€˜Ã¥Â¤Â«Ã‚Â·Ã¨Â²ÂÃ¤Â½ÂÃ¦â€“Â¯Ã§Å¡â€žÃ¨Â»Å Ã¥ÂºÂ«Ã¨Â£Â¡Ã¨Â³Â£Ã¦â€ºÂ¸Ã£â‚¬â€š"
+            },
+            {
+                "id": 6012,
+                "es": "El primer iPhone salió sin copiar ni pegar.",
+                "en": "The first iPhone did not have a copy-and-paste feature.",
+                "zhHans": "Ã§Â¬Â¬Ã¤Â¸â‚¬Ã¤Â»Â£iPhoneÃ¦Â²Â¡Ã¦Å“â€°Ã¥Â¤ÂÃ¥Ë†Â¶Ã§Â²ËœÃ¨Â´Â´Ã¥Å Å¸Ã¨Æ’Â½Ã£â‚¬â€š",
+                "zhHant": "Ã§Â¬Â¬Ã¤Â¸â‚¬Ã¤Â»Â£iPhoneÃ¦Â²â€™Ã¦Å“â€°Ã¨Â¤â€¡Ã¨Â£Â½Ã¨Â²Â¼Ã¤Â¸Å Ã¥Å Å¸Ã¨Æ’Â½Ã£â‚¬â€š"
+            },
+            {
+                "id": 6015,
+                "es": "Bluetooth se llama así por Harald Bluetooth, un rey vikingo del siglo X.",
+                "en": "The name 'Bluetooth' comes from Harald Bluetooth, a 10th-century Viking king.",
+                "zhHans": "'Ã¨â€œÂÃ§â€°â„¢'Ã¨Â¿â„¢Ã¤Â¸ÂªÃ¥ÂÂÃ¥Â­â€”Ã¦ÂÂ¥Ã¦ÂºÂÃ¤ÂºÅ½10Ã¤Â¸â€“Ã§ÂºÂªÃ§Â»Â´Ã¤ÂºÂ¬Ã¥â€ºÂ½Ã§Å½â€¹Ã¥â€œË†Ã¦â€¹â€°Ã¥Â°â€Ã‚Â·Ã¨â€œÂÃ§â€°â„¢Ã£â‚¬â€š",
+                "zhHant": "'Ã¨â€”ÂÃ§â€°â„¢'Ã©â‚¬â„¢Ã¥â‚¬â€¹Ã¥ÂÂÃ¥Â­â€”Ã¤Â¾â€ Ã¦ÂºÂÃ¦â€“Â¼10Ã¤Â¸â€“Ã§Â´â‚¬Ã§Â¶Â­Ã¤ÂºÂ¬Ã¥Å“â€¹Ã§Å½â€¹Ã¥â€œË†Ã¦â€¹â€°Ã§Ë†Â¾Ã‚Â·Ã¨â€”ÂÃ§â€°â„¢Ã£â‚¬â€š"
+            },
+            {
+                "id": 6019,
+                "es": "La World Wide Web la inventó Tim Berners-Lee en 1989.",
+                "en": "The World Wide Web was invented by Tim Berners-Lee in 1989.",
+                "zhHans": "Ã¤Â¸â€¡Ã§Â»Â´Ã§Â½â€˜Ã§â€Â±Ã¨â€™â€šÃ¥Â§â€ Ã‚Â·Ã¤Â¼Â¯Ã§ÂºÂ³Ã¦â€“Â¯-Ã¦ÂÅ½Ã¤ÂºÅ½1989Ã¥Â¹Â´Ã¥Ââ€˜Ã¦ËœÅ½Ã£â‚¬â€š",
+                "zhHant": "Ã¥â€¦Â¨Ã§ÂÆ’Ã¨Â³â€¡Ã¨Â¨Å Ã§Â¶Â²Ã§â€Â±Ã¦ÂÂÃ¥Â§â€ Ã‚Â·Ã¤Â¼Â¯Ã§Â´ÂÃ¦â€“Â¯-Ã¦ÂÅ½Ã¦â€“Â¼1989Ã¥Â¹Â´Ã§â„¢Â¼Ã¦ËœÅ½Ã£â‚¬â€š"
+            }
+        ]
     },
     {
-        "id":  7,
-        "es":  "Arte y Cultura",
-        "en":  "Art \u0026 Culture",
-        "zhHans":  "Ã¨â€°ÂºÃ¦Å“Â¯Ã¤Â¸Å½Ã¦â€“â€¡Ã¥Å’â€“",
-        "zhHant":  "Ã¨â€”ÂÃ¨Â¡â€œÃ¨Ë†â€¡Ã¦â€“â€¡Ã¥Å’â€“",
-        "emoji":  "Ã°Å¸Å½Â¨",
-        "datos":  [
-                      {
-                          "id":  7001,
-                          "es":  "La Mona Lisa es famosísima, pero cabe en un cuadro de solo 77 x 53 cm.",
-                          "en":  "Leonardo da Vinci\u0027s Mona Lisa measures only 77 x 53 cm.",
-                          "zhHans":  "Ã¨Â¾Â¾Ã¨Å Â¬Ã¥Â¥â€¡Ã§Å¡â€žÃ¨â€™â„¢Ã¥Â¨Å“Ã¤Â¸Â½Ã¨Å½Å½Ã¥ÂÂªÃ¦Å“â€°77Ãƒâ€”53Ã¥Å½ËœÃ§Â±Â³Ã¥Â¤Â§Ã¥Â°ÂÃ£â‚¬â€š",
-                          "zhHant":  "Ã©Ââ€Ã¦â€“â€¡Ã¨Â¥Â¿Ã§Å¡â€žÃ¨â€™â„¢Ã¥Â¨Å“Ã©Âºâ€”Ã¨Å½Å½Ã¥ÂÂªÃ¦Å“â€°77Ãƒâ€”53Ã¥â€¦Â¬Ã¥Ë†â€ Ã¥Â¤Â§Ã¥Â°ÂÃ£â‚¬â€š"
-                      },
-                      {
-                          "id":  7002,
-                          "es":  "Beethoven compuso su Novena Sinfonía cuando ya estaba completamente sordo.",
-                          "en":  "Beethoven composed his Ninth Symphony while completely deaf.",
-                          "zhHans":  "Ã¨Â´ÂÃ¥Â¤Å¡Ã¨Å Â¬Ã¥Å“Â¨Ã¥Â®Å’Ã¥â€¦Â¨Ã¥Â¤Â±Ã¨ÂÂªÃ§Å¡â€žÃ¦Æ’â€¦Ã¥â€ ÂµÃ¤Â¸â€¹Ã¥Ë†â€ºÃ¤Â½Å“Ã¤Âºâ€ Ã§Â¬Â¬Ã¤Â¹ÂÃ¤ÂºÂ¤Ã¥â€œÂÃ¦â€ºÂ²Ã£â‚¬â€š",
-                          "zhHant":  "Ã¨Â²ÂÃ¥Â¤Å¡Ã¨Å Â¬Ã¥Å“Â¨Ã¥Â®Å’Ã¥â€¦Â¨Ã¥Â¤Â±Ã¨ÂÂ°Ã§Å¡â€žÃ¦Æ’â€¦Ã¦Â³ÂÃ¤Â¸â€¹Ã¥â€°ÂµÃ¤Â½Å“Ã¤Âºâ€ Ã§Â¬Â¬Ã¤Â¹ÂÃ¤ÂºÂ¤Ã©Å¸Â¿Ã¦â€ºÂ²Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  7004,
-                          "es":  "El Guernica de Picasso mide casi 8 metros de ancho.",
-                          "en":  "Picasso\u0027s Guernica is nearly 8 meters wide.",
-                          "zhHans":  "Ã¦Â¯â€¢Ã¥Å Â Ã§Â´Â¢Ã§Å¡â€žÃ£â‚¬Å Ã¦Â Â¼Ã¥Â°â€Ã¥Â°Â¼Ã¥ÂÂ¡Ã£â‚¬â€¹Ã¥Â®Â½Ã¨Â¿â€˜8Ã§Â±Â³Ã£â‚¬â€š",
-                          "zhHant":  "Ã§â€¢Â¢Ã¥ÂÂ¡Ã§Â´Â¢Ã§Å¡â€žÃ£â‚¬Å Ã¦Â Â¼Ã§Ë†Â¾Ã¥Â°Â¼Ã¥ÂÂ¡Ã£â‚¬â€¹Ã¥Â¯Â¬Ã¨Â¿â€˜8Ã¥â€¦Â¬Ã¥Â°ÂºÃ£â‚¬â€š"
-                      },
-                      {
-                          "id":  7006,
-                          "es":  "El Coliseo de Roma podía reunir a unas 80.000 personas.",
-                          "en":  "The Colosseum in Rome could hold up to 80,000 spectators.",
-                          "zhHans":  "Ã§Â½â€”Ã©Â©Â¬Ã§Â«Å¾Ã¦Å â‚¬Ã¥Å“ÂºÃ¥ÂÂ¯Ã¥Â®Â¹Ã§ÂºÂ³Ã¥Â¤Å¡Ã¨Â¾Â¾80,000Ã¥ÂÂÃ¨Â§â€šÃ¤Â¼â€”Ã£â‚¬â€š",
-                          "zhHant":  "Ã§Â¾â€¦Ã©Â¦Â¬Ã§Â«Â¶Ã¦Å â‚¬Ã¥Â Â´Ã¥ÂÂ¯Ã¥Â®Â¹Ã§Â´ÂÃ¥Â¤Å¡Ã©Ââ€80,000Ã¥ÂÂÃ¨Â§â‚¬Ã§Å“Â¾Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  7007,
-                          "es":  "Miguel Ángel tardó cuatro años en pintar la Capilla Sixtina, casi él solo.",
-                          "en":  "The Sistine Chapel took 4 years to paint; Michelangelo did it almost alone.",
-                          "zhHans":  "Ã¨Â¥Â¿Ã¦â€“Â¯Ã¥Â»Â·Ã¦â€¢â„¢Ã¥Â â€šÃ¨Å Â±Ã¤Âºâ€ 4Ã¥Â¹Â´Ã¦â€”Â¶Ã©â€”Â´Ã§Â»ËœÃ¥Ë†Â¶Ã¯Â¼Å’Ã§Â±Â³Ã¥Â¼â‚¬Ã¦Å“â€”Ã¥Å¸ÂºÃ§Â½â€”Ã¥â€¡Â Ã¤Â¹Å½Ã§â€¹Â¬Ã¨â€¡ÂªÃ¥Â®Å’Ã¦Ë†ÂÃ£â‚¬â€š",
-                          "zhHant":  "Ã¨Â¥Â¿Ã¦â€“Â¯Ã¦Â±â‚¬Ã¦â€¢â„¢Ã¥Â â€šÃ¨Å Â±Ã¤Âºâ€ 4Ã¥Â¹Â´Ã¦â„¢â€šÃ©â€“â€œÃ§Â¹ÂªÃ¨Â£Â½Ã¯Â¼Å’Ã§Â±Â³Ã©â€“â€¹Ã¦Å“â€”Ã¥Å¸ÂºÃ§Â¾â€¦Ã¥Â¹Â¾Ã¤Â¹Å½Ã§ÂÂ¨Ã¨â€¡ÂªÃ¥Â®Å’Ã¦Ë†ÂÃ£â‚¬â€š"
-                      },
-                      {
-                          "id":  7008,
-                          "es":  "El jazz nació en Nueva Orleans mezclando tradiciones de medio mundo.",
-                          "en":  "Jazz was born in New Orleans at the beginning of the 20th century.",
-                          "zhHans":  "Ã§Ë†ÂµÃ¥Â£Â«Ã¤Â¹ÂÃ¥Å“Â¨20Ã¤Â¸â€“Ã§ÂºÂªÃ¥Ë†ÂÃ¨Â¯Å¾Ã§â€Å¸Ã¤ÂºÅ½Ã¦â€“Â°Ã¥Â¥Â¥Ã¥Â°â€Ã¨â€°Â¯Ã£â‚¬â€š",
-                          "zhHant":  "Ã§Ë†ÂµÃ¥Â£Â«Ã¦Â¨â€šÃ¥Å“Â¨20Ã¤Â¸â€“Ã§Â´â‚¬Ã¥Ë†ÂÃ¨Âªâ€¢Ã§â€Å¸Ã¦â€“Â¼Ã§Â´ÂÃ¥Â¥Â§Ã¨â€°Â¯Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  7009,
-                          "es":  "Los jeroglíficos egipcios se descifraron gracias a la piedra Rosetta.",
-                          "en":  "Egyptian hieroglyphics were deciphered thanks to the Rosetta Stone.",
-                          "zhHans":  "Ã¥Å¸Æ’Ã¥ÂÅ Ã¨Â±Â¡Ã¥Â½Â¢Ã¦â€“â€¡Ã¥Â­â€”Ã¥Â¾â€”Ã§â€ºÅ Ã¤ÂºÅ½Ã§Â½â€”Ã¥Â¡Å¾Ã¥Â¡â€Ã§Å¸Â³Ã§Â¢â€˜Ã¨â‚¬Å’Ã¨Â¢Â«Ã§Â Â´Ã¨Â¯â€˜Ã£â‚¬â€š",
-                          "zhHant":  "Ã¥Å¸Æ’Ã¥ÂÅ Ã¨Â±Â¡Ã¥Â½Â¢Ã¦â€“â€¡Ã¥Â­â€”Ã¥Â¾â€”Ã§â€ºÅ Ã¦â€“Â¼Ã§Â¾â€¦Ã¥Â¡Å¾Ã¥Â¡â€Ã§Å¸Â³Ã§Â¢â€˜Ã¨â‚¬Å’Ã¨Â¢Â«Ã§Â Â´Ã¨Â­Â¯Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  7010,
-                          "es":  "El Taj Mahal se levantó como homenaje del emperador Shah Jahan a su esposa.",
-                          "en":  "The Taj Mahal was built by Mughal emperor Shah Jahan in honor of his wife.",
-                          "zhHans":  "Ã¦Â³Â°Ã¥Â§Â¬Ã©â„¢ÂµÃ§â€Â±Ã¨Å½Â«Ã¥ÂÂ§Ã¥â€žÂ¿Ã§Å¡â€¡Ã¥Â¸ÂÃ¦Â²â„¢Ã¨Â´Â¾Ã¦Â±â€”Ã¤Â¸ÂºÃ§ÂºÂªÃ¥Â¿ÂµÃ¥Â¦Â»Ã¥Â­ÂÃ¨â‚¬Å’Ã¥Â»ÂºÃ£â‚¬â€š",
-                          "zhHant":  "Ã¦Â³Â°Ã¥Â§Â¬Ã©â„¢ÂµÃ§â€Â±Ã¨â€™â„¢Ã¥â€¦â‚¬Ã¥â€¦â€™Ã§Å¡â€¡Ã¥Â¸ÂÃ¦Â²â„¢Ã¨Â³Ë†Ã¦Â±â€”Ã§â€šÂºÃ§Â´â‚¬Ã¥Â¿ÂµÃ¥Â¦Â»Ã¥Â­ÂÃ¨â‚¬Å’Ã¥Â»ÂºÃ£â‚¬â€š"
-                      },
-                      {
-                          "id":  7013,
-                          "es":  "El Louvre es el museo más visitado del planeta.",
-                          "en":  "The Louvre in Paris is the most visited museum in the world.",
-                          "zhHans":  "Ã¥Â·Â´Ã©Â»Å½Ã¥ÂÂ¢Ã¦ÂµÂ®Ã¥Â®Â«Ã¦ËœÂ¯Ã¤Â¸â€“Ã§â€¢Å’Ã¤Â¸Å Ã¥Ââ€šÃ¨Â§â€šÃ¤ÂºÂºÃ¦â€¢Â°Ã¦Å“â‚¬Ã¥Â¤Å¡Ã§Å¡â€žÃ¥ÂÅ¡Ã§â€°Â©Ã©Â¦â€ Ã£â‚¬â€š",
-                          "zhHant":  "Ã¥Â·Â´Ã©Â»Å½Ã§Â¾â€¦Ã¦ÂµÂ®Ã¥Â®Â®Ã¦ËœÂ¯Ã¤Â¸â€“Ã§â€¢Å’Ã¤Â¸Å Ã¥ÂÆ’Ã¨Â§â‚¬Ã¤ÂºÂºÃ¦â€¢Â¸Ã¦Å“â‚¬Ã¥Â¤Å¡Ã§Å¡â€žÃ¥ÂÅ¡Ã§â€°Â©Ã©Â¤Â¨Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  7015,
-                          "es":  "Van Gogh vendió muy poco en vida: solo se le atribuye una venta segura.",
-                          "en":  "Van Gogh sold only one painting in his lifetime: The Red Vineyard.",
-                          "zhHans":  "Ã¦Â¢ÂµÃ©Â«ËœÃ¤Â¸â‚¬Ã§â€Å¸Ã¥ÂÂªÃ¥Ââ€“Ã¥â€¡ÂºÃ¤Âºâ€ Ã¤Â¸â‚¬Ã¥Â¹â€¦Ã§â€Â»Ã¯Â¼Å¡Ã£â‚¬Å Ã§ÂºÂ¢Ã¨â€°Â²Ã¨â€˜Â¡Ã¨Ââ€žÃ¥â€ºÂ­Ã£â‚¬â€¹Ã£â‚¬â€š",
-                          "zhHant":  "Ã¦Â¢ÂµÃ¨Â°Â·Ã¤Â¸â‚¬Ã§â€Å¸Ã¥ÂÂªÃ¨Â³Â£Ã¥â€¡ÂºÃ¤Âºâ€ Ã¤Â¸â‚¬Ã¥Â¹â€¦Ã§â€¢Â«Ã¯Â¼Å¡Ã£â‚¬Å Ã§Â´â€¦Ã¨â€°Â²Ã¨â€˜Â¡Ã¨Ââ€žÃ¥Å“â€™Ã£â‚¬â€¹Ã£â‚¬â€š"
-                      }
-                  ]
+        "id": 7,
+        "es": "Arte y Cultura",
+        "en": "Art & Culture",
+        "zhHans": "Ã¨â€°ÂºÃ¦Å“Â¯Ã¤Â¸Å½Ã¦â€“â€¡Ã¥Å’â€“",
+        "zhHant": "Ã¨â€”ÂÃ¨Â¡â€œÃ¨Ë†â€¡Ã¦â€“â€¡Ã¥Å’â€“",
+        "emoji": "🎨",
+        "datos": [
+            {
+                "id": 7001,
+                "es": "La Mona Lisa es famosísima, pero cabe en un cuadro de solo 77 x 53 cm.",
+                "en": "Leonardo da Vinci's Mona Lisa measures only 77 x 53 cm.",
+                "zhHans": "Ã¨Â¾Â¾Ã¨Å Â¬Ã¥Â¥â€¡Ã§Å¡â€žÃ¨â€™â„¢Ã¥Â¨Å“Ã¤Â¸Â½Ã¨Å½Å½Ã¥ÂÂªÃ¦Å“â€°77Ãƒâ€”53Ã¥Å½ËœÃ§Â±Â³Ã¥Â¤Â§Ã¥Â°ÂÃ£â‚¬â€š",
+                "zhHant": "Ã©Ââ€Ã¦â€“â€¡Ã¨Â¥Â¿Ã§Å¡â€žÃ¨â€™â„¢Ã¥Â¨Å“Ã©Âºâ€”Ã¨Å½Å½Ã¥ÂÂªÃ¦Å“â€°77Ãƒâ€”53Ã¥â€¦Â¬Ã¥Ë†â€ Ã¥Â¤Â§Ã¥Â°ÂÃ£â‚¬â€š"
+            },
+            {
+                "id": 7002,
+                "es": "Beethoven compuso su Novena Sinfonía cuando ya estaba completamente sordo.",
+                "en": "Beethoven composed his Ninth Symphony while completely deaf.",
+                "zhHans": "Ã¨Â´ÂÃ¥Â¤Å¡Ã¨Å Â¬Ã¥Å“Â¨Ã¥Â®Å’Ã¥â€¦Â¨Ã¥Â¤Â±Ã¨ÂÂªÃ§Å¡â€žÃ¦Æ’â€¦Ã¥â€ ÂµÃ¤Â¸â€¹Ã¥Ë†â€ºÃ¤Â½Å“Ã¤Âºâ€ Ã§Â¬Â¬Ã¤Â¹ÂÃ¤ÂºÂ¤Ã¥â€œÂÃ¦â€ºÂ²Ã£â‚¬â€š",
+                "zhHant": "Ã¨Â²ÂÃ¥Â¤Å¡Ã¨Å Â¬Ã¥Å“Â¨Ã¥Â®Å’Ã¥â€¦Â¨Ã¥Â¤Â±Ã¨ÂÂ°Ã§Å¡â€žÃ¦Æ’â€¦Ã¦Â³ÂÃ¤Â¸â€¹Ã¥â€°ÂµÃ¤Â½Å“Ã¤Âºâ€ Ã§Â¬Â¬Ã¤Â¹ÂÃ¤ÂºÂ¤Ã©Å¸Â¿Ã¦â€ºÂ²Ã£â‚¬â€š"
+            },
+            {
+                "id": 7004,
+                "es": "El Guernica de Picasso mide casi 8 metros de ancho.",
+                "en": "Picasso's Guernica is nearly 8 meters wide.",
+                "zhHans": "Ã¦Â¯â€¢Ã¥Å Â Ã§Â´Â¢Ã§Å¡â€žÃ£â‚¬Å Ã¦Â Â¼Ã¥Â°â€Ã¥Â°Â¼Ã¥ÂÂ¡Ã£â‚¬â€¹Ã¥Â®Â½Ã¨Â¿â€˜8Ã§Â±Â³Ã£â‚¬â€š",
+                "zhHant": "Ã§â€¢Â¢Ã¥ÂÂ¡Ã§Â´Â¢Ã§Å¡â€žÃ£â‚¬Å Ã¦Â Â¼Ã§Ë†Â¾Ã¥Â°Â¼Ã¥ÂÂ¡Ã£â‚¬â€¹Ã¥Â¯Â¬Ã¨Â¿â€˜8Ã¥â€¦Â¬Ã¥Â°ÂºÃ£â‚¬â€š"
+            },
+            {
+                "id": 7006,
+                "es": "El Coliseo de Roma podía reunir a unas 80.000 personas.",
+                "en": "The Colosseum in Rome could hold up to 80,000 spectators.",
+                "zhHans": "Ã§Â½â€”Ã©Â©Â¬Ã§Â«Å¾Ã¦Å â‚¬Ã¥Å“ÂºÃ¥ÂÂ¯Ã¥Â®Â¹Ã§ÂºÂ³Ã¥Â¤Å¡Ã¨Â¾Â¾80,000Ã¥ÂÂÃ¨Â§â€šÃ¤Â¼â€”Ã£â‚¬â€š",
+                "zhHant": "Ã§Â¾â€¦Ã©Â¦Â¬Ã§Â«Â¶Ã¦Å â‚¬Ã¥Â Â´Ã¥ÂÂ¯Ã¥Â®Â¹Ã§Â´ÂÃ¥Â¤Å¡Ã©Ââ€80,000Ã¥ÂÂÃ¨Â§â‚¬Ã§Å“Â¾Ã£â‚¬â€š"
+            },
+            {
+                "id": 7007,
+                "es": "Miguel Ángel tardó cuatro años en pintar la Capilla Sixtina, casi él solo.",
+                "en": "The Sistine Chapel took 4 years to paint; Michelangelo did it almost alone.",
+                "zhHans": "Ã¨Â¥Â¿Ã¦â€“Â¯Ã¥Â»Â·Ã¦â€¢â„¢Ã¥Â â€šÃ¨Å Â±Ã¤Âºâ€ 4Ã¥Â¹Â´Ã¦â€”Â¶Ã©â€”Â´Ã§Â»ËœÃ¥Ë†Â¶Ã¯Â¼Å’Ã§Â±Â³Ã¥Â¼â‚¬Ã¦Å“â€”Ã¥Å¸ÂºÃ§Â½â€”Ã¥â€¡Â Ã¤Â¹Å½Ã§â€¹Â¬Ã¨â€¡ÂªÃ¥Â®Å’Ã¦Ë†ÂÃ£â‚¬â€š",
+                "zhHant": "Ã¨Â¥Â¿Ã¦â€“Â¯Ã¦Â±â‚¬Ã¦â€¢â„¢Ã¥Â â€šÃ¨Å Â±Ã¤Âºâ€ 4Ã¥Â¹Â´Ã¦â„¢â€šÃ©â€“â€œÃ§Â¹ÂªÃ¨Â£Â½Ã¯Â¼Å’Ã§Â±Â³Ã©â€“â€¹Ã¦Å“â€”Ã¥Å¸ÂºÃ§Â¾â€¦Ã¥Â¹Â¾Ã¤Â¹Å½Ã§ÂÂ¨Ã¨â€¡ÂªÃ¥Â®Å’Ã¦Ë†ÂÃ£â‚¬â€š"
+            },
+            {
+                "id": 7008,
+                "es": "El jazz nació en Nueva Orleans mezclando tradiciones de medio mundo.",
+                "en": "Jazz was born in New Orleans at the beginning of the 20th century.",
+                "zhHans": "Ã§Ë†ÂµÃ¥Â£Â«Ã¤Â¹ÂÃ¥Å“Â¨20Ã¤Â¸â€“Ã§ÂºÂªÃ¥Ë†ÂÃ¨Â¯Å¾Ã§â€Å¸Ã¤ÂºÅ½Ã¦â€“Â°Ã¥Â¥Â¥Ã¥Â°â€Ã¨â€°Â¯Ã£â‚¬â€š",
+                "zhHant": "Ã§Ë†ÂµÃ¥Â£Â«Ã¦Â¨â€šÃ¥Å“Â¨20Ã¤Â¸â€“Ã§Â´â‚¬Ã¥Ë†ÂÃ¨Âªâ€¢Ã§â€Å¸Ã¦â€“Â¼Ã§Â´ÂÃ¥Â¥Â§Ã¨â€°Â¯Ã£â‚¬â€š"
+            },
+            {
+                "id": 7009,
+                "es": "Los jeroglíficos egipcios se descifraron gracias a la piedra Rosetta.",
+                "en": "Egyptian hieroglyphics were deciphered thanks to the Rosetta Stone.",
+                "zhHans": "Ã¥Å¸Æ’Ã¥ÂÅ Ã¨Â±Â¡Ã¥Â½Â¢Ã¦â€“â€¡Ã¥Â­â€”Ã¥Â¾â€”Ã§â€ºÅ Ã¤ÂºÅ½Ã§Â½â€”Ã¥Â¡Å¾Ã¥Â¡â€Ã§Å¸Â³Ã§Â¢â€˜Ã¨â‚¬Å’Ã¨Â¢Â«Ã§Â Â´Ã¨Â¯â€˜Ã£â‚¬â€š",
+                "zhHant": "Ã¥Å¸Æ’Ã¥ÂÅ Ã¨Â±Â¡Ã¥Â½Â¢Ã¦â€“â€¡Ã¥Â­â€”Ã¥Â¾â€”Ã§â€ºÅ Ã¦â€“Â¼Ã§Â¾â€¦Ã¥Â¡Å¾Ã¥Â¡â€Ã§Å¸Â³Ã§Â¢â€˜Ã¨â‚¬Å’Ã¨Â¢Â«Ã§Â Â´Ã¨Â­Â¯Ã£â‚¬â€š"
+            },
+            {
+                "id": 7010,
+                "es": "El Taj Mahal se levantó como homenaje del emperador Shah Jahan a su esposa.",
+                "en": "The Taj Mahal was built by Mughal emperor Shah Jahan in honor of his wife.",
+                "zhHans": "Ã¦Â³Â°Ã¥Â§Â¬Ã©â„¢ÂµÃ§â€Â±Ã¨Å½Â«Ã¥ÂÂ§Ã¥â€žÂ¿Ã§Å¡â€¡Ã¥Â¸ÂÃ¦Â²â„¢Ã¨Â´Â¾Ã¦Â±â€”Ã¤Â¸ÂºÃ§ÂºÂªÃ¥Â¿ÂµÃ¥Â¦Â»Ã¥Â­ÂÃ¨â‚¬Å’Ã¥Â»ÂºÃ£â‚¬â€š",
+                "zhHant": "Ã¦Â³Â°Ã¥Â§Â¬Ã©â„¢ÂµÃ§â€Â±Ã¨â€™â„¢Ã¥â€¦â‚¬Ã¥â€¦â€™Ã§Å¡â€¡Ã¥Â¸ÂÃ¦Â²â„¢Ã¨Â³Ë†Ã¦Â±â€”Ã§â€šÂºÃ§Â´â‚¬Ã¥Â¿ÂµÃ¥Â¦Â»Ã¥Â­ÂÃ¨â‚¬Å’Ã¥Â»ÂºÃ£â‚¬â€š"
+            },
+            {
+                "id": 7013,
+                "es": "El Louvre es el museo más visitado del planeta.",
+                "en": "The Louvre in Paris is the most visited museum in the world.",
+                "zhHans": "Ã¥Â·Â´Ã©Â»Å½Ã¥ÂÂ¢Ã¦ÂµÂ®Ã¥Â®Â«Ã¦ËœÂ¯Ã¤Â¸â€“Ã§â€¢Å’Ã¤Â¸Å Ã¥Ââ€šÃ¨Â§â€šÃ¤ÂºÂºÃ¦â€¢Â°Ã¦Å“â‚¬Ã¥Â¤Å¡Ã§Å¡â€žÃ¥ÂÅ¡Ã§â€°Â©Ã©Â¦â€ Ã£â‚¬â€š",
+                "zhHant": "Ã¥Â·Â´Ã©Â»Å½Ã§Â¾â€¦Ã¦ÂµÂ®Ã¥Â®Â®Ã¦ËœÂ¯Ã¤Â¸â€“Ã§â€¢Å’Ã¤Â¸Å Ã¥ÂÆ’Ã¨Â§â‚¬Ã¤ÂºÂºÃ¦â€¢Â¸Ã¦Å“â‚¬Ã¥Â¤Å¡Ã§Å¡â€žÃ¥ÂÅ¡Ã§â€°Â©Ã©Â¤Â¨Ã£â‚¬â€š"
+            },
+            {
+                "id": 7015,
+                "es": "Van Gogh vendió muy poco en vida: solo se le atribuye una venta segura.",
+                "en": "Van Gogh sold only one painting in his lifetime: The Red Vineyard.",
+                "zhHans": "Ã¦Â¢ÂµÃ©Â«ËœÃ¤Â¸â‚¬Ã§â€Å¸Ã¥ÂÂªÃ¥Ââ€“Ã¥â€¡ÂºÃ¤Âºâ€ Ã¤Â¸â‚¬Ã¥Â¹â€¦Ã§â€Â»Ã¯Â¼Å¡Ã£â‚¬Å Ã§ÂºÂ¢Ã¨â€°Â²Ã¨â€˜Â¡Ã¨Ââ€žÃ¥â€ºÂ­Ã£â‚¬â€¹Ã£â‚¬â€š",
+                "zhHant": "Ã¦Â¢ÂµÃ¨Â°Â·Ã¤Â¸â‚¬Ã§â€Å¸Ã¥ÂÂªÃ¨Â³Â£Ã¥â€¡ÂºÃ¤Âºâ€ Ã¤Â¸â‚¬Ã¥Â¹â€¦Ã§â€¢Â«Ã¯Â¼Å¡Ã£â‚¬Å Ã§Â´â€¦Ã¨â€°Â²Ã¨â€˜Â¡Ã¨Ââ€žÃ¥Å“â€™Ã£â‚¬â€¹Ã£â‚¬â€š"
+            }
+        ]
     },
     {
-        "id":  8,
-        "es":  "Naturaleza",
-        "en":  "Nature",
-        "zhHans":  "Ã¨â€¡ÂªÃ§â€žÂ¶",
-        "zhHant":  "Ã¨â€¡ÂªÃ§â€žÂ¶",
-        "emoji":  "Ã°Å¸Å’Â¿",
-        "datos":  [
-                      {
-                          "id":  8003,
-                          "es":  "El árbol más alto conocido supera los 115 metros y es una secuoya de California.",
-                          "en":  "The world\u0027s tallest tree is a 115.7-meter redwood in California.",
-                          "zhHans":  "Ã¤Â¸â€“Ã§â€¢Å’Ã¤Â¸Å Ã¦Å“â‚¬Ã©Â«ËœÃ§Å¡â€žÃ¦Â â€˜Ã¦ËœÂ¯Ã¥Å Â Ã¥Ë†Â©Ã§Â¦ÂÃ¥Â°Â¼Ã¤ÂºÅ¡Ã¥Â·Å¾Ã¤Â¸â‚¬Ã¦Â£Âµ115.7Ã§Â±Â³Ã©Â«ËœÃ§Å¡â€žÃ§ÂºÂ¢Ã¦Ââ€°Ã£â‚¬â€š",
-                          "zhHant":  "Ã¤Â¸â€“Ã§â€¢Å’Ã¤Â¸Å Ã¦Å“â‚¬Ã©Â«ËœÃ§Å¡â€žÃ¦Â¨Â¹Ã¦ËœÂ¯Ã¥Å Â Ã¥Ë†Â©Ã§Â¦ÂÃ¥Â°Â¼Ã¤ÂºÅ¾Ã¥Â·Å¾Ã¤Â¸â‚¬Ã¦Â£Âµ115.7Ã¥â€¦Â¬Ã¥Â°ÂºÃ©Â«ËœÃ§Å¡â€žÃ§Â´â€¦Ã¦Ââ€°Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  8004,
-                          "es":  "Los hongos no son plantas ni animales: juegan en su propia liga.",
-                          "en":  "Fungi are neither plants nor animals; they form their own kingdom.",
-                          "zhHans":  "Ã§Å“Å¸Ã¨ÂÅ’Ã¦â€”Â¢Ã¤Â¸ÂÃ¦ËœÂ¯Ã¦Â¤ÂÃ§â€°Â©Ã¤Â¹Å¸Ã¤Â¸ÂÃ¦ËœÂ¯Ã¥Å Â¨Ã§â€°Â©Ã¯Â¼Å’Ã¥Â®Æ’Ã¤Â»Â¬Ã¦Å¾â€žÃ¦Ë†ÂÃ¨â€¡ÂªÃ¥Â·Â±Ã§â€¹Â¬Ã§Â«â€¹Ã§Å¡â€žÃ§â€¢Å’Ã£â‚¬â€š",
-                          "zhHant":  "Ã§Å“Å¸Ã¨ÂÅ’Ã¦â€”Â¢Ã¤Â¸ÂÃ¦ËœÂ¯Ã¦Â¤ÂÃ§â€°Â©Ã¤Â¹Å¸Ã¤Â¸ÂÃ¦ËœÂ¯Ã¥â€¹â€¢Ã§â€°Â©Ã¯Â¼Å’Ã¥Â®Æ’Ã¥â‚¬â€˜Ã¦Â§â€¹Ã¦Ë†ÂÃ¨â€¡ÂªÃ¥Â·Â±Ã§ÂÂ¨Ã§Â«â€¹Ã§Å¡â€žÃ§â€¢Å’Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  8005,
-                          "es":  "Algunas especies de bambú pueden crecer hasta 90 centímetros en un día.",
-                          "en":  "Bamboo can grow up to 90 cm in a single day.",
-                          "zhHans":  "Ã§Â«Â¹Ã¥Â­ÂÃ¤Â¸â‚¬Ã¥Â¤Â©Ã¥ÂÂ¯Ã¤Â»Â¥Ã§â€Å¸Ã©â€¢Â¿Ã¥Â¤Å¡Ã¨Â¾Â¾90Ã¥Å½ËœÃ§Â±Â³Ã£â‚¬â€š",
-                          "zhHant":  "Ã§Â«Â¹Ã¥Â­ÂÃ¤Â¸â‚¬Ã¥Â¤Â©Ã¥ÂÂ¯Ã¤Â»Â¥Ã§â€Å¸Ã©â€¢Â·Ã¥Â¤Å¡Ã©Ââ€90Ã¥â€¦Â¬Ã¥Ë†â€ Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  8007,
-                          "es":  "Pando parece un bosque, pero en realidad es un único organismo con miles de troncos.",
-                          "en":  "The Pando tree in Utah is a single organism with 47,000 trunks and 80,000 years old.",
-                          "zhHans":  "Ã§Å Â¹Ã¤Â»â€“Ã¥Â·Å¾Ã§Å¡â€žÃ¦Â½ËœÃ¥Â¤Å¡Ã¦Â â€˜Ã¦ËœÂ¯Ã¤Â¸â‚¬Ã¤Â¸ÂªÃ¥Ââ€¢Ã¤Â¸â‚¬Ã§â€Å¸Ã§â€°Â©Ã¤Â½â€œÃ¯Â¼Å’Ã¦Å“â€°47,000Ã¦Â Â¹Ã¦Â â€˜Ã¥Â¹Â²Ã¯Â¼Å’Ã¥Â·Â²Ã¦Å“â€°80,000Ã¥Â¹Â´Ã¥Å½â€ Ã¥ÂÂ²Ã£â‚¬â€š",
-                          "zhHant":  "Ã§Å’Â¶Ã¤Â»â€“Ã¥Â·Å¾Ã§Å¡â€žÃ¦Â½ËœÃ¥Â¤Å¡Ã¦Â¨Â¹Ã¦ËœÂ¯Ã¤Â¸â‚¬Ã¥â‚¬â€¹Ã¥â€“Â®Ã¤Â¸â‚¬Ã§â€Å¸Ã§â€°Â©Ã©Â«â€Ã¯Â¼Å’Ã¦Å“â€°47,000Ã¦Â Â¹Ã¦Â¨Â¹Ã¥Â¹Â¹Ã¯Â¼Å’Ã¥Â·Â²Ã¦Å“â€°80,000Ã¥Â¹Â´Ã¦Â­Â·Ã¥ÂÂ²Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  8009,
-                          "es":  "Los glaciares guardan alrededor del 69% del agua dulce del planeta.",
-                          "en":  "Glaciers contain 69% of the planet\u0027s freshwater.",
-                          "zhHans":  "Ã¥â€ Â°Ã¥Â·ÂÃ¥ÂÂ«Ã¦Å“â€°Ã¥Å“Â°Ã§ÂÆ’69%Ã§Å¡â€žÃ¦Â·Â¡Ã¦Â°Â´Ã£â‚¬â€š",
-                          "zhHant":  "Ã¥â€ Â°Ã¥Â·ÂÃ¥ÂÂ«Ã¦Å“â€°Ã¥Å“Â°Ã§ÂÆ’69%Ã§Å¡â€žÃ¦Â·Â¡Ã¦Â°Â´Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  8011,
-                          "es":  "El polvo del Sahara viaja hasta el Amazonas y ayuda a fertilizarlo.",
-                          "en":  "Saharan sandstorms fertilize the Amazon with their minerals.",
-                          "zhHans":  "Ã¦â€™â€™Ã¥â€œË†Ã¦â€¹â€°Ã¦Â²â„¢Ã¥Â°ËœÃ¦Å¡Â´Ã§â€Â¨Ã¥â€¦Â¶Ã§Å¸Â¿Ã§â€°Â©Ã¨Â´Â¨Ã¤Â¸ÂºÃ¤ÂºÅ¡Ã©Â©Â¬Ã©â‚¬Å Ã©â€ºÂ¨Ã¦Å¾â€”Ã¦â€“Â½Ã¨â€šÂ¥Ã£â‚¬â€š",
-                          "zhHant":  "Ã¦â€™â€™Ã¥â€œË†Ã¦â€¹â€°Ã¦Â²â„¢Ã¥Â¡ÂµÃ¦Å¡Â´Ã§â€Â¨Ã¥â€¦Â¶Ã§Â¤Â¦Ã§â€°Â©Ã¨Â³ÂªÃ§â€šÂºÃ¤ÂºÅ¾Ã©Â¦Â¬Ã©ÂÅ“Ã©â€ºÂ¨Ã¦Å¾â€”Ã¦â€“Â½Ã¨â€šÂ¥Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  8012,
-                          "es":  "El agua puede existir como sólido, líquido y gas al mismo tiempo.",
-                          "en":  "Water can exist in solid, liquid and gaseous states simultaneously.",
-                          "zhHans":  "Ã¦Â°Â´Ã¥ÂÂ¯Ã¤Â»Â¥Ã¥ÂÅ’Ã¦â€”Â¶Ã¤Â»Â¥Ã¥â€ºÂºÃ¦â‚¬ÂÃ£â‚¬ÂÃ¦Â¶Â²Ã¦â‚¬ÂÃ¥â€™Å’Ã¦Â°â€Ã¦â‚¬ÂÃ¥Â­ËœÃ¥Å“Â¨Ã£â‚¬â€š",
-                          "zhHant":  "Ã¦Â°Â´Ã¥ÂÂ¯Ã¤Â»Â¥Ã¥ÂÅ’Ã¦â„¢â€šÃ¤Â»Â¥Ã¥â€ºÂºÃ¦â€¦â€¹Ã£â‚¬ÂÃ¦Â¶Â²Ã¦â€¦â€¹Ã¥â€™Å’Ã¦Â°Â£Ã¦â€¦â€¹Ã¥Â­ËœÃ¥Å“Â¨Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  8014,
-                          "es":  "La Venus atrapamoscas no se cierra al primer roce: espera dos toques para no malgastar energía.",
-                          "en":  "The Venus flytrap can count: it needs two touches to close.",
-                          "zhHans":  "Ã¦Ââ€¢Ã¨Ââ€¡Ã¨Ââ€°Ã¤Â¼Å¡Ã¨Â®Â¡Ã¦â€¢Â°Ã¯Â¼Å¡Ã¥Â®Æ’Ã©Å“â‚¬Ã¨Â¦ÂÃ¨Â¢Â«Ã¨Â§Â¦Ã§Â¢Â°Ã¤Â¸Â¤Ã¦Â¬Â¡Ã¦â€°ÂÃ¤Â¼Å¡Ã¥â€¦Â³Ã©â€”Â­Ã£â‚¬â€š",
-                          "zhHant":  "Ã¦Ââ€¢Ã¨Â â€¦Ã¨Ââ€°Ã¦Å“Æ’Ã¨Â¨Ë†Ã¦â€¢Â¸Ã¯Â¼Å¡Ã¥Â®Æ’Ã©Å“â‚¬Ã¨Â¦ÂÃ¨Â¢Â«Ã¨Â§Â¸Ã§Â¢Â°Ã¥â€¦Â©Ã¦Â¬Â¡Ã¦â€°ÂÃ¦Å“Æ’Ã©â€”Å“Ã©â€“â€°Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  8015,
-                          "es":  "Las auroras aparecen cuando partículas solares chocan con la atmósfera.",
-                          "en":  "Northern lights occur when solar particles collide with the atmosphere.",
-                          "zhHans":  "Ã¦Å¾ÂÃ¥â€¦â€°Ã¦ËœÂ¯Ã¥Â¤ÂªÃ©ËœÂ³Ã§Â²â€™Ã¥Â­ÂÃ¤Â¸Å½Ã¥Â¤Â§Ã¦Â°â€Ã¥Â±â€šÃ§Â¢Â°Ã¦â€™Å¾Ã¦â€”Â¶Ã¤ÂºÂ§Ã§â€Å¸Ã§Å¡â€žÃ£â‚¬â€š",
-                          "zhHant":  "Ã¦Â¥ÂµÃ¥â€¦â€°Ã¦ËœÂ¯Ã¥Â¤ÂªÃ©â„¢Â½Ã§Â²â€™Ã¥Â­ÂÃ¨Ë†â€¡Ã¥Â¤Â§Ã¦Â°Â£Ã¥Â±Â¤Ã§Â¢Â°Ã¦â€™Å¾Ã¦â„¢â€šÃ§â€Â¢Ã§â€Å¸Ã§Å¡â€žÃ£â‚¬â€š"
-                      },
-                      {
-                          "id":  8019,
-                          "es":  "Los océanos absorben cerca de una cuarta parte del CO2 que emitimos.",
-                          "en":  "Oceans absorb 25% of the COÃ¢â€šâ€š we emit and regulate the global climate.",
-                          "zhHans":  "Ã¦ÂµÂ·Ã¦Â´â€¹Ã¥ÂÂ¸Ã¦â€Â¶Ã¦Ë†â€˜Ã¤Â»Â¬Ã¦Å½â€™Ã¦â€Â¾Ã§Å¡â€ž25%Ã§Å¡â€žCOÃ¢â€šâ€šÃ¯Â¼Å’Ã¥Â¹Â¶Ã¨Â°Æ’Ã¨Å â€šÃ¥â€¦Â¨Ã§ÂÆ’Ã¦Â°â€Ã¥â‚¬â„¢Ã£â‚¬â€š",
-                          "zhHant":  "Ã¦ÂµÂ·Ã¦Â´â€¹Ã¥ÂÂ¸Ã¦â€Â¶Ã¦Ë†â€˜Ã¥â‚¬â€˜Ã¦Å½â€™Ã¦â€Â¾Ã§Å¡â€ž25%Ã§Å¡â€žCOÃ¢â€šâ€šÃ¯Â¼Å’Ã¤Â¸Â¦Ã¨ÂªÂ¿Ã§Â¯â‚¬Ã¥â€¦Â¨Ã§ÂÆ’Ã¦Â°Â£Ã¥â‚¬â„¢Ã£â‚¬â€š"
-                      }
-                  ]
+        "id": 8,
+        "es": "Naturaleza",
+        "en": "Nature",
+        "zhHans": "Ã¨â€¡ÂªÃ§â€žÂ¶",
+        "zhHant": "Ã¨â€¡ÂªÃ§â€žÂ¶",
+        "emoji": "🌿",
+        "datos": [
+            {
+                "id": 8003,
+                "es": "El árbol más alto conocido supera los 115 metros y es una secuoya de California.",
+                "en": "The world's tallest tree is a 115.7-meter redwood in California.",
+                "zhHans": "Ã¤Â¸â€“Ã§â€¢Å’Ã¤Â¸Å Ã¦Å“â‚¬Ã©Â«ËœÃ§Å¡â€žÃ¦Â â€˜Ã¦ËœÂ¯Ã¥Å Â Ã¥Ë†Â©Ã§Â¦ÂÃ¥Â°Â¼Ã¤ÂºÅ¡Ã¥Â·Å¾Ã¤Â¸â‚¬Ã¦Â£Âµ115.7Ã§Â±Â³Ã©Â«ËœÃ§Å¡â€žÃ§ÂºÂ¢Ã¦Ââ€°Ã£â‚¬â€š",
+                "zhHant": "Ã¤Â¸â€“Ã§â€¢Å’Ã¤Â¸Å Ã¦Å“â‚¬Ã©Â«ËœÃ§Å¡â€žÃ¦Â¨Â¹Ã¦ËœÂ¯Ã¥Å Â Ã¥Ë†Â©Ã§Â¦ÂÃ¥Â°Â¼Ã¤ÂºÅ¾Ã¥Â·Å¾Ã¤Â¸â‚¬Ã¦Â£Âµ115.7Ã¥â€¦Â¬Ã¥Â°ÂºÃ©Â«ËœÃ§Å¡â€žÃ§Â´â€¦Ã¦Ââ€°Ã£â‚¬â€š"
+            },
+            {
+                "id": 8004,
+                "es": "Los hongos no son plantas ni animales: juegan en su propia liga.",
+                "en": "Fungi are neither plants nor animals; they form their own kingdom.",
+                "zhHans": "Ã§Å“Å¸Ã¨ÂÅ’Ã¦â€”Â¢Ã¤Â¸ÂÃ¦ËœÂ¯Ã¦Â¤ÂÃ§â€°Â©Ã¤Â¹Å¸Ã¤Â¸ÂÃ¦ËœÂ¯Ã¥Å Â¨Ã§â€°Â©Ã¯Â¼Å’Ã¥Â®Æ’Ã¤Â»Â¬Ã¦Å¾â€žÃ¦Ë†ÂÃ¨â€¡ÂªÃ¥Â·Â±Ã§â€¹Â¬Ã§Â«â€¹Ã§Å¡â€žÃ§â€¢Å’Ã£â‚¬â€š",
+                "zhHant": "Ã§Å“Å¸Ã¨ÂÅ’Ã¦â€”Â¢Ã¤Â¸ÂÃ¦ËœÂ¯Ã¦Â¤ÂÃ§â€°Â©Ã¤Â¹Å¸Ã¤Â¸ÂÃ¦ËœÂ¯Ã¥â€¹â€¢Ã§â€°Â©Ã¯Â¼Å’Ã¥Â®Æ’Ã¥â‚¬â€˜Ã¦Â§â€¹Ã¦Ë†ÂÃ¨â€¡ÂªÃ¥Â·Â±Ã§ÂÂ¨Ã§Â«â€¹Ã§Å¡â€žÃ§â€¢Å’Ã£â‚¬â€š"
+            },
+            {
+                "id": 8005,
+                "es": "Algunas especies de bambú pueden crecer hasta 90 centímetros en un día.",
+                "en": "Bamboo can grow up to 90 cm in a single day.",
+                "zhHans": "Ã§Â«Â¹Ã¥Â­ÂÃ¤Â¸â‚¬Ã¥Â¤Â©Ã¥ÂÂ¯Ã¤Â»Â¥Ã§â€Å¸Ã©â€¢Â¿Ã¥Â¤Å¡Ã¨Â¾Â¾90Ã¥Å½ËœÃ§Â±Â³Ã£â‚¬â€š",
+                "zhHant": "Ã§Â«Â¹Ã¥Â­ÂÃ¤Â¸â‚¬Ã¥Â¤Â©Ã¥ÂÂ¯Ã¤Â»Â¥Ã§â€Å¸Ã©â€¢Â·Ã¥Â¤Å¡Ã©Ââ€90Ã¥â€¦Â¬Ã¥Ë†â€ Ã£â‚¬â€š"
+            },
+            {
+                "id": 8007,
+                "es": "Pando parece un bosque, pero en realidad es un único organismo con miles de troncos.",
+                "en": "The Pando tree in Utah is a single organism with 47,000 trunks and 80,000 years old.",
+                "zhHans": "Ã§Å Â¹Ã¤Â»â€“Ã¥Â·Å¾Ã§Å¡â€žÃ¦Â½ËœÃ¥Â¤Å¡Ã¦Â â€˜Ã¦ËœÂ¯Ã¤Â¸â‚¬Ã¤Â¸ÂªÃ¥Ââ€¢Ã¤Â¸â‚¬Ã§â€Å¸Ã§â€°Â©Ã¤Â½â€œÃ¯Â¼Å’Ã¦Å“â€°47,000Ã¦Â Â¹Ã¦Â â€˜Ã¥Â¹Â²Ã¯Â¼Å’Ã¥Â·Â²Ã¦Å“â€°80,000Ã¥Â¹Â´Ã¥Å½â€ Ã¥ÂÂ²Ã£â‚¬â€š",
+                "zhHant": "Ã§Å’Â¶Ã¤Â»â€“Ã¥Â·Å¾Ã§Å¡â€žÃ¦Â½ËœÃ¥Â¤Å¡Ã¦Â¨Â¹Ã¦ËœÂ¯Ã¤Â¸â‚¬Ã¥â‚¬â€¹Ã¥â€“Â®Ã¤Â¸â‚¬Ã§â€Å¸Ã§â€°Â©Ã©Â«â€Ã¯Â¼Å’Ã¦Å“â€°47,000Ã¦Â Â¹Ã¦Â¨Â¹Ã¥Â¹Â¹Ã¯Â¼Å’Ã¥Â·Â²Ã¦Å“â€°80,000Ã¥Â¹Â´Ã¦Â­Â·Ã¥ÂÂ²Ã£â‚¬â€š"
+            },
+            {
+                "id": 8009,
+                "es": "Los glaciares guardan alrededor del 69% del agua dulce del planeta.",
+                "en": "Glaciers contain 69% of the planet's freshwater.",
+                "zhHans": "Ã¥â€ Â°Ã¥Â·ÂÃ¥ÂÂ«Ã¦Å“â€°Ã¥Å“Â°Ã§ÂÆ’69%Ã§Å¡â€žÃ¦Â·Â¡Ã¦Â°Â´Ã£â‚¬â€š",
+                "zhHant": "Ã¥â€ Â°Ã¥Â·ÂÃ¥ÂÂ«Ã¦Å“â€°Ã¥Å“Â°Ã§ÂÆ’69%Ã§Å¡â€žÃ¦Â·Â¡Ã¦Â°Â´Ã£â‚¬â€š"
+            },
+            {
+                "id": 8011,
+                "es": "El polvo del Sahara viaja hasta el Amazonas y ayuda a fertilizarlo.",
+                "en": "Saharan sandstorms fertilize the Amazon with their minerals.",
+                "zhHans": "Ã¦â€™â€™Ã¥â€œË†Ã¦â€¹â€°Ã¦Â²â„¢Ã¥Â°ËœÃ¦Å¡Â´Ã§â€Â¨Ã¥â€¦Â¶Ã§Å¸Â¿Ã§â€°Â©Ã¨Â´Â¨Ã¤Â¸ÂºÃ¤ÂºÅ¡Ã©Â©Â¬Ã©â‚¬Å Ã©â€ºÂ¨Ã¦Å¾â€”Ã¦â€“Â½Ã¨â€šÂ¥Ã£â‚¬â€š",
+                "zhHant": "Ã¦â€™â€™Ã¥â€œË†Ã¦â€¹â€°Ã¦Â²â„¢Ã¥Â¡ÂµÃ¦Å¡Â´Ã§â€Â¨Ã¥â€¦Â¶Ã§Â¤Â¦Ã§â€°Â©Ã¨Â³ÂªÃ§â€šÂºÃ¤ÂºÅ¾Ã©Â¦Â¬Ã©ÂÅ“Ã©â€ºÂ¨Ã¦Å¾â€”Ã¦â€“Â½Ã¨â€šÂ¥Ã£â‚¬â€š"
+            },
+            {
+                "id": 8012,
+                "es": "El agua puede existir como sólido, líquido y gas al mismo tiempo.",
+                "en": "Water can exist in solid, liquid and gaseous states simultaneously.",
+                "zhHans": "Ã¦Â°Â´Ã¥ÂÂ¯Ã¤Â»Â¥Ã¥ÂÅ’Ã¦â€”Â¶Ã¤Â»Â¥Ã¥â€ºÂºÃ¦â‚¬ÂÃ£â‚¬ÂÃ¦Â¶Â²Ã¦â‚¬ÂÃ¥â€™Å’Ã¦Â°â€Ã¦â‚¬ÂÃ¥Â­ËœÃ¥Å“Â¨Ã£â‚¬â€š",
+                "zhHant": "Ã¦Â°Â´Ã¥ÂÂ¯Ã¤Â»Â¥Ã¥ÂÅ’Ã¦â„¢â€šÃ¤Â»Â¥Ã¥â€ºÂºÃ¦â€¦â€¹Ã£â‚¬ÂÃ¦Â¶Â²Ã¦â€¦â€¹Ã¥â€™Å’Ã¦Â°Â£Ã¦â€¦â€¹Ã¥Â­ËœÃ¥Å“Â¨Ã£â‚¬â€š"
+            },
+            {
+                "id": 8014,
+                "es": "La Venus atrapamoscas no se cierra al primer roce: espera dos toques para no malgastar energía.",
+                "en": "The Venus flytrap can count: it needs two touches to close.",
+                "zhHans": "Ã¦Ââ€¢Ã¨Ââ€¡Ã¨Ââ€°Ã¤Â¼Å¡Ã¨Â®Â¡Ã¦â€¢Â°Ã¯Â¼Å¡Ã¥Â®Æ’Ã©Å“â‚¬Ã¨Â¦ÂÃ¨Â¢Â«Ã¨Â§Â¦Ã§Â¢Â°Ã¤Â¸Â¤Ã¦Â¬Â¡Ã¦â€°ÂÃ¤Â¼Å¡Ã¥â€¦Â³Ã©â€”Â­Ã£â‚¬â€š",
+                "zhHant": "Ã¦Ââ€¢Ã¨Â â€¦Ã¨Ââ€°Ã¦Å“Æ’Ã¨Â¨Ë†Ã¦â€¢Â¸Ã¯Â¼Å¡Ã¥Â®Æ’Ã©Å“â‚¬Ã¨Â¦ÂÃ¨Â¢Â«Ã¨Â§Â¸Ã§Â¢Â°Ã¥â€¦Â©Ã¦Â¬Â¡Ã¦â€°ÂÃ¦Å“Æ’Ã©â€”Å“Ã©â€“â€°Ã£â‚¬â€š"
+            },
+            {
+                "id": 8015,
+                "es": "Las auroras aparecen cuando partículas solares chocan con la atmósfera.",
+                "en": "Northern lights occur when solar particles collide with the atmosphere.",
+                "zhHans": "Ã¦Å¾ÂÃ¥â€¦â€°Ã¦ËœÂ¯Ã¥Â¤ÂªÃ©ËœÂ³Ã§Â²â€™Ã¥Â­ÂÃ¤Â¸Å½Ã¥Â¤Â§Ã¦Â°â€Ã¥Â±â€šÃ§Â¢Â°Ã¦â€™Å¾Ã¦â€”Â¶Ã¤ÂºÂ§Ã§â€Å¸Ã§Å¡â€žÃ£â‚¬â€š",
+                "zhHant": "Ã¦Â¥ÂµÃ¥â€¦â€°Ã¦ËœÂ¯Ã¥Â¤ÂªÃ©â„¢Â½Ã§Â²â€™Ã¥Â­ÂÃ¨Ë†â€¡Ã¥Â¤Â§Ã¦Â°Â£Ã¥Â±Â¤Ã§Â¢Â°Ã¦â€™Å¾Ã¦â„¢â€šÃ§â€Â¢Ã§â€Å¸Ã§Å¡â€žÃ£â‚¬â€š"
+            },
+            {
+                "id": 8019,
+                "es": "Los océanos absorben cerca de una cuarta parte del CO2 que emitimos.",
+                "en": "Oceans absorb 25% of the COÃ¢â€šâ€š we emit and regulate the global climate.",
+                "zhHans": "Ã¦ÂµÂ·Ã¦Â´â€¹Ã¥ÂÂ¸Ã¦â€Â¶Ã¦Ë†â€˜Ã¤Â»Â¬Ã¦Å½â€™Ã¦â€Â¾Ã§Å¡â€ž25%Ã§Å¡â€žCOÃ¢â€šâ€šÃ¯Â¼Å’Ã¥Â¹Â¶Ã¨Â°Æ’Ã¨Å â€šÃ¥â€¦Â¨Ã§ÂÆ’Ã¦Â°â€Ã¥â‚¬â„¢Ã£â‚¬â€š",
+                "zhHant": "Ã¦ÂµÂ·Ã¦Â´â€¹Ã¥ÂÂ¸Ã¦â€Â¶Ã¦Ë†â€˜Ã¥â‚¬â€˜Ã¦Å½â€™Ã¦â€Â¾Ã§Å¡â€ž25%Ã§Å¡â€žCOÃ¢â€šâ€šÃ¯Â¼Å’Ã¤Â¸Â¦Ã¨ÂªÂ¿Ã§Â¯â‚¬Ã¥â€¦Â¨Ã§ÂÆ’Ã¦Â°Â£Ã¥â‚¬â„¢Ã£â‚¬â€š"
+            }
+        ]
     },
     {
-        "id":  9,
-        "es":  "Deporte",
-        "en":  "Sports",
-        "zhHans":  "Ã¤Â½â€œÃ¨â€šÂ²",
-        "zhHant":  "Ã©Â«â€Ã¨â€šÂ²",
-        "emoji":  "Ã¢Å¡Â½",
-        "datos":  [
-                      {
-                          "id":  9002,
-                          "es":  "Usain Bolt hizo los 100 metros en 9,58 segundos y dejó la marca para la historia.",
-                          "en":  "Usain Bolt ran 100 meters in 9.58 seconds, world record since 2009.",
-                          "zhHans":  "Ã¥Â°Â¤Ã¥Â¡Å¾Ã¦ÂÂ©Ã‚Â·Ã¥ÂÅ¡Ã¥Â°â€Ã§â€°Â¹Ã¤Â»Â¥9.58Ã§Â§â€™Ã¨Â·â€˜Ã¥Â®Å’100Ã§Â±Â³Ã¯Â¼Å’Ã¨â€¡Âª2009Ã¥Â¹Â´Ã¤Â»Â¥Ã¦ÂÂ¥Ã¤Â¿ÂÃ¦Å’ÂÃ¤Â¸â€“Ã§â€¢Å’Ã§ÂºÂªÃ¥Â½â€¢Ã£â‚¬â€š",
-                          "zhHant":  "Ã¥Â°Â¤Ã¥Â¡Å¾Ã¦ÂÂ©Ã‚Â·Ã¥ÂÅ¡Ã§Ë†Â¾Ã§â€°Â¹Ã¤Â»Â¥9.58Ã§Â§â€™Ã¨Â·â€˜Ã¥Â®Å’100Ã¥â€¦Â¬Ã¥Â°ÂºÃ¯Â¼Å’Ã¨â€¡Âª2009Ã¥Â¹Â´Ã¤Â»Â¥Ã¤Â¾â€ Ã¤Â¿ÂÃ¦Å’ÂÃ¤Â¸â€“Ã§â€¢Å’Ã§Â´â‚¬Ã©Å’â€žÃ£â‚¬â€š"
-                      },
-                      {
-                          "id":  9003,
-                          "es":  "El ajedrez nació en la India hace más de 1.500 años.",
-                          "en":  "Chess was invented in India over 1,500 years ago.",
-                          "zhHans":  "Ã¥â€ºÂ½Ã©â„¢â€¦Ã¨Â±Â¡Ã¦Â£â€¹Ã¦ËœÂ¯1500Ã¥Â¤Å¡Ã¥Â¹Â´Ã¥â€°ÂÃ¥Å“Â¨Ã¥ÂÂ°Ã¥ÂºÂ¦Ã¥Ââ€˜Ã¦ËœÅ½Ã§Å¡â€žÃ£â‚¬â€š",
-                          "zhHant":  "Ã¥Å“â€¹Ã©Å¡â€ºÃ¨Â±Â¡Ã¦Â£â€¹Ã¦ËœÂ¯1500Ã¥Â¤Å¡Ã¥Â¹Â´Ã¥â€°ÂÃ¥Å“Â¨Ã¥ÂÂ°Ã¥ÂºÂ¦Ã§â„¢Â¼Ã¦ËœÅ½Ã§Å¡â€žÃ£â‚¬â€š"
-                      },
-                      {
-                          "id":  9004,
-                          "es":  "Antes de ser leyenda, Michael Jordan fue descartado del equipo principal de su instituto.",
-                          "en":  "Michael Jordan was cut from his high school basketball team.",
-                          "zhHans":  "Ã¨Â¿Ë†Ã¥â€¦â€¹Ã¥Â°â€Ã‚Â·Ã¤Â¹â€Ã¤Â¸Â¹Ã¦â€ºÂ¾Ã¨Â¢Â«Ã©Â«ËœÃ¤Â¸Â­Ã§Â¯Â®Ã§ÂÆ’Ã©ËœÅ¸Ã¦â€¹â€™Ã§Â»ÂÃ£â‚¬â€š",
-                          "zhHant":  "Ã©ÂºÂ¥Ã¥ÂÂ¯Ã‚Â·Ã¥â€“Â¬Ã¤Â¸Â¹Ã¦â€ºÂ¾Ã¨Â¢Â«Ã©Â«ËœÃ¤Â¸Â­Ã§Â±Æ’Ã§ÂÆ’Ã©Å¡Å Ã¦â€¹â€™Ã§Âµâ€¢Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  9005,
-                          "es":  "Los Juegos Olímpicos modernos arrancaron en Atenas en 1896.",
-                          "en":  "The modern Olympic Games were first held in Athens in 1896.",
-                          "zhHans":  "Ã§Å½Â°Ã¤Â»Â£Ã¥Â¥Â¥Ã¦Å¾â€”Ã¥Å’Â¹Ã¥â€¦â€¹Ã¨Â¿ÂÃ¥Å Â¨Ã¤Â¼Å¡Ã¤ÂºÅ½1896Ã¥Â¹Â´Ã©Â¦â€“Ã¦Â¬Â¡Ã¥Å“Â¨Ã©â€ºâ€¦Ã¥â€¦Â¸Ã¤Â¸Â¾Ã¨Â¡Å’Ã£â‚¬â€š",
-                          "zhHant":  "Ã§ÂÂ¾Ã¤Â»Â£Ã¥Â¥Â§Ã¦Å¾â€”Ã¥Å’Â¹Ã¥â€¦â€¹Ã©Ââ€¹Ã¥â€¹â€¢Ã¦Å“Æ’Ã¦â€“Â¼1896Ã¥Â¹Â´Ã©Â¦â€“Ã¦Â¬Â¡Ã¥Å“Â¨Ã©â€ºâ€¦Ã¥â€¦Â¸Ã¨Ë†â€°Ã¨Â¡Å’Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  9008,
-                          "es":  "El primer deporte jugado en la Luna fue el golf.",
-                          "en":  "Golf was the first sport played on the Moon by astronaut Alan Shepard.",
-                          "zhHans":  "Ã©Â«ËœÃ¥Â°â€Ã¥Â¤Â«Ã¦ËœÂ¯Ã¥Â®â€¡Ã¨Ë†ÂªÃ¥â€˜ËœÃ¨â€°Â¾Ã¤Â¼Â¦Ã‚Â·Ã¨Â°Â¢Ã¦Â³Â¼Ã¥Â¾Â·Ã¥Å“Â¨Ã¦Å“Ë†Ã§ÂÆ’Ã¤Â¸Å Ã¦â€°â€œÃ§Å¡â€žÃ§Â¬Â¬Ã¤Â¸â‚¬Ã©Â¡Â¹Ã¨Â¿ÂÃ¥Å Â¨Ã£â‚¬â€š",
-                          "zhHant":  "Ã©Â«ËœÃ§Ë†Â¾Ã¥Â¤Â«Ã¦ËœÂ¯Ã¥Â¤ÂªÃ§Â©ÂºÃ¤ÂºÂºÃ¨â€°Â¾Ã¥â‚¬Â«Ã‚Â·Ã¨Â¬ÂÃ¥Â¸â€¢Ã¥Â¾Â·Ã¥Å“Â¨Ã¦Å“Ë†Ã§ÂÆ’Ã¤Â¸Å Ã¦â€°â€œÃ§Å¡â€žÃ§Â¬Â¬Ã¤Â¸â‚¬Ã©Â â€¦Ã©Ââ€¹Ã¥â€¹â€¢Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  9009,
-                          "es":  "Rafael Nadal levantó 14 Roland Garros, una barbaridad casi imposible de repetir.",
-                          "en":  "Rafael Nadal is the only tennis player with 14 Roland Garros titles.",
-                          "zhHans":  "Ã¦â€¹â€°Ã¦â€“ÂÃ¥Â°â€Ã‚Â·Ã§ÂºÂ³Ã¨Â¾Â¾Ã¥Â°â€Ã¦ËœÂ¯Ã¥â€Â¯Ã¤Â¸â‚¬Ã¨ÂµÂ¢Ã¥Â¾â€”14Ã¦Â¬Â¡Ã¦Â³â€¢Ã¥â€ºÂ½Ã§Â½â€˜Ã§ÂÆ’Ã¥â€¦Â¬Ã¥Â¼â‚¬Ã¨Âµâ€ºÃ¥â€ Â Ã¥â€ â€ºÃ§Å¡â€žÃ§ÂÆ’Ã¥â€˜ËœÃ£â‚¬â€š",
-                          "zhHant":  "Ã¦â€¹â€°Ã¦â€“ÂÃ§Ë†Â¾Ã‚Â·Ã§Â´ÂÃ©Ââ€Ã§Ë†Â¾Ã¦ËœÂ¯Ã¥â€Â¯Ã¤Â¸â‚¬Ã¨Â´ÂÃ¥Â¾â€”14Ã¦Â¬Â¡Ã¦Â³â€¢Ã¥Å“â€¹Ã§Â¶Â²Ã§ÂÆ’Ã¥â€¦Â¬Ã©â€“â€¹Ã¨Â³Â½Ã¥â€ Â Ã¨Â»ÂÃ§Å¡â€žÃ§ÂÆ’Ã¥â€œÂ¡Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  9011,
-                          "es":  "Un volante de bádminton puede salir disparado a más de 400 km/h.",
-                          "en":  "The world\u0027s fastest sport is badminton, with shuttlecocks reaching 400 km/h.",
-                          "zhHans":  "Ã¤Â¸â€“Ã§â€¢Å’Ã¤Â¸Å Ã©â‚¬Å¸Ã¥ÂºÂ¦Ã¦Å“â‚¬Ã¥Â¿Â«Ã§Å¡â€žÃ¨Â¿ÂÃ¥Å Â¨Ã¦ËœÂ¯Ã§Â¾Â½Ã¦Â¯â€ºÃ§ÂÆ’Ã¯Â¼Å’Ã§Â¾Â½Ã¦Â¯â€ºÃ§ÂÆ’Ã©â‚¬Å¸Ã¥ÂºÂ¦Ã¥ÂÂ¯Ã¨Â¾Â¾400Ã¥â€¦Â¬Ã©â€¡Å’/Ã¥Â°ÂÃ¦â€”Â¶Ã£â‚¬â€š",
-                          "zhHant":  "Ã¤Â¸â€“Ã§â€¢Å’Ã¤Â¸Å Ã©â‚¬Å¸Ã¥ÂºÂ¦Ã¦Å“â‚¬Ã¥Â¿Â«Ã§Å¡â€žÃ©Ââ€¹Ã¥â€¹â€¢Ã¦ËœÂ¯Ã§Â¾Â½Ã¦Â¯â€ºÃ§ÂÆ’Ã¯Â¼Å’Ã§Â¾Â½Ã¦Â¯â€ºÃ§ÂÆ’Ã©â‚¬Å¸Ã¥ÂºÂ¦Ã¥ÂÂ¯Ã©Ââ€400Ã¥â€¦Â¬Ã©â€¡Å’/Ã¥Â°ÂÃ¦â„¢â€šÃ£â‚¬â€š"
-                      },
-                      {
-                          "id":  9014,
-                          "es":  "En París 1900 hubo una prueba olímpica de tiro a palomas vivas.",
-                          "en":  "The 1900 Paris Olympics included live pigeon shooting as a competition.",
-                          "zhHans":  "1900Ã¥Â¹Â´Ã¥Â·Â´Ã©Â»Å½Ã¥Â¥Â¥Ã¨Â¿ÂÃ¤Â¼Å¡Ã¥Å’â€¦Ã¦â€¹Â¬Ã¤Âºâ€ Ã¥Â°â€žÃ¥â€¡Â»Ã¦Â´Â»Ã©Â¸Â½Ã¥Â­ÂÃ§Å¡â€žÃ¦Â¯â€Ã¨Âµâ€ºÃ£â‚¬â€š",
-                          "zhHant":  "1900Ã¥Â¹Â´Ã¥Â·Â´Ã©Â»Å½Ã¥Â¥Â§Ã©Ââ€¹Ã¦Å“Æ’Ã¥Å’â€¦Ã¦â€¹Â¬Ã¤Âºâ€ Ã¥Â°â€žÃ¦â€œÅ Ã¦Â´Â»Ã©Â´Â¿Ã¥Â­ÂÃ§Å¡â€žÃ¦Â¯â€Ã¨Â³Â½Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  9016,
-                          "es":  "James Naismith inventó el baloncesto en 1891 con dos cestas de melocotones.",
-                          "en":  "Basketball was invented in 1891 by Canadian James Naismith.",
-                          "zhHans":  "Ã§Â¯Â®Ã§ÂÆ’Ã§â€Â±Ã¥Å Â Ã¦â€¹Â¿Ã¥Â¤Â§Ã¤ÂºÂºÃ¨Â©Â¹Ã¥Â§â€ Ã¦â€“Â¯Ã‚Â·Ã¥Â¥Ë†Ã¥ÂÂ²Ã¥Â¯â€ Ã¦â€“Â¯Ã¤ÂºÅ½1891Ã¥Â¹Â´Ã¥Ââ€˜Ã¦ËœÅ½Ã£â‚¬â€š",
-                          "zhHant":  "Ã§Â±Æ’Ã§ÂÆ’Ã§â€Â±Ã¥Å Â Ã¦â€¹Â¿Ã¥Â¤Â§Ã¤ÂºÂºÃ¨Â©Â¹Ã¥Â§â€ Ã¦â€“Â¯Ã‚Â·Ã¥Â¥Ë†Ã¥ÂÂ²Ã¥Â¯â€ Ã¦â€“Â¯Ã¦â€“Â¼1891Ã¥Â¹Â´Ã§â„¢Â¼Ã¦ËœÅ½Ã£â‚¬â€š"
-                      },
-                      {
-                          "id":  9017,
-                          "es":  "Michael Phelps se retiró con 23 oros olímpicos.",
-                          "en":  "Swimmer Michael Phelps won 23 Olympic gold medals in his career.",
-                          "zhHans":  "Ã¦Â¸Â¸Ã¦Â³Â³Ã¨Â¿ÂÃ¥Å Â¨Ã¥â€˜ËœÃ¨Â¿Ë†Ã¥â€¦â€¹Ã¥Â°â€Ã‚Â·Ã¨ÂÂ²Ã¥Â°â€Ã¦â„¢Â®Ã¦â€“Â¯Ã¥Å“Â¨Ã¨ÂÅ’Ã¤Â¸Å¡Ã§â€Å¸Ã¦Â¶Â¯Ã¤Â¸Â­Ã¨ÂµÂ¢Ã¥Â¾â€”Ã¤Âºâ€ 23Ã¦Å¾Å¡Ã¥Â¥Â¥Ã¨Â¿ÂÃ©â€¡â€˜Ã§â€°Å’Ã£â‚¬â€š",
-                          "zhHant":  "Ã¦Â¸Â¸Ã¦Â³Â³Ã©Ââ€¹Ã¥â€¹â€¢Ã¥â€œÂ¡Ã©ÂºÂ¥Ã¥ÂÂ¯Ã‚Â·Ã¨ÂÂ²Ã§Ë†Â¾Ã¦â„¢Â®Ã¦â€“Â¯Ã¥Å“Â¨Ã¨ÂÂ·Ã¦Â¥Â­Ã§â€Å¸Ã¦Â¶Â¯Ã¤Â¸Â­Ã¨Â´ÂÃ¥Â¾â€”Ã¤Âºâ€ 23Ã¦Å¾Å¡Ã¥Â¥Â§Ã©Ââ€¹Ã©â€¡â€˜Ã§â€°Å’Ã£â‚¬â€š"
-                      }
-                  ]
+        "id": 9,
+        "es": "Deporte",
+        "en": "Sports",
+        "zhHans": "Ã¤Â½â€œÃ¨â€šÂ²",
+        "zhHant": "Ã©Â«â€Ã¨â€šÂ²",
+        "emoji": "⚽",
+        "datos": [
+            {
+                "id": 9002,
+                "es": "Usain Bolt hizo los 100 metros en 9,58 segundos y dejó la marca para la historia.",
+                "en": "Usain Bolt ran 100 meters in 9.58 seconds, world record since 2009.",
+                "zhHans": "Ã¥Â°Â¤Ã¥Â¡Å¾Ã¦ÂÂ©Ã‚Â·Ã¥ÂÅ¡Ã¥Â°â€Ã§â€°Â¹Ã¤Â»Â¥9.58Ã§Â§â€™Ã¨Â·â€˜Ã¥Â®Å’100Ã§Â±Â³Ã¯Â¼Å’Ã¨â€¡Âª2009Ã¥Â¹Â´Ã¤Â»Â¥Ã¦ÂÂ¥Ã¤Â¿ÂÃ¦Å’ÂÃ¤Â¸â€“Ã§â€¢Å’Ã§ÂºÂªÃ¥Â½â€¢Ã£â‚¬â€š",
+                "zhHant": "Ã¥Â°Â¤Ã¥Â¡Å¾Ã¦ÂÂ©Ã‚Â·Ã¥ÂÅ¡Ã§Ë†Â¾Ã§â€°Â¹Ã¤Â»Â¥9.58Ã§Â§â€™Ã¨Â·â€˜Ã¥Â®Å’100Ã¥â€¦Â¬Ã¥Â°ÂºÃ¯Â¼Å’Ã¨â€¡Âª2009Ã¥Â¹Â´Ã¤Â»Â¥Ã¤Â¾â€ Ã¤Â¿ÂÃ¦Å’ÂÃ¤Â¸â€“Ã§â€¢Å’Ã§Â´â‚¬Ã©Å’â€žÃ£â‚¬â€š"
+            },
+            {
+                "id": 9003,
+                "es": "El ajedrez nació en la India hace más de 1.500 años.",
+                "en": "Chess was invented in India over 1,500 years ago.",
+                "zhHans": "Ã¥â€ºÂ½Ã©â„¢â€¦Ã¨Â±Â¡Ã¦Â£â€¹Ã¦ËœÂ¯1500Ã¥Â¤Å¡Ã¥Â¹Â´Ã¥â€°ÂÃ¥Å“Â¨Ã¥ÂÂ°Ã¥ÂºÂ¦Ã¥Ââ€˜Ã¦ËœÅ½Ã§Å¡â€žÃ£â‚¬â€š",
+                "zhHant": "Ã¥Å“â€¹Ã©Å¡â€ºÃ¨Â±Â¡Ã¦Â£â€¹Ã¦ËœÂ¯1500Ã¥Â¤Å¡Ã¥Â¹Â´Ã¥â€°ÂÃ¥Å“Â¨Ã¥ÂÂ°Ã¥ÂºÂ¦Ã§â„¢Â¼Ã¦ËœÅ½Ã§Å¡â€žÃ£â‚¬â€š"
+            },
+            {
+                "id": 9004,
+                "es": "Antes de ser leyenda, Michael Jordan fue descartado del equipo principal de su instituto.",
+                "en": "Michael Jordan was cut from his high school basketball team.",
+                "zhHans": "Ã¨Â¿Ë†Ã¥â€¦â€¹Ã¥Â°â€Ã‚Â·Ã¤Â¹â€Ã¤Â¸Â¹Ã¦â€ºÂ¾Ã¨Â¢Â«Ã©Â«ËœÃ¤Â¸Â­Ã§Â¯Â®Ã§ÂÆ’Ã©ËœÅ¸Ã¦â€¹â€™Ã§Â»ÂÃ£â‚¬â€š",
+                "zhHant": "Ã©ÂºÂ¥Ã¥ÂÂ¯Ã‚Â·Ã¥â€“Â¬Ã¤Â¸Â¹Ã¦â€ºÂ¾Ã¨Â¢Â«Ã©Â«ËœÃ¤Â¸Â­Ã§Â±Æ’Ã§ÂÆ’Ã©Å¡Å Ã¦â€¹â€™Ã§Âµâ€¢Ã£â‚¬â€š"
+            },
+            {
+                "id": 9005,
+                "es": "Los Juegos Olímpicos modernos arrancaron en Atenas en 1896.",
+                "en": "The modern Olympic Games were first held in Athens in 1896.",
+                "zhHans": "Ã§Å½Â°Ã¤Â»Â£Ã¥Â¥Â¥Ã¦Å¾â€”Ã¥Å’Â¹Ã¥â€¦â€¹Ã¨Â¿ÂÃ¥Å Â¨Ã¤Â¼Å¡Ã¤ÂºÅ½1896Ã¥Â¹Â´Ã©Â¦â€“Ã¦Â¬Â¡Ã¥Å“Â¨Ã©â€ºâ€¦Ã¥â€¦Â¸Ã¤Â¸Â¾Ã¨Â¡Å’Ã£â‚¬â€š",
+                "zhHant": "Ã§ÂÂ¾Ã¤Â»Â£Ã¥Â¥Â§Ã¦Å¾â€”Ã¥Å’Â¹Ã¥â€¦â€¹Ã©Ââ€¹Ã¥â€¹â€¢Ã¦Å“Æ’Ã¦â€“Â¼1896Ã¥Â¹Â´Ã©Â¦â€“Ã¦Â¬Â¡Ã¥Å“Â¨Ã©â€ºâ€¦Ã¥â€¦Â¸Ã¨Ë†â€°Ã¨Â¡Å’Ã£â‚¬â€š"
+            },
+            {
+                "id": 9008,
+                "es": "El primer deporte jugado en la Luna fue el golf.",
+                "en": "Golf was the first sport played on the Moon by astronaut Alan Shepard.",
+                "zhHans": "Ã©Â«ËœÃ¥Â°â€Ã¥Â¤Â«Ã¦ËœÂ¯Ã¥Â®â€¡Ã¨Ë†ÂªÃ¥â€˜ËœÃ¨â€°Â¾Ã¤Â¼Â¦Ã‚Â·Ã¨Â°Â¢Ã¦Â³Â¼Ã¥Â¾Â·Ã¥Å“Â¨Ã¦Å“Ë†Ã§ÂÆ’Ã¤Â¸Å Ã¦â€°â€œÃ§Å¡â€žÃ§Â¬Â¬Ã¤Â¸â‚¬Ã©Â¡Â¹Ã¨Â¿ÂÃ¥Å Â¨Ã£â‚¬â€š",
+                "zhHant": "Ã©Â«ËœÃ§Ë†Â¾Ã¥Â¤Â«Ã¦ËœÂ¯Ã¥Â¤ÂªÃ§Â©ÂºÃ¤ÂºÂºÃ¨â€°Â¾Ã¥â‚¬Â«Ã‚Â·Ã¨Â¬ÂÃ¥Â¸â€¢Ã¥Â¾Â·Ã¥Å“Â¨Ã¦Å“Ë†Ã§ÂÆ’Ã¤Â¸Å Ã¦â€°â€œÃ§Å¡â€žÃ§Â¬Â¬Ã¤Â¸â‚¬Ã©Â â€¦Ã©Ââ€¹Ã¥â€¹â€¢Ã£â‚¬â€š"
+            },
+            {
+                "id": 9009,
+                "es": "Rafael Nadal levantó 14 Roland Garros, una barbaridad casi imposible de repetir.",
+                "en": "Rafael Nadal is the only tennis player with 14 Roland Garros titles.",
+                "zhHans": "Ã¦â€¹â€°Ã¦â€“ÂÃ¥Â°â€Ã‚Â·Ã§ÂºÂ³Ã¨Â¾Â¾Ã¥Â°â€Ã¦ËœÂ¯Ã¥â€Â¯Ã¤Â¸â‚¬Ã¨ÂµÂ¢Ã¥Â¾â€”14Ã¦Â¬Â¡Ã¦Â³â€¢Ã¥â€ºÂ½Ã§Â½â€˜Ã§ÂÆ’Ã¥â€¦Â¬Ã¥Â¼â‚¬Ã¨Âµâ€ºÃ¥â€ Â Ã¥â€ â€ºÃ§Å¡â€žÃ§ÂÆ’Ã¥â€˜ËœÃ£â‚¬â€š",
+                "zhHant": "Ã¦â€¹â€°Ã¦â€“ÂÃ§Ë†Â¾Ã‚Â·Ã§Â´ÂÃ©Ââ€Ã§Ë†Â¾Ã¦ËœÂ¯Ã¥â€Â¯Ã¤Â¸â‚¬Ã¨Â´ÂÃ¥Â¾â€”14Ã¦Â¬Â¡Ã¦Â³â€¢Ã¥Å“â€¹Ã§Â¶Â²Ã§ÂÆ’Ã¥â€¦Â¬Ã©â€“â€¹Ã¨Â³Â½Ã¥â€ Â Ã¨Â»ÂÃ§Å¡â€žÃ§ÂÆ’Ã¥â€œÂ¡Ã£â‚¬â€š"
+            },
+            {
+                "id": 9011,
+                "es": "Un volante de bádminton puede salir disparado a más de 400 km/h.",
+                "en": "The world's fastest sport is badminton, with shuttlecocks reaching 400 km/h.",
+                "zhHans": "Ã¤Â¸â€“Ã§â€¢Å’Ã¤Â¸Å Ã©â‚¬Å¸Ã¥ÂºÂ¦Ã¦Å“â‚¬Ã¥Â¿Â«Ã§Å¡â€žÃ¨Â¿ÂÃ¥Å Â¨Ã¦ËœÂ¯Ã§Â¾Â½Ã¦Â¯â€ºÃ§ÂÆ’Ã¯Â¼Å’Ã§Â¾Â½Ã¦Â¯â€ºÃ§ÂÆ’Ã©â‚¬Å¸Ã¥ÂºÂ¦Ã¥ÂÂ¯Ã¨Â¾Â¾400Ã¥â€¦Â¬Ã©â€¡Å’/Ã¥Â°ÂÃ¦â€”Â¶Ã£â‚¬â€š",
+                "zhHant": "Ã¤Â¸â€“Ã§â€¢Å’Ã¤Â¸Å Ã©â‚¬Å¸Ã¥ÂºÂ¦Ã¦Å“â‚¬Ã¥Â¿Â«Ã§Å¡â€žÃ©Ââ€¹Ã¥â€¹â€¢Ã¦ËœÂ¯Ã§Â¾Â½Ã¦Â¯â€ºÃ§ÂÆ’Ã¯Â¼Å’Ã§Â¾Â½Ã¦Â¯â€ºÃ§ÂÆ’Ã©â‚¬Å¸Ã¥ÂºÂ¦Ã¥ÂÂ¯Ã©Ââ€400Ã¥â€¦Â¬Ã©â€¡Å’/Ã¥Â°ÂÃ¦â„¢â€šÃ£â‚¬â€š"
+            },
+            {
+                "id": 9014,
+                "es": "En París 1900 hubo una prueba olímpica de tiro a palomas vivas.",
+                "en": "The 1900 Paris Olympics included live pigeon shooting as a competition.",
+                "zhHans": "1900Ã¥Â¹Â´Ã¥Â·Â´Ã©Â»Å½Ã¥Â¥Â¥Ã¨Â¿ÂÃ¤Â¼Å¡Ã¥Å’â€¦Ã¦â€¹Â¬Ã¤Âºâ€ Ã¥Â°â€žÃ¥â€¡Â»Ã¦Â´Â»Ã©Â¸Â½Ã¥Â­ÂÃ§Å¡â€žÃ¦Â¯â€Ã¨Âµâ€ºÃ£â‚¬â€š",
+                "zhHant": "1900Ã¥Â¹Â´Ã¥Â·Â´Ã©Â»Å½Ã¥Â¥Â§Ã©Ââ€¹Ã¦Å“Æ’Ã¥Å’â€¦Ã¦â€¹Â¬Ã¤Âºâ€ Ã¥Â°â€žÃ¦â€œÅ Ã¦Â´Â»Ã©Â´Â¿Ã¥Â­ÂÃ§Å¡â€žÃ¦Â¯â€Ã¨Â³Â½Ã£â‚¬â€š"
+            },
+            {
+                "id": 9016,
+                "es": "James Naismith inventó el baloncesto en 1891 con dos cestas de melocotones.",
+                "en": "Basketball was invented in 1891 by Canadian James Naismith.",
+                "zhHans": "Ã§Â¯Â®Ã§ÂÆ’Ã§â€Â±Ã¥Å Â Ã¦â€¹Â¿Ã¥Â¤Â§Ã¤ÂºÂºÃ¨Â©Â¹Ã¥Â§â€ Ã¦â€“Â¯Ã‚Â·Ã¥Â¥Ë†Ã¥ÂÂ²Ã¥Â¯â€ Ã¦â€“Â¯Ã¤ÂºÅ½1891Ã¥Â¹Â´Ã¥Ââ€˜Ã¦ËœÅ½Ã£â‚¬â€š",
+                "zhHant": "Ã§Â±Æ’Ã§ÂÆ’Ã§â€Â±Ã¥Å Â Ã¦â€¹Â¿Ã¥Â¤Â§Ã¤ÂºÂºÃ¨Â©Â¹Ã¥Â§â€ Ã¦â€“Â¯Ã‚Â·Ã¥Â¥Ë†Ã¥ÂÂ²Ã¥Â¯â€ Ã¦â€“Â¯Ã¦â€“Â¼1891Ã¥Â¹Â´Ã§â„¢Â¼Ã¦ËœÅ½Ã£â‚¬â€š"
+            },
+            {
+                "id": 9017,
+                "es": "Michael Phelps se retiró con 23 oros olímpicos.",
+                "en": "Swimmer Michael Phelps won 23 Olympic gold medals in his career.",
+                "zhHans": "Ã¦Â¸Â¸Ã¦Â³Â³Ã¨Â¿ÂÃ¥Å Â¨Ã¥â€˜ËœÃ¨Â¿Ë†Ã¥â€¦â€¹Ã¥Â°â€Ã‚Â·Ã¨ÂÂ²Ã¥Â°â€Ã¦â„¢Â®Ã¦â€“Â¯Ã¥Å“Â¨Ã¨ÂÅ’Ã¤Â¸Å¡Ã§â€Å¸Ã¦Â¶Â¯Ã¤Â¸Â­Ã¨ÂµÂ¢Ã¥Â¾â€”Ã¤Âºâ€ 23Ã¦Å¾Å¡Ã¥Â¥Â¥Ã¨Â¿ÂÃ©â€¡â€˜Ã§â€°Å’Ã£â‚¬â€š",
+                "zhHant": "Ã¦Â¸Â¸Ã¦Â³Â³Ã©Ââ€¹Ã¥â€¹â€¢Ã¥â€œÂ¡Ã©ÂºÂ¥Ã¥ÂÂ¯Ã‚Â·Ã¨ÂÂ²Ã§Ë†Â¾Ã¦â„¢Â®Ã¦â€“Â¯Ã¥Å“Â¨Ã¨ÂÂ·Ã¦Â¥Â­Ã§â€Å¸Ã¦Â¶Â¯Ã¤Â¸Â­Ã¨Â´ÂÃ¥Â¾â€”Ã¤Âºâ€ 23Ã¦Å¾Å¡Ã¥Â¥Â§Ã©Ââ€¹Ã©â€¡â€˜Ã§â€°Å’Ã£â‚¬â€š"
+            }
+        ]
     },
     {
-        "id":  10,
-        "es":  "Comida",
-        "en":  "Food",
-        "zhHans":  "美食",
-        "zhHant":  "美食",
-        "emoji":  "🍕",
-        "datos":  [
-                      {
-                          "id":  10001,
-                          "es":  "La pizza nació como comida humilde en Nápoles antes de conquistar el planeta.",
-                          "en":  "Pizza was originally a poor people\u0027s dish in 18th-century Naples.",
-                          "zhHans":  "披萨最初是18世纪那不勒斯穷人的食物。",
-                          "zhHant":  "披薩最初是18世紀那不勒斯窮人的食物。"
-                      },
-                      {
-                          "id":  10003,
-                          "es":  "El chocolate empezó siendo una bebida amarga mucho antes de convertirse en postre.",
-                          "en":  "Chocolate was originally a bitter drink consumed by the Aztecs.",
-                          "zhHans":  "巧克力最初是阿兹特克人饮用的苦味饮料。",
-                          "zhHant":  "巧克力最初是阿茲特克人飲用的苦味飲料。"
-                      },
-                      {
-                          "id":  10004,
-                          "es":  "Botánicamente, el tomate es una fruta aunque en la cocina juegue de verdura.",
-                          "en":  "A tomato is botanically a fruit, although used as a vegetable in cooking.",
-                          "zhHans":  "番茄在植物学上是一种水果，但在烹饪中作为蔬菜使用。",
-                          "zhHant":  "番茄在植物學上是一種水果，但在烹飪中作為蔬菜使用。"
-                      },
-                      {
-                          "id":  10005,
-                          "es":  "El wasabi auténtico es tan raro que muchas veces te sirven otra cosa teñida de verde.",
-                          "en":  "Real wasabi is so rare that most restaurant wasabi is colored horseradish.",
-                          "zhHans":  "真正的山葵非常稀有，大多数餐厅里的山葵都是染色的辣根。",
-                          "zhHant":  "真正的山葵非常稀有，大多數餐廳裡的山葵都是染色的辣根。"
-                      },
-                      {
-                          "id":  10008,
-                          "es":  "Pepper X supera los 2 millones en la escala Scoville y es una auténtica locura.",
-                          "en":  "The world\u0027s hottest chili is Pepper X, with over 2 million Scoville units.",
-                          "zhHans":  "世界上最辣的辣椒是Pepper X，超过200万史高维尔单位。",
-                          "zhHant":  "世界上最辣的辣椒是Pepper X，超過200萬史高維爾單位。"
-                      },
-                      {
-                          "id":  10010,
-                          "es":  "El sushi empezó como una técnica para conservar pescado con arroz fermentado.",
-                          "en":  "Original sushi was a method of preserving fish with fermented rice.",
-                          "zhHans":  "最初的寿司是一种用发酵米饭保存鱼的方法。",
-                          "zhHant":  "最初的壽司是一種用發酵米飯保存魚的方法。"
-                      },
-                      {
-                          "id":  10011,
-                          "es":  "Francia presume de más de 1.200 variedades de queso reconocidas.",
-                          "en":  "France has over 1,200 officially recognized varieties of cheese.",
-                          "zhHans":  "法国有超过1200种官方认可的奶酪品种。",
-                          "zhHant":  "法國有超過1200種官方認可的奶酪品種。"
-                      },
-                      {
-                          "id":  10012,
-                          "es":  "La vainilla es la segunda especia más cara del mundo, solo por detrás del azafrán.",
-                          "en":  "Vanilla is the second most expensive spice in the world, after saffron.",
-                          "zhHans":  "香草是世界上第二贵的香料，仅次于藏红花。",
-                          "zhHant":  "香草是世界上第二貴的香料，僅次於番紅花。"
-                      },
-                      {
-                          "id":  10015,
-                          "es":  "La capsaicina del chile engaña a tu cerebro y le hace creer que se está quemando.",
-                          "en":  "Chilis contain capsaicin, which tricks the brain into feeling heat.",
-                          "zhHans":  "辣椒含有辣椒素，欺骗大脑使其感觉有热量。",
-                          "zhHant":  "辣椒含有辣椒素，欺騙大腦使其感覺有熱量。"
-                      },
-                      {
-                          "id":  10020,
-                          "es":  "Los agujeros del emmental aparecen porque las bacterias sueltan CO2 al madurar.",
-                          "en":  "Emmental cheese has holes because bacteria produce CO₂ during aging.",
-                          "zhHans":  "埃门塔尔奶酪有孔是因为细菌在熟化过程中产生CO₂。",
-                          "zhHant":  "埃門塔爾奶酪有孔是因為細菌在熟化過程中產生CO₂。"
-                      }
-                  ]
+        "id": 10,
+        "es": "Comida",
+        "en": "Food",
+        "zhHans": "美食",
+        "zhHant": "美食",
+        "emoji": "🍕",
+        "datos": [
+            {
+                "id": 10001,
+                "es": "La pizza nació como comida humilde en Nápoles antes de conquistar el planeta.",
+                "en": "Pizza was originally a poor people's dish in 18th-century Naples.",
+                "zhHans": "披萨最初是18世纪那不勒斯穷人的食物。",
+                "zhHant": "披薩最初是18世紀那不勒斯窮人的食物。"
+            },
+            {
+                "id": 10003,
+                "es": "El chocolate empezó siendo una bebida amarga mucho antes de convertirse en postre.",
+                "en": "Chocolate was originally a bitter drink consumed by the Aztecs.",
+                "zhHans": "巧克力最初是阿兹特克人饮用的苦味饮料。",
+                "zhHant": "巧克力最初是阿茲特克人飲用的苦味飲料。"
+            },
+            {
+                "id": 10004,
+                "es": "Botánicamente, el tomate es una fruta aunque en la cocina juegue de verdura.",
+                "en": "A tomato is botanically a fruit, although used as a vegetable in cooking.",
+                "zhHans": "番茄在植物学上是一种水果，但在烹饪中作为蔬菜使用。",
+                "zhHant": "番茄在植物學上是一種水果，但在烹飪中作為蔬菜使用。"
+            },
+            {
+                "id": 10005,
+                "es": "El wasabi auténtico es tan raro que muchas veces te sirven otra cosa teñida de verde.",
+                "en": "Real wasabi is so rare that most restaurant wasabi is colored horseradish.",
+                "zhHans": "真正的山葵非常稀有，大多数餐厅里的山葵都是染色的辣根。",
+                "zhHant": "真正的山葵非常稀有，大多數餐廳裡的山葵都是染色的辣根。"
+            },
+            {
+                "id": 10008,
+                "es": "Pepper X supera los 2 millones en la escala Scoville y es una auténtica locura.",
+                "en": "The world's hottest chili is Pepper X, with over 2 million Scoville units.",
+                "zhHans": "世界上最辣的辣椒是Pepper X，超过200万史高维尔单位。",
+                "zhHant": "世界上最辣的辣椒是Pepper X，超過200萬史高維爾單位。"
+            },
+            {
+                "id": 10010,
+                "es": "El sushi empezó como una técnica para conservar pescado con arroz fermentado.",
+                "en": "Original sushi was a method of preserving fish with fermented rice.",
+                "zhHans": "最初的寿司是一种用发酵米饭保存鱼的方法。",
+                "zhHant": "最初的壽司是一種用發酵米飯保存魚的方法。"
+            },
+            {
+                "id": 10011,
+                "es": "Francia presume de más de 1.200 variedades de queso reconocidas.",
+                "en": "France has over 1,200 officially recognized varieties of cheese.",
+                "zhHans": "法国有超过1200种官方认可的奶酪品种。",
+                "zhHant": "法國有超過1200種官方認可的奶酪品種。"
+            },
+            {
+                "id": 10012,
+                "es": "La vainilla es la segunda especia más cara del mundo, solo por detrás del azafrán.",
+                "en": "Vanilla is the second most expensive spice in the world, after saffron.",
+                "zhHans": "香草是世界上第二贵的香料，仅次于藏红花。",
+                "zhHant": "香草是世界上第二貴的香料，僅次於番紅花。"
+            },
+            {
+                "id": 10015,
+                "es": "La capsaicina del chile engaña a tu cerebro y le hace creer que se está quemando.",
+                "en": "Chilis contain capsaicin, which tricks the brain into feeling heat.",
+                "zhHans": "辣椒含有辣椒素，欺骗大脑使其感觉有热量。",
+                "zhHant": "辣椒含有辣椒素，欺騙大腦使其感覺有熱量。"
+            },
+            {
+                "id": 10020,
+                "es": "Los agujeros del emmental aparecen porque las bacterias sueltan CO2 al madurar.",
+                "en": "Emmental cheese has holes because bacteria produce CO₂ during aging.",
+                "zhHans": "埃门塔尔奶酪有孔是因为细菌在熟化过程中产生CO₂。",
+                "zhHant": "埃門塔爾奶酪有孔是因為細菌在熟化過程中產生CO₂。"
+            }
+        ]
     }
 ]

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=412, initial-scale=1">
+<title>Reveal Carmesí - Diseño Cinematic</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #1a1a2e;
+    font-family: system-ui, -apple-system, sans-serif;
+    gap: 40px;
+    padding: 40px;
+    flex-wrap: wrap;
+  }
+
+  .label {
+    color: #aaa;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .phone {
+    width: 412px;
+    height: 892px;
+    border-radius: 40px;
+    overflow: hidden;
+    position: relative;
+    border: 3px solid #333;
+    flex-shrink: 0;
+  }
+
+  .screen-pre {
+    width: 100%;
+    height: 100%;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 45%, rgba(217, 44, 88, 0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 30% 25%, rgba(160, 21, 53, 0.08) 0%, transparent 60%),
+      linear-gradient(180deg, #0C0205 0%, #1A0610 40%, #060103 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: rgba(217, 44, 88, 0.6);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+  }
+  .particle:nth-child(1) { left: 15%; top: 25%; animation-delay: 0s; animation-duration: 7s; }
+  .particle:nth-child(2) { right: 12%; top: 18%; animation-delay: 1.5s; width: 2px; height: 2px; }
+  .particle:nth-child(3) { right: 18%; bottom: 28%; animation-delay: 3s; animation-duration: 8s; }
+  .particle:nth-child(4) { left: 10%; bottom: 25%; animation-delay: 0.8s; width: 4px; height: 4px; }
+  .particle:nth-child(5) { right: 25%; top: 42%; animation-delay: 2s; animation-duration: 5s; }
+  .particle:nth-child(6) { left: 28%; top: 55%; animation-delay: 4s; width: 2px; height: 2px; }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) translateX(0); opacity: 0.3; }
+    25% { transform: translateY(-20px) translateX(5px); opacity: 0.8; }
+    50% { transform: translateY(-35px) translateX(-3px); opacity: 0.5; }
+    75% { transform: translateY(-15px) translateX(8px); opacity: 0.9; }
+  }
+
+  .glow-ring {
+    position: absolute;
+    width: 380px;
+    height: 380px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(217, 44, 88, 0.15) 0%, rgba(217, 44, 88, 0.05) 40%, transparent 70%);
+    animation: pulse 3s ease-in-out infinite;
+  }
+  .glow-ring-outer {
+    position: absolute;
+    width: 520px;
+    height: 520px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(240, 198, 208, 0.04) 0%, transparent 60%);
+    animation: pulse 3s ease-in-out infinite reverse;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: translate(-50%, -55%) scale(1); opacity: 0.5; }
+    50% { transform: translate(-50%, -55%) scale(1.08); opacity: 1; }
+  }
+
+  .watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+    font-family: serif;
+    font-size: 280px;
+    font-weight: bold;
+    color: rgba(217, 44, 88, 0.04);
+    pointer-events: none;
+  }
+
+  .edition {
+    margin-top: 44px;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: rgba(240, 208, 215, 0.3);
+    font-weight: 600;
+    z-index: 2;
+  }
+
+  .card {
+    position: relative;
+    z-index: 2;
+    width: 340px;
+    margin-top: 24px;
+    padding: 44px 32px;
+    border-radius: 24px;
+    background: linear-gradient(170deg, rgba(217, 44, 88, 0.12) 0%, rgba(12, 2, 5, 0.95) 30%, rgba(12, 2, 5, 0.98) 100%);
+    border: 1px solid rgba(240, 208, 215, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 60px rgba(217, 44, 88, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    flex: 1;
+    max-height: 580px;
+    min-height: 480px;
+    justify-content: center;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(217, 44, 88, 0.4), transparent);
+  }
+
+  .card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 120px;
+    border-radius: 24px 24px 0 0;
+    background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, transparent 100%);
+    pointer-events: none;
+  }
+
+  .monogram {
+    font-family: serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: rgba(240, 208, 215, 0.35);
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+  }
+
+  .player-name {
+    font-family: serif;
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 0 0 30px rgba(217, 44, 88, 0.3);
+    margin-bottom: 10px;
+  }
+
+  .subtitle {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: rgba(240, 208, 215, 0.28);
+    text-transform: uppercase;
+    margin-bottom: 44px;
+  }
+
+  .tap-icon {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    opacity: 0.5;
+    transform: rotate(-20deg);
+    animation: tapFloat 2s ease-in-out infinite;
+    margin-bottom: 16px;
+  }
+
+  @keyframes tapFloat {
+    0%, 100% { transform: rotate(-20deg) translateY(0); opacity: 0.4; }
+    50% { transform: rotate(-20deg) translateY(-8px); opacity: 0.7; }
+  }
+
+  .tap-text {
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    color: rgba(240, 208, 215, 0.22);
+  }
+
+  .btn-next {
+    position: absolute;
+    bottom: 32px;
+    left: 32px;
+    right: 32px;
+    z-index: 2;
+    padding: 16px 24px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(217, 44, 88, 0.18) 0%, rgba(217, 44, 88, 0.08) 100%);
+    border: 1px solid rgba(217, 44, 88, 0.25);
+    color: rgba(240, 208, 215, 0.75);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-align: center;
+    text-transform: uppercase;
+    visibility: hidden;
+  }
+
+  /* ── Revealed states ── */
+  .screen-post {
+    width: 100%;
+    height: 100%;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 45%, rgba(217, 44, 88, 0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 30% 25%, rgba(160, 21, 53, 0.1) 0%, transparent 60%),
+      linear-gradient(180deg, #0C0205 0%, #1A0610 40%, #060103 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .screen-post .glow-ring {
+    background: radial-gradient(circle, rgba(217, 44, 88, 0.22) 0%, rgba(217, 44, 88, 0.08) 40%, transparent 70%);
+  }
+
+  .card-revealed {
+    position: relative;
+    z-index: 2;
+    width: 340px;
+    margin-top: 24px;
+    padding: 36px 28px;
+    border-radius: 24px;
+    background: linear-gradient(170deg, rgba(217, 44, 88, 0.15) 0%, rgba(12, 2, 5, 0.95) 30%, rgba(12, 2, 5, 0.98) 100%);
+    border: 1px solid rgba(240, 208, 215, 0.12);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 80px rgba(217, 44, 88, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    flex: 1;
+    max-height: 620px;
+    min-height: 520px;
+    justify-content: center;
+  }
+
+  .card-revealed::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(217, 44, 88, 0.6), transparent);
+  }
+
+  .card-revealed::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 150px;
+    border-radius: 24px 24px 0 0;
+    background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, transparent 100%);
+    pointer-events: none;
+  }
+
+  .role-title {
+    font-family: serif;
+    font-size: 36px;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 0 0 40px rgba(217, 44, 88, 0.4);
+    margin-bottom: 6px;
+  }
+
+  .role-word {
+    font-family: serif;
+    font-size: 32px;
+    font-weight: bold;
+    color: #F0E6EA;
+    text-shadow: 0 0 20px rgba(217, 44, 88, 0.25);
+    margin-top: 16px;
+  }
+
+  .word-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+    background: rgba(12, 2, 5, 0.3);
+    border: 1px solid rgba(240, 208, 215, 0.15);
+    margin-top: 20px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 80px;
+  }
+
+  .screen-post .btn-next {
+    visibility: visible;
+    animation: fadeInUp 0.5s ease-out;
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .screen-post .edition { margin-top: 44px; }
+</style>
+</head>
+<body>
+
+<!-- ESTADO 1: Antes de tocar -->
+<div>
+  <div class="label">Estado 1 — Toca para revelar</div>
+  <div class="phone">
+    <div class="screen-pre">
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="glow-ring-outer"></div>
+      <div class="glow-ring"></div>
+      <div class="watermark">S</div>
+      <div class="edition">STAICY EDITION</div>
+      <div class="card">
+        <div class="monogram">S</div>
+        <div class="player-name">Ricardo</div>
+        <div class="subtitle">No digas nada</div>
+        <div class="tap-icon">👆</div>
+        <div class="tap-text">Toca para revelar</div>
+      </div>
+      <div class="btn-next">SIGUIENTE JUGADOR →</div>
+    </div>
+  </div>
+</div>
+
+<!-- ESTADO 2: Revelado (Normal) -->
+<div>
+  <div class="label">Estado 2 — Revelado (Normal)</div>
+  <div class="phone">
+    <div class="screen-post">
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="glow-ring-outer"></div>
+      <div class="glow-ring"></div>
+      <div class="watermark">S</div>
+      <div class="edition">STAICY EDITION</div>
+      <div class="card-revealed">
+        <div class="monogram">S</div>
+        <div class="player-name" style="font-size: 22px; margin-bottom: 4px;">Ricardo</div>
+        <div class="subtitle" style="margin-bottom: 20px;">No digas nada</div>
+        <div class="role-title">¡Normal!</div>
+        <div class="word-image">🍕</div>
+        <div class="role-word">Pizza</div>
+      </div>
+      <div class="btn-next">SIGUIENTE JUGADOR →</div>
+    </div>
+  </div>
+</div>
+
+<!-- ESTADO 3: Revelado (Impostor) -->
+<div>
+  <div class="label">Estado 2 — Revelado (Impostor)</div>
+  <div class="phone">
+    <div class="screen-post">
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="glow-ring-outer"></div>
+      <div class="glow-ring" style="background: radial-gradient(circle, rgba(255, 30, 60, 0.28) 0%, rgba(217, 44, 88, 0.1) 40%, transparent 70%);"></div>
+      <div class="watermark">S</div>
+      <div class="edition">STAICY EDITION</div>
+      <div class="card-revealed" style="border-color: rgba(255, 60, 80, 0.2); box-shadow: 0 0 100px rgba(255, 30, 60, 0.15), inset 0 1px 0 rgba(255,255,255,0.04);">
+        <div class="monogram" style="color: rgba(255, 100, 100, 0.5);">S</div>
+        <div class="player-name" style="font-size: 22px; margin-bottom: 4px;">Ricardo</div>
+        <div class="subtitle" style="margin-bottom: 20px;">No digas nada</div>
+        <div class="role-title" style="color: #FF4F5E; text-shadow: 0 0 50px rgba(255, 30, 60, 0.5);">¡IMPOSTOR!</div>
+        <div class="word-image" style="border-color: rgba(255, 60, 80, 0.2);">🕵️</div>
+        <div class="role-word" style="color: rgba(255, 200, 200, 0.6); font-size: 16px; letter-spacing: 2px;">P _ _ _ _</div>
+      </div>
+      <div class="btn-next">SIGUIENTE JUGADOR →</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

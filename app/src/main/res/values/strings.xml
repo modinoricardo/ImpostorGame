@@ -29,6 +29,26 @@
     <string name="main_selfie">📸 Selfie automático</string>
     <string name="main_selfie_desc">Hace un selfie al revelar la palabra, se usa como avatar</string>
     <string name="main_btn_start">EMPEZAR PARTIDA</string>
+    <string name="main_title_carmesi">Atrapa al impostor</string>
+    <string name="main_carmesi_tagline">Prepara una partida más íntima, elegante y llena de sospecha.</string>
+    <string name="main_carmesi_section_players">QUIÉNES JUEGAN</string>
+    <string name="main_carmesi_section_roles">REPARTO</string>
+    <string name="main_carmesi_section_categories">PALABRAS</string>
+    <string name="main_carmesi_section_mode">ESTILO DE PARTIDA</string>
+    <string name="main_carmesi_section_details">DETALLES</string>
+    <string name="main_carmesi_players_helper">Añade, corrige y deja la lista lista para empezar.</string>
+    <string name="main_carmesi_roles_helper">Equilibra impostores y aliados ocultos sin romper la tensión.</string>
+    <string name="main_carmesi_categories_helper">Selecciona el tipo de palabras y ajusta el tono de la partida.</string>
+    <string name="main_carmesi_mode_helper">Toca para cambiar la dinámica general del juego.</string>
+    <string name="main_carmesi_details_helper">Define ayudas y extras antes de dejarlo todo listo.</string>
+    <string name="main_modo_clasico_carmesi">Clásico</string>
+    <string name="main_modo_misterioso_carmesi">Misterioso</string>
+    <string name="main_modo_datos_curiosos_carmesi">Datos curiosos</string>
+    <string name="main_pista_carmesi">Pista guiada</string>
+    <string name="main_primera_letra_carmesi">Primera letra</string>
+    <string name="main_tiempo_limitado_carmesi">Tiempo limitado</string>
+    <string name="main_selfie_carmesi">Selfie automático</string>
+    <string name="main_btn_start_carmesi">Empezar partida</string>
 
     <!-- PlayGameActivity -->
     <string name="play_title">IMPOSTOR</string>
@@ -41,14 +61,18 @@
     <string name="play_btn_votar">🗳 VOTAR</string>
     <string name="play_btn_revelar">REVELAR IMPOSTOR Y PALABRA</string>
     <string name="play_btn_nueva_partida">NUEVA PARTIDA</string>
+    <string name="play_no_word_value">No había palabra</string>
+    <string name="preview_game_name">Atrapa al Impostor</string>
+    <string name="staicy_edition">EDICIÓN STAICY</string>
+    <string name="reveal_identity_question">¿Impostor o no?</string>
 
-    <!-- ImpostorRevealActivity -->
+    <!-- ClassicRevealActivity -->
     <string name="reveal_no_digas">¡No le digas esta palabra a nadie!</string>
     <string name="reveal_toca">TOCA PARA REVELAR</string>
     <string name="reveal_siguiente">⏭ SIGUIENTE JUGADOR</string>
     <string name="reveal_empezar">¡EMPEZAR PARTIDA!</string>
 
-    <!-- DatosCuriososRevealActivity -->
+    <!-- CoverRevealActivity -->
     <string name="datos_modo_label">🧠 DATOS CURIOSOS</string>
     <string name="datos_eres_impostor">ERES EL IMPOSTOR</string>
     <string name="datos_inventa_dato">Invéntate un dato curioso\ncuando sea tu turno</string>
@@ -85,6 +109,10 @@
     <string name="mode_datos_titulo">🧠 Datos Curiosos</string>
     <string name="mode_datos_desc">Cada jugador recibe un dato curioso diferente. Los impostores no reciben nada y deben inventarse uno.</string>
     <string name="mode_confirmar">Confirmar</string>
+    <string name="mode_clasico_titulo_carmesi">Clásico</string>
+    <string name="mode_misterioso_titulo_carmesi">Misterioso</string>
+    <string name="mode_datos_titulo_carmesi">Datos curiosos</string>
+    <string name="mode_subtitulo_carmesi">Elige la atmósfera que mejor encaja con la partida.</string>
 
     <!-- SelectCategoriesBottomSheet -->
     <string name="cat_titulo">SELECCIONAR CATEGORÍAS</string>
@@ -103,6 +131,7 @@
     <string name="menu_acerca_desc">El creador y la historia del juego</string>
     <string name="menu_sugerencias">Sugerir mejoras</string>
     <string name="menu_sugerencias_desc">Comparte ideas para mejorar la app</string>
+    <string name="menu_carmesi_subtitulo">Ajusta la experiencia y personaliza el ambiente de la partida.</string>
 
     <!-- EstiloBottomSheet -->
     <string name="estilo_titulo">Estilo</string>
@@ -115,6 +144,10 @@
     <string name="estilo_jmc_desc">Negro puro · Verde · Minimalista</string>
     <string name="estilo_final_nombre">⭐ Estilo Final</string>
     <string name="estilo_final_desc">Cinemático · Elegante · Premium</string>
+    <string name="estilo_carmesi_subtitulo">Tres formas de vivir la misma partida.</string>
+    <string name="estilo_clasico_nombre_limpio">Clásico</string>
+    <string name="estilo_carmesi_nombre_limpio">Carmesí</string>
+    <string name="estilo_final_nombre_limpio">Final</string>
 
     <!-- SugerenciasBottomSheet -->
     <string name="sug_titulo">Sugerir mejoras</string>
@@ -122,6 +155,14 @@
     <string name="sug_email_hint">Tu correo (opcional)</string>
     <string name="sug_texto_hint">Escribe aquí tu sugerencia o mejora para la app…</string>
     <string name="sug_enviar">Enviar</string>
+    <string name="sug_enviando">Enviando…</string>
+    <string name="sug_write_first">Escribe tu sugerencia primero</string>
+    <string name="sug_invalid_email">Email no válido</string>
+    <string name="sug_too_short">Tu sugerencia es demasiado corta. Añade más detalle.</string>
+    <string name="sug_not_configured">El envío no está configurado. Contacta al desarrollador.</string>
+    <string name="sug_send_error">Error al enviar. Comprueba tu conexión.</string>
+    <string name="sug_sent_success">¡Gracias! Tu sugerencia ha sido enviada.</string>
+    <string name="sug_carmesi_helper">Todo lo que imagines puede ayudar a hacerla más personal.</string>
 
     <!-- AcercaDeBottomSheet -->
     <string name="acerca_titulo">Acerca de</string>
@@ -132,6 +173,9 @@
     <string name="acerca_agradecimiento">Agradecimiento especial a la persona que me impulsa y me inspira a crear proyectos como este, y que siempre me apoya en cada paso: Ste.H. Sin ti, nada de esto tendría el mismo sentido.</string>
     <string name="acerca_abrazo">Un abrazo a todos los que lo juegan.</string>
     <string name="acerca_contacto">Contacto</string>
+    <string name="acerca_email_label">Correo</string>
+    <string name="acerca_send_email">Enviar correo</string>
+    <string name="acerca_carmesi_subtitulo">Una versión más personal, pensada para compartir la partida con alguien especial.</string>
 
     <!-- Compartidos -->
     <string name="jugador">Jugador</string>
@@ -141,10 +185,109 @@
     <string name="editar_jugadores_toca">Toca un nombre para editar</string>
     <string name="agregar_jugador_hint">Agregar nombre del nuevo jugador</string>
     <string name="confirmar">Confirmar</string>
+    <string name="edit_players_carmesi_helper">Cuida cada nombre y deja la lista preparada antes de jugar.</string>
+    <string name="edit_players_delete_block_title">No se puede borrar</string>
+    <string name="edit_players_delete_block_msg">Para poder jugar hacen falta al menos 3 jugadores. En lugar de borrar, puedes editar uno de los que ya tienes.</string>
+    <string name="edit_players_too_much_love_title">Demasiado amor</string>
+    <string name="edit_players_too_much_love_msg">Este nombre desprende niveles extraordinarios de cariño y ternura. Podría sobrecargar el sistema.</string>
+    <string name="edit_players_clue_found_title">PISTA ENCONTRADA</string>
+    <string name="edit_players_clue_found_msg">TE L♥ HEYE TK UOTPOWWO.\n♥V WVX L♥ ULZVLG O, ULAE ♥VHKYKLTPL.\nUOAO BE♥PAOA, ÑLML YET♥VBKA♥L.\nOUOJOÑO TE ♥KACL.\nTE ÑO YOWEA VPKW.\nÑO AL♥UVL♥PO♥.\nLTYKLTÑLWO.</string>
+    <string name="edit_players_add_error_title">Error al añadir jugador</string>
+    <string name="edit_players_add_error_msg">No se pudo añadir el jugador. Escribe un nombre válido y vuelve a intentarlo.</string>
 
     <!-- Diálogos genéricos -->
     <string name="dialog_salir_titulo">Salir</string>
     <string name="dialog_salir_msg">¿Quieres salir de la partida?</string>
     <string name="dialog_salir_si">Salir</string>
     <string name="dialog_salir_no">Cancelar</string>
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_view_result">Ver resultado</string>
+    <string name="dialog_try">Intentar</string>
+    <string name="dialog_reveal">Revelar</string>
+
+    <!-- Resúmenes dinámicos -->
+    <plurals name="main_count_impostor">
+        <item quantity="one">%d impostor</item>
+        <item quantity="other">%d impostores</item>
+    </plurals>
+    <plurals name="main_count_civil">
+        <item quantity="one">%d civil</item>
+        <item quantity="other">%d civiles</item>
+    </plurals>
+    <plurals name="main_count_white_mister">
+        <item quantity="one">%d señor blanco</item>
+        <item quantity="other">%d señores blancos</item>
+    </plurals>
+    <string name="main_summary_pair">%1$s · %2$s</string>
+    <string name="main_categories_available">Categorías disponibles: %1$d</string>
+    <string name="main_categories_selected">Categorías seleccionadas: %1$d de %2$d</string>
+    <string name="main_duration_value">%1$d min</string>
+    <string name="main_invalid_config_title">Configuración inválida</string>
+    <string name="main_invalid_need_non_civil_mysterious">Debe haber al menos un impostor o un señor blanco para poder jugar.</string>
+    <string name="main_invalid_need_impostor">Debe haber al menos un impostor para poder jugar.</string>
+    <string name="main_invalid_too_many_non_civilians">Hay demasiados no civiles. Con %1$d jugadores puede haber como máximo %2$d no civiles.</string>
+    <string name="main_invalid_generic">La configuración no es válida. Revisa el número de impostores y señores blancos.</string>
+
+    <!-- Partida -->
+    <string name="play_turn_speaks">¡%1$s hablas tú!</string>
+    <string name="play_no_players_available">No hay jugadores disponibles</string>
+    <string name="play_label_impostor_reveal">IMPOSTOR</string>
+    <string name="play_timer_format">&#9201; %1$d:%2$02d</string>
+    <string name="play_timer_zero">&#9201; 0:00</string>
+    <string name="play_time_up_reason">¡Se acabó el tiempo!</string>
+    <string name="play_civilians_win_reason">¡Todos los impostores han sido eliminados!</string>
+    <string name="play_impostors_majority_reason">Los civiles están en minoría.</string>
+    <string name="dialog_reveal_impostor_title">Revelar impostor</string>
+    <string name="dialog_reveal_impostor_msg">¿Quieres revelar al impostor?</string>
+
+    <!-- Reveal -->
+    <string name="reveal_hold_to_reveal">MANTENER PULSADO PARA REVELAR PALABRA</string>
+    <string name="reveal_player_progress">Jugador %1$d de %2$d</string>
+    <string name="reveal_mr_white_title">SEÑOR BLANCO</string>
+    <string name="reveal_no_word">No tienes palabra</string>
+    <string name="reveal_your_hint">TU PISTA</string>
+    <string name="reveal_your_word">TU PALABRA</string>
+    <string name="reveal_you_are_impostor">ERES EL IMPOSTOR</string>
+    <string name="reveal_roles_unbalanced_title">Desequilibrio de roles</string>
+    <string name="reveal_roles_unbalanced_msg">Los no civiles son iguales o más que los civiles.\n¡Los impostores ganan automáticamente!</string>
+    <string name="reveal_victory_no_civilians_reason">Los no civiles superaban a los civiles.</string>
+    <string name="reveal_hint_prefix">Pista: %1$s</string>
+    <string name="reveal_first_letter_prefix">Primera letra: %1$s</string>
+
+    <!-- Votación -->
+    <string name="vote_role_impostor">el impostor</string>
+    <string name="vote_role_impostor_one_of_many">uno de los impostores</string>
+    <string name="vote_role_mr_white">el señor blanco</string>
+    <string name="vote_caught_title">¡Te han pillado!</string>
+    <string name="vote_message_revealed_continue">%1$s era %2$s.\n¡La partida continúa sin esa persona!</string>
+    <string name="vote_message_revealed_try">%1$s era %2$s.\n\n¡Pero intenta salvarse!</string>
+    <string name="vote_oops_title">¡Ups!</string>
+    <string name="vote_message_innocent_too_many">%1$s era inocente.\n¡Hay demasiados impostores en la partida!</string>
+    <string name="vote_message_innocent_continue">%1$s era inocente.\nLa partida continúa.</string>
+
+    <!-- Adivinar palabra -->
+    <string name="guess_role_impostor">el impostor</string>
+    <string name="guess_role_mr_white">el señor blanco</string>
+    <string name="guess_save_group">salvar al grupo</string>
+    <string name="guess_save_yourself">salvarse</string>
+    <string name="guess_subtitle_reveal">%1$s es %2$s.\nAdivina la palabra para %3$s.</string>
+    <string name="guess_correct_reason">¡%1$s adivinó la palabra!</string>
+    <string name="guess_last_threat_reason">¡%1$s era la última amenaza!</string>
+    <string name="guess_incorrect_title">Palabra incorrecta</string>
+    <string name="guess_message_no_threats">%1$s ha sido eliminado.\n¡No quedan no civiles!</string>
+    <string name="guess_message_impostors_dominate">%1$s ha sido eliminado.\n¡Los impostores dominan!</string>
+    <string name="guess_message_word_wrong">La palabra no era esa.\n%1$s ha sido eliminado.</string>
+    <string name="guess_reason_impostors_dominate">Los impostores superaron a los civiles.</string>
+    <string name="guess_action_view_victory">Ver victoria</string>
+
+    <!-- Victoria -->
+    <string name="victory_impostors_title">¡LOS IMPOSTORES GANAN!</string>
+    <string name="victory_impostors_subtitle">Los civiles nunca tuvieron una oportunidad</string>
+    <string name="victory_civilians_title">¡LOS IMPOSTORES HAN SIDO DESCUBIERTOS!</string>
+    <string name="victory_civilians_subtitle_1">La verdad siempre sale a la luz</string>
+    <string name="victory_civilians_subtitle_2">El engaño tiene los días contados</string>
+    <string name="victory_civilians_subtitle_3">Juntos son imparables</string>
+    <string name="victory_civilians_subtitle_4">Nadie puede esconderse para siempre</string>
+    <string name="victory_civilians_subtitle_5">La justicia ha triunfado</string>
+    <string name="victory_reveal_button">🔍 DESVELAR</string>
 </resources>

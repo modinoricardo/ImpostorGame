@@ -13,9 +13,10 @@
         android:id="@+id/playerName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Jugador"
+        android:text="@string/jugador"
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="@android:color/white" />
 
 </LinearLayout>
+
