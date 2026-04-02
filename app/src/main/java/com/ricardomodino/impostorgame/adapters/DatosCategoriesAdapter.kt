@@ -29,7 +29,11 @@ class DatosCategoriesAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         VH(
             LayoutInflater.from(parent.context).inflate(
-                if (ThemeManager.esCarmesi(parent.context)) R.layout.item_category_select_carmesi else R.layout.item_category_select,
+                when {
+                    ThemeManager.esFinal(parent.context) -> R.layout.item_category_select_final
+                    ThemeManager.esCarmesi(parent.context) -> R.layout.item_category_select_carmesi
+                    else -> R.layout.item_category_select
+                },
                 parent,
                 false
             )

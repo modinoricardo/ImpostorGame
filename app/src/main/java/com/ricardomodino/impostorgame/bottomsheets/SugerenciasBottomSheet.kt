@@ -16,6 +16,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.content.pm.PackageInfoCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.ricardomodino.impostorgame.BuildConfig
@@ -62,10 +64,27 @@ class SugerenciasBottomSheet : BaseGameBottomSheet() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // ── Teclado: subir contenido cuando aparece el IME ──
+        val rootView = view.findViewById<View>(R.id.rootSugerencias)
+        val basePaddingBottom = rootView?.paddingBottom ?: 0
+        rootView?.let {
+            ViewCompat.setOnApplyWindowInsetsListener(it) { v, insets ->
+                val imeHeight = insets.getInsets(WindowInsetsCompat.Type.ime()).bottom
+                v.setPadding(v.paddingLeft, v.paddingTop, v.paddingRight, basePaddingBottom + imeHeight)
+                insets
+            }
+        }
+
         // â”€â”€ Aplicar tema â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         val accent = ThemeManager.getAccentColor(requireContext())
         view.findViewById<View>(R.id.rootSugerencias)
-            ?.setBackgroundResource(if (ThemeManager.esCarmesi(requireContext())) R.drawable.bg_carmesi_sheet else ThemeManager.getBgCard(requireContext()))
+            ?.setBackgroundResource(
+                when {
+                    ThemeManager.esFinal(requireContext()) -> R.drawable.bg_final_sheet_surface
+                    ThemeManager.esCarmesi(requireContext()) -> R.drawable.bg_carmesi_sheet
+                    else -> ThemeManager.getBgCard(requireContext())
+                }
+            )
         view.findViewById<TextView>(R.id.txtTituloSugerencias)
             ?.setShadowLayer(12f, 0f, 0f, accent)
         view.findViewById<Button>(R.id.btnEnviarSugerencia)

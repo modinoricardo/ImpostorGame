@@ -49,6 +49,10 @@
     <string name="main_tiempo_limitado_carmesi">Tiempo limitado</string>
     <string name="main_selfie_carmesi">Selfie automático</string>
     <string name="main_btn_start_carmesi">Empezar partida</string>
+    <string name="main_final_tagline">La experiencia definitiva del impostor.</string>
+    <string name="main_modo_clasico_final">Clásico</string>
+    <string name="main_modo_misterioso_final">Misterioso</string>
+    <string name="main_modo_datos_curiosos_final">Datos curiosos</string>
 
     <!-- PlayGameActivity -->
     <string name="play_title">IMPOSTOR</string>
@@ -227,6 +231,8 @@
     <string name="main_invalid_need_impostor">Debe haber al menos un impostor para poder jugar.</string>
     <string name="main_invalid_too_many_non_civilians">Hay demasiados no civiles. Con %1$d jugadores puede haber como máximo %2$d no civiles.</string>
     <string name="main_invalid_generic">La configuración no es válida. Revisa el número de impostores y señores blancos.</string>
+    <string name="main_ajuste_impostores">Ajuste automático: %d impostor(es)</string>
+    <string name="main_ajuste_nociviles">Ajuste automático: %1$d impostor(es) · %2$d señor(es) blanco</string>
 
     <!-- Partida -->
     <string name="play_turn_speaks">¡%1$s hablas tú!</string>

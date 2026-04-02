@@ -40,13 +40,19 @@ class MenuBottomSheet : BaseGameBottomSheet() {
         val bgCard  = ThemeManager.getBgCard(requireContext())
         val accent  = ThemeManager.getAccentColor(requireContext())
         view.findViewById<View>(R.id.rootBottomSheet)?.setBackgroundResource(
-            if (ThemeManager.esCarmesi(requireContext())) R.drawable.bg_carmesi_sheet else bgCard
+            when {
+                ThemeManager.esFinal(requireContext()) -> R.drawable.bg_final_sheet_surface
+                ThemeManager.esCarmesi(requireContext()) -> R.drawable.bg_carmesi_sheet
+                else -> bgCard
+            }
         )
         // Título "Menú"
         view.findViewById<TextView>(R.id.txtMenuTitle)?.setShadowLayer(12f, 0f, 0f, accent)
         // Cards internas
         listOf(R.id.cardMenuEstilo, R.id.cardMenuSonido, R.id.cardMenuAcercaDe, R.id.cardMenuSugerencias, R.id.cardMenuIdioma).forEach { cardId ->
-            view.findViewById<CardView>(cardId)?.getChildAt(0)?.setBackgroundResource(bgCard)
+            view.findViewById<CardView>(cardId)?.getChildAt(0)?.setBackgroundResource(
+                if (ThemeManager.esFinal(requireContext())) R.drawable.bg_final_sheet_option else bgCard
+            )
         }
 
         // Mostrar idioma actual

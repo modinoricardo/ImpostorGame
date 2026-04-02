@@ -43,19 +43,33 @@ class AcercaDeBottomSheet : BaseGameBottomSheet() {
         val bgCard = ThemeManager.getBgCard(requireContext())
         val accent = ThemeManager.getAccentColor(requireContext())
         view.findViewById<View>(R.id.rootAcercaDe)?.setBackgroundResource(
-            if (ThemeManager.esCarmesi(requireContext())) R.drawable.bg_carmesi_sheet else bgCard
+            when {
+                ThemeManager.esFinal(requireContext()) -> R.drawable.bg_final_sheet_surface
+                ThemeManager.esCarmesi(requireContext()) -> R.drawable.bg_carmesi_sheet
+                else -> bgCard
+            }
         )
         // Título
         view.findViewById<TextView>(R.id.txtTituloAcercaDe)?.setShadowLayer(12f, 0f, 0f, accent)
         // Avatar inicial "R"
         view.findViewById<TextView>(R.id.txtAvatar)?.apply {
             setTextColor(accent)
-            setBackgroundResource(if (ThemeManager.esCarmesi(requireContext())) R.drawable.bg_carmesi_badge else bgCard)
+            setBackgroundResource(
+                when {
+                    ThemeManager.esFinal(requireContext()) -> R.drawable.bg_final_avatar
+                    ThemeManager.esCarmesi(requireContext()) -> R.drawable.bg_carmesi_badge
+                    else -> bgCard
+                }
+            )
         }
         // Cards de contacto
         listOf(R.id.layoutInstagram, R.id.layoutEmail, R.id.layoutGithub).forEach { id ->
             view.findViewById<LinearLayout>(id)?.setBackgroundResource(
-                if (ThemeManager.esCarmesi(requireContext())) R.drawable.bg_carmesi_soft_panel else bgCard
+                when {
+                    ThemeManager.esFinal(requireContext()) -> R.drawable.bg_final_sheet_option
+                    ThemeManager.esCarmesi(requireContext()) -> R.drawable.bg_carmesi_soft_panel
+                    else -> bgCard
+                }
             )
         }
 

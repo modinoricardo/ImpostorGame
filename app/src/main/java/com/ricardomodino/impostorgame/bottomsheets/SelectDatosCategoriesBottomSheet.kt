@@ -48,7 +48,11 @@ class SelectDatosCategoriesBottomSheet : BottomSheetDialogFragment() {
         val btnNeon = ThemeManager.getBtnNeon(requireContext())
         val accent  = ThemeManager.getAccentColor(requireContext())
         view.findViewById<View>(R.id.rootCategories)?.setBackgroundResource(
-            if (ThemeManager.esCarmesi(requireContext())) R.drawable.bg_carmesi_sheet else bgCard
+            when {
+                ThemeManager.esFinal(requireContext()) -> R.drawable.bg_final_sheet_surface
+                ThemeManager.esCarmesi(requireContext()) -> R.drawable.bg_carmesi_sheet
+                else -> bgCard
+            }
         )
         view.findViewById<TextView>(R.id.textTitle)?.setShadowLayer(10f, 0f, 0f, accent)
         view.findViewById<Button>(R.id.btnConfirmCategories)?.setBackgroundResource(btnNeon)

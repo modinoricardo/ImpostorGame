@@ -65,10 +65,10 @@ class EstiloBottomSheet : BaseGameBottomSheet() {
         if (ThemeManager.esFinal(requireContext())) {
             view.findViewById<View>(R.id.rootEstilo)?.setBackgroundResource(R.drawable.bg_estilo_final_sheet)
             view.findViewById<TextView>(R.id.txtTituloEstilo)?.apply {
-                setTextColor(0xFFFFF3D8.toInt())
-                setShadowLayer(18f, 0f, 0f, 0x66E7C87D)
+                setTextColor(0xFFFFFFFF.toInt())
+                setShadowLayer(18f, 0f, 0f, 0x6600E5FF)
             }
-            view.findViewById<ImageView>(R.id.btnBackEstilo)?.setColorFilter(0xFFE7C87D.toInt())
+            view.findViewById<ImageView>(R.id.btnBackEstilo)?.setColorFilter(0xFF9CEFFF.toInt())
         } else if (ThemeManager.esCarmesi(requireContext())) {
             view.findViewById<View>(R.id.rootEstilo)?.setBackgroundResource(R.drawable.bg_carmesi_sheet)
             view.findViewById<TextView>(R.id.txtTituloEstilo)?.apply {

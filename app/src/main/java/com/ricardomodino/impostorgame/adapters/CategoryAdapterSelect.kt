@@ -26,7 +26,11 @@ class CategoryAdapterSelect(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
-        val layout = if (ThemeManager.esCarmesi(parent.context)) R.layout.item_category_select_carmesi else R.layout.item_category_select
+        val layout = when {
+            ThemeManager.esFinal(parent.context) -> R.layout.item_category_select_final
+            ThemeManager.esCarmesi(parent.context) -> R.layout.item_category_select_carmesi
+            else -> R.layout.item_category_select
+        }
         val view = LayoutInflater.from(parent.context)
             .inflate(layout, parent, false)
         return CategoryViewHolder(view)

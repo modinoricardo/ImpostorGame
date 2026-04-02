@@ -38,7 +38,11 @@ class PlayerAdapterEdit(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlayerViewHolder {
-        val layout = if (ThemeManager.esCarmesi(parent.context)) R.layout.item_player_edit_carmesi else R.layout.item_player_edit
+        val layout = when {
+            ThemeManager.esFinal(parent.context) -> R.layout.item_player_edit_final
+            ThemeManager.esCarmesi(parent.context) -> R.layout.item_player_edit_carmesi
+            else -> R.layout.item_player_edit
+        }
         val view = LayoutInflater.from(parent.context)
             .inflate(layout, parent, false)
         return PlayerViewHolder(view)
@@ -49,6 +53,7 @@ class PlayerAdapterEdit(
 
         // Aplicar background según tema
         val bgEdit = when {
+            ThemeManager.esFinal(holder.itemView.context)   -> R.drawable.bg_final_sheet_option
             ThemeManager.esCarmesi(holder.itemView.context) -> R.drawable.bg_player_edit_carmesi
             ThemeManager.esJmc(holder.itemView.context)     -> R.drawable.bg_player_edit_jmc
             else                                             -> R.drawable.bg_card_main

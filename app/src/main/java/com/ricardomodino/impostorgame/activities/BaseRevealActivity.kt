@@ -9,7 +9,6 @@ import android.graphics.Matrix
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
@@ -20,20 +19,13 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import androidx.exifinterface.media.ExifInterface
 import com.ricardomodino.impostorgame.R
-import com.ricardomodino.impostorgame.managers.GameDialog
-import com.ricardomodino.impostorgame.managers.LocaleManager
-import com.ricardomodino.impostorgame.managers.PlayerImageManager
-import com.ricardomodino.impostorgame.managers.SoundManager
-import com.ricardomodino.impostorgame.modelos.Category
-import com.ricardomodino.impostorgame.modelos.DatoCurioso
-import com.ricardomodino.impostorgame.modelos.GameOptions
-import com.ricardomodino.impostorgame.modelos.Jugador
-import com.ricardomodino.impostorgame.modelos.TipoJugador
-import com.ricardomodino.impostorgame.modelos.WordItem
+import com.ricardomodino.impostorgame.managers.*
+import com.ricardomodino.impostorgame.modelos.*
 import com.ricardomodino.impostorgame.usecases.AssignRolesUseCase
 import com.ricardomodino.impostorgame.viewmodel.CategoryViewModel
 import com.ricardomodino.impostorgame.viewmodel.DatosCuriososViewModel
 import com.ricardomodino.impostorgame.viewmodel.PlayerViewModel
+import com.ricardomodino.impostorgame.viewmodel.RevealViewModel
 import java.io.File
 import kotlin.random.Random
 
@@ -41,13 +33,6 @@ import kotlin.random.Random
  * Activity base para todas las pantallas de reveal.
  * Centraliza la logica de juego: asignacion de roles, seleccion de contenido,
  * camara, victoria inmediata y navegacion.
- *
- * Las subclases implementan la presentacion visual mediante los metodos abstractos.
- *
- * Jerarquia:
- *   BaseRevealActivity (abstracta) : BaseGameActivity
- *   ├── ClassicRevealActivity  (estilos clasico, carmesi, JMC)
- *   └── CoverRevealActivity    (estilos final y datos curiosos)
  */
 abstract class BaseRevealActivity : BaseGameActivity() {
 
@@ -55,6 +40,7 @@ abstract class BaseRevealActivity : BaseGameActivity() {
     protected val playerViewModel: PlayerViewModel by viewModels()
     protected val categoryViewModel: CategoryViewModel by viewModels()
     protected val datosViewModel: DatosCuriososViewModel by viewModels()
+    private val revealViewModel: RevealViewModel by viewModels()
 
     // ── Estado de juego ─────────────────────────────────────────────────────
     protected lateinit var listaJugadores: List<Jugador>
@@ -98,46 +84,19 @@ abstract class BaseRevealActivity : BaseGameActivity() {
     }
 
     // ── Metodos abstractos que implementan las subclases ────────────────────
-
-    /** Devuelve el ID del layout a inflar. */
     protected abstract fun provideLayoutRes(): Int
-
-    /** Vista que recibe el OnTouchListener de revelacion. */
     protected abstract val touchTarget: View
-
-    /** Vista del boton "Siguiente jugador". */
     protected abstract val btnSiguiente: View
-
-    /** TextView interno del boton siguiente (para cambiar su texto). */
     protected abstract val txtBtnSiguiente: TextView
-
-    /** Bindea las vistas propias de la subclase tras setContentView(). */
     protected abstract fun onBindViews()
-
-    /** Actualiza la UI para mostrar los datos del jugador en la posicion [index]. */
     protected abstract fun onShowPlayer(index: Int)
-
-    /** Muestra el contenido (rol/palabra/dato) al recibir ACTION_DOWN. */
     protected abstract fun onRevealContent(index: Int)
-
-    /** Oculta el contenido al recibir ACTION_UP/CANCEL. */
     protected abstract fun onHideContent()
-
-    /**
-     * Ejecuta la animacion de transicion al siguiente jugador.
-     * Cuando se llama, playerInGame ya ha sido incrementado.
-     * El parametro onSwap es un gancho opcional; las subclases pueden ignorarlo.
-     */
     protected abstract fun onPlayerTransition(onSwap: () -> Unit)
 
-    // ── Punto de extension opcional post-setup ──────────────────────────────
-    /** Llamado al final de onCreate(), permite a la subclase ejecutar logica de entrada. */
     protected open fun onPostSetup() {}
-
-    /** Instala el listener de interaccion en [touchTarget]. Las subclases pueden sobrescribir. */
     protected open fun configurarInteraccion() {}
 
-    // ── onCreate orquestador ────────────────────────────────────────────────
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -145,15 +104,34 @@ abstract class BaseRevealActivity : BaseGameActivity() {
 
         onBindViews()
 
-        listaJugadores  = intent.getParcelableArrayListExtra<Jugador>(IntentKeys.PLAYERS)?.toList() ?: emptyList()
-        listaCategorias = intent.getParcelableArrayListExtra<Category>(IntentKeys.CATEGORIES)?.toList() ?: emptyList()
-        opciones        = intent.getParcelableExtra(IntentKeys.OPCIONES) ?: GameOptions()
+        if (!revealViewModel.initialized) {
+            listaJugadores  = intent.getParcelableArrayListExtra<Jugador>(IntentKeys.PLAYERS)?.toList() ?: emptyList()
+            listaCategorias = intent.getParcelableArrayListExtra<Category>(IntentKeys.CATEGORIES)?.toList() ?: emptyList()
+            opciones        = intent.getParcelableExtra(IntentKeys.OPCIONES) ?: GameOptions()
 
-        if (listaJugadores.isEmpty()) { finish(); return }
+            if (listaJugadores.isEmpty()) { finish(); return }
+
+            inicializarJuego()
+            guardarEstadoEnViewModel()
+            revealViewModel.initialized = true
+        } else {
+            restaurarEstadoDesdeViewModel()
+            if (listaJugadores.isEmpty()) { finish(); return }
+            verificarVictoriaInmediata()
+        }
+
+        savedInstanceState?.let { bundle ->
+            playerInGame        = bundle.getInt(KEY_PLAYER_IN_GAME, playerInGame)
+            palabra             = bundle.getString(KEY_PALABRA, palabra) ?: palabra
+            pista               = bundle.getString(KEY_PISTA, pista) ?: pista
+            pistaActivaModoLoco = bundle.getBoolean(KEY_PISTA_MODO_LOCO, pistaActivaModoLoco)
+            bundle.getIntArray(KEY_SELFIES_TOMADOS)?.let { arr ->
+                selfiesTomados.clear()
+                selfiesTomados.addAll(arr.toList())
+            }
+        }
 
         configurarBackPressed()
-        inicializarJuego()
-
         SelfieManager.init(cacheDir)
 
         if (opciones.camaraActiva) {
@@ -171,11 +149,52 @@ abstract class BaseRevealActivity : BaseGameActivity() {
         onPostSetup()
     }
 
-    // ── Inicializacion del juego ────────────────────────────────────────────
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt(KEY_PLAYER_IN_GAME, playerInGame)
+        outState.putString(KEY_PALABRA, palabra)
+        outState.putString(KEY_PISTA, pista)
+        outState.putBoolean(KEY_PISTA_MODO_LOCO, pistaActivaModoLoco)
+        outState.putIntArray(KEY_SELFIES_TOMADOS, selfiesTomados.toIntArray())
+    }
 
-    /** Asigna roles, imagenes y selecciona contenido para la partida. */
+    private fun guardarEstadoEnViewModel() {
+        revealViewModel.listaJugadores        = listaJugadores
+        revealViewModel.listaCategorias       = listaCategorias
+        revealViewModel.opciones              = opciones
+        revealViewModel.indicesImpostores     = indicesImpostores
+        revealViewModel.indicesSenoresBlancos = indicesSenoresBlancos
+        revealViewModel.nombresImpostores     = nombresImpostores
+        revealViewModel.datosAsignados        = datosAsignados
+        revealViewModel.palabra               = palabra
+        revealViewModel.pista                 = pista
+        revealViewModel.pistaMisteriosa       = pistaMisteriosa
+        if (this::categoriaInGame.isInitialized) revealViewModel.categoriaInGame = categoriaInGame
+        if (this::wordItemInGame.isInitialized)  revealViewModel.wordItemInGame  = wordItemInGame
+        revealViewModel.modoLocoActivo        = modoLocoActivo
+        revealViewModel.imagenPorJugador      = imagenPorJugador
+        revealViewModel.imageResTurno         = imageResTurno
+    }
+
+    private fun restaurarEstadoDesdeViewModel() {
+        listaJugadores        = revealViewModel.listaJugadores
+        listaCategorias       = revealViewModel.listaCategorias
+        opciones              = revealViewModel.opciones
+        indicesImpostores     = revealViewModel.indicesImpostores
+        indicesSenoresBlancos = revealViewModel.indicesSenoresBlancos
+        nombresImpostores     = revealViewModel.nombresImpostores
+        datosAsignados        = revealViewModel.datosAsignados
+        palabra               = revealViewModel.palabra
+        pista                 = revealViewModel.pista
+        pistaMisteriosa       = revealViewModel.pistaMisteriosa
+        revealViewModel.categoriaInGame?.let { categoriaInGame = it }
+        revealViewModel.wordItemInGame?.let  { wordItemInGame  = it }
+        modoLocoActivo        = revealViewModel.modoLocoActivo
+        imagenPorJugador      = revealViewModel.imagenPorJugador
+        imageResTurno         = revealViewModel.imageResTurno
+    }
+
     protected open fun inicializarJuego() {
-        // Asignar roles mediante el use case
         val roles = assignRolesUseCase.execute(
             listaJugadores, opciones, playerViewModel::pickImpostorIndices
         )
@@ -184,7 +203,6 @@ abstract class BaseRevealActivity : BaseGameActivity() {
         indicesSenoresBlancos = roles.indicesSenoresBlancos
         nombresImpostores     = roles.nombresImpostores
 
-        // Asignar imagenes desde assets
         val playerImages = PlayerImageManager.getShuffledPool(this, listaJugadores.size)
         imagenPorJugador = Array(listaJugadores.size) {
             if (playerImages.isNotEmpty()) playerImages[it] else null
@@ -193,11 +211,9 @@ abstract class BaseRevealActivity : BaseGameActivity() {
 
         seleccionarContenido()
         modoLocoActivo = random(10)
-
         verificarVictoriaInmediata()
     }
 
-    /** Selecciona palabra o datos curiosos segun el modo de juego. */
     protected open fun seleccionarContenido() {
         if (opciones.modoDatosCuriosos) {
             palabra = ""; pista = ""; pistaMisteriosa = ""
@@ -207,23 +223,18 @@ abstract class BaseRevealActivity : BaseGameActivity() {
         }
     }
 
-    /** Elige categoria y palabra, inicializa categoryViewModel si hace falta. */
     protected open fun seleccionarPalabra() {
         if (listaCategorias.isEmpty()) return
         categoryViewModel.setCategories(listaCategorias)
-
         val disponibles = listaCategorias
             .filter { it.isSelected && it.items.isNotEmpty() }
             .ifEmpty { listaCategorias.filter { it.items.isNotEmpty() } }
             .ifEmpty { listaCategorias }
-
         val categoria = disponibles.randomOrNull() ?: return
-
         val catActual = if (categoryViewModel.itemsVacio(categoria.id)) {
             categoryViewModel.restoreItems(categoria.id)
             categoryViewModel.categories.value?.firstOrNull { it.id == categoria.id } ?: categoria
         } else categoria
-
         categoriaInGame = catActual
         val items = catActual.items.filter { it.name != "Impostor" }
         val item  = if (items.isNotEmpty()) items.random() else catActual.items.random()
@@ -233,7 +244,6 @@ abstract class BaseRevealActivity : BaseGameActivity() {
         pistaMisteriosa = pista
     }
 
-    /** Asigna un DatoCurioso a cada civil. */
     protected open fun asignarDatos() {
         val todos = datosViewModel.getCategoriasActivas().flatMap { it.datos }.shuffled().toMutableList()
         val mapa  = mutableMapOf<Int, DatoCurioso>()
@@ -246,19 +256,15 @@ abstract class BaseRevealActivity : BaseGameActivity() {
         datosAsignados = mapa
     }
 
-    /** Construye la lista de datos para pasar a PlayGameActivity. */
     protected fun datosPartida(): ArrayList<DatoCurioso> =
         ArrayList(listaJugadores.indices.mapNotNull { datosAsignados[it] })
 
-    /** Devuelve el texto del dato en el idioma activo. */
     protected fun getTextoDato(dato: DatoCurioso): String = when (LocaleManager.getLanguage(this)) {
         "en"      -> dato.en
         "zh-Hans" -> dato.zhHans
         "zh-Hant" -> dato.zhHant
         else      -> dato.es
     }
-
-    // ── Victoria inmediata ──────────────────────────────────────────────────
 
     protected fun verificarVictoriaInmediata() {
         val noCiviles = indicesImpostores.size + indicesSenoresBlancos.size
@@ -279,7 +285,6 @@ abstract class BaseRevealActivity : BaseGameActivity() {
     private fun irAVictoria() {
         val impostorNombres = nombresImpostores.joinToString(", ")
         val senoresBlancos  = indicesSenoresBlancos.map { listaJugadores[it].nombre }.joinToString(", ")
-
         startActivity(Intent(this, VictoryActivity::class.java).apply {
             putExtra(IntentKeys.GANADOR, "IMPOSTORES")
             putExtra(IntentKeys.MOTIVO, getString(R.string.reveal_victory_no_civilians_reason))
@@ -296,37 +301,22 @@ abstract class BaseRevealActivity : BaseGameActivity() {
         finish()
     }
 
-    // ── Avance de jugadores ─────────────────────────────────────────────────
-
-    /**
-     * Avanza al siguiente jugador o lanza PlayGameActivity si era el ultimo.
-     * Llamado por las subclases desde el listener de btnSiguiente.
-     *
-     * playerInGame se incrementa ANTES de llamar a onPlayerTransition para que
-     * las subclases puedan acceder al nuevo indice durante la animacion de transicion.
-     * El parametro onSwap se usa como gancho para el momento exacto del intercambio visual.
-     */
     protected fun avanzarJugador() {
         if (playerInGame == listaJugadores.lastIndex) {
             irAPartida()
             return
         }
-
         pistaActivaModoLoco = false
         playerInGame++
-
         onPlayerTransition {}
     }
 
-    /** Construye el Intent completo hacia PlayGameActivity y lanza la partida. */
     protected fun irAPartida() {
         val impostorNombres = if (opciones.modoLoco && modoLocoActivo)
             "TODOS SOIS IMPOSTORES"
         else
             nombresImpostores.joinToString(", ")
-
         val senoresBlancos = indicesSenoresBlancos.map { listaJugadores[it].nombre }.joinToString(", ")
-
         val jugadoresConRoles = listaJugadores.mapIndexed { i, j ->
             when {
                 i in indicesImpostores             -> j.copy(tipo = TipoJugador.IMPOSTOR)
@@ -334,7 +324,6 @@ abstract class BaseRevealActivity : BaseGameActivity() {
                 else                               -> j.copy(tipo = TipoJugador.NORMAL)
             }
         }
-
         startActivity(Intent(this, PlayGameActivity::class.java).apply {
             putParcelableArrayListExtra(IntentKeys.LISTA_JUGADORES, ArrayList(jugadoresConRoles))
             putExtra(IntentKeys.JUGADOR_EMPIEZA, playerViewModel.pickJugadorQueEmpieza(jugadoresConRoles)?.nombre ?: "")
@@ -365,7 +354,6 @@ abstract class BaseRevealActivity : BaseGameActivity() {
         finish()
     }
 
-    // ── Texto de ayuda al impostor ──────────────────────────────────────────
     protected fun textoAyudaImpostor(): String = when (opciones.tipoPista) {
         GameOptions.PRIMERA_LETRA -> getString(
             R.string.reveal_first_letter_prefix,
@@ -374,7 +362,6 @@ abstract class BaseRevealActivity : BaseGameActivity() {
         else -> if (pista.isNotEmpty()) getString(R.string.reveal_hint_prefix, pista) else ""
     }
 
-    // ── CameraX ─────────────────────────────────────────────────────────────
     protected fun iniciarCameraX() {
         val future = ProcessCameraProvider.getInstance(this)
         future.addListener({
@@ -401,18 +388,20 @@ abstract class BaseRevealActivity : BaseGameActivity() {
                     val raw = BitmapFactory.decodeFile(outFile.absolutePath) ?: return
                     val bmp = corregirOrientacion(raw, outFile)
                     SelfieManager.saveBitmap(listaJugadores[playerIndex].nombre, bmp)
+                    onSelfieGuardado(playerIndex, bmp)
                 }
                 override fun onError(e: ImageCaptureException) {}
             }
         )
     }
 
+    protected open fun onSelfieGuardado(playerIndex: Int, bmp: Bitmap) {}
+
     protected fun corregirOrientacion(bmp: Bitmap, file: File): Bitmap {
         val orientation = try {
             ExifInterface(file.absolutePath)
                 .getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL)
         } catch (_: Exception) { ExifInterface.ORIENTATION_NORMAL }
-
         val matrix = Matrix()
         when (orientation) {
             ExifInterface.ORIENTATION_ROTATE_90  -> matrix.postRotate(90f)
@@ -429,15 +418,19 @@ abstract class BaseRevealActivity : BaseGameActivity() {
         } catch (_: Exception) { bmp }
     }
 
-    // ── Utilidades ──────────────────────────────────────────────────────────
     protected fun random(num: Int): Boolean = Random.nextInt(100) < num
-
     protected fun playRevealTone() = SoundManager.playRevealTone(this)
 
-
-    // ── Ciclo de vida ────────────────────────────────────────────────────────
     override fun onDestroy() {
         super.onDestroy()
         cameraProvider?.unbindAll()
+    }
+
+    companion object {
+        private const val KEY_PLAYER_IN_GAME  = "reveal_player_in_game"
+        private const val KEY_PALABRA         = "reveal_palabra"
+        private const val KEY_PISTA           = "reveal_pista"
+        private const val KEY_PISTA_MODO_LOCO = "reveal_pista_modo_loco"
+        private const val KEY_SELFIES_TOMADOS = "reveal_selfies_tomados"
     }
 }

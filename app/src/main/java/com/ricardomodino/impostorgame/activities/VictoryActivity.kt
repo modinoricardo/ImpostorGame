@@ -9,13 +9,23 @@ import android.view.animation.OvershootInterpolator
 import android.widget.Button
 import android.widget.TextView
 import com.ricardomodino.impostorgame.R
-import com.ricardomodino.impostorgame.managers.ImmersiveModeManager
-import com.ricardomodino.impostorgame.managers.ThemeManager
+import com.ricardomodino.impostorgame.managers.*
 import com.ricardomodino.impostorgame.modelos.DatoCurioso
 import com.ricardomodino.impostorgame.modelos.Jugador
 import com.ricardomodino.impostorgame.views.VictoryParticleView
 
 class VictoryActivity : BaseGameActivity() {
+
+    private lateinit var txtSubtitle: TextView
+
+    companion object {
+        private const val KEY_SUBTITLE = "victory_subtitle"
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        if (::txtSubtitle.isInitialized) outState.putString(KEY_SUBTITLE, txtSubtitle.text.toString())
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +47,7 @@ class VictoryActivity : BaseGameActivity() {
         val particleView = findViewById<VictoryParticleView>(R.id.particleView)
         val txtTrophy    = findViewById<TextView>(R.id.txtTrophy)
         val txtTitle     = findViewById<TextView>(R.id.txtVictoryTitle)
-        val txtSubtitle  = findViewById<TextView>(R.id.txtVictorySubtitle)
+        txtSubtitle      = findViewById(R.id.txtVictorySubtitle)
         val txtMotivo    = findViewById<TextView>(R.id.txtVictoryMotivo)
         val btnNewGame   = findViewById<Button>(R.id.btnVictoryNewGame)
         val mensajesCiviles = listOf(
@@ -59,17 +69,17 @@ class VictoryActivity : BaseGameActivity() {
         } else {
             txtTrophy.text = "\uD83C\uDF89"
             txtTitle.text = getString(R.string.victory_civilians_title)
-            txtSubtitle.text = mensajesCiviles.random()
+            txtSubtitle.text = savedInstanceState?.getString(KEY_SUBTITLE) ?: mensajesCiviles.random()
             val sombra = if (ThemeManager.esCarmesi(this)) 0x66F0D0D7.toInt() else 0xFF00E5FF.toInt()
             txtTitle.setShadowLayer(30f, 0f, 0f, sombra)
         }
 
         txtMotivo.text = motivo
 
-        // Si hay que ir al reveal, cambiar texto del botÃ³n
+        // Si hay que ir al reveal, cambiar texto del botón
         btnNewGame.text = getString(R.string.victory_reveal_button)
 
-        // AnimaciÃ³n entrada
+        // Animación entrada
         listOf(txtTrophy, txtTitle, txtSubtitle, txtMotivo).forEachIndexed { i, v ->
             v.alpha = 0f; v.translationY = 80f
             v.animate().alpha(1f).translationY(0f)
@@ -78,11 +88,9 @@ class VictoryActivity : BaseGameActivity() {
         }
 
         // Rebote emoji
-// AnimaciÃ³n continua del emoji
         txtTrophy.postDelayed({
             fun animar() {
                 if (ganador == "IMPOSTORES") {
-                    // Demonio: rotaciÃ³n de guiÃ±o continua
                     txtTrophy.animate()
                         .rotationY(360f).setDuration(800L)
                         .withEndAction {
@@ -90,7 +98,6 @@ class VictoryActivity : BaseGameActivity() {
                             txtTrophy.postDelayed({ animar() }, 1500L)
                         }.start()
                 } else {
-                    // Trofeo: sube y baja continuamente
                     txtTrophy.animate()
                         .translationY(-20f).setDuration(400L)
                         .withEndAction {
@@ -132,4 +139,3 @@ class VictoryActivity : BaseGameActivity() {
         }
     }
 }
-

@@ -6,6 +6,24 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.ricardomodino.impostorgame.data.GameOptionsRepository
 import com.ricardomodino.impostorgame.modelos.GameOptions
+import com.ricardomodino.impostorgame.R
+
+/** Resultado de un ajuste automático de no-civiles al cambiar el número de jugadores. */
+data class AjusteNoCiviles(
+    val impostoresAntes: Int,
+    val impostoresDespues: Int,
+    val blancosAntes: Int,
+    val blancosDespues: Int,
+    val modoMisterioso: Boolean
+) {
+    val huboCambio: Boolean
+        get() = impostoresAntes != impostoresDespues || blancosAntes != blancosDespues
+}
+
+/** Eventos únicos que la Activity debe consumir (Toasts, Navegación, etc.) */
+sealed class MainEvent {
+    data class MostrarAjuste(val ajuste: AjusteNoCiviles) : MainEvent()
+}
 
 /**
  * ViewModel de la pantalla principal. Gestiona el estado de [GameOptions] y
@@ -18,7 +36,12 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val _opciones = MutableLiveData(repo.restaurar())
     val opciones: LiveData<GameOptions> = _opciones
 
+    private val _eventos = MutableLiveData<MainEvent?>()
+    val eventos: LiveData<MainEvent?> = _eventos
+
     val opcionesActuales: GameOptions get() = _opciones.value ?: GameOptions()
+
+    fun consumirEvento() { _eventos.value = null }
 
     // ── Mutaciones ──────────────────────────────────────────────────────────
 
@@ -39,6 +62,11 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         val nuevo = opts.numImpostores + 1
         if (nuevo <= maxImpostoresPermitidos(numJugadores)) {
             actualizarOpciones(opts.copy(numImpostores = nuevo).ajustarALimites(numJugadores))
+        } else if (opts.modoMisterioso && opts.numSenoresBlancos > 0) {
+            actualizarOpciones(opts.copy(
+                numImpostores = nuevo,
+                numSenoresBlancos = opts.numSenoresBlancos - 1
+            ).ajustarALimites(numJugadores))
         }
     }
 
@@ -58,6 +86,11 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         val nuevo = opts.numSenoresBlancos + 1
         if (nuevo <= maxBlancosPermitidos(numJugadores)) {
             actualizarOpciones(opts.copy(numSenoresBlancos = nuevo).ajustarALimites(numJugadores))
+        } else if (opts.modoMisterioso && opts.numImpostores > 0) {
+            actualizarOpciones(opts.copy(
+                numImpostores = opts.numImpostores - 1,
+                numSenoresBlancos = nuevo
+            ).ajustarALimites(numJugadores))
         }
     }
 
@@ -71,6 +104,39 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun guardar() = repo.guardar(opcionesActuales)
+
+    fun ajustarNoCivilesSiNecesario(numJugadores: Int) {
+        val opts = opcionesActuales
+        val max = maxNoCiviles(numJugadores)
+        val blancosActuales = if (opts.modoMisterioso) opts.numSenoresBlancos else 0
+        val impActuales = opts.numImpostores
+        val total = impActuales + blancosActuales
+
+        if (total <= max) return
+
+        val exceso = total - max
+        val blancosReducir = minOf(exceso, blancosActuales)
+        val blancosNuevos = blancosActuales - blancosReducir
+        val excesoRestante = exceso - blancosReducir
+        val impNuevos = (impActuales - excesoRestante).coerceAtLeast(1)
+
+        val nuevas = opts.copy(
+            numImpostores = impNuevos,
+            numSenoresBlancos = if (opts.modoMisterioso) blancosNuevos else 0
+        )
+        actualizarOpciones(nuevas)
+
+        val ajuste = AjusteNoCiviles(
+            impostoresAntes = impActuales,
+            impostoresDespues = impNuevos,
+            blancosAntes = blancosActuales,
+            blancosDespues = blancosNuevos,
+            modoMisterioso = opts.modoMisterioso
+        )
+        if (ajuste.huboCambio) {
+            _eventos.value = MainEvent.MostrarAjuste(ajuste)
+        }
+    }
 
     // ── Cálculos puros ──────────────────────────────────────────────────────
 

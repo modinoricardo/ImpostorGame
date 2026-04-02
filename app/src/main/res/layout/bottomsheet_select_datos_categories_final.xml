@@ -1,63 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/rootCategories"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="20dp"
-    android:background="@drawable/bg_reveal_content">
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_final_sheet_surface"
+    android:fillViewport="true"
+    android:paddingStart="20dp"
+    android:paddingTop="18dp"
+    android:paddingEnd="20dp"
+    android:paddingBottom="24dp">
 
-    <View
-        android:layout_width="40dp"
-        android:layout_height="4dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="12dp"
-        android:background="#4400E5FF" />
-
-    <TextView
-        android:id="@+id/textTitle"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/cat_titulo"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:gravity="center"
-        android:layout_marginBottom="4dp"
-        android:textColor="@android:color/white"
-        android:shadowColor="#00E5FF"
-        android:shadowDx="0"
-        android:shadowDy="0"
-        android:shadowRadius="10" />
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textSubtitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/cat_subtitulo"
-        android:textSize="14sp"
-        android:gravity="center"
-        android:layout_marginBottom="16dp"
-        android:textColor="#CCFFFFFF" />
+        <View
+            android:layout_width="46dp"
+            android:layout_height="4dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="18dp"
+            android:background="@drawable/bg_estilo_final_handle" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerCategories"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:overScrollMode="never"
-        android:background="@android:color/transparent" />
+        <TextView
+            android:id="@+id/textTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/cat_titulo"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/btnConfirmCategories"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:text="@string/cat_confirmar"
-        android:layout_marginTop="16dp"
-        android:textAllCaps="true"
-        android:textColor="@android:color/white"
-        android:textStyle="bold"
-        android:background="@drawable/btn_final"
-        android:backgroundTint="@null"
-        app:backgroundTint="@null" />
+        <TextView
+            android:id="@+id/textSubtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="18dp"
+            android:gravity="center"
+            android:text="@string/cat_subtitulo"
+            android:textColor="#A9B7C7"
+            android:textSize="13sp" />
 
-</LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerCategories"
+            android:layout_width="match_parent"
+            android:layout_height="320dp"
+            android:overScrollMode="never" />
+
+        <Button
+            android:id="@+id/btnConfirmCategories"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/btn_final"
+            android:backgroundTint="@null"
+            android:text="@string/cat_confirmar"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            app:backgroundTint="@null" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

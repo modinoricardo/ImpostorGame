@@ -17,7 +17,6 @@ import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.Button
 import android.widget.TextView
-import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.cardview.widget.CardView
@@ -29,10 +28,7 @@ import com.airbnb.lottie.LottieAnimationView
 import com.airbnb.lottie.LottieDrawable
 import com.ricardomodino.impostorgame.R
 import com.ricardomodino.impostorgame.extensions.applyWordSafeText
-import com.ricardomodino.impostorgame.managers.GameDialog
-import com.ricardomodino.impostorgame.managers.ImmersiveModeManager
-import com.ricardomodino.impostorgame.managers.LocaleManager
-import com.ricardomodino.impostorgame.managers.ThemeManager
+import com.ricardomodino.impostorgame.managers.*
 import com.ricardomodino.impostorgame.modelos.DatoCurioso
 import com.ricardomodino.impostorgame.modelos.Jugador
 
@@ -134,51 +130,67 @@ class PlayGameActivity : BaseGameActivity() {
             minutos               = intent.getIntExtra(IntentKeys.MINUTOS, 3)
         )
 
-        val nombreEmpieza = intent.getStringExtra(IntentKeys.JUGADOR_EMPIEZA) ?: ""
-        val jugadorHabla = if (nombreEmpieza.isNotBlank())
-            gameViewModel.listaJugadores.firstOrNull { it.nombre == nombreEmpieza }
-        else gameViewModel.listaJugadores.randomOrNull()
-        txtHabla.text = if (jugadorHabla != null) getString(R.string.play_turn_speaks, jugadorHabla.nombre) else getString(R.string.play_no_players_available)
-
-        cardViewPalabra.visibility  = View.GONE
-        cardResumen.visibility      = View.GONE
-        cardSenorBlanco.visibility  = View.GONE
-        btnRevelar.visibility       = View.VISIBLE
-
-        // Timer
-        if (gameViewModel.tiempoLimitado) {
-            txtTimer.visibility = View.VISIBLE
-            startTimer(gameViewModel.minutos * 60 * 1000L)
-        } else {
-            txtTimer.visibility = View.GONE
+        if (gameViewModel.jugadorEmpiezaNombre.isEmpty()) {
+            val nombreEmpieza = intent.getStringExtra(IntentKeys.JUGADOR_EMPIEZA) ?: ""
+            val jugadorHabla = if (nombreEmpieza.isNotBlank())
+                gameViewModel.listaJugadores.firstOrNull { it.nombre == nombreEmpieza }
+            else gameViewModel.listaJugadores.randomOrNull()
+            gameViewModel.jugadorEmpiezaNombre = jugadorHabla?.nombre ?: ""
         }
+        txtHabla.text = if (gameViewModel.jugadorEmpiezaNombre.isNotBlank())
+            getString(R.string.play_turn_speaks, gameViewModel.jugadorEmpiezaNombre)
+        else getString(R.string.play_no_players_available)
+
+        val victoriaInmediata = intent.getBooleanExtra(IntentKeys.VICTORIA_INMEDIATA, false)
 
         btnVotar.setOnClickListener { abrirVotos() }
         btnNewGame.setOnClickListener { pulsadoBotonNewGame() }
         btnRevelar.setOnClickListener { pulsadoBotonRevelar() }
-        // Si viene de victoria, revelar directamente sin preguntar
-        if (intent.getBooleanExtra(IntentKeys.VICTORIA_INMEDIATA, false)) {
-            txtHabla.visibility = View.GONE
-            btnVotar.visibility = View.GONE
-            btnRevelar.visibility = View.GONE
-            btnNewGame.text = getString(R.string.play_btn_nueva_partida)
+
+        if (gameViewModel.revelado) {
+            if (victoriaInmediata) btnNewGame.text = getString(R.string.play_btn_nueva_partida)
             cargarDatosRevelando()
+        } else {
+            cardViewPalabra.visibility = View.GONE
+            cardResumen.visibility     = View.GONE
+            cardSenorBlanco.visibility = View.GONE
+            btnRevelar.visibility      = View.VISIBLE
+
+            if (gameViewModel.tiempoLimitado) {
+                txtTimer.visibility = View.VISIBLE
+                val duracion = if (gameViewModel.tiempoRestanteMs > 0L) gameViewModel.tiempoRestanteMs
+                               else gameViewModel.minutos * 60 * 1000L
+                startTimer(duracion)
+            } else {
+                txtTimer.visibility = View.GONE
+            }
+
+            if (victoriaInmediata) {
+                txtHabla.visibility = View.GONE
+                btnVotar.visibility = View.GONE
+                btnRevelar.visibility = View.GONE
+                btnNewGame.text = getString(R.string.play_btn_nueva_partida)
+                cargarDatosRevelando()
+            }
         }
     }
 
     private fun startTimer(millis: Long) {
         countDownTimer?.cancel()
+        gameViewModel.timerActivo = true
         countDownTimer = object : CountDownTimer(millis, 1000L) {
             override fun onTick(remaining: Long) {
+                gameViewModel.tiempoRestanteMs = remaining
                 val m = remaining / 60000
                 val s = (remaining % 60000) / 1000
                 txtTimer.text = getString(R.string.play_timer_format, m, s)
-                // Parpadea en rojo cuando quedan menos de 30 seg
                 if (remaining < 30_000) {
                     txtTimer.setTextColor(if ((remaining / 1000) % 2 == 0L) Color.RED else Color.WHITE)
                 }
             }
             override fun onFinish() {
+                gameViewModel.timerActivo = false
+                gameViewModel.tiempoRestanteMs = 0L
                 txtTimer.text = getString(R.string.play_timer_zero)
                 tiempoAgotado()
             }
@@ -207,7 +219,6 @@ class PlayGameActivity : BaseGameActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode != REQUEST_VOTE || resultCode != RESULT_OK) return
         val actualizados = data?.getParcelableArrayListExtra<Jugador>(IntentKeys.JUGADORES_ACTUALIZADOS) ?: return
-
         when (gameViewModel.evaluarVotos(actualizados.toList())) {
             PlayGameViewModel.ResultadoVoto.CivilesGanan -> startActivity(
                 intentVictoria("CIVILES", getString(R.string.play_civilians_win_reason))
@@ -215,7 +226,7 @@ class PlayGameActivity : BaseGameActivity() {
             PlayGameViewModel.ResultadoVoto.ImpostoresGanan -> startActivity(
                 intentVictoria("IMPOSTORES", getString(R.string.play_impostors_majority_reason))
             )
-            PlayGameViewModel.ResultadoVoto.ContinuaPartida -> { /* la partida sigue */ }
+            PlayGameViewModel.ResultadoVoto.ContinuaPartida -> { }
         }
     }
 
@@ -264,38 +275,34 @@ class PlayGameActivity : BaseGameActivity() {
     }
 
     private fun cargarDatosRevelando() {
+        gameViewModel.revelado = true
         txtHabla.visibility = View.GONE
         cardsContainer.visibility = View.VISIBLE
         countDownTimer?.cancel()
+        gameViewModel.timerActivo = false
         txtTimer.visibility = View.GONE
         txtSubtitle.text = getString(R.string.play_subtitle_reveal)
         txtFooter.text = getString(R.string.play_footer_reveal)
-        // Incrementa el contador de impostor exactamente una vez (sobrevive rotaciones)
         if (gameViewModel.debeContarImpostor()) {
             gameViewModel.nombreImpostor.split(",")
                 .forEach { playerViewModel.incrementImpostorByName(it.trim()) }
         }
-
         val colorImpostor = ContextCompat.getColor(this, R.color.colorImpostor)
         val colorPalabra  = ContextCompat.getColor(this, R.color.colorPalabra)
-
         if (gameViewModel.nombreImpostor.isNotBlank()) {
             cardResumen.visibility = View.VISIBLE
             txtImpostorNombre.setTextColor(colorImpostor)
             txtImpostorNombre.setTypeface(Typeface.DEFAULT, Typeface.BOLD)
             txtImpostorNombre.text = gameViewModel.nombreImpostor
         }
-
         if (gameViewModel.nombresSenoresBlancos.isNotBlank()) {
             cardSenorBlanco.visibility = View.VISIBLE
             txtSenorBlancoNombre.setTextColor(colorImpostor)
             txtSenorBlancoNombre.setTypeface(Typeface.DEFAULT, Typeface.BOLD)
             txtSenorBlancoNombre.text = gameViewModel.nombresSenoresBlancos
         }
-
         cardViewPalabra.visibility = View.VISIBLE
         configurarTarjetaFinal(colorPalabra)
-
         ThemeManager.aplicarDrawables(this)
         btnRevelar.visibility = View.GONE
         btnVotar.visibility   = View.GONE
@@ -307,12 +314,10 @@ class PlayGameActivity : BaseGameActivity() {
     private fun configurarTarjetaFinal(colorPalabra: Int) {
         scrollPalabra.scrollTo(0, 0)
         val params = scrollPalabra.layoutParams
-
         if (gameViewModel.modoDatosCuriosos) {
             txtLabelPalabra.text = getString(R.string.play_label_facts_reveal)
             params.height = dpToPx(240)
             scrollPalabra.layoutParams = params
-
             txtPalabra.gravity = Gravity.START
             txtPalabra.setTextColor(ContextCompat.getColor(this, android.R.color.white))
             txtPalabra.setTypeface(Typeface.DEFAULT, Typeface.NORMAL)
@@ -327,7 +332,6 @@ class PlayGameActivity : BaseGameActivity() {
             txtLabelPalabra.text = getString(R.string.play_label_word_reveal)
             params.height = android.widget.LinearLayout.LayoutParams.WRAP_CONTENT
             scrollPalabra.layoutParams = params
-
             txtPalabra.gravity = Gravity.START
             txtPalabra.setTextColor(colorPalabra)
             txtPalabra.setTypeface(Typeface.DEFAULT, Typeface.BOLD)
@@ -360,7 +364,6 @@ class PlayGameActivity : BaseGameActivity() {
     private fun iniciarAnimacionFinalPeriodica() {
         val invitado = lottieFinalInvitado ?: return
         if (!ThemeManager.esFinal(this)) return
-
         animacionFinalSeleccionada = animacionFinalSeleccionada ?: animacionesFinales.random()
         invitado.removeCallbacks(repetirAnimacionFinal)
         animarInvitadoFinal()
@@ -377,7 +380,6 @@ class PlayGameActivity : BaseGameActivity() {
     private fun animarInvitadoFinal() {
         val invitado = lottieFinalInvitado ?: return
         if (!ThemeManager.esFinal(this)) return
-
         invitado.cancelAnimation()
         invitado.animate().cancel()
         invitado.clearAnimation()
@@ -389,14 +391,12 @@ class PlayGameActivity : BaseGameActivity() {
             invitado.cancelAnimation()
             invitado.visibility = View.GONE
         }
-
         invitado.post {
             val rootWidth = findViewById<View>(R.id.main).width.toFloat()
             val invitadoWidth = invitado.width.toFloat().takeIf { it > 0f } ?: dpToPx(220).toFloat()
             val inicioX = -(invitadoWidth + dpToPx(42))
             val puntoMedio = rootWidth * 0.2f
             val salidaX = rootWidth + invitadoWidth + dpToPx(36)
-
             invitado.bringToFront()
             invitado.visibility = View.VISIBLE
             invitado.alpha = 0f
@@ -406,7 +406,6 @@ class PlayGameActivity : BaseGameActivity() {
             invitado.scaleY = 1f
             invitado.rotation = 0f
             invitado.playAnimation()
-
             val entrada = AnimatorSet().apply {
                 playTogether(
                     ObjectAnimator.ofFloat(invitado, View.TRANSLATION_X, invitado.translationX, puntoMedio),
@@ -416,7 +415,6 @@ class PlayGameActivity : BaseGameActivity() {
                 duration = 1300L
                 interpolator = AccelerateDecelerateInterpolator()
             }
-
             val paseo = AnimatorSet().apply {
                 playTogether(
                     ObjectAnimator.ofFloat(invitado, View.TRANSLATION_X, puntoMedio, rootWidth * 0.56f),
@@ -425,7 +423,6 @@ class PlayGameActivity : BaseGameActivity() {
                 duration = 3600L
                 interpolator = AccelerateDecelerateInterpolator()
             }
-
             val salida = AnimatorSet().apply {
                 playTogether(
                     ObjectAnimator.ofFloat(invitado, View.TRANSLATION_X, rootWidth * 0.56f, salidaX.toFloat()),
@@ -434,7 +431,6 @@ class PlayGameActivity : BaseGameActivity() {
                 duration = 1700L
                 interpolator = AccelerateDecelerateInterpolator()
             }
-
             AnimatorSet().apply {
                 playSequentially(entrada, paseo, salida)
                 startDelay = 260L
@@ -455,15 +451,6 @@ class PlayGameActivity : BaseGameActivity() {
                 start()
             }
         }
-    }
-
-    private fun mensajeAlerta(titulo: String, msg: String) {
-        GameDialog(this)
-            .icon("\uD83D\uDEAA")
-            .title(titulo)
-            .message(msg)
-            .positiveButton(getString(R.string.dialog_ok)) { stopBell() }
-            .show()
     }
 
     private fun stopBell() { mediaPlayer?.stop(); mediaPlayer?.release(); mediaPlayer = null }
@@ -487,5 +474,3 @@ class PlayGameActivity : BaseGameActivity() {
         countDownTimer?.cancel()
     }
 }
-
-

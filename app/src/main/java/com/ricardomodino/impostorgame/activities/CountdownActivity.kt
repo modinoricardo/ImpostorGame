@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import com.ricardomodino.impostorgame.R
 import com.ricardomodino.impostorgame.managers.ImmersiveModeManager
 import com.ricardomodino.impostorgame.managers.SoundManager
@@ -12,10 +13,12 @@ import com.ricardomodino.impostorgame.managers.ThemeManager
 import com.ricardomodino.impostorgame.modelos.Category
 import com.ricardomodino.impostorgame.modelos.GameOptions
 import com.ricardomodino.impostorgame.modelos.Jugador
+import com.ricardomodino.impostorgame.viewmodel.CountdownViewModel
 
 class CountdownActivity : BaseGameActivity() {
 
     private lateinit var txtCountdown: TextView
+    private val countdownViewModel: CountdownViewModel by viewModels()
 
     // Flag para detener los callbacks de animación cuando el usuario pulsa atrás.
     // Sin este flag, el withEndAction sigue ejecutándose aunque la Activity ya se esté cerrando,
@@ -57,6 +60,9 @@ class CountdownActivity : BaseGameActivity() {
             }
         })
 
+        // Si la navegación ya ocurrió (rotación en el último instante), simplemente cerramos.
+        if (countdownViewModel.navegado) { finish(); return }
+
         val players    = intent.getParcelableArrayListExtra<Jugador>(IntentKeys.PLAYERS)
         val categories = intent.getParcelableArrayListExtra<Category>(IntentKeys.CATEGORIES)
         val opciones   = intent.getParcelableExtra<GameOptions>(IntentKeys.OPCIONES)
@@ -85,7 +91,8 @@ class CountdownActivity : BaseGameActivity() {
         val finalCue = if (esCarmesi) "\u2665" else "¡Ya!"
         val toneFreqs = mapOf("3" to 392f, "2" to 494f, "1" to 659f, finalCue to 880f)
         val numbers = listOf("3", "2", "1", finalCue)
-        var index = 0
+        // Retoma desde el paso guardado en caso de rotación; 0 en inicio normal.
+        var index = countdownViewModel.paso
 
         if (esCarmesi) {
             txtCountdownAccent?.alpha = 0.34f
@@ -94,7 +101,11 @@ class CountdownActivity : BaseGameActivity() {
         fun showNext() {
             if (isCancelled || isFinishing || isDestroyed) return
 
+            // Persistir el paso actual antes de cualquier operación asíncrona.
+            countdownViewModel.paso = index
+
             if (index >= numbers.size) {
+                countdownViewModel.navegado = true
                 val destino = if (esDatosCuriosos) CoverRevealActivity::class.java
                 else ClassicRevealActivity::class.java
                 val intent = Intent(this, destino).apply {

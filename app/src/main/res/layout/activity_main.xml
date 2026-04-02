@@ -27,13 +27,13 @@
         android:focusable="true"
         android:elevation="8dp" />
 
-    <ScrollView android:id="@+id/scrollContent" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true">
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingBottom="48dp">
+    <ScrollView android:id="@+id/scrollContent" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true" android:clipToPadding="false" android:paddingBottom="104dp">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingBottom="24dp">
 
             <TextView android:id="@+id/titleTextView" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="72dp" android:layout_marginBottom="24dp" android:gravity="center" android:text="@string/main_title" android:textColor="@android:color/white" android:textSize="26sp" android:textStyle="bold" android:shadowColor="#00E5FF" android:shadowDx="0" android:shadowDy="0" android:shadowRadius="14" />
 
             <!-- CardView Jugadores -->
-            <androidx.cardview.widget.CardView android:id="@+id/cardViewModoJuego" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="15dp" android:clickable="true" android:focusable="true" app:cardCornerRadius="22dp" app:cardElevation="6dp" app:cardPreventCornerOverlap="false" app:cardUseCompatPadding="true" app:cardBackgroundColor="@android:color/transparent">
+            <androidx.cardview.widget.CardView android:id="@+id/cardViewModoJuego" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="15dp" android:clickable="true" android:focusable="true" android:foreground="?attr/selectableItemBackground" app:cardCornerRadius="22dp" app:cardElevation="6dp" app:cardPreventCornerOverlap="false" app:cardUseCompatPadding="true" app:cardBackgroundColor="@android:color/transparent">
                 <RelativeLayout android:id="@+id/relativeLayoutJugadores" android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="16dp" android:background="@drawable/bg_card_main">
                     <TextView android:id="@+id/textTituloJugadores" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_alignParentStart="true" android:layout_marginBottom="12dp" android:layout_toStartOf="@id/imageViewArrow" android:text="@string/main_edit_players" android:textColor="@android:color/white" android:textSize="18sp" android:textStyle="bold" />
                     <ImageView android:id="@+id/imageViewArrow" android:layout_width="24dp" android:layout_height="24dp" android:layout_alignParentEnd="true" android:layout_centerVertical="true" android:src="@drawable/chevron_right_24" app:tint="@android:color/white" />
@@ -72,7 +72,7 @@
             </androidx.cardview.widget.CardView>
 
             <!-- CardView Categorías -->
-            <androidx.cardview.widget.CardView android:id="@+id/cardViewCategorias" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="15dp" android:clickable="true" android:focusable="true" app:cardCornerRadius="22dp" app:cardElevation="6dp" app:cardPreventCornerOverlap="false" app:cardUseCompatPadding="true" app:cardBackgroundColor="@android:color/transparent">
+            <androidx.cardview.widget.CardView android:id="@+id/cardViewCategorias" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="15dp" android:clickable="true" android:focusable="true" android:foreground="?attr/selectableItemBackground" app:cardCornerRadius="22dp" app:cardElevation="6dp" app:cardPreventCornerOverlap="false" app:cardUseCompatPadding="true" app:cardBackgroundColor="@android:color/transparent">
                 <RelativeLayout android:id="@+id/relativeLayoutCategorias" android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="16dp" android:background="@drawable/bg_card_main">
                     <ImageView android:id="@+id/imageViewArrowCategorias" android:layout_width="24dp" android:layout_height="24dp" android:layout_alignParentEnd="true" android:layout_centerVertical="true" android:src="@drawable/chevron_right_24" app:tint="@android:color/white" />
                     <TextView android:id="@+id/textTituloCategorias" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="4dp" android:layout_toStartOf="@id/imageViewArrowCategorias" android:text="@string/main_categorias" android:textSize="18sp" android:textStyle="bold" android:textColor="@android:color/white" />
@@ -82,7 +82,7 @@
             </androidx.cardview.widget.CardView>
 
             <!-- CardView Categorías Datos Curiosos -->
-            <androidx.cardview.widget.CardView android:id="@+id/cardViewCategoriasDatos" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="15dp" android:clickable="true" android:focusable="true" android:visibility="gone" app:cardCornerRadius="22dp" app:cardElevation="6dp" app:cardPreventCornerOverlap="false" app:cardUseCompatPadding="true" app:cardBackgroundColor="@android:color/transparent">
+            <androidx.cardview.widget.CardView android:id="@+id/cardViewCategoriasDatos" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="15dp" android:clickable="true" android:focusable="true" android:foreground="?attr/selectableItemBackground" android:visibility="gone" app:cardCornerRadius="22dp" app:cardElevation="6dp" app:cardPreventCornerOverlap="false" app:cardUseCompatPadding="true" app:cardBackgroundColor="@android:color/transparent">
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:padding="16dp" android:background="@drawable/bg_card_main">
                     <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
                         <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="4dp" android:text="@string/main_categorias" android:textSize="18sp" android:textStyle="bold" android:textColor="@android:color/white" />
@@ -93,7 +93,7 @@
             </androidx.cardview.widget.CardView>
 
             <!-- CardView Modo de Juego -->
-            <androidx.cardview.widget.CardView android:id="@+id/cardViewSeleccionModo" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="15dp" android:clickable="true" android:focusable="true" app:cardCornerRadius="22dp" app:cardElevation="6dp" app:cardPreventCornerOverlap="false" app:cardUseCompatPadding="true" app:cardBackgroundColor="@android:color/transparent">
+            <androidx.cardview.widget.CardView android:id="@+id/cardViewSeleccionModo" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="15dp" android:clickable="true" android:focusable="true" android:foreground="?attr/selectableItemBackground" app:cardCornerRadius="22dp" app:cardElevation="6dp" app:cardPreventCornerOverlap="false" app:cardUseCompatPadding="true" app:cardBackgroundColor="@android:color/transparent">
                 <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="16dp" android:background="@drawable/bg_card_main">
                     <ImageView android:id="@+id/imageViewArrowModo" android:layout_width="24dp" android:layout_height="24dp" android:layout_alignParentEnd="true" android:layout_centerVertical="true" android:src="@drawable/chevron_right_24" app:tint="@android:color/white" />
                     <TextView android:id="@+id/txtModoJuegoTitulo" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_toStartOf="@id/imageViewArrowModo" android:text="@string/main_modo_juego" android:textSize="18sp" android:textStyle="bold" android:textColor="@android:color/white" />
@@ -108,7 +108,7 @@
                     <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:layout_marginBottom="12dp" android:text="@string/main_ayuda_impostor_desc" android:textSize="13sp" android:textColor="#CCFFFFFF" />
                     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
                         <!-- Opción: Pista completa -->
-                        <androidx.cardview.widget.CardView android:id="@+id/cardOpcionPistaCompleta" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginEnd="6dp" android:clickable="true" android:focusable="true" app:cardCornerRadius="14dp" app:cardElevation="2dp" app:cardUseCompatPadding="false" app:cardBackgroundColor="@android:color/transparent">
+                        <androidx.cardview.widget.CardView android:id="@+id/cardOpcionPistaCompleta" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginEnd="6dp" android:clickable="true" android:focusable="true" android:foreground="?attr/selectableItemBackground" app:cardCornerRadius="14dp" app:cardElevation="2dp" app:cardUseCompatPadding="false" app:cardBackgroundColor="@android:color/transparent">
                             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp" android:background="@drawable/bg_card_main">
                                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
                                     <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/main_pista" android:textSize="15sp" android:textStyle="bold" android:textColor="@android:color/white" />
@@ -118,7 +118,7 @@
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
                         <!-- Opción: Primera letra -->
-                        <androidx.cardview.widget.CardView android:id="@+id/cardOpcionPrimeraLetra" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="6dp" android:clickable="true" android:focusable="true" app:cardCornerRadius="14dp" app:cardElevation="2dp" app:cardUseCompatPadding="false" app:cardBackgroundColor="@android:color/transparent">
+                        <androidx.cardview.widget.CardView android:id="@+id/cardOpcionPrimeraLetra" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="6dp" android:clickable="true" android:focusable="true" android:foreground="?attr/selectableItemBackground" app:cardCornerRadius="14dp" app:cardElevation="2dp" app:cardUseCompatPadding="false" app:cardBackgroundColor="@android:color/transparent">
                             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp" android:background="@drawable/bg_card_main">
                                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
                                     <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/main_primera_letra" android:textSize="15sp" android:textStyle="bold" android:textColor="@android:color/white" />

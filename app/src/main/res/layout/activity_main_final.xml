@@ -8,86 +8,113 @@
     android:background="#0A0A0F"
     tools:context=".activities.MainActivity">
 
-    <!-- Fondo con gradiente sutil -->
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/bg_datos_curiosos" />
 
-    <!-- BotÃ³n menÃº -->
+    <!-- Botón menú -->
     <TextView
         android:id="@+id/btnMenu"
         android:layout_width="44dp"
         android:layout_height="44dp"
         android:layout_gravity="top|end"
-        android:layout_marginTop="27dp"
-        android:layout_marginEnd="16dp"
-        android:text="..."
-        android:textSize="26sp"
-        android:textColor="@android:color/white"
-        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/bg_final_control_pill"
         android:clickable="true"
+        android:elevation="8dp"
         android:focusable="true"
-        android:elevation="8dp" />
+        android:gravity="center"
+        android:paddingBottom="2dp"
+        android:text="⋮"
+        android:textColor="@android:color/white"
+        android:textSize="22sp"
+        android:textStyle="bold" />
 
     <ScrollView
         android:id="@+id/scrollContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="96dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingBottom="48dp">
+            android:paddingBottom="16dp">
 
-            <!-- TÃ­tulo -->
+            <!-- ══════════════════════════════════
+                 CABECERA
+                 ══════════════════════════════════ -->
             <TextView
                 android:id="@+id/titleTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="27dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginBottom="4dp"
+                android:layout_marginTop="76dp"
+                android:layout_marginBottom="8dp"
                 android:gravity="center"
-                android:text="@string/main_title"
-                android:textColor="@android:color/white"
-                android:textSize="26sp"
-                android:textStyle="bold"
                 android:shadowColor="#00E5FF"
                 android:shadowDx="0"
                 android:shadowDy="0"
-                android:shadowRadius="14" />
+                android:shadowRadius="20"
+                android:text="@string/main_title_carmesi"
+                android:textAllCaps="true"
+                android:textColor="@android:color/white"
+                android:textSize="40sp"
+                android:textStyle="bold" />
 
-            <!-- LÃ­nea acento bajo el tÃ­tulo -->
             <View
                 android:layout_width="48dp"
                 android:layout_height="3dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="14dp"
                 android:background="#00E5FF" />
 
-            <!-- CardView Jugadores -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="36dp"
+                android:gravity="center"
+                android:text="@string/main_final_tagline"
+                android:textColor="#7A9DB4"
+                android:textSize="13sp" />
+
+            <!-- ══════════════════════════════════
+                 SECCIÓN: JUGADORES
+                 ══════════════════════════════════ -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:letterSpacing="0.12"
+                android:text="JUGADORES"
+                android:textColor="#91EFFF"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewModoJuego"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
+                android:layout_marginBottom="36dp"
                 android:clickable="true"
                 android:focusable="true"
+                app:cardBackgroundColor="@android:color/transparent"
                 app:cardCornerRadius="24dp"
                 app:cardElevation="0dp"
-                app:cardPreventCornerOverlap="false"
-                app:cardUseCompatPadding="true"
-                app:cardBackgroundColor="@android:color/transparent">
+                app:cardPreventCornerOverlap="false">
 
                 <RelativeLayout
                     android:id="@+id/relativeLayoutJugadores"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="16dp"
-                    android:background="@drawable/bg_reveal_content">
+                    android:background="@drawable/bg_final_main_panel"
+                    android:padding="20dp">
 
                     <TextView
                         android:id="@+id/textTituloJugadores"
@@ -98,7 +125,7 @@
                         android:layout_toStartOf="@id/imageViewArrow"
                         android:text="@string/main_edit_players"
                         android:textColor="@android:color/white"
-                        android:textSize="18sp"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <ImageView
@@ -108,13 +135,14 @@
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:src="@drawable/chevron_right_24"
-                        app:tint="#00E5FF" />
+                        app:tint="#8FEFFF" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/playersRecyclerView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/textTituloJugadores"
+                        android:layout_marginTop="14dp"
                         android:layout_toStartOf="@id/imageViewArrow"
                         android:nestedScrollingEnabled="false"
                         android:overScrollMode="never"
@@ -123,207 +151,211 @@
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- CardView NÃºmero de Impostores -->
+            <!-- ══════════════════════════════════
+                 SECCIÓN: PARTIDA
+                 ══════════════════════════════════ -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:letterSpacing="0.12"
+                android:text="PARTIDA"
+                android:textColor="#91EFFF"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <!-- Número de impostores -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewNumImpostores"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
+                android:layout_marginBottom="10dp"
+                app:cardBackgroundColor="@android:color/transparent"
                 app:cardCornerRadius="24dp"
                 app:cardElevation="0dp"
-                app:cardPreventCornerOverlap="false"
-                app:cardUseCompatPadding="true"
-                app:cardBackgroundColor="@android:color/transparent">
+                app:cardPreventCornerOverlap="false">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp"
-                    android:background="@drawable/bg_reveal_content">
+                    android:background="@drawable/bg_final_main_panel"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="20dp">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical">
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/main_num_impostores"
-                                android:textSize="18sp"
-                                android:textStyle="bold"
-                                android:textColor="@android:color/white" />
-
-                            <TextView
-                                android:id="@+id/txtResumenImpostores"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="4dp"
-                                android:text=""
-                                android:textSize="13sp"
-                                android:textColor="#CCFFFFFF" />
-
-                        </LinearLayout>
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/btnMenosImpostores"
-                            android:layout_width="36dp"
-                            android:layout_height="36dp"
-                            android:text="-"
-                            android:textSize="22sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/main_num_impostores"
                             android:textColor="@android:color/white"
-                            android:gravity="center"
-                            android:background="@drawable/btn_final"
-                            android:textStyle="bold"
-                            android:clickable="true"
-                            android:focusable="true" />
-
-                        <TextView
-                            android:id="@+id/txtNumImpostores"
-                            android:layout_width="40dp"
-                            android:layout_height="wrap_content"
-                            android:text="1"
                             android:textSize="20sp"
-                            android:textColor="@android:color/white"
-                            android:textStyle="bold"
-                            android:gravity="center" />
+                            android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/btnMasImpostores"
-                            android:layout_width="36dp"
-                            android:layout_height="36dp"
-                            android:text="+"
-                            android:textSize="22sp"
-                            android:textColor="@android:color/white"
-                            android:gravity="center"
-                            android:background="@drawable/btn_final"
-                            android:textStyle="bold"
-                            android:clickable="true"
-                            android:focusable="true" />
+                            android:id="@+id/txtResumenImpostores"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text=""
+                            android:textColor="#CCFFFFFF"
+                            android:textSize="13sp" />
 
                     </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/btnMenosImpostores"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/bg_final_control_pill"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:text="-"
+                        android:textColor="@android:color/white"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtNumImpostores"
+                        android:layout_width="54dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/bg_final_inline_panel"
+                        android:gravity="center"
+                        android:text="1"
+                        android:textColor="@android:color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/btnMasImpostores"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/bg_final_control_pill"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:text="+"
+                        android:textColor="@android:color/white"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- CardView SeÃ±ores Blancos -->
+            <!-- Señores Blancos -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewNumSenoresBlancos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
+                android:layout_marginBottom="10dp"
                 android:visibility="gone"
+                app:cardBackgroundColor="@android:color/transparent"
                 app:cardCornerRadius="24dp"
                 app:cardElevation="0dp"
-                app:cardPreventCornerOverlap="false"
-                app:cardUseCompatPadding="true"
-                app:cardBackgroundColor="@android:color/transparent">
+                app:cardPreventCornerOverlap="false">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp"
-                    android:background="@drawable/bg_reveal_content">
+                    android:background="@drawable/bg_final_main_panel"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="20dp">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical">
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/main_senores_blancos"
-                                android:textSize="18sp"
-                                android:textStyle="bold"
-                                android:textColor="@android:color/white" />
-
-                            <TextView
-                                android:id="@+id/txtResumenSenoresBlancos"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="4dp"
-                                android:text=""
-                                android:textSize="13sp"
-                                android:textColor="#CCFFFFFF" />
-
-                        </LinearLayout>
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/btnMenosSenoresBlancos"
-                            android:layout_width="36dp"
-                            android:layout_height="36dp"
-                            android:text="-"
-                            android:textSize="22sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/main_senores_blancos"
                             android:textColor="@android:color/white"
-                            android:gravity="center"
-                            android:background="@drawable/btn_final"
-                            android:textStyle="bold"
-                            android:clickable="true"
-                            android:focusable="true" />
-
-                        <TextView
-                            android:id="@+id/txtNumSenoresBlancos"
-                            android:layout_width="40dp"
-                            android:layout_height="wrap_content"
-                            android:text="1"
                             android:textSize="20sp"
-                            android:textColor="@android:color/white"
-                            android:textStyle="bold"
-                            android:gravity="center" />
+                            android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/btnMasSenoresBlancos"
-                            android:layout_width="36dp"
-                            android:layout_height="36dp"
-                            android:text="+"
-                            android:textSize="22sp"
-                            android:textColor="@android:color/white"
-                            android:gravity="center"
-                            android:background="@drawable/btn_final"
-                            android:textStyle="bold"
-                            android:clickable="true"
-                            android:focusable="true" />
+                            android:id="@+id/txtResumenSenoresBlancos"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text=""
+                            android:textColor="#CCFFFFFF"
+                            android:textSize="13sp" />
 
                     </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/btnMenosSenoresBlancos"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/bg_final_control_pill"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:text="-"
+                        android:textColor="@android:color/white"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtNumSenoresBlancos"
+                        android:layout_width="54dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/bg_final_inline_panel"
+                        android:gravity="center"
+                        android:text="1"
+                        android:textColor="@android:color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/btnMasSenoresBlancos"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/bg_final_control_pill"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:text="+"
+                        android:textColor="@android:color/white"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- CardView CategorÃ­as -->
+            <!-- Categorías palabras -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewCategorias"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
+                android:layout_marginBottom="10dp"
                 android:clickable="true"
                 android:focusable="true"
+                app:cardBackgroundColor="@android:color/transparent"
                 app:cardCornerRadius="24dp"
                 app:cardElevation="0dp"
-                app:cardPreventCornerOverlap="false"
-                app:cardUseCompatPadding="true"
-                app:cardBackgroundColor="@android:color/transparent">
+                app:cardPreventCornerOverlap="false">
 
                 <RelativeLayout
                     android:id="@+id/relativeLayoutCategorias"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="16dp"
-                    android:background="@drawable/bg_reveal_content">
+                    android:background="@drawable/bg_final_main_panel"
+                    android:padding="20dp">
 
                     <ImageView
                         android:id="@+id/imageViewArrowCategorias"
@@ -332,7 +364,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:src="@drawable/chevron_right_24"
-                        app:tint="#00E5FF" />
+                        app:tint="#8FEFFF" />
 
                     <TextView
                         android:id="@+id/textTituloCategorias"
@@ -341,9 +373,9 @@
                         android:layout_marginBottom="4dp"
                         android:layout_toStartOf="@id/imageViewArrowCategorias"
                         android:text="@string/main_categorias"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:textColor="@android:color/white" />
+                        android:textColor="@android:color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/textResumenCategorias"
@@ -352,44 +384,44 @@
                         android:layout_below="@id/textTituloCategorias"
                         android:layout_toStartOf="@id/imageViewArrowCategorias"
                         android:text=""
-                        android:textSize="14sp"
-                        android:textColor="#CCFFFFFF" />
+                        android:textColor="#CCFFFFFF"
+                        android:textSize="14sp" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/categoriesRecyclerView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/textResumenCategorias"
+                        android:layout_marginTop="14dp"
                         android:layout_toStartOf="@id/imageViewArrowCategorias"
                         android:nestedScrollingEnabled="false"
                         android:overScrollMode="never"
-                        android:paddingTop="8dp" />
+                        android:paddingTop="0dp" />
 
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- CardView CategorÃ­as Datos Curiosos -->
+            <!-- Categorías datos curiosos -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewCategoriasDatos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
+                android:layout_marginBottom="10dp"
                 android:clickable="true"
                 android:focusable="true"
                 android:visibility="gone"
+                app:cardBackgroundColor="@android:color/transparent"
                 app:cardCornerRadius="24dp"
                 app:cardElevation="0dp"
-                app:cardPreventCornerOverlap="false"
-                app:cardUseCompatPadding="true"
-                app:cardBackgroundColor="@android:color/transparent">
+                app:cardPreventCornerOverlap="false">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:background="@drawable/bg_final_main_panel"
                     android:gravity="center_vertical"
-                    android:padding="16dp"
-                    android:background="@drawable/bg_reveal_content">
+                    android:orientation="horizontal"
+                    android:padding="20dp">
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -402,17 +434,17 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="4dp"
                             android:text="@string/main_categorias"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            android:textColor="@android:color/white" />
+                            android:textColor="@android:color/white"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/textResumenCategoriasDatos"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text=""
-                            android:textSize="14sp"
-                            android:textColor="#CCFFFFFF" />
+                            android:textColor="#CCFFFFFF"
+                            android:textSize="14sp" />
 
                     </LinearLayout>
 
@@ -420,30 +452,29 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:src="@drawable/chevron_right_24"
-                        app:tint="#00E5FF" />
+                        app:tint="#8FEFFF" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- CardView Modo de Juego -->
+            <!-- Modo de juego -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewSeleccionModo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
+                android:layout_marginBottom="36dp"
                 android:clickable="true"
                 android:focusable="true"
+                app:cardBackgroundColor="@android:color/transparent"
                 app:cardCornerRadius="24dp"
                 app:cardElevation="0dp"
-                app:cardPreventCornerOverlap="false"
-                app:cardUseCompatPadding="true"
-                app:cardBackgroundColor="@android:color/transparent">
+                app:cardPreventCornerOverlap="false">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="16dp"
-                    android:background="@drawable/bg_reveal_content">
+                    android:background="@drawable/bg_final_main_panel_accent"
+                    android:padding="20dp">
 
                     <ImageView
                         android:id="@+id/imageViewArrowModo"
@@ -452,7 +483,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:src="@drawable/chevron_right_24"
-                        app:tint="#00E5FF" />
+                        app:tint="#8FEFFF" />
 
                     <TextView
                         android:id="@+id/txtModoJuegoTitulo"
@@ -460,50 +491,63 @@
                         android:layout_height="wrap_content"
                         android:layout_toStartOf="@id/imageViewArrowModo"
                         android:text="@string/main_modo_juego"
+                        android:textColor="#A8D8E0"
                         android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:textColor="@android:color/white" />
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/txtModoJuegoSeleccionado"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/txtModoJuegoTitulo"
+                        android:layout_marginTop="8dp"
                         android:layout_toStartOf="@id/imageViewArrowModo"
-                        android:layout_marginTop="4dp"
-                        android:text="@string/main_modo_clasico"
-                        android:textSize="14sp"
-                        android:textColor="#CCFFFFFF" />
+                        android:text="@string/main_modo_clasico_final"
+                        android:textColor="@android:color/white"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
 
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- CardView Ayuda al impostor -->
+            <!-- ══════════════════════════════════
+                 SECCIÓN: OPCIONES
+                 ══════════════════════════════════ -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:letterSpacing="0.12"
+                android:text="OPCIONES"
+                android:textColor="#91EFFF"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <!-- Ayuda al impostor -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewPistaImpostor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
+                android:layout_marginBottom="10dp"
+                app:cardBackgroundColor="@android:color/transparent"
                 app:cardCornerRadius="24dp"
                 app:cardElevation="0dp"
-                app:cardPreventCornerOverlap="false"
-                app:cardUseCompatPadding="true"
-                app:cardBackgroundColor="@android:color/transparent">
+                app:cardPreventCornerOverlap="false">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/bg_final_main_panel"
                     android:orientation="vertical"
-                    android:padding="16dp"
-                    android:background="@drawable/bg_reveal_content">
+                    android:padding="20dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/main_ayuda_impostor"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:textColor="@android:color/white" />
+                        android:textColor="@android:color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -511,8 +555,8 @@
                         android:layout_marginTop="4dp"
                         android:layout_marginBottom="12dp"
                         android:text="@string/main_ayuda_impostor_desc"
-                        android:textSize="13sp"
-                        android:textColor="#CCFFFFFF" />
+                        android:textColor="#CCFFFFFF"
+                        android:textSize="13sp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -523,46 +567,47 @@
                             android:id="@+id/cardOpcionPistaCompleta"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
                             android:layout_marginEnd="6dp"
+                            android:layout_weight="1"
                             android:clickable="true"
                             android:focusable="true"
+                            app:cardBackgroundColor="@android:color/transparent"
                             app:cardCornerRadius="14dp"
                             app:cardElevation="0dp"
-                            app:cardUseCompatPadding="false"
-                            app:cardBackgroundColor="@android:color/transparent">
+                            app:cardUseCompatPadding="false">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:background="@drawable/bg_final_inline_panel"
                                 android:orientation="vertical"
-                                android:padding="12dp"
-                                android:background="@drawable/bg_reveal_content">
+                                android:padding="12dp">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:orientation="horizontal"
-                                    android:gravity="center_vertical">
+                                    android:gravity="center_vertical"
+                                    android:orientation="horizontal">
 
                                     <TextView
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
-                                        android:text="@string/main_pista"
+                                        android:text="@string/main_pista_carmesi"
+                                        android:textColor="@android:color/white"
                                         android:textSize="15sp"
-                                        android:textStyle="bold"
-                                        android:textColor="@android:color/white" />
+                                        android:textStyle="bold" />
 
                                     <TextView
                                         android:id="@+id/checkPistaCompleta"
-                                        android:layout_width="20dp"
-                                        android:layout_height="20dp"
-                                        android:text="&#10003;"
-                                        android:textSize="15sp"
-                                        android:textColor="#00E5FF"
-                                        android:textStyle="bold"
+                                        android:layout_width="24dp"
+                                        android:layout_height="24dp"
+                                        android:background="@drawable/bg_final_badge"
                                         android:gravity="center"
+                                        android:text="&#10003;"
+                                        android:textColor="#9CEFFF"
+                                        android:textSize="14sp"
+                                        android:textStyle="bold"
                                         android:visibility="visible" />
 
                                 </LinearLayout>
@@ -572,8 +617,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="4dp"
                                     android:text="@string/main_pista_desc"
-                                    android:textSize="11sp"
-                                    android:textColor="#CCFFFFFF" />
+                                    android:textColor="#CCFFFFFF"
+                                    android:textSize="11sp" />
 
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
@@ -582,46 +627,47 @@
                             android:id="@+id/cardOpcionPrimeraLetra"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
                             android:layout_marginStart="6dp"
+                            android:layout_weight="1"
                             android:clickable="true"
                             android:focusable="true"
+                            app:cardBackgroundColor="@android:color/transparent"
                             app:cardCornerRadius="14dp"
                             app:cardElevation="0dp"
-                            app:cardUseCompatPadding="false"
-                            app:cardBackgroundColor="@android:color/transparent">
+                            app:cardUseCompatPadding="false">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:background="@drawable/bg_final_inline_panel"
                                 android:orientation="vertical"
-                                android:padding="12dp"
-                                android:background="@drawable/bg_reveal_content">
+                                android:padding="12dp">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:orientation="horizontal"
-                                    android:gravity="center_vertical">
+                                    android:gravity="center_vertical"
+                                    android:orientation="horizontal">
 
                                     <TextView
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
-                                        android:text="@string/main_primera_letra"
+                                        android:text="@string/main_primera_letra_carmesi"
+                                        android:textColor="@android:color/white"
                                         android:textSize="15sp"
-                                        android:textStyle="bold"
-                                        android:textColor="@android:color/white" />
+                                        android:textStyle="bold" />
 
                                     <TextView
                                         android:id="@+id/checkPrimeraLetra"
-                                        android:layout_width="20dp"
-                                        android:layout_height="20dp"
-                                        android:text="&#10003;"
-                                        android:textSize="15sp"
-                                        android:textColor="#00E5FF"
-                                        android:textStyle="bold"
+                                        android:layout_width="24dp"
+                                        android:layout_height="24dp"
+                                        android:background="@drawable/bg_final_badge"
                                         android:gravity="center"
+                                        android:text="&#10003;"
+                                        android:textColor="#9CEFFF"
+                                        android:textSize="14sp"
+                                        android:textStyle="bold"
                                         android:visibility="gone" />
 
                                 </LinearLayout>
@@ -631,8 +677,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="4dp"
                                     android:text="@string/main_primera_letra_desc"
-                                    android:textSize="11sp"
-                                    android:textColor="#CCFFFFFF" />
+                                    android:textColor="#CCFFFFFF"
+                                    android:textSize="11sp" />
 
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
@@ -641,32 +687,31 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- CardView Modo Loco -->
+            <!-- Todos impostores (modo loco) -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewModoLoco"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
+                android:layout_marginBottom="10dp"
+                app:cardBackgroundColor="@android:color/transparent"
                 app:cardCornerRadius="24dp"
                 app:cardElevation="0dp"
-                app:cardPreventCornerOverlap="false"
-                app:cardUseCompatPadding="true"
-                app:cardBackgroundColor="@android:color/transparent">
+                app:cardPreventCornerOverlap="false">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="16dp"
-                    android:background="@drawable/bg_reveal_content">
+                    android:background="@drawable/bg_final_main_panel"
+                    android:padding="20dp">
 
                     <TextView
                         android:id="@+id/txtModoLocoTitulo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/main_todos_impostores"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:textColor="@android:color/white" />
+                        android:textColor="@android:color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
                     <com.google.android.material.switchmaterial.SwitchMaterial
                         android:id="@+id/switchModoLoco"
@@ -674,44 +719,46 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
-                        android:checked="false" />
+                        android:checked="false"
+                        app:thumbTint="@color/final_switch_thumb"
+                        app:trackTint="@color/final_switch_track"
+                        app:useMaterialThemeColors="false" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
                         android:layout_below="@id/txtModoLocoTitulo"
+                        android:layout_marginTop="6dp"
                         android:text="@string/main_todos_impostores_desc"
-                        android:textSize="13sp"
-                        android:textColor="#CCFFFFFF" />
+                        android:textColor="#CCFFFFFF"
+                        android:textSize="13sp" />
 
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- CardView Tiempo Limitado -->
+            <!-- Tiempo limitado -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewTiempoLimitado"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
+                android:layout_marginBottom="10dp"
+                app:cardBackgroundColor="@android:color/transparent"
                 app:cardCornerRadius="24dp"
                 app:cardElevation="0dp"
-                app:cardPreventCornerOverlap="false"
-                app:cardUseCompatPadding="true"
-                app:cardBackgroundColor="@android:color/transparent">
+                app:cardPreventCornerOverlap="false">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/bg_final_main_panel"
                     android:orientation="vertical"
-                    android:padding="16dp"
-                    android:background="@drawable/bg_reveal_content">
+                    android:padding="20dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical">
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -722,10 +769,10 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/main_tiempo_limitado"
-                                android:textSize="18sp"
-                                android:textStyle="bold"
-                                android:textColor="@android:color/white" />
+                                android:text="@string/main_tiempo_limitado_carmesi"
+                                android:textColor="@android:color/white"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:id="@+id/txtResumenTiempo"
@@ -733,8 +780,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="4dp"
                                 android:text="@string/main_tiempo_limitado_desc"
-                                android:textSize="13sp"
-                                android:textColor="#CCFFFFFF" />
+                                android:textColor="#CCFFFFFF"
+                                android:textSize="13sp" />
 
                         </LinearLayout>
 
@@ -742,7 +789,10 @@
                             android:id="@+id/switchTiempoLimitado"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:checked="false" />
+                            android:checked="false"
+                            app:thumbTint="@color/final_switch_thumb"
+                            app:trackTint="@color/final_switch_track"
+                            app:useMaterialThemeColors="false" />
 
                     </LinearLayout>
 
@@ -750,9 +800,11 @@
                         android:id="@+id/layoutSelectorMinutos"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
                         android:layout_marginTop="12dp"
+                        android:background="@drawable/bg_final_inline_panel"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="12dp"
                         android:visibility="gone">
 
                         <TextView
@@ -760,75 +812,77 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="@string/main_duracion"
-                            android:textSize="15sp"
-                            android:textColor="@android:color/white" />
+                            android:textColor="@android:color/white"
+                            android:textSize="15sp" />
 
                         <TextView
                             android:id="@+id/btnMenosMinutos"
-                            android:layout_width="36dp"
-                            android:layout_height="36dp"
-                            android:text="-"
-                            android:textSize="22sp"
-                            android:textColor="@android:color/white"
-                            android:gravity="center"
-                            android:background="@drawable/btn_final"
-                            android:textStyle="bold"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/bg_final_control_pill"
                             android:clickable="true"
-                            android:focusable="true" />
+                            android:focusable="true"
+                            android:gravity="center"
+                            android:text="-"
+                            android:textColor="@android:color/white"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/txtNumMinutos"
-                            android:layout_width="60dp"
-                            android:layout_height="wrap_content"
+                            android:layout_width="68dp"
+                            android:layout_height="40dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:background="@drawable/bg_final_main_panel"
+                            android:gravity="center"
                             android:text=""
-                            android:textSize="16sp"
                             android:textColor="@android:color/white"
-                            android:textStyle="bold"
-                            android:gravity="center" />
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/btnMasMinutos"
-                            android:layout_width="36dp"
-                            android:layout_height="36dp"
-                            android:text="+"
-                            android:textSize="22sp"
-                            android:textColor="@android:color/white"
-                            android:gravity="center"
-                            android:background="@drawable/btn_final"
-                            android:textStyle="bold"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/bg_final_control_pill"
                             android:clickable="true"
-                            android:focusable="true" />
+                            android:focusable="true"
+                            android:gravity="center"
+                            android:text="+"
+                            android:textColor="@android:color/white"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
 
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- CardView CÃ¡mara -->
+            <!-- Cámara -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewCamara"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
+                android:layout_marginBottom="10dp"
+                app:cardBackgroundColor="@android:color/transparent"
                 app:cardCornerRadius="24dp"
                 app:cardElevation="0dp"
-                app:cardPreventCornerOverlap="false"
-                app:cardUseCompatPadding="true"
-                app:cardBackgroundColor="@android:color/transparent">
+                app:cardPreventCornerOverlap="false">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="16dp"
-                    android:background="@drawable/bg_reveal_content">
+                    android:background="@drawable/bg_final_main_panel"
+                    android:padding="20dp">
 
                     <TextView
                         android:id="@+id/txtCamaraTitulo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/main_selfie"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:textColor="@android:color/white" />
+                        android:text="@string/main_selfie_carmesi"
+                        android:textColor="@android:color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
                     <com.google.android.material.switchmaterial.SwitchMaterial
                         android:id="@+id/switchCamara"
@@ -836,7 +890,10 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
-                        android:checked="false" />
+                        android:checked="false"
+                        app:thumbTint="@color/final_switch_thumb"
+                        app:trackTint="@color/final_switch_track"
+                        app:useMaterialThemeColors="false" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -845,8 +902,8 @@
                         android:layout_marginTop="6dp"
                         android:layout_toStartOf="@id/switchCamara"
                         android:text="@string/main_selfie_desc"
-                        android:textSize="13sp"
-                        android:textColor="#CCFFFFFF" />
+                        android:textColor="#CCFFFFFF"
+                        android:textSize="13sp" />
 
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
@@ -854,7 +911,7 @@
         </LinearLayout>
     </ScrollView>
 
-    <!-- BotÃ³n iniciar -->
+    <!-- Botón iniciar -->
     <Button
         android:id="@+id/btnStartGame"
         android:layout_width="match_parent"
@@ -863,11 +920,11 @@
         android:layout_margin="16dp"
         android:background="@drawable/btn_final"
         android:backgroundTint="@null"
-        app:backgroundTint="@null"
         android:text="@string/main_btn_start"
         android:textAllCaps="true"
         android:textColor="@android:color/white"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:backgroundTint="@null" />
 
     <View
         android:id="@+id/darkOverlay"
@@ -877,4 +934,3 @@
         android:visibility="gone" />
 
 </FrameLayout>
-

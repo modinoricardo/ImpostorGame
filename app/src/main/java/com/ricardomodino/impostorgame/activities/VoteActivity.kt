@@ -2,7 +2,6 @@ package com.ricardomodino.impostorgame.activities
 
 import android.content.Intent
 import android.graphics.Bitmap
-import com.ricardomodino.impostorgame.managers.SoundManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,15 +10,14 @@ import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.activity.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ricardomodino.impostorgame.R
-import com.ricardomodino.impostorgame.managers.GameDialog
-import com.ricardomodino.impostorgame.managers.ImmersiveModeManager
-import com.ricardomodino.impostorgame.managers.PlayerImageManager
-import com.ricardomodino.impostorgame.managers.ThemeManager
+import com.ricardomodino.impostorgame.managers.*
 import com.ricardomodino.impostorgame.modelos.Jugador
 import com.ricardomodino.impostorgame.modelos.TipoJugador
+import com.ricardomodino.impostorgame.viewmodel.VoteViewModel
 
 class VoteActivity : BaseGameActivity() {
 
@@ -30,6 +28,8 @@ class VoteActivity : BaseGameActivity() {
     private lateinit var palabra: String
     private var modoDatosCuriosos: Boolean = false
     private lateinit var adapter: VoteAdapter
+    private val voteViewModel: VoteViewModel by viewModels()
+    private var isCancelled = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,22 +47,34 @@ class VoteActivity : BaseGameActivity() {
         palabra           = intent.getStringExtra(IntentKeys.PALABRA) ?: ""
         modoDatosCuriosos = intent.getBooleanExtra(IntentKeys.MODO_DATOS_CURIOSOS, false)
 
+        selectedIndex = voteViewModel.selectedIndex
+
         recyclerVotos = findViewById(R.id.recyclerVotos)
         btnConfirmar  = findViewById(R.id.btnConfirmarVoto)
 
         findViewById<ImageView>(R.id.btnBackVote).setOnClickListener { finish() }
 
-        adapter = VoteAdapter(jugadores) { index ->
+        adapter = VoteAdapter(jugadores, voteViewModel.selectedIndex) { index ->
             selectedIndex = index
+            voteViewModel.selectedIndex = index
             btnConfirmar.isEnabled = true
             btnConfirmar.alpha = 1f
         }
         recyclerVotos.layoutManager = GridLayoutManager(this, 2)
         recyclerVotos.adapter = adapter
 
+        if (voteViewModel.selectedIndex >= 0) {
+            btnConfirmar.isEnabled = true
+            btnConfirmar.alpha = 1f
+        }
+
         btnConfirmar.setOnClickListener {
             if (selectedIndex < 0 || selectedIndex >= jugadores.size) return@setOnClickListener
             mostrarCountdownVoto()
+        }
+
+        if (voteViewModel.votoEnProceso) {
+            procesarVoto()
         }
     }
 
@@ -70,6 +82,8 @@ class VoteActivity : BaseGameActivity() {
         SoundManager.playCountdownTone(this, frequencyHz, durationMs)
 
     private fun mostrarCountdownVoto() {
+        voteViewModel.votoEnProceso = true
+
         val overlay = layoutInflater.inflate(
             if (ThemeManager.esCarmesi(this)) R.layout.activity_countdown_fullscreen_carmesi
             else R.layout.activity_countdown_fullscreen,
@@ -98,6 +112,7 @@ class VoteActivity : BaseGameActivity() {
         }
 
         fun next() {
+            if (isCancelled || isFinishing || isDestroyed) return
             if (i >= numbers.size) {
                 decorView.removeView(overlay)
                 procesarVoto()
@@ -111,6 +126,7 @@ class VoteActivity : BaseGameActivity() {
             txt.scaleX = 0.2f; txt.scaleY = 0.2f; txt.alpha = 0f
             txt.animate().scaleX(1f).scaleY(1f).alpha(1f).setDuration(350L)
                 .withEndAction {
+                    if (isCancelled) return@withEndAction
                     txt.animate().scaleX(1.4f).scaleY(1.4f).alpha(0f).setDuration(550L)
                         .withEndAction { i++; next() }.start()
                 }.start()
@@ -184,8 +200,6 @@ class VoteActivity : BaseGameActivity() {
         }
     }
 
-    private fun esFemenino(nombre: String): Boolean = nombre.trim().lowercase().endsWith("a")
-
     private fun abrirPantallaAdivinar(votado: Jugador) {
         val intent = Intent(this, GuessWordActivity::class.java).apply {
             putExtra(IntentKeys.NOMBRE_VOTADO, votado.nombre)
@@ -214,15 +228,20 @@ class VoteActivity : BaseGameActivity() {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        isCancelled = true
+    }
+
     companion object { const val REQUEST_GUESS = 1001 }
 
     inner class VoteAdapter(
         private val list: MutableList<Jugador>,
+        initialSelected: Int = -1,
         private val onSelected: (Int) -> Unit
     ) : RecyclerView.Adapter<VoteAdapter.VH>() {
 
-        private var selected = -1
-
+        private var selected = initialSelected
         private val civilImages: List<Bitmap> = PlayerImageManager.getShuffledPool(
             this@VoteActivity, list.size
         )
@@ -249,7 +268,6 @@ class VoteActivity : BaseGameActivity() {
         override fun onBindViewHolder(holder: VH, position: Int) {
             val jugador = list[position]
             holder.name.text = jugador.nombre
-
             val selfie = SelfieManager.getBitmap(jugador.nombre)
             if (selfie != null) {
                 holder.img.setImageBitmap(selfie)
@@ -257,11 +275,9 @@ class VoteActivity : BaseGameActivity() {
                 if (position < civilImages.size) holder.img.setImageBitmap(civilImages[position])
                 else PlayerImageManager.getRandom(this@VoteActivity)?.let { holder.img.setImageBitmap(it) }
             }
-
             val sel = selected == position
             holder.overlay.visibility = if (sel) View.VISIBLE else View.GONE
             holder.check.visibility   = if (sel) View.VISIBLE else View.GONE
-
             holder.itemView.setOnClickListener {
                 val currentPosition = holder.bindingAdapterPosition
                 if (currentPosition == RecyclerView.NO_POSITION) return@setOnClickListener
@@ -274,4 +290,3 @@ class VoteActivity : BaseGameActivity() {
         }
     }
 }
-

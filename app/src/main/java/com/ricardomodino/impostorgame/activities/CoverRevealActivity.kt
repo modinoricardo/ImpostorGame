@@ -1,6 +1,7 @@
 package com.ricardomodino.impostorgame.activities
 
 import android.annotation.SuppressLint
+import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.Typeface
 import android.util.TypedValue
@@ -15,16 +16,12 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import com.ricardomodino.impostorgame.R
 import com.ricardomodino.impostorgame.extensions.applyWordSafeText
-import com.ricardomodino.impostorgame.managers.ImmersiveModeManager
-import com.ricardomodino.impostorgame.managers.ThemeManager
+import com.ricardomodino.impostorgame.managers.*
 import com.ricardomodino.impostorgame.modelos.TipoJugador
 
 /**
  * Pantalla de reveal para los estilos con cubierta (Final y Datos Curiosos).
  * Hereda de BaseRevealActivity que gestiona toda la logica de juego.
- *
- * Mecanica: mantener pulsado la capa cubierta para ver el contenido; soltar para ocultarlo.
- * Al primer soltar se marca como revelado y aparece el boton siguiente.
  */
 class CoverRevealActivity : BaseRevealActivity() {
 
@@ -47,21 +44,17 @@ class CoverRevealActivity : BaseRevealActivity() {
     private lateinit var btnSiguienteJugador: CardView
     private lateinit var txtBtnSiguienteView: TextView
 
-    // Estado de la cubierta
     private var cubiertaReveladaLocal = false
     private var revealMantenerActivo = false
 
-    // ── BaseRevealActivity: layout segun tema ───────────────────────────────
     override fun provideLayoutRes(): Int =
         if (ThemeManager.esFinal(this)) R.layout.activity_datos_curiosos_reveal_final
         else R.layout.activity_datos_curiosos_reveal
 
-    // ── Vistas de interaccion que usa la base ───────────────────────────────
     override val touchTarget: View get() = capaCubierta
     override val btnSiguiente: View get() = btnSiguienteJugador
     override val txtBtnSiguiente: TextView get() = txtBtnSiguienteView
 
-    // ── Bindeo de vistas ────────────────────────────────────────────────────
     override fun onBindViews() {
         txtContador          = findViewById(R.id.txtContadorJugador)
         txtNombre            = findViewById(R.id.txtNombreJugador)
@@ -93,7 +86,6 @@ class CoverRevealActivity : BaseRevealActivity() {
         )
     }
 
-    // ── Mostrar datos del jugador actual ────────────────────────────────────
     override fun onShowPlayer(index: Int) {
         cubiertaReveladaLocal = false
         cubiertaRevelada      = false
@@ -115,17 +107,13 @@ class CoverRevealActivity : BaseRevealActivity() {
         txtBtnSiguienteView.text = if (index == total - 1)
             getString(R.string.datos_empezar) else getString(R.string.datos_siguiente)
 
-        // Animacion de entrada del nombre
         txtNombre.translationX = 60f
         txtNombre.alpha = 0f
         txtNombre.animate().translationX(0f).alpha(1f).setDuration(300L).start()
-
         prepararContenido()
     }
 
-    // ── Revelar contenido al mantener pulsado ──────────────────────────────
     override fun onRevealContent(index: Int) {
-        // Tomar selfie al revelar (primera vez)
         if (opciones.camaraActiva && imageCapture != null && index !in selfiesTomados) {
             selfiesTomados.add(index)
             tomarSelfie(index)
@@ -133,7 +121,6 @@ class CoverRevealActivity : BaseRevealActivity() {
         animarAperturaCubiertaMantener()
     }
 
-    // ── Ocultar contenido al soltar ─────────────────────────────────────────
     override fun onHideContent() {
         animarCierreCubiertaMantener()
         if (!cubiertaReveladaLocal) {
@@ -143,7 +130,6 @@ class CoverRevealActivity : BaseRevealActivity() {
         }
     }
 
-    // ── Configuracion del listener de toque (sobreescribe la base) ──────────
     @SuppressLint("ClickableViewAccessibility")
     override fun configurarInteraccion() {
         capaCubierta.setOnTouchListener { _, event ->
@@ -169,29 +155,27 @@ class CoverRevealActivity : BaseRevealActivity() {
                 else -> false
             }
         }
-
         btnSiguienteJugador.setOnClickListener {
             if (!cubiertaReveladaLocal) return@setOnClickListener
             avanzarJugador()
         }
     }
 
-    // ── Transicion entre jugadores ──────────────────────────────────────────
-    // playerInGame ya fue incrementado por avanzarJugador() antes de llamar aqui
+    override fun onSelfieGuardado(playerIndex: Int, bmp: Bitmap) {
+        if (playerIndex == playerInGame) imgJugador.setImageBitmap(bmp)
+    }
+
     override fun onPlayerTransition(onSwap: () -> Unit) {
-        // Animacion simple del nombre y carga del nuevo jugador
         txtNombre.animate().alpha(0f).setDuration(120L).withEndAction {
             onShowPlayer(playerInGame)
         }.start()
     }
 
-    // ── Preparar contenido del jugador actual ───────────────────────────────
     private fun prepararContenido() {
         val index         = playerInGame
         val esImpostor    = index in indicesImpostores
         val esSenorBlanco = listaJugadores[index].tipo == TipoJugador.SENOR_BLANCO
         configurarTextoPrincipal(esPalabra = false)
-
         when {
             esSenorBlanco -> {
                 txtImpostorEmoji.text     = "\u26AA"
@@ -204,7 +188,6 @@ class CoverRevealActivity : BaseRevealActivity() {
             esImpostor -> {
                 when {
                     opciones.modoMisterioso -> {
-                        // Impostor modo misterioso: ve su pista en la tarjeta de contenido
                         configurarTextoPrincipal(esPalabra = true)
                         aplicarTextoContenido(pistaMisteriosa, esPalabra = true)
                         txtLabelContenido.text = getString(R.string.reveal_your_hint)
@@ -238,7 +221,6 @@ class CoverRevealActivity : BaseRevealActivity() {
                 }
             }
             else -> {
-                // Civil
                 if (opciones.modoDatosCuriosos) {
                     aplicarTextoContenido(
                         datosAsignados[index]?.let { getTextoDato(it) } ?: "",
@@ -256,24 +238,19 @@ class CoverRevealActivity : BaseRevealActivity() {
         }
     }
 
-    // ── Configuracion del texto principal ───────────────────────────────────
     private fun configurarTextoPrincipal(esPalabra: Boolean) {
         txtDatoCurioso.includeFontPadding = false
-
         val layoutDatoParams = layoutDato.layoutParams as LinearLayout.LayoutParams
         val textoParams = txtDatoCurioso.layoutParams as LinearLayout.LayoutParams
-
         if (esPalabra) {
             layoutDatoParams.height = LinearLayout.LayoutParams.MATCH_PARENT
             layoutDato.layoutParams = layoutDatoParams
             layoutDato.gravity = Gravity.CENTER_HORIZONTAL
-
             textoParams.width  = LinearLayout.LayoutParams.MATCH_PARENT
             textoParams.height = 0
             textoParams.weight = 1f
             textoParams.bottomMargin = dp(24)
             txtDatoCurioso.layoutParams = textoParams
-
             txtDatoCurioso.maxLines = Int.MAX_VALUE
             txtDatoCurioso.gravity  = Gravity.CENTER
             txtDatoCurioso.setLineSpacing(0f, 0.95f)
@@ -283,13 +260,11 @@ class CoverRevealActivity : BaseRevealActivity() {
             layoutDatoParams.height = LinearLayout.LayoutParams.WRAP_CONTENT
             layoutDato.layoutParams = layoutDatoParams
             layoutDato.gravity = Gravity.CENTER
-
             textoParams.width  = LinearLayout.LayoutParams.MATCH_PARENT
             textoParams.height = LinearLayout.LayoutParams.WRAP_CONTENT
             textoParams.weight = 0f
             textoParams.bottomMargin = dp(20)
             txtDatoCurioso.layoutParams = textoParams
-
             txtDatoCurioso.maxLines = Int.MAX_VALUE
             txtDatoCurioso.gravity  = Gravity.CENTER
             txtDatoCurioso.setLineSpacing(0f, 1.5f)
@@ -316,7 +291,6 @@ class CoverRevealActivity : BaseRevealActivity() {
             resources.displayMetrics
         ).toInt()
 
-    // ── Animaciones de cubierta ─────────────────────────────────────────────
     private fun restablecerEstadoCubierta() {
         revealMantenerActivo = false
         cardReveal.animate().cancel()
@@ -325,24 +299,18 @@ class CoverRevealActivity : BaseRevealActivity() {
         layoutContenido.animate().cancel()
         lineaAcento.animate().cancel()
         btnSiguienteJugador.animate().cancel()
-
         cardReveal.scaleX = 1f; cardReveal.scaleY = 1f; cardReveal.translationY = 0f
-
         capaCubierta.visibility    = View.VISIBLE
         capaCubierta.alpha         = 1f
         capaCubierta.translationY  = 0f
         capaCubierta.scaleX        = 1f; capaCubierta.scaleY = 1f
-
         layoutHintTap.visibility = View.VISIBLE
         layoutHintTap.alpha      = 1f; layoutHintTap.translationY = 0f
         layoutHintTap.scaleX     = 1f; layoutHintTap.scaleY = 1f
-
         layoutContenido.alpha      = 1f
         layoutContenido.translationY = 0f
         layoutContenido.scaleX     = 1f; layoutContenido.scaleY = 1f
-
         lineaAcento.alpha  = 1f; lineaAcento.scaleX = 1f
-
         btnSiguienteJugador.visibility  = View.GONE
         btnSiguienteJugador.alpha       = 1f; btnSiguienteJugador.translationY = 0f
         btnSiguienteJugador.scaleX      = 1f; btnSiguienteJugador.scaleY = 1f
@@ -351,13 +319,9 @@ class CoverRevealActivity : BaseRevealActivity() {
     private fun animarAperturaCubiertaMantener() {
         if (revealMantenerActivo) return
         revealMantenerActivo = true
-
         capaCubierta.animate().cancel()
-
-        // Slide suave hacia arriba + fade — el contenido queda visible debajo
         val slideY = capaCubierta.height.takeIf { it > 0 }?.toFloat()
             ?: resources.displayMetrics.heightPixels * 0.6f
-
         capaCubierta.animate()
             .translationY(-slideY)
             .alpha(0f)
@@ -369,9 +333,7 @@ class CoverRevealActivity : BaseRevealActivity() {
     private fun animarCierreCubiertaMantener() {
         if (!revealMantenerActivo) return
         revealMantenerActivo = false
-
         capaCubierta.animate().cancel()
-
         capaCubierta.animate()
             .translationY(0f)
             .alpha(1f)

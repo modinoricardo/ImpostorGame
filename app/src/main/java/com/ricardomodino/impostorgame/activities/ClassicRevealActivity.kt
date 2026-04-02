@@ -1,8 +1,6 @@
 package com.ricardomodino.impostorgame.activities
 
-import android.animation.Animator
-import android.animation.ObjectAnimator
-import android.animation.ValueAnimator
+import android.animation.*
 import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.graphics.Color
@@ -17,17 +15,12 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import com.ricardomodino.impostorgame.R
 import com.ricardomodino.impostorgame.extensions.applyWordSafeText
-import com.ricardomodino.impostorgame.managers.ImmersiveModeManager
-import com.ricardomodino.impostorgame.managers.PlayerImageManager
-import com.ricardomodino.impostorgame.managers.ThemeManager
+import com.ricardomodino.impostorgame.managers.*
 import com.ricardomodino.impostorgame.modelos.TipoJugador
 
 /**
  * Pantalla de reveal para los estilos Clasico, Carmesi y JMC.
  * Hereda de BaseRevealActivity que gestiona toda la logica de juego.
- *
- * Mecanica: mantener pulsado para ver el rol/palabra, soltar para ocultar.
- * En estilo JMC: tap unico con animacion de revelacion deslizante.
  */
 class ClassicRevealActivity : BaseRevealActivity() {
 
@@ -44,7 +37,6 @@ class ClassicRevealActivity : BaseRevealActivity() {
     private lateinit var hintPlayer: TextView
     private lateinit var imgWord: ImageView
 
-    // Vistas especificas del estilo carmesi
     private var imgLetraSReveal: ImageView? = null
     private var ringRevealPrimary: View? = null
     private var ringRevealSecondary: View? = null
@@ -52,28 +44,24 @@ class ClassicRevealActivity : BaseRevealActivity() {
     private val carmesiAnimators = mutableListOf<Animator>()
     private val particleViews = mutableListOf<View>()
 
-    // Estado de la revelacion
     private var isAnimating = false
     private var holdRevealActivo = false
     private var pendingHoldReveal: Runnable? = null
+    private var tapAnimator: ObjectAnimator? = null
 
-    // Tamanio base del texto de detalle y pista (leido desde el layout)
     private var detailsPlayerBaseTextSp = 0f
     private var hintPlayerBaseTextSp = 0f
 
-    // ── BaseRevealActivity: layout segun tema ───────────────────────────────
     override fun provideLayoutRes(): Int = when {
         ThemeManager.esFinal(this)   -> R.layout.activity_impostor_reveal_final
         ThemeManager.esCarmesi(this) -> R.layout.activity_impostor_reveal_carmesi
         else                         -> R.layout.activity_impostor_reveal
     }
 
-    // ── Vistas de interaccion que usa la base ───────────────────────────────
     override val touchTarget: View get() = cardViewPrincipal
     override val btnSiguiente: View get() = nenxtPlayer
     override val txtBtnSiguiente: TextView get() = textNextPlayer
 
-    // ── Bindeo de vistas ────────────────────────────────────────────────────
     override fun onBindViews() {
         detailsPlayer  = findViewById(R.id.detailsPlayer)
         layout         = findViewById(R.id.layoutCard)
@@ -109,7 +97,6 @@ class ClassicRevealActivity : BaseRevealActivity() {
         ImmersiveModeManager.applyBottomMargin(nenxtPlayer)
     }
 
-    // ── Mostrar datos del jugador actual ────────────────────────────────────
     override fun onShowPlayer(index: Int) {
         turnPlayerName.text = listaJugadores[index].nombre
         if (opciones.modoLoco && modoLocoActivo) cargarInformacionModoLoco()
@@ -117,17 +104,14 @@ class ClassicRevealActivity : BaseRevealActivity() {
         ocultarPalabra()
     }
 
-    // ── Revelar contenido al mantener pulsado ──────────────────────────────
     override fun onRevealContent(index: Int) {
         animarAperturaRevealMantener()
     }
 
-    // ── Ocultar contenido al soltar ─────────────────────────────────────────
     override fun onHideContent() {
         animarCierreRevealMantener()
     }
 
-    // ── Configuracion del listener de toque (sobreescribe la base) ──────────
     @SuppressLint("ClickableViewAccessibility")
     override fun configurarInteraccion() {
         presText.text = getString(R.string.reveal_hold_to_reveal)
@@ -152,8 +136,6 @@ class ClassicRevealActivity : BaseRevealActivity() {
         }
     }
 
-    // ── Transicion entre jugadores ──────────────────────────────────────────
-    // playerInGame ya fue incrementado por avanzarJugador() antes de llamar aqui
     override fun onPlayerTransition(onSwap: () -> Unit) {
         if (isAnimating) return
         isAnimating = true
@@ -161,7 +143,6 @@ class ClassicRevealActivity : BaseRevealActivity() {
 
         slideOutIn(cardViewPrincipal, outExtra = 120f) {
             nenxtPlayer.visibility = View.INVISIBLE
-            // Cargar con el nuevo playerInGame (ya incrementado por la base)
             if (opciones.modoLoco && modoLocoActivo) cargarInformacionModoLoco()
             else cargarInformacionNormal()
             ocultarPalabra()
@@ -180,14 +161,12 @@ class ClassicRevealActivity : BaseRevealActivity() {
         }, 420)
     }
 
-    // ── Animacion de entrada carmesi (llamada desde la base en onCreate) ────
     override fun onPostSetup() {
         if (ThemeManager.esCarmesi(this)) {
             prepararEntradaCarmesi()
         }
     }
 
-    // ── Animaciones de reveal al mantener pulsado ───────────────────────────
     private fun cancelarRevealMantenerPendiente() {
         pendingHoldReveal?.let { cardViewPrincipal.removeCallbacks(it) }
         pendingHoldReveal = null
@@ -213,9 +192,9 @@ class ClassicRevealActivity : BaseRevealActivity() {
         if (holdRevealActivo) return
         holdRevealActivo = true
         cancelarRevealMantenerPendiente()
+        detenerAnimacionTap()
 
         val fadeOutMs = 300L
-
         val reposoViews = idleViewsVisibles()
         reposoViews.forEach { it.animate().cancel() }
         revealViewsVisibles().forEach { it.animate().cancel() }
@@ -259,10 +238,8 @@ class ClassicRevealActivity : BaseRevealActivity() {
                     .setInterpolator(DecelerateInterpolator())
                     .start()
             }
-
             if (ThemeManager.esCarmesi(this)) animarRevelacionCarmesi()
         }
-
         pendingHoldReveal = revealRunnable
         cardViewPrincipal.postDelayed(revealRunnable, fadeOutMs)
     }
@@ -273,7 +250,6 @@ class ClassicRevealActivity : BaseRevealActivity() {
         holdRevealActivo = false
 
         val fadeOutMs = 250L
-
         val revealViews = revealViewsVisibles()
         revealViews.forEach { it.animate().cancel() }
         idleViewsVisibles().forEach { it.animate().cancel() }
@@ -298,12 +274,10 @@ class ClassicRevealActivity : BaseRevealActivity() {
                     .start()
             }
         }
-
         if (revealViews.isEmpty()) restoreRunnable.run()
         else cardViewPrincipal.postDelayed(restoreRunnable, fadeOutMs)
     }
 
-    // ── Cargar informacion del jugador ──────────────────────────────────────
     private fun cargarInformacionModoLoco() {
         turnPlayerName.text = listaJugadores[playerInGame].nombre
         imageResTurno = PlayerImageManager.getRandom(this)
@@ -328,7 +302,6 @@ class ClassicRevealActivity : BaseRevealActivity() {
     private fun cargarInformacionNormal() {
         turnPlayerName.text = listaJugadores[playerInGame].nombre
         imageResTurno = imagenPorJugador[playerInGame]
-
         val esSenorBlanco = listaJugadores[playerInGame].tipo == TipoJugador.SENOR_BLANCO
         val esImpostor    = playerInGame in indicesImpostores
 
@@ -368,7 +341,6 @@ class ClassicRevealActivity : BaseRevealActivity() {
         }
     }
 
-    // ── Estado reposo: ocultar palabra y mostrar imagen ─────────────────────
     private fun ocultarPalabra() {
         resetTransientState(detailsPlayer, hintPlayer, imgWord, imgDedo, txtTwo, presText)
         detailsPlayer.visibility = View.GONE
@@ -383,16 +355,19 @@ class ClassicRevealActivity : BaseRevealActivity() {
         val selfie = SelfieManager.getBitmap(listaJugadores[playerInGame].nombre)
         when {
             selfie != null -> {
+                detenerAnimacionTap()
                 imgDedo.visibility = View.GONE
                 imgWord.setImageBitmap(selfie)
                 imgWord.visibility = View.VISIBLE
             }
             opciones.camaraActiva -> {
-                imgDedo.setImageResource(R.drawable.ic_touch_app)
+                imgDedo.setImageResource(R.drawable.ic_tap_hand)
                 imgDedo.visibility = View.VISIBLE
                 imgWord.visibility = View.GONE
+                iniciarAnimacionTap()
             }
             else -> {
+                detenerAnimacionTap()
                 imgDedo.visibility = View.GONE
                 val img = imageResTurno
                 if (img != null) {
@@ -405,19 +380,51 @@ class ClassicRevealActivity : BaseRevealActivity() {
         }
     }
 
+    private fun iniciarAnimacionTap() {
+        tapAnimator?.cancel()
+        val pvhScaleX = PropertyValuesHolder.ofKeyframe(View.SCALE_X,
+            Keyframe.ofFloat(0f,    1.00f),
+            Keyframe.ofFloat(0.18f, 0.78f),
+            Keyframe.ofFloat(0.38f, 1.00f),
+            Keyframe.ofFloat(1f,    1.00f))
+        val pvhScaleY = PropertyValuesHolder.ofKeyframe(View.SCALE_Y,
+            Keyframe.ofFloat(0f,    1.00f),
+            Keyframe.ofFloat(0.18f, 0.78f),
+            Keyframe.ofFloat(0.38f, 1.00f),
+            Keyframe.ofFloat(1f,    1.00f))
+        val pvhAlpha = PropertyValuesHolder.ofKeyframe(View.ALPHA,
+            Keyframe.ofFloat(0f,    1.00f),
+            Keyframe.ofFloat(0.18f, 0.60f),
+            Keyframe.ofFloat(0.38f, 1.00f),
+            Keyframe.ofFloat(1f,    1.00f))
+        tapAnimator = ObjectAnimator.ofPropertyValuesHolder(imgDedo, pvhScaleX, pvhScaleY, pvhAlpha).apply {
+            duration = 2400L
+            repeatCount = ValueAnimator.INFINITE
+            repeatMode = ValueAnimator.RESTART
+            startDelay = 700L
+            interpolator = AccelerateDecelerateInterpolator()
+            start()
+        }
+    }
+
+    private fun detenerAnimacionTap() {
+        tapAnimator?.cancel()
+        tapAnimator = null
+        imgDedo.scaleX = 1f
+        imgDedo.scaleY = 1f
+        imgDedo.alpha = 1f
+    }
+
     private fun mostrarPalabraNormal() {
         cargarInformacionNormal()
         imgDedo.visibility  = View.GONE
         imgWord.visibility  = View.GONE
         txtTwo.visibility   = View.GONE
         presText.visibility = View.GONE
-
         val esImpostor    = playerInGame in indicesImpostores
         val esSenorBlanco = listaJugadores[playerInGame].tipo == TipoJugador.SENOR_BLANCO
-
         hintPlayer.visibility = if (esImpostor && !opciones.modoMisterioso && !esSenorBlanco)
             View.VISIBLE else View.GONE
-
         detailsPlayer.visibility = View.VISIBLE
     }
 
@@ -430,7 +437,6 @@ class ClassicRevealActivity : BaseRevealActivity() {
         hintPlayer.visibility    = View.VISIBLE
     }
 
-    // ── Utilidades de texto ─────────────────────────────────────────────────
     private fun resetearTextoReveal() {
         detailsPlayer.setTextSize(TypedValue.COMPLEX_UNIT_SP, detailsPlayerBaseTextSp)
         detailsPlayer.setSingleLine(false)
@@ -467,7 +473,6 @@ class ClassicRevealActivity : BaseRevealActivity() {
         )
     }
 
-    // ── Animacion de deslizamiento entre jugadores ──────────────────────────
     private fun slideOutIn(card: View, outExtra: Float = 0f, onSwap: () -> Unit) {
         val w = card.width.toFloat().takeIf { it > 0f } ?: return
         card.animate().cancel()
@@ -487,7 +492,6 @@ class ClassicRevealActivity : BaseRevealActivity() {
             }.start()
     }
 
-    // ── Animaciones especificas del estilo carmesi ──────────────────────────
     private fun prepararEntradaCarmesi() {
         txtEditionReveal?.apply { alpha = 0f; translationY = -18f }
         cardViewPrincipal.apply {
@@ -497,28 +501,21 @@ class ClassicRevealActivity : BaseRevealActivity() {
         txtTwo.alpha = 0f; txtTwo.translationY = 14f
         presText.alpha = 0f; presText.translationY = 14f
         imgDedo.alpha = 0f; imgDedo.scaleX = 0.84f; imgDedo.scaleY = 0.84f
-
         iniciarAnimacionAmbientalCarmesi()
-
         txtEditionReveal?.animate()
             ?.alpha(1f)?.translationY(0f)?.setDuration(420L)?.setInterpolator(DecelerateInterpolator())?.start()
-
         cardViewPrincipal.animate()
             .alpha(1f).scaleX(1f).scaleY(1f).translationY(0f)
             .setDuration(620L).setInterpolator(DecelerateInterpolator()).start()
-
         turnPlayerName.animate()
             .alpha(1f).translationY(0f).setStartDelay(120L).setDuration(420L)
             .setInterpolator(DecelerateInterpolator()).start()
-
         txtTwo.animate()
             .alpha(1f).translationY(0f).setStartDelay(180L).setDuration(360L)
             .setInterpolator(DecelerateInterpolator()).start()
-
         presText.animate()
             .alpha(1f).translationY(0f).setStartDelay(220L).setDuration(360L)
             .setInterpolator(DecelerateInterpolator()).start()
-
         imgDedo.animate()
             .alpha(1f).scaleX(1f).scaleY(1f).setStartDelay(240L).setDuration(420L)
             .setInterpolator(DecelerateInterpolator()).start()
@@ -527,7 +524,6 @@ class ClassicRevealActivity : BaseRevealActivity() {
     private fun iniciarAnimacionAmbientalCarmesi() {
         cancelarAnimacionesCarmesi()
         if (!ThemeManager.esCarmesi(this)) return
-
         ringRevealPrimary?.let { ring ->
             ring.scaleX = 0.98f; ring.scaleY = 0.98f
             val sX = ObjectAnimator.ofFloat(ring, View.SCALE_X, 0.98f, 1.05f).apply {
@@ -544,7 +540,6 @@ class ClassicRevealActivity : BaseRevealActivity() {
             }
             carmesiAnimators += listOf(sX, sY, alpha)
         }
-
         ringRevealSecondary?.let { ring ->
             ring.scaleX = 0.94f; ring.scaleY = 0.94f
             val sX = ObjectAnimator.ofFloat(ring, View.SCALE_X, 0.94f, 1.02f).apply {
@@ -561,7 +556,6 @@ class ClassicRevealActivity : BaseRevealActivity() {
             }
             carmesiAnimators += listOf(sX, sY, alpha)
         }
-
         imgLetraSReveal?.let { letra ->
             val alpha = ObjectAnimator.ofFloat(letra, View.ALPHA, 0.08f, 0.15f).apply {
                 duration = 5600L; repeatCount = ValueAnimator.INFINITE
@@ -573,8 +567,6 @@ class ClassicRevealActivity : BaseRevealActivity() {
             }
             carmesiAnimators += listOf(alpha, rotation)
         }
-
-        // Particulas flotantes
         particleViews.forEachIndexed { i, p ->
             val delay = (i * 600L)
             val dur   = 3000L + (i * 400L)
@@ -595,8 +587,6 @@ class ClassicRevealActivity : BaseRevealActivity() {
             }
             carmesiAnimators += listOf(fadeIn, floatY, floatX)
         }
-
-        // Dedo flotante
         val floatDedo = ObjectAnimator.ofFloat(imgDedo, View.TRANSLATION_Y, 0f, -10f).apply {
             duration = 1800L; repeatCount = ValueAnimator.INFINITE
             repeatMode = ValueAnimator.REVERSE; interpolator = AccelerateDecelerateInterpolator(); start()
@@ -617,7 +607,6 @@ class ClassicRevealActivity : BaseRevealActivity() {
                 cardViewPrincipal.animate()
                     .scaleX(1f).scaleY(1f).setDuration(280L).setInterpolator(DecelerateInterpolator()).start()
             }.start()
-
         imgLetraSReveal?.animate()
             ?.alpha(0.18f)?.rotation(5f)?.setDuration(280L)
             ?.withEndAction {
@@ -632,26 +621,27 @@ class ClassicRevealActivity : BaseRevealActivity() {
             view.animate().alpha(1f).translationY(0f)
                 .setStartDelay(index * 60L).setDuration(280L).setInterpolator(DecelerateInterpolator()).start()
         }
-
         imgDedo.alpha = 0f; imgDedo.scaleX = 0.88f; imgDedo.scaleY = 0.88f
         imgDedo.animate().alpha(1f).scaleX(1f).scaleY(1f)
             .setStartDelay(120L).setDuration(320L).setInterpolator(DecelerateInterpolator()).start()
     }
 
-    // ── Ciclo de vida ───────────────────────────────────────────────────────
     override fun onResume() {
         super.onResume()
         if (ThemeManager.esCarmesi(this)) iniciarAnimacionAmbientalCarmesi()
+        if (opciones.camaraActiva && imgDedo.visibility == View.VISIBLE) iniciarAnimacionTap()
     }
 
     override fun onPause() {
         cancelarAnimacionesCarmesi()
+        detenerAnimacionTap()
         super.onPause()
     }
 
     override fun onDestroy() {
         cancelarAnimacionesCarmesi()
         cancelarRevealMantenerPendiente()
+        detenerAnimacionTap()
         super.onDestroy()
     }
 }

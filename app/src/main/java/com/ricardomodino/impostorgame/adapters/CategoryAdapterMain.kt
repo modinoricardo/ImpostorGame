@@ -18,7 +18,11 @@ class CategoryAdapterMain(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val layout = if (ThemeManager.esCarmesi(parent.context)) R.layout.item_category_main_carmesi else R.layout.item_category_main
+        val layout = when {
+            ThemeManager.esFinal(parent.context) -> R.layout.item_category_main_final
+            ThemeManager.esCarmesi(parent.context) -> R.layout.item_category_main_carmesi
+            else -> R.layout.item_category_main
+        }
         val view = LayoutInflater.from(parent.context)
             .inflate(layout, parent, false)
         return ViewHolder(view)

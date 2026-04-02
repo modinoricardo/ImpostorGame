@@ -5,14 +5,18 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.activity.viewModels
 import com.ricardomodino.impostorgame.R
 import com.ricardomodino.impostorgame.managers.GameDialog
 import com.ricardomodino.impostorgame.managers.ImmersiveModeManager
 import com.ricardomodino.impostorgame.managers.ThemeManager
 import com.ricardomodino.impostorgame.modelos.Jugador
 import com.ricardomodino.impostorgame.modelos.TipoJugador
+import com.ricardomodino.impostorgame.viewmodel.GuessWordViewModel
 
 class GuessWordActivity : BaseGameActivity() {
+
+    private val guessViewModel: GuessWordViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,10 +76,9 @@ class GuessWordActivity : BaseGameActivity() {
             }
         }
 
-        btnConfirm.setOnClickListener {
-            val respuesta = editWord.text.toString().trim()
-            if (respuesta.isBlank()) return@setOnClickListener
-
+        // Procesa la respuesta confirmada: mismo bloque usado tanto en el click
+        // como en la restauración tras rotación (si ya había una respuesta guardada).
+        fun procesarRespuesta(respuesta: String) {
             if (respuesta.equals(palabra, ignoreCase = true)) {
                 // Acierta: victoria impostores
                 val motivoAcierto = getString(R.string.guess_correct_reason, nombreVotado)
@@ -139,5 +142,16 @@ class GuessWordActivity : BaseGameActivity() {
                 }
             }
         }
+
+        btnConfirm.setOnClickListener {
+            val respuesta = editWord.text.toString().trim()
+            if (respuesta.isBlank()) return@setOnClickListener
+            guessViewModel.respuesta = respuesta
+            procesarRespuesta(respuesta)
+        }
+
+        // Restaurar tras rotación: si el usuario ya había confirmado una respuesta,
+        // re-lanzar el procesamiento directamente para mostrar el diálogo correcto.
+        guessViewModel.respuesta?.let { procesarRespuesta(it) }
     }
 }

@@ -43,8 +43,11 @@ class EditPlayersBottomSheet : BaseGameBottomSheet() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(
-            if (ThemeManager.esCarmesi(requireContext())) R.layout.dialog_edit_players_carmesi
-            else R.layout.dialog_edit_players,
+            when {
+                ThemeManager.esFinal(requireContext()) -> R.layout.dialog_edit_players_final
+                ThemeManager.esCarmesi(requireContext()) -> R.layout.dialog_edit_players_carmesi
+                else -> R.layout.dialog_edit_players
+            },
             container,
             false
         )
@@ -68,10 +71,18 @@ class EditPlayersBottomSheet : BaseGameBottomSheet() {
         val btnNeon = ThemeManager.getBtnNeon(requireContext())
         val accent  = ThemeManager.getAccentColor(requireContext())
         view.findViewById<View>(R.id.rootBottomSheet)?.setBackgroundResource(
-            if (ThemeManager.esCarmesi(requireContext())) R.drawable.bg_carmesi_sheet else bgCard
+            when {
+                ThemeManager.esFinal(requireContext()) -> R.drawable.bg_final_sheet_surface
+                ThemeManager.esCarmesi(requireContext()) -> R.drawable.bg_carmesi_sheet
+                else -> bgCard
+            }
         )
         view.findViewById<LinearLayout>(R.id.inputRow)?.setBackgroundResource(
-            if (ThemeManager.esCarmesi(requireContext())) R.drawable.bg_carmesi_soft_panel else bgCard
+            when {
+                ThemeManager.esFinal(requireContext()) -> R.drawable.bg_final_input
+                ThemeManager.esCarmesi(requireContext()) -> R.drawable.bg_carmesi_soft_panel
+                else -> bgCard
+            }
         )
         view.findViewById<TextView>(R.id.txtTitle)?.setShadowLayer(12f, 0f, 0f, accent)
         view.findViewById<Button>(R.id.btnConfirm)?.setBackgroundResource(btnNeon)

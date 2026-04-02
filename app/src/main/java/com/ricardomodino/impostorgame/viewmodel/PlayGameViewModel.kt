@@ -31,6 +31,12 @@ class PlayGameViewModel : ViewModel() {
     var minutos: Int                      = 3;            private set
     var datosPartida: List<DatoCurioso>   = emptyList();  private set
 
+    // ── Estado de runtime (sobrevive rotaciones) ───────────────────────────
+    var revelado: Boolean            = false
+    var tiempoRestanteMs: Long       = -1L
+    var timerActivo: Boolean         = false
+    var jugadorEmpiezaNombre: String = ""
+
     private var inicializado    = false
     private var impostorContado = false
 

@@ -93,7 +93,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="34dp"
+            android:autoSizeMaxTextSize="80sp"
+            android:autoSizeMinTextSize="40sp"
+            android:autoSizeStepGranularity="2sp"
+            android:autoSizeTextType="uniform"
             android:gravity="center"
+            android:maxLines="1"
             android:text="⏱ 3:00"
             android:textColor="@android:color/white"
             android:textSize="80sp"
@@ -170,8 +175,10 @@
 
                 <TextView
                     android:id="@+id/txtImpostorNombre"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="2"
                     android:textColor="#FFFFFFFF"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -211,8 +218,10 @@
 
                 <TextView
                     android:id="@+id/txtSenorBlancoNombre"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="2"
                     android:textColor="#FFFFFFFF"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -317,7 +326,9 @@
         <Button
             android:id="@+id/btnRevelar"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:paddingVertical="12dp"
             android:background="@drawable/btn_final"
             android:backgroundTint="@null"
             android:text="@string/play_btn_revelar"

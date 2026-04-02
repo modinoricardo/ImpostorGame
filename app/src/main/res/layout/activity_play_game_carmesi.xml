@@ -136,7 +136,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
+            android:autoSizeMaxTextSize="74sp"
+            android:autoSizeMinTextSize="38sp"
+            android:autoSizeStepGranularity="2sp"
+            android:autoSizeTextType="uniform"
             android:gravity="center"
+            android:maxLines="1"
             android:text="@string/play_timer_zero"
             android:textColor="@android:color/white"
             android:textSize="74sp"
@@ -213,8 +218,10 @@
 
                 <TextView
                     android:id="@+id/txtImpostorNombre"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="2"
                     android:textColor="#FFFFFFFF"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -254,8 +261,10 @@
 
                 <TextView
                     android:id="@+id/txtSenorBlancoNombre"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="2"
                     android:textColor="#FFFFFFFF"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -360,7 +369,9 @@
         <Button
             android:id="@+id/btnRevelar"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:paddingVertical="12dp"
             android:background="@drawable/btn_neon_red"
             android:backgroundTint="@null"
             android:text="@string/play_btn_revelar"

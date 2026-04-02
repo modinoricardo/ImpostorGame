@@ -1,4 +1,4 @@
-package com.ricardomodino.impostorgame.activities
+package com.ricardomodino.impostorgame.managers
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
