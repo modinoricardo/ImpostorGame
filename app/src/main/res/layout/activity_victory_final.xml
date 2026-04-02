@@ -8,7 +8,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bg_datos_curiosos" />
+        android:background="@drawable/bg_final_main_bg" />
 
     <com.ricardomodino.impostorgame.views.VictoryParticleView
         android:id="@+id/particleView"

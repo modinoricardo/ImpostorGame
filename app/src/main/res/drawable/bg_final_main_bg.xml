@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Base profunda con transición más rica y menos plana -->
+    <item>
+        <shape>
+            <gradient
+                android:angle="145"
+                android:startColor="#1A2D4F"
+                android:centerColor="#0B172C"
+                android:endColor="#040914" />
+        </shape>
+    </item>
+
+    <!-- Resplandor frío superior -->
+    <item>
+        <shape>
+            <gradient
+                android:angle="270"
+                android:startColor="#2400E5FF"
+                android:endColor="#00000000" />
+        </shape>
+    </item>
+
+    <!-- Mancha radial principal para dar profundidad -->
+    <item android:gravity="top|start">
+        <shape android:shape="oval">
+            <size
+                android:width="420dp"
+                android:height="420dp" />
+            <gradient
+                android:type="radial"
+                android:gradientRadius="220dp"
+                android:centerColor="#2439C7FF"
+                android:startColor="#4D1FCBFF"
+                android:endColor="#0012253D" />
+        </shape>
+    </item>
+
+    <!-- Contrapeso oscuro-azulado inferior -->
+    <item android:gravity="bottom|end">
+        <shape android:shape="oval">
+            <size
+                android:width="360dp"
+                android:height="360dp" />
+            <gradient
+                android:type="radial"
+                android:gradientRadius="190dp"
+                android:startColor="#2F1E4C92"
+                android:endColor="#00081018" />
+        </shape>
+    </item>
+
+    <!-- Viñeta suave para mantener legibilidad -->
+    <item>
+        <shape>
+            <gradient
+                android:angle="270"
+                android:startColor="#00000000"
+                android:centerColor="#08000000"
+                android:endColor="#2A01040B" />
+        </shape>
+    </item>
+
+</layer-list>
