@@ -71,6 +71,16 @@ object ThemeManager {
         TEMA_FINAL   -> R.drawable.btn_final
         else         -> R.drawable.btn_neon
     }
+    fun getBtnGhost(context: Context) = when (getTema(context)) {
+        TEMA_FINAL -> R.drawable.btn_dialog_final_secondary
+        else       -> R.drawable.btn_ghost
+    }
+    /** Color de fondo atenuado para botones de diálogo (no carmesí). */
+    fun getDialogBtnTint(context: Context) = when (getTema(context)) {
+        TEMA_JMC   -> 0xFF00A843.toInt()
+        TEMA_FINAL -> 0xFFB89240.toInt()
+        else       -> 0xFF00B8CC.toInt() // clásico: cian atenuado
+    }
     fun getRingNeon(context: Context) = when (getTema(context)) {
         TEMA_CARMESI -> R.drawable.ring_neon_red
         TEMA_JMC     -> R.drawable.ring_neon_jmc

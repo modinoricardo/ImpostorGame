@@ -3,6 +3,8 @@ package com.ricardomodino.impostorgame.activities
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatDelegate
@@ -50,6 +52,7 @@ class MainActivity : BaseGameActivity(),
         // El tema se aplica en BaseGameActivity.onCreate()
         if (ThemeManager.esFinal(this)) {
             val root = layoutInflater.inflate(R.layout.activity_main_final, null)
+            ensureMainBindingCompat(root)
             binding = ActivityMainBinding.bind(root)
             setContentView(root)
         } else {
@@ -67,6 +70,25 @@ class MainActivity : BaseGameActivity(),
         setupListeners()
         
         ThemeManager.aplicarDrawables(this)
+    }
+
+    private fun ensureMainBindingCompat(root: View) {
+        val container = root as? ViewGroup ?: return
+
+        fun addPlaceholder(id: Int) {
+            if (container.findViewById<View>(id) != null) return
+            container.addView(
+                View(this).apply {
+                    this.id = id
+                    visibility = View.GONE
+                    layoutParams = FrameLayout.LayoutParams(0, 0)
+                }
+            )
+        }
+
+        addPlaceholder(R.id.aurora)
+        addPlaceholder(R.id.ring1)
+        addPlaceholder(R.id.ring2)
     }
 
     private fun setupViewModels() {
@@ -270,6 +292,7 @@ class MainActivity : BaseGameActivity(),
             putExtra(IntentKeys.OPCIONES, opts)
         }
         SelfieManager.clear()
+        PlayerImageManager.clearFallbackCache()
         mainViewModel.guardar()
         startGameLauncher.launch(intent)
     }

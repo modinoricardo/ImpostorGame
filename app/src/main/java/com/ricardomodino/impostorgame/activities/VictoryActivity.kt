@@ -39,6 +39,7 @@ class VictoryActivity : BaseGameActivity() {
         ImmersiveModeManager.applyActivityContentInsets(this, includeBottomInset = true)
 
         SelfieManager.clear()
+        PlayerImageManager.clearFallbackCache()
 
         val ganador   = intent.getStringExtra(IntentKeys.GANADOR) ?: "IMPOSTORES"
         val motivo    = intent.getStringExtra(IntentKeys.MOTIVO) ?: ""

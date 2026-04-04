@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="oval">
-    <solid android:color="#8000E5FF" />
-</shape>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Oscurecido suave para que la foto siga visible -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#50000000" />
+        </shape>
+    </item>
+
+    <!-- Anillo cian de selección -->
+    <item>
+        <shape android:shape="oval">
+            <stroke
+                android:width="3dp"
+                android:color="#EE00E5FF" />
+        </shape>
+    </item>
+
+</layer-list>

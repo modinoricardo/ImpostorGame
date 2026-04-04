@@ -30,6 +30,18 @@
     <string name="main_selfie">📸 自動自拍</string>
     <string name="main_selfie_desc">揭示詞語時拍攝自拍，用作頭像</string>
     <string name="main_btn_start">開始遊戲</string>
+    <string name="main_title_carmesi">抓住臥底</string>
+    <string name="main_pista_carmesi">提示線索</string>
+    <string name="main_primera_letra_carmesi">首字母</string>
+    <string name="main_tiempo_limitado_carmesi">限時模式</string>
+    <string name="main_selfie_carmesi">自動自拍</string>
+    <string name="main_final_tagline">極致臥底體驗。</string>
+    <string name="main_modo_clasico_final">經典</string>
+    <string name="main_modo_misterioso_final">神秘</string>
+    <string name="main_modo_datos_curiosos_final">冷知識</string>
+    <string name="main_section_players">玩家</string>
+    <string name="main_section_game">遊戲</string>
+    <string name="main_section_options">選項</string>
 
     <!-- PlayGameActivity -->
     <string name="play_title">臥底</string>
@@ -90,6 +102,9 @@
     <string name="mode_datos_titulo">🧠 趣味知識</string>
     <string name="mode_datos_desc">每位玩家收到不同的趣味知識。臥底什麼都沒收到，必須自己編造一個。</string>
     <string name="mode_confirmar">確認</string>
+    <string name="mode_clasico_titulo_carmesi">經典</string>
+    <string name="mode_misterioso_titulo_carmesi">神秘</string>
+    <string name="mode_datos_titulo_carmesi">冷知識</string>
 
     <!-- SelectCategoriesBottomSheet -->
     <string name="cat_titulo">選擇分類</string>
@@ -108,6 +123,11 @@
     <string name="menu_acerca_desc">創作者和遊戲故事</string>
     <string name="menu_sugerencias">建議改進</string>
     <string name="menu_sugerencias_desc">分享改進應用的想法</string>
+    <string name="menu_seccion_apariencia">外觀</string>
+    <string name="menu_seccion_ambiente">音效</string>
+    <string name="menu_seccion_proyecto">關於</string>
+    <string name="menu_seccion_feedback">回饋</string>
+    <string name="menu_seccion_idioma">語言</string>
 
     <!-- EstiloBottomSheet -->
     <string name="estilo_titulo">風格</string>

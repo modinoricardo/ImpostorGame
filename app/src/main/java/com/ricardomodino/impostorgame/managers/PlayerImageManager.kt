@@ -15,6 +15,7 @@ object PlayerImageManager {
 
     private var cachedBitmaps: List<Bitmap>? = null
     private var activeFolder: String? = null
+    private val fallbackCache = mutableMapOf<String, Bitmap>()
 
     /** Devuelve la lista de bitmaps disponibles (cacheada). */
     fun getImages(context: Context): List<Bitmap> {
@@ -58,6 +59,22 @@ object PlayerImageManager {
     fun getRandom(context: Context): Bitmap? {
         val images = getImages(context)
         return if (images.isNotEmpty()) images.random() else null
+    }
+
+    /**
+     * Devuelve la imagen de fallback asignada a este jugador.
+     * Si no tiene ninguna, le asigna una aleatoria y la guarda para toda la partida.
+     */
+    fun getOrAssignFallback(playerName: String, context: Context): Bitmap? {
+        fallbackCache[playerName]?.let { return it }
+        val bmp = getRandom(context) ?: return null
+        fallbackCache[playerName] = bmp
+        return bmp
+    }
+
+    /** Limpia las imágenes de fallback asignadas (llamar al inicio de cada partida). */
+    fun clearFallbackCache() {
+        fallbackCache.clear()
     }
 
     /** Limpia la caché (llamar si se cambian las imágenes en caliente). */

@@ -72,7 +72,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="APARIENCIA"
+                        android:text="@string/menu_seccion_apariencia"
                         android:textColor="#91EFFF"
                         android:textSize="11sp"
                         android:textStyle="bold" />
@@ -132,7 +132,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="AMBIENTE"
+                        android:text="@string/menu_seccion_ambiente"
                         android:textColor="#91EFFF"
                         android:textSize="11sp"
                         android:textStyle="bold" />
@@ -197,7 +197,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="PROYECTO"
+                        android:text="@string/menu_seccion_proyecto"
                         android:textColor="#91EFFF"
                         android:textSize="11sp"
                         android:textStyle="bold" />
@@ -259,7 +259,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="FEEDBACK"
+                        android:text="@string/menu_seccion_feedback"
                         android:textColor="#91EFFF"
                         android:textSize="11sp"
                         android:textStyle="bold" />
@@ -320,7 +320,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="IDIOMA"
+                        android:text="@string/menu_seccion_idioma"
                         android:textColor="#91EFFF"
                         android:textSize="11sp"
                         android:textStyle="bold" />

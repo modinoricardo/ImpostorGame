@@ -2,6 +2,7 @@ package com.ricardomodino.impostorgame.managers
 
 import android.app.Dialog
 import android.content.Context
+import android.content.res.ColorStateList
 import android.graphics.Color
 import android.view.View
 import android.view.Window
@@ -87,7 +88,11 @@ class GameDialog(private val context: Context) {
 
         d.findViewById<Button>(R.id.dlgBtnPositive).apply {
             text = posText
-            setBackgroundResource(ThemeManager.getBtnNeon(context))
+            if (esCarmesi) {
+                setBackgroundResource(ThemeManager.getBtnNeon(context))
+            } else {
+                backgroundTintList = ColorStateList.valueOf(ThemeManager.getDialogBtnTint(context))
+            }
             setOnClickListener { d.dismiss(); posAction() }
         }
 
@@ -95,8 +100,12 @@ class GameDialog(private val context: Context) {
             d.findViewById<Button>(R.id.dlgBtnNegative).apply {
                 visibility = View.VISIBLE
                 text = label
-                setBackgroundResource(ThemeManager.getBtnNeon(context))
                 setTextColor(Color.WHITE)
+                if (esCarmesi) {
+                    setBackgroundResource(ThemeManager.getBtnNeon(context))
+                } else {
+                    backgroundTintList = ColorStateList.valueOf(ThemeManager.getDialogBtnTint(context))
+                }
                 setOnClickListener { d.dismiss(); negAction?.invoke() }
             }
         }

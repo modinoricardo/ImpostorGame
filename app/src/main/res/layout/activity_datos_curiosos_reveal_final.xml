@@ -4,13 +4,7 @@
     android:id="@+id/rootDatosCuriosos"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0A0A0F">
-
-    <!-- Fondo overlay -->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/bg_final_main_bg" />
+    android:background="@drawable/bg_final_main_bg">
 
     <!-- Contenido principal -->
     <LinearLayout

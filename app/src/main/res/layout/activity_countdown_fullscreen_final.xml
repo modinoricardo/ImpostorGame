@@ -3,12 +3,7 @@
     android:id="@+id/countdownRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0A0A0F">
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/bg_final_main_bg" />
+    android:background="@drawable/bg_final_main_bg">
 
     <TextView
         android:id="@+id/txtCountdown"

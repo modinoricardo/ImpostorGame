@@ -53,6 +53,9 @@
     <string name="main_modo_clasico_final">Clásico</string>
     <string name="main_modo_misterioso_final">Misterioso</string>
     <string name="main_modo_datos_curiosos_final">Datos curiosos</string>
+    <string name="main_section_players">JUGADORES</string>
+    <string name="main_section_game">PARTIDA</string>
+    <string name="main_section_options">OPCIONES</string>
 
     <!-- PlayGameActivity -->
     <string name="play_title">IMPOSTOR</string>
@@ -136,6 +139,11 @@
     <string name="menu_sugerencias">Sugerir mejoras</string>
     <string name="menu_sugerencias_desc">Comparte ideas para mejorar la app</string>
     <string name="menu_carmesi_subtitulo">Ajusta la experiencia y personaliza el ambiente de la partida.</string>
+    <string name="menu_seccion_apariencia">APARIENCIA</string>
+    <string name="menu_seccion_ambiente">AMBIENTE</string>
+    <string name="menu_seccion_proyecto">PROYECTO</string>
+    <string name="menu_seccion_feedback">FEEDBACK</string>
+    <string name="menu_seccion_idioma">IDIOMA</string>
 
     <!-- EstiloBottomSheet -->
     <string name="estilo_titulo">Estilo</string>

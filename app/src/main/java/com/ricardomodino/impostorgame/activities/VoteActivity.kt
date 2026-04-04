@@ -242,9 +242,6 @@ class VoteActivity : BaseGameActivity() {
     ) : RecyclerView.Adapter<VoteAdapter.VH>() {
 
         private var selected = initialSelected
-        private val civilImages: List<Bitmap> = PlayerImageManager.getShuffledPool(
-            this@VoteActivity, list.size
-        )
 
         inner class VH(v: View) : RecyclerView.ViewHolder(v) {
             val img: ImageView  = v.findViewById(R.id.imgPlayerAvatar)
@@ -256,8 +253,11 @@ class VoteActivity : BaseGameActivity() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
             VH(
                 LayoutInflater.from(parent.context).inflate(
-                    if (ThemeManager.esCarmesi(parent.context)) R.layout.item_vote_player_carmesi
-                    else R.layout.item_vote_player,
+                    when {
+                        ThemeManager.esCarmesi(parent.context) -> R.layout.item_vote_player_carmesi
+                        ThemeManager.esFinal(parent.context)   -> R.layout.item_vote_player_final
+                        else                                   -> R.layout.item_vote_player
+                    },
                     parent,
                     false
                 )
@@ -272,8 +272,8 @@ class VoteActivity : BaseGameActivity() {
             if (selfie != null) {
                 holder.img.setImageBitmap(selfie)
             } else {
-                if (position < civilImages.size) holder.img.setImageBitmap(civilImages[position])
-                else PlayerImageManager.getRandom(this@VoteActivity)?.let { holder.img.setImageBitmap(it) }
+                PlayerImageManager.getOrAssignFallback(jugador.nombre, this@VoteActivity)
+                    ?.let { holder.img.setImageBitmap(it) }
             }
             val sel = selected == position
             holder.overlay.visibility = if (sel) View.VISIBLE else View.GONE

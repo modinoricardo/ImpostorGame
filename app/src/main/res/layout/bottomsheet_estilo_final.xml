@@ -125,7 +125,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/estilo_clasico_nombre_limpio"
+                            android:text="@string/estilo_clasico_nombre"
                             android:textColor="@android:color/white"
                             android:textSize="16sp"
                             android:textStyle="bold" />
@@ -218,7 +218,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/estilo_carmesi_nombre_limpio"
+                            android:text="@string/estilo_carmesi_nombre"
                             android:textColor="@android:color/white"
                             android:textSize="16sp"
                             android:textStyle="bold" />
@@ -374,18 +374,28 @@
                         android:layout_margin="6dp"
                         android:background="@drawable/bg_final_main_bg" />
 
+                    <!-- Línea cian acento superior -->
+                    <View
+                        android:layout_width="36dp"
+                        android:layout_height="3dp"
+                        android:layout_gravity="top|center_horizontal"
+                        android:layout_marginTop="14dp"
+                        android:background="#CC00E5FF" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:gravity="center"
+                        android:letterSpacing="0.08"
                         android:text="@string/estilo_final_nombre_limpio"
                         android:textColor="@android:color/white"
-                        android:textSize="16sp"
+                        android:textSize="15sp"
                         android:textStyle="bold"
-                        android:shadowColor="#00E5FF"
+                        android:shadowColor="#CC00E5FF"
                         android:shadowDx="0"
                         android:shadowDy="0"
-                        android:shadowRadius="14" />
+                        android:shadowRadius="18" />
 
                 </FrameLayout>
 
@@ -404,7 +414,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/estilo_final_nombre_limpio"
+                            android:text="@string/estilo_final_nombre"
                             android:textColor="@android:color/white"
                             android:textSize="16sp"
                             android:textStyle="bold" />

@@ -357,9 +357,23 @@ abstract class BaseRevealActivity : BaseGameActivity() {
     protected fun textoAyudaImpostor(): String = when (opciones.tipoPista) {
         GameOptions.PRIMERA_LETRA -> getString(
             R.string.reveal_first_letter_prefix,
-            palabra.firstOrNull()?.uppercase() ?: ""
+            buildFirstLetterMask(palabra)
         )
         else -> if (pista.isNotEmpty()) getString(R.string.reveal_hint_prefix, pista) else ""
+    }
+
+    private fun buildFirstLetterMask(palabra: String): String {
+        if (palabra.isEmpty()) return ""
+        val sb = StringBuilder()
+        var esPrimeraLetra = true
+        for (char in palabra) {
+            when {
+                char == ' ' -> { sb.append(' '); esPrimeraLetra = false }
+                esPrimeraLetra -> { sb.append(char.uppercaseChar()); esPrimeraLetra = false }
+                else -> sb.append('_')
+            }
+        }
+        return sb.toString()
     }
 
     protected fun iniciarCameraX() {

@@ -5,13 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0A0A0F"
+    android:background="@drawable/bg_final_main_bg"
     tools:context=".activities.MainActivity">
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/bg_final_main_bg" />
 
     <!-- Botón menú -->
     <TextView
@@ -92,7 +87,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:letterSpacing="0.12"
-                android:text="JUGADORES"
+                android:text="@string/main_section_players"
                 android:textColor="#91EFFF"
                 android:textSize="11sp"
                 android:textStyle="bold" />
@@ -159,7 +154,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:letterSpacing="0.12"
-                android:text="PARTIDA"
+                android:text="@string/main_section_game"
                 android:textColor="#91EFFF"
                 android:textSize="11sp"
                 android:textStyle="bold" />
@@ -518,7 +513,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:letterSpacing="0.12"
-                android:text="OPCIONES"
+                android:text="@string/main_section_options"
                 android:textColor="#91EFFF"
                 android:textSize="11sp"
                 android:textStyle="bold" />
@@ -706,8 +701,10 @@
 
                     <TextView
                         android:id="@+id/txtModoLocoTitulo"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_toStartOf="@id/switchModoLoco"
+                        android:layout_marginEnd="12dp"
                         android:text="@string/main_todos_impostores"
                         android:textColor="@android:color/white"
                         android:textSize="20sp"
@@ -728,7 +725,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/txtModoLocoTitulo"
+                        android:layout_toStartOf="@id/switchModoLoco"
                         android:layout_marginTop="6dp"
+                        android:layout_marginEnd="12dp"
                         android:text="@string/main_todos_impostores_desc"
                         android:textColor="#CCFFFFFF"
                         android:textSize="13sp" />
@@ -877,8 +876,10 @@
 
                     <TextView
                         android:id="@+id/txtCamaraTitulo"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_toStartOf="@id/switchCamara"
+                        android:layout_marginEnd="12dp"
                         android:text="@string/main_selfie_carmesi"
                         android:textColor="@android:color/white"
                         android:textSize="20sp"

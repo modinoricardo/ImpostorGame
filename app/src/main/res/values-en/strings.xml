@@ -30,6 +30,18 @@
     <string name="main_selfie">📸 Auto selfie</string>
     <string name="main_selfie_desc">Takes a selfie when revealing the word, used as avatar</string>
     <string name="main_btn_start">START GAME</string>
+    <string name="main_title_carmesi">Catch the Impostor</string>
+    <string name="main_pista_carmesi">Guided hint</string>
+    <string name="main_primera_letra_carmesi">First letter</string>
+    <string name="main_tiempo_limitado_carmesi">Time limit</string>
+    <string name="main_selfie_carmesi">Auto selfie</string>
+    <string name="main_final_tagline">The ultimate impostor experience.</string>
+    <string name="main_modo_clasico_final">Classic</string>
+    <string name="main_modo_misterioso_final">Mysterious</string>
+    <string name="main_modo_datos_curiosos_final">Fun facts</string>
+    <string name="main_section_players">PLAYERS</string>
+    <string name="main_section_game">GAME</string>
+    <string name="main_section_options">OPTIONS</string>
 
     <!-- PlayGameActivity -->
     <string name="play_title">IMPOSTOR</string>
@@ -90,6 +102,9 @@
     <string name="mode_datos_titulo">🧠 Fun Facts</string>
     <string name="mode_datos_desc">Each player receives a different fun fact. Impostors receive nothing and must make one up.</string>
     <string name="mode_confirmar">Confirm</string>
+    <string name="mode_clasico_titulo_carmesi">Classic</string>
+    <string name="mode_misterioso_titulo_carmesi">Mysterious</string>
+    <string name="mode_datos_titulo_carmesi">Fun Facts</string>
 
     <!-- SelectCategoriesBottomSheet -->
     <string name="cat_titulo">SELECT CATEGORIES</string>
@@ -108,6 +123,11 @@
     <string name="menu_acerca_desc">The creator and the story of the game</string>
     <string name="menu_sugerencias">Suggest improvements</string>
     <string name="menu_sugerencias_desc">Share ideas to improve the app</string>
+    <string name="menu_seccion_apariencia">APPEARANCE</string>
+    <string name="menu_seccion_ambiente">AMBIANCE</string>
+    <string name="menu_seccion_proyecto">PROJECT</string>
+    <string name="menu_seccion_feedback">FEEDBACK</string>
+    <string name="menu_seccion_idioma">LANGUAGE</string>
 
     <!-- EstiloBottomSheet -->
     <string name="estilo_titulo">Style</string>

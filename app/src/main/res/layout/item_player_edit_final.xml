@@ -35,7 +35,7 @@
             android:layout_marginStart="12dp"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:hint="Editar nombre"
+            android:hint="@string/editar_nombre_hint"
             android:inputType="textPersonName"
             android:textColor="@android:color/white"
             android:textColorHint="#7FC8D4E3"

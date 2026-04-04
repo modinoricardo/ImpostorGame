@@ -110,7 +110,7 @@ class PlayGameActivity : BaseGameActivity() {
         cardsContainer       = findViewById(R.id.cardsContainer)
         lottieFinalInvitado  = findViewById(R.id.lottieFinalInvitado)
 
-        configurarBackPressed { SelfieManager.clear(); finish() }
+        configurarBackPressed { SelfieManager.clear(); PlayerImageManager.clearFallbackCache(); finish() }
 
         val root   = findViewById<View>(R.id.main)
         val btnRow = findViewById<View>(R.id.btnRow)
@@ -255,6 +255,7 @@ class PlayGameActivity : BaseGameActivity() {
             .cancelable(true)
             .positiveButton(getString(R.string.dialog_salir_si)) {
                 SelfieManager.clear()
+                PlayerImageManager.clearFallbackCache()
                 startActivity(Intent(this, MainActivity::class.java).apply {
                     flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 })

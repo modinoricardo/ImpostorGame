@@ -4,18 +4,18 @@
     <!-- Oscurecido suave para que la foto siga visible -->
     <item>
         <shape android:shape="rectangle">
-            <solid android:color="#44000000" />
-            <corners android:radius="24dp" />
+            <solid android:color="#50000000" />
+            <corners android:radius="10dp" />
         </shape>
     </item>
 
-    <!-- Anillo rojo carmesí de selección -->
+    <!-- Anillo cian de selección -->
     <item>
         <shape android:shape="rectangle">
             <stroke
                 android:width="3dp"
-                android:color="#EED92C58" />
-            <corners android:radius="24dp" />
+                android:color="#EE00E5FF" />
+            <corners android:radius="10dp" />
         </shape>
     </item>
 

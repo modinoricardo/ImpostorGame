@@ -3,12 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0A0A0F">
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/bg_final_main_bg" />
+    android:background="@drawable/bg_final_main_bg">
 
     <com.ricardomodino.impostorgame.views.VictoryParticleView
         android:id="@+id/particleView"
@@ -43,12 +38,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/victory_title"
-            android:textSize="48sp"
             android:textStyle="bold"
             android:textColor="@android:color/white"
             android:gravity="center"
+            android:maxLines="4"
             android:hyphenationFrequency="none"
             android:breakStrategy="simple"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="16sp"
+            app:autoSizeMaxTextSize="48sp"
+            app:autoSizeStepGranularity="1sp"
             android:shadowColor="#00E5FF"
             android:shadowDx="0"
             android:shadowDy="0"

@@ -367,30 +367,29 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="6dp"
-                    android:background="@drawable/bg_datos_curiosos" />
+                    android:background="@drawable/bg_final_main_bg" />
 
                 <View
-                    android:layout_width="38dp"
+                    android:layout_width="36dp"
                     android:layout_height="3dp"
-                    android:layout_gravity="top|start"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:background="#D0E7C87D" />
+                    android:layout_gravity="top|center_horizontal"
+                    android:layout_marginTop="14dp"
+                    android:background="#CC00E5FF" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:letterSpacing="0.06"
-                    android:text="@string/estilo_final_nombre"
-                    android:textColor="#FFF1CF"
-                    android:textSize="16sp"
+                    android:letterSpacing="0.08"
+                    android:text="@string/estilo_final_nombre_limpio"
+                    android:textColor="@android:color/white"
+                    android:textSize="15sp"
                     android:textStyle="bold"
-                    android:shadowColor="#80E7C87D"
+                    android:shadowColor="#CC00E5FF"
                     android:shadowDx="0"
                     android:shadowDy="0"
-                    android:shadowRadius="14" />
+                    android:shadowRadius="18" />
 
             </FrameLayout>
 
