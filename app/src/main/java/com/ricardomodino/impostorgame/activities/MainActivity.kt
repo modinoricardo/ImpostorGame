@@ -2,16 +2,19 @@ package com.ricardomodino.impostorgame.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.Toast
+import com.google.android.gms.ads.AdView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
+import com.ricardomodino.impostorgame.BuildConfig
 import com.ricardomodino.impostorgame.R
 import com.ricardomodino.impostorgame.adapters.CategoryAdapterMain
 import com.ricardomodino.impostorgame.adapters.PlayerAdapterMain
@@ -28,7 +31,15 @@ class MainActivity : BaseGameActivity(),
     SelectGameModeBottomSheet.Listener {
 
     private lateinit var binding: ActivityMainBinding
-    
+    private var adView: AdView? = null
+    private val volumeSequence = mutableListOf<Int>()
+    private var lastVolumeKeyTime = 0L
+    private val SECRET_SEQUENCE = listOf(
+        KeyEvent.KEYCODE_VOLUME_UP, KeyEvent.KEYCODE_VOLUME_UP, KeyEvent.KEYCODE_VOLUME_UP,
+        KeyEvent.KEYCODE_VOLUME_DOWN, KeyEvent.KEYCODE_VOLUME_DOWN,
+        KeyEvent.KEYCODE_VOLUME_UP
+    )
+
     private lateinit var mainViewModel: MainViewModel
     private lateinit var playerViewModel: PlayerViewModel
     private lateinit var categoryViewModel: CategoryViewModel
@@ -70,6 +81,34 @@ class MainActivity : BaseGameActivity(),
         setupListeners()
         
         ThemeManager.aplicarDrawables(this)
+        adView = AdsManager.attachBanner(this, binding.main, BuildConfig.ADMOB_BANNER_MAIN)
+        if (adView != null) {
+            val bannerHeightPx = (50 * resources.displayMetrics.density).toInt()
+            val lp = binding.btnStartGame.layoutParams as FrameLayout.LayoutParams
+            lp.bottomMargin += bannerHeightPx
+            binding.btnStartGame.requestLayout()
+            binding.scrollContent.setPadding(
+                binding.scrollContent.paddingLeft,
+                binding.scrollContent.paddingTop,
+                binding.scrollContent.paddingRight,
+                binding.scrollContent.paddingBottom + bannerHeightPx
+            )
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        adView?.resume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        adView?.pause()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        adView?.destroy()
     }
 
     private fun ensureMainBindingCompat(root: View) {
@@ -156,6 +195,57 @@ class MainActivity : BaseGameActivity(),
         // Datos Curiosos
         datosViewModel.categorias.observe(this) { list ->
             binding.textResumenCategoriasDatos.text = resumenCategorias(list.size, list.count { it.isSelected })
+        }
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_VOLUME_UP || keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
+            val now = System.currentTimeMillis()
+            if (now - lastVolumeKeyTime > 3000L) volumeSequence.clear()
+            lastVolumeKeyTime = now
+            volumeSequence.add(keyCode)
+            if (volumeSequence.size > SECRET_SEQUENCE.size) volumeSequence.removeAt(0)
+            if (volumeSequence == SECRET_SEQUENCE) {
+                volumeSequence.clear()
+                toggleAds()
+                return true
+            }
+        }
+        return super.onKeyDown(keyCode, event)
+    }
+
+    private fun toggleAds() {
+        val nuevo = !AdsManager.isEnabled(this)
+        AdsManager.setEnabled(this, nuevo)
+        val msg = if (nuevo) "Anuncios activados" else "Anuncios desactivados"
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+        val bannerHeightPx = (50 * resources.displayMetrics.density).toInt()
+        if (nuevo) {
+            if (adView == null) {
+                adView = AdsManager.attachBanner(this, binding.main, BuildConfig.ADMOB_BANNER_MAIN)
+                val lp = binding.btnStartGame.layoutParams as FrameLayout.LayoutParams
+                lp.bottomMargin += bannerHeightPx
+                binding.btnStartGame.requestLayout()
+                binding.scrollContent.setPadding(
+                    binding.scrollContent.paddingLeft,
+                    binding.scrollContent.paddingTop,
+                    binding.scrollContent.paddingRight,
+                    binding.scrollContent.paddingBottom + bannerHeightPx
+                )
+            }
+        } else {
+            adView?.destroy()
+            binding.main.removeView(adView)
+            adView = null
+            val lp = binding.btnStartGame.layoutParams as FrameLayout.LayoutParams
+            lp.bottomMargin -= bannerHeightPx
+            binding.btnStartGame.requestLayout()
+            binding.scrollContent.setPadding(
+                binding.scrollContent.paddingLeft,
+                binding.scrollContent.paddingTop,
+                binding.scrollContent.paddingRight,
+                (binding.scrollContent.paddingBottom - bannerHeightPx).coerceAtLeast(0)
+            )
         }
     }
 

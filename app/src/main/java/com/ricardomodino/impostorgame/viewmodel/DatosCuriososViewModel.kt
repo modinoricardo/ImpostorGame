@@ -4,57 +4,40 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.ricardomodino.impostorgame.R
+import androidx.lifecycle.viewModelScope
+import com.ricardomodino.impostorgame.data.local.AppDatabase
+import com.ricardomodino.impostorgame.data.local.entities.CategoryEntity
+import com.ricardomodino.impostorgame.data.local.entities.FactCategoryEntity
+import com.ricardomodino.impostorgame.data.local.entities.FactEntity
+import com.ricardomodino.impostorgame.data.repository.ContentRepository
+import com.ricardomodino.impostorgame.managers.LocaleManager
 import com.ricardomodino.impostorgame.modelos.DatoCategoria
-import com.ricardomodino.impostorgame.modelos.DatoCurioso
-import org.json.JSONArray
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class DatosCuriososViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val prefs = application.getSharedPreferences("datos_curiosos", Application.MODE_PRIVATE)
+    private val db = AppDatabase.getInstance(application)
+    private val repository = ContentRepository(db)
+    private val language = LocaleManager.getLanguage(application)
 
-    private val _categorias = MutableLiveData<List<DatoCategoria>>(cargarCategorias())
+    private val _categorias = MutableLiveData<List<DatoCategoria>>(emptyList())
     val categorias: LiveData<List<DatoCategoria>> = _categorias
 
-    // ── Carga el JSON de res/raw y aplica selecciones guardadas ──
-    private fun cargarCategorias(): List<DatoCategoria> {
-        val selectedIds = prefs.getStringSet("selected_ids", emptySet()) ?: emptySet()
-        return parsearJson().map { it.copy(isSelected = it.id.toString() in selectedIds) }
+    init {
+        cargarCategorias()
     }
 
-    private fun parsearJson(): List<DatoCategoria> {
-        return try {
-            val ctx = getApplication<Application>()
-            val text = ctx.resources.openRawResource(R.raw.datos_curiosos)
-                .bufferedReader().readText()
-            val arr = JSONArray(text)
-            List(arr.length()) { i ->
-                val cat = arr.getJSONObject(i)
-                val datosArr = cat.getJSONArray("datos")
-                val datos = List(datosArr.length()) { j ->
-                    val d = datosArr.getJSONObject(j)
-                    DatoCurioso(
-                        id       = d.getLong("id"),
-                        es       = d.getString("es"),
-                        en       = d.getString("en"),
-                        zhHans   = d.getString("zhHans"),
-                        zhHant   = d.getString("zhHant")
-                    )
-                }
-                DatoCategoria(
-                    id    = cat.getLong("id"),
-                    es    = cat.getString("es"),
-                    en    = cat.getString("en"),
-                    zhHans = cat.getString("zhHans"),
-                    zhHant = cat.getString("zhHant"),
-                    emoji = cat.getString("emoji"),
-                    datos = datos
-                )
-            }
-        } catch (_: Exception) { emptyList() }
+    fun recargar() = cargarCategorias()
+
+    private fun cargarCategorias() {
+        viewModelScope.launch(Dispatchers.IO) {
+            val cats = repository.getFactCategoriesWithFacts(language)
+            _categorias.postValue(cats)
+        }
     }
 
-    // ── Devuelve las categorías seleccionadas (o todas si ninguna está seleccionada) ──
     fun getCategoriasActivas(): List<DatoCategoria> {
         val lista = _categorias.value ?: emptyList()
         val seleccionadas = lista.filter { it.isSelected }
@@ -62,21 +45,68 @@ class DatosCuriososViewModel(application: Application) : AndroidViewModel(applic
     }
 
     fun toggleSelection(id: Long) {
-        val lista = _categorias.value?.map {
-            if (it.id == id) it.copy(isSelected = !it.isSelected) else it
-        } ?: return
-        _categorias.value = lista
-        guardarSeleccion(lista)
+        val lista = _categorias.value ?: return
+        val cat = lista.firstOrNull { it.id == id } ?: return
+        val newSelected = !cat.isSelected
+        _categorias.value = lista.map {
+            if (it.id == id) it.copy(isSelected = newSelected) else it
+        }
+        viewModelScope.launch(Dispatchers.IO) {
+            db.factCategoryDao().updateSelection(id, newSelected)
+        }
     }
 
     fun setAllSelected(selected: Boolean) {
         val lista = _categorias.value?.map { it.copy(isSelected = selected) } ?: return
         _categorias.value = lista
-        guardarSeleccion(lista)
+        viewModelScope.launch(Dispatchers.IO) {
+            lista.forEach { db.factCategoryDao().updateSelection(it.id, selected) }
+        }
     }
 
-    private fun guardarSeleccion(lista: List<DatoCategoria>) {
-        val ids = lista.filter { it.isSelected }.map { it.id.toString() }.toSet()
-        prefs.edit().putStringSet("selected_ids", ids).apply()
+    // ── Gestión de contenido del usuario ─────────────────────────────────────
+
+    fun crearFactCategoriaLocal(name: String, emoji: String, facts: List<String>, onDone: () -> Unit) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val entity = FactCategoryEntity(
+                nameLocal  = name,
+                emoji      = emoji,
+                source     = CategoryEntity.SOURCE_LOCAL,
+                isSelected = false
+            )
+            val catId = db.factCategoryDao().insert(entity)
+            facts.forEach { text ->
+                db.factDao().insert(
+                    FactEntity(
+                        factCategoryId = catId,
+                        textLocal      = text,
+                        source         = CategoryEntity.SOURCE_LOCAL
+                    )
+                )
+            }
+            cargarCategorias()
+            withContext(Dispatchers.Main) { onDone() }
+        }
     }
+
+    fun editarFactCategoriaLocal(catId: Long, newName: String, newEmoji: String, onDone: () -> Unit) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val entity = db.factCategoryDao().getById(catId) ?: return@launch
+            db.factCategoryDao().update(entity.copy(nameLocal = newName, emoji = newEmoji))
+            cargarCategorias()
+            withContext(Dispatchers.Main) { onDone() }
+        }
+    }
+
+    fun borrarFactCategoriaLocal(catId: Long, onDone: () -> Unit) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val entity = db.factCategoryDao().getById(catId) ?: return@launch
+            db.factCategoryDao().delete(entity)
+            cargarCategorias()
+            withContext(Dispatchers.Main) { onDone() }
+        }
+    }
+
+    fun getCategoriasLocales(): List<DatoCategoria> =
+        _categorias.value?.filter { it.source == CategoryEntity.SOURCE_LOCAL } ?: emptyList()
 }

@@ -13,11 +13,10 @@ data class WordItem(
 @Serializable
 @Parcelize
 data class Category(
-    val id: Long,                    // identificador único
-    val title: String,               // "Animales", "Famosos", etc.
-    val iconEmoji: String,           // "🏠", "🦁", "🍕" ...
-    var isSelected: Boolean = false, // solo para la UI (seleccionada en la lista)
-    val items: List<WordItem>        // lista de (nombre, pista)
+    val id: Long,
+    val title: String,
+    val iconEmoji: String,
+    var isSelected: Boolean = false,
+    val items: List<WordItem>,
+    val source: String = "global"   // "global" | "local"
 ) : Parcelable
-
-

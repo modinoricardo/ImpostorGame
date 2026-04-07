@@ -12,7 +12,10 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import android.app.AlertDialog
+import android.widget.EditText
 import com.ricardomodino.impostorgame.R
+import com.ricardomodino.impostorgame.managers.AdminManager
 import com.ricardomodino.impostorgame.managers.LocaleManager
 import com.ricardomodino.impostorgame.managers.ThemeManager
 
@@ -49,7 +52,7 @@ class MenuBottomSheet : BaseGameBottomSheet() {
         // Título "Menú"
         view.findViewById<TextView>(R.id.txtMenuTitle)?.setShadowLayer(12f, 0f, 0f, accent)
         // Cards internas
-        listOf(R.id.cardMenuEstilo, R.id.cardMenuSonido, R.id.cardMenuAcercaDe, R.id.cardMenuSugerencias, R.id.cardMenuIdioma).forEach { cardId ->
+        listOf(R.id.cardMenuEstilo, R.id.cardMenuSonido, R.id.cardMenuAcercaDe, R.id.cardMenuSugerencias, R.id.cardMenuIdioma, R.id.cardMenuContenido, R.id.cardMenuAdmin).forEach { cardId ->
             view.findViewById<CardView>(cardId)?.getChildAt(0)?.setBackgroundResource(
                 if (ThemeManager.esFinal(requireContext())) R.drawable.bg_final_sheet_option else bgCard
             )
@@ -81,6 +84,45 @@ class MenuBottomSheet : BaseGameBottomSheet() {
         view.findViewById<CardView>(R.id.cardMenuIdioma).setOnClickListener {
             mostrarSelectorIdioma()
         }
+
+        view.findViewById<CardView>(R.id.cardMenuContenido)?.setOnClickListener {
+            dismiss()
+            MiContenidoBottomSheet().show(parentFragmentManager, MiContenidoBottomSheet.TAG)
+        }
+
+        view.findViewById<CardView>(R.id.cardMenuAdmin)?.setOnClickListener {
+            if (AdminManager.isLoggedIn(requireContext())) {
+                dismiss()
+                AdminBottomSheet().show(parentFragmentManager, AdminBottomSheet.TAG)
+            } else {
+                mostrarDialogoCodigo()
+            }
+        }
+    }
+
+    private fun mostrarDialogoCodigo() {
+        val editCodigo = EditText(requireContext()).apply {
+            hint = getString(R.string.admin_codigo_hint)
+            inputType = android.text.InputType.TYPE_CLASS_TEXT
+            setPadding(48, 32, 48, 16)
+        }
+        AlertDialog.Builder(requireContext())
+            .setTitle(getString(R.string.admin_codigo_titulo))
+            .setView(editCodigo)
+            .setPositiveButton(getString(R.string.admin_acceder)) { _, _ ->
+                val codigo = editCodigo.text.toString().trim()
+                if (AdminManager.isValidCode(codigo)) {
+                    AdminManager.login(requireContext())
+                    dismiss()
+                    AdminBottomSheet().show(parentFragmentManager, AdminBottomSheet.TAG)
+                } else {
+                    android.widget.Toast.makeText(
+                        requireContext(), getString(R.string.admin_codigo_incorrecto), android.widget.Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+            .setNegativeButton(getString(R.string.dialog_salir_no), null)
+            .show()
     }
 
     private fun mostrarSelectorIdioma() {

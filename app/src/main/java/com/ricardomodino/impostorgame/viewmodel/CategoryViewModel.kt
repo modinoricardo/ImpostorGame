@@ -1,89 +1,57 @@
-﻿package com.ricardomodino.impostorgame.viewmodel
+package com.ricardomodino.impostorgame.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
+import com.ricardomodino.impostorgame.data.local.AppDatabase
+import com.ricardomodino.impostorgame.data.local.entities.CategoryEntity
+import com.ricardomodino.impostorgame.data.local.entities.WordEntity
+import com.ricardomodino.impostorgame.data.repository.ContentRepository
 import com.ricardomodino.impostorgame.managers.LocaleManager
 import com.ricardomodino.impostorgame.modelos.Category
 import com.ricardomodino.impostorgame.modelos.WordItem
-import org.json.JSONArray
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class CategoryViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val prefs = application.getSharedPreferences("categories", Application.MODE_PRIVATE)
+    private val db = AppDatabase.getInstance(application)
+    private val repository = ContentRepository(db)
+    private val language = LocaleManager.getLanguage(application)
 
-    private val _categories = MutableLiveData<List<Category>>(initialCategoriesWithSavedSelections())
+    private val _categories = MutableLiveData<List<Category>>(emptyList())
     val categories: LiveData<List<Category>> = _categories
 
-    private fun initialCategoriesWithSavedSelections(): List<Category> {
-        val selectedIds = prefs.getStringSet("selected_ids", emptySet()) ?: emptySet()
-        return initialCategories().map { it.copy(isSelected = it.id.toString() in selectedIds) }
+    init {
+        cargarCategorias()
     }
 
-    private fun saveSelectedIds() {
-        val ids = _categories.value?.filter { it.isSelected }?.map { it.id.toString() }?.toSet() ?: emptySet()
-        prefs.edit().putStringSet("selected_ids", ids).apply()
-    }
+    fun recargar() = cargarCategorias()
 
-    private fun initialCategories(): List<Category> {
-        val base = parseCategoriesFromRaw("game_categories_es")
-        if (base.isEmpty()) return emptyList()
-
-        val ctx = getApplication<Application>()
-        val language = LocaleManager.getLanguage(ctx)
-        if (language == "es") return base
-
-        val overlayName = "game_categories_${language.lowercase().replace('-', '_')}"
-        val localized = parseCategoriesFromRaw(overlayName)
-        if (localized.isEmpty()) return base
-
-        val localizedById = localized.associateBy { it.id }
-        return base.map { category ->
-            val override = localizedById[category.id] ?: return@map category
-            category.copy(
-                title = override.title.ifBlank { category.title },
-                iconEmoji = override.iconEmoji.ifBlank { category.iconEmoji },
-                items = override.items.ifEmpty { category.items }
-            )
+    private fun cargarCategorias() {
+        viewModelScope.launch(Dispatchers.IO) {
+            val cats = repository.getCategoriesWithWords(language)
+            _categories.postValue(cats)
         }
     }
 
-    private fun parseCategoriesFromRaw(resourceName: String): List<Category> {
-        val ctx = getApplication<Application>()
-        val resId = ctx.resources.getIdentifier(resourceName, "raw", ctx.packageName)
-        if (resId == 0) return emptyList()
-
-        return try {
-            val text = ctx.resources.openRawResource(resId)
-                .bufferedReader()
-                .use { it.readText() }
-
-            val arr = JSONArray(text)
-            List(arr.length()) { i ->
-                val cat = arr.getJSONObject(i)
-                val itemsArr = cat.getJSONArray("items")
-                val items = List(itemsArr.length()) { j ->
-                    val item = itemsArr.getJSONObject(j)
-                    val hintsArr = item.optJSONArray("hints") ?: JSONArray()
-                    val hints = List(hintsArr.length()) { k -> hintsArr.getString(k) }
-                    WordItem(
-                        name = item.getString("name"),
-                        hints = hints
-                    )
-                }
-
-                Category(
-                    id = cat.getLong("id"),
-                    title = cat.getString("title"),
-                    iconEmoji = cat.optString("iconEmoji", ""),
-                    items = items
-                )
-            }
-        } catch (_: Exception) {
-            emptyList()
+    fun toggleSelection(categoryId: Long) {
+        val current = _categories.value ?: return
+        val cat = current.firstOrNull { it.id == categoryId } ?: return
+        val newSelected = !cat.isSelected
+        _categories.value = current.map { c ->
+            if (c.id == categoryId) c.copy(isSelected = newSelected) else c
+        }
+        viewModelScope.launch(Dispatchers.IO) {
+            db.categoryDao().updateSelection(categoryId, newSelected)
         }
     }
+
+    fun getSelectedCategories(): List<Category> =
+        _categories.value?.filter { it.isSelected } ?: emptyList()
 
     fun deleteWordItem(categoryId: Long, itemToDelete: WordItem) {
         val current = _categories.value ?: return
@@ -97,23 +65,23 @@ class CategoryViewModel(application: Application) : AndroidViewModel(application
         _categories.value?.firstOrNull { it.id == categoryId }?.items?.isEmpty() ?: true
 
     fun restoreItems(categoryId: Long) {
-        val current = _categories.value ?: return
-        val initialItems = initialCategories().firstOrNull { it.id == categoryId }?.items ?: return
-        _categories.value = current.map { c ->
-            if (c.id != categoryId) c else c.copy(items = initialItems.map { it.copy() })
+        viewModelScope.launch(Dispatchers.IO) {
+            val items = repository.getWordsForCategory(categoryId, language)
+            val current = _categories.value ?: return@launch
+            _categories.postValue(current.map { c ->
+                if (c.id != categoryId) c else c.copy(items = items)
+            })
         }
     }
 
-    fun toggleSelection(categoryId: Long) {
-        val current = _categories.value ?: return
-        _categories.value = current.map { c ->
-            if (c.id == categoryId) c.copy(isSelected = !c.isSelected) else c
+    fun setCategories(list: List<Category>) {
+        _categories.value = list
+        viewModelScope.launch(Dispatchers.IO) {
+            list.forEach { cat ->
+                db.categoryDao().updateSelection(cat.id, cat.isSelected)
+            }
         }
-        saveSelectedIds()
     }
-
-    fun getSelectedCategories(): List<Category> =
-        _categories.value?.filter { it.isSelected } ?: emptyList()
 
     fun logItems(categoryId: Long) {
         val category = _categories.value?.firstOrNull { it.id == categoryId } ?: return
@@ -122,8 +90,81 @@ class CategoryViewModel(application: Application) : AndroidViewModel(application
         }
     }
 
-    fun setCategories(list: List<Category>) {
-        _categories.value = list
-        saveSelectedIds()
+    // ── Gestión de contenido del usuario ─────────────────────────────────────
+
+    fun crearCategoriaLocal(title: String, emoji: String, words: List<Pair<String, String>>, onDone: () -> Unit) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val catEntity = CategoryEntity(
+                titleLocal = title,
+                iconEmoji  = emoji,
+                source     = CategoryEntity.SOURCE_LOCAL,
+                isSelected = false
+            )
+            val catId = repository.insertCategory(catEntity)
+            words.forEachIndexed { index, (name, hint) ->
+                repository.insertWord(
+                    WordEntity(
+                        categoryId = catId,
+                        position   = index,
+                        nameLocal  = name,
+                        hintsLocal = hint,
+                        source     = CategoryEntity.SOURCE_LOCAL
+                    )
+                )
+            }
+            cargarCategorias()
+            withContext(Dispatchers.Main) { onDone() }
+        }
     }
+
+    fun editarCategoriaLocal(catId: Long, newTitle: String, newEmoji: String, onDone: () -> Unit) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val entity = db.categoryDao().getById(catId) ?: return@launch
+            db.categoryDao().update(entity.copy(titleLocal = newTitle, iconEmoji = newEmoji))
+            cargarCategorias()
+            withContext(Dispatchers.Main) { onDone() }
+        }
+    }
+
+    fun borrarCategoriaLocal(catId: Long, onDone: () -> Unit) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val entity = db.categoryDao().getById(catId) ?: return@launch
+            db.categoryDao().delete(entity)
+            cargarCategorias()
+            withContext(Dispatchers.Main) { onDone() }
+        }
+    }
+
+    fun agregarPalabraLocal(catId: Long, name: String, hint: String, onDone: () -> Unit) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val existing = db.wordDao().getByCategory(catId)
+            val nextPos = existing.size
+            repository.insertWord(
+                WordEntity(
+                    categoryId = catId,
+                    position   = nextPos,
+                    nameLocal  = name,
+                    hintsLocal = hint,
+                    source     = CategoryEntity.SOURCE_LOCAL
+                )
+            )
+            cargarCategorias()
+            withContext(Dispatchers.Main) { onDone() }
+        }
+    }
+
+    fun borrarPalabraLocal(catId: Long, wordName: String, onDone: () -> Unit) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val words = db.wordDao().getByCategory(catId)
+            val toDelete = words.firstOrNull { it.nameLocal == wordName && it.source == CategoryEntity.SOURCE_LOCAL }
+            if (toDelete != null) {
+                db.wordDao().delete(toDelete)
+                cargarCategorias()
+            }
+            withContext(Dispatchers.Main) { onDone() }
+        }
+    }
+
+    fun getCategoriasLocales(): List<Category> =
+        _categories.value?.filter { it.source == CategoryEntity.SOURCE_LOCAL } ?: emptyList()
 }

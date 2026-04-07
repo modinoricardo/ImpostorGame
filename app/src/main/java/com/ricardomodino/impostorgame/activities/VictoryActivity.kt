@@ -7,7 +7,10 @@ import android.os.Bundle
 import android.view.animation.BounceInterpolator
 import android.view.animation.OvershootInterpolator
 import android.widget.Button
+import android.widget.FrameLayout
 import android.widget.TextView
+import com.google.android.gms.ads.AdView
+import com.ricardomodino.impostorgame.BuildConfig
 import com.ricardomodino.impostorgame.R
 import com.ricardomodino.impostorgame.managers.*
 import com.ricardomodino.impostorgame.modelos.DatoCurioso
@@ -17,6 +20,7 @@ import com.ricardomodino.impostorgame.views.VictoryParticleView
 class VictoryActivity : BaseGameActivity() {
 
     private lateinit var txtSubtitle: TextView
+    private var adView: AdView? = null
 
     companion object {
         private const val KEY_SUBTITLE = "victory_subtitle"
@@ -122,8 +126,20 @@ class VictoryActivity : BaseGameActivity() {
             txtTrophy.postDelayed({ try { toneGen.release() } catch (_: Exception) {} }, 1000L)
         } catch (_: Exception) {}
 
+        val rootFrame = window.decorView.findViewById<FrameLayout>(android.R.id.content)
+        adView = AdsManager.attachBanner(this, rootFrame, BuildConfig.ADMOB_BANNER_VICTORY)
+        if (adView != null) {
+            val bannerHeightPx = (50 * resources.displayMetrics.density).toInt()
+            rootFrame.getChildAt(0)?.let { activityRoot ->
+                (activityRoot.layoutParams as? FrameLayout.LayoutParams)?.let { lp ->
+                    lp.bottomMargin = bannerHeightPx
+                    activityRoot.requestLayout()
+                }
+            }
+        }
+
         btnNewGame.setOnClickListener {
-                val jugadores = intent.getParcelableArrayListExtra<Jugador>(IntentKeys.LISTA_JUGADORES)
+            val jugadores = intent.getParcelableArrayListExtra<Jugador>(IntentKeys.LISTA_JUGADORES)
                 val nextIntent = Intent(this, PlayGameActivity::class.java).apply {
                     putParcelableArrayListExtra(IntentKeys.LISTA_JUGADORES, jugadores)
                     putParcelableArrayListExtra(IntentKeys.DATOS_PARTIDA, intent.getParcelableArrayListExtra<DatoCurioso>(IntentKeys.DATOS_PARTIDA))
@@ -139,4 +155,8 @@ class VictoryActivity : BaseGameActivity() {
                 startActivity(nextIntent)
         }
     }
+
+    override fun onResume() { super.onResume(); adView?.resume() }
+    override fun onPause()  { super.onPause();  adView?.pause()  }
+    override fun onDestroy(){ super.onDestroy(); adView?.destroy() }
 }

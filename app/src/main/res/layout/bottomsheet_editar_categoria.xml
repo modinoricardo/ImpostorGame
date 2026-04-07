@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootEditarCategoria"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="@drawable/bg_card_main">
+
+    <View
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"
+        android:background="#44FFFFFF"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/editar_categoria_titulo"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="20dp"/>
+
+    <EditText
+        android:id="@+id/editEditarNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/crear_cat_nombre_hint"
+        android:textColor="@android:color/white"
+        android:textColorHint="#88FFFFFF"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/bg_card_main"
+        android:padding="12dp"
+        android:inputType="textCapSentences"/>
+
+    <EditText
+        android:id="@+id/editEditarEmoji"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/crear_cat_emoji_hint"
+        android:textColor="@android:color/white"
+        android:textColorHint="#88FFFFFF"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/bg_card_main"
+        android:padding="12dp"/>
+
+    <Button
+        android:id="@+id/btnGuardarEdicion"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:text="@string/guardar"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"/>
+
+</LinearLayout>

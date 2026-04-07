@@ -24,6 +24,7 @@ class DatosCategoriesAdapter(
         val cardCategory: View   = itemView.findViewById(R.id.cardCategory)
         val textEmoji: TextView  = itemView.findViewById(R.id.textEmoji)
         val textTitle: TextView  = itemView.findViewById(R.id.textTitle)
+        val txtSourceBadge: TextView? = itemView.findViewById(R.id.txtSourceBadge)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
@@ -46,6 +47,7 @@ class DatosCategoriesAdapter(
         val idioma = LocaleManager.getLanguage(holder.itemView.context)
         holder.textEmoji.text = item.emoji
         holder.textTitle.text = item.nombre(idioma)
+        holder.txtSourceBadge?.visibility = if (item.source == "local") View.VISIBLE else View.GONE
         applySelectedStyle(holder, item.isSelected)
 
         holder.cardCategory.setOnClickListener {

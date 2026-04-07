@@ -304,4 +304,61 @@
     <string name="victory_civilians_subtitle_4">Nadie puede esconderse para siempre</string>
     <string name="victory_civilians_subtitle_5">La justicia ha triunfado</string>
     <string name="victory_reveal_button">🔍 DESVELAR</string>
+
+    <!-- Mi Contenido -->
+    <string name="menu_mi_contenido">Mi contenido</string>
+    <string name="menu_mi_contenido_desc">Añade tus propias categorías y datos</string>
+    <string name="menu_seccion_contenido">CONTENIDO</string>
+    <string name="mi_contenido_titulo">Mi contenido</string>
+    <string name="mi_contenido_nueva_categoria">+ Nueva categoría de palabras</string>
+    <string name="mi_contenido_nuevo_dato">+ Nueva categoría de datos curiosos</string>
+    <string name="mi_contenido_mis_categorias">Mis categorías de palabras</string>
+    <string name="mi_contenido_mis_datos">Mis datos curiosos</string>
+    <string name="mi_contenido_vacio">Aún no has creado nada</string>
+
+    <!-- Crear categoría -->
+    <string name="crear_cat_titulo">Nueva categoría</string>
+    <string name="crear_cat_nombre_hint">Nombre de la categoría</string>
+    <string name="crear_cat_emoji_hint">Emoji (opcional, ej: 🎭)</string>
+    <string name="crear_cat_nombre_requerido">El nombre es obligatorio</string>
+    <string name="crear_cat_pista_requerida">Cada palabra necesita al menos una pista</string>
+    <string name="crear_cat_palabras_titulo">Palabras</string>
+    <string name="crear_cat_agregar_palabra">+ Añadir palabra</string>
+    <string name="crear_cat_palabra_hint">Palabra</string>
+    <string name="crear_cat_pista_hint">Pista (mín. 1, separa con coma para varias)</string>
+
+    <!-- Crear dato curioso -->
+    <string name="crear_fact_titulo">Nueva categoría de datos</string>
+    <string name="crear_fact_datos_titulo">Datos curiosos</string>
+    <string name="crear_fact_agregar_dato">+ Añadir dato curioso</string>
+    <string name="crear_fact_dato_hint">Escribe el dato curioso aquí…</string>
+
+    <!-- Editar -->
+    <string name="editar_categoria_titulo">Editar categoría</string>
+    <string name="editar_dato_titulo">Editar categoría de datos</string>
+    <string name="guardar">Guardar</string>
+
+    <!-- Admin -->
+    <string name="menu_admin">Admin</string>
+    <string name="admin_titulo">Panel de administración</string>
+    <string name="admin_logout">Cerrar sesión</string>
+    <string name="admin_sec_palabras">Categorías de palabras</string>
+    <string name="admin_sec_datos">Datos curiosos</string>
+    <string name="admin_nueva_cat">+ Nueva categoría de palabras</string>
+    <string name="admin_nueva_fact_cat">+ Nueva categoría de datos</string>
+    <string name="admin_add_word">+ Añadir palabra</string>
+    <string name="admin_add_fact">+ Añadir dato curioso</string>
+    <string name="admin_vacio">Sin contenido global</string>
+    <string name="admin_borrar">Borrar</string>
+    <string name="admin_confirmar_borrar">¿Borrar "%s"?</string>
+    <string name="admin_confirmar_borrar_dato">¿Borrar este dato?</string>
+    <string name="admin_error">Error al conectar con el servidor</string>
+    <string name="admin_codigo_titulo">Acceso admin</string>
+    <string name="admin_codigo_hint">Código</string>
+    <string name="admin_acceder">Acceder</string>
+    <string name="admin_codigo_incorrecto">Código incorrecto</string>
+    <string name="admin_publicar_seed">Publicar contenido base en Supabase</string>
+    <string name="admin_publicar_seed_confirm">¿Subir todo el contenido base a Supabase? Esta operación puede tardar varios minutos y no debe interrumpirse.</string>
+    <string name="admin_publicar_seed_ok">Contenido publicado: %d categorías subidas</string>
+    <string name="admin_publicando">Publicando…</string>
 </resources>

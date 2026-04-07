@@ -3,10 +3,10 @@ import java.util.Properties
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    id ("kotlin-parcelize")
+    alias(libs.plugins.ksp)
+    id("kotlin-parcelize")
 }
 
-// Lee las credenciales de local.properties (nunca se sube al repo)
 val localProperties = Properties().apply {
     val f = rootProject.file("local.properties")
     if (f.exists()) f.inputStream().use { load(it) }
@@ -22,7 +22,7 @@ android {
         applicationId = "com.ricardomodino.impostorgame"
         minSdk = 24
         targetSdk = 36
-        versionCode = 7
+        versionCode = 8
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -31,6 +31,11 @@ android {
         buildConfigField("String", "GMAIL_SENDER",    "\"${localProperties["GMAIL_SENDER"]    ?: ""}\"")
         buildConfigField("String", "GMAIL_PASSWORD",  "\"${localProperties["GMAIL_PASSWORD"]  ?: ""}\"")
         buildConfigField("String", "GMAIL_RECEIVER",  "\"${localProperties["GMAIL_RECEIVER"]  ?: ""}\"")
+        buildConfigField("String", "SUPABASE_URL",      "\"${localProperties["SUPABASE_URL"]      ?: ""}\"")
+        buildConfigField("String", "SUPABASE_KEY",      "\"${localProperties["SUPABASE_KEY"]      ?: ""}\"")
+        buildConfigField("String", "ADMOB_APP_ID",      "\"${localProperties["ADMOB_APP_ID"]      ?: ""}\"")
+        buildConfigField("String", "ADMOB_BANNER_MAIN", "\"${localProperties["ADMOB_BANNER_MAIN"] ?: ""}\"")
+        buildConfigField("String", "ADMOB_BANNER_VICTORY","\"${localProperties["ADMOB_BANNER_VICTORY"] ?: ""}\"")
     }
 
     buildFeatures {
@@ -68,7 +73,16 @@ android {
 }
 
 dependencies {
+    // Room
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    ksp(libs.room.compiler)
 
+    // ViewModel con viewModelScope
+    implementation(libs.lifecycle.viewmodel.ktx)
+
+    implementation("com.google.android.gms:play-services-ads:23.6.0")
+    implementation("com.google.guava:guava:33.3.1-android")
     implementation("com.airbnb.android:lottie:6.6.0")
 
     implementation("androidx.camera:camera-camera2:1.4.1")
@@ -78,7 +92,6 @@ dependencies {
 
     implementation("androidx.core:core-splashscreen:1.0.1")
 
-    // Envío de email por SMTP
     implementation("com.sun.mail:android-mail:1.6.7")
     implementation("com.sun.mail:android-activation:1.6.7")
 

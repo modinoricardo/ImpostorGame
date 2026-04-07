@@ -21,7 +21,8 @@ data class DatoCategoria(
     val zhHant: String,
     val emoji: String,
     var isSelected: Boolean = false,
-    val datos: List<DatoCurioso>
+    val datos: List<DatoCurioso>,
+    val source: String = "global"  // "global" | "local"
 ) : Parcelable {
     fun nombre(idioma: String = "es"): String = when (idioma) {
         "en"      -> en

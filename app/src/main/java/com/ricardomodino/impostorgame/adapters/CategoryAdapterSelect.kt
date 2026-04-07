@@ -23,6 +23,7 @@ class CategoryAdapterSelect(
         val cardCategory: View = itemView.findViewById(R.id.cardCategory)
         val textEmoji: TextView = itemView.findViewById(R.id.textEmoji)
         val textTitle: TextView = itemView.findViewById(R.id.textTitle)
+        val txtSourceBadge: TextView? = itemView.findViewById(R.id.txtSourceBadge)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
@@ -40,6 +41,7 @@ class CategoryAdapterSelect(
         val item = categories[position]
         holder.textEmoji.text = item.iconEmoji
         holder.textTitle.text = item.title
+        holder.txtSourceBadge?.visibility = if (item.source == "local") View.VISIBLE else View.GONE
         applySelectedStyle(holder, item.isSelected)
 
         holder.cardCategory.setOnClickListener {
