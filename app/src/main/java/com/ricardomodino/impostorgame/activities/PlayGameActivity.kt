@@ -284,9 +284,11 @@ class PlayGameActivity : BaseGameActivity() {
         txtTimer.visibility = View.GONE
         txtSubtitle.text = getString(R.string.play_subtitle_reveal)
         txtFooter.text = getString(R.string.play_footer_reveal)
-        if (gameViewModel.debeContarImpostor()) {
+        if (gameViewModel.debeContarImpostor() && gameViewModel.nombreImpostor.isNotBlank()) {
             gameViewModel.nombreImpostor.split(",")
-                .forEach { playerViewModel.incrementImpostorByName(it.trim()) }
+                .map { it.trim() }
+                .filter { it.isNotEmpty() }
+                .forEach { playerViewModel.incrementImpostorByName(it) }
         }
         val colorImpostor = ContextCompat.getColor(this, R.color.colorImpostor)
         val colorPalabra  = ContextCompat.getColor(this, R.color.colorPalabra)

@@ -139,7 +139,7 @@ class VictoryActivity : BaseGameActivity() {
         }
 
         btnNewGame.setOnClickListener {
-            val jugadores = intent.getParcelableArrayListExtra<Jugador>(IntentKeys.LISTA_JUGADORES)
+            val jugadores = intent.getParcelableArrayListExtra<Jugador>(IntentKeys.LISTA_JUGADORES) ?: arrayListOf()
                 val nextIntent = Intent(this, PlayGameActivity::class.java).apply {
                     putParcelableArrayListExtra(IntentKeys.LISTA_JUGADORES, jugadores)
                     putParcelableArrayListExtra(IntentKeys.DATOS_PARTIDA, intent.getParcelableArrayListExtra<DatoCurioso>(IntentKeys.DATOS_PARTIDA))

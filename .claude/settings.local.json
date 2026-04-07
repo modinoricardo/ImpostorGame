@@ -31,7 +31,8 @@
       "Bash(do sed:*)",
       "Bash(echo \"✅ $f\")",
       "Bash(grep -rn \"kotlin-serialization\\\\|kotlinx-serialization\\\\|@Serializable\" /c/Users/Ricardo/AndroidStudioProjects/ImpostorGame/app/src/main/java/com/ricardomodino/impostorgame/ --include=*.kt)",
-      "Bash(dir /B \"C:\\\\Users\\\\Ricardo\\\\AndroidStudioProjects\\\\ImpostorGame\\\\.claude\\\\worktrees\\\\agent-af9d834e\\\\app\\\\src\\\\main\\\\java\\\\com\\\\ricardomodino\\\\impostorgame\\\\data\\\\local\\\\entities\")"
+      "Bash(dir /B \"C:\\\\Users\\\\Ricardo\\\\AndroidStudioProjects\\\\ImpostorGame\\\\.claude\\\\worktrees\\\\agent-af9d834e\\\\app\\\\src\\\\main\\\\java\\\\com\\\\ricardomodino\\\\impostorgame\\\\data\\\\local\\\\entities\")",
+      "Bash(xargs grep:*)"
     ]
   }
 }

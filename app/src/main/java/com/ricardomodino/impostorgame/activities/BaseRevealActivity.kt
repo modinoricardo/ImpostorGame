@@ -131,6 +131,18 @@ abstract class BaseRevealActivity : BaseGameActivity() {
             }
         }
 
+        // Si es modo datos curiosos, los datos pueden no estar cargados aún (coroutine async).
+        // Observamos el LiveData y reasignamos cuando lleguen.
+        if (opciones.modoDatosCuriosos) {
+            datosViewModel.categorias.observe(this) { cats ->
+                if (cats.isNotEmpty() && datosAsignados.isEmpty()) {
+                    asignarDatos()
+                    guardarEstadoEnViewModel()
+                    onShowPlayer(playerInGame)
+                }
+            }
+        }
+
         configurarBackPressed()
         SelfieManager.init(cacheDir)
 
@@ -206,6 +218,11 @@ abstract class BaseRevealActivity : BaseGameActivity() {
         val playerImages = PlayerImageManager.getShuffledPool(this, listaJugadores.size)
         imagenPorJugador = Array(listaJugadores.size) {
             if (playerImages.isNotEmpty()) playerImages[it] else null
+        }
+        // Pre-asignar la misma imagen al fallbackCache por nombre,
+        // para que VoteActivity muestre la misma imagen que el reveal
+        listaJugadores.forEachIndexed { i, jugador ->
+            imagenPorJugador[i]?.let { PlayerImageManager.preAssign(jugador.nombre, it) }
         }
         imageResTurno = PlayerImageManager.getRandom(this)
 

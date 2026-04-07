@@ -142,7 +142,7 @@ class EditPlayersBottomSheet : BaseGameBottomSheet() {
 
         btnConfirm.setOnClickListener {
             val nameNewPlayer = editTextNewPlayer.text.toString()
-            if (!nameNewPlayer.isEmpty() || !nameNewPlayer.isBlank()) aniadirJugador(nameNewPlayer.trim(), viewModel)
+            if (nameNewPlayer.isNotBlank()) aniadirJugador(nameNewPlayer.trim(), viewModel)
             dismiss()
         }
     }

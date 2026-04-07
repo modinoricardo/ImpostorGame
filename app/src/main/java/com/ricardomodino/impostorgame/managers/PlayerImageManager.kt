@@ -72,6 +72,14 @@ object PlayerImageManager {
         return bmp
     }
 
+    /**
+     * Pre-asigna una imagen concreta a un jugador (llamar desde el reveal
+     * para que la votación muestre la misma imagen).
+     */
+    fun preAssign(playerName: String, bmp: Bitmap) {
+        fallbackCache[playerName] = bmp
+    }
+
     /** Limpia las imágenes de fallback asignadas (llamar al inicio de cada partida). */
     fun clearFallbackCache() {
         fallbackCache.clear()

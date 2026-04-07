@@ -201,15 +201,17 @@ class VoteActivity : BaseGameActivity() {
     }
 
     private fun abrirPantallaAdivinar(votado: Jugador) {
-        val intent = Intent(this, GuessWordActivity::class.java).apply {
+        val impostorStr = intent.getStringExtra(IntentKeys.IMPOSTOR) ?: ""
+        val senoresBlancos = intent.getStringExtra(IntentKeys.SENORES_BLANCOS) ?: ""
+        val nextIntent = Intent(this, GuessWordActivity::class.java).apply {
             putExtra(IntentKeys.NOMBRE_VOTADO, votado.nombre)
             putExtra(IntentKeys.TIPO_VOTADO, votado.tipo.name)
             putExtra(IntentKeys.PALABRA, palabra)
-            putExtra(IntentKeys.IMPOSTOR, intent.getStringExtra(IntentKeys.IMPOSTOR) ?: "")
-            putExtra(IntentKeys.SENORES_BLANCOS, intent.getStringExtra(IntentKeys.SENORES_BLANCOS) ?: "")
+            putExtra(IntentKeys.IMPOSTOR, impostorStr)
+            putExtra(IntentKeys.SENORES_BLANCOS, senoresBlancos)
             putParcelableArrayListExtra(IntentKeys.JUGADORES, ArrayList(jugadores))
         }
-        startActivityForResult(intent, REQUEST_GUESS)
+        startActivityForResult(nextIntent, REQUEST_GUESS)
     }
 
     private fun eliminarJugadorYVolver(votado: Jugador) {
