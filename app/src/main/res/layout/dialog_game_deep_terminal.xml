@@ -83,7 +83,7 @@
             android:layout_height="54dp"
             android:background="@drawable/btn_neon_deep_terminal"
             android:textAllCaps="false"
-            android:textColor="@android:color/white"
+            android:textColor="@color/deep_terminal_text_primary"
             android:textSize="15sp"
             android:textStyle="bold" />
 
