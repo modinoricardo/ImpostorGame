@@ -388,7 +388,7 @@
                         android:background="@drawable/bg_deep_terminal_badge"
                         android:gravity="center"
                         android:text="✓"
-                        android:textColor="@color/deep_terminal_bg"
+                        android:textColor="@color/deep_terminal_surface"
                         android:textStyle="bold"
                         android:visibility="gone" />
                 </LinearLayout>

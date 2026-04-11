@@ -23,7 +23,7 @@
             android:layout_width="54dp"
             android:layout_height="4dp"
             android:layout_marginBottom="18dp"
-            android:background="#66F2D0D8" />
+            android:background="@color/deep_terminal_stroke" />
 
         <TextView
             android:id="@+id/dlgIcon"
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="18dp"
             android:gravity="center"
-            android:textColor="#F4D6DD"
+            android:textColor="@color/deep_terminal_text_primary"
             android:textSize="54sp" />
 
         <ImageView
@@ -50,7 +50,7 @@
             android:gravity="center"
             android:letterSpacing="0.01"
             android:textAlignment="center"
-            android:textColor="#FFF4F6"
+            android:textColor="@color/deep_terminal_text_primary"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -62,7 +62,7 @@
             android:gravity="center"
             android:lineSpacingExtra="5dp"
             android:textAlignment="center"
-            android:textColor="#DCC8CF"
+            android:textColor="@color/deep_terminal_text_secondary"
             android:textSize="16sp" />
 
         <Button
@@ -72,7 +72,7 @@
             android:layout_marginBottom="12dp"
             android:background="@drawable/btn_dialog_deep_terminal_secondary"
             android:textAllCaps="false"
-            android:textColor="#F0D0D7"
+            android:textColor="@color/deep_terminal_text_secondary"
             android:textSize="15sp"
             android:textStyle="bold"
             android:visibility="gone" />

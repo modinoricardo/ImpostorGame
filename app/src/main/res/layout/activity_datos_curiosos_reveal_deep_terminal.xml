@@ -71,7 +71,7 @@
             android:layout_width="48dp"
             android:layout_height="3dp"
             android:layout_marginBottom="24dp"
-            android:background="#00E5FF"
+            android:background="@color/deep_terminal_accent"
             android:layout_gravity="start" />
 
         <!-- Tarjeta central de revelaciÃ³n (FrameLayout para animaciÃ³n) -->
