@@ -18,6 +18,7 @@ object ThemeManager {
     const val TEMA_CARMESI = "carmesi"
     const val TEMA_JMC = "jmc"
     const val TEMA_FINAL = "final"
+    const val TEMA_DEEP_TERMINAL = "deep_terminal"
 
     fun getTema(context: Context): String {
         return context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
@@ -31,9 +32,10 @@ object ThemeManager {
 
     fun aplicarTema(activity: Activity) {
         val themeRes = when (getTema(activity)) {
-            TEMA_CARMESI -> R.style.Theme_ImpostorGame_Carmesi
-            TEMA_JMC     -> R.style.Theme_ImpostorGame_Jmc
-            else -> R.style.Theme_ImpostorGame
+            TEMA_CARMESI       -> R.style.Theme_ImpostorGame_Carmesi
+            TEMA_JMC           -> R.style.Theme_ImpostorGame_Jmc
+            TEMA_DEEP_TERMINAL -> R.style.Theme_ImpostorGame_DeepTerminal
+            else               -> R.style.Theme_ImpostorGame
         }
         activity.setTheme(themeRes)
     }
@@ -41,35 +43,41 @@ object ThemeManager {
     fun esCarmesi(context: Context) = getTema(context) == TEMA_CARMESI
     fun esJmc(context: Context) = getTema(context) == TEMA_JMC
     fun esFinal(context: Context) = getTema(context) == TEMA_FINAL
+    fun esDeepTerminal(context: Context) = getTema(context) == TEMA_DEEP_TERMINAL
 
     fun getBgMain(context: Context) = when (getTema(context)) {
-        TEMA_CARMESI -> R.drawable.bg_neon_space_red
-        TEMA_JMC     -> R.drawable.bg_neon_space_jmc
-        else         -> R.drawable.bg_neon_space
+        TEMA_CARMESI       -> R.drawable.bg_neon_space_red
+        TEMA_JMC           -> R.drawable.bg_neon_space_jmc
+        TEMA_DEEP_TERMINAL -> R.drawable.bg_neon_space_deep_terminal
+        else               -> R.drawable.bg_neon_space
     }
     fun getBtnNext(context: Context) = when (getTema(context)) {
-        TEMA_CARMESI -> R.drawable.btn_neon_red
-        TEMA_JMC     -> R.drawable.btn_neon_jmc
-        TEMA_FINAL   -> R.drawable.btn_final
-        else         -> R.drawable.btn_neon
+        TEMA_CARMESI       -> R.drawable.btn_neon_red
+        TEMA_JMC           -> R.drawable.btn_neon_jmc
+        TEMA_FINAL         -> R.drawable.btn_final
+        TEMA_DEEP_TERMINAL -> R.drawable.btn_neon_deep_terminal
+        else               -> R.drawable.btn_neon
     }
     fun getBgCard(context: Context) = when (getTema(context)) {
-        TEMA_CARMESI -> R.drawable.bg_card_main_red
-        TEMA_JMC     -> R.drawable.bg_card_main_jmc
-        TEMA_FINAL   -> R.drawable.bg_reveal_content
-        else         -> R.drawable.bg_card_main
+        TEMA_CARMESI       -> R.drawable.bg_card_main_red
+        TEMA_JMC           -> R.drawable.bg_card_main_jmc
+        TEMA_FINAL         -> R.drawable.bg_reveal_content
+        TEMA_DEEP_TERMINAL -> R.drawable.bg_card_main_deep_terminal
+        else               -> R.drawable.bg_card_main
     }
     fun getBgChip(context: Context) = when (getTema(context)) {
-        TEMA_CARMESI -> R.drawable.bg_chip_carmesi
-        TEMA_JMC     -> R.drawable.bg_chip_jmc
-        TEMA_FINAL   -> R.drawable.bg_chip_final
-        else         -> R.drawable.bg_card_main
+        TEMA_CARMESI       -> R.drawable.bg_chip_carmesi
+        TEMA_JMC           -> R.drawable.bg_chip_jmc
+        TEMA_FINAL         -> R.drawable.bg_chip_final
+        TEMA_DEEP_TERMINAL -> R.drawable.bg_chip_deep_terminal
+        else               -> R.drawable.bg_card_main
     }
     fun getBtnNeon(context: Context) = when (getTema(context)) {
-        TEMA_CARMESI -> R.drawable.btn_neon_red
-        TEMA_JMC     -> R.drawable.btn_neon_jmc
-        TEMA_FINAL   -> R.drawable.btn_final
-        else         -> R.drawable.btn_neon
+        TEMA_CARMESI       -> R.drawable.btn_neon_red
+        TEMA_JMC           -> R.drawable.btn_neon_jmc
+        TEMA_FINAL         -> R.drawable.btn_final
+        TEMA_DEEP_TERMINAL -> R.drawable.btn_neon_deep_terminal
+        else               -> R.drawable.btn_neon
     }
     fun getBtnGhost(context: Context) = when (getTema(context)) {
         TEMA_FINAL -> R.drawable.btn_dialog_final_secondary
@@ -77,36 +85,42 @@ object ThemeManager {
     }
     /** Color de fondo atenuado para botones de diálogo (no carmesí). */
     fun getDialogBtnTint(context: Context) = when (getTema(context)) {
-        TEMA_JMC   -> 0xFF00A843.toInt()
-        TEMA_FINAL -> 0xFFB89240.toInt()
-        else       -> 0xFF00B8CC.toInt() // clásico: cian atenuado
+        TEMA_JMC           -> 0xFF00A843.toInt()
+        TEMA_FINAL         -> 0xFFB89240.toInt()
+        TEMA_DEEP_TERMINAL -> 0xFF999999.toInt()
+        else               -> 0xFF00B8CC.toInt() // clásico: cian atenuado
     }
     fun getRingNeon(context: Context) = when (getTema(context)) {
-        TEMA_CARMESI -> R.drawable.ring_neon_red
-        TEMA_JMC     -> R.drawable.ring_neon_jmc
-        else         -> R.drawable.ring_neon
+        TEMA_CARMESI       -> R.drawable.ring_neon_red
+        TEMA_JMC           -> R.drawable.ring_neon_jmc
+        TEMA_DEEP_TERMINAL -> R.drawable.ring_neon_deep_terminal
+        else               -> R.drawable.ring_neon
     }
     fun getRingSoft(context: Context) = when (getTema(context)) {
-        TEMA_CARMESI -> R.drawable.ring_neon_red_soft
-        TEMA_JMC     -> R.drawable.ring_neon_jmc_soft
-        else         -> R.drawable.ring_neon_soft
+        TEMA_CARMESI       -> R.drawable.ring_neon_red_soft
+        TEMA_JMC           -> R.drawable.ring_neon_jmc_soft
+        TEMA_DEEP_TERMINAL -> R.drawable.ring_neon_deep_terminal_soft
+        else               -> R.drawable.ring_neon_soft
     }
     fun getAccentColor(context: Context) = when (getTema(context)) {
-        TEMA_CARMESI -> 0xFFD92C58.toInt()
-        TEMA_JMC     -> 0xFF00C853.toInt()
-        else         -> 0xFF00E5FF.toInt()
+        TEMA_CARMESI       -> 0xFFD92C58.toInt()
+        TEMA_JMC           -> 0xFF00C853.toInt()
+        TEMA_DEEP_TERMINAL -> 0xFFFFFFFF.toInt()
+        else               -> 0xFF00E5FF.toInt()
     }
     fun getCheckColor(context: Context) = when (getTema(context)) {
-        TEMA_CARMESI -> "#F3D3DA"
-        TEMA_JMC     -> "#00C853"
-        TEMA_FINAL   -> "#E7C87D"
-        else         -> "#00E5FF"
+        TEMA_CARMESI       -> "#F3D3DA"
+        TEMA_JMC           -> "#00C853"
+        TEMA_FINAL         -> "#E7C87D"
+        TEMA_DEEP_TERMINAL -> "#FFFFFF"
+        else               -> "#00E5FF"
     }
 
     // Aplica el tema a todas las vistas comunes de una Activity
     fun aplicarDrawables(activity: Activity) {
-        // Estilo Final: los layouts _final.xml ya tienen todos los drawables correctos
+        // Estilo Final y DeepTerminal: los layouts propios ya tienen todos los drawables correctos
         if (esFinal(activity)) return
+        if (esDeepTerminal(activity)) return
 
         val bgMain    = getBgMain(activity)
         val bgCard    = getBgCard(activity)

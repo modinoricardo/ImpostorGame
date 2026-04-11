@@ -23,9 +23,10 @@ class EstiloBottomSheet : BaseGameBottomSheet() {
 
     override fun provideSheetBackground(): Drawable? {
         val res = when {
-            ThemeManager.esFinal(requireContext())   -> R.drawable.bottomsheet_rounded_final
-            ThemeManager.esCarmesi(requireContext()) -> R.drawable.bottomsheet_rounded_carmesi
-            else                                     -> R.drawable.bottomsheet_rounded
+            ThemeManager.esFinal(requireContext())        -> R.drawable.bottomsheet_rounded_final
+            ThemeManager.esCarmesi(requireContext())      -> R.drawable.bottomsheet_rounded_carmesi
+            ThemeManager.esDeepTerminal(requireContext()) -> R.drawable.bottomsheet_rounded_deep_terminal
+            else                                          -> R.drawable.bottomsheet_rounded
         }
         return ContextCompat.getDrawable(requireContext(), res)
     }
@@ -34,8 +35,9 @@ class EstiloBottomSheet : BaseGameBottomSheet() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         val layoutRes = when {
-            ThemeManager.esFinal(requireContext()) -> R.layout.bottomsheet_estilo_final
-            ThemeManager.esCarmesi(requireContext()) -> R.layout.bottomsheet_estilo_carmesi
+            ThemeManager.esFinal(requireContext())        -> R.layout.bottomsheet_estilo_final
+            ThemeManager.esCarmesi(requireContext())      -> R.layout.bottomsheet_estilo_carmesi
+            ThemeManager.esDeepTerminal(requireContext()) -> R.layout.bottomsheet_estilo_deep_terminal
             else -> R.layout.bottomsheet_estilo
         }
         return inflater.inflate(layoutRes, container, false)
@@ -50,10 +52,12 @@ class EstiloBottomSheet : BaseGameBottomSheet() {
         val cardCarmesi  = view.findViewById<CardView>(R.id.cardTemaCarmesi)
         val cardJmc      = view.findViewById<CardView>(R.id.cardTemaJmc)
         val cardFinal    = view.findViewById<CardView>(R.id.cardTemaFinal)
+        val cardDeepTerminal = view.findViewById<CardView>(R.id.cardTemaDeepTerminal)
         val checkClasico = view.findViewById<TextView>(R.id.checkTemaClasico)
         val checkCarmesi = view.findViewById<TextView>(R.id.checkTemaCarmesi)
         val checkJmc     = view.findViewById<TextView>(R.id.checkTemaJmc)
         val checkFinal   = view.findViewById<TextView>(R.id.checkTemaFinal)
+        val checkDeepTerminal = view.findViewById<TextView>(R.id.checkTemaDeepTerminal)
 
         val temaActual = ThemeManager.getTema(requireContext())
 
@@ -76,6 +80,13 @@ class EstiloBottomSheet : BaseGameBottomSheet() {
                 setShadowLayer(16f, 0f, 0f, 0x66D92C58)
             }
             view.findViewById<ImageView>(R.id.btnBackEstilo)?.setColorFilter(0xFFF0D0D7.toInt())
+        } else if (ThemeManager.esDeepTerminal(requireContext())) {
+            view.findViewById<View>(R.id.rootEstilo)?.setBackgroundResource(R.drawable.bg_deep_terminal_sheet)
+            view.findViewById<TextView>(R.id.txtTituloEstilo)?.apply {
+                setTextColor(0xFFFFFFFF.toInt())
+                setShadowLayer(16f, 0f, 0f, 0x33FFFFFF)
+            }
+            view.findViewById<ImageView>(R.id.btnBackEstilo)?.setColorFilter(0xFFB0B0B0.toInt())
         } else {
             val bgCard = ThemeManager.getBgCard(requireContext())
             val accent = ThemeManager.getAccentColor(requireContext())
@@ -86,6 +97,7 @@ class EstiloBottomSheet : BaseGameBottomSheet() {
         checkClasico.visibility = if (temaActual == ThemeManager.TEMA_CLASICO) View.VISIBLE else View.GONE
         checkCarmesi.visibility = if (temaActual == ThemeManager.TEMA_CARMESI) View.VISIBLE else View.GONE
         checkFinal.visibility   = if (temaActual == ThemeManager.TEMA_FINAL)   View.VISIBLE else View.GONE
+        checkDeepTerminal?.visibility = if (temaActual == ThemeManager.TEMA_DEEP_TERMINAL) View.VISIBLE else View.GONE
 
         cardClasico.setOnClickListener {
             if (ThemeManager.getTema(requireContext()) != ThemeManager.TEMA_CLASICO) {
@@ -102,6 +114,12 @@ class EstiloBottomSheet : BaseGameBottomSheet() {
         cardFinal.setOnClickListener {
             if (ThemeManager.getTema(requireContext()) != ThemeManager.TEMA_FINAL) {
                 ThemeManager.setTema(requireContext(), ThemeManager.TEMA_FINAL)
+                dismiss(); activity?.recreate()
+            }
+        }
+        cardDeepTerminal?.setOnClickListener {
+            if (ThemeManager.getTema(requireContext()) != ThemeManager.TEMA_DEEP_TERMINAL) {
+                ThemeManager.setTema(requireContext(), ThemeManager.TEMA_DEEP_TERMINAL)
                 dismiss(); activity?.recreate()
             }
         }

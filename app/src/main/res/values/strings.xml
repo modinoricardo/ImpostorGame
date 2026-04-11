@@ -361,4 +361,7 @@
     <string name="admin_publicar_seed_confirm">¿Subir todo el contenido base a Supabase? Esta operación puede tardar varios minutos y no debe interrumpirse.</string>
     <string name="admin_publicar_seed_ok">Contenido publicado: %d categorías subidas</string>
     <string name="admin_publicando">Publicando…</string>
+    <string name="estilo_deep_terminal_nombre">⬛ DeepTerminal By DevDeft</string>
+    <string name="estilo_deep_terminal_desc">Negro puro · Blanco · Terminal hacker</string>
+    <string name="estilo_deep_terminal_nombre_limpio">DeepTerminal</string>
 </resources>

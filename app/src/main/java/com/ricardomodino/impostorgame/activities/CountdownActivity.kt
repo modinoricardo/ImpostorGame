@@ -32,8 +32,9 @@ class CountdownActivity : BaseGameActivity() {
         }
         setContentView(
             when {
-                ThemeManager.esFinal(this) -> R.layout.activity_countdown_fullscreen_final
-                ThemeManager.esCarmesi(this) -> R.layout.activity_countdown_fullscreen_carmesi
+                ThemeManager.esFinal(this)        -> R.layout.activity_countdown_fullscreen_final
+                ThemeManager.esCarmesi(this)      -> R.layout.activity_countdown_fullscreen_carmesi
+                ThemeManager.esDeepTerminal(this) -> R.layout.activity_countdown_fullscreen_deep_terminal
                 else -> R.layout.activity_countdown_fullscreen
             }
         )

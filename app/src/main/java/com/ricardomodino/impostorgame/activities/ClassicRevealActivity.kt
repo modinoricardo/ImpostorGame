@@ -53,9 +53,10 @@ class ClassicRevealActivity : BaseRevealActivity() {
     private var hintPlayerBaseTextSp = 0f
 
     override fun provideLayoutRes(): Int = when {
-        ThemeManager.esFinal(this)   -> R.layout.activity_impostor_reveal_final
-        ThemeManager.esCarmesi(this) -> R.layout.activity_impostor_reveal_carmesi
-        else                         -> R.layout.activity_impostor_reveal
+        ThemeManager.esFinal(this)        -> R.layout.activity_impostor_reveal_final
+        ThemeManager.esCarmesi(this)      -> R.layout.activity_impostor_reveal_carmesi
+        ThemeManager.esDeepTerminal(this) -> R.layout.activity_impostor_reveal_deep_terminal
+        else                              -> R.layout.activity_impostor_reveal
     }
 
     override val touchTarget: View get() = cardViewPrincipal

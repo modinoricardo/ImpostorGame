@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootDatosCuriosos"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0A0A0F">
+
+    <!-- Fondo con gradiente sutil -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_datos_curiosos" />
+
+    <!-- Contenido principal -->
+    <LinearLayout
+        android:id="@+id/layoutDatosCuriosos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <!-- Cabecera: nÃºmero de jugador -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:id="@+id/txtContadorJugador"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text=""
+                android:textColor="#80FFFFFF"
+                android:textSize="13sp"
+                android:letterSpacing="0.08" />
+
+            <TextView
+                android:id="@+id/txtModoLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/datos_modo_label"
+                android:textColor="#80FFFFFF"
+                android:textSize="11sp"
+                android:letterSpacing="0.12"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <!-- Nombre del jugador -->
+        <TextView
+            android:id="@+id/txtNombreJugador"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="@string/jugador"
+            android:textColor="@android:color/white"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:letterSpacing="-0.02"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
+        <!-- LÃ­nea separadora con color de acento -->
+        <View
+            android:id="@+id/lineaAcento"
+            android:layout_width="48dp"
+            android:layout_height="3dp"
+            android:layout_marginBottom="24dp"
+            android:background="@color/deep_terminal_accent"
+            android:layout_gravity="start" />
+
+        <!-- Tarjeta central de revelaciÃ³n (FrameLayout para animaciÃ³n) -->
+        <FrameLayout
+            android:id="@+id/cardReveal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="20dp">
+
+            <!-- Capa de contenido (debajo, siempre visible) -->
+            <LinearLayout
+                android:id="@+id/layoutContenido"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="32dp"
+                android:background="@drawable/bg_reveal_content">
+
+                <!-- IMPOSTOR: mensaje -->
+                <LinearLayout
+                    android:id="@+id/layoutImpostor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/txtImpostorEmoji"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="&#128373;&#65039;"
+                        android:textSize="56sp"
+                        android:layout_marginBottom="16dp" />
+
+                    <TextView
+                        android:id="@+id/txtImpostorTitulo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/datos_eres_impostor"
+                        android:textColor="#FF4444"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:letterSpacing="0.06"
+                        android:gravity="center"
+                        android:layout_marginBottom="12dp" />
+
+                    <TextView
+                        android:id="@+id/txtImpostorSubtitulo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/datos_inventa_dato"
+                        android:textColor="#AAFFFFFF"
+                        android:textSize="15sp"
+                        android:gravity="center"
+                        android:lineSpacingMultiplier="1.4" />
+
+                </LinearLayout>
+
+                <!-- CIVIL: dato curioso -->
+                <LinearLayout
+                    android:id="@+id/layoutDato"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/txtDatoCurioso"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/white"
+                        android:textSize="19sp"
+                        android:gravity="center"
+                        android:lineSpacingMultiplier="1.5"
+                        android:layout_marginBottom="20dp" />
+
+                    <View
+                        android:layout_width="32dp"
+                        android:layout_height="1dp"
+                        android:background="#40FFFFFF"
+                        android:layout_marginBottom="16dp" />
+
+                    <TextView
+                        android:id="@+id/txtLabelContenido"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/datos_label_dato"
+                        android:textColor="#60FFFFFF"
+                        android:textSize="11sp"
+                        android:letterSpacing="0.15"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Capa de imagen/foto (encima, se desliza hacia arriba al revelar) -->
+            <FrameLayout
+                android:id="@+id/capaCubierta"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_reveal_cover"
+                android:clipToOutline="true"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:id="@+id/imgJugador"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="@null" />
+
+
+                <!-- Hint de tap -->
+                <LinearLayout
+                    android:id="@+id/layoutHintTap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="&#8593;"
+                        android:textColor="#CCFFFFFF"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/datos_toca_revelar"
+                        android:textColor="#AAFFFFFF"
+                        android:textSize="13sp"
+                        android:letterSpacing="0.04" />
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+        </FrameLayout>
+
+        <!-- BotÃ³n siguiente -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btnSiguienteJugador"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="@android:color/transparent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:background="@drawable/btn_neon"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtBtnSiguiente"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/datos_siguiente"
+                    android:textColor="@android:color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.05" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</FrameLayout>

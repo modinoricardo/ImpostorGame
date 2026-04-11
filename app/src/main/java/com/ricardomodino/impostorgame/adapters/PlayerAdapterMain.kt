@@ -19,8 +19,9 @@ class PlayerAdapterMain(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlayerViewHolder {
         val layout = when {
-            ThemeManager.esFinal(parent.context) -> R.layout.item_player_final
-            ThemeManager.esCarmesi(parent.context) -> R.layout.item_player_carmesi
+            ThemeManager.esFinal(parent.context)        -> R.layout.item_player_final
+            ThemeManager.esCarmesi(parent.context)      -> R.layout.item_player_carmesi
+            ThemeManager.esDeepTerminal(parent.context) -> R.layout.item_player_deep_terminal
             else -> R.layout.item_player
         }
         val view = LayoutInflater.from(parent.context)

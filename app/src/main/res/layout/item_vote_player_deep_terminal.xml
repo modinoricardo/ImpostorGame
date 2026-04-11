@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="104dp"
+        android:layout_height="118dp"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardCornerRadius="26dp"
+        app:cardElevation="0dp"
+        app:cardMaxElevation="0dp">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_card_main_deep_terminal"
+            android:padding="7dp">
+
+            <ImageView
+                android:id="@+id/imgPlayerAvatar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_vote_avatar_deep_terminal"
+                android:clipToOutline="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/civil1" />
+
+            <View
+                android:id="@+id/overlaySelected"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_vote_overlay_deep_terminal_circle"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/txtCheck"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="2dp"
+                android:background="@drawable/bg_vote_check_badge_deep_terminal"
+                android:text="&#10003;"
+                android:textSize="14sp"
+                android:textColor="@color/deep_terminal_bg"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:paddingBottom="1dp"
+                android:visibility="gone" />
+
+        </FrameLayout>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/txtPlayerNameVote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:text="@string/jugador"
+        android:textColor="@color/deep_terminal_text_primary"
+        android:textSize="12sp" />
+
+</LinearLayout>

@@ -40,9 +40,12 @@ class SelectGameModeBottomSheet : BaseGameBottomSheet() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View = inflater.inflate(
-        if (ThemeManager.esCarmesi(requireContext())) R.layout.bottomsheet_select_game_mode_carmesi
-        else if (ThemeManager.esFinal(requireContext())) R.layout.bottomsheet_select_game_mode_final
-        else R.layout.bottomsheet_select_game_mode,
+        when {
+            ThemeManager.esCarmesi(requireContext())      -> R.layout.bottomsheet_select_game_mode_carmesi
+            ThemeManager.esFinal(requireContext())        -> R.layout.bottomsheet_select_game_mode_final
+            ThemeManager.esDeepTerminal(requireContext()) -> R.layout.bottomsheet_select_game_mode_deep_terminal
+            else -> R.layout.bottomsheet_select_game_mode
+        },
         container, false
     )
 

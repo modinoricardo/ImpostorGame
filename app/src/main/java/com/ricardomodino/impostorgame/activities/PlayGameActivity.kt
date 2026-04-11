@@ -85,8 +85,9 @@ class PlayGameActivity : BaseGameActivity() {
         enableEdgeToEdge()
         setContentView(
             when {
-                ThemeManager.esFinal(this) -> R.layout.activity_play_game_final
-                ThemeManager.esCarmesi(this) -> R.layout.activity_play_game_carmesi
+                ThemeManager.esFinal(this)        -> R.layout.activity_play_game_final
+                ThemeManager.esCarmesi(this)      -> R.layout.activity_play_game_carmesi
+                ThemeManager.esDeepTerminal(this) -> R.layout.activity_play_game_deep_terminal
                 else -> R.layout.activity_play_game
             }
         )

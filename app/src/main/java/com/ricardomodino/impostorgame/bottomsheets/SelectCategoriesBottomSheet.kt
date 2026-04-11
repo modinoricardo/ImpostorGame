@@ -33,9 +33,12 @@ class SelectCategoriesBottomSheet : BaseGameBottomSheet() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(
-            if (ThemeManager.esCarmesi(requireContext())) R.layout.bottomsheet_select_categories_carmesi
-            else if (ThemeManager.esFinal(requireContext())) R.layout.bottomsheet_select_categories_final
-            else R.layout.bottomsheet_select_categories,
+            when {
+                ThemeManager.esCarmesi(requireContext())      -> R.layout.bottomsheet_select_categories_carmesi
+                ThemeManager.esFinal(requireContext())        -> R.layout.bottomsheet_select_categories_final
+                ThemeManager.esDeepTerminal(requireContext()) -> R.layout.bottomsheet_select_categories_deep_terminal
+                else -> R.layout.bottomsheet_select_categories
+            },
             container, false
         )
     }
@@ -49,8 +52,9 @@ class SelectCategoriesBottomSheet : BaseGameBottomSheet() {
         val accent  = ThemeManager.getAccentColor(requireContext())
         view.findViewById<View>(R.id.rootCategories)?.setBackgroundResource(
             when {
-                ThemeManager.esFinal(requireContext()) -> R.drawable.bg_final_sheet_surface
-                ThemeManager.esCarmesi(requireContext()) -> R.drawable.bg_carmesi_sheet
+                ThemeManager.esFinal(requireContext())        -> R.drawable.bg_final_sheet_surface
+                ThemeManager.esCarmesi(requireContext())      -> R.drawable.bg_carmesi_sheet
+                ThemeManager.esDeepTerminal(requireContext()) -> R.drawable.bg_deep_terminal_sheet
                 else -> bgCard
             }
         )

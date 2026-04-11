@@ -50,8 +50,9 @@ class SplashActivity : BaseGameActivity() {
         super.onCreate(savedInstanceState)
         setContentView(
             when {
-                ThemeManager.esFinal(this) -> R.layout.activity_splash_final
-                ThemeManager.esCarmesi(this) -> R.layout.activity_splash_carmesi
+                ThemeManager.esFinal(this)        -> R.layout.activity_splash_final
+                ThemeManager.esCarmesi(this)      -> R.layout.activity_splash_carmesi
+                ThemeManager.esDeepTerminal(this) -> R.layout.activity_splash_deep_terminal
                 else -> R.layout.activity_splash
             }
         )

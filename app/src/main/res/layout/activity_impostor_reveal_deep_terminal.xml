@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_neon_space_deep_terminal"
+    android:clipChildren="false"
+    android:clipToPadding="false">
+
+    <!-- S watermark -->
+    <ImageView
+        android:id="@+id/imgLetraS"
+        android:layout_width="380dp"
+        android:layout_height="380dp"
+        android:alpha="0.05"
+        android:src="@drawable/ic_letra_s"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Pulsing glow (animated in code) -->
+    <View
+        android:id="@+id/ring1"
+        android:layout_width="360dp"
+        android:layout_height="360dp"
+        android:alpha="0.5"
+        android:background="@drawable/ring_neon_deep_terminal"
+        app:layout_constraintBottom_toBottomOf="@id/cardViewPrincipal"
+        app:layout_constraintEnd_toEndOf="@id/cardViewPrincipal"
+        app:layout_constraintStart_toStartOf="@id/cardViewPrincipal"
+        app:layout_constraintTop_toTopOf="@id/cardViewPrincipal" />
+
+    <!-- Outer soft glow -->
+    <View
+        android:id="@+id/ring2"
+        android:layout_width="500dp"
+        android:layout_height="500dp"
+        android:alpha="0.2"
+        android:background="@drawable/ring_neon_deep_terminal_soft"
+        app:layout_constraintBottom_toBottomOf="@id/ring1"
+        app:layout_constraintEnd_toEndOf="@id/ring1"
+        app:layout_constraintStart_toStartOf="@id/ring1"
+        app:layout_constraintTop_toTopOf="@id/ring1" />
+
+    <!-- Particles (6 small dots animated in code) -->
+    <View android:id="@+id/particle0" android:layout_width="4dp" android:layout_height="4dp" android:alpha="0" android:background="@drawable/particle_deep_terminal" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" android:layout_marginStart="60dp" android:layout_marginTop="200dp" />
+    <View android:id="@+id/particle1" android:layout_width="3dp" android:layout_height="3dp" android:alpha="0" android:background="@drawable/particle_deep_terminal" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" android:layout_marginEnd="50dp" android:layout_marginTop="160dp" />
+    <View android:id="@+id/particle2" android:layout_width="3dp" android:layout_height="3dp" android:alpha="0" android:background="@drawable/particle_deep_terminal" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent" android:layout_marginEnd="70dp" android:layout_marginBottom="250dp" />
+    <View android:id="@+id/particle3" android:layout_width="4dp" android:layout_height="4dp" android:alpha="0" android:background="@drawable/particle_deep_terminal" app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent" android:layout_marginStart="40dp" android:layout_marginBottom="220dp" />
+    <View android:id="@+id/particle4" android:layout_width="3dp" android:layout_height="3dp" android:alpha="0" android:background="@drawable/particle_deep_terminal" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" android:layout_marginEnd="90dp" android:layout_marginTop="380dp" />
+    <View android:id="@+id/particle5" android:layout_width="3dp" android:layout_height="3dp" android:alpha="0" android:background="@drawable/particle_deep_terminal" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" android:layout_marginStart="100dp" android:layout_marginTop="440dp" />
+
+    <!-- Edition label -->
+    <TextView
+        android:id="@+id/txtStaicyEditionReveal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:letterSpacing="0.3"
+        android:text="@string/staicy_edition"
+        android:textColor="#50F0D0D7"
+        android:textSize="9sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Main card -->
+    <FrameLayout
+        android:id="@+id/cardViewPrincipal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintBottom_toTopOf="@id/nenxtPlayer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtStaicyEditionReveal"
+        app:layout_constraintVertical_bias="0.5">
+
+        <LinearLayout
+            android:id="@+id/layoutCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_reveal_deep_terminal_card"
+            android:clipToPadding="false"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="vertical"
+            android:paddingHorizontal="28dp"
+            android:paddingTop="36dp"
+            android:paddingBottom="36dp">
+
+            <!-- Accent line -->
+            <View
+                android:layout_width="40dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="24dp"
+                android:background="#30D92C58" />
+
+            <!-- S monogram -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="18dp"
+                android:fontFamily="serif"
+                android:letterSpacing="0.18"
+                android:text="S"
+                android:textColor="#60F0D0D7"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <!-- Player name -->
+            <TextView
+                android:id="@+id/turnPlayerName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="8dp"
+                android:ellipsize="end"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:maxLines="2"
+                android:text="@string/app_name"
+                android:textColor="@android:color/white"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                android:shadowColor="#40D92C58"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="24" />
+
+            <!-- Subtitle -->
+            <TextView
+                android:id="@+id/txtTwo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="sans-serif"
+                android:letterSpacing="0.15"
+                android:text="@string/reveal_no_digas"
+                android:textAllCaps="true"
+                android:textColor="#50F0D0D7"
+                android:textSize="11sp" />
+
+            <!-- Tap icon -->
+            <ImageView
+                android:id="@+id/imgDedo"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="36dp"
+                android:rotation="-20"
+                android:src="@drawable/ic_touch_app"
+                app:tint="#B0F0D0D7" />
+
+            <!-- Tap instruction -->
+            <TextView
+                android:id="@+id/presText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="14dp"
+                android:layout_marginBottom="12dp"
+                android:fontFamily="sans-serif"
+                android:gravity="center_horizontal"
+                android:letterSpacing="0.08"
+                android:text="@string/reveal_toca"
+                android:textColor="#40F0D0D7"
+                android:textSize="12sp" />
+
+            <!-- Role reveal (hidden initially) -->
+            <TextView
+                android:id="@+id/detailsPlayer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:text="@string/reveal_identity_question"
+                android:textColor="@android:color/white"
+                android:textSize="40sp"
+                android:textStyle="bold"
+                android:shadowColor="#55D92C58"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="24"
+                android:visibility="gone" />
+
+            <!-- Word image (hidden initially) -->
+            <ImageView
+                android:id="@+id/imgWord"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:background="@drawable/bg_reveal_deep_terminal_card"
+                android:clipToOutline="true"
+                android:maxHeight="212dp"
+                android:maxWidth="212dp"
+                android:padding="4dp"
+                android:scaleType="centerCrop"
+                android:visibility="gone" />
+
+            <!-- Hint (hidden initially) -->
+            <TextView
+                android:id="@+id/hintPlayer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textColor="#F0E6EA"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:shadowColor="#40D92C58"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="16"
+                android:visibility="gone" />
+
+        </LinearLayout>
+    </FrameLayout>
+
+    <!-- Next player button -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/nenxtPlayer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="28dp"
+        android:visibility="invisible"
+        app:cardCornerRadius="18dp"
+        app:cardElevation="0dp"
+        app:cardMaxElevation="0dp"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/textNextPlayer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_reveal_carmesi"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:letterSpacing="0.1"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="15dp"
+            android:text="@string/reveal_siguiente"
+            android:textColor="#D0F0D0D7"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
