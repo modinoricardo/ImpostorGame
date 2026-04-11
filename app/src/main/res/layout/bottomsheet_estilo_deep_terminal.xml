@@ -54,7 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:text="@string/estilo_carmesi_subtitulo"
+            android:text="@string/estilo_subtitulo"
             android:textColor="@color/deep_terminal_text_secondary"
             android:textSize="13sp" />
 
