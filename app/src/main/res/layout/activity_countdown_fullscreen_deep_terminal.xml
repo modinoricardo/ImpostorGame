@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/countdownRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_neon_space_deep_terminal">
+
+    <ImageView
+        android:layout_width="320dp"
+        android:layout_height="320dp"
+        android:layout_gravity="center"
+        android:alpha="0.08"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_letra_s" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center_horizontal"
+        android:layout_marginTop="40dp"
+        android:fontFamily="sans-serif-medium"
+        android:letterSpacing="0.18"
+        android:text="@string/staicy_edition"
+        android:textColor="#A8F1D0D8"
+        android:textSize="11sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtCountdown"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:autoSizeMaxTextSize="190sp"
+        android:autoSizeMinTextSize="96sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:text="3"
+        android:textColor="@android:color/white"
+        android:textSize="184sp"
+        android:textStyle="bold"
+        android:shadowColor="#66D92C58"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="70" />
+
+    <TextView
+        android:id="@+id/txtCountdownAccent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="40dp"
+        android:alpha="0"
+        android:fontFamily="serif"
+        android:text="S"
+        android:textColor="#EFCED6"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+</FrameLayout>
+

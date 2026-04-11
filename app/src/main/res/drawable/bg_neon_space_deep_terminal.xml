@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <solid android:color="@color/deep_terminal_bg"/>
+        </shape>
+    </item>
+    <item android:top="-80dp" android:left="-80dp">
+        <shape>
+            <gradient
+                android:type="radial"
+                android:gradientRadius="60%p"
+                android:startColor="#08FFFFFF"
+                android:endColor="#00000000"/>
+        </shape>
+    </item>
+</layer-list>

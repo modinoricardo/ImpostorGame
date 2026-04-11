@@ -90,6 +90,56 @@
         <item name="cornerSize">28dp</item>
     </style>
 
+    <style name="Theme.ImpostorGame_DeepTerminal" parent="Base.Theme.ImpostorGame">
+        <item name="colorPrimary">@color/deep_terminal_accent</item>
+        <item name="colorOnPrimary">@color/deep_terminal_bg</item>
+        <item name="colorSecondary">@color/deep_terminal_text_secondary</item>
+        <item name="colorOnSecondary">@color/deep_terminal_bg</item>
+        <item name="colorSurface">@color/deep_terminal_surface</item>
+        <item name="colorOnSurface">@color/deep_terminal_text_primary</item>
+        <item name="android:colorBackground">@color/deep_terminal_bg</item>
+        <item name="android:textColorPrimary">@color/deep_terminal_text_primary</item>
+        <item name="android:textColorSecondary">@color/deep_terminal_text_secondary</item>
+        <item name="android:textColorHint">@color/deep_terminal_text_hint</item>
+        <item name="android:fontFamily">monospace</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.ImpostorGame.DeepTerminal.AlertDialog</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowBackground">@color/deep_terminal_bg</item>
+    </style>
 
+    <style name="ThemeOverlay.ImpostorGame.DeepTerminal.AlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="colorPrimary">@color/deep_terminal_accent</item>
+        <item name="colorSurface">@color/deep_terminal_surface</item>
+        <item name="backgroundTint">@color/deep_terminal_surface</item>
+        <item name="materialAlertDialogTitleTextStyle">@style/TextAppearance.ImpostorGame.DeepTerminal.Dialog.Title</item>
+        <item name="materialAlertDialogBodyTextStyle">@style/TextAppearance.ImpostorGame.DeepTerminal.Dialog.Body</item>
+        <item name="buttonBarPositiveButtonStyle">@style/Widget.ImpostorGame.DeepTerminal.DialogButton</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Widget.ImpostorGame.DeepTerminal.DialogButton.Secondary</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.ImpostorGame.DeepTerminal.Dialog</item>
+    </style>
+
+    <style name="TextAppearance.ImpostorGame.DeepTerminal.Dialog.Title" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:textColor">@color/deep_terminal_text_primary</item>
+        <item name="android:fontFamily">monospace</item>
+    </style>
+
+    <style name="TextAppearance.ImpostorGame.DeepTerminal.Dialog.Body" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:textColor">@color/deep_terminal_text_secondary</item>
+        <item name="android:lineSpacingExtra">2dp</item>
+    </style>
+
+    <style name="Widget.ImpostorGame.DeepTerminal.DialogButton" parent="Widget.Material3.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/deep_terminal_accent</item>
+    </style>
+
+    <style name="Widget.ImpostorGame.DeepTerminal.DialogButton.Secondary" parent="Widget.Material3.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/deep_terminal_text_secondary</item>
+    </style>
+
+    <style name="ShapeAppearance.ImpostorGame.DeepTerminal.Dialog" parent="ShapeAppearance.Material3.LargeComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">28dp</item>
+    </style>
 
 </resources>

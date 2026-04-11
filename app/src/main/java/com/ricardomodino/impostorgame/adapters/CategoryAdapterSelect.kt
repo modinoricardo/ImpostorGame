@@ -28,8 +28,9 @@ class CategoryAdapterSelect(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
         val layout = when {
-            ThemeManager.esFinal(parent.context) -> R.layout.item_category_select_final
-            ThemeManager.esCarmesi(parent.context) -> R.layout.item_category_select_carmesi
+            ThemeManager.esFinal(parent.context)        -> R.layout.item_category_select_final
+            ThemeManager.esCarmesi(parent.context)      -> R.layout.item_category_select_carmesi
+            ThemeManager.esDeepTerminal(parent.context) -> R.layout.item_category_select_deep_terminal
             else -> R.layout.item_category_select
         }
         val view = LayoutInflater.from(parent.context)
@@ -93,6 +94,17 @@ class CategoryAdapterSelect(
                     holder.cardCategory.setBackgroundResource(R.drawable.bg_category_normal_jmc)
                     holder.textTitle.setTypeface(null, Typeface.NORMAL)
                     holder.textTitle.setTextColor(Color.parseColor("#CCFFFFFF"))
+                }
+            }
+            ThemeManager.esDeepTerminal(ctx) -> {
+                if (selected) {
+                    holder.cardCategory.setBackgroundResource(R.drawable.bg_category_selected_deep_terminal)
+                    holder.textTitle.setTypeface(null, Typeface.BOLD)
+                    holder.textTitle.setTextColor(Color.WHITE)
+                } else {
+                    holder.cardCategory.setBackgroundResource(R.drawable.bg_category_normal_deep_terminal)
+                    holder.textTitle.setTypeface(null, Typeface.NORMAL)
+                    holder.textTitle.setTextColor(Color.parseColor("#B0B0B0"))
                 }
             }
             else -> {

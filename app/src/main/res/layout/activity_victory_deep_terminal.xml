@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_neon_space_deep_terminal">
+
+    <ImageView
+        android:layout_width="340dp"
+        android:layout_height="340dp"
+        android:layout_gravity="center"
+        android:alpha="0.06"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_letra_s" />
+
+    <com.ricardomodino.impostorgame.views.VictoryParticleView
+        android:id="@+id/particleView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="32dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:letterSpacing="0.18"
+            android:text="@string/staicy_edition"
+            android:textColor="#A8F1D0D8"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="54dp"
+            android:layout_height="3dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="24dp"
+            android:background="#76F0D0D7" />
+
+        <TextView
+            android:id="@+id/txtTrophy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="@string/victory_trophy"
+            android:textSize="100sp" />
+
+        <TextView
+            android:id="@+id/txtVictoryTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:fontFamily="serif"
+            android:gravity="center"
+            android:text="@string/victory_title"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:maxLines="4"
+            android:hyphenationFrequency="none"
+            android:breakStrategy="simple"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="16sp"
+            app:autoSizeMaxTextSize="46sp"
+            app:autoSizeStepGranularity="1sp"
+            android:shadowColor="#66D92C58"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="28" />
+
+        <TextView
+            android:id="@+id/txtVictorySubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="@string/victory_subtitle"
+            android:textColor="#D7C7CD"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/txtVictoryMotivo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="42dp"
+            android:gravity="center"
+            android:text=""
+            android:textColor="#BCAEB4"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btnVictoryNewGame"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:background="@drawable/btn_neon_deep_terminal"
+            android:backgroundTint="@null"
+            android:text="@string/victory_nueva_partida"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            app:backgroundTint="@null" />
+
+    </LinearLayout>
+
+</FrameLayout>
+

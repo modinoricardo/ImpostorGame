@@ -35,8 +35,9 @@ class VictoryActivity : BaseGameActivity() {
         super.onCreate(savedInstanceState)
         setContentView(
             when {
-                ThemeManager.esFinal(this) -> R.layout.activity_victory_final
-                ThemeManager.esCarmesi(this) -> R.layout.activity_victory_carmesi
+                ThemeManager.esFinal(this)        -> R.layout.activity_victory_final
+                ThemeManager.esCarmesi(this)      -> R.layout.activity_victory_carmesi
+                ThemeManager.esDeepTerminal(this) -> R.layout.activity_victory_deep_terminal
                 else -> R.layout.activity_victory
             }
         )

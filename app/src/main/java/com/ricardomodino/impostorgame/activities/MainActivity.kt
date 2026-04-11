@@ -66,6 +66,11 @@ class MainActivity : BaseGameActivity(),
             ensureMainBindingCompat(root)
             binding = ActivityMainBinding.bind(root)
             setContentView(root)
+        } else if (ThemeManager.esDeepTerminal(this)) {
+            val root = layoutInflater.inflate(R.layout.activity_main_deep_terminal, null)
+            ensureMainBindingCompat(root)
+            binding = ActivityMainBinding.bind(root)
+            setContentView(root)
         } else {
             binding = ActivityMainBinding.inflate(layoutInflater)
             setContentView(binding.root)

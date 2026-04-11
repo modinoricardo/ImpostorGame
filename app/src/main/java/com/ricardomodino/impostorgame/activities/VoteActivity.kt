@@ -35,8 +35,9 @@ class VoteActivity : BaseGameActivity() {
         super.onCreate(savedInstanceState)
         setContentView(
             when {
-                ThemeManager.esFinal(this) -> R.layout.activity_vote_final
-                ThemeManager.esCarmesi(this) -> R.layout.activity_vote_carmesi
+                ThemeManager.esFinal(this)        -> R.layout.activity_vote_final
+                ThemeManager.esCarmesi(this)      -> R.layout.activity_vote_carmesi
+                ThemeManager.esDeepTerminal(this) -> R.layout.activity_vote_deep_terminal
                 else -> R.layout.activity_vote
             }
         )
@@ -85,8 +86,11 @@ class VoteActivity : BaseGameActivity() {
         voteViewModel.votoEnProceso = true
 
         val overlay = layoutInflater.inflate(
-            if (ThemeManager.esCarmesi(this)) R.layout.activity_countdown_fullscreen_carmesi
-            else R.layout.activity_countdown_fullscreen,
+            when {
+                ThemeManager.esCarmesi(this)      -> R.layout.activity_countdown_fullscreen_carmesi
+                ThemeManager.esDeepTerminal(this) -> R.layout.activity_countdown_fullscreen_deep_terminal
+                else -> R.layout.activity_countdown_fullscreen
+            },
             null
         )
         val txt = overlay.findViewById<TextView>(R.id.txtCountdown)
@@ -256,9 +260,10 @@ class VoteActivity : BaseGameActivity() {
             VH(
                 LayoutInflater.from(parent.context).inflate(
                     when {
-                        ThemeManager.esCarmesi(parent.context) -> R.layout.item_vote_player_carmesi
-                        ThemeManager.esFinal(parent.context)   -> R.layout.item_vote_player_final
-                        else                                   -> R.layout.item_vote_player
+                        ThemeManager.esCarmesi(parent.context)      -> R.layout.item_vote_player_carmesi
+                        ThemeManager.esFinal(parent.context)        -> R.layout.item_vote_player_final
+                        ThemeManager.esDeepTerminal(parent.context) -> R.layout.item_vote_player_deep_terminal
+                        else                                        -> R.layout.item_vote_player
                     },
                     parent,
                     false

@@ -55,9 +55,12 @@ class SugerenciasBottomSheet : BaseGameBottomSheet() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View = inflater.inflate(
-        if (ThemeManager.esCarmesi(requireContext())) R.layout.bottomsheet_sugerencias_carmesi
-        else if (ThemeManager.esFinal(requireContext())) R.layout.bottomsheet_sugerencias_final
-        else R.layout.bottomsheet_sugerencias,
+        when {
+            ThemeManager.esCarmesi(requireContext())      -> R.layout.bottomsheet_sugerencias_carmesi
+            ThemeManager.esFinal(requireContext())        -> R.layout.bottomsheet_sugerencias_final
+            ThemeManager.esDeepTerminal(requireContext()) -> R.layout.bottomsheet_sugerencias_deep_terminal
+            else -> R.layout.bottomsheet_sugerencias
+        },
         container, false
     )
 
@@ -80,8 +83,9 @@ class SugerenciasBottomSheet : BaseGameBottomSheet() {
         view.findViewById<View>(R.id.rootSugerencias)
             ?.setBackgroundResource(
                 when {
-                    ThemeManager.esFinal(requireContext()) -> R.drawable.bg_final_sheet_surface
-                    ThemeManager.esCarmesi(requireContext()) -> R.drawable.bg_carmesi_sheet
+                    ThemeManager.esFinal(requireContext())        -> R.drawable.bg_final_sheet_surface
+                    ThemeManager.esCarmesi(requireContext())      -> R.drawable.bg_carmesi_sheet
+                    ThemeManager.esDeepTerminal(requireContext()) -> R.drawable.bg_deep_terminal_sheet
                     else -> ThemeManager.getBgCard(requireContext())
                 }
             )

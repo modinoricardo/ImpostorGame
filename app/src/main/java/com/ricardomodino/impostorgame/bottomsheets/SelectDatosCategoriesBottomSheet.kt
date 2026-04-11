@@ -32,12 +32,12 @@ class SelectDatosCategoriesBottomSheet : BottomSheetDialogFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        val layout = if (ThemeManager.esFinal(requireContext()))
-            R.layout.bottomsheet_select_datos_categories_final
-        else if (ThemeManager.esCarmesi(requireContext()))
-            R.layout.bottomsheet_select_datos_categories_carmesi
-        else
-            R.layout.bottomsheet_select_datos_categories
+        val layout = when {
+            ThemeManager.esFinal(requireContext())        -> R.layout.bottomsheet_select_datos_categories_final
+            ThemeManager.esCarmesi(requireContext())      -> R.layout.bottomsheet_select_datos_categories_carmesi
+            ThemeManager.esDeepTerminal(requireContext()) -> R.layout.bottomsheet_select_datos_categories_deep_terminal
+            else                                          -> R.layout.bottomsheet_select_datos_categories
+        }
         return inflater.inflate(layout, container, false)
     }
 
@@ -49,8 +49,9 @@ class SelectDatosCategoriesBottomSheet : BottomSheetDialogFragment() {
         val accent  = ThemeManager.getAccentColor(requireContext())
         view.findViewById<View>(R.id.rootCategories)?.setBackgroundResource(
             when {
-                ThemeManager.esFinal(requireContext()) -> R.drawable.bg_final_sheet_surface
-                ThemeManager.esCarmesi(requireContext()) -> R.drawable.bg_carmesi_sheet
+                ThemeManager.esFinal(requireContext())        -> R.drawable.bg_final_sheet_surface
+                ThemeManager.esCarmesi(requireContext())      -> R.drawable.bg_carmesi_sheet
+                ThemeManager.esDeepTerminal(requireContext()) -> R.drawable.bg_deep_terminal_sheet
                 else -> bgCard
             }
         )
@@ -87,8 +88,9 @@ class SelectDatosCategoriesBottomSheet : BottomSheetDialogFragment() {
         ) ?: return
 
         val rounded = when {
-            ThemeManager.esFinal(requireContext()) -> R.drawable.bottomsheet_rounded_final
-            ThemeManager.esCarmesi(requireContext()) -> R.drawable.bottomsheet_rounded_carmesi
+            ThemeManager.esFinal(requireContext())        -> R.drawable.bottomsheet_rounded_final
+            ThemeManager.esCarmesi(requireContext())      -> R.drawable.bottomsheet_rounded_carmesi
+            ThemeManager.esDeepTerminal(requireContext()) -> R.drawable.bottomsheet_rounded_deep_terminal
             else -> R.drawable.bottomsheet_rounded
         }
         val behavior = ImmersiveModeManager.prepareBottomSheet(

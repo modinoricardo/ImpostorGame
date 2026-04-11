@@ -47,9 +47,11 @@ class CoverRevealActivity : BaseRevealActivity() {
     private var cubiertaReveladaLocal = false
     private var revealMantenerActivo = false
 
-    override fun provideLayoutRes(): Int =
-        if (ThemeManager.esFinal(this)) R.layout.activity_datos_curiosos_reveal_final
-        else R.layout.activity_datos_curiosos_reveal
+    override fun provideLayoutRes(): Int = when {
+        ThemeManager.esFinal(this)        -> R.layout.activity_datos_curiosos_reveal_final
+        ThemeManager.esDeepTerminal(this) -> R.layout.activity_datos_curiosos_reveal_deep_terminal
+        else                              -> R.layout.activity_datos_curiosos_reveal
+    }
 
     override val touchTarget: View get() = capaCubierta
     override val btnSiguiente: View get() = btnSiguienteJugador

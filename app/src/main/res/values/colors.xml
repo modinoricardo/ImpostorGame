@@ -46,4 +46,20 @@
     <!-- Juego -->
     <color name="colorImpostor">#FF0000</color>
     <color name="colorPalabra">#FFFB00</color>
+
+    <!-- DeepTerminal -->
+    <color name="deep_terminal_bg">#000000</color>
+    <color name="deep_terminal_bg_alt">#0A0A0A</color>
+    <color name="deep_terminal_surface">#111111</color>
+    <color name="deep_terminal_surface_alt">#1A1A1A</color>
+    <color name="deep_terminal_accent">#FFFFFF</color>
+    <color name="deep_terminal_text_primary">#FFFFFF</color>
+    <color name="deep_terminal_text_secondary">#B0B0B0</color>
+    <color name="deep_terminal_text_muted">#666666</color>
+    <color name="deep_terminal_text_hint">#555555</color>
+    <color name="deep_terminal_stroke">#33FFFFFF</color>
+    <color name="deep_terminal_stroke_soft">#22FFFFFF</color>
+    <color name="deep_terminal_glow">#11FFFFFF</color>
+    <color name="deep_terminal_panel_shadow">#0A0A0A</color>
+    <color name="deep_terminal_overlay">#A6000000</color>
 </resources>

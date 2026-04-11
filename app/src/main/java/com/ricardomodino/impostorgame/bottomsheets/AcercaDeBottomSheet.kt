@@ -30,9 +30,12 @@ class AcercaDeBottomSheet : BaseGameBottomSheet() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View = inflater.inflate(
-        if (ThemeManager.esCarmesi(requireContext())) R.layout.bottomsheet_acerca_de_carmesi
-        else if (ThemeManager.esFinal(requireContext())) R.layout.bottomsheet_acerca_de_final
-        else R.layout.bottomsheet_acerca_de,
+        when {
+            ThemeManager.esCarmesi(requireContext())      -> R.layout.bottomsheet_acerca_de_carmesi
+            ThemeManager.esFinal(requireContext())        -> R.layout.bottomsheet_acerca_de_final
+            ThemeManager.esDeepTerminal(requireContext()) -> R.layout.bottomsheet_acerca_de_deep_terminal
+            else -> R.layout.bottomsheet_acerca_de
+        },
         container, false
     )
 
@@ -44,8 +47,9 @@ class AcercaDeBottomSheet : BaseGameBottomSheet() {
         val accent = ThemeManager.getAccentColor(requireContext())
         view.findViewById<View>(R.id.rootAcercaDe)?.setBackgroundResource(
             when {
-                ThemeManager.esFinal(requireContext()) -> R.drawable.bg_final_sheet_surface
-                ThemeManager.esCarmesi(requireContext()) -> R.drawable.bg_carmesi_sheet
+                ThemeManager.esFinal(requireContext())        -> R.drawable.bg_final_sheet_surface
+                ThemeManager.esCarmesi(requireContext())      -> R.drawable.bg_carmesi_sheet
+                ThemeManager.esDeepTerminal(requireContext()) -> R.drawable.bg_deep_terminal_sheet
                 else -> bgCard
             }
         )
@@ -56,8 +60,9 @@ class AcercaDeBottomSheet : BaseGameBottomSheet() {
             setTextColor(accent)
             setBackgroundResource(
                 when {
-                    ThemeManager.esFinal(requireContext()) -> R.drawable.bg_final_avatar
-                    ThemeManager.esCarmesi(requireContext()) -> R.drawable.bg_carmesi_badge
+                    ThemeManager.esFinal(requireContext())        -> R.drawable.bg_final_avatar
+                    ThemeManager.esCarmesi(requireContext())      -> R.drawable.bg_carmesi_badge
+                    ThemeManager.esDeepTerminal(requireContext()) -> R.drawable.bg_deep_terminal_badge
                     else -> bgCard
                 }
             )
@@ -66,8 +71,9 @@ class AcercaDeBottomSheet : BaseGameBottomSheet() {
         listOf(R.id.layoutInstagram, R.id.layoutEmail, R.id.layoutGithub).forEach { id ->
             view.findViewById<LinearLayout>(id)?.setBackgroundResource(
                 when {
-                    ThemeManager.esFinal(requireContext()) -> R.drawable.bg_final_sheet_option
-                    ThemeManager.esCarmesi(requireContext()) -> R.drawable.bg_carmesi_soft_panel
+                    ThemeManager.esFinal(requireContext())        -> R.drawable.bg_final_sheet_option
+                    ThemeManager.esCarmesi(requireContext())      -> R.drawable.bg_carmesi_soft_panel
+                    ThemeManager.esDeepTerminal(requireContext()) -> R.drawable.bg_deep_terminal_soft_panel
                     else -> bgCard
                 }
             )

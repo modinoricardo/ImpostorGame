@@ -30,9 +30,12 @@ class MenuBottomSheet : BaseGameBottomSheet() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View = inflater.inflate(
-        if (ThemeManager.esCarmesi(requireContext())) R.layout.bottomsheet_menu_carmesi
-        else if (ThemeManager.esFinal(requireContext())) R.layout.bottomsheet_menu_final
-        else R.layout.bottomsheet_menu,
+        when {
+            ThemeManager.esCarmesi(requireContext())      -> R.layout.bottomsheet_menu_carmesi
+            ThemeManager.esFinal(requireContext())        -> R.layout.bottomsheet_menu_final
+            ThemeManager.esDeepTerminal(requireContext()) -> R.layout.bottomsheet_menu_deep_terminal
+            else -> R.layout.bottomsheet_menu
+        },
         container, false
     )
 
@@ -44,8 +47,9 @@ class MenuBottomSheet : BaseGameBottomSheet() {
         val accent  = ThemeManager.getAccentColor(requireContext())
         view.findViewById<View>(R.id.rootBottomSheet)?.setBackgroundResource(
             when {
-                ThemeManager.esFinal(requireContext()) -> R.drawable.bg_final_sheet_surface
-                ThemeManager.esCarmesi(requireContext()) -> R.drawable.bg_carmesi_sheet
+                ThemeManager.esFinal(requireContext())        -> R.drawable.bg_final_sheet_surface
+                ThemeManager.esCarmesi(requireContext())      -> R.drawable.bg_carmesi_sheet
+                ThemeManager.esDeepTerminal(requireContext()) -> R.drawable.bg_deep_terminal_sheet
                 else -> bgCard
             }
         )

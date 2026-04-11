@@ -22,8 +22,9 @@ class GuessWordActivity : BaseGameActivity() {
         super.onCreate(savedInstanceState)
         setContentView(
             when {
-                ThemeManager.esFinal(this) -> R.layout.activity_guess_word_final
-                ThemeManager.esCarmesi(this) -> R.layout.activity_guess_word_carmesi
+                ThemeManager.esFinal(this)        -> R.layout.activity_guess_word_final
+                ThemeManager.esCarmesi(this)      -> R.layout.activity_guess_word_carmesi
+                ThemeManager.esDeepTerminal(this) -> R.layout.activity_guess_word_deep_terminal
                 else -> R.layout.activity_guess_word
             }
         )

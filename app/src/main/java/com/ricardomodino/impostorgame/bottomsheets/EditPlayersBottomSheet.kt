@@ -44,8 +44,9 @@ class EditPlayersBottomSheet : BaseGameBottomSheet() {
     ): View? {
         return inflater.inflate(
             when {
-                ThemeManager.esFinal(requireContext()) -> R.layout.dialog_edit_players_final
-                ThemeManager.esCarmesi(requireContext()) -> R.layout.dialog_edit_players_carmesi
+                ThemeManager.esFinal(requireContext())        -> R.layout.dialog_edit_players_final
+                ThemeManager.esCarmesi(requireContext())      -> R.layout.dialog_edit_players_carmesi
+                ThemeManager.esDeepTerminal(requireContext()) -> R.layout.dialog_edit_players_deep_terminal
                 else -> R.layout.dialog_edit_players
             },
             container,
@@ -72,15 +73,17 @@ class EditPlayersBottomSheet : BaseGameBottomSheet() {
         val accent  = ThemeManager.getAccentColor(requireContext())
         view.findViewById<View>(R.id.rootBottomSheet)?.setBackgroundResource(
             when {
-                ThemeManager.esFinal(requireContext()) -> R.drawable.bg_final_sheet_surface
-                ThemeManager.esCarmesi(requireContext()) -> R.drawable.bg_carmesi_sheet
+                ThemeManager.esFinal(requireContext())        -> R.drawable.bg_final_sheet_surface
+                ThemeManager.esCarmesi(requireContext())      -> R.drawable.bg_carmesi_sheet
+                ThemeManager.esDeepTerminal(requireContext()) -> R.drawable.bg_deep_terminal_sheet
                 else -> bgCard
             }
         )
         view.findViewById<LinearLayout>(R.id.inputRow)?.setBackgroundResource(
             when {
-                ThemeManager.esFinal(requireContext()) -> R.drawable.bg_final_input
-                ThemeManager.esCarmesi(requireContext()) -> R.drawable.bg_carmesi_soft_panel
+                ThemeManager.esFinal(requireContext())        -> R.drawable.bg_final_input
+                ThemeManager.esCarmesi(requireContext())      -> R.drawable.bg_carmesi_soft_panel
+                ThemeManager.esDeepTerminal(requireContext()) -> R.drawable.bg_deep_terminal_soft_panel
                 else -> bgCard
             }
         )
