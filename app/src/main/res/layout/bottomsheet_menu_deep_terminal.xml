@@ -164,8 +164,8 @@
                 android:scaleX="1.08"
                 android:scaleY="1.08"
                 app:useMaterialThemeColors="false"
-                app:thumbTint="@color/carmesi_switch_thumb"
-                app:trackTint="@color/carmesi_switch_track" />
+                app:thumbTint="@color/deep_terminal_accent"
+                app:trackTint="@color/deep_terminal_stroke" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
