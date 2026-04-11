@@ -84,7 +84,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/bg_carmesi_input"
+            android:background="@drawable/bg_deep_terminal_input"
             android:fontFamily="sans-serif"
             android:hint="@string/agregar_jugador_hint"
             android:paddingStart="16dp"
