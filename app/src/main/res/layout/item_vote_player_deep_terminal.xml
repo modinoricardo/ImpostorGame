@@ -46,7 +46,7 @@
                 android:background="@drawable/bg_vote_check_badge_deep_terminal"
                 android:text="&#10003;"
                 android:textSize="14sp"
-                android:textColor="@android:color/white"
+                android:textColor="@color/deep_terminal_bg"
                 android:textStyle="bold"
                 android:gravity="center"
                 android:paddingBottom="1dp"
