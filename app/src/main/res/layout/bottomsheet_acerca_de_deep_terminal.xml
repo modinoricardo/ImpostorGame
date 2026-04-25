@@ -68,7 +68,7 @@
                 android:fontFamily="serif"
                 android:gravity="center"
                 android:text="R"
-                android:textColor="@color/deep_terminal_text_primary"
+                android:textColor="@color/black"
                 android:textSize="32sp"
                 android:textStyle="bold" />
 
@@ -152,7 +152,7 @@
                 android:background="@drawable/bg_deep_terminal_badge"
                 android:gravity="center"
                 android:text="IG"
-                android:textColor="@color/deep_terminal_text_primary"
+                android:textColor="@color/deep_terminal_surface"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -196,7 +196,7 @@
                 android:background="@drawable/bg_deep_terminal_badge"
                 android:gravity="center"
                 android:text="EM"
-                android:textColor="@color/deep_terminal_text_primary"
+                android:textColor="@color/deep_terminal_surface"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -240,7 +240,7 @@
                 android:background="@drawable/bg_deep_terminal_badge"
                 android:gravity="center"
                 android:text="GH"
-                android:textColor="@color/deep_terminal_text_primary"
+                android:textColor="@color/deep_terminal_surface"
                 android:textStyle="bold" />
 
             <LinearLayout

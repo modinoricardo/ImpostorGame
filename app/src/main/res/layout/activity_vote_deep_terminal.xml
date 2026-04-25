@@ -6,17 +6,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_neon_space_deep_terminal">
 
-    <ImageView
-        android:layout_width="320dp"
-        android:layout_height="320dp"
-        android:alpha="0.07"
-        android:contentDescription="@null"
-        android:src="@drawable/ic_letra_s"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <LinearLayout
         android:id="@+id/headerVote"
         android:layout_width="0dp"
@@ -52,7 +41,6 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-medium"
                 android:letterSpacing="0.18"
-                android:text="@string/staicy_edition"
                 android:textColor="#A8F1D0D8"
                 android:textSize="11sp"
                 android:textStyle="bold" />

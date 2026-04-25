@@ -162,6 +162,13 @@
                     android:layout_height="84dp"
                     android:background="@drawable/bg_deep_terminal_hero">
 
+                    <View
+                        android:id="@+id/view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="6dp"
+                        android:background="@drawable/bg_neon_space_red" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

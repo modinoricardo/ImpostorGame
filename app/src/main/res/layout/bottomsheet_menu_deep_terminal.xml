@@ -67,10 +67,11 @@
                 android:layout_width="42dp"
                 android:layout_height="42dp"
                 android:background="@drawable/bg_deep_terminal_badge"
+                android:fontFamily="@font/hack_nerd_font"
                 android:gravity="center"
-                android:text="01"
-                android:textColor="@color/deep_terminal_text_primary"
-                android:textStyle="bold" />
+                android:text="󰃐"
+                android:textColor="@color/deep_terminal_panel_shadow"
+                android:textSize="22sp" />
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -126,10 +127,11 @@
                 android:layout_width="42dp"
                 android:layout_height="42dp"
                 android:background="@drawable/bg_deep_terminal_badge"
+                android:fontFamily="@font/hack_nerd_font"
                 android:gravity="center"
-                android:text="02"
-                android:textColor="@color/deep_terminal_text_primary"
-                android:textStyle="bold" />
+                android:text=""
+                android:textColor="@color/deep_terminal_surface"
+                android:textSize="22sp" />
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -192,10 +194,11 @@
                 android:layout_width="42dp"
                 android:layout_height="42dp"
                 android:background="@drawable/bg_deep_terminal_badge"
+                android:fontFamily="@font/hack_nerd_font"
                 android:gravity="center"
-                android:text="03"
-                android:textColor="@color/deep_terminal_text_primary"
-                android:textStyle="bold" />
+                android:text="󰮗"
+                android:textColor="@color/deep_terminal_surface"
+                android:textSize="22sp" />
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -253,10 +256,11 @@
                 android:layout_width="42dp"
                 android:layout_height="42dp"
                 android:background="@drawable/bg_deep_terminal_badge"
+                android:fontFamily="@font/hack_nerd_font"
                 android:gravity="center"
-                android:text="04"
-                android:textColor="@color/deep_terminal_text_primary"
-                android:textStyle="bold" />
+                android:text="󱡪"
+                android:textColor="@color/deep_terminal_surface"
+                android:textSize="22sp" />
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -314,10 +318,11 @@
                 android:layout_width="42dp"
                 android:layout_height="42dp"
                 android:background="@drawable/bg_deep_terminal_badge"
+                android:fontFamily="@font/hack_nerd_font"
                 android:gravity="center"
-                android:text="05"
-                android:textColor="@color/deep_terminal_text_primary"
-                android:textStyle="bold" />
+                android:text="󰬷"
+                android:textColor="@color/deep_terminal_surface"
+                android:textSize="22sp" />
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -374,10 +379,11 @@
                 android:layout_width="42dp"
                 android:layout_height="42dp"
                 android:background="@drawable/bg_deep_terminal_badge"
+                android:fontFamily="@font/hack_nerd_font"
                 android:gravity="center"
-                android:text="06"
-                android:textColor="@color/deep_terminal_text_primary"
-                android:textStyle="bold" />
+                android:text="󰆓"
+                android:textColor="@color/deep_terminal_surface"
+                android:textSize="22sp" />
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -430,12 +436,15 @@
             android:padding="16dp"
             android:gravity="center_vertical"
             android:background="@drawable/bg_deep_terminal_soft_panel">
+
             <TextView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:text="⚙️"
-                android:textSize="22sp"
-                android:gravity="center" />
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:background="@drawable/bg_deep_terminal_badge"
+                android:fontFamily="@font/hack_nerd_font"
+                android:gravity="center"
+                android:text=""
+                android:textSize="22sp" />
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

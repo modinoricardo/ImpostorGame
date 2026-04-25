@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -63,7 +64,6 @@
         android:fontFamily="sans-serif-medium"
         android:gravity="center"
         android:letterSpacing="0.3"
-        android:text="@string/staicy_edition"
         android:textColor="#50F0D0D7"
         android:textSize="9sp"
         android:textStyle="bold"
@@ -105,16 +105,6 @@
                 android:background="#30D92C58" />
 
             <!-- S monogram -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="18dp"
-                android:fontFamily="serif"
-                android:letterSpacing="0.18"
-                android:text="S"
-                android:textColor="#60F0D0D7"
-                android:textSize="18sp"
-                android:textStyle="bold" />
 
             <!-- Player name -->
             <TextView
@@ -124,17 +114,17 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="8dp"
                 android:ellipsize="end"
-                android:fontFamily="serif"
+                android:fontFamily="@font/hack_nerd_font"
                 android:gravity="center"
                 android:maxLines="2"
-                android:text="@string/app_name"
-                android:textColor="@android:color/white"
-                android:textSize="26sp"
-                android:textStyle="bold"
                 android:shadowColor="#40D92C58"
                 android:shadowDx="0"
                 android:shadowDy="0"
-                android:shadowRadius="24" />
+                android:shadowRadius="24"
+                android:text="@string/app_name"
+                android:textColor="@android:color/white"
+                android:textSize="26sp"
+                android:textStyle="bold" />
 
             <!-- Subtitle -->
             <TextView

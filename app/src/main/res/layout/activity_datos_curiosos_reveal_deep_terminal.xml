@@ -10,7 +10,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bg_datos_curiosos" />
+        android:background="@drawable/bg_neon_space_deep_terminal" />
 
     <!-- Contenido principal -->
     <LinearLayout
@@ -177,17 +177,17 @@
                 android:id="@+id/capaCubierta"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/bg_reveal_cover"
-                android:clipToOutline="true"
+                android:background="@drawable/bg_card_main_deep_terminal"
                 android:clickable="true"
+                android:clipToOutline="true"
                 android:focusable="true">
 
                 <ImageView
                     android:id="@+id/imgJugador"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:contentDescription="@null" />
+                    android:contentDescription="@null"
+                    android:scaleType="centerCrop" />
 
 
                 <!-- Hint de tap -->
@@ -197,25 +197,25 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|center_horizontal"
                     android:layout_marginBottom="20dp"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:text="&#8593;"
                         android:textColor="#CCFFFFFF"
                         android:textSize="24sp"
-                        android:textStyle="bold"
-                        android:gravity="center" />
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:letterSpacing="0.04"
                         android:text="@string/datos_toca_revelar"
                         android:textColor="#AAFFFFFF"
-                        android:textSize="13sp"
-                        android:letterSpacing="0.04" />
+                        android:textSize="13sp" />
 
                 </LinearLayout>
 
@@ -237,19 +237,19 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@drawable/btn_neon_deep_terminal"
                 android:gravity="center"
-                android:background="@drawable/btn_neon"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/txtBtnSiguiente"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:letterSpacing="0.05"
                     android:text="@string/datos_siguiente"
                     android:textColor="@android:color/white"
                     android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:letterSpacing="0.05" />
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
